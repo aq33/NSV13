@@ -17,9 +17,9 @@ Difficulty: Medium
 	icon_living = "legion"
 	desc = "One of many."
 	icon = 'icons/mob/lavaland/legion.dmi'
-	attacktext = "chomps"
+	attacktext = "chrupie"
 	attack_sound = 'sound/magic/demon_attack1.ogg'
-	speak_emote = list("echoes")
+	speak_emote = list("rozbrzmiewa echem")
 	armour_penetration = 50
 	melee_damage = 25
 	speed = 5
@@ -52,14 +52,14 @@ Difficulty: Medium
 	name = "Create Legion Skull"
 	icon_icon = 'icons/mob/lavaland/lavaland_monsters.dmi'
 	button_icon_state = "legion_head"
-	chosen_message = "<span class='colossus'>You are now creating legion skulls.</span>"
+	chosen_message = "<span class='colossus'>Teraz tworzysz czaszki legionu.</span>"
 	chosen_attack_num = 1
 
 /datum/action/innate/megafauna_attack/charge_target
 	name = "Charge Target"
 	icon_icon = 'icons/mob/actions/actions_items.dmi'
 	button_icon_state = "sniper_zoom"
-	chosen_message = "<span class='colossus'>You are now charging at your target.</span>"
+	chosen_message = "<span class='colossus'>Teraz szarżujesz na cel.</span>"
 	chosen_attack_num = 2
 
 /mob/living/simple_animal/hostile/megafauna/legion/OpenFire(the_target)
@@ -148,7 +148,7 @@ Difficulty: Medium
 
 		L.GiveTarget(target)
 
-		visible_message("<span class='boldannounce'>[src] splits in twain!</span>")
+		visible_message("<span class='boldannounce'>[src] rozdziela się na dwoje!</span>")
 	else
 		var/last_legion = TRUE
 		for(var/mob/living/simple_animal/hostile/megafauna/legion/other in GLOB.mob_living_list)
@@ -183,13 +183,13 @@ Difficulty: Medium
 
 /obj/item/staff/storm/attack_self(mob/user)
 	if(storm_cooldown > world.time)
-		to_chat(user, "<span class='warning'>The staff is still recharging!</span>")
+		to_chat(user, "<span class='warning'>Laska wciąż się ładuje!</span>")
 		return
 
 	var/area/user_area = get_area(user)
 	var/turf/user_turf = get_turf(user)
 	if(!user_area || !user_turf || (user_area.type in excluded_areas))
-		to_chat(user, "<span class='warning'>Something is preventing you from using the staff here.</span>")
+		to_chat(user, "<span class='warning'>Coś uniemożliwia ci użycie tu laski.</span>")
 		return
 	var/datum/weather/A
 	for(var/V in SSweather.processing)
@@ -201,10 +201,10 @@ Difficulty: Medium
 	if(A)
 		if(A.stage != END_STAGE)
 			if(A.stage == WIND_DOWN_STAGE)
-				to_chat(user, "<span class='warning'>The storm is already ending! It would be a waste to use the staff now.</span>")
+				to_chat(user, "<span class='warning'>Burza już się kończy! Szkoda teraz używać laski.</span>")
 				return
-			user.visible_message("<span class='warning'>[user] holds [src] skywards as an orange beam travels into the sky!</span>", \
-			"<span class='notice'>You hold [src] skyward, dispelling the storm!</span>")
+			user.visible_message("<span class='warning'>[user] unosi [src] ku niebu, a w górę mknie pomarańczowy promień!</span>", \
+			"<span class='notice'>Unosisz [src] ku niebu, rozpraszając burzę!</span>")
 			playsound(user, 'sound/magic/staff_change.ogg', 200, 0)
 			A.wind_down()
 			log_game("[user] ([key_name(user)]) has dispelled a storm at [AREACOORD(user_turf)]")
@@ -219,8 +219,8 @@ Difficulty: Medium
 		A.telegraph_duration = 100
 		A.end_duration = 100
 
-	user.visible_message("<span class='warning'>[user] holds [src] skywards as red lightning crackles into the sky!</span>", \
-	"<span class='notice'>You hold [src] skyward, calling down a terrible storm!</span>")
+	user.visible_message("<span class='warning'>[user] unosi [src] ku niebu, a w górę strzelają czerwone błyskawice!</span>", \
+	"<span class='notice'>Unosisz [src] ku niebu, sprowadzając straszliwą burzę!</span>")
 	playsound(user, 'sound/magic/staff_change.ogg', 200, 0)
 	A.telegraph()
 	storm_cooldown = world.time + 200

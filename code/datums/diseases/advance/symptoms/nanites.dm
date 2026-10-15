@@ -1,6 +1,6 @@
 /datum/symptom/nano_boost
 	name = "Nano-symbiosis"
-	desc = "The virus reacts to nanites in the host's bloodstream by enhancing their replication cycle. May cause unpredictable nanite behaviour. Heals the host's mechanical limbs"
+	desc = "Wirus reaguje na nanity w krwiobiegu nosiciela, wzmacniając ich cykl replikacji. Może powodować nieprzewidywalne zachowanie nanitów. Leczy mechaniczne kończyny nosiciela"
 	stealth = 0
 	resistance = 2
 	stage_speed = 2
@@ -12,8 +12,7 @@
 	prefixes = list("Nano-")
 	suffixes = list(" Silicophilia")
 	var/reverse_boost = FALSE
-	threshold_desc = "<b>Transmission 5:</b> Increases the virus' growth rate while nanites are present.<br>\
-					  <b>Stage Speed 7:</b> Increases the replication boost."
+	threshold_desc = "<b>Transmisja 5:</b> zwiększa tempo wzrostu wirusa w obecności nanitów.<br><b>Szybkość stadiów 7:</b> zwiększa premię do replikacji."
 
 /datum/symptom/nano_boost/Start(datum/disease/advance/A)
 	if(!..())
@@ -41,7 +40,7 @@
 
 /datum/symptom/nano_destroy
 	name = "Silicolysis"
-	desc = "The virus reacts to nanites in the host's bloodstream by attacking and consuming them. May also cause nanites to go haywire. Damages the host's mechanical limbs"
+	desc = "Wirus reaguje na nanity w krwiobiegu nosiciela, atakując je i pochłaniając. Może też wywołać szaleństwo nanitów. Uszkadza mechaniczne kończyny nosiciela"
 	stealth = 0
 	resistance = 4
 	stage_speed = -1
@@ -53,8 +52,7 @@
 	prefixes = list("Nano-")
 	suffixes = list(" Silicophobia")
 	var/reverse_boost = FALSE
-	threshold_desc = "<b>Stage Speed 5:</b> Increases the virus' growth rate while nanites are present.<br>\
-					  <b>Resistance 7:</b> Severely increases the rate at which the nanites are destroyed."
+	threshold_desc = "<b>Szybkość stadiów 5:</b> zwiększa tempo wzrostu wirusa w obecności nanitów.<br><b>Odporność 7:</b> znacznie zwiększa tempo niszczenia nanitów."
 
 /datum/symptom/nano_destroy/Start(datum/disease/advance/A)
 	if(!..())

@@ -163,32 +163,32 @@
 	if(W.tool_behaviour == TOOL_WRENCH)
 		if(!anchored)
 			W.play_tool_sound(src, 75)
-			user.visible_message("[user.name] secures the [src.name] to the floor.", \
-				"<span class='notice'>You secure the anchor bolts to the floor.</span>", \
-				"<span class='italics'>You hear a ratchet.</span>")
+			user.visible_message("[user.name] mocuje [src.name] do podłogi.", \
+				"<span class='notice'>Przykręcasz śruby kotwiczące do podłogi.</span>", \
+				"<span class='italics'>Słyszysz grzechotkę.</span>")
 			src.anchored = TRUE
 			connect_to_network()
 		else if(!linked_shielding.len > 0)
 			W.play_tool_sound(src, 75)
-			user.visible_message("[user.name] unsecures the [src.name].", \
-				"<span class='notice'>You remove the anchor bolts.</span>", \
-				"<span class='italics'>You hear a ratchet.</span>")
+			user.visible_message("[user.name] odczepia [src.name].", \
+				"<span class='notice'>Wykręcasz śruby kotwiczące.</span>", \
+				"<span class='italics'>Słyszysz grzechotkę.</span>")
 			src.anchored = FALSE
 			disconnect_from_network()
 		else
-			to_chat(user, "<span class='warning'>Once bolted and linked to a shielding unit it the [src.name] is unable to be moved!</span>")
+			to_chat(user, "<span class='warning'>Po przykręceniu i połączeniu z jednostką osłonową [src.name] nie może zostać przesunięty!</span>")
 
 	else if(istype(W, /obj/item/am_containment))
 		if(fueljar)
-			to_chat(user, "<span class='warning'>There is already a [fueljar] inside!</span>")
+			to_chat(user, "<span class='warning'>W środku już jest [fueljar]!</span>")
 			return
 
 		if(!user.transferItemToLoc(W, src))
 			return
 		fueljar = W
-		user.visible_message("[user.name] loads an [W.name] into the [src.name].", \
-				"<span class='notice'>You load an [W.name].</span>", \
-				"<span class='italics'>You hear a thunk.</span>")
+		user.visible_message("[user.name] ładuje [W.name] do [src.name].", \
+				"<span class='notice'>Ładujesz [W.name].</span>", \
+				"<span class='italics'>Słyszysz łupnięcie.</span>")
 	else
 		return ..()
 
@@ -244,10 +244,10 @@
 	message_admins("Antimatter turned [active ? "ON" : "OFF"] by [usr ? ADMIN_LOOKUPFLW(usr) : "outside forces"] in [ADMIN_VERBOSEJMP(src)]")
 	if(active)
 		use_power = ACTIVE_POWER_USE
-		visible_message("The [src.name] starts up.")
+		visible_message("[src.name] się uruchamia.")
 	else
 		use_power = !powerfail
-		visible_message("The [src.name] shuts down.")
+		visible_message("[src.name] się wyłącza.")
 	update_icon()
 	return
 
@@ -293,29 +293,29 @@
 			return
 
 	var/dat = ""
-	dat += "AntiMatter Control Panel<BR>"
-	dat += "<A href='?src=[REF(src)];close=1'>Close</A><BR>"
-	dat += "<A href='?src=[REF(src)];refresh=1'>Refresh</A><BR>"
-	dat += "<A href='?src=[REF(src)];refreshicons=1'>Force Shielding Update</A><BR><BR>"
+	dat += "Panel sterowania antymaterią<BR>"
+	dat += "<A href='byond://?src=[REF(src)];close=1'>Close</A><BR>"
+	dat += "<A href='byond://?src=[REF(src)];refresh=1'>Refresh</A><BR>"
+	dat += "<A href='byond://?src=[REF(src)];refreshicons=1'>Wymuś aktualizację osłon</A><BR><BR>"
 	dat += "Status: [(active?"Injecting":"Standby")] <BR>"
-	dat += "<A href='?src=[REF(src)];togglestatus=1'>Toggle Status</A><BR>"
+	dat += "<A href='byond://?src=[REF(src)];togglestatus=1'>Przełącz stan</A><BR>"
 
 	dat += "Stability: [stability]%<BR>"
-	dat += "Reactor parts: [linked_shielding.len]<BR>"//TODO: perhaps add some sort of stability check
+	dat += "Części reaktora: [linked_shielding.len]<BR>"//TODO: perhaps add some sort of stability check
 	dat += "Cores: [linked_cores.len]<BR><BR>"
-	dat += "-Current Efficiency: [reported_core_efficiency]<BR>"
-	dat += "-Average Stability: [stored_core_stability] <A href='?src=[REF(src)];refreshstability=1'>(update)</A><BR>"
-	dat += "Last Produced: [display_power(stored_power)]<BR>"
+	dat += "-Obecna wydajność: [reported_core_efficiency]<BR>"
+	dat += "-Średnia stabilność: [stored_core_stability] <A href='byond://?src=[REF(src)];refreshstability=1'>(odśwież)</A><BR>"
+	dat += "Ostatnio wytworzono: [display_power(stored_power)]<BR>"
 
 	dat += "Fuel: "
 	if(!fueljar)
-		dat += "<BR>No fuel receptacle detected."
+		dat += "<BR>Nie wykryto pojemnika na paliwo."
 	else
-		dat += "<A href='?src=[REF(src)];ejectjar=1'>Eject</A><BR>"
+		dat += "<A href='byond://?src=[REF(src)];ejectjar=1'>Eject</A><BR>"
 		dat += "- [fueljar.fuel]/[fueljar.fuel_max] Units<BR>"
 
-		dat += "- Injecting: [fuel_injection] units<BR>"
-		dat += "- <A href='?src=[REF(src)];strengthdown=1'>--</A>|<A href='?src=[REF(src)];strengthup=1'>++</A><BR><BR>"
+		dat += "- Wtrysk: [fuel_injection] j.<BR>"
+		dat += "- <A href='byond://?src=[REF(src)];strengthdown=1'>--</A>|<A href='byond://?src=[REF(src)];strengthup=1'>++</A><BR><BR>"
 
 
 	user << browse(dat, "window=AMcontrol;size=420x500")

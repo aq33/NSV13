@@ -9,7 +9,7 @@
 	update_explanation_text()
 
 /datum/objective/devil/soulquantity/update_explanation_text()
-	explanation_text = "Purchase, and retain control over at least [target_amount] souls."
+	explanation_text = "Kup co najmniej [target_amount] dusz i utrzymaj nad nimi kontrolę."
 
 /datum/objective/devil/soulquantity/check_completion()
 	var/count = 0
@@ -33,23 +33,23 @@
 	target_amount = pick(1,2)
 	switch(contractType)
 		if(CONTRACT_POWER)
-			contractName = "for power"
+			contractName = "na władzę"
 		if(CONTRACT_WEALTH)
-			contractName = "for wealth"
+			contractName = "na bogactwo"
 		if(CONTRACT_PRESTIGE)
-			contractName = "for prestige"
+			contractName = "na prestiż"
 		if(CONTRACT_MAGIC)
-			contractName = "for magic"
+			contractName = "na magię"
 		if(CONTRACT_REVIVE)
-			contractName = "of revival"
+			contractName = "na wskrzeszenie"
 		if(CONTRACT_KNOWLEDGE)
-			contractName = "for knowledge"
+			contractName = "na wiedzę"
 		if(CONTRACT_PLEASURE) // AQ EDIT
-			contractName = "of pleasure"
+			contractName = "na przyjemności"
 	update_explanation_text()
 
 /datum/objective/devil/soulquality/update_explanation_text()
-	explanation_text = "Have mortals sign at least [target_amount] contracts [contractName]"
+	explanation_text = "Spraw, by śmiertelnicy podpisali co najmniej [target_amount] kontraktów [contractName]."
 
 /datum/objective/devil/soulquality/check_completion()
 	var/count = 0
@@ -68,7 +68,7 @@
 
 /datum/objective/devil/sintouch/New()
 	target_amount = pick(4,5)
-	explanation_text = "Ensure at least [target_amount] mortals are sintouched."
+	explanation_text = "Spraw, by co najmniej [target_amount] śmiertelników zostało naznaczonych grzechem."
 
 /datum/objective/devil/sintouch/check_completion()
 	var/list/touched = get_antag_minds(/datum/antagonist/sintouched)
@@ -80,9 +80,9 @@
 
 /datum/objective/devil/buy_target/update_explanation_text()
 	if(target)
-		explanation_text = "Purchase and retain the soul of [target.name], the [target.assigned_role]."
+		explanation_text = "Kup i zatrzymaj duszę [target.name] ([target.assigned_role])."
 	else
-		explanation_text = "Free objective."
+		explanation_text = "Cel dowolny."
 
 /datum/objective/devil/buy_target/check_completion()
 	return (target.soulOwner == owner) || ..()
@@ -95,7 +95,7 @@
 
 /datum/objective/devil/outsell/update_explanation_text()
 	var/datum/antagonist/devil/opponent = target.has_antag_datum(/datum/antagonist/devil)
-	explanation_text = "Purchase and retain control over more souls than [opponent.truename], known to mortals as [target.name], the [target.assigned_role]."
+	explanation_text = "Kup i utrzymaj kontrolę nad większą liczbą dusz niż [opponent.truename], znany śmiertelnikom jako [target.name] ([target.assigned_role])."
 
 /datum/objective/devil/outsell/check_completion()
 	var/selfcount = 0

@@ -35,7 +35,7 @@
 /obj/machinery/atmospherics/components/binary/magnetic_constrictor/interact(mob/user)
 	if(!can_interact(user))
 		return
-	to_chat(user, "<span class='notice'>You turn on \the [src].</span>")
+	to_chat(user, "<span class='notice'>Włączasz [src].</span>")
 	on = !on
 	update_icon()
 
@@ -84,11 +84,11 @@
 	if(..())
 		return TRUE
 	if(on)
-		to_chat(user, "<span class='notice'>You must turn off [src] before opening the panel.</span>")
+		to_chat(user, "<span class='notice'>Przed otwarciem panelu musisz wyłączyć [src].</span>")
 		return FALSE
 	panel_open = !panel_open
 	I.play_tool_sound(src)
-	to_chat(user, "<span class='notice'>You [panel_open?"open":"close"] the panel on [src].</span>")
+	to_chat(user, "<span class='notice'>[panel_open?"Otwierasz":"Zamykasz"] panel [src].</span>")
 	update_icon()
 	return TRUE
 
@@ -135,9 +135,9 @@
 /obj/machinery/atmospherics/components/binary/magnetic_constrictor/emag_act(mob/user)
 	obj_flags |= EMAGGED
 	emagged = TRUE
-	to_chat(user, "<span class='notice'>You overload [src]'s hydraulics.</span>")
-	audible_message("<span class='warning'>\The [src] makes a mechanical sound.</span>")
-	visible_message("<span class='warning'>Some bolts fall off \the [src]!</span>")
+	to_chat(user, "<span class='notice'>Przeciążasz hydraulikę [src].</span>")
+	audible_message("<span class='warning'>[src] wydaje mechaniczny dźwięk.</span>")
+	visible_message("<span class='warning'>Z [src] wypadają jakieś śruby!</span>")
 	log_combat(user, src, "emagged")
 
 /obj/item/circuitboard/machine/magnetic_constrictor
@@ -152,7 +152,7 @@
 	. = ..()
 	if(I.tool_behaviour == TOOL_MULTITOOL)
 		pipe_layer = (pipe_layer >= PIPING_LAYER_MAX) ? PIPING_LAYER_MIN : (pipe_layer + 1)
-		to_chat(user, "<span class='notice'>You change the circuitboard to layer [pipe_layer].</span>")
+		to_chat(user, "<span class='notice'>Zmieniasz warstwę płytki na [pipe_layer].</span>")
 
 /datum/design/board/magnetic_constrictor
 	name = "Machine Design (Magnetic Constrictor Board)"

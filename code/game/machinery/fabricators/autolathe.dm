@@ -81,18 +81,15 @@
 			security_interface_locked = TRUE
 			. = TRUE
 
-/obj/machinery/modular_fabricator/autolathe/attackby(obj/item/O, mob/user, params)
+/obj/machinery/modular_fabricator/autolathe/attackby(obj/item/O, mob/living/user, params)
 
 	if((ACCESS_SECURITY in O.GetAccess()) && !(obj_flags & EMAGGED))
 		security_interface_locked = !security_interface_locked
-		to_chat(user, "<span class='warning'>You [security_interface_locked?"lock":"unlock"] the security controls of [src].</span>")
+		to_chat(user, "<span class='warning'>[security_interface_locked?"Blokujesz":"Odblokowujesz"] zabezpieczenia [src].</span>")
 		return TRUE
 
 	if (busy)
-		to_chat(user, "<span class=\"alert\">The autolathe is busy. Please wait for completion of previous operation.</span>")
-		return TRUE
-
-	if(default_deconstruction_screwdriver(user, "autolathe_t", "autolathe", O))
+		to_chat(user, "<span class=\"alert\">Autolatarka jest zajęta. Zaczekaj na zakończenie poprzedniej operacji.</span>")
 		return TRUE
 
 	if(default_deconstruction_crowbar(O))
@@ -102,22 +99,44 @@
 		wires.interact(user)
 		return TRUE
 
-	if(user.a_intent == INTENT_HARM) //so we can hit the machine
+	if(user.combat_mode) //so we can hit the machine
 		return ..()
 
 	if(machine_stat)
 		return TRUE
 
 	if(istype(O, /obj/item/disk/design_disk))
-		user.visible_message("[user] loads \the [O] into \the [src]...",
-			"You load a design from \the [O]...",
-			"You hear the chatter of a floppy drive.")
+		user.visible_message("[user] wczytuje [O] do [src]...",
+			"Wczytujesz wzór z [O]...",
+			"Słyszysz terkot stacji dyskietek.")
 		inserted_disk = O
 		O.forceMove(src)
 		update_viewer_statics()
 		return TRUE
 
+	if(panel_open)
+		balloon_alert(user, "najpierw zamknij panel!")
+		return FALSE
+
 	return ..()
+
+/obj/machinery/modular_fabricator/autolathe/attackby_secondary(obj/item/weapon, mob/living/user, params)
+	. = SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	if(busy)
+		balloon_alert(user, "jest zajęty!")
+		return
+
+	if(default_deconstruction_screwdriver(user, "autolathe_t", "autolathe", weapon))
+		return
+
+	if(machine_stat)
+		return SECONDARY_ATTACK_CALL_NORMAL
+
+	if(panel_open)
+		balloon_alert(user, "najpierw zamknij panel!")
+		return
+
+	return SECONDARY_ATTACK_CALL_NORMAL
 
 /obj/machinery/modular_fabricator/autolathe/proc/reset(wire)
 	switch(wire)

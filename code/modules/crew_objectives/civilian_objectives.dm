@@ -21,7 +21,7 @@
 	var/pillcount = target_amount
 	if(owner?.current)
 		if(owner.current.contents)
-			for(var/obj/item/reagent_containers/food/snacks/grown/P in owner.current.get_contents())
+			for(var/obj/item/food/grown/P in owner.current.get_contents())
 				if(P.reagents.has_reagent(targetchem))
 					pillcount--
 	if(pillcount <= 0)
@@ -75,7 +75,7 @@
 
 /datum/objective/crew/cocktail/update_explanation_text()
 	. = ..()
-	explanation_text = "Have a bottle(any type) that contains '[english_list(chemnames, and_text = ", and ")]' when the shift ends. Each of them must be at least [chemsize]u."
+	explanation_text = "Pod koniec zmiany miej butelkę (dowolnego rodzaju), która zawiera: [english_list(chemnames, and_text = " i ")]. Każdego z nich musi być co najmniej [chemsize] j."
 
 /datum/objective/crew/cocktail/check_completion()
 	if(owner?.current)
@@ -258,10 +258,10 @@
 /datum/objective/crew/reporter/check_completion()
 	if(owner?.current)
 		var/ownername = "[ckey(owner.current.real_name)][ckey(owner.assigned_role)]"
-		for(var/datum/newscaster/feed_channel/chan in GLOB.news_network.network_channels)
-			for(var/datum/newscaster/feed_message/msg in chan.messages)
-				if(ckey(msg.returnAuthor()) == ckey(ownername))
-					if(length(msg.returnBody()) >= charcount)
+		for(var/datum/feed_channel/channel in GLOB.news_network.network_channels)
+			for(var/datum/feed_message/message in channel.messages)
+				if(ckey(message.author) == ckey(ownername))
+					if(length(message.return_body()) >= charcount)
 						target_amount--
 	if(target_amount <= 0)
 		return TRUE

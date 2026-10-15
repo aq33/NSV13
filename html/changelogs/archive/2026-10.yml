@@ -1,0 +1,406 @@
+'2026-10-04':
+  Joker66613:
+  - rscadd: Dodano pupę jako narząd (port z HippieStation13) z ukrytą kieszenią oraz
+      warianty xeno i bluespace.
+  - rscadd: Dodano emotkę *superfart, a *fart wymaga teraz pupy i ma efekty zależne
+      od zawartości kieszeni.
+  - rscadd: Dodano buttbota, replikę kwiatu-pupy, fartium oraz zszywacz (także do
+      zamykania trumien).
+  - imageadd: Dodano sprite'y pupy, buttbota, kwiatu-pupy, zszywacza, nakładkę trumny
+      i efekt błyskawicy.
+  - soundadd: Dodano dźwięki pierdnięć, zszywacza i grzmotu.
+  sh4dow321:
+  - code_imp: Naprawiono test campaign_reset na CI oraz brakujący znak nowej linii
+      w aquila.dm.
+  - bugfix: Wrogie floty nie pojawiają się już w systemie startowym (Argo) zaraz po
+      każdym restarcie serwera. Zajęcie systemu przez flotę nie jest już zapisywane
+      na kolejną rundę.
+  - bugfix: Naprawiono opcję „Hard Restart + New Campaign”, która nie restartowała
+      serwera.
+  - code_imp: Naprawiono niestabilny test jednostkowy aquila_powersink_apc_drain.
+  - rscadd: Rewenanci widzą duchy, mogą krążyć wokół obiektów obok siebie i mają zaklęcie
+      powrotu na stację.
+  - rscadd: 'Nowy cel zdrajcy: zniszczenie wszystkich maszyn danego typu w wybranych
+      obszarach.'
+  - rscadd: Dodano operację naprawy uszu.
+  - rscadd: Dodano dakimakury (kontrabanda w automacie z zabawkami Donksoft).
+  - bugfix: Naprawiono funkcje zależne od zawodu (składy, ograniczenia antagonistów,
+      skalowanie ochrony, przedmioty i konta przypisane do działów), które przestały
+      działać po przetłumaczeniu nazw zawodów.
+  - bugfix: Ratownik Medyczny znowu dostaje właściwą rangę; uzupełniono brakujące
+      wpisy w plikach rang.
+  - server: Naprawiono workflowy GitHuba do etykiet PR i generowania changelogów na
+      tym forku.
+'2026-10-05':
+  EvilDragonfiend, HowToLoLu(sprite):
+  - rscadd: Konsola genetyczna może drukować DNA nullifiery.
+  - tweak: Ręczny skaner sekwencji pokazuje stabilność genetyczną.
+  - imageadd: Sprite DNA nullifiera.
+  Joker66613:
+  - bugfix: Wampiry nie są już losowane wbrew preferencjom i banom, przycisk admina
+      "Make Vampire" działa
+  - bugfix: Ciche ssanie krwi jest naprawdę ciche, a po 150 jednostkach krwi wampir
+      traci możliwość cichego ssania
+  - bugfix: Holy water blokuje revive wampira, Bat Form pobiera krew, poprawki Lilith's
+      Pact i nietoperzy
+  - balance: Nowe progi odblokowań zdolności wampira, szybszy nietoperz
+  - balance: Usunięto Diseased Touch i Shapeshift; płaszcz wampira daje unik i regenerację
+      krwi zamiast pancerza
+  - balance: Rejuvenate kosztuje 20 krwi i leczy przez 5 sekund, pasywka regeneracji
+      leczy stale
+  - balance: Ochrona oczu osłabia Gaze i Hypnotize zamiast je blokować
+  - balance: Revive wampira można anulować, cooldown liczy się po wskrzeszeniu
+  - balance: Traitor+Vampire może wylosować się od 15 graczy
+  - rscdel: Usunięto przycisk "How to suck blood 101", poradnik jest w wiadomości
+      powitalnej
+'2026-10-06':
+  Joker66613:
+  - rscadd: GR-3YT1.DE Locker Exosuit - nowy mech dostępny do wytworzenia z poziomu
+      menu craftingu
+  - rscadd: wyposażenie dla nowego mecha, także dostępne do wytworzenia z poziomu
+      menu craftingu
+  - rscadd: Improvised Laser Rifle do wytworzenia w craftingu
+  - rscadd: port yogowych bluespace pipes, czyli teleportujące się rurki
+  - rscadd: 'Morph ma nowe cele: zjedz określoną liczbę rzeczy i/lub zwłok'
+  - rscadd: Morph widzi w status tabie, ile rzeczy i zwłok zjadł
+  - bugfix: Morph dostaje powitanie ze swoimi celami
+  - rscadd: Podłogi mogą się palić — pożary bez zamieniania stacji w piekło plazmy
+  - tweak: Miotacz ognia i mołotowy używają nowego systemu ognia
+  - tweak: Anomalia piroklastyczna podpala okolicę
+  - tweak: Heavy laser, pulse i amunicja zapalająca podpalają podłogi
+  - tweak: Kratki są odporniejsze na ogień
+  - soundadd: Nowe dźwięki miotacza ognia
+  - imageadd: Sprite'y ognia na podłodze
+  - rscadd: Ślady zależą teraz od butów i nóg (ślady stóp, łap, pazurów)
+  - bugfix: Naprawiono przeciekanie nakładki krwi z przedmiotów na inne obiekty
+'2026-10-07':
+  Joker66613:
+  - rscadd: 'Wraca miazma: zwłoki i gibsy gniją, kwiat trupi wydziela smród'
+  - rscadd: Pierdy wypuszczają odrobinę miazmy
+  - balance: Miazma jest wyraźnie mniej opłacalna przy eksporcie i do badań
+  - code_imp: Nowy, dużo lżejszy system emisji miazmy (SSmiasma)
+  - code_imp: Dodano CLAUDE.md z wytycznymi dla Claude Code.
+  'Produkcja: Ewa, Port: sh4dow321':
+  - imageadd: 'Security dostało spritework Polskiej Policji (Kosmobagiety): mundury,
+      kurtki, kamizelki, kaski, czapki, okulary, pasy, plecaki, ID, tablety, radia,
+      szafki i SecDrobe'
+  - imageadd: Żandarm nosi mundur i pancerz w barwach policji
+  - rscadd: 'Nowe nakrycia głowy security: alternatywna czapka, czapka Naczelnika,
+      bandana, furażerka i czapka oficerska'
+  - tweak: Komendant zaczyna w mundurze policyjnym i kurtce policyjnej (te same statystyki)
+  Quartofel:
+  - rscadd: Pistolety Donksoft strzelają teraz plastikowymi i metalowymi kulkami,
+      a granaty na kulki pokazują, ile zostało amunicji.
+  - rscadd: Zabawkowy chaingun LCG-4-BB „Ratat” na kulki dla mechów w automacie Donksoft.
+  - rscadd: Zabawkowe repliki strojów ERT w automacie Donksoft.
+  - tweak: Zabawki Syndykatu przeniesione do kontrabandy automatu Donksoft, ceny automatu
+      podniesione.
+  - balance: Disabler dla mechów strzela szybciej.
+  - imageadd: Nowe sprite'y kulek, granatów na kulki i chaingunu dla mechów.
+  - soundadd: Dźwięk zabawkowego chaingunu.
+  - bugfix: Automat Donksoft zbudowany z płytki pokazuje już ikonki produktów.
+  Theos:
+  - rscadd: Emotka *cry pokazuje łzy na twarzy.
+  - rscadd: Krojenie cebuli bez osłony oczu wyciska łzy.
+  - imageadd: Dodano sprite łez.
+  ToGWtF:
+  - rscadd: Dodano rower stacjonarny, który generuje prąd z wysiłku przypiętej osoby
+      (tylko spawn adminowski).
+  Wallem:
+  - rscadd: Konsola ksenobiologii wciąga i wypluwa szlamy, małpy i mikstury rurą zamiast
+      je teleportować.
+  - rscadd: Konsola ksenobiologii ma HUD z liczbą małp, szlamów i załadowaną miksturą.
+  - imageadd: Recykler małp dostał fioletowe paski, żeby nie mylił się z maszynką
+      do mięsa.
+  - soundadd: Dźwięki ssania i wystrzału rury.
+  ? '` ... `/:cl:` ze zmergowanego PR-a, zapisuje `html/changelogs/AutoChangeLog-pr-N.yml`,
+    kompiluje `html/changelog.html` i pushuje jednym commitem `[ci skip]`. Dodatkowo
+    zrobiłem backfill: wpisy ze wszystkich zmergowanych PR-ów #1–#353, które miały
+    blok `:cl:`, są już skompilowane w tym PR (84 wpisy z ostatnich 9 tygodni widoczne
+    w grze, starsze tylko w cache `.all_changelog.yml`). Stare pliki `AutoChangeLog-pr-9..20`
+    pochodziły z PR-ów forka NSV13-revive, nie z tego repo, więc weszły do kompilacji
+    pod własnymi datami, a numery aq33 dostały właściwe wpisy.'
+  : - tweak: Changelog w grze znów pokazuje zmiany z ostatnich tygodni i aktualizuje
+        się automatycznie po każdym merge'u.
+  mrmanlikesbt (BeeStation), Joker66613:
+  - rscadd: 'Smartwires: kable same łączą się z sąsiednimi kablami tego samego koloru,
+      a węzły tworzą się automatycznie na końcówkach i pod maszynami.'
+  - rscadd: Zwój kabla ma menu kolorów i kabel omni, a kable między pokładami łączą
+      się same.
+  - rscdel: Usunięto RCL i warstwownik kabli dla mechów.
+  - tweak: Pętlę (noose) robi się teraz w menu craftingu.
+  - imageadd: Nowe ikony kabli i zwoju z BeeStation.
+  - soundadd: Dźwięk buczenia kabla między pokładami.
+  - code_imp: Mapy przerobione na nowe kable skryptem tools/smartwires/convert.py.
+  sh4dow321:
+  - rscadd: Added a Tesla Volume slider under Volume Controls in the Game Preferences
+      tab.
+'2026-10-09':
+  Joker66613:
+  - admin: Admini dostają komunikat na czacie, gdy ktoś nie może dołączyć do serwera
+      (whitelista, ban, limit graczy itp.).
+  - rscadd: Nowy typ budowy ciała „Polak” dla ludzi, do odblokowania za 5000 Aquilosów
+      w loadoucie (OOC).
+  - imageadd: Sprite brzucha dla typu „Polak”.
+  - bugfix: Pożary na podłogach nie palą się już w nieskończoność i rozprzestrzeniają
+      się wolniej
+  - bugfix: Chrono Legionnaire rozpoznaje imiona z polskimi znakami już od startu
+      serwera.
+  - rscadd: Panel emotek w zakładce IC (wyszukiwarka i filtry)
+  - rscadd: Nowe emotki *smirk i *tilt, animacje dla *jump, *shiver, *sway, *tremble
+      i *twitch
+  - tweak: Emotki widoczne wymagają wzroku, słyszalne słuchu; głusi widzą emotki słyszalne
+      i widoczne
+  - tweak: /me pozwala wybrać emotkę słyszalną, widoczną lub obie
+  - soundadd: Dźwięki dla *giggle, *collapse, *surrender, *inhale, *wing, *boop, emotek
+      MMI i slime'ów, nowy *whistle, dźwięk śmierci w masce SecHailer
+  - tweak: Wszystkie emotki mają polskie nazwy i komunikaty
+'2026-10-10':
+  Joker66613:
+  - rscadd: 'Port Newfood z BeeStation: setki nowych potraw na nowym systemie jedzenia.'
+  - rscadd: Płyta grillowa i piec w kuchni. Mięso smaży się na płycie, pizze, ciasta
+      i chleb piecze się w piecu.
+  - rscadd: Jedzenie zostawione na podłodze gnije i przyciąga mrówki.
+  - rscadd: Jedzenie zrobione przez kucharza daje buffy.
+  - rscadd: Płyta i piec w kuchniach statków z rotacji.
+  - tweak: Krojenie, wałkowanie i suszenie jedzenia działa na nowych zasadach.
+  - imageadd: Nowe sprite'y jedzenia i maszyn kuchennych z BeeStation.
+  - bugfix: 'Poprawione błędy Bee: mrówki, gorący olej, ikona buffa, moździerz.'
+  - bugfix: Zniszczenie pagera oddziału nie powoduje już błędu.
+  - bugfix: Kapelusz spadający z wyższego pokładu nie powoduje już błędu.
+  - bugfix: Dywan niszczony eksplozją nie jest już usuwany dwukrotnie.
+  - bugfix: Masowe niszczenie rur nie psuje już sieci rur.
+  - bugfix: Pragnienie na starcie rundy jest teraz losowe (jak głód) zamiast zawsze
+      na progu odwodnienia, więc krew od razu się regeneruje.
+  - bugfix: Popuszczenie w spodnie nie resetuje już pragnienia.
+  - rscadd: Reklamówki z Biedronki i Lidla oraz sandały z białymi skarpetkami można
+      kupić w loadoucie za Aquilosy.
+  - rscadd: 'Nowa kategoria loadoutu „Polska bielizna”: polskie koszulki, zakolanówki,
+      bokserki i mankini odblokowuje się za Aquilosy.'
+  - tweak: Polskiej bielizny nie można już wybrać za darmo i nie trafia się w losowym
+      wyglądzie.
+  - rscadd: Loadout pokazuje ikonki przedmiotów i ma przycisk „Podgląd”, który pokazuje
+      przedmiot na postaci przed zakupem.
+  - rscadd: 'Nowy reagent: olej rycynowy (olej spożywczy + siarka + woda). Silnie
+      przyspiesza potrzebę wypróżnienia, a wypróżnienie z nim w organizmie usuwa inne
+      substancje.'
+  - tweak: Kawa i ostre jedzenie (kapsaicyna, hell ramen) przyspieszają potrzebę wypróżnienia.
+  - rscadd: Kapitan, HoS i silikony mogą raz na 15 minut zlecić z konsoli komunikacyjnej
+      wybudzenie załogi z kriostazy. Chętne duchy wracają do gry jako losowi Majtkowie
+      przy komorach snu.
+  - bugfix: Prośby o ERT są widoczne w Request Managerze.
+  - config: Automatyczne ERT ma własną flagę ALLOW_ERT_REQUEST_AUTO_ACCEPT, a wybudzanie
+      załogi flagę ALLOW_CREW_WAKE_REQUEST_AUTO_ACCEPT.
+  - rscadd: 'Wsparcie dla BYOND 516: czat, panel statystyk, okno mówienia i stare
+      okna działają na nowym kliencie'
+  - bugfix: Linki w starych oknach działają na kliencie 516
+  - bugfix: HUD antagonisty bloodlinga
+  - tweak: Na kliencie 516 historia czatu zapisuje się rzadziej, co usuwa regularne
+      przycięcia
+  - code_imp: Linki w oknach browse() używają byond://, nowa reguła CI to sprawdza
+  - config: CLIENT_MAX_VERSION/BUILD podniesione do 516/1700
+'2026-10-11':
+  Joker66613:
+  - bugfix: Fabrykator swarmerów znów co jakiś czas wytwarza skorupy swarmerów.
+  - bugfix: Po położeniu się z pozycji bokiem postać nie traci już jednej nogi.
+  sh4dow321:
+  - soundadd: 'Echo jukeboxa brzmi jak pogłos dużej sali: dwa odbicia, dłuższe z większej
+      odległości, bez efektu drugiego utworu.'
+  - rscadd: Jukebox gra też playlisty, profile i utwory z SoundCloud.
+  - soundadd: Ściany, okna i zamknięte drzwi mocniej tłumią muzykę z jukeboxa, a zmiana
+      po otwarciu drzwi jest słyszalna od razu.
+  - rscadd: Na korytarzach wiszą głośniki nagłośnienia; kapitan programem "Nagłośnienie
+      statku" (wgranym na konsolach dowodzenia) puszcza przez nie jukebox, a w pomieszczeniach
+      i maintach słychać go przez ściany.
+  - rscadd: 'Amp stack: głośnik podłączany multitoolem do jukeboxa lub radia, cichszy
+      i słabiej przebijający ściany; kliknięcie go włącza lub wyłącza. Do zbudowania
+      albo w cargo (2 sztuki za 1500).'
+  - rscadd: 'Radio: mały jukebox do zbudowania z płytki (ciemny boombox), z własną
+      playlistą.'
+  - rscadd: Nukies mają na promie głośnik Syndykatu z własną playlistą; gra też ciągnięty
+      za sobą.
+  - imageadd: Ikony głośników z Goonstation i ciemny boombox z tgstation.
+'2026-10-12':
+  Joker66613:
+  - rscadd: Klikając czymś skrzynką z narzędziami, wybierasz z menu narzędzie; ląduje
+      w drugiej ręce, zostaje użyte i wraca do skrzynki.
+  - tweak: Szafy na skafandry (SSU) obsługuje się radialem zamiast okna. Inżynieryjne
+      mają w schowku magnetyczne buty.
+  - rscadd: Alt-klik na karcie budżetowej pozwala przelać kredyty do budżetu innego
+      departamentu.
+  - config: Z kart budżetowych nie da się już wypłacać gotówki.
+  - tweak: TAB w oknie czatu przełącza kanały radia z twoich słuchawek zamiast OOC/LOOC.
+  - rscadd: 'Nowe składy ERT: łowcy nagród i nieuzbrojeni stażyści. Każdy członek
+      ERT ma mindshield.'
+  - admin: Przy tworzeniu ERT można wybrać doświadczonego lidera, losowe nazwiska
+      i pojawić się samemu jako oficer odprawy.
+  - rscadd: 'Serendipity: nowe xenobio, biuro kapelana, generator tarcz w inżynierii'
+  - tweak: 'Serendipity: nowy prom cargo'
+  - rscdel: 'Serendipity: usunięta platforma górnicza z magnesem asteroid'
+  - rscadd: 'Combat mode z BeeStation: przełącznik trybu walki (F), prawy przycisk
+      myszy to akcja dodatkowa, Ctrl+klik to chwyt, menu kontekstowe pod Shift+prawy
+      przycisk.'
+  - rscadd: Preferencja „Stary tryb intencji” (menu preferencji i zakładka Preferences)
+      przywraca cztery intencje i menu kontekstowe pod prawym przyciskiem.
+  - rscadd: Sztuki walki mają licznik kombinacji i okno poradnika.
+  - rscadd: 'Akcje prawego przycisku: pobieranie strzykawką, klucz i śrubokręt, dzielenie
+      stosów, rozbiórka RCD, granatnik M-90, hak, zryw katany i inne.'
+  - tweak: 'Obracanie obiektów: Alt+lewy i Alt+prawy przycisk; preferencja odwraca
+      kierunki.'
+  - rscadd: Preferencja dźwięku przełączania trybu walki.
+  - soundadd: Dźwięki przełączania trybu walki i walenia w szybę z BeeStation.
+  - imageadd: Ikony trybu walki we wszystkich stylach HUD i licznik kombinacji.
+  - rscadd: Latarki, latarki na broni, kaski, hełmy, PDA i borgi świecą stożkiem w
+      kierunku patrzenia
+  - rscadd: Rzucona latarka świeci tam, gdzie wskazuje po wylądowaniu
+  - refactor: Świecenie eteryków, luminescentów i mutacji Glowy na nowym systemie
+      światła
+  - bugfix: Granaty flash/disco i błyski wybuchów dają poprawne światło
+  - rscadd: 'Okno wyboru profesji przy dołączaniu w trakcie rundy w nowym interfejsie:
+      ikony ról, obsadzenie, priorytety i powody niedostępności.'
+  - tweak: Cele statku ogłaszane są jednym komunikatem zamiast osobnego dla każdego
+      projektu.
+  - rscadd: 'Duchy mogą raz na minutę nawiedzić okolicę przyciskiem „Nawiedź”: mrugające
+      światła, straszny dźwięk i blady zarys ducha.'
+'2026-10-13':
+  Joker66613:
+  - rscadd: 'Nowy event: zabłąkana kapsuła zaopatrzeniowa (także w wersji Syndykatu)'
+  - rscadd: 'Nowy event: grzyb na ścianach, które kruszą się od pchnięcia. Usuwa go
+      spawarka albo Plant-B-Gone'
+  - rscadd: 'Nowy event: strajk i niepodległość losowego działu'
+  - rscadd: 'Nowy event: inwazja kryształów (Crystal Invasion) i stabilizator supermaterii
+      w Badaniach anomalii'
+  - rscadd: 'Demon cieni z Paradise: łowca w ciemności z cienistym pełzem, cień-hakiem,
+      kokonami pochłaniającymi światło i demonicznym szeptem'
+  - rscdel: Koszmar nie pojawia się już jako event ani midround, zastąpił go demon
+      cieni
+  - rscadd: 'MODsuity z BeeStation: modułowe kombinezony noszone na plecach, z panelem,
+      rdzeniami i kilkudziesięcioma modułami'
+  - rscadd: MODsuity w research, fabrykatorze egzoszkieletów, SSU, cargo i uplinku;
+      warianty strojów z MODsuitem dla ról, ERT i deathsquadu
+  - rscadd: Skan RCD pokazujący hologramy zniszczonych ścian i okien
+  - tweak: Ninja korzysta z MODsuita i modułów zamiast starego kombinezonu, zbroja
+      battlemage to zaczarowany MODsuit
+  - refactor: Pola i proximity monitory przeniesione na nowy system z BeeStation
+  - bugfix: Maska sechailer nie zgłasza już błędu przy usuwaniu
+  - rscadd: 'Samouczek w lobby: lekcje Podstawy, Przetrwanie i Alarm bojowy. Nowi
+      gracze dostają propozycję przy pierwszym połączeniu.'
+  - tweak: 'Działo Gaussa: kamera i wyjście z działa to przyciski akcji strzelca zamiast
+      werbu.'
+  - tweak: Okna konsoli działa i automatu składu są po polsku.
+  - bugfix: Tooltipy nie są już ucinane przy skalowaniu ekranu w Windows powyżej 100%.
+  - rscadd: 'Wędrowiec pustki z tgstation: niewidzialny w kosmosie łowca, który przenika
+      przez szkło, nurkuje pod pokładem i porywa załogę do pustki'
+  - rscadd: 'Porwani wracają z klątwą pustki: kosmiczna skóra, pacyfizm, zakaz wejścia
+      w kosmos i wymioty mgławicą'
+  - rscadd: Kosmiczna czaszka po wędrowcu daje stabilną klątwę i ramię rozbijające
+      szkło
+'2026-10-14':
+  Joker66613:
+  - rscadd: 'Demon impulsu z Paradise: elektryczny demon żyjący w kablach, który przejmuje
+      APC, kradnie prąd i bawi się maszynami w przejętych pomieszczeniach'
+  - admin: Komora testowa (Debug → Komora testowa) z zestawami przedmiotów do sprawdzania
+      PR-ów.
+  - rscadd: 'Szczurzy król z tg: rzadko pojawia się przy migracji myszy jako rola
+      dla duchów, zmienia myszy w armię szczurów i zatruwa okolicę miazmą.'
+  - rscadd: Wrogie szczury i szczurza ślina.
+  - rscadd: Mysz, która zje królewski ser, zmienia się w szczurzego króla.
+  - rscadd: Szczurzy król ma w HUD przełącznik trybu walki.
+  - rscadd: 'Traitor ma nowe cele: zależne od pracy, zabójstwa z twistem, przedmioty
+      działowe, dysk z głównego serwera B+R, bomby, podsłuchy, wirus T1de, włamanie
+      do łączności, sabotaż powietrza, subwersję IFF i więcej.'
+  - rscadd: Zdrajca wybiera frakcję i historię postaci w nowym oknie; czarny rynek
+      i niezależni nie znają haseł.
+  - rscadd: Traitor może dostać cel zatrucia przedmiotów, a bracia krwi wyścig o beacon
+      łączności (z reworku traitora BeeStation).
+  - rscadd: Pierwszy serwer B+R na statku jest główny; kradzież jego dysku spowalnia
+      badania o połowę.
+  - rscdel: Usunięto cel pobierania badań i rolę złodzieja; cele złodzieja dostaje
+      teraz traitor.
+  - rscadd: 'Darkspawn z Yogstation w nowej wersji: trzy klasy (wojownik, zwiadowca,
+      czarnoksiężnik), sklep Psi Web za wolę i thralle'
+  - rscadd: Tryb gry darkspawn i ruleset w dynamicu
+  - code_imp: System zaklęć /datum/action/cooldown/spell z tgstation
+  - rscadd: 'Nowa misja: abordaż i obrona placówki Syndykatu (port z BeeStation/NSV13#2823).'
+  - bugfix: Zmiana IFF przez konsolę od razu widzą cele i flota Solgov.
+  PowerfulBacon, Tsar-Salat, Nakalon, MrMelbert, JohnFulpWillard, Mothblocks, Time-Green, timothymtorres:
+  - rscadd: Krwawienie ma ikonę alertu z tempem; kliknij ją, żeby ucisnąć ranę. Gaza
+      opatruje krwawienie, ogień i laser przypalają ranę.
+  - rscadd: 'Nowe operacje: kauteryzacja krwawienia, płukanie żołądka, rekalibracja
+      tożsamości (IPC) i autopsja.'
+  - rscadd: Skaner autopsyjny drukuje raport z autopsji (NanoMed Plus, protolathe).
+  - rscadd: Ścienny monitor funkcji życiowych łączony multitoolem ze stołem, łóżkiem
+      stazy, sleeperem albo kriokomorą.
+  - rscadd: 'Paczka cargo „Odzyskana załoga”: ożyw zwłoki, a przejmie je duch; medycyna
+      dostaje premię.'
+  - rscadd: 'Quirk Tanatorenazja: po DNR twoje ciało może przejąć inny duch.'
+  - rscadd: Pole „Przyczyna zgonu” w aktach medycznych.
+  - rscadd: Operację wybiera się z menu radialnego wokół pacjenta.
+  - balance: Broń zadaje krwawienie, a pancerz przed nim chroni.
+  - balance: Defibrylator nie ma limitu czasu; reanimację blokuje rozkład serca i
+      mózgu albo DNR.
+  - balance: Krew odnawia się tylko przy sprawnym sercu.
+  - tweak: 'Krew ma kolor gatunku: IPC krwawią chłodziwem, eterealne świecą, jaszczury
+      mają turkusową krew.'
+  - tweak: Kroplówka pokazuje rurkę do pacjenta i przyciąga go do stojaka.
+  - imageadd: Szare sprite'y krwi, ikony alertów krwawienia, monitora i skanera autopsyjnego
+      (z BeeStation i tgstation).
+  - soundadd: Dźwięk krwawiącej rany z BeeStation.
+  sh4dow321:
+  - soundadd: Głośniki nagłośnienia i jukeboxy mają mniej echa, zwłaszcza za ścianami;
+      głośniki nagłośnienia grają pełną głośnością w promieniu 3 kratek.
+'2026-10-15':
+  Joker66613:
+  - rscadd: '32 nowe mapy dla magnesu górniczego i asteroid: dawne ruiny kosmiczne
+      oraz porty z tg, Yogstation, Monkestation i Novy'
+  - rscadd: billboardy z tg
+  - bugfix: ruiny górnicze mining4 i mining5 ładują się bez błędów
+  - bugfix: corgi-ochroniarz nie sypie błędem przy pojawieniu się
+  - code_imp: CI sprawdza mapy górnicze, test ładowania wszystkich asteroid
+  - rscadd: 'Zlecenia cywilne z tgstation: konsola i pad zleceń, propozycje zależne
+      od pracy, wspólna lista zleceń statku, kostki zleceń z udziałem dla wykonawców
+      i napiwkiem dla zaopatrzenia, patrole dla ochrony.'
+  - rscadd: 'Galaktyczny rynek materiałów z tgstation: ceny materiałów zmieniają się
+      co minutę, sprzedaż przez stock blocki, kupno arkuszy na prom zaopatrzenia,
+      wiadomości giełdowe w newscasterze.'
+  - balance: Żelazo, szkło, srebro, złoto, uran, tytan, diamenty i kryształy bluespace
+      sprzedają się promem po cenie z giełdy.
+  - imageadd: Ikony kostki zleceń, stock blocka, maszyny rynku i ekranu konsoli zleceń
+      cywilnych z tgstation.
+  - rscadd: Inflacja i raport ekonomiczny w newscasterze, event krachu rynku podnoszący
+      ceny w automatach.
+  - rscadd: Zlecenia cywilne dla amunicji, pilotów, górników, mostka i woźnego.
+  - rscadd: Raport najbogatszych ewakuowanych na koniec rundy (saldo z karty ID, jak
+      przy aquilosach) i ranking zarobków wszech czasów zapisywany w bazie (czasownik
+      OOC „Ranking zarobków”).
+  - server: Nowe tabele bazy SS13_economy_earnings i SS13_aquila_perks (gra tworzy
+      je sama, schemat w SQL/).
+  - rscadd: 'Raport końca rundy w nowym oknie: wynik, statystyki, misja, zarobki wszystkich
+      graczy i ranking; ranking zarobków z podium.'
+  - rscadd: 'Sklep za aquilosy: antag token za 10 000 (do kupowania wielokrotnie),
+      bilet na pracę, ubezpieczenie salda, odznaki w rankingu, event token i admin
+      item token.'
+  - rscadd: Luminol ujawnia zmytą krew, ślady prochu na strzelcu i broni, balistyka
+      (sygnatury broni na łuskach i kulach, numery seryjne)
+  - rscadd: Autopsja pokazuje, czym, ile i kiedy zraniono każdą kończynę, oraz kule
+      w ciele
+  - rscadd: Program NTOS do czytania logów dostępu drzwi i szafek
+  - rscadd: Taśma policyjna, znaczniki dowodów, kreda z obrysem, holobariera detektywa,
+      strefa zamknięta na projektorze ochrony
+  - tweak: Interfejs więźniów i kodeks po polsku, można wybrać kilka zarzutów i czasy
+      się sumują
+  - bugfix: Przycisk „Uciekł” przywraca karcie zwolnionego więźnia wyrok
+  - imageadd: Ikony taśmy, znaczników, holobariery i strefy zamkniętej
+  - soundadd: Alarm strefy zamkniętej
+  - code_imp: Komora testowa ma pewne powietrze po załadowaniu i dokładniej czyści
+      się przy resecie.
+  MrMelbert, joker:
+  - rscadd: 'Nowy antagonista: szpieg. Kradnie cele zleceń uplinkiem ukrytym w PDA,
+      długopisie albo słuchawkach i dostaje za nie sprzęt z uplinka.'
+  - rscadd: 'Czarny rynek: uplink czarnego rynku (crafting), maszyna LTSRBT do odbioru
+      i sprzedaży towarów, kategoria z rzeczami skradzionymi przez szpiegów.'
+  - rscadd: Nowy tryb gry „spy” w łagodnej puli.
+  - soundadd: Muzyka szpiega i dźwięk wykonanego zlecenia z tgstation.
+  - imageadd: Ikony uplinku czarnego rynku, LTSRBT i promienia skanu z tgstation.
+  - config: Wpisy PROBABILITY, CONTINUOUS, MIN_POP, MAX_POP i WEIGHTED_POOL dla trybu
+      SPY.

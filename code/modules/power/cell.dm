@@ -44,7 +44,7 @@
 		maxcharge = override_maxcharge
 	charge = maxcharge
 	if(ratingdesc)
-		desc += " This one has a rating of [display_energy(maxcharge)], and you should not swallow it."
+		desc += " Ma pojemność [display_energy(maxcharge)] i nie należy go połykać."
 	update_icon()
 
 /obj/item/stock_parts/cell/Destroy()
@@ -83,13 +83,13 @@
 	return 100*charge/maxcharge
 
 // use power from a cell
-/obj/item/stock_parts/cell/use(amount)
+/obj/item/stock_parts/cell/use(amount, force)
 	if(rigged && amount > 0)
 		explode()
 		return 0
-	if(charge < amount)
+	if(!force && charge < amount)
 		return 0
-	charge = (charge - amount)
+	charge = max(charge - amount, 0)
 	if(!istype(loc, /obj/machinery/power/apc))
 		SSblackbox.record_feedback("tally", "cell_used", 1, type)
 	return 1
@@ -108,12 +108,12 @@
 /obj/item/stock_parts/cell/examine(mob/user)
 	. = ..()
 	if(rigged)
-		. += "<span class='danger'>This power cell seems to be faulty!</span>"
+		. += "<span class='danger'>To ogniwo zasilające wydaje się wadliwe!</span>"
 	else
-		. += "The charge meter reads [round(src.percent() )]%."
+		. += "Miernik ładunku pokazuje [round(src.percent() )]%."
 
 /obj/item/stock_parts/cell/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is licking the electrodes of [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] liże elektrody [src]! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	return (FIRELOSS)
 
 /obj/item/stock_parts/cell/on_reagent_change(changetype)
@@ -174,35 +174,35 @@
 			return
 		var/obj/item/organ/stomach/battery/stomach = H.getorganslot(ORGAN_SLOT_STOMACH)
 		if(!istype(stomach))
-			to_chat(H, "<span class='warning'>You can't receive charge!</span>")
+			to_chat(H, "<span class='warning'>Nie możesz przyjąć ładunku!</span>")
 			return
 		if(H.nutrition >= NUTRITION_LEVEL_ALMOST_FULL)
-			to_chat(user, "<span class='warning'>You are already fully charged!</span>")
+			to_chat(user, "<span class='warning'>Już jesteś w pełni naładowany!</span>")
 			return
 
-		to_chat(H, "<span class='notice'>You clumsily channel power through the [src] and into your body, wasting some in the process.</span>")
+		to_chat(H, "<span class='notice'>Niezdarnie przepuszczasz energię przez [src] do swojego ciała, marnując przy tym jej część.</span>")
 		E.drain_time = world.time + CELL_DRAIN_TIME //NSV13 - Ethereal charging changes (CELL_DRAIN_TIME, CELL_POWER_DRAIN, CELL_POWER_GAIN)
 		while(do_after(user, CELL_DRAIN_TIME, target = src))
 			if(!istype(stomach))
-				to_chat(H, "<span class='warning'>You can't receive charge!</span>")
+				to_chat(H, "<span class='warning'>Nie możesz przyjąć ładunku!</span>")
 				return
 			E.drain_time = world.time + CELL_DRAIN_TIME
 			if(charge > CELL_POWER_DRAIN)
 				stomach.adjust_charge(CELL_POWER_GAIN)
 				charge -= CELL_POWER_DRAIN //you waste way more than you receive, so that ethereals cant just steal one cell and forget about hunger
-				to_chat(H, "<span class='notice'>You receive some charge from the [src].</span>")
+				to_chat(H, "<span class='notice'>Otrzymujesz trochę ładunku z [src].</span>")
 			else
 				stomach.adjust_charge(charge/4)
 				charge = 0
-				to_chat(H, "<span class='notice'>You drain the [src].</span>")
+				to_chat(H, "<span class='notice'>Wyczerpujesz [src].</span>")
 				E.drain_time = 0
 				return
 
 			if(stomach.charge >= stomach.max_charge)
-				to_chat(H, "<span class='notice'>You are now fully charged.</span>")
+				to_chat(H, "<span class='notice'>Jesteś teraz w pełni naładowany.</span>")
 				E.drain_time = 0
 				return
-		to_chat(H, "<span class='warning'>You fail to receive charge from the [src]!</span>")
+		to_chat(H, "<span class='warning'>Nie udaje ci się pobrać ładunku z [src]!</span>")
 		E.drain_time = 0
 	return
 
@@ -268,6 +268,13 @@
 /obj/item/stock_parts/cell/pulse/pistol //10 pulse shots
 	name = "pulse pistol power cell"
 	maxcharge = 2000
+
+/obj/item/stock_parts/cell/ninja
+	name = "black power cell"
+	icon_state = "bscell"
+	maxcharge = 10000
+	materials = list(/datum/material/glass=60)
+	chargerate = 2000
 
 /obj/item/stock_parts/cell/high
 	name = "high-capacity power cell"

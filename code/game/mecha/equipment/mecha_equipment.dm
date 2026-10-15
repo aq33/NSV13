@@ -42,7 +42,7 @@
 		src.update_chassis_page()
 		log_message("[src] is destroyed.", LOG_MECHA)
 		if(chassis.occupant)
-			chassis.occupant_message("<span class='danger'>[src] is destroyed!</span>")
+			chassis.occupant_message("<span class='danger'>[src] zostaje zniszczony!</span>")
 			chassis.occupant.playsound_local(chassis, destroy_sound, 50)
 		chassis = null
 	return ..()
@@ -51,12 +51,12 @@
 	if(!do_mob(user, M, 15))
 		return FALSE
 	if(!can_attach(M))
-		to_chat(user, "<span class='warning'>You are unable to attach [src] to [M]!</span>")
+		to_chat(user, "<span class='warning'>Nie możesz zamocować [src] do [M]!</span>")
 		return FALSE
 	if(!user.temporarilyRemoveItemFromInventory(src))
 		return FALSE
 	attach(M)
-	user.visible_message("[user] attaches [src] to [M].", "<span class='notice'>You attach [src] to [M].</span>")
+	user.visible_message("[user] mocuje [src] do [M].", "<span class='notice'>Mocujesz [src] do [M].</span>")
 	return TRUE
 
 /obj/item/mecha_parts/mecha_equipment/proc/get_equip_info()
@@ -66,7 +66,7 @@
 	if(chassis.selected == src)
 		txt += "<b>[src.name]</b>"
 	else if(selectable)
-		txt += "<a href='?src=[REF(chassis)];select_equip=[REF(src)]'>[src.name]</a>"
+		txt += "<a href='byond://?src=[REF(chassis)];select_equip=[REF(src)]'>[src.name]</a>"
 	else
 		txt += "[src.name]"
 
@@ -91,7 +91,7 @@
 	if(chassis.is_currently_ejecting)
 		return 0
 	if(chassis.equipment_disabled)
-		to_chat(chassis.occupant, "<span=warn>Error -- Equipment control unit is unresponsive.</span>")
+		to_chat(chassis.occupant, "<span=warn>Błąd – jednostka sterowania wyposażeniem nie odpowiada.</span>")
 		return 0
 	return 1
 

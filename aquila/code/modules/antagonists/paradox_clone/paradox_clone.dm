@@ -2,8 +2,8 @@
 // including the upstream follow-up fixes tgstation#73567 (plasmamen) and tgstation#74989 (no duplicate_object).
 
 /datum/antagonist/paradox_clone
-	name = "Paradox Clone"
-	roundend_category = "Paradox Clones"
+	name = "Klon paradoksu"
+	roundend_category = "klony paradoksu"
 	antagpanel_category = "Paradox Clone"
 	banning_key = ROLE_PARADOX_CLONE
 	show_in_antagpanel = FALSE // needs an original and a freshly copied body, spawned by the event/ruleset only

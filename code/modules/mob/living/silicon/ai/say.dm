@@ -7,7 +7,7 @@
 /mob/living/silicon/ai/compose_track_href(atom/movable/speaker, namepart)
 	var/mob/M = speaker.GetSource()
 	if(M)
-		return "<a href='?src=[REF(src)];track=[html_encode(namepart)]'>"
+		return "<a href='byond://?src=[REF(src)];track=[html_encode(namepart)]'>"
 	return ""
 
 /mob/living/silicon/ai/compose_job(atom/movable/speaker, message_langs, raw_message, radio_freq)
@@ -21,7 +21,7 @@
 	if(incapacitated())
 		return FALSE
 	if(!radio_enabled) //AI cannot speak if radio is disabled (via intellicard) or depowered.
-		to_chat(src, "<span class='danger'>Your radio transmitter is offline!</span>")
+		to_chat(src, "<span class='danger'>Twój nadajnik radiowy jest wyłączony!</span>")
 		return FALSE
 	..()
 
@@ -32,7 +32,7 @@
 	if (!message)
 		return
 	if(CHAT_FILTER_CHECK(message))
-		to_chat(usr, "<span class='warning'>Your message contains forbidden words.</span>")
+		to_chat(usr, "<span class='warning'>Twoja wiadomość zawiera zakazane słowa.</span>")
 		return
 
 	var/obj/machinery/holopad/T = current
@@ -45,9 +45,9 @@
 			padloc = "(UNKNOWN)"
 		src.log_talk(message, LOG_SAY, tag="HOLOPAD in [padloc]")
 		send_speech(message, 7, T, MODE_ROBOT, message_language = language)
-		to_chat(src, "<i><span class='game say'>Holopad transmitted, <span class='name'>[real_name]</span> <span class='message robot'>\"[message]\"</span></span></i>")
+		to_chat(src, "<i><span class='game say'>Przekaz z holopadu, <span class='name'>[real_name]</span> <span class='message robot'>\"[message]\"</span></span></i>")
 	else
-		to_chat(src, "No holopad connected.")
+		to_chat(src, "Brak połączonego holopadu.")
 
 
 // Make sure that the code compiles with AI_VOX undefined
@@ -55,32 +55,32 @@
 #define VOX_DELAY 600
 /mob/living/silicon/ai/verb/announcement_help()
 
-	set name = "Announcement Help"
-	set desc = "Display a list of vocal words to announce to the crew."
+	set name = "Pomoc - ogłoszenia"
+	set desc = "Wyświetla listę słów do ogłaszania załodze."
 	set category = "AI Commands"
 
 	if(incapacitated())
 		return
 
 	var/dat = {"
-	<font class='bad'>WARNING:</font> Misuse of the announcement system will get you job banned.<BR><BR>
-	Here is a list of words you can type into the 'Announcement' button to create sentences to vocally announce to everyone on the same level at you.<BR>
-	<UL><LI>You can also click on the word to PREVIEW it.</LI>
-	<LI>You can only say 30 words for every announcement.</LI>
-	<LI>Do not use punctuation as you would normally, if you want a pause you can use the full stop and comma characters by separating them with spaces, like so: 'Alpha . Test , Bravo'.</LI>
-	<LI>Numbers are in word format, e.g. eight, sixty, etc </LI>
-	<LI>Sound effects begin with an 's' before the actual word, e.g. scensor</LI>
-	<LI>Use Ctrl+F to see if a word exists in the list.</LI></UL><HR>
+	<font class='bad'>UWAGA:</font> nadużywanie systemu ogłoszeń skończy się banem na rolę.<BR><BR>
+	Oto lista słów, które możesz wpisać w przycisku ogłoszenia, by układać zdania ogłaszane na głos wszystkim na tym samym poziomie co ty. Słowa są angielskie, bo tak nagrano dźwięki.<BR>
+	<UL><LI>Kliknij słowo, by je ODSŁUCHAĆ.</LI>
+	<LI>W jednym ogłoszeniu możesz użyć najwyżej 30 słów.</LI>
+	<LI>Nie używaj interpunkcji jak zwykle; jeśli chcesz pauzę, użyj kropki i przecinka oddzielonych spacjami, np.: 'Alpha . Test , Bravo'.</LI>
+	<LI>Liczby zapisuje się słownie po angielsku, np. eight, sixty itd.</LI>
+	<LI>Efekty dźwiękowe zaczynają się od litery 's' przed właściwym słowem, np. scensor</LI>
+	<LI>Użyj Ctrl+F, by sprawdzić, czy słowo jest na liście.</LI></UL><HR>
 	"}
 
 	var/index = 0
 	for(var/word in GLOB.vox_sounds)
 		index++
-		dat += "<A href='?src=[REF(src)];say_word=[word]'>[capitalize(word)]</A>"
+		dat += "<A href='byond://?src=[REF(src)];say_word=[word]'>[capitalize(word)]</A>"
 		if(index != GLOB.vox_sounds.len)
 			dat += " / "
 
-	var/datum/browser/popup = new(src, "announce_help", "Announcement Help", 500, 400)
+	var/datum/browser/popup = new(src, "announce_help", "Pomoc - ogłoszenia", 500, 400)
 	popup.set_content(dat)
 	popup.open()
 
@@ -88,10 +88,10 @@
 /mob/living/silicon/ai/proc/announcement()
 	var/static/announcing_vox = 0 // Stores the time of the last announcement
 	if(announcing_vox > world.time)
-		to_chat(src, "<span class='notice'>Please wait [DisplayTimeText(announcing_vox - world.time)].</span>")
+		to_chat(src, "<span class='notice'>Zaczekaj [DisplayTimeText(announcing_vox - world.time)].</span>")
 		return
 
-	var/message = capped_input(src, "WARNING: Misuse of this verb can result in you being job banned. More help is available in 'Announcement Help'", "Announcement", src.last_announcement)
+	var/message = capped_input(src, "UWAGA: nadużywanie tej komendy może skończyć się banem na rolę. Więcej pomocy znajdziesz w 'Announcement Help'", "Ogłoszenie", src.last_announcement)
 
 	last_announcement = message
 
@@ -102,7 +102,7 @@
 		return
 
 	if(control_disabled)
-		to_chat(src, "<span class='warning'>Wireless interface disabled, unable to interact with announcement PA.</span>")
+		to_chat(src, "<span class='warning'>Interfejs bezprzewodowy wyłączony, nie można użyć systemu ogłoszeń.</span>")
 		return
 
 	var/list/words = splittext(trim(message), " ")
@@ -120,7 +120,7 @@
 			incorrect_words += word
 
 	if(incorrect_words.len)
-		to_chat(src, "<span class='notice'>These words are not available on the announcement system: [english_list(incorrect_words)].</span>")
+		to_chat(src, "<span class='notice'>Tych słów nie ma w systemie ogłoszeń: [english_list(incorrect_words)].</span>")
 		return
 
 	announcing_vox = world.time + VOX_DELAY

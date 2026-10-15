@@ -47,7 +47,7 @@
 	var/radio_silent = FALSE // If true, radio doesn't make sound effects (ie for Syndicate internal radio implants)
 
 /obj/item/radio/suicide_act(mob/living/user)
-	user.visible_message("<span class='suicide'>[user] starts bouncing [src] off [user.p_their()] head! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] zaczyna obijać sobie głowę [src]! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	return BRUTELOSS
 
 /obj/item/radio/proc/set_frequency(new_frequency)
@@ -127,7 +127,7 @@
 		. = ..()
 	else if(user.canUseTopic(src, !issilicon(user), TRUE, FALSE))
 		broadcasting = !broadcasting
-		to_chat(user, "<span class='notice'>You toggle broadcasting [broadcasting ? "on" : "off"].</span>")
+		to_chat(user, "<span class='notice'>[broadcasting ? "Włączasz" : "Wyłączasz"] nadawanie.</span>")
 		ui_update()
 
 /obj/item/radio/CtrlShiftClick(mob/user)
@@ -135,7 +135,7 @@
 		. = ..()
 	else if(user.canUseTopic(src, !issilicon(user), TRUE, FALSE))
 		listening = !listening
-		to_chat(user, "<span class='notice'>You toggle speaker [listening ? "on" : "off"].</span>")
+		to_chat(user, "<span class='notice'>[listening ? "Włączasz" : "Wyłączasz"] głośnik.</span>")
 		ui_update()
 
 /obj/item/radio/interact(mob/user)
@@ -252,9 +252,7 @@
 	if(!radio_silent)//Radios make small static noises now
 		var/mob/sender = loc
 		if(istype(sender) && sender.hears_radio())
-			var/sound/radio_sound = sound(pick("sound/effects/radio1.ogg", "sound/effects/radio2.ogg"), volume = 50)
-			radio_sound.frequency = get_rand_frequency()
-			SEND_SOUND(sender, radio_sound)
+			play_radio_talk_sound() // AQ EDIT - people next to the speaker hear the click too
 
 	if(use_command)
 		spans |= SPAN_COMMAND
@@ -374,20 +372,20 @@
 	if (frequency && in_range(src, user))
 		. += "<span class='notice'>It is set to broadcast over the [frequency/10] frequency.</span>"
 	if (unscrewed)
-		. += "<span class='notice'>It can be attached and modified.</span>"
+		. += "<span class='notice'>Można go przymocować i modyfikować.</span>"
 	else
-		. += "<span class='notice'>It cannot be modified or attached.</span>"
+		. += "<span class='notice'>Nie można go modyfikować ani przymocować.</span>"
 	if (in_range(src, user) && !headset)
-		. += "<span class='info'>Ctrl-Shift-click on the [name] to toggle speaker.<br/>Alt-click on the [name] to toggle broadcasting.</span>"
+		. += "<span class='info'>Ctrl-Shift-kliknij [name], by przełączyć głośnik.<br/>Alt-kliknij [name], by przełączyć nadawanie.</span>"
 
 /obj/item/radio/attackby(obj/item/W, mob/user, params)
 	add_fingerprint(user)
 	if(W.tool_behaviour == TOOL_SCREWDRIVER)
 		unscrewed = !unscrewed
 		if(unscrewed)
-			to_chat(user, "<span class='notice'>The radio can now be attached and modified!</span>")
+			to_chat(user, "<span class='notice'>Radio można teraz przymocować i modyfikować!</span>")
 		else
-			to_chat(user, "<span class='notice'>The radio can no longer be modified or attached!</span>")
+			to_chat(user, "<span class='notice'>Radia nie można już modyfikować ani przymocować!</span>")
 	else
 		return ..()
 
@@ -398,7 +396,7 @@
 	emped++ //There's been an EMP; better count it
 	var/curremp = emped //Remember which EMP this was
 	if (listening && ismob(loc))	// if the radio is turned on and on someone's person they notice
-		to_chat(loc, "<span class='warning'>\The [src] overloads.</span>")
+		to_chat(loc, "<span class='warning'>[src] się przeciąża.</span>")
 	broadcasting = FALSE
 	listening = FALSE
 	for (var/ch_name in channels)
@@ -451,14 +449,14 @@
 
 			recalculateChannels()
 			ui_update()
-			to_chat(user, "<span class='notice'>You pop out the encryption key in the radio.</span>")
+			to_chat(user, "<span class='notice'>Wyjmujesz klucz szyfrujący z radia.</span>")
 
 		else
-			to_chat(user, "<span class='warning'>This radio doesn't have any encryption keys!</span>")
+			to_chat(user, "<span class='warning'>To radio nie ma żadnych kluczy szyfrujących!</span>")
 
 	else if(istype(W, /obj/item/encryptionkey/))
 		if(keyslot)
-			to_chat(user, "<span class='warning'>The radio can't hold another key!</span>")
+			to_chat(user, "<span class='warning'>Radio nie pomieści kolejnego klucza!</span>")
 			return
 
 		if(!keyslot)

@@ -16,7 +16,7 @@
 	model = "Honkbot"
 	bot_core_type = /obj/machinery/bot_core/honkbot
 	window_id = "autohonk"
-	window_name = "Honkomatic Bike Horn Unit v1.0.7"
+	window_name = "Honkomatyczna Jednostka Klaksonowa v1.0.7"
 	data_hud_type = DATA_HUD_SECURITY_BASIC // show jobs
 	path_image_color = "#FF69B4"
 
@@ -79,26 +79,23 @@
 
 /mob/living/simple_animal/bot/honkbot/set_custom_texts()
 
-	text_hack = "You overload [name]'s sound control system"
-	text_dehack = "You reboot [name] and restore the sound control system."
-	text_dehack_fail = "[name] refuses to accept your authority!"
+	text_hack = "Przeciążasz system sterowania dźwiękiem [name]"
+	text_dehack = "Restartujesz [name] i przywracasz system sterowania dźwiękiem."
+	text_dehack_fail = "[name] nie uznaje twojego autorytetu!"
 
 /mob/living/simple_animal/bot/honkbot/get_controls(mob/user)
 	var/dat
 	dat += hack(user)
 	dat += showpai(user)
 	dat += text({"
-<TT><B>Honkomatic Bike Horn Unit v1.0.7 controls</B></TT><BR><BR>
-Status: []<BR>
-Behaviour controls are [locked ? "locked" : "unlocked"]<BR>
-Maintenance panel panel is [open ? "opened" : "closed"]"},
+<TT><B>Sterowanie Honkomatyczną Jednostką Klaksonową v1.0.7</B></TT><BR><BR>\nStan: []<BR>\nSterowanie zachowaniem jest [locked ? "zablokowane" : "odblokowane"]<BR>\nPanel serwisowy jest [open ? "otwarty" : "zamknięty"]"},
 
-"<A href='?src=[REF(src)];power=[TRUE]'>[on ? "On" : "Off"]</A>" )
+"<A href='byond://?src=[REF(src)];power=[TRUE]'>[on ? "On" : "Off"]</A>" )
 
 	if(!locked || issilicon(user) || IsAdminGhost(user))
-		dat += text({"<BR> Auto Patrol: []"},
+		dat += text({"<BR> Autopatrol: []"},
 
-"<A href='?src=[REF(src)];operation=patrol'>[auto_patrol ? "On" : "Off"]</A>" )
+"<A href='byond://?src=[REF(src)];operation=patrol'>[auto_patrol ? "On" : "Off"]</A>" )
 	return	dat
 
 /mob/living/simple_animal/bot/honkbot/proc/judgment_criteria()
@@ -118,7 +115,7 @@ Maintenance panel panel is [open ? "opened" : "closed"]"},
 		mode = BOT_HUNT
 
 /mob/living/simple_animal/bot/honkbot/attack_hand(mob/living/carbon/human/H)
-	if(H.a_intent == "harm")
+	if(H.combat_mode)
 		retaliate(H)
 		addtimer(CALLBACK(src, PROC_REF(react_buzz)), 5)
 	return ..()
@@ -134,9 +131,9 @@ Maintenance panel panel is [open ? "opened" : "closed"]"},
 	..()
 	if(emagged == 2)
 		if(user)
-			user << "<span class='danger'>You short out [src]'s sound control system. It gives out an evil laugh!!</span>"
+			user << "<span class='danger'>Zwierasz system sterowania dźwiękiem [src]. Wydaje z siebie złowieszczy śmiech!!</span>"
 			oldtarget_name = user.name
-		audible_message("<span class='danger'>[src] gives out an evil laugh!</span>")
+		audible_message("<span class='danger'>[src] wydaje z siebie złowieszczy śmiech!</span>")
 		playsound(src, 'sound/machines/honkbot_evil_laugh.ogg', 75, 1, -1) // evil laughter
 		update_icon()
 
@@ -216,8 +213,8 @@ Maintenance panel panel is [open ? "opened" : "closed"]"},
 
 			log_combat(src,C,"honked")
 
-			C.visible_message("<span class='danger'>[src] has honked [C]!</span>",\
-					"<span class='userdanger'>[src] has honked you!</span>")
+			C.visible_message("<span class='danger'>[src] trąbi na [C]!</span>",\
+					"<span class='userdanger'>[src] trąbi na ciebie!</span>")
 		else
 			C.stuttering = 20
 			C.Paralyze(80)
@@ -317,7 +314,7 @@ Maintenance panel panel is [open ? "opened" : "closed"]"},
 				oldtarget_name = C.name
 				bike_horn()
 				speak("Honk!")
-				visible_message("<b>[src]</b> starts chasing [C.name]!")
+				visible_message("<b>[src]</b> zaczyna gonić [C.name]!")
 				mode = BOT_HUNT
 				INVOKE_ASYNC(src, PROC_REF(handle_automated_action))
 				break
@@ -325,7 +322,7 @@ Maintenance panel panel is [open ? "opened" : "closed"]"},
 				continue
 
 /mob/living/simple_animal/bot/honkbot/explode()
-	visible_message("<span class='boldannounce'>[src] blows apart!</span>")
+	visible_message("<span class='boldannounce'>[src] rozpada się na kawałki!</span>")
 	var/atom/Tsec = drop_location()
 	//doesn't drop cardboard nor its assembly, since its a very frail material.
 	if(prob(50))

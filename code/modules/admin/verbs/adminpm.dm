@@ -6,7 +6,7 @@
 	set category = null
 	set name = "Admin PM Mob"
 	if(!holder)
-		to_chat(src, "<span class='danger'>Error: Admin-PM-Context: Only administrators may use this command.</span>", type = MESSAGE_TYPE_ADMINPM)
+		to_chat(src, "<span class='danger'>Błąd: Admin-PM-Context: tylko administratorzy mogą używać tej komendy.</span>", type = MESSAGE_TYPE_ADMINPM)
 		return
 	if( !ismob(M) || !M.client )
 		return
@@ -18,7 +18,7 @@
 	set category = "Admin"
 	set name = "Admin PM"
 	if(!holder)
-		to_chat(src, "<span class='danger'>Error: Admin-PM-Panel: Only administrators may use this command.</span>", type = MESSAGE_TYPE_ADMINPM)
+		to_chat(src, "<span class='danger'>Błąd: Admin-PM-Panel: tylko administratorzy mogą używać tej komendy.</span>", type = MESSAGE_TYPE_ADMINPM)
 		return
 	var/list/client/targets[0]
 	for(var/client/T)
@@ -31,13 +31,13 @@
 				targets["[T.mob.real_name](as [T.mob.name]) - [T]"] = T
 		else
 			targets["(No Mob) - [T]"] = T
-	var/target = input(src,"To whom shall we send a message?","Admin PM",null) as null|anything in sortList(targets)
+	var/target = input(src,"Do kogo wysłać wiadomość?","Admin PM",null) as null|anything in sortList(targets)
 	cmd_admin_pm(targets[target],null)
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Admin PM") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/cmd_ahelp_reply(whom)
 	if(prefs.muted & MUTE_ADMINHELP)
-		to_chat(src, "<span class='danger'>Error: Admin-PM: You are unable to use admin PM-s (muted).</span>", type = MESSAGE_TYPE_ADMINPM)
+		to_chat(src, "<span class='danger'>Błąd: Admin-PM: nie możesz używać PW do adminów (wyciszenie).</span>", type = MESSAGE_TYPE_ADMINPM)
 		return
 	var/client/C
 	if(istext(whom))
@@ -48,7 +48,7 @@
 		C = whom
 	if(!C)
 		if(holder)
-			to_chat(src, "<span class='danger'>Error: Admin-PM: Client not found.</span>", type = MESSAGE_TYPE_ADMINPM)
+			to_chat(src, "<span class='danger'>Błąd: Admin-PM: nie znaleziono klienta.</span>", type = MESSAGE_TYPE_ADMINPM)
 		return
 
 	var/datum/admin_help/AH = C.current_ticket
@@ -64,7 +64,7 @@
 
 /client/proc/cmd_ahelp_reply_instant(whom, msg)
 	if(prefs.muted & MUTE_ADMINHELP)
-		to_chat(src, "<span class='danger'>Error: Admin-PM: You are unable to use admin PM-s (muted).</span>", type = MESSAGE_TYPE_ADMINPM)
+		to_chat(src, "<span class='danger'>Błąd: Admin-PM: nie możesz używać PW do adminów (wyciszenie).</span>", type = MESSAGE_TYPE_ADMINPM)
 		return
 	var/client/C
 	if(istext(whom))
@@ -75,7 +75,7 @@
 		C = whom
 	if(!C)
 		if(holder)
-			to_chat(src, "<span class='danger'>Error: Admin-PM: Client not found.</span>", type = MESSAGE_TYPE_ADMINPM)
+			to_chat(src, "<span class='danger'>Błąd: Admin-PM: nie znaleziono klienta.</span>", type = MESSAGE_TYPE_ADMINPM)
 		return
 
 	if (!msg)
@@ -86,11 +86,11 @@
 //Fetching a message if needed. src is the sender and C is the target client
 /client/proc/cmd_admin_pm(whom, msg)
 	if(prefs.muted & MUTE_ADMINHELP)
-		to_chat(src, "<span class='danger'>Error: Admin-PM: You are unable to use admin PM-s (muted).</span>", type = MESSAGE_TYPE_ADMINPM)
+		to_chat(src, "<span class='danger'>Błąd: Admin-PM: nie możesz używać PW do adminów (wyciszenie).</span>", type = MESSAGE_TYPE_ADMINPM)
 		return
 
 	if(!holder && !current_ticket)	//no ticket? https://www.youtube.com/watch?v=iHSPf6x1Fdo
-		to_chat(src, "<span class='danger'>You can no longer reply to this ticket, please open another one by using the Adminhelp verb if need be.</span>", type = MESSAGE_TYPE_ADMINPM)
+		to_chat(src, "<span class='danger'>Nie możesz już odpowiadać na to zgłoszenie; w razie potrzeby otwórz nowe czasownikiem Adminhelp.</span>", type = MESSAGE_TYPE_ADMINPM)
 		to_chat(src, "<span class='notice'>Message: [msg]</span>", type = MESSAGE_TYPE_ADMINPM)
 		return
 
@@ -111,7 +111,7 @@
 		if(!externalreplyamount)	//to prevent people from spamming irc/discord
 			return
 		if(!msg)
-			msg = stripped_multiline_input(src,"Message:", "Private message to Administrator")
+			msg = stripped_multiline_input(src,"Message:", "Prywatna wiadomość do administratora")
 
 		if(!msg)
 			return
@@ -123,7 +123,7 @@
 	else
 		if(!recipient)
 			if(holder)
-				to_chat(src, "<span class='danger'>Error: Admin-PM: Client not found.</span>", type = MESSAGE_TYPE_ADMINPM)
+				to_chat(src, "<span class='danger'>Błąd: Admin-PM: nie znaleziono klienta.</span>", type = MESSAGE_TYPE_ADMINPM)
 				if(msg)
 					to_chat(src, msg)
 				return
@@ -139,12 +139,12 @@
 				return
 
 			if(prefs.muted & MUTE_ADMINHELP)
-				to_chat(src, "<span class='danger'>Error: Admin-PM: You are unable to use admin PM-s (muted).</span>", type = MESSAGE_TYPE_ADMINPM)
+				to_chat(src, "<span class='danger'>Błąd: Admin-PM: nie możesz używać PW do adminów (wyciszenie).</span>", type = MESSAGE_TYPE_ADMINPM)
 				return
 
 			if(!recipient)
 				if(holder)
-					to_chat(src, "<span class='danger'>Error: Admin-PM: Client not found.</span>", type = MESSAGE_TYPE_ADMINPM)
+					to_chat(src, "<span class='danger'>Błąd: Admin-PM: nie znaleziono klienta.</span>", type = MESSAGE_TYPE_ADMINPM)
 				else
 					current_ticket.MessageNoRecipient(msg)
 				return
@@ -166,7 +166,7 @@
 	var/keywordparsedmsg = keywords_lookup(msg)
 
 	if(external)
-		to_chat(src, "<span class='notice'>PM to-<b>Admins</b>: <span class='linkify'>[rawmsg]</span></span>", type = MESSAGE_TYPE_ADMINPM)
+		to_chat(src, "<span class='notice'>PW do <b>adminów</b>: <span class='linkify'>[rawmsg]</span></span>", type = MESSAGE_TYPE_ADMINPM)
 		var/datum/admin_help/AH = admin_ticket_log(src, "<font color='red'>Reply PM from-<b>[key_name(src, TRUE, TRUE)] to <i>External</i>: [keywordparsedmsg]</font>")
 		externalreplyamount--
 		send2tgs("[AH ? "#[AH.id] " : ""]Reply: [ckey]", rawmsg)
@@ -185,7 +185,7 @@
 				var/replymsg = "Reply PM from-<b>[key_name(src, recipient, 1)]</b>: <span class='linkify'>[keywordparsedmsg]</span>"
 				admin_ticket_log(src, keywordparsedmsg, key_name(src, recipient, 1), null, "white", isSenderAdmin = TRUE, safeSenderLogged = TRUE)
 				to_chat(recipient, "<span class='danger'>[replymsg]</span>", type = MESSAGE_TYPE_ADMINPM)
-				to_chat(src, "<span class='notice'>PM to-<b>Admins</b>: <span class='linkify'>[msg]</span></span>", type = MESSAGE_TYPE_ADMINPM)
+				to_chat(src, "<span class='notice'>PW do <b>adminów</b>: <span class='linkify'>[msg]</span></span>", type = MESSAGE_TYPE_ADMINPM)
 
 			//play the receiving admin the adminhelp sound (if they have them enabled)
 			if(recipient.prefs.toggles & PREFTOGGLE_SOUND_ADMINHELP)
@@ -198,7 +198,7 @@
 
 				to_chat(recipient, "<font color='red' size='4'><b>-- Administrator private message --</b></font>", type = MESSAGE_TYPE_ADMINPM)
 				to_chat(recipient, "<span class='adminsay'>Admin PM from-<b>[key_name(src, recipient, 0)]</b>: <span class='linkify'>[msg]</span></span>", type = MESSAGE_TYPE_ADMINPM)
-				to_chat(recipient, "<span class='adminsay'><i>Click on the administrator's name to reply.</i></span>", type = MESSAGE_TYPE_ADMINPM)
+				to_chat(recipient, "<span class='adminsay'><i>Kliknij imię administratora, by odpowiedzieć.</i></span>", type = MESSAGE_TYPE_ADMINPM)
 				to_chat(src, "<span class='notice'>Admin PM to-<b>[key_name(recipient, src, 1)]</b>: <span class='linkify'>[msg]</span></span>", type = MESSAGE_TYPE_ADMINPM)
 
 				admin_ticket_log(recipient, keywordparsedmsg, key_name_admin(src), null, "purple", safeSenderLogged = TRUE)
@@ -215,7 +215,7 @@
 							sendername = holder.fakekey
 						else
 							sendername = key
-						var/reply = stripped_multiline_input(recipient, msg,"Admin PM from-[sendername]", "")		//show message and await a reply
+						var/reply = stripped_multiline_input(recipient, msg,"PW od admina [sendername]", "")		//show message and await a reply
 						if(recipient && reply)
 							if(sender)
 								recipient.cmd_admin_pm(sender,reply)										//sender is still about, let's reply to them
@@ -224,7 +224,7 @@
 						return
 
 			else		//neither are admins
-				to_chat(src, "<span class='danger'>Error: Admin-PM: Non-admin to non-admin PM communication is forbidden.</span>", type = MESSAGE_TYPE_ADMINPM)
+				to_chat(src, "<span class='danger'>Błąd: Admin-PM: komunikacja PW między nie-adminami jest zabroniona.</span>", type = MESSAGE_TYPE_ADMINPM)
 				return
 
 	if(external)
@@ -320,8 +320,8 @@
 	msg = emoji_parse(msg)
 
 	to_chat(C, "<font color='red' size='4'><b>-- Administrator private message --</b></font>", type = MESSAGE_TYPE_ADMINPM)
-	to_chat(C, "<span class='adminsay'>Admin PM from-<b><a href='?priv_msg=[stealthkey]'>[adminname]</A></b>: [msg]</span>", allow_linkify = TRUE, type = MESSAGE_TYPE_ADMINPM)
-	to_chat(C, "<span class='adminsay'><i>Click on the administrator's name to reply.</i></span>", type = MESSAGE_TYPE_ADMINPM)
+	to_chat(C, "<span class='adminsay'>PW od admina <b><a href='byond://?priv_msg=[stealthkey]'>[adminname]</A></b>: [msg]</span>", allow_linkify = TRUE, type = MESSAGE_TYPE_ADMINPM)
+	to_chat(C, "<span class='adminsay'><i>Kliknij imię administratora, by odpowiedzieć.</i></span>", type = MESSAGE_TYPE_ADMINPM)
 
 	admin_ticket_log(C, msg, adminname, null, "cyan", isSenderAdmin = TRUE, safeSenderLogged = TRUE)
 

@@ -18,18 +18,18 @@
 			displayed = I
 			update_icon()
 		else
-			to_chat(user, "<span class=notice>\The [src] already contains a photo.</span>")
+			to_chat(user, "<span class=notice>W [src] jest już zdjęcie.</span>")
 	..()
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
-/obj/item/wallframe/picture/attack_hand(mob/user)
+/obj/item/wallframe/picture/attack_hand(mob/user, list/modifiers)
 	if(user.get_inactive_held_item() != src)
 		..()
 		return
 	if(contents.len)
 		var/obj/item/I = pick(contents)
 		user.put_in_hands(I)
-		to_chat(user, "<span class='notice'>You carefully remove the photo from \the [src].</span>")
+		to_chat(user, "<span class='notice'>Ostrożnie wyjmujesz zdjęcie z [src].</span>")
 		displayed = null
 		update_icon()
 	return ..()
@@ -117,16 +117,16 @@
 
 /obj/structure/sign/picture_frame/attackby(obj/item/I, mob/user, params)
 	if(can_decon && (I.tool_behaviour == TOOL_SCREWDRIVER || I.tool_behaviour == TOOL_WRENCH))
-		to_chat(user, "<span class='notice'>You start unsecuring [name]...</span>")
+		to_chat(user, "<span class='notice'>Zaczynasz odkręcać [name]...</span>")
 		if(I.use_tool(src, user, 30, volume=50))
 			playsound(loc, 'sound/items/deconstruct.ogg', 50, 1)
-			to_chat(user, "<span class='notice'>You unsecure [name].</span>")
+			to_chat(user, "<span class='notice'>Odkręcasz [name].</span>")
 			deconstruct()
 
 	else if(I.tool_behaviour == TOOL_WIRECUTTER && framed)
 		framed.forceMove(drop_location())
 		framed = null
-		user.visible_message("<span class='warning'>[user] cuts away [framed] from [src]!</span>")
+		user.visible_message("<span class='warning'>[user] wycina [framed] z [src]!</span>")
 		return
 
 	else if(istype(I, /obj/item/photo))
@@ -137,11 +137,11 @@
 			framed = P
 			update_icon()
 		else
-			to_chat(user, "<span class=notice>\The [src] already contains a photo.</span>")
+			to_chat(user, "<span class=notice>W [src] jest już zdjęcie.</span>")
 
 	..()
 
-/obj/structure/sign/picture_frame/attack_hand(mob/user)
+/obj/structure/sign/picture_frame/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(.)
 		return

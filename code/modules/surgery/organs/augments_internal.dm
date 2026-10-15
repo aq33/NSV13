@@ -35,7 +35,7 @@
 		return
 	var/stun_amount = 200/severity
 	owner.Stun(stun_amount)
-	to_chat(owner, "<span class='warning'>Your body seizes up!</span>")
+	to_chat(owner, "<span class='warning'>Twoje ciało sztywnieje!</span>")
 
 
 /obj/item/organ/cyberimp/brain/anti_drop
@@ -55,17 +55,17 @@
 
 		var/list/L = owner.get_empty_held_indexes()
 		if(LAZYLEN(L) == owner.held_items.len)
-			to_chat(owner, "<span class='notice'>You are not holding any items, your hands relax...</span>")
+			to_chat(owner, "<span class='notice'>Nie trzymasz żadnych przedmiotów, twoje dłonie się rozluźniają...</span>")
 			active = 0
 			stored_items = list()
 		else
 			for(var/obj/item/I in stored_items)
-				to_chat(owner, "<span class='notice'>Your [owner.get_held_index_name(owner.get_held_index_of_item(I))]'s grip tightens.</span>")
+				to_chat(owner, "<span class='notice'>Chwyt twojej ręki ([owner.get_held_index_name(owner.get_held_index_of_item(I))]) się zaciska.</span>")
 				ADD_TRAIT(I, TRAIT_NODROP, ANTI_DROP_IMPLANT_TRAIT)
 
 	else
 		release_items()
-		to_chat(owner, "<span class='notice'>Your hands relax...</span>")
+		to_chat(owner, "<span class='notice'>Twoje dłonie się rozluźniają...</span>")
 
 
 /obj/item/organ/cyberimp/brain/anti_drop/emp_act(severity)
@@ -79,7 +79,7 @@
 	for(var/obj/item/I in stored_items)
 		A = pick(oview(range))
 		I.throw_at(A, range, 2)
-		to_chat(owner, "<span class='warning'>Your [owner.get_held_index_name(owner.get_held_index_of_item(I))] spasms and throws the [I.name]!</span>")
+		to_chat(owner, "<span class='warning'>Twoja ręka ([owner.get_held_index_name(owner.get_held_index_of_item(I))]) drga i rzuca [I.name]!</span>")
 	stored_items = list()
 
 
@@ -169,10 +169,10 @@
 
 /obj/item/organ/cyberimp/brain/linkedsurgery/proc/check_surgery_update()
 	if(number_of_surgeries<length(advanced_surgeries))
-		to_chat(usr, "<span class='notice'>Surgical Implant updated.</span>")
+		to_chat(usr, "<span class='notice'>Zaktualizowano implant chirurgiczny.</span>")
 		number_of_surgeries = length(advanced_surgeries)
 	else
-		to_chat(usr, "<span class='notice'>None of new surgical programs detected.</span>")
+		to_chat(usr, "<span class='notice'>Nie wykryto nowych programów chirurgicznych.</span>")
 
 /datum/action/item_action/update_linkedsurgery
 	name = "Update Surgical Implant"
@@ -200,7 +200,7 @@
 	if(!owner || . & EMP_PROTECT_SELF)
 		return
 	if(prob(60/severity))
-		to_chat(owner, "<span class='warning'>Your breathing tube suddenly closes!</span>")
+		to_chat(owner, "<span class='warning'>Twoja rurka oddechowa nagle się zamyka!</span>")
 		owner.losebreath += 2
 
 //BOX O' IMPLANTS

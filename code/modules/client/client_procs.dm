@@ -63,10 +63,10 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			topiclimiter[MINUTE_COUNT] = 0
 		topiclimiter[MINUTE_COUNT] += 1
 		if (topiclimiter[MINUTE_COUNT] > mtl)
-			var/msg = "Your previous action was ignored because you've done too many in a minute."
+			var/msg = "Twoja poprzednia akcja została zignorowana, bo wykonujesz ich za dużo w ciągu minuty."
 			if (minute != topiclimiter[ADMINSWARNED_AT]) //only one admin message per-minute. (if they spam the admins can just boot/ban them)
 				topiclimiter[ADMINSWARNED_AT] = minute
-				msg += " Administrators have been informed."
+				msg += " Administracja została powiadomiona."
 				log_game("[key_name(src)] Has hit the per-minute topic limit of [mtl] topic calls in a given game minute")
 				message_admins("[ADMIN_LOOKUPFLW(src)] [ADMIN_KICK(usr)] Has hit the per-minute topic limit of [mtl] topic calls in a given game minute")
 			to_chat(src, "<span class='danger'>[msg]</span>")
@@ -82,7 +82,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			topiclimiter[SECOND_COUNT] = 0
 		topiclimiter[SECOND_COUNT] += 1
 		if (topiclimiter[SECOND_COUNT] > stl)
-			to_chat(src, "<span class='danger'>Your previous action was ignored because you've done too many in a second</span>")
+			to_chat(src, "<span class='danger'>Twoja poprzednia akcja została zignorowana, bo wykonujesz ich za dużo w ciągu sekundy</span>")
 			return
 
 	//Logs all hrefs, except chat pings
@@ -91,7 +91,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	//byond bug ID:2256651
 	if (asset_cache_job && (asset_cache_job in completed_asset_jobs))
-		to_chat(src, "<span class='danger'>An error has been detected in how your client is receiving resources. Attempting to correct.... (If you keep seeing these messages you might want to close byond and reconnect)</span>")
+		to_chat(src, "<span class='danger'>Wykryto błąd w odbieraniu zasobów przez twojego klienta. Próba naprawy.... (Jeśli ten komunikat się powtarza, zamknij BYOND i połącz się ponownie)</span>")
 		src << browse("...", "window=asset_cache_browser")
 		return
 	if (href_list["asset_cache_preload_data"])
@@ -142,7 +142,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 /client/proc/is_content_unlocked()
 	if(!prefs.unlock_content)
-		to_chat(src, "Become a BYOND member to access member-perks and features, as well as support the engine that makes this game possible. Only 10 bucks for 3 months! <a href=\"https://secure.byond.com/membership\">Click Here to find out more</a>.")
+		to_chat(src, "Zostań członkiem BYOND, żeby mieć dostęp do dodatków i wesprzeć silnik, dzięki któremu ta gra istnieje. Tylko 10 dolarów za 3 miesiące! <a href=\"https://secure.byond.com/membership\">Kliknij tutaj, żeby dowiedzieć się więcej</a>.")
 		return 0
 	return 1
 /*
@@ -166,12 +166,12 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	total_message_count++
 
 	if(total_message_count >= SPAM_TRIGGER_AUTOMUTE)
-		to_chat(src, "<span class='userdanger'>You have exceeded the spam filter limit for too many messages. An auto-mute was applied. Make an adminhelp ticket if you think this was in error.</span>")
+		to_chat(src, "<span class='userdanger'>Przekroczono limit filtra antyspamowego. Nałożono automatyczne wyciszenie. Jeśli to pomyłka, napisz ahelp.</span>")
 		cmd_admin_mute(src, mute_type, TRUE)
 		return TRUE
 
 	if(total_message_count >= SPAM_TRIGGER_WARNING)
-		to_chat(src, "<span class='userdanger'>You are nearing the spam filter limit for too many messages in a short period. Slow down.</span>")
+		to_chat(src, "<span class='userdanger'>Zbliżasz się do limitu filtra antyspamowego. Zwolnij.</span>")
 		return FALSE
 
 /client/proc/silicon_spam_grace()
@@ -187,7 +187,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 //This stops files larger than UPLOAD_LIMIT being sent from client to server via input(), client.Import() etc.
 /client/AllowUpload(filename, filelength)
 	if(filelength > UPLOAD_LIMIT)
-		to_chat(src, "<font color='red'>Error: AllowUpload(): File Upload too large. Upload Limit: [UPLOAD_LIMIT/1024]KiB.</font>")
+		to_chat(src, "<font color='red'>Błąd: AllowUpload(): plik jest za duży. Limit: [UPLOAD_LIMIT/1024] KiB.</font>")
 		return 0
 	return 1
 
@@ -209,10 +209,15 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	GLOB.clients += src
 	GLOB.directory[ckey] = src
 
+	if(byond_version >= 516)
+		winset(src, null, list("browser-options" = "find,refresh,byondstorage"))
+
 	// Instantiate tgui panel
 	tgui_panel = new(src, "browseroutput")
 
 	tgui_say = new(src, "tgui_say")
+
+	set_right_click_menu_mode(TRUE)
 
 	GLOB.ahelp_tickets.ClientLogin(src)
 	GLOB.interviews.client_login(src)
@@ -315,26 +320,27 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	if (byond_version >= 512)
 		if (!byond_build || byond_build < 1386)
 			message_admins("<span class='adminnotice'>[key_name(src)] has been detected as spoofing their byond version. Connection rejected.</span>")
-			add_system_note("Spoofed-Byond-Version", "Detected as using a spoofed byond version.")
+			add_system_note("Spoofed-Byond-Version", "Wykryto podrabianą wersję BYOND.")
 			log_access("Failed Login: [key] - Spoofed byond version")
 			qdel(src)
 
 		if (num2text(byond_build) in GLOB.blacklisted_builds)
 			log_access("Failed login: [key] - blacklisted byond version")
-			to_chat_immediate(src, "<span class='userdanger'>Your version of byond is blacklisted.</span>")
-			to_chat_immediate(src, "<span class='danger'>Byond build [byond_build] ([byond_version].[byond_build]) has been blacklisted for the following reason: [GLOB.blacklisted_builds[num2text(byond_build)]].</span>")
-			to_chat_immediate(src, "<span class='danger'>Please download a new version of byond. If [byond_build] is the latest, you can go to <a href=\"https://secure.byond.com/download/build\">BYOND's website</a> to download other versions.</span>")
+			to_chat_immediate(src, "<span class='userdanger'>Twoja wersja BYOND jest na czarnej liście.</span>")
+			to_chat_immediate(src, "<span class='danger'>Wersja BYOND [byond_build] ([byond_version].[byond_build]) jest na czarnej liście z powodu: [GLOB.blacklisted_builds[num2text(byond_build)]].</span>")
+			to_chat_immediate(src, "<span class='danger'>Pobierz nową wersję BYOND. Jeśli [byond_build] to najnowsza wersja, inne znajdziesz na <a href=\"https://secure.byond.com/download/build\">stronie BYOND</a>.</span>")
 			if(connecting_admin)
-				to_chat_immediate(src, "As an admin, you are being allowed to continue using this version, but please consider changing byond versions")
+				to_chat_immediate(src, "Jako admin możesz dalej używać tej wersji, ale rozważ jej zmianę")
 			else
+				message_admins("<span class='adminnotice'>Nieudane logowanie: [key_name_admin(src)] - zablokowana wersja BYOND ([byond_version].[byond_build]).</span>")
 				qdel(src)
 				return
 
 	var/max_recommended_build = CONFIG_GET(number/client_max_build)
 	var/max_recommended_version = CONFIG_GET(number/client_max_version)
 	if(byond_build > max_recommended_build || byond_version > max_recommended_version)
-		to_chat(src, "<span class='userdanger'>Your version of byond is over the maximum recommended version for clients ([max_recommended_version] build [max_recommended_build]) and may be unstable.</span>")
-		to_chat(src, "<span class='danger'>Please download an older version of byond. You can go to <a href=\"https://secure.byond.com/download/build\">BYOND's website</a> to download other versions.</span>")
+		to_chat(src, "<span class='userdanger'>Twoja wersja BYOND jest nowsza niż maksymalna zalecana dla klientów ([max_recommended_version] build [max_recommended_build]) i może działać niestabilnie.</span>")
+		to_chat(src, "<span class='danger'>Pobierz starszą wersję BYOND. Inne wersje znajdziesz na <a href=\"https://secure.byond.com/download/build\">stronie BYOND</a>.</span>")
 	if(SSinput.initialized)
 		set_macros()
 
@@ -344,9 +350,9 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	tgui_say.initialize()
 
 	if(alert_mob_dupe_login && !holder)
-		var/dupe_login_message = "Your ComputerID has already logged in with another key this round, please log out of this one NOW or risk being banned!"
+		var/dupe_login_message = "Twój ComputerID zalogował się już w tej rundzie z innego konta - wyloguj się z tego NATYCHMIAST albo ryzykujesz bana!"
 		if (alert_admin_multikey)
-			dupe_login_message += "\nAdmins have been informed."
+			dupe_login_message += "\nAdmini zostali powiadomieni."
 			message_admins("<span class='danger'><B>MULTIKEYING: </B></span><span class='notice'>[key_name_admin(src)] has a matching CID+IP with another player and is clearly multikeying. They have been warned to leave the server or risk getting banned.</span>")
 			log_admin_private("MULTIKEYING: [key_name(src)] has a matching CID+IP with another player and is clearly multikeying. They have been warned to leave the server or risk getting banned.")
 		spawn(0.5 SECONDS) //needs to run during world init, do not convert to add timer
@@ -364,38 +370,38 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	var/warn_build = CONFIG_GET(number/client_warn_build)
 
 	if (byond_version < breaking_version || (byond_version == breaking_version && byond_build < breaking_build)) //Out of date client.
-		to_chat_immediate(src, "<span class='danger'><b>Your version of BYOND is too old:</b></span>")
+		to_chat_immediate(src, "<span class='danger'><b>Twoja wersja BYOND jest za stara:</b></span>")
 		to_chat_immediate(src, CONFIG_GET(string/client_error_message))
-		to_chat_immediate(src, "Your version: [byond_version].[byond_build]")
-		to_chat_immediate(src, "Required version: [breaking_version].[breaking_build] or later")
-		to_chat_immediate(src, "Visit <a href=\"https://secure.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.")
+		to_chat_immediate(src, "Twoja wersja: [byond_version].[byond_build]")
+		to_chat_immediate(src, "Wymagana wersja: [breaking_version].[breaking_build] lub nowsza")
+		to_chat_immediate(src, "Najnowszą wersję BYOND znajdziesz na <a href=\"https://secure.byond.com/download\">stronie BYOND</a>.")
 		if (connecting_admin)
-			to_chat_immediate(src, "Because you are an admin, you are being allowed to walk past this limitation, But it is still STRONGLY suggested you upgrade")
+			to_chat_immediate(src, "Jako admin możesz obejść to ograniczenie, ale MOCNO zalecamy aktualizację")
 		else
 			qdel(src)
 			return
 	else if (byond_version < warn_version || (byond_version == warn_version && byond_build < warn_build)) //We have words for this client.
 		if(CONFIG_GET(flag/client_warn_popup))
-			var/msg = "<b>Your version of byond may be getting out of date:</b><br>"
+			var/msg = "<b>Twoja wersja BYOND może być nieaktualna:</b><br>"
 			msg += CONFIG_GET(string/client_warn_message) + "<br><br>"
-			msg += "Your version: [byond_version].[byond_build]<br>"
-			msg += "Required version to remove this message: [warn_version].[warn_build] or later<br>"
-			msg += "Visit <a href=\"https://secure.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.<br>"
-			src << browse(msg, "window=warning_popup")
+			msg += "Twoja wersja: [byond_version].[byond_build]<br>"
+			msg += "Wersja wymagana, by usunąć ten komunikat: [warn_version].[warn_build] lub nowsza<br>"
+			msg += "Najnowszą wersję BYOND znajdziesz na <a href=\"https://secure.byond.com/download\">stronie BYOND</a>.<br>"
+			src << browse(HTML_SKELETON(msg), "window=warning_popup")
 		else
-			to_chat(src, "<span class='danger'><b>Your version of byond may be getting out of date:</b></span>")
+			to_chat(src, "<span class='danger'><b>Twoja wersja BYOND może być nieaktualna:</b></span>")
 			to_chat(src, CONFIG_GET(string/client_warn_message))
-			to_chat(src, "Your version: [byond_version].[byond_build]")
-			to_chat(src, "Required version to remove this message: [warn_version].[warn_build] or later")
-			to_chat(src, "Visit <a href=\"https://secure.byond.com/download\">BYOND's website</a> to get the latest version of BYOND.")
+			to_chat(src, "Twoja wersja: [byond_version].[byond_build]")
+			to_chat(src, "Wersja wymagana, by usunąć ten komunikat: [warn_version].[warn_build] lub nowsza")
+			to_chat(src, "Najnowszą wersję BYOND znajdziesz na <a href=\"https://secure.byond.com/download\">stronie BYOND</a>.")
 
 	if (connection == "web" && !connecting_admin)
 		if (!CONFIG_GET(flag/allow_webclient))
-			to_chat_immediate(src, "Web client is disabled")
+			to_chat_immediate(src, "Klient webowy jest wyłączony")
 			qdel(src)
 			return 0
 		if (CONFIG_GET(flag/webclient_only_byond_members) && !IsByondMember())
-			to_chat_immediate(src, "Sorry, but the web client is restricted to byond members only.")
+			to_chat_immediate(src, "Niestety klient webowy jest dostępny tylko dla członków BYOND.")
 			qdel(src)
 			return 0
 
@@ -416,6 +422,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	if (isnum_safe(cached_player_age) && cached_player_age == -1) //first connection
 		player_age = 0
+		aquila_tutorial_first_connection() // AQ EDIT - samouczek: propozycja dla nowego gracza
 	var/nnpa = CONFIG_GET(number/notify_new_player_age)
 	if (isnum_safe(cached_player_age) && cached_player_age == -1) //first connection
 		if (nnpa >= 0)
@@ -443,7 +450,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	apply_clickcatcher()
 
 	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
-		to_chat(src, "<span class='info'>You have unread updates in the changelog.</span>")
+		to_chat(src, "<span class='info'>Masz nieprzeczytane zmiany w changelogu.</span>")
 		if(CONFIG_GET(flag/aggressive_changelog))
 			changelog()
 		else
@@ -458,7 +465,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		convert_notes_sql(ckey)
 	to_chat(src, get_message_output("message", ckey))
 	if(!winexists(src, "asset_cache_browser")) // The client is using a custom skin, tell them.
-		to_chat(src, "<span class='warning'>Unable to access asset cache browser, if you are using a custom skin file, please allow DS to download the updated version, if you are not, then make a bug report. This is not a critical issue but can cause issues with resource downloading, as it is impossible to know when extra resources arrived to you.</span>")
+		to_chat(src, "<span class='warning'>Brak dostępu do przeglądarki pamięci podręcznej zasobów. Jeśli używasz własnego pliku skórki, pozwól DS pobrać nową wersję; jeśli nie - zgłoś błąd. To nie jest krytyczne, ale może powodować problemy z pobieraniem zasobów.</span>")
 
 	update_ambience_pref()
 
@@ -474,7 +481,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	if(GLOB.ckey_redirects.Find(ckey))
 		if(isnewplayer(mob))
-			to_chat(src, "<span class='redtext'>The server is full. You will be redirected to [CONFIG_GET(string/redirect_address)] in 10 seconds.</span>")
+			to_chat(src, "<span class='redtext'>Serwer jest pełny. Za 10 sekund zostaniesz przekierowany na [CONFIG_GET(string/redirect_address)].</span>")
 			addtimer(CALLBACK(src, PROC_REF(time_to_redirect)), (10 SECONDS))
 		else
 			GLOB.ckey_redirects -= ckey
@@ -484,6 +491,16 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	//Load the TGUI stat in case of TGUI subsystem not ready (startup)
 	mob.UpdateMobStat(TRUE)
+
+/client/proc/set_right_click_menu_mode(shift_only)
+	if(shift_only)
+		winset(src, "mapwindow.map", "right-click=true")
+		winset(src, "default.ShiftUp", "is-disabled=false")
+		winset(src, "default.Shift", "is-disabled=false")
+	else
+		winset(src, "mapwindow.map", "right-click=false")
+		winset(src, "default.Shift", "is-disabled=true")
+		winset(src, "default.ShiftUp", "is-disabled=true")
 
 /client/proc/time_to_redirect()
 	var/redirect_address = CONFIG_GET(string/redirect_address)
@@ -555,18 +572,18 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		GLOB.admins -= src
 		if (!GLOB.admins.len && SSticker.IsRoundInProgress()) //Only report this stuff if we are currently playing.
 			var/cheesy_message = pick(
-				"I have no admins online!",\
-				"I'm all alone :(",\
-				"I'm feeling lonely :(",\
-				"I'm so lonely :(",\
-				"Why does nobody love me? :(",\
+				"Nie mam żadnych adminów online!",\
+				"Jestem całkiem sam :(",\
+				"Czuję się samotny :(",\
+				"Jestem taki samotny :(",\
+				"Czemu nikt mnie nie kocha? :(",\
 				"I want a man :(",\
-				"Where has everyone gone?",\
+				"Gdzie się wszyscy podziali?",\
 				"I need a hug :(",\
-				"Someone come hold me :(",\
-				"I need someone on me :(",\
-				"What happened? Where has everyone gone?",\
-				"Forever alone :("\
+				"Niech ktoś mnie przytuli :(",\
+				"Potrzebuję kogoś przy sobie :(",\
+				"Co się stało? Gdzie się wszyscy podziali?",\
+				"Na zawsze sam :("\
 			)
 
 			send2tgs("Server", "[cheesy_message] (No admins online)")
@@ -653,7 +670,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 				var/list/panic_addr = CONFIG_GET(string/panic_server_address)
 				if(panic_addr && !connectiontopic_a["redirect"])
 					var/panic_name = CONFIG_GET(string/panic_server_name)
-					to_chat_immediate(src, "<span class='notice'>Sending you to [panic_name ? panic_name : panic_addr].</span>")
+					to_chat_immediate(src, "<span class='notice'>Przekierowanie na [panic_name ? panic_name : panic_addr].</span>")
 					winset(src, null, "command=.options")
 					src << link("[panic_addr]?redirect=1")
 				qdel(query_client_in_db)
@@ -819,8 +836,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		if (oldcid != computer_id && computer_id != lastcid) //IT CHANGED!!!
 			cidcheck -= ckey //so they can try again after removing the cid randomizer.
 
-			to_chat_immediate(src, "<span class='userdanger'>Connection Error:</span>")
-			to_chat_immediate(src, "<span class='danger'>Invalid ComputerID(spoofed). Please remove the ComputerID spoofer from your byond installation and try again.</span>")
+			to_chat_immediate(src, "<span class='userdanger'>Błąd połączenia:</span>")
+			to_chat_immediate(src, "<span class='danger'>Nieprawidłowy ComputerID (podrobiony). Usuń program podrabiający ComputerID z instalacji BYOND i spróbuj ponownie.</span>")
 
 			if (!cidcheck_failedckeys[ckey])
 				message_admins("<span class='adminnotice'>[key_name(src)] has been detected as using a cid randomizer. Connection rejected.</span>")
@@ -860,10 +877,10 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	var/url = winget(src, null, "url")
 	//special javascript to make them reconnect under a new window.
 	src << browse({"<a id='link' href="byond://[url]?token=[token]">byond://[url]?token=[token]</a><script type="text/javascript">document.getElementById("link").click();window.location="byond://winset?command=.quit"</script>"}, "border=0;titlebar=0;size=1x1;window=redirect")
-	to_chat_immediate(src, {"<a href="byond://[url]?token=[token]">You will be automatically taken to the game, if not, click here to be taken manually</a>"})
+	to_chat_immediate(src, {"<a href="byond://[url]?token=[token]">Zaraz zostaniesz przeniesiony do gry. Jeśli nie, kliknij tutaj</a>"})
 
 /client/proc/note_randomizer_user()
-	add_system_note("CID-Error", "Detected as using a cid randomizer.")
+	add_system_note("CID-Error", "Wykryto program losujący CID.")
 
 /client/proc/add_system_note(system_ckey, message)
 	//check to see if we noted them in the last day.
@@ -923,11 +940,11 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			clicklimiter[MINUTE_COUNT] = 0
 		clicklimiter[MINUTE_COUNT] += 1+(ab)
 		if (clicklimiter[MINUTE_COUNT] > mcl)
-			var/msg = "Your previous click was ignored because you've done too many in a minute."
+			var/msg = "Twoje poprzednie kliknięcie zostało zignorowane, bo klikasz za dużo w ciągu minuty."
 			if (minute != clicklimiter[ADMINSWARNED_AT]) //only one admin message per-minute. (if they spam the admins can just boot/ban them)
 				clicklimiter[ADMINSWARNED_AT] = minute
 
-				msg += " Administrators have been informed."
+				msg += " Administracja została powiadomiona."
 				if (ab)
 					log_game("[key_name(src)] is using the middle click aimbot exploit")
 					message_admins("[ADMIN_LOOKUPFLW(src)] [ADMIN_KICK(usr)] is using the middle click aimbot exploit</span>")
@@ -947,7 +964,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			clicklimiter[SECOND_COUNT] = 0
 		clicklimiter[SECOND_COUNT] += 1+(!!ab)
 		if (clicklimiter[SECOND_COUNT] > scl)
-			to_chat(src, "<span class='danger'>Your previous click was ignored because you've done too many in a second</span>")
+			to_chat(src, "<span class='danger'>Twoje poprzednie kliknięcie zostało zignorowane, bo klikasz za dużo w ciągu sekundy</span>")
 			return
 
 	if (prefs.toggles2 & PREFTOGGLE_2_HOTKEYS)
@@ -1078,22 +1095,22 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	remove_verb(/client/proc/show_account_identifier)
 	addtimer(CALLBACK(src, PROC_REF(restore_account_identifier)), 20) //Don't DoS DB queries, asshole
 
-	var/confirm = alert("Do NOT share the verification ID in the following popup. Understand?", "Important Warning", "Yes", "Cancel")
+	var/confirm = alert("NIE udostępniaj nikomu identyfikatora weryfikacyjnego z następnego okienka. Rozumiesz?", "Ważne ostrzeżenie", "Yes", "Cancel")
 	if(confirm != "Yes")
 		return
 	var/uuid = fetch_uuid()
 	if(!uuid)
-		alert("Failed to fetch your verification ID. Try again later. If problems persist, tell an admin.", "Account Verification", "Okay")
+		alert("Nie udało się pobrać identyfikatora weryfikacyjnego. Spróbuj później. Jeśli problem się powtarza, powiedz adminowi.", "Weryfikacja konta", "Okay")
 		log_sql("Failed to fetch UUID for [key_name(src)]")
 	else
 		var/dat
-		dat += "<h3>Account Identifier</h3>"
+		dat += "<h3>Identyfikator konta</h3>"
 		dat += "<br>"
-		dat += "<h3>Do NOT share this id:</h3>"
+		dat += "<h3>NIE udostępniaj tego identyfikatora:</h3>"
 		dat += "<br>"
 		dat += "[uuid]"
 
-		src << browse(dat, "window=accountidentifier;size=600x320")
+		src << browse(HTML_SKELETON(dat), "window=accountidentifier;size=600x320")
 		onclose(src, "accountidentifier")
 
 /client/proc/restore_account_identifier()
@@ -1124,7 +1141,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			if(CONFIG_GET(flag/respect_upstream_permabans) && ban["expires"])
 				continue
 
-			to_chat_immediate(src, "<span class='userdanger'>Your connection has been closed because you are currently banned from BeeStation.</span>")
+			to_chat_immediate(src, "<span class='userdanger'>Połączenie zostało zamknięte, bo masz obecnie bana.</span>")
 			message_admins("[key_name(src)] was removed from the game due to a ban from BeeStation.")
 			qdel(src)
 			return

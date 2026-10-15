@@ -22,11 +22,11 @@
 	potion_launcher.layer = layer - 2
 	vis_contents += potion_launcher
 	monkey_counter = new()
-	monkey_counter.maptext_y = 18
+	monkey_counter.maptext_y = 15
 	monkey_counter.layer = layer + 0.1
 	vis_contents += monkey_counter
 	slime_counter = new()
-	slime_counter.maptext_y = 8
+	slime_counter.maptext_y = 5
 	slime_counter.layer = layer + 0.1
 	vis_contents += slime_counter
 
@@ -51,7 +51,8 @@
 	screen_loc = ui_xenobiodisplay
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	maptext_width = 20
-	maptext_height = 9
+	// BYOND 516 draws nothing in a maptext box under 11px
+	maptext_height = 12
 	maptext_x = 12
 
 /// Called by the console any time we update the potion

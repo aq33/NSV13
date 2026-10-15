@@ -20,9 +20,9 @@ GLOBAL_LIST_EMPTY(syndi_crew_leader_spawns)
 	antag_datum = /datum/antagonist/nukeop/syndi_crew
 
 	announce_span = "danger"
-	announce_text = "The Syndicate are planning an all out assault!\n\
-	<span class='danger'>Syndicate crew</span>: Destroy NT fleets and capture systems with your beacon.</span>\n\
-	<span class='notice'>Crew</span>: Destroy the Syndicate crew, and defeat any Syndicate reinforcements that appear.</span>"
+	announce_text = "Syndykat planuje zmasowany atak!\n\
+	<span class='danger'>Załoga Syndykatu</span>: niszczcie floty NT i przejmujcie systemy radiolatarnią.</span>\n\
+	<span class='notice'>Załoga</span>: zniszczcie załogę Syndykatu i pokonajcie wszelkie posiłki Syndykatu.</span>"
 
 	title_icon = "conquest"
 
@@ -76,7 +76,7 @@ Method to spawn in the Syndi ship on a brand new Z-level with the "boardable" tr
 				continue
 			if(nextRole.assign(autofill))
 				//Cool, we've found a target!
-				to_chat(autofill, "<span class='warning'>You have been autofilled into [nextRole]! If you're not comfortable playing this role due to inexperience, please ahelp!")
+				to_chat(autofill, "<span class='warning'>Automatycznie przydzielono ci rolę [nextRole]! Jeśli przez brak doświadczenia nie czujesz się w niej pewnie, napisz ahelp!")
 				foundJob = TRUE
 				break
 
@@ -202,14 +202,14 @@ Method to spawn in the Syndi ship on a brand new Z-level with the "boardable" tr
 	SSticker.news_report = PVP_SYNDIE_LOSS
 
 /datum/game_mode/pvp/generate_report()
-	return "Intel suggests that the Syndicate are mounting an all out assault on the Sol sector. Be prepared for anything."
+	return "Wywiad sugeruje, że Syndykat szykuje zmasowany atak na sektor Sol. Bądźcie gotowi na wszystko."
 
 /datum/game_mode/pvp/generate_credit_text()
 	var/list/round_credits = list()
 
-	round_credits += "<center><h1>The syndicate crew:</h1>"
+	round_credits += "<center><h1>Załoga Syndykatu:</h1>"
 	for(var/datum/mind/operative in nuke_team.members)
-		round_credits += "<center><h2>[operative.name] as a Syndicate crewmember</h2>"
+		round_credits += "<center><h2>[operative.name] jako członek załogi Syndykatu</h2>"
 
 	round_credits += ..()
 	return round_credits

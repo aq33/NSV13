@@ -63,11 +63,11 @@
 	if(user.client)
 		user.client.images -= eyeobj.user_image
 
-/obj/machinery/computer/camera_advanced/shuttle_creator/attack_hand(mob/user)
+/obj/machinery/computer/camera_advanced/shuttle_creator/attack_hand(mob/user, list/modifiers)
 	if(!is_operational) //you cant use broken machine you chumbis
 		return
 	if(current_user)
-		to_chat(user, "The console is already in use!")
+		to_chat(user, "Konsola jest już w użyciu!")
 		return
 	var/mob/living/L = user
 	if(!can_use(user))

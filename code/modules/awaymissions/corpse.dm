@@ -12,7 +12,7 @@
 	var/death = TRUE //Kill the mob
 	var/roundstart = TRUE //fires on initialize
 	var/instant = FALSE	//fires on New
-	var/short_desc = "The mapper forgot to set this!"
+	var/short_desc = "Maper zapomniał to ustawić!"
 	var/flavour_text = ""
 	var/important_info = ""
 	var/faction = null
@@ -39,24 +39,24 @@
 	if(!SSticker.HasRoundStarted() || !loc || !ghost_usable)
 		return
 	if(!(GLOB.ghost_role_flags & GHOSTROLE_SPAWNER) && !(flags_1 & ADMIN_SPAWNED_1))
-		to_chat(user, "<span class='warning'>An admin has temporarily disabled non-admin ghost roles!</span>")
+		to_chat(user, "<span class='warning'>Admin tymczasowo wyłączył role duchów dla nie-adminów!</span>")
 		return
 	if(!uses)
-		to_chat(user, "<span class='warning'>This spawner is out of charges!</span>")
+		to_chat(user, "<span class='warning'>Ten spawner nie ma już ładunków!</span>")
 		return
 	if(!SSticker.HasRoundStarted())
 		return
 	if(!user?.client?.can_take_ghost_spawner(banType, use_cooldown, is_ghost_role = !is_antagonist, is_admin_spawned = flags_1 & ADMIN_SPAWNED_1))
 		return
 	if(is_banned_from(user.key, banType))
-		to_chat(user, "<span class='warning'>You are jobanned!</span>")
+		to_chat(user, "<span class='warning'>Masz bana na to stanowisko!</span>")
 		return
 	if(QDELETED(src) || QDELETED(user))
 		return
 	if(use_cooldown && user.client.next_ghost_role_tick > world.time)
-		to_chat(user, "<span class='warning'>You have died recently, you must wait [(user.client.next_ghost_role_tick - world.time)/10] seconds until you can use a ghost spawner.</span>")
+		to_chat(user, "<span class='warning'>Niedawno zginąłeś; musisz poczekać [(user.client.next_ghost_role_tick - world.time)/10] s, zanim użyjesz spawnera duchów.</span>")
 		return
-	var/ghost_role = alert("Become [mob_name]? (Warning, You can no longer be cloned!)",,"Yes","No")
+	var/ghost_role = alert("Zostać: [mob_name]? (Uwaga: nie będzie można cię już sklonować!)",,"Yes","No")
 	if(ghost_role != "Yes" || !loc)
 		return
 	log_game("[key_name(user)] became [mob_name]")
@@ -151,7 +151,7 @@
 	var/id_job = null			//Such as JOB_NAME_CLOWN or "Chef." This just determines what the ID reads as, not their access
 	var/id_access = null		//This is for access. See access.dm for which jobs give what access. Use JOB_NAME_CAPTAIN if you want it to be all access.
 	var/id_access_list = null	//Allows you to manually add access to an ID card.
-	assignedrole = "Ghost Role"
+	assignedrole = "Rola ducha"
 
 	var/husk = null
 	//these vars are for lazy mappers to override parts of the outfit
@@ -346,7 +346,7 @@
 	name = "sleeper"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
-	short_desc = "You are a space doctor!"
+	short_desc = "Jesteś kosmicznym lekarzem!"
 	assignedrole = "Space Doctor"
 	use_cooldown = TRUE // Use cooldown
 
@@ -402,8 +402,8 @@
 	name = "bartender sleeper"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
-	short_desc = "You are a space bartender!"
-	flavour_text = "Time to mix drinks and change lives. Smoking space drugs makes it easier to understand your patrons' odd dialect."
+	short_desc = "Jesteś kosmicznym barmanem!"
+	flavour_text = "Czas mieszać drinki i zmieniać ludzkie życie. Palenie kosmicznych narkotyków ułatwia zrozumienie dziwnego dialektu twoich klientów."
 	assignedrole = "Space Bartender"
 	id_job = JOB_NAME_BARTENDER
 	use_cooldown = TRUE
@@ -447,15 +447,15 @@
 	name = "beach bum sleeper"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
-	short_desc = "You're, like, totally a dudebro, bruh."
-	flavour_text = "Ch'yea. You came here, like, on spring break, hopin' to pick up some bangin' hot chicks, y'knaw?"
+	short_desc = "Jesteś, no, totalnie ziomkiem, ziom."
+	flavour_text = "No ba. Przyjechałeś tu, no, na ferie wiosenne, z nadzieją, że wyrwiesz jakieś gorące laski, czaisz?"
 	assignedrole = "Beach Bum"
 	use_cooldown = TRUE
 	banType = ROLE_BEACH_BUM
 
 /obj/effect/mob_spawn/human/beach/alive/lifeguard
-	short_desc = "You're a spunky lifeguard!"
-	flavour_text = "It's up to you to make sure nobody drowns or gets eaten by sharks and stuff."
+	short_desc = "Jesteś zadziornym ratownikiem!"
+	flavour_text = "To od ciebie zależy, czy nikt się nie utopi ani nie zostanie zjedzony przez rekiny i takie tam."
 	mob_gender = "female"
 	name = "lifeguard sleeper"
 	id_job = "Lifeguard"
@@ -465,7 +465,7 @@
 	name = "Beach Bum"
 	glasses = /obj/item/clothing/glasses/sunglasses
 	r_pocket = /obj/item/storage/wallet/random
-	l_pocket = /obj/item/reagent_containers/food/snacks/pizzaslice/dank;
+	l_pocket = /obj/item/food/pizzaslice/dank
 	uniform = /obj/item/clothing/under/pants/youngfolksjeans
 	id = /obj/item/card/id
 
@@ -543,8 +543,8 @@
 	roundstart = FALSE
 	icon = 'icons/effects/blood.dmi'
 	icon_state = "remains"
-	short_desc = "By unknown powers, your skeletal remains have been reanimated!"
-	flavour_text = "Walk this mortal plane and terrorize all living adventurers who dare cross your path."
+	short_desc = "Nieznane moce ożywiły twoje szkieletowe szczątki!"
+	flavour_text = "Krocz po tym śmiertelnym planie i terroryzuj wszystkich żywych poszukiwaczy przygód, którzy ośmielą się stanąć ci na drodze."
 	assignedrole = "Skeleton"
 	use_cooldown = TRUE
 	banType = ROLE_SKELETAL_REMAINS

@@ -2,11 +2,11 @@
 	name = "pointed spell"
 	ranged_mousepointer = 'icons/effects/throw_target.dmi'
 	/// Message showing to the spell owner upon deactivating pointed spell.
-	var/deactive_msg = "You dispel the magic..."
+	var/deactive_msg = "Rozpraszasz magię..."
 	/// Message showing to the spell owner upon activating pointed spell.
-	var/active_msg = "You prepare to use the spell on a target..."
+	var/active_msg = "Przygotowujesz się do użycia zaklęcia na celu..."
 	/// Default icon for the pointed spell, used for active/inactive states switching.
-	var/base_icon_state = "projectile"
+	base_icon_state = "projectile"
 
 /obj/effect/proc_holder/spell/pointed/Click()
 	var/mob/living/user = usr
@@ -14,7 +14,7 @@
 		return
 	var/msg
 	if(!can_cast(user))
-		msg = "<span class='warning'>You can no longer cast [name]!</span>"
+		msg = "<span class='warning'>Nie możesz już rzucić [name]!</span>"
 		remove_ranged_ability(msg)
 		return
 	if(active)
@@ -22,7 +22,7 @@
 		remove_ranged_ability(msg)
 		on_deactivation(user)
 	else
-		msg = "<span class='notice'>[active_msg] <B>Left-click to activate spell on a target!</B></span>"
+		msg = "<span class='notice'>[active_msg] <B>Kliknij lewym przyciskiem, by użyć zaklęcia na celu!</B></span>"
 		add_ranged_ability(user, msg, TRUE)
 		on_activation(user)
 

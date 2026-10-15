@@ -59,25 +59,25 @@
 	. = ..()
 	if(!scanning)
 		return
-	. += "<span class='info'>Alt-click it to clear stored radiation levels.</span>"
+	. += "<span class='info'>Alt-kliknij, by wyczyścić zapisane poziomy promieniowania.</span>"
 	if(obj_flags & EMAGGED)
-		. += "<span class='warning'>The display seems to be incomprehensible.</span>"
+		. += "<span class='warning'>Wyświetlacz wydaje się niezrozumiały.</span>"
 		return
 	switch(radiation_count)
 		if(-INFINITY to RAD_LEVEL_NORMAL)
-			. += "<span class='notice'>Ambient radiation level count reports that all is well.</span>"
+			. += "<span class='notice'>Poziom promieniowania tła w normie.</span>"
 		if(RAD_LEVEL_NORMAL + 1 to RAD_LEVEL_MODERATE)
-			. += "<span class='disarm'>Ambient radiation levels slightly above average.</span>"
+			. += "<span class='disarm'>Poziom promieniowania tła lekko powyżej średniej.</span>"
 		if(RAD_LEVEL_MODERATE + 1 to RAD_LEVEL_HIGH)
-			. += "<span class='warning'>Ambient radiation levels above average.</span>"
+			. += "<span class='warning'>Poziom promieniowania tła powyżej średniej.</span>"
 		if(RAD_LEVEL_HIGH + 1 to RAD_LEVEL_VERY_HIGH)
-			. += "<span class='danger'>Ambient radiation levels highly above average.</span>"
+			. += "<span class='danger'>Poziom promieniowania tła znacznie powyżej średniej.</span>"
 		if(RAD_LEVEL_VERY_HIGH + 1 to RAD_LEVEL_CRITICAL)
-			. += "<span class='suicide'>Ambient radiation levels nearing critical level.</span>"
+			. += "<span class='suicide'>Poziom promieniowania tła zbliża się do krytycznego.</span>"
 		if(RAD_LEVEL_CRITICAL + 1 to INFINITY)
-			. += "<span class='boldannounce'>Ambient radiation levels above critical level!</span>"
+			. += "<span class='boldannounce'>Poziom promieniowania tła powyżej poziomu krytycznego!</span>"
 
-	. += "<span class='notice'>The last radiation amount detected was [last_tick_amount]</span>"
+	. += "<span class='notice'>Ostatnio wykryte promieniowanie: [last_tick_amount]</span>"
 
 /obj/item/geiger_counter/update_icon()
 	if(!scanning)
@@ -122,16 +122,16 @@
 /obj/item/geiger_counter/attack_self(mob/user)
 	scanning = !scanning
 	update_icon()
-	to_chat(user, "<span class='notice'>[icon2html(src, user)] You switch [scanning ? "on" : "off"] [src].</span>")
+	to_chat(user, "<span class='notice'>[icon2html(src, user)] [scanning ? "Włączasz" : "Wyłączasz"] [src].</span>")
 
-/obj/item/geiger_counter/afterattack(atom/target, mob/user)
+/obj/item/geiger_counter/afterattack(atom/target,mob/living/user)
 	. = ..()
-	if(user.a_intent == INTENT_HELP)
+	if(!user.combat_mode)
 		if(!(obj_flags & EMAGGED))
-			user.visible_message("<span class='notice'>[user] scans [target] with [src].</span>", "<span class='notice'>You scan [target]'s radiation levels with [src]...</span>")
+			user.visible_message("<span class='notice'>[user] skanuje [target] za pomocą [src].</span>", "<span class='notice'>Skanujesz poziom promieniowania [target] za pomocą [src]...</span>")
 			addtimer(CALLBACK(src, PROC_REF(scan), target, user), 20, TIMER_UNIQUE) // Let's not have spamming GetAllContents
 		else
-			user.visible_message("<span class='notice'>[user] scans [target] with [src].</span>", "<span class='danger'>You project [src]'s stored radiation into [target]!</span>")
+			user.visible_message("<span class='notice'>[user] skanuje [target] za pomocą [src].</span>", "<span class='danger'>Rzutujesz zgromadzone w [src] promieniowanie na [target]!</span>")
 			target.rad_act(radiation_count)
 			radiation_count = 0
 		return TRUE
@@ -151,26 +151,26 @@
 	if(isliving(A))
 		var/mob/living/M = A
 		if(!M.radiation)
-			message += "<span class='notice'>[icon2html(src, user)] Radiation levels within normal boundaries.</span>"
+			message += "<span class='notice'>[icon2html(src, user)] Poziom promieniowania w normie.</span>"
 		else
-			message += "<span class='boldannounce'>[icon2html(src, user)] Subject is irradiated. Radiation levels: [M.radiation].</span>"
+			message += "<span class='boldannounce'>[icon2html(src, user)] Obiekt jest napromieniowany. Poziom promieniowania: [M.radiation].</span>"
 
 	if(rad_strength)
-		message += "<span class='boldannounce'>[icon2html(src, user)] Target contains radioactive contamination. Radioactive strength: [rad_strength]</span>"
+		message += "<span class='boldannounce'>[icon2html(src, user)] Cel jest skażony radioaktywnie. Siła promieniowania: [rad_strength]</span>"
 	else
-		message += "<span class='notice'>[icon2html(src, user)] Target is free of radioactive contamination.</span>"
+		message += "<span class='notice'>[icon2html(src, user)] Cel jest wolny od skażenia radioaktywnego.</span>"
 
 	to_chat(user, EXAMINE_BLOCK(jointext(message, "\n")))
 
 /obj/item/geiger_counter/attackby(obj/item/I, mob/user, params)
 	if(I.tool_behaviour == TOOL_SCREWDRIVER && (obj_flags & EMAGGED))
 		if(scanning)
-			to_chat(user, "<span class='warning'>Turn off [src] before you perform this action!</span>")
+			to_chat(user, "<span class='warning'>Najpierw wyłącz [src]!</span>")
 			return 0
-		user.visible_message("<span class='notice'>[user] unscrews [src]'s maintenance panel and begins fiddling with its innards...</span>", "<span class='notice'>You begin resetting [src]...</span>")
+		user.visible_message("<span class='notice'>[user] odkręca panel serwisowy [src] i zaczyna grzebać w środku...</span>", "<span class='notice'>Zaczynasz resetować [src]...</span>")
 		if(!I.use_tool(src, user, 40, volume=50))
 			return 0
-		user.visible_message("<span class='notice'>[user] refastens [src]'s maintenance panel!</span>", "<span class='notice'>You reset [src] to its factory settings!</span>")
+		user.visible_message("<span class='notice'>[user] przykręca z powrotem panel serwisowy [src]!</span>", "<span class='notice'>Przywracasz [src] do ustawień fabrycznych!</span>")
 		obj_flags &= ~EMAGGED
 		radiation_count = 0
 		update_icon()
@@ -182,19 +182,19 @@
 	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE))
 		return ..()
 	if(!scanning)
-		to_chat(usr, "<span class='warning'>[src] must be on to reset its radiation level!</span>")
+		to_chat(usr, "<span class='warning'>[src] musi być włączony, by zresetować poziom promieniowania!</span>")
 		return 0
 	radiation_count = 0
-	to_chat(usr, "<span class='notice'>You flush [src]'s radiation counts, resetting it to normal.</span>")
+	to_chat(usr, "<span class='notice'>Czyścisz liczniki promieniowania [src], przywracając normę.</span>")
 	update_icon()
 
 /obj/item/geiger_counter/emag_act(mob/user)
 	if(obj_flags & EMAGGED)
 		return
 	if(scanning)
-		to_chat(user, "<span class='warning'>Turn off [src] before you perform this action!</span>")
+		to_chat(user, "<span class='warning'>Najpierw wyłącz [src]!</span>")
 		return 0
-	to_chat(user, "<span class='warning'>You override [src]'s radiation storing protocols. It will now generate small doses of radiation, and stored rads are now projected into creatures you scan.</span>")
+	to_chat(user, "<span class='warning'>Nadpisujesz protokoły przechowywania promieniowania [src]. Będzie teraz generować małe dawki promieniowania, a zgromadzone promieniowanie będzie rzutowane na skanowane istoty.</span>")
 	obj_flags |= EMAGGED
 
 

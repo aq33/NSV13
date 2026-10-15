@@ -69,4 +69,4 @@
 	if(HAS_TRAIT(SSstation, STATION_TRAIT_PDA_GLITCHED))
 		sound = pick('sound/machines/twobeep_voice1.ogg', 'sound/machines/twobeep_voice2.ogg')
 	playsound(src, sound, 50, TRUE)
-	machinery_computer.visible_message("<span class='notice'>The [src] displays a [caller.filedesc] notification: [alerttext]</span>")
+	machinery_computer.visible_message("<span class='notice'>[src] wyświetla powiadomienie z [caller.filedesc]: [alerttext]</span>")

@@ -12,12 +12,12 @@
 	announceWhen = 1
 
 /datum/round_event/asteroid_impact/announce(fake)
-	priority_announce("A class-A asteroid has been detected on a collision course with the station. Destruction of the station is innevitable.", "Meteor Alert", SSstation.announcer.get_rand_alert_sound())
+	priority_announce("Wykryto asteroidę klasy A na kursie kolizyjnym ze statkiem. Zniszczenie statku jest nieuniknione.", "Alarm meteorytowy", SSstation.announcer.get_rand_alert_sound())
 	if(!fake)
 		set_security_level(SEC_LEVEL_DELTA)
 		var/area/A = GLOB.areas_by_type[/area/centcom]
 		if(EMERGENCY_IDLE_OR_RECALLED)
-			SSshuttle.emergency.request(null, A, "Automatic Shuttle Call: Station destruction imminent.", TRUE)
+			SSshuttle.emergency.request(null, A, "Automatyczne wezwanie promu: zniszczenie statku jest nieuniknione.", TRUE)
 		else
 			if(SSshuttle.emergency.timer > world.time + 5 MINUTES)
 				SSshuttle.emergency.setTimer(5 MINUTES)

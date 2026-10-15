@@ -13,8 +13,8 @@
 	item_state = "disco"
 	lefthand_file = 'icons/mob/inhands/equipment/security_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/security_righthand.dmi'
-	var/list/messages = list("This party is great!", "Wooo!!!", "Party!", "Check out these moves!", "Hey, want to dance with me?")
-	var/list/message_social_anxiety = list("I want to go home...", "Where are the toilets?", "I don't like this song.")
+	var/list/messages = list("Świetna impreza!", "Juhuuu!!!", "Impreza!", "Patrzcie, jak tańczę!", "Hej, zatańczysz ze mną?")
+	var/list/message_social_anxiety = list("Chcę do domu...", "Gdzie są toalety?", "Nie lubię tej piosenki.")
 
 /obj/item/grenade/discogrenade/prime(mob/living/lanced_by)
 	. = ..()
@@ -76,7 +76,7 @@
 			new /obj/item/grenade/discogrenade/subgrenade(current_turf)
 
 	//Create the lights
-	new /obj/effect/dummy/lighting_obj (current_turf, rand_hex_color(), 4, 1, 10)
+	new /obj/effect/dummy/lighting_obj (current_turf, 4, 1, rand_hex_color(), 10)
 
 	for(var/mob/living/carbon/human/M in hearers(4, src))
 		forcedance(get_turf(M), M)
@@ -106,27 +106,27 @@
 		M.say(pick(message_social_anxiety))
 		if(rand(3) && M.get_ear_protection() == 0)
 			M.drop_all_held_items()
-			M.show_message("<span class='warning'>You cover your ears, the music is just too loud for you.</span>", 2)
+			M.show_message("<span class='warning'>Zatykasz uszy, muzyka jest dla ciebie za głośna.</span>", 2)
 		return
 
 	if(HAS_TRAIT(M, TRAIT_MINDSHIELD))
-		M.show_message("<span class='warning'>You resist your inner urges to break out your best moves.</span>", 2)
+		M.show_message("<span class='warning'>Opierasz się wewnętrznej potrzebie, by zaprezentować swoje najlepsze ruchy.</span>", 2)
 		M.set_drugginess(5)
 		return
 	if(istype(M.get_item_by_slot(ITEM_SLOT_HEAD), /obj/item/clothing/head/foilhat))
-		to_chat(M, "<span class = 'userdanger'>THOSE GLOW-IN-THE-DARK NANOTRASEN LIGHTBULBS WON'T CORRUPT ME WITH THEIR AGENDA!</span>")
+		to_chat(M, "<span class = 'userdanger'>TE ŚWIECĄCE W CIEMNOŚCI ŻARÓWKI NANOTRASEN NIE ZEPSUJĄ MNIE SWOJĄ AGENDĄ!</span>")
 		M.emote("scream")
 		return
 
 	M.set_drugginess(10)
-	M.show_message("<span class='warning'>You feel a strong rythme and your muscles spasm uncontrollably, you begin dancing and cannot move!</span>", 2)
+	M.show_message("<span class='warning'>Czujesz silny rytm, a twoje mięśnie drgają w niekontrolowany sposób. Zaczynasz tańczyć i nie możesz się ruszyć!</span>", 2)
 	M.Immobilize(30)
 
 	//Special actions
 	switch(rand(0, 6))
 		if(0)
 			M.Knockdown(4)
-			M.show_message("<span class='warning'>You [pick("mess", "screw")] up your moves and trip!</span>", 2)
+			M.show_message("<span class='warning'>[pick("Mylisz", "Psujesz")] kroki i się potykasz!</span>", 2)
 		if(1 to 3)
 			M.emote("spin")
 		if(3 to 4)

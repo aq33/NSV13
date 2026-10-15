@@ -53,7 +53,7 @@ Bullet reactions
 		return ..()
 	else
 		playsound(src, P.hitsound, 50, 1)
-		visible_message("<span class='danger'>[src] is hit by \a [P]!</span>", null, null, COMBAT_MESSAGE_RANGE)
+		visible_message("<span class='danger'>[P] trafia [src]!</span>", null, null, COMBAT_MESSAGE_RANGE)
 		if(!QDELETED(src)) //Bullet on_hit effect might have already destroyed this object
 			//var/datum/vector2d/point_of_collision = src.physics2d?.collider2d.get_collision_point(P.physics2d?.collider2d)//Get the collision point, see if the armour quadrants need to absorb this hit.
 			take_quadrant_hit(run_obj_armor(P.damage, P.damage_type, P.flag, null, P.armour_penetration), projectile_quadrant_impact(P)) //This looks horrible, but trust me, it isn't! Probably!. Armour_quadrant.dm for more info
@@ -169,7 +169,7 @@ Bullet reactions
 	switch(ss_crit_timer)
 		if(0 to 12 SECONDS)
 			if(structure_crit_alert == 0)
-				priority_announce("Uwaga. Integralność superstruktury statku jest w stanie krytycznym. Całkowite załamanie struktury nastąpi za 15 minut.  Statek osiągnie nienaprawialny stan za 10 minut.","Automated announcement ([src])", "null")
+				priority_announce("Uwaga. Integralność superstruktury statku jest w stanie krytycznym. Całkowite załamanie struktury nastąpi za 15 minut.  Statek osiągnie nienaprawialny stan za 10 minut.","Automatyczny komunikat ([src])", "null")
 				relay('nsv13/sound/effects/ship/sscrit/hullcrit_15.ogg', message=null, loop=FALSE, channel=CHANNEL_IMPORTANT_SHIP_ALERT)
 				structure_crit_alert ++
 		if(12 SECONDS to 5 MINUTES)
@@ -179,7 +179,7 @@ Bullet reactions
 		if(5 MINUTES to 5.2 MINUTES)
 			if(structure_crit_alert == 2)
 				stop_relay(channel=CHANNEL_SHIP_FX)
-				priority_announce("Uwaga. Całkowite załamanie struktury nastąpi za 10 minut. Statek osiągnie nienaprawialny stan za 5 minut.","Automated announcement ([src])", "null")
+				priority_announce("Uwaga. Całkowite załamanie struktury nastąpi za 10 minut. Statek osiągnie nienaprawialny stan za 5 minut.","Automatyczny komunikat ([src])", "null")
 				relay('nsv13/sound/effects/ship/sscrit/hullcrit_10.ogg', message=null, loop=FALSE, channel=CHANNEL_IMPORTANT_SHIP_ALERT)
 				structure_crit_alert ++
 		if(5.2 MINUTES to 9 MINUTES)
@@ -189,7 +189,7 @@ Bullet reactions
 		if(9 MINUTES to 9.1 MINUTES)
 			if(structure_crit_alert == 4)
 				stop_relay(channel=CHANNEL_SHIP_FX)
-				priority_announce("ZAGROŻENIE. Statek osiągnie nienaprawialny stan za 1 minutę.","Automated announcement ([src])", "null")
+				priority_announce("ZAGROŻENIE. Statek osiągnie nienaprawialny stan za 1 minutę.","Automatyczny komunikat ([src])", "null")
 				relay('nsv13/sound/effects/ship/sscrit/hullcrit_6.ogg', message=null, loop=FALSE, channel=CHANNEL_IMPORTANT_SHIP_ALERT)
 				structure_crit_alert ++
 		if(9.1 MINUTES to 10 MINUTES)
@@ -200,7 +200,7 @@ Bullet reactions
 			if(structure_crit_alert == 6)
 				structure_crit_no_return = TRUE //Better launch those escape pods pronto
 				stop_relay(channel=CHANNEL_SHIP_FX)
-				priority_announce("ZAGROŻENIE. Możliwość naprawy superstruktury statku przepadła. Statek eksploduje za 5 minut.","Automated announcement ([src])","null")
+				priority_announce("ZAGROŻENIE. Możliwość naprawy superstruktury statku przepadła. Statek eksploduje za 5 minut.","Automatyczny komunikat ([src])","null")
 				relay('nsv13/sound/effects/ship/sscrit/hullcrit_5.ogg', message=null, loop=FALSE, channel=CHANNEL_IMPORTANT_SHIP_ALERT)
 				structure_crit_alert ++
 		if(10.1 MINUTES to 14.5 MINUTES)
@@ -273,7 +273,7 @@ Bullet reactions
 			if(structure_crit_no_return) //Too late.
 				return
 			stop_relay(channel=CHANNEL_SHIP_FX)
-			priority_announce("Integralność superstruktury statku przywrócona do akceptowalnego poziomu. ","Automated announcement ([src])")
+			priority_announce("Integralność superstruktury statku przywrócona do akceptowalnego poziomu. ","Automatyczny komunikat ([src])")
 			structure_crit = FALSE
 
 
@@ -295,7 +295,7 @@ Bullet reactions
 	set_light(4)
 	for(var/mob/M in orange(src, 3))
 		if(isliving(M) && (M.client?.prefs.toggles & PREFTOGGLE_SOUND_AMBIENCE) && M.can_hear_ambience())
-			to_chat(M, "<span class='userdanger'>You hear a loud creak coming from above you. Take cover!</span>")
+			to_chat(M, "<span class='userdanger'>Słyszysz nad sobą głośne skrzypienie. Kryj się!</span>")
 			SEND_SOUND(M, pick('nsv13/sound/ambience/ship_damage/creak5.ogg','nsv13/sound/ambience/ship_damage/creak6.ogg'))
 
 /obj/effect/temp_visual/explosion_telegraph/Destroy()

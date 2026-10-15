@@ -1,5 +1,5 @@
 /datum/antagonist/slaughter
-	name = "Slaughter demon"
+	name = "Demon rzezi"
 	show_name_in_check_antagonists = TRUE
 	var/objective_verb = "Kill"
 	var/datum/mind/summoner
@@ -20,7 +20,7 @@
 		var/datum/objective/assassinate/new_objective = new /datum/objective/assassinate
 		new_objective.owner = owner
 		new_objective.set_target(summoner)
-		new_objective.explanation_text = "[objective_verb] [summoner.name], the one who summoned you."
+		new_objective.explanation_text = "[objective_verb] [summoner.name] - osobę, która cię przywołała."
 		objectives += new_objective
 		log_objective(owner, new_objective.explanation_text)
 	var/datum/objective/new_objective2 = new /datum/objective
@@ -30,5 +30,5 @@
 	log_objective(owner, new_objective2.explanation_text)
 
 /datum/antagonist/slaughter/laughter
-	name = "Laughter demon"
-	objective_verb = "Hug and Tickle"
+	name = "Demon śmiechu"
+	objective_verb = "Przytul i połaskocz"

@@ -28,13 +28,12 @@
 	name = "ERT Commander"
 
 	id = /obj/item/card/id/ert
-	suit = /obj/item/clothing/suit/space/hardsuit/ert
-	suit_store = /obj/item/gun/energy/e_gun
+	suit_store = /obj/item/melee/baton/loaded
+	l_hand = /obj/item/gun/energy/e_gun
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
-	back = /obj/item/storage/backpack/ert
+	back = /obj/item/mod/control/pre_equipped/responsory/commander
 	belt = /obj/item/storage/belt/security/full
 	backpack_contents = list(/obj/item/storage/box/engineer=1,
-		/obj/item/melee/baton/loaded=1,
 		/obj/item/aiModule/core/full/ert=1)
 	l_pocket = /obj/item/switchblade
 	r_pocket = /obj/item/door_remote/omni
@@ -54,7 +53,6 @@
 	glasses = /obj/item/clothing/glasses/thermal/eyepatch
 	mask = /obj/item/clothing/mask/gas/sechailer/swat
 	backpack_contents = list(/obj/item/storage/box/engineer=1,
-		/obj/item/melee/baton/loaded=1,
 		/obj/item/gun/energy/pulse/pistol/loyalpin=1)
 	l_pocket = /obj/item/melee/transforming/energy/sword/saber
 
@@ -62,10 +60,10 @@
 	name = "ERT Security"
 
 	id = /obj/item/card/id/ert/Security
-	suit = /obj/item/clothing/suit/space/hardsuit/ert/sec
-	suit_store = /obj/item/gun/energy/e_gun/stun
+	suit_store = /obj/item/melee/baton/loaded
+	l_hand = /obj/item/gun/energy/e_gun/stun
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
-	back = /obj/item/storage/backpack/ert/security
+	back = /obj/item/mod/control/pre_equipped/responsory/security
 	belt = /obj/item/storage/belt/security/full
 	backpack_contents = list(/obj/item/storage/box/engineer=1,
 		/obj/item/storage/box/handcuffs=1,
@@ -87,7 +85,6 @@
 	mask = /obj/item/clothing/mask/gas/sechailer/swat
 	backpack_contents = list(/obj/item/storage/box/engineer=1,
 		/obj/item/storage/box/handcuffs=1,
-		/obj/item/melee/baton/loaded=1,
 		/obj/item/gun/energy/pulse/carbine/loyalpin=1)
 
 
@@ -95,14 +92,13 @@
 	name = "ERT Medic"
 
 	id = /obj/item/card/id/ert/Medical
-	suit = /obj/item/clothing/suit/space/hardsuit/ert/med
-	suit_store = /obj/item/gun/energy/e_gun
+	suit_store = /obj/item/melee/baton/loaded
+	r_hand = /obj/item/gun/energy/e_gun
 	glasses = /obj/item/clothing/glasses/hud/health
-	back = /obj/item/storage/backpack/ert/medical
+	back = /obj/item/mod/control/pre_equipped/responsory/medic
 	belt = /obj/item/storage/belt/medical
 	l_hand = /obj/item/storage/firstaid/regular
 	backpack_contents = list(/obj/item/storage/box/engineer=1,
-		/obj/item/melee/baton/loaded=1,
 		/obj/item/reagent_containers/hypospray/combat=1,
 		/obj/item/gun/medbeam=1)
 
@@ -121,7 +117,6 @@
 
 	mask = /obj/item/clothing/mask/gas/sechailer/swat
 	backpack_contents = list(/obj/item/storage/box/engineer=1,
-		/obj/item/melee/baton/loaded=1,
 		/obj/item/gun/energy/pulse/pistol/loyalpin=1,
 		/obj/item/reagent_containers/hypospray/combat/nanites=1,
 		/obj/item/gun/medbeam=1)
@@ -130,15 +125,14 @@
 	name = "ERT Engineer"
 
 	id = /obj/item/card/id/ert/Engineer
-	suit = /obj/item/clothing/suit/space/hardsuit/ert/engi
-	suit_store = /obj/item/gun/energy/e_gun
+	suit_store = /obj/item/melee/baton/loaded
+	r_hand = /obj/item/gun/energy/e_gun
 	glasses =  /obj/item/clothing/glasses/meson/engine
-	back = /obj/item/storage/backpack/ert/engineer
+	back = /obj/item/mod/control/pre_equipped/responsory/engineer
 	belt = /obj/item/storage/belt/utility/full
 	l_pocket = /obj/item/rcd_ammo/large
 	l_hand = /obj/item/storage/firstaid/regular
 	backpack_contents = list(/obj/item/storage/box/engineer=1,
-		/obj/item/melee/baton/loaded=1,
 		/obj/item/construction/rcd/loaded=1)
 
 /datum/outfit/ert/engineer/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
@@ -156,7 +150,6 @@
 
 	mask = /obj/item/clothing/mask/gas/sechailer/swat
 	backpack_contents = list(/obj/item/storage/box/engineer=1,
-		/obj/item/melee/baton/loaded=1,
 		/obj/item/gun/energy/pulse/pistol/loyalpin=1,
 		/obj/item/construction/rcd/combat=1)
 
@@ -195,8 +188,9 @@
 
 /datum/outfit/ert/commander/inquisitor
 	name = "Inquisition Commander"
+
+	back = /obj/item/mod/control/pre_equipped/responsory/inquisitory/commander
 	l_hand = /obj/item/nullrod/scythe/talking/chainsword
-	suit = /obj/item/clothing/suit/space/hardsuit/ert/paranormal
 	backpack_contents = list(/obj/item/storage/box/engineer=1,
 		/obj/item/aiModule/core/full/ert=1,
 		/obj/item/door_remote/omni=1)
@@ -204,22 +198,24 @@
 /datum/outfit/ert/security/inquisitor
 	name = "Inquisition Security"
 
-	suit = /obj/item/clothing/suit/space/hardsuit/ert/paranormal/inquisitor
-	suit_store = /obj/item/gun/energy/e_gun/stun
+	back = /obj/item/mod/control/pre_equipped/responsory/inquisitory/security
+
+	suit_store = /obj/item/melee/baton/loaded
+	l_hand = /obj/item/gun/energy/e_gun/stun
 
 	backpack_contents = list(/obj/item/storage/box/engineer=1,
 		/obj/item/storage/box/handcuffs=1,
-		/obj/item/melee/baton/loaded=1,
 		/obj/item/construction/rcd/loaded=1)
 
 /datum/outfit/ert/medic/inquisitor
 	name = "Inquisition Medic"
 
-	suit = /obj/item/clothing/suit/space/hardsuit/ert/paranormal/inquisitor
-	suit_store = /obj/item/gun/energy/e_gun
+	back = /obj/item/mod/control/pre_equipped/responsory/inquisitory/medic
+
+	suit_store = /obj/item/melee/baton/loaded
+	r_hand = /obj/item/gun/energy/e_gun
 
 	backpack_contents = list(/obj/item/storage/box/engineer=1,
-		/obj/item/melee/baton/loaded=1,
 		/obj/item/reagent_containers/hypospray/combat=1,
 		/obj/item/reagent_containers/hypospray/combat/heresypurge=1,
 		/obj/item/gun/medbeam=1)
@@ -237,11 +233,11 @@
 /datum/outfit/ert/chaplain
 	name = "ERT Chaplain"
 
-	suit = /obj/item/clothing/suit/space/hardsuit/ert/paranormal/inquisitor // Chap role always gets this suit
-	suit_store = /obj/item/gun/energy/e_gun
+	suit_store = /obj/item/tank/internals/oxygen
+	l_hand = /obj/item/gun/energy/e_gun
 	id = /obj/item/card/id/ert/chaplain
 	glasses = /obj/item/clothing/glasses/hud/health
-	back = /obj/item/storage/backpack/cultpack
+	back = /obj/item/mod/control/pre_equipped/responsory/chaplain
 	belt = /obj/item/storage/belt/soulstone
 	backpack_contents = list(/obj/item/storage/box/engineer=1,
 		/obj/item/nullrod=1)
@@ -249,8 +245,10 @@
 /datum/outfit/ert/chaplain/inquisitor
 	name = "Inquisition Chaplain"
 
-	suit = /obj/item/clothing/suit/space/hardsuit/ert/paranormal/inquisitor
-	suit_store = /obj/item/gun/energy/e_gun
+	back = /obj/item/mod/control/pre_equipped/responsory/inquisitory/chaplain
+
+	suit_store = /obj/item/tank/internals/oxygen
+	l_hand = /obj/item/gun/energy/e_gun
 
 	belt = /obj/item/storage/belt/soulstone/full/chappy
 	backpack_contents = list(/obj/item/storage/box/engineer=1,
@@ -261,16 +259,15 @@
 	name = "ERT Janitor"
 
 	id = /obj/item/card/id/ert/Janitor
-	suit = /obj/item/clothing/suit/space/hardsuit/ert/jani
 	glasses = /obj/item/clothing/glasses/night
-	back = /obj/item/storage/backpack
+	back = /obj/item/mod/control/pre_equipped/responsory/janitor
+	suit_store = /obj/item/melee/baton/loaded
 	belt = /obj/item/storage/belt/janitor/full
 	r_pocket = /obj/item/grenade/chem_grenade/cleaner
 	l_pocket = /obj/item/grenade/chem_grenade/cleaner
 	l_hand = /obj/item/storage/bag/trash/bluespace
 	backpack_contents = list(/obj/item/storage/box/engineer=1,
 		/obj/item/storage/box/lights/mixed=1,
-		/obj/item/melee/baton/loaded=1,
 		/obj/item/mop/advanced=1,
 		/obj/item/reagent_containers/glass/bucket=1,
 		/obj/item/grenade/clusterbuster/cleaner=1,
@@ -371,7 +368,7 @@
 	backpack_contents = list(
 		/obj/item/stamp/clown = 1,
 		/obj/item/reagent_containers/spray/waterflower/lube = 1,
-		/obj/item/reagent_containers/food/snacks/grown/banana = 1,
+		/obj/item/food/grown/banana = 1,
 		/obj/item/instrument/bikehorn = 1,
 		/obj/item/megaphone/clown = 1,
 		)
@@ -410,7 +407,7 @@
 	backpack_contents = list(
 		/obj/item/stamp/clown = 1,
 		/obj/item/reagent_containers/spray/waterflower/lube = 1,
-		/obj/item/reagent_containers/food/snacks/grown/banana = 1,
+		/obj/item/food/grown/banana = 1,
 		/obj/item/instrument/bikehorn = 1,
 		/obj/item/megaphone/clown = 1,
 		/obj/item/reagent_containers/spray/chemsprayer/janitor/clown = 1,
@@ -420,12 +417,11 @@
 	name = JOB_ERT_DEATHSQUAD
 
 	uniform = /obj/item/clothing/under/rank/centcom/commander
-	suit = /obj/item/clothing/suit/space/hardsuit/deathsquad
 	shoes = /obj/item/clothing/shoes/magboots/commando
 	gloves = /obj/item/clothing/gloves/combat
 	mask = /obj/item/clothing/mask/gas/sechailer/swat
 	glasses = /obj/item/clothing/glasses/hud/toggle/thermal
-	back = /obj/item/storage/backpack/security
+	back = /obj/item/mod/control/pre_equipped/apocryphal
 	l_pocket = /obj/item/melee/transforming/energy/sword/saber
 	r_pocket = /obj/item/shield/energy
 	suit_store = /obj/item/tank/internals/emergency_oxygen/double
@@ -464,7 +460,8 @@
 
 /datum/outfit/death_commando/officer
 	name = "Death Commando Officer"
-	head = /obj/item/clothing/head/helmet/space/beret
+
+	back = /obj/item/mod/control/pre_equipped/apocryphal/officer
 	backpack_contents = list(/obj/item/aiModule/core/full/deathsquad=1,\
 		/obj/item/ammo_box/a357=1,\
 		/obj/item/storage/firstaid/regular=1,\
@@ -472,6 +469,17 @@
 		/obj/item/flashlight=1,\
 		/obj/item/grenade/plastic/x4=1,
 		/obj/item/door_remote/omni=1)
+
+/datum/outfit/death_commando/officer/post_equip(mob/living/carbon/human/squaddie, visualsOnly = FALSE)
+	. = ..()
+	var/obj/item/mod/control/mod = squaddie.back
+	if(!istype(mod))
+		return
+	var/obj/item/mod/module/hat_stabilizer/hat_holder = locate() in mod.modules
+	if(!hat_holder)
+		return
+	hat_holder.attached_hat = new /obj/item/clothing/head/helmet/space/beret(hat_holder)
+	squaddie.update_clothing(mod.slot_flags)
 
 /datum/outfit/death_commando/doomguy
 	name = "The Juggernaut"

@@ -16,7 +16,7 @@
 
 	var/mob/living/carbon/human/H = pick(holder_canadates)
 	new /obj/item/greentext(H.loc)
-	to_chat(H, "<font color='green'>The mythical greentext appear at your feet! Pick it up if you dare...</font>")
+	to_chat(H, "<font color='green'>U twoich stóp pojawia się mityczny greentext! Podnieś go, jeśli się odważysz...</font>")
 
 
 /obj/item/greentext
@@ -39,10 +39,10 @@
 	SSticker.OnRoundend(roundend_callback)
 
 /obj/item/greentext/equipped(mob/living/user as mob)
-	to_chat(user, "<font color='green'>So long as you leave this place with greentext in hand you know you will be happy...</font>")
+	to_chat(user, "<font color='green'>Wiesz, że będziesz szczęśliwy, dopóki opuścisz to miejsce z greentextem w dłoni...</font>")
 	var/list/other_objectives = user.mind.get_all_antag_objectives()
 	if(user.mind && other_objectives.len > 0)
-		to_chat(user, "<span class='warning'>... so long as you still perform your other objectives that is!</span>")
+		to_chat(user, "<span class='warning'>...o ile wykonasz też pozostałe cele!</span>")
 	new_holder = user
 	if(!last_holder)
 		last_holder = user
@@ -55,7 +55,7 @@
 /obj/item/greentext/dropped(mob/living/user as mob)
 	..()
 	if(user in color_altered_mobs)
-		to_chat(user, "<span class='warning'>A sudden wave of failure washes over you...</span>")
+		to_chat(user, "<span class='warning'>Zalewa cię nagła fala porażki...</span>")
 		user.add_atom_colour("#FF0000", ADMIN_COLOUR_PRIORITY) //ya blew it
 	last_holder 	= null
 	new_holder 		= null
@@ -66,7 +66,7 @@
 		return
 
 	if(is_centcom_level(new_holder.z))//you're winner!
-		to_chat(new_holder, "<font color='green'>At last it feels like victory is assured!</font>")
+		to_chat(new_holder, "<font color='green'>Wreszcie czujesz, że zwycięstwo jest pewne!</font>")
 		new_holder.mind.add_antag_datum(/datum/antagonist/greentext)
 		new_holder.log_message("won with greentext!!!", LOG_ATTACK, color="green")
 		color_altered_mobs -= new_holder
@@ -75,7 +75,7 @@
 
 /obj/item/greentext/process()
 	if(last_holder && last_holder != new_holder) //Somehow it was swiped without ever getting dropped
-		to_chat(last_holder, "<span class='warning'>A sudden wave of failure washes over you...</span>")
+		to_chat(last_holder, "<span class='warning'>Zalewa cię nagła fala porażki...</span>")
 		last_holder.add_atom_colour("#FF0000", ADMIN_COLOUR_PRIORITY)
 		last_holder = new_holder //long live the king
 
@@ -88,9 +88,9 @@
 	GLOB.poi_list.Remove(src)
 	for(var/i in GLOB.player_list)
 		var/mob/M = i
-		var/message = "<span class='warning'>A dark temptation has passed from this world"
+		var/message = "<span class='warning'>Mroczna pokusa opuściła ten świat"
 		if(M in color_altered_mobs)
-			message += " and you're finally able to forgive yourself"
+			message += ", a ty wreszcie potrafisz sobie wybaczyć"
 			if(M.color == "#FF0000" || M.color == "#00FF00")
 				M.remove_atom_colour(ADMIN_COLOUR_PRIORITY)
 		message += "...</span>"

@@ -38,7 +38,7 @@
 /area/awaymission/factory/villageafter/house/ritual
 	ambientsounds = list('sound/ambience/antag/ecult_op.ogg','sound/ambience/ambiruin2.ogg','sound/spookoween/insane_low_laugh.ogg')
 	mood_bonus = -2
-	mood_message = "<span class='nicegreen'>It smells like death in here!\n</span>"
+	mood_message = "<span class='nicegreen'>Śmierdzi tu śmiercią!\n</span>"
 
 /area/awaymission/factory/villageafter/house/start
 	name = "The House"
@@ -52,7 +52,7 @@
 /area/awaymission/factory/villageafter/spooky
 	ambience_index = AMBIENCE_SPOOKY
 	mood_bonus = -2
-	mood_message = "<span class='nicegreen'>It smells like death in here!\n</span>"
+	mood_message = "<span class='nicegreen'>Śmierdzi tu śmiercią!\n</span>"
 
 /area/awaymission/factory/factoryafter
 	name = "The Factory"
@@ -64,7 +64,7 @@
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 	ambientsounds = list('sound/spookoween/scary_horn3.ogg','sound/spookoween/scary_horn.ogg','sound/spookoween/scary_horn2.ogg','sound/spookoween/scary_clown_appear.ogg')
 	mood_bonus = 3
-	mood_message = "<span class='nicegreen'>I hate this!\n</span>"
+	mood_message = "<span class='nicegreen'>Nienawidzę tego!\n</span>"
 
 /area/awaymission/factory/factoryafter/down
 	ambientsounds = list('sound/ambience/ambiatm1.ogg','sound/ambience/ambifac.ogg','sound/ambience/ambimaint3.ogg','sound/ambience/ambiodd.ogg','sound/ambience/ambimystery.ogg','sound/ambience/ambimaint.ogg','sound/ambience/ambiruin6.ogg','sound/ambience/ambitech3.ogg')
@@ -87,13 +87,13 @@
 	name = "The Morgue"
 	ambience_index = AMBIENCE_SPOOKY
 	mood_bonus = -2
-	mood_message = "<span class='nicegreen'>It smells like death in here!\n</span>"
+	mood_message = "<span class='nicegreen'>Śmierdzi tu śmiercią!\n</span>"
 
 /area/awaymission/factory/factoryafter/down/leveltwo/ritual
 	name = "a strange place"
 	ambientsounds = list('sound/ambience/antag/ecult_op.ogg','sound/ambience/ambiodd.ogg','sound/ambience/ambireebe2.ogg','sound/spookoween/insane_low_laugh.ogg','sound/spookoween/chain_rattling.ogg')
 	mood_bonus = -2
-	mood_message = "<span class='nicegreen'>It smells like death in here!\n</span>"
+	mood_message = "<span class='nicegreen'>Śmierdzi tu śmiercią!\n</span>"
 
 /area/awaymission/factory/factoryafter/down/levelthree
 	name = "The Factory - lower level"
@@ -103,7 +103,7 @@
 	name = "The reality engine"
 	ambientsounds = list('sound/ambience/singulambience.ogg','sound/ambience/ambisin1.ogg','sound/ambience/ambisin2.ogg','sound/ambience/ambisin3.ogg','sound/ambience/ambisin4.ogg','sound/ambience/antag/assimilation.ogg')
 	mood_bonus = 1
-	mood_message = "<span class='nicegreen'>Uhm... Ok?... I guess...\n</span>"
+	mood_message = "<span class='nicegreen'>Yyy... Okej?... Chyba...\n</span>"
 
 /area/awaymission/factory/factoryduring
 	name = "The old Factory"
@@ -116,7 +116,7 @@
 /area/awaymission/factory/factoryduring/down/levelthree/engine
 	name = "The reality engine"
 	mood_bonus = 1
-	mood_message = "<span class='nicegreen'>Uhm... Ok?... I guess...\n</span>"
+	mood_message = "<span class='nicegreen'>Yyy... Okej?... Chyba...\n</span>"
 	ambientsounds = list('sound/ambience/singulambience.ogg','sound/ambience/ambisin1.ogg','sound/ambience/ambisin2.ogg','sound/ambience/ambisin3.ogg','sound/ambience/ambisin4.ogg','sound/ambience/antag/assimilation.ogg','sound/ambience/ambidanger.ogg','sound/ambience/ambidanger2.ogg')
 
 /area/awaymission/factory/factoryduring/down/leveltwo
@@ -131,7 +131,7 @@
 	name = "The old Morgue"
 	ambience_index = AMBIENCE_SPOOKY
 	mood_bonus = -2
-	mood_message = "<span class='nicegreen'>It smells like death in here!\n</span>"
+	mood_message = "<span class='nicegreen'>Śmierdzi tu śmiercią!\n</span>"
 
 /area/awaymission/factory/factoryduring/down/leveltwo/asylum
 	name = "The sector of mentally disordered"
@@ -155,7 +155,7 @@
 /area/awaymission/factory/villageduring/house/ritual
 	ambientsounds = list('sound/ambience/antag/ecult_op.ogg','sound/ambience/ambiruin2.ogg','sound/spookoween/insane_low_laugh.ogg')
 	mood_bonus = -2
-	mood_message = "<span class='nicegreen'>It smells like death in here!\n</span>"
+	mood_message = "<span class='nicegreen'>Śmierdzi tu śmiercią!\n</span>"
 
 /area/awaymission/factory/villageduring/church
 	name = "The old Church"
@@ -193,10 +193,10 @@
 /obj/item/statuebust/toy/attack_self(mob/user)
 	if (cooldown < world.time)
 		cooldown = world.time + 450
-		user.visible_message("<span class='warning'>[user] activates \the [src].</span>", "<span class='notice'>You activate \the [src]!</span>", "<span class='italics'>You hear a music playing.</span>")
+		user.visible_message("<span class='warning'>[user] aktywuje [src].</span>", "<span class='notice'>Aktywujesz [src]!</span>", "<span class='italics'>Słyszysz grającą muzykę.</span>")
 		playsound(src, 'sound/ambience/ambivapor1.ogg', 50, 0)
 	else
-		to_chat(user, "<span class='alert'>Nothing happens!</span>")
+		to_chat(user, "<span class='alert'>Nic się nie dzieje!</span>")
 
 /obj/item/clothing/glasses/hud/terminator
 	name = "T-80 tactical sunglasses"
@@ -225,7 +225,7 @@
 /mob/living/simple_animal/hostile/factory
 	name = "Guard"
 	desc = "An armed officer. Looks like they prefer to shoot rather than asking questions."
-	speak = list("Stop resisting!","I need backup!","Die, freak!","It's getting away!")
+	speak = list("Przestań się stawiać!","Potrzebuję wsparcia!","Giń, dziwolągu!","Ucieka!")
 	icon = 'icons/mob/simple_human.dmi'
 	icon_state = "nanotrasen"
 	icon_living = "nanotrasen"
@@ -238,9 +238,9 @@
 	do_footstep = TRUE
 	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
 	search_objects = 1
-	a_intent = INTENT_HARM
+	combat_mode = TRUE
 	attack_sound = 'sound/weapons/cqchit2.ogg'
-	attacktext = "punches"
+	attacktext = "uderza"
 	robust_searching = 1
 	melee_damage = 12
 	speed = 0
@@ -253,9 +253,9 @@
 	atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 0, "max_n2" = 0)
 	unsuitable_atmos_damage = 10
 	loot = list(/obj/effect/mob_spawn/human/corpse/nanotrasensoldier)
-	response_help = "pokes"
-	response_disarm = "shoves"
-	response_harm = "hits"
+	response_help = "szturcha"
+	response_disarm = "popycha"
+	response_harm = "uderza"
 	var/cooldown = 0
 
 /mob/living/simple_animal/hostile/factory/death(gibbed)
@@ -271,7 +271,7 @@
 		cooldown = world.time + 300
 		summon_backup_nosound(10)
 		playsound(get_turf(src), chosen_sound, 100, 0, 0)
-		var/list/possible_phrases = list("Anomaly spotted! Send backup!","Intruder over here!","Hostile spotted, get them!")
+		var/list/possible_phrases = list("Wykryto anomalię! Przyślijcie wsparcie!","Intruz tutaj!","Wróg w zasięgu wzroku, brać go!")
 		var/chosen_phrase = pick(possible_phrases)
 		say(chosen_phrase)
 	else
@@ -336,7 +336,7 @@
 	gender = MALE
 	faction = list("nanotrasenprivate")
 	speak_chance = 5
-	speak = list("Come get me!","You can't get away!","Die!")
+	speak = list("No chodź tu!","Nie uciekniesz!","Giń!")
 
 /mob/living/simple_animal/hostile/syndicate/factory/sniper
 	name = "The Warden"
@@ -356,12 +356,12 @@
 	maxHealth = 250
 	melee_damage = 20
 	rapid_melee = 3
-	attacktext = "hits"
+	attacktext = "uderza"
 	attack_sound = 'sound/weapons/genhit3.ogg'
 	projectilesound = 'sound/weapons/sniper_shot.ogg'
 	speak_chance = 2
 	var/cooldown = 0
-	speak = list("You're pretty good.","You can't dodge everything!","Fall down already!")
+	speak = list("Nieźle ci idzie.","Nie unikniesz wszystkiego!","Padnij wreszcie!")
 	loot = list(/obj/item/gun/ballistic/automatic/sniper_rifle,
 					/obj/effect/mob_spawn/human/corpse/sniper,
 					/obj/item/ammo_box/magazine/sniper_rounds,
@@ -375,7 +375,7 @@
 		cooldown = world.time + 150
 		summon_backup_nosound(10)
 		playsound(get_turf(src), 'sound/weapons/sniper_rack.ogg', 80, TRUE)
-		say("I've got you in my scope.")
+		say("Mam cię na celowniku.")
 
 /mob/living/simple_animal/hostile/syndicate/factory/sniper/Shoot()
 	var/allowed_projectile_types = list(/obj/item/ammo_casing/p50, /obj/item/ammo_casing/p50/penetrator)
@@ -392,16 +392,16 @@
 	icon = 'icons/mob/simple_human.dmi'
 	icon_state = "psycho"
 	icon_living = "psycho"
-	attacktext = "bites"
+	attacktext = "gryzie"
 	mob_biotypes = list(MOB_ORGANIC, MOB_HUMANOID)
 	turns_per_move = 0
 	del_on_death = TRUE
-	response_help = "pokes"
-	response_disarm = "touches"
-	response_harm = "hits"
+	response_help = "szturcha"
+	response_disarm = "dotyka"
+	response_harm = "uderza"
 	speak_chance = 5
 	attack_sound = 'sound/weapons/bite.ogg'
-	speak = list("I'm not mad!","What insanity?","Kill")
+	speak = list("Nie jestem szalony!","Jakie szaleństwo?","Zabić")
 	speed = -2
 	maxHealth = 100
 	health = 100
@@ -459,7 +459,7 @@
 /mob/living/simple_animal/hostile/psycho/muzzle
 	icon_state = "psychomuzzle"
 	icon_living = "psychomuzzle"
-	attacktext = "headbutts"
+	attacktext = "uderza głową"
 	attack_sound = null
 	speak_chance = 0
 	melee_damage = 9
@@ -507,7 +507,7 @@
 	move_to_delay = 2
 	melee_damage = 15
 	attack_sound = null
-	attacktext = "headbutts"
+	attacktext = "uderza głową"
 	loot = list(/obj/effect/mob_spawn/human/corpse/psychost/trap)
 	var/cooldown = 0
 	var/static/list/idle_sounds
@@ -547,7 +547,7 @@
 	playsound(get_turf(src), chosen_sound, 70, 0, 0)
 	playsound(get_turf(src), 'sound/effects/snap.ogg', 75, TRUE, 0)
 	playsound(get_turf(src), 'sound/effects/splat.ogg', 90, TRUE, 0)
-	visible_message("<span class='boldwarning'>The device activates!</span>")
+	visible_message("<span class='boldwarning'>Urządzenie się aktywuje!</span>")
 	..()
 
 /mob/living/simple_animal/hostile/syndicate/factory/heavy
@@ -567,7 +567,7 @@
 	speak_chance = 0
 	speak = null
 	aggro_vision_range = 9
-	attacktext = "hits"
+	attacktext = "uderza"
 	attack_sound = 'sound/weapons/genhit3.ogg'
 	retreat_distance = 2
 	melee_queue_distance = 1
@@ -635,7 +635,7 @@
 	attack_sound = null
 	del_on_death = TRUE
 	stat_attack = UNCONSCIOUS
-	a_intent = INTENT_HARM
+	combat_mode = TRUE
 	var/det_time = 30
 	var/active = 0
 	var/cooldown = 0
@@ -658,7 +658,7 @@
 		var/list/possible_sounds = list('sound/creatures/szombiesight.ogg','sound/creatures/szombiesight2.ogg')
 		var/chosen_sound = pick(possible_sounds)
 		playsound(get_turf(src), chosen_sound, 50, TRUE, 0)
-		visible_message("<span class='danger'>[src] primes the grenade!.</span>")
+		visible_message("<span class='danger'>[src] uzbraja granat!</span>")
 		addtimer(CALLBACK(src, PROC_REF(prime)), det_time)
 
 /mob/living/simple_animal/hostile/zombie_suicide/proc/prime()
@@ -745,7 +745,7 @@
 	if (cooldown < world.time)
 		cooldown = world.time + 300
 		playsound(get_turf(src), chosen_sound, 80, TRUE, 0)
-		say("Target!")
+		say("Cel!")
 
 /mob/living/simple_animal/hostile/syndicate/factory/boss/Life()
 	..()
@@ -799,7 +799,7 @@
 
 /obj/item/gun/ballistic/shotgun/lever_action/examine(mob/user)
 	. = ..()
-	. += "<span class='info'>You will instantly reload it after a shot if you have another hand free.</span>"
+	. += "<span class='info'>Jeśli masz wolną drugą rękę, przeładujesz natychmiast po strzale.</span>"
 
 /obj/item/gun/ballistic/shotgun/lever_action/shoot_live_shot(mob/living/user, pointblank = 0, atom/pbtarget = null, message = 1)
 	..()
@@ -810,12 +810,12 @@
 
 /obj/item/gun/ballistic/shotgun/lever_action/rack(mob/user = null)
 	if (user)
-		to_chat(user, "<span class='notice'>You rack the [bolt_wording] of \the [src].</span>")
+		to_chat(user, "<span class='notice'>Przeładowujesz [src].</span>")
 	process_chamber(!chambered, FALSE)
 	playsound(src, rack_sound, rack_sound_volume, rack_sound_vary)
 	update_icon()
 	if(user.get_inactive_held_item() && prob(50) && chambered)
-		user.visible_message("<span class='rose'>With a single move of [user.p_their()] arm, [user] flips \the [src] and loads the chamber with a shell.</span>")
+		user.visible_message("<span class='rose'>Jednym ruchem ręki [user] obraca [src] i ładuje nabój do komory.</span>")
 
 /obj/item/gun/ballistic/automatic/pistol/deagle/sound
 	desc = "A robust .50 AE handgun. This one looks even more robust."

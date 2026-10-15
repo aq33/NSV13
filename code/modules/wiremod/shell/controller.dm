@@ -22,7 +22,7 @@
 
 /obj/item/circuit_component/controller
 	display_name = "Controller"
-	display_desc = "Used to receive inputs from the controller shell. Use the shell in hand to trigger the output signal. Alt-click for the alternate signal. Right click for the extra signal."
+	display_desc = "Służy do odbierania wejść z obudowy kontrolera. Użyj obudowy w dłoni, by wyzwolić sygnał wyjściowy. Alt-klik – sygnał alternatywny. Prawy klik – sygnał dodatkowy."
 
 	/// The three separate buttons that are called in attack_hand on the shell.
 	var/datum/port/output/signal
@@ -72,7 +72,6 @@
 	source.balloon_alert(user, "Clicked the alternate button.")
 	playsound(source, get_sfx("terminal_type"), 25, FALSE)
 	alt.set_output(COMPONENT_SIGNAL)
-	return COMPONENT_INTERCEPT_ALT
 
 /obj/item/circuit_component/controller/proc/send_right_signal(atom/source, mob/user)
 	SIGNAL_HANDLER

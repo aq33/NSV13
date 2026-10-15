@@ -12,10 +12,10 @@
 	health = 4
 	melee_damage = 3
 	obj_damage = 0
-	attacktext = "bites"
-	response_help  = "pets"
-	response_disarm = "pokes"
-	response_harm   = "squishes"
+	attacktext = "gryzie"
+	response_help  = "głaszcze"
+	response_disarm = "szturcha"
+	response_harm   = "rozgniata"
 	density = FALSE
 	ventcrawler = VENTCRAWLER_ALWAYS
 	faction = list("hostile")
@@ -27,7 +27,7 @@
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	maxbodytemp = 360 //really, *really* dont like heat
-	deathmessage = "curls up and stops moving."
+	deathmessage = "zwija się w kłębek i przestaje się ruszać."
 	var/patience = 30
 	var/growthstage = 1 //1-3.
 	var/food = 0
@@ -108,7 +108,7 @@
 		stop_automated_movement = 0
 		hibernationcounter = 0
 		if(target)
-			visible_message("<span class='warning'>[src] uncurls and starts moving towards [target].</span>")
+			visible_message("<span class='warning'>[src] rozwija się i zaczyna sunąć w stronę [target].</span>")
 		else
 			visible_message("<span class='warning'>[src] uncurls.</span>")
 		switch(growthstage)
@@ -125,7 +125,7 @@
 				icon_living = "grub_3"
 				icon_dead = "grub_3_dead"
 	else
-		visible_message("<span class='warning'>[src] curls up and stops moving.</span>") //fake death
+		visible_message("<span class='warning'>[src] zwija się w kłębek i przestaje się ruszać.</span>") //fake death
 		icon_state = icon_dead
 		icon_living = icon_dead
 		hibernating = TRUE
@@ -177,7 +177,7 @@
 
 /mob/living/simple_animal/hostile/redgrub/harvest(mob/living/user) //used for extra objects etc. in butchering
 	for(var/i in 1 to growthstage)
-		var/obj/item/reagent_containers/food/snacks/meat/rawcutlet/grub/meat = new(src.loc)
+		var/obj/item/food/meat/rawcutlet/grub/meat = new(src.loc)
 		for(var/datum/disease/advance/A in grubdisease)
 			if(A.spread_flags & DISEASE_SPREAD_FALTERED)
 				grubdisease -= A
@@ -188,7 +188,7 @@
 
 /mob/living/simple_animal/hostile/redgrub/attack_slime(mob/living/simple_animal/slime/M)//this is pretty unlikely to happen in game.
 	if(!SSticker.HasRoundStarted()) //since i need to skip simple_animal/attack slime
-		to_chat(M, "You cannot attack people before the game has started.")
+		to_chat(M, "Nie możesz atakować ludzi przed rozpoczęciem gry.")
 		return
 
 	if(M.buckled)
@@ -197,7 +197,7 @@
 		return // can't attack while eating!
 
 	if(HAS_TRAIT(M, TRAIT_PACIFISM))
-		to_chat(M, "<span class='notice'>You don't want to hurt anyone!</span>")
+		to_chat(M, "<span class='notice'>Nie chcesz nikogo skrzywdzić!</span>")
 		return FALSE
 	var/datum/status_effect/slimegrub/status = M.has_status_effect(STATUS_EFFECT_SLIMEGRUB)
 	if(status)
@@ -207,7 +207,7 @@
 	else
 		var/datum/status_effect/slimegrub/newstatus = M.apply_status_effect(STATUS_EFFECT_SLIMEGRUB)
 		newstatus.diseases += grubdisease
-	M.visible_message("<span class='warning'>[M] swallows [src] whole!</span>", "<span class='userdanger'>[src] burrows into your cytoplasm when you bite it!</span>")
+	M.visible_message("<span class='warning'>[M] połyka [src] w całości!</span>", "<span class='userdanger'>[src] wwierca się w twoją cytoplazmę, gdy go gryziesz!</span>")
 	qdel(src)
 
 /mob/living/simple_animal/hostile/redgrub/environment_temperature_is_safe(datum/gas_mixture/environment)
@@ -224,14 +224,14 @@
 		var/mob/living/carbon/human/M = target
 		food += 10
 		if(growthstage >= 3)
-			M.visible_message("<span class='danger'>the [src] begins burrowing into [M]!</span>", \
-						"<span class='userdanger'>[src] is trying to burrow into your cytoplasm!</span>")
+			M.visible_message("<span class='danger'>[src] zaczyna wwiercać się w [M]!</span>", \
+						"<span class='userdanger'>[src] próbuje wwiercić się w twoją cytoplazmę!</span>")
 			if(M.can_inject(src) && do_mob(src, M, 15))
 				for(var/datum/disease/D in grubdisease)
 					if(D.spread_flags & DISEASE_SPREAD_FALTERED)
 						continue
 					M.ForceContractDisease(D)
-				to_chat(M, "<span class ='userdanger'>[src] burrows into your cytoplasm!</span>")
+				to_chat(M, "<span class ='userdanger'>[src] wwierca się w twoją cytoplazmę!</span>")
 				playsound(src.loc, 'sound/effects/blobattack.ogg', 60, TRUE)
 				death()
 				qdel(src)

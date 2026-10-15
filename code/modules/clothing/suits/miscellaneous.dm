@@ -241,19 +241,19 @@
 
 /obj/item/clothing/suit/poncho
 	name = "poncho"
-	desc = "Your classic, non-racist poncho."
+	desc = "Klasyczne, wcale nie rasistowskie ponczo."
 	icon_state = "classicponcho"
 	item_state = "classicponcho"
 
 /obj/item/clothing/suit/poncho/green
 	name = "green poncho"
-	desc = "Your classic, non-racist poncho. This one is green."
+	desc = "Klasyczne, wcale nie rasistowskie ponczo. To jest zielone."
 	icon_state = "greenponcho"
 	item_state = "greenponcho"
 
 /obj/item/clothing/suit/poncho/red
 	name = "red poncho"
-	desc = "Your classic, non-racist poncho. This one is red."
+	desc = "Klasyczne, wcale nie rasistowskie ponczo. To jest czerwone."
 	icon_state = "redponcho"
 	item_state = "redponcho"
 
@@ -402,7 +402,7 @@
 
 /obj/item/clothing/suit/hooded/renault_costume
 	name = "renault costume"
-	desc = "The cutest pair of pajamas you've ever seen."
+	desc = "Najsłodsza piżama, jaką kiedykolwiek widziałeś."
 	icon_state = "renault_suit"
 	hoodtype = /obj/item/clothing/head/hooded/renault_hood
 
@@ -414,7 +414,7 @@
 
 /obj/item/clothing/suit/retro_jacket
 	name = "retro jacket"
-	desc = "Do you like hurting other people?"
+	desc = "Lubisz krzywdzić innych ludzi?"
 	icon_state = "retro_jacket"
 
 /*
@@ -459,7 +459,7 @@
 
 /obj/item/clothing/suit/jacket
 	name = "bomber jacket"
-	desc = "Aviators not included."
+	desc = "Okulary pilotki nie wchodzą w zestaw."
 	icon_state = "bomberjacket"
 	item_state = "brownjsuit"
 	allowed = list(/obj/item/flashlight, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter, /obj/item/radio)
@@ -469,7 +469,7 @@
 
 /obj/item/clothing/suit/jacket/leather
 	name = "leather jacket"
-	desc = "Pompadour not included."
+	desc = "Pompadour nie wchodzi w zestaw."
 	icon_state = "leatherjacket"
 	item_state = "hostrench"
 	resistance_flags = NONE
@@ -478,7 +478,7 @@
 
 /obj/item/clothing/suit/jacket/leather/overcoat
 	name = "leather overcoat"
-	desc = "That's a damn fine coat."
+	desc = "Cholernie dobry płaszcz."
 	icon_state = "leathercoat"
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
 	cold_protection = CHEST|GROIN|ARMS|LEGS
@@ -501,32 +501,32 @@
 
 /obj/item/clothing/suit/jacket/miljacket
 	name = "military jacket"
-	desc = "A canvas jacket styled after classical American military garb. Feels sturdy, yet comfortable."
+	desc = "Płócienna kurtka w stylu klasycznego amerykańskiego munduru. Solidna, a zarazem wygodna."
 	icon_state = "militaryjacket"
 	item_state = "militaryjacket"
 	allowed = list(/obj/item/flashlight, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter, /obj/item/gun/ballistic/automatic/pistol, /obj/item/gun/ballistic/revolver, /obj/item/radio)
 
 /obj/item/clothing/suit/jacket/letterman
 	name = "letterman jacket"
-	desc = "A classic brown letterman jacket. Looks pretty hot and heavy."
+	desc = "Klasyczna brązowa kurtka uczelniana. Wygląda na gorącą i ciężką."
 	icon_state = "letterman"
 	item_state = "letterman"
 
 /obj/item/clothing/suit/jacket/letterman_red
 	name = "red letterman jacket"
-	desc = "A letterman jacket in a sick red color. Radical."
+	desc = "Kurtka uczelniana w odlotowym czerwonym kolorze. Radykalnie."
 	icon_state = "letterman_red"
 	item_state = "letterman_red"
 
 /obj/item/clothing/suit/jacket/letterman_syndie
 	name = "blood-red letterman jacket"
-	desc = "Oddly, this jacket seems to have a large S on the back..."
+	desc = "Dziwne, ta kurtka ma chyba na plecach duże S..."
 	icon_state = "letterman_s"
 	item_state = "letterman_s"
 
 /obj/item/clothing/suit/jacket/letterman_nanotrasen
 	name = "blue letterman jacket"
-	desc = "A blue letterman jacket with a proud Nanotrasen N on the back. The tag says that it was made in Space China."
+	desc = "Niebieska kurtka uczelniana z dumnym N Nanotrasen na plecach. Metka mówi, że uszyto ją w Kosmicznych Chinach."
 	icon_state = "letterman_n"
 	item_state = "letterman_n"
 
@@ -577,7 +577,7 @@
 	throw_range = 5
 	w_class = WEIGHT_CLASS_SMALL
 	body_parts_covered = CHEST|GROIN
-	attack_verb = list("warned", "cautioned", "smashed")
+	attack_verb = list("ostrzega", "upomina", "rozbija")
 	armor = list("melee" = 5, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0, "stamina" = 0)
 
 
@@ -586,7 +586,7 @@
 
 /obj/item/clothing/suit/hooded/wintercoat
 	name = "winter coat"
-	desc = "A heavy jacket made from 'synthetic' animal furs."
+	desc = "Ciężka kurtka z „syntetycznych” zwierzęcych futer."
 	icon_state = "coatwinter"
 	item_state = "coatwinter"
 	body_parts_covered = CHEST|GROIN|ARMS
@@ -708,7 +708,7 @@
 
 /obj/item/clothing/suit/hooded/wintercoat/old
 	name = "nostalgic winter coat"
-	desc = "A well-worn heavy jacket made from 'synthetic' animal furs."
+	desc = "Mocno znoszona ciężka kurtka z „syntetycznych” zwierzęcych futer."
 	icon_state = "old_coatwinter"
 
 /obj/item/clothing/head/hooded/winterhood/old
@@ -811,7 +811,7 @@
 
 /obj/item/clothing/suit/toggle/softshell
 	name = "softshell jacket"
-	desc = "A Nanotrasen-branded softshell jacket."
+	desc = "Kurtka softshell z logo Nanotrasen."
 	icon_state = "softshell"
 	item_state = "softshell"
 	allowed = list(/obj/item/flashlight, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman, /obj/item/t_scanner, /obj/item/radio)

@@ -157,10 +157,10 @@
 /turf/open/lava/plasma/attackby(obj/item/I, mob/user, params)
 	var/obj/item/reagent_containers/glass/C = I
 	if(C.reagents.total_volume >= C.volume)
-		to_chat(user, "<span class='danger'>[C] is full.</span>")
+		to_chat(user, "<span class='danger'>[C] jest pełny.</span>")
 		return
 	C.reagents.add_reagent(/datum/reagent/toxin/plasma, rand(5, 10))
-	user.visible_message("[user] scoops some plasma from the [src] with \the [C].", "<span class='notice'>You scoop out some plasma from the [src] using \the [C].</span>")
+	user.visible_message("[user] nabiera trochę plazmy z [src] za pomocą [C].", "<span class='notice'>Nabierasz trochę plazmy z [src] za pomocą [C].</span>")
 
 /turf/open/lava/plasma/burn_stuff(AM)
 	. = 0
@@ -226,13 +226,13 @@
 							NB.limb_id = "plasmaman"//change the species_id of the limb to that of a plasmaman
 							NB.no_update = TRUE
 							NB.change_bodypart_status()
-							PP.visible_message("<span class='warning'>[L] screams in pain as [L.p_their()] [NB] melts down to the bone!</span>", \
-											  "<span class='userdanger'>You scream out in pain as your [NB] melts down to the bone, leaving an eerie plasma-like glow where flesh used to be!</span>")
+							PP.visible_message("<span class='warning'>[L] krzyczy z bólu, gdy [NB] topi mu się aż do kości!</span>", \
+											  "<span class='userdanger'>Krzyczysz z bólu, gdy [NB] topi ci się aż do kości, zostawiając niesamowitą, plazmową poświatę tam, gdzie było ciało!</span>")
 						if(!plasma_parts.len && !robo_parts.len) //a person with no potential organic limbs left AND no robotic limbs, time to turn them into a plasmaman
 							PP.IgniteMob()
 							PP.set_species(/datum/species/plasmaman)
-							PP.visible_message("<span class='warning'>[L] bursts into a brilliant purple flame as [L.p_their()] entire body is that of a skeleton!</span>", \
-											  "<span class='userdanger'>Your senses numb as all of your remaining flesh is turned into a purple slurry, sloshing off your body and leaving only your bones to show in a vibrant purple!</span>")
+							PP.visible_message("<span class='warning'>[L] wybucha jaskrawym fioletowym płomieniem, a z całego jego ciała zostaje szkielet!</span>", \
+											  "<span class='userdanger'>Twoje zmysły drętwieją, gdy całe pozostałe ciało zmienia się w fioletową breję, spływa z ciebie i odsłania jedynie twoje kości, jaskrawo fioletowe!</span>")
 
 
 /obj/vehicle/ridden/lavaboat/plasma
@@ -247,84 +247,84 @@
 
 /obj/item/paper/crumpled/ruins/snowdin/foreshadowing
 	name = "scribbled note"
-	default_raw_text = {"Something's gone VERY wrong here. Jouslen has been mumbling about some weird shit in his cabin during the night and he seems always tired when we're working. I tried to confront him about it and he blew up on me,
-	 telling me to mind my own business. I reported him to the officer, said he'd look into it. We only got another 2 months here before we're pulled for another assignment, so this shit can't go any quicker..."}
+	default_raw_text = {"Coś tu poszło BARDZO nie tak. Jouslen w nocy mamrocze w swojej kajucie jakieś dziwne rzeczy i przy pracy zawsze wygląda na zmęczonego. Próbowałem z nim o tym pogadać, a on na mnie wybuchnął,
+	 że mam pilnować własnego nosa. Zgłosiłem go oficerowi, powiedział, że się tym zajmie. Zostały nam tu jeszcze tylko 2 miesiące, zanim przeniosą nas do innego zadania, więc szybciej to nie zleci..."}
 
 /obj/item/paper/crumpled/ruins/snowdin/misc1
 	name = "Mission Prologue"
-	default_raw_text = {"Holy shit, what a rush! Those Nanotrasen bastards didn't even know what hit 'em! All five of us dropped in right on the captain, didn't even have time to yell! We were in and out with that disk in mere minutes!
-	Crew didn't even know what was happening till the delta alert went down and by then we were already gone. We got a case to drink on the way home to celebrate, fuckin' job well done!"}
+	default_raw_text = {"O kurwa, co za jazda! Te gnoje z Nanotrasen nawet nie wiedziały, co w nie trafiło! Cała piątka zrzuciła się prosto na kapitana, nawet nie zdążył krzyknąć! Weszliśmy i wyszliśmy z dyskiem w parę minut!
+	Załoga nawet nie wiedziała, co się dzieje, dopóki nie odpalił alarm delta, a wtedy już nas nie było. Mamy skrzynkę do picia na drogę powrotną, żeby uczcić, kurewsko dobra robota!"}
 
 /obj/item/paper/crumpled/ruins/snowdin/dontdeadopeninside
 	name = "scribbled note"
-	default_raw_text = {"If you're reading this: GET OUT! The mining go on here has unearthed something that was once-trapped by the layers of ice on this hell-hole. The overseer and Jouslen have gone missing. The officer is
-	 keeping the rest of us on lockdown and I swear to god I keep hearing strange noises outside the walls at night. The gateway link has gone dead and without a supply of resources from Central, we're left
-	 for dead here. We haven't heard anything back from the mining squad either, so I can only assume whatever the fuck they unearthed got them first before coming for us. I don't want to die here..."}
+	default_raw_text = {"Jeśli to czytasz: UCIEKAJ! Wydobycie tutaj odkopało coś, co kiedyś było uwięzione w warstwach lodu tej piekielnej dziury. Nadzorca i Jouslen zaginęli. Oficer
+	 trzyma resztę z nas pod blokadą i przysięgam na Boga, że nocą ciągle słyszę dziwne dźwięki za ścianami. Połączenie przez bramę padło i bez dostaw z Centrali zostaliśmy
+	 tu na śmierć. Od ekipy górniczej też nie mamy żadnych wieści, więc mogę tylko zakładać, że cokolwiek, kurwa, odkopali, dopadło najpierw ich, zanim przyjdzie po nas. Nie chcę tu umierać..."}
 
 /obj/item/paper/fluff/awaymissions/snowdin/saw_usage
 	name = "SAW Usage"
-	default_raw_text = "YOU SEEN IVAN, WHEN YOU HOLD SAAW LIKE PEESTOL, YOU STRONGER THAN RECOIL FOR FEAR OF HITTING FACE!"
+	default_raw_text = "WIDZIAŁEŚ IVAN, JAK TRZYMASZ PIŁA JAK PISTOLET, JESTEŚ SILNIEJSZY OD ODRZUTU ZE STRACHU, ŻE DOSTANIESZ W TWARZ!"
 
 /obj/item/paper/fluff/awaymissions/snowdin/research_feed
 	name = "Research Feed"
-	default_raw_text = {"<i>A page full of graphs and other detailed information on the seismic activity of the surrounding area.</i>"}
+	default_raw_text = {"<i>Kartka pełna wykresów i innych szczegółowych informacji o aktywności sejsmicznej okolicy.</i>"}
 
 //profile of each of the old crewmembers for the outpost
 
 /obj/item/paper/fluff/awaymissions/snowdin/profile/overseer
 	name = "Personnel Record AOP#01"
-	default_raw_text = {"<b><center>Personnel Log</b></center><br><br><b>Name:</b>Caleb Reed<br><b>Age:</b>38<br><b>Gender:</b>Male<br><b>On-Site Profession:</b>Outpost Overseer<br><br><center><b>Information</b></center><br><center>Caleb Reed lead several expeditions
-	 among uncharted planets in search of plasma for Nanotrasen, scouring from hot savanas to freezing arctics. Track record is fairly clean with only incidient including the loss of two researchers during the
-	 expedition of <b>_______</b>, where mis-used of explosive ordinance for tunneling causes a cave-in."}
+	default_raw_text = {"<b><center>Akta personelu</b></center><br><br><b>Imię i nazwisko:</b>Caleb Reed<br><b>Wiek:</b>38<br><b>Płeć:</b>mężczyzna<br><b>Stanowisko na miejscu:</b>nadzorca placówki<br><br><center><b>Informacje</b></center><br><center>Caleb Reed prowadził kilka ekspedycji
+	 na niezbadane planety w poszukiwaniu plazmy dla Nanotrasen, przeczesując wszystko od gorących sawann po mroźną Arktykę. Przebieg służby w miarę czysty, z jedynym incydentem: utratą dwóch badaczy podczas
+	 ekspedycji <b>_______</b>, gdy niewłaściwe użycie materiałów wybuchowych do drążenia tuneli spowodowało zawał."}
 
 /obj/item/paper/fluff/awaymissions/snowdin/profile/sec1
 	name = "Personnel Record AOP#02"
-	default_raw_text = {"<b><center>Personnel Log</b></center><br><br><b>Name:</b>James Reed<br><b>Age:</b>43<br><b>Gender:</b>Male<br><b>On-Site Profession:</b>Outpost Security<br><br><center><b>Information</b></center><br><center>James Reed has been a part
-	 of Nanotrasen's security force for over 20 years, first joining in 22XX. A clean record and unwavering loyalty to the corperation through numerous deployments to various sites makes him a valuable asset to Natotrasen
-	  when it comes to keeping the peace while prioritizing Nanotrasen privacy matters. "}
+	default_raw_text = {"<b><center>Akta personelu</b></center><br><br><b>Imię i nazwisko:</b>James Reed<br><b>Wiek:</b>43<br><b>Płeć:</b>mężczyzna<br><b>Stanowisko na miejscu:</b>ochrona placówki<br><br><center><b>Informacje</b></center><br><center>James Reed należy
+	 do sił ochrony Nanotrasen od ponad 20 lat, wstąpił w 22XX roku. Czysta kartoteka i niezachwiana lojalność wobec korporacji podczas licznych przydziałów w różnych miejscach czynią go cennym nabytkiem Nanotrasen,
+	  gdy trzeba utrzymać spokój, stawiając na pierwszym miejscu prywatność Nanotrasen."}
 
 /obj/item/paper/fluff/awaymissions/snowdin/profile/hydro1
 	name = "Personnel Record AOP#03"
-	default_raw_text = {"<b><center>Personnel Log</b></center><br><br><b>Name:</b>Katherine Esterdeen<br><b>Age:</b>27<br><b>Gender:</b>Female<br><b>On-Site Profession:</b>Outpost Botanist<br><br><center><b>Information</b></center><br><center>Katherine Esterdeen is a recent
-	 graduate with a major in Botany and a PH.D in Ecology. Having a clean record and eager to work, Esterdeen seems to be the right fit for maintaining plants in the middle of nowhere."}
+	default_raw_text = {"<b><center>Akta personelu</b></center><br><br><b>Imię i nazwisko:</b>Katherine Esterdeen<br><b>Wiek:</b>27<br><b>Płeć:</b>kobieta<br><b>Stanowisko na miejscu:</b>botaniczka placówki<br><br><center><b>Informacje</b></center><br><center>Katherine Esterdeen to świeża
+	 absolwentka botaniki z doktoratem z ekologii. Z czystą kartoteką i chęcią do pracy wydaje się idealna do utrzymywania roślin pośrodku niczego."}
 
 /obj/item/paper/fluff/awaymissions/snowdin/profile/engi1
 	name = "Personnel Record AOP#04"
-	default_raw_text = {"<b><center>Personnel Log</b></center><br><br><b>Name:</b>Rachel Migro<br><b>Age:</b>35<br><b>Gender:</b>Female<br><b>On-Site Profession:</b>Outpost Engineer<br><br><center><b>Information</b></center><br><center>Recently certified to be a full-time Journeyman, Rachel has
-		been assigned various construction projects in the past 5 years. Competent and has no past infractions, should be of little concern."}
+	default_raw_text = {"<b><center>Akta personelu</b></center><br><br><b>Imię i nazwisko:</b>Rachel Migro<br><b>Wiek:</b>35<br><b>Płeć:</b>kobieta<br><b>Stanowisko na miejscu:</b>inżynierka placówki<br><br><center><b>Informacje</b></center><br><center>Niedawno uzyskała certyfikat czeladnika na pełen etat; w ciągu ostatnich 5 lat Rachel
+		przydzielano różne projekty budowlane. Kompetentna, bez wcześniejszych wykroczeń, nie powinna sprawiać kłopotów."}
 
 /obj/item/paper/fluff/awaymissions/snowdin/profile/research1
 	name = "Personnel Record AOP#05"
-	default_raw_text = {"<b><center>Personnel Log</b></center><br><br><b>Name:</b>Jacob Ullman<br><b>Age:</b>27<br><b>Gender:</b>Male<br><b>On-Site Profession:</b>Outpost Researcher<br><br><center><b>Information</b></center><br><center>"}
+	default_raw_text = {"<b><center>Akta personelu</b></center><br><br><b>Imię i nazwisko:</b>Jacob Ullman<br><b>Wiek:</b>27<br><b>Płeć:</b>mężczyzna<br><b>Stanowisko na miejscu:</b>badacz placówki<br><br><center><b>Informacje</b></center><br><center>"}
 
 /obj/item/paper/fluff/awaymissions/snowdin/profile/research2
 	name = "Personnel Record AOP#06"
-	default_raw_text = {"<b><center>Personnel Log</b></center><br><br><b>Name:</b>Elizabeth Queef<br><b>Age:</b>28<br><b>Gender:</b>Female<br><b>On-Site Profession:</b>Outpost Researcher<br><br><center><b>Information</b></center><br><center>"}
+	default_raw_text = {"<b><center>Akta personelu</b></center><br><br><b>Imię i nazwisko:</b>Elizabeth Queef<br><b>Wiek:</b>28<br><b>Płeć:</b>kobieta<br><b>Stanowisko na miejscu:</b>badaczka placówki<br><br><center><b>Informacje</b></center><br><center>"}
 
 /obj/item/paper/fluff/awaymissions/snowdin/profile/research3
 	name = "Personnel Record AOP#07"
-	default_raw_text = {"<b><center>Personnel Log</b></center><br><br><b>Name:</b>Jouslen McGee<br><b>Age:</b>38<br><b>Gender:</b>Male<br><b>On-Site Profession:</b>Outpost Researcher<br><br><center><b>Information</b></center><br><center>"}
+	default_raw_text = {"<b><center>Akta personelu</b></center><br><br><b>Imię i nazwisko:</b>Jouslen McGee<br><b>Wiek:</b>38<br><b>Płeć:</b>mężczyzna<br><b>Stanowisko na miejscu:</b>badacz placówki<br><br><center><b>Informacje</b></center><br><center>"}
 
 /obj/item/paper/fluff/awaymissions/snowdin/secnotice
 	name = "Security Notice"
-	default_raw_text = {"YOu have been assigned to this Arctic Post with intention of protecting Nanotrasen assets and ensuring vital information is kept secure while the stationed crew obeys protocol. The picked
-		staff for this post have been pre-screened with no prior incidients on record, but incase of an issue you have been given a single holding cell and instructions to contact Central to terminate the
-		offending crewmember."}
+	default_raw_text = {"Przydzielono cię do tej arktycznej placówki, byś chronił mienie Nanotrasen i dbał o bezpieczeństwo kluczowych informacji, podczas gdy stacjonująca tu załoga przestrzega protokołu. Wybrany
+		personel placówki przeszedł wstępną weryfikację i nie ma na koncie żadnych incydentów, ale na wypadek problemów dostajesz jedną celę i instrukcję skontaktowania się z Centralą w celu zlikwidowania
+		winnego członka załogi."}
 
 /obj/item/paper/fluff/awaymissions/snowdin/mining
 	name = "Assignment Notice"
-	default_raw_text = {"This cold-ass planet is the new-age equivalent of striking gold. Huge deposits of plasma and literal streams of plasma run through the caverns under all this ice and we're here to mine it all.\
-	 Nanotrasen pays by the pound, so get minin' boys!"}
+	default_raw_text = {"Ta zimna jak cholera planeta to współczesny odpowiednik trafienia na żyłę złota. Ogromne złoża plazmy i dosłownie strumienie plazmy płyną jaskiniami pod całym tym lodem, a my jesteśmy tu, żeby to wszystko wydobyć.\
+	 Nanotrasen płaci od kilograma, więc do roboty, chłopaki!"}
 
 /obj/item/paper/crumpled/ruins/snowdin/lootstructures
 	name = "scribbled note"
-	default_raw_text = {"There's some ruins scattered along the cavern, their walls seem to be made of some sort of super-condensed mixture of ice and snow. We've already barricaded up the ones we've found so far,
-	 since we keep hearing some strange noises from inside. Besides, what sort of fool would wrecklessly run into ancient ruins full of monsters for some old gear, anyway?"}
+	default_raw_text = {"W jaskini są porozrzucane jakieś ruiny, ich ściany wyglądają na zrobione z jakiejś supersprasowanej mieszanki lodu i śniegu. Te, które dotąd znaleźliśmy, już zabarykadowaliśmy,
+	 bo ciągle słyszymy ze środka dziwne odgłosy. Zresztą jaki głupiec lekkomyślnie wbiegałby do starożytnych ruin pełnych potworów dla jakiegoś starego sprzętu?"}
 
 /obj/item/paper/crumpled/ruins/snowdin/shovel
 	name = "shoveling duties"
-	default_raw_text = {"Snow piles up bad here all-year round, even worse during the winter months. Keeping a constant rotation of shoveling that shit out of the way of the airlocks and keeping the paths decently clear
-	is a good step towards not getting stuck walking through knee-deep snow."}
+	default_raw_text = {"Śnieg zasypuje tu wszystko przez cały rok, a zimą jeszcze gorzej. Stała zmiana przy odśnieżaniu tego gówna sprzed śluz i utrzymywaniu ścieżek w miarę przejezdnych
+	to dobry sposób, żeby nie utknąć w śniegu po kolana."}
 
 //holo disk recording//--
 
@@ -334,30 +334,30 @@
 	preset_record_text = {"
 	NAME Jacob Ullman
 	DELAY 10
-	SAY Have you gotten anything interesting on the scanners yet? The deep-drilling from the plasma is making it difficult to get anything that isn't useless noise.
+	SAY Złapałeś już coś ciekawego na skanerach? Przez głębokie wiercenia za plazmą ciężko wyłapać cokolwiek poza bezużytecznym szumem.
 	DELAY 45
 	NAME Elizabeth Queef
 	DELAY 10
-	SAY Nah. I've been feeding the AI the results for the past 2 weeks to sift through the garbage and haven't seen anything out of the usual, at least whatever Nanotrasen is looking for.
+	SAY Nie. Od 2 tygodni karmię SI wynikami, żeby przesiała te śmieci, i nie widziałem nic niezwykłego, a przynajmniej niczego, czego szuka Nanotrasen.
 	DELAY 45
 	NAME Jacob Ullman
 	DELAY 10
-	SAY Figured as much. Dunno what Nanotrasen expects to find out here past the plasma. At least we're getting paid to fuck around for a couple months while the AI does the hard work.
+	SAY Tak myślałem. Nie wiem, co Nanotrasen spodziewa się tu znaleźć poza plazmą. Przynajmniej płacą nam za obijanie się przez parę miesięcy, kiedy SI odwala ciężką robotę.
 	DELAY 45
 	NAME Elizabeth Queef
 	DELAY 10
 	SAY . . .
 	DELAY 10
-	SAY ..We're getting paid?
+	SAY ...Płacą nam?
 	DELAY 20
 	NAME Jacob Ullman
 	DELAY 10
-	SAY ..We are getting paid, aren't we..?
+	SAY ...Przecież nam płacą, prawda...?
 	DELAY 15
 	PRESET /datum/preset_holoimage/captain
 	NAME Caleb Reed
 	DELAY 10
-	SAY Paid in experience! That's the Nanotrasen Motto!
+	SAY Płacą doświadczeniem! To motto Nanotrasen!
 	DELAY 30;"}
 
 /obj/item/disk/holodisk/snowdin/welcometodie
@@ -366,13 +366,13 @@
 	preset_record_text = {"
 	NAME Friendly AI Unit
 	DELAY 10
-	SAY Hello! Welcome to the Arctic Post *338-3**$$!
+	SAY Dzień dobry! Witamy na Placówce Arktycznej *338-3**$$!
 	DELAY 30
-	SAY You have been selected out of $)@! potential candidates for this post!
+	SAY Wybrano cię spośród $)@! potencjalnych kandydatów na to stanowisko!
 	DELAY 30
-	SAY Nanotrasen is pleased to have you working in one of the many top-of-the-line research posts within the $%@!! sector!
+	SAY Nanotrasen z radością wita cię w jednej z wielu najnowocześniejszych placówek badawczych w sektorze $%@!!!
 	DELAY 30
-	SAY Further job assignment information can be found at your local security post! Have a secure day!
+	SAY Dalsze informacje o przydziale znajdziesz w lokalnym posterunku ochrony! Bezpiecznego dnia!
 	DELAY 20;"}
 
 /obj/item/disk/holodisk/snowdin/overrun
@@ -381,12 +381,12 @@
 	preset_record_text = {"
 	NAME James Reed
 	DELAY 10
-	SAY Jesus christ, what is that thing??
+	SAY Jezu Chryste, co to jest??
 	DELAY 30
 	PRESET /datum/preset_holoimage/researcher
 	NAME Elizabeth Queef
 	DELAY 10
-	SAY Hell if I know! Just shoot it already!
+	SAY A skąd mam wiedzieć! Strzelaj w końcu!
 	DELAY 30
 	PRESET /datum/preset_holoimage/nanotrasenprivatesecurity
 	NAME James Reed
@@ -399,7 +399,7 @@
 	DELAY 10
 	SOUND sound/weapons/laser.ogg
 	DELAY 15
-	SAY Just go! I'll keep it busy, there's an outpost south of here with an elevator to the surface.
+	SAY Idź! Zajmę to czymś, na południe stąd jest placówka z windą na powierzchnię.
 	NAME Jacob Ullman
 	PRESET /datum/preset_holoimage/researcher.
 	DELAY 15
@@ -412,11 +412,11 @@
 	preset_record_text = {"
 	NAME Jacob Ullman
 	DELAY 10
-	SAY Get the elevator called. We got no idea how many of those fuckers are down here and I'd rather get off this planet as soon as possible.
+	SAY Wezwij windę. Nie mamy pojęcia, ile tych skurwieli tu jest, a ja wolałbym jak najszybciej zwiać z tej planety.
 	DELAY 45
 	NAME Elizabeth Queef
 	DELAY 10
-	SAY You don't need to tell me twice, I just need to swipe access and then..
+	SAY Nie musisz mi powtarzać, muszę tylko przeciągnąć kartę i...
 	DELAY 15
 	SOUND sound/effects/glassbr1.ogg
 	DELAY 10
@@ -424,13 +424,13 @@
 	DELAY 15
 	NAME Jacob Ullman
 	DELAY 10
-	SAY What the FUCK was that?
+	SAY Co to KURWA było?
 	DELAY 20
-	SAY OH FUCK THERE'S MORE OF THEM. CALL FASTER JESUS CHRIST.
+	SAY O KURWA, JEST ICH WIĘCEJ. WZYWAJ SZYBCIEJ, JEZU CHRYSTE.
 	DELAY 20
 	NAME Elizabeth Queef
 	DELAY 10
-	SAY DON'T FUCKING RUSH ME ALRIGHT IT'S BEING CALLED.
+	SAY NIE POGANIAJ MNIE, KURWA, DOBRA, JUŻ JEDZIE.
 	DELAY 15
 	SOUND sound/effects/huuu.ogg
 	DELAY 5
@@ -444,9 +444,9 @@
 	DELAY 15
 	NAME Jacob Ullman
 	DELAY 15
-	SAY OH FUCK IT'S GOT ME JESUS CHRIIIiiii-
+	SAY O KURWA, MA MNIE, JEZU CHRYYYyyyy-
 	NAME Elizabeth Queef
-	SAY AAAAAAAAAAAAAAAA FUCK THAT
+	SAY AAAAAAAAAAAAAAAA PIERDOLĘ TO
 	DELAY 15;"}
 
 //lootspawners//--
@@ -543,7 +543,7 @@
 /obj/item/clothing/under/syndicate/coldres
 	name = "insulated tactical turtleneck"
 	desc = "A nondescript and slightly suspicious-looking turtleneck with digital camouflage cargo pants. The interior has been padded with special insulation for both warmth and protection."
-	armor = list("melee" = 20, "bullet" = 10, "laser" = 0,"energy" = 5, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 25, "acid" = 25, "stamina" = 30)
+	armor = list("melee" = 20, "bullet" = 10, "laser" = 0,"energy" = 5, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 25, "acid" = 25, "stamina" = 30, "bleed" = 10)
 	cold_protection = CHEST|GROIN|ARMS|LEGS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 
@@ -572,16 +572,15 @@
 
 /obj/effect/mob_spawn/human/syndicatesoldier/coldres/alive
 	name = "sleeper"
-	mob_name = "Syndicate Snow Operative"
+	mob_name = "Operator Syndykatu ze śniegów"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
 	roundstart = FALSE
 	death = FALSE
 	faction = FACTION_SYNDICATE
 	outfit = /datum/outfit/snowsyndie
-	short_desc = "You are a syndicate operative recently awoken from cryostasis in an underground outpost."
-	flavour_text = "You are a syndicate operative recently awoken from cryostasis in an underground outpost. Monitor Nanotrasen communications and record information. All intruders should be \
-	disposed of swiftly to assure no gathered information is stolen or lost. Try not to wander too far from the outpost as the caves can be a deadly place even for a trained operative such as yourself."
+	short_desc = "Jesteś operatorem Syndykatu, niedawno wybudzonym z kriostazy w podziemnym posterunku."
+	flavour_text = "Jesteś operatorem Syndykatu, niedawno wybudzonym z kriostazy w podziemnym posterunku. Monitoruj łączność Nanotrasen i zapisuj informacje. Wszystkich intruzów należy szybko zlikwidować, by żadne zebrane informacje nie zostały skradzione ani utracone. Staraj się nie oddalać zbytnio od posterunku, bo jaskinie mogą być śmiertelnie niebezpieczne nawet dla wyszkolonego operatora takiego jak ty."
 	use_cooldown = TRUE
 
 /datum/outfit/snowsyndie

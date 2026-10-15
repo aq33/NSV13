@@ -12,7 +12,7 @@
 		//Never meant to be created, errors out the ass for mobcode reasons
 		/mob/living/carbon,
 		//Nother template type, doesn't like being created with no seed
-		/obj/item/reagent_containers/food/snacks/grown,
+		/obj/item/food/grown,
 		//And another
 		/obj/item/slimecross/recurring,
 		//This should be obvious
@@ -34,17 +34,14 @@
 	//This one demands a computer, ditto
 	ignore += typesof(/obj/item/modular_computer/processor)
 	//Needs special input, let's be nice
-	ignore += typesof(/obj/effect/abstract/proximity_checker)
 	//Very finiky, blacklisting to make things easier
 	ignore += typesof(/obj/item/poster/wanted)
 	//We can't pass a mind into this
 	ignore += typesof(/obj/item/phylactery)
 	//This expects a seed, we can't pass it
-	ignore += typesof(/obj/item/reagent_containers/food/snacks/grown)
+	ignore += typesof(/obj/item/food/grown)
 	//Nothing to hallucinate if there's nothing to hallicinate
 	ignore += typesof(/obj/effect/hallucination)
-	//These want fried food to take on the shape of, we can't pass that in
-	ignore += typesof(/obj/item/reagent_containers/food/snacks/deepfryholder)
 	//Can't pass in a thing to glow
 	ignore += typesof(/obj/effect/abstract/eye_lighting)
 	//It wants a lot more context then we have

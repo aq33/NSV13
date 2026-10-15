@@ -1,12 +1,12 @@
 /proc/create_message(type, target_key, admin_ckey, text, timestamp, server_name, secret, logged = 1, browse, expiry, note_severity)
 	if(!SSdbcore.Connect())
-		to_chat(usr, "<span class='danger'>Failed to establish database connection.</span>")
+		to_chat(usr, "<span class='danger'>Nie udało się połączyć z bazą danych.</span>")
 		return
 	if(!type)
 		return
 	var/target_ckey = ckey(target_key)
 	if(!target_key && (type == "note" || type == "message" || type == "watchlist entry"))
-		var/new_key = input(usr,"Who would you like to create a [type] for?","Enter a key or ckey",null) as null|text
+		var/new_key = input(usr,"Dla kogo chcesz utworzyć: [type]?","Podaj klucz lub ckey",null) as null|text
 		if(!new_key)
 			return
 		var/new_ckey = ckey(new_key)
@@ -35,7 +35,7 @@
 	if(!target_ckey)
 		target_ckey = admin_ckey
 	if(!text)
-		text = input(usr,"Write your [type]","Create [type]") as null|message
+		text = input(usr,"Napisz: [type]","Create [type]") as null|message
 		if(!text)
 			return
 	if(!timestamp)
@@ -46,7 +46,7 @@
 			server_name = ssqlname
 
 	if(isnull(secret))
-		switch(alert("Hide note from being viewed by players?", "Secret note?","Yes","No","Cancel"))
+		switch(alert("Ukryć notatkę przed graczami?", "Secret note?","Yes","No","Cancel"))
 			if("Yes")
 				secret = 1
 			if("No")
@@ -57,8 +57,8 @@
 	if(CONFIG_GET(flag/manual_note_expiry) && (type in list("note", "message")))
 		expiry = -1
 	else if(isnull(expiry))
-		if(alert(usr, "Set an expiry time? Expired messages are hidden like deleted ones.", "Expiry time?", "Yes", "No", "Cancel") == "Yes")
-			var/expire_time = input("Set expiry time for [type] as format YYYY-MM-DD HH:MM:SS. All times in server time. HH:MM:SS is optional and 24-hour. Must be later than current time for obvious reasons.", "Set expiry time", SQLtime()) as null|text
+		if(alert(usr, "Ustawić czas wygaśnięcia? Wygasłe wiadomości są ukrywane tak jak usunięte.", "Expiry time?", "Yes", "No", "Cancel") == "Yes")
+			var/expire_time = input("Ustaw czas wygaśnięcia ([type]) w formacie RRRR-MM-DD GG:MM:SS. Wszystkie czasy według czasu serwera. GG:MM:SS jest opcjonalne, zapis 24-godzinny. Musi być późniejszy niż obecny czas, z oczywistych powodów.", "Set expiry time", SQLtime()) as null|text
 			if(!expire_time)
 				return
 			var/datum/DBQuery/query_validate_expire_time = SSdbcore.NewQuery(
@@ -71,7 +71,7 @@
 			if(query_validate_expire_time.NextRow())
 				var/checktime = text2num(query_validate_expire_time.item[1])
 				if(!checktime)
-					to_chat(usr, "Datetime entered is improperly formatted or not later than current server time.")
+					to_chat(usr, "Wprowadzona data jest źle sformatowana lub nie jest późniejsza niż obecny czas serwera.")
 					qdel(query_validate_expire_time)
 					return
 				expiry = query_validate_expire_time.item[1]
@@ -79,7 +79,7 @@
 	if(expiry == -1)
 		expiry = null //This is so garbage and hacky.
 	if(type == "note" && isnull(note_severity))
-		note_severity = input("Set the severity of the note.", "Severity", null, null) as null|anything in list("High", "Medium", "Minor", "None")
+		note_severity = input("Ustaw wagę notatki.", "Severity", null, null) as null|anything in list("High", "Medium", "Minor", "None")
 		if(!note_severity)
 			return
 	var/datum/DBQuery/query_create_message = SSdbcore.NewQuery({"
@@ -117,7 +117,7 @@
 
 /proc/delete_message(message_id, logged = 1, browse)
 	if(!SSdbcore.Connect())
-		to_chat(usr, "<span class='danger'>Failed to establish database connection.</span>")
+		to_chat(usr, "<span class='danger'>Nie udało się połączyć z bazą danych.</span>")
 		return
 	message_id = text2num(message_id)
 	if(!message_id)
@@ -160,7 +160,7 @@
 
 /proc/edit_message(message_id, browse)
 	if(!SSdbcore.Connect())
-		to_chat(usr, "<span class='danger'>Failed to establish database connection.</span>")
+		to_chat(usr, "<span class='danger'>Nie udało się połączyć z bazą danych.</span>")
 		return
 	message_id = text2num(message_id)
 	if(!message_id)
@@ -210,7 +210,7 @@
 
 /proc/edit_message_expiry(message_id, browse)
 	if(!SSdbcore.Connect())
-		to_chat(usr, "<span class='danger'>Failed to establish database connection.</span>")
+		to_chat(usr, "<span class='danger'>Nie udało się połączyć z bazą danych.</span>")
 		return
 	message_id = text2num(message_id)
 	if(!message_id)
@@ -254,7 +254,7 @@
 			if(query_validate_expire_time_edit.NextRow())
 				var/checktime = text2num(query_validate_expire_time_edit.item[1])
 				if(!checktime)
-					to_chat(usr, "Datetime entered is improperly formatted or not later than current server time.")
+					to_chat(usr, "Wprowadzona data jest źle sformatowana lub nie jest późniejsza niż obecny czas serwera.")
 					qdel(query_validate_expire_time_edit)
 					qdel(query_find_edit_expiry_message)
 					return
@@ -281,7 +281,7 @@
 
 /proc/edit_message_severity(message_id)
 	if(!SSdbcore.Connect())
-		to_chat(usr, "<span class='danger'>Failed to establish database connection.</span>")
+		to_chat(usr, "<span class='danger'>Nie udało się połączyć z bazą danych.</span>")
 		return
 	message_id = text2num(message_id)
 	if(!message_id)
@@ -309,7 +309,7 @@
 			old_severity = "NA"
 		var/editor_key = usr.key
 		var/editor_ckey = usr.ckey
-		var/new_severity = input("Set the severity of the note.", "Severity", null, null) as null|anything in list("high", "medium", "minor", "none") //lowercase for edit log consistency
+		var/new_severity = input("Ustaw wagę notatki.", "Severity", null, null) as null|anything in list("high", "medium", "minor", "none") //lowercase for edit log consistency
 		if(!new_severity)
 			qdel(query_find_edit_note_severity)
 			return
@@ -332,7 +332,7 @@
 
 /proc/toggle_message_secrecy(message_id)
 	if(!SSdbcore.Connect())
-		to_chat(usr, "<span class='danger'>Failed to establish database connection.</span>")
+		to_chat(usr, "<span class='danger'>Nie udało się połączyć z bazą danych.</span>")
 		return
 	message_id = text2num(message_id)
 	if(!message_id)
@@ -376,15 +376,15 @@
 
 /proc/browse_messages(type, target_ckey, index, linkless = FALSE, filter, agegate = FALSE)
 	if(!SSdbcore.Connect())
-		to_chat(usr, "<span class='danger'>Failed to establish database connection.</span>")
+		to_chat(usr, "<span class='danger'>Nie udało się połączyć z bazą danych.</span>")
 		return
 	var/list/output = list()
 	var/ruler = "<hr style='background:#000000; border:0; height:3px'>"
-	var/list/navbar = list("<a href='?_src_=holder;[HrefToken()];nonalpha=1'>All</a><a href='?_src_=holder;[HrefToken()];nonalpha=2'>#</a>")
+	var/list/navbar = list("<a href='byond://?_src_=holder;[HrefToken()];nonalpha=1'>All</a><a href='byond://?_src_=holder;[HrefToken()];nonalpha=2'>#</a>")
 	for(var/letter in GLOB.alphabet)
-		navbar += "<a href='?_src_=holder;[HrefToken()];showmessages=[letter]'>[letter]</a>"
-	navbar += "<a href='?_src_=holder;[HrefToken()];showmemo=1'>Memos</a><a href='?_src_=holder;[HrefToken()];showwatch=1'>Watchlist</a>"
-	navbar += "<br><form method='GET' name='search' action='?'>\
+		navbar += "<a href='byond://?_src_=holder;[HrefToken()];showmessages=[letter]'>[letter]</a>"
+	navbar += "<a href='byond://?_src_=holder;[HrefToken()];showmemo=1'>Memos</a><a href='byond://?_src_=holder;[HrefToken()];showwatch=1'>Watchlist</a>"
+	navbar += "<br><form method='GET' name='search' action='byond://?'>\
 	<input type='hidden' name='_src_' value='holder'>\
 	[HrefTokenFormField()]\
 	<input type='text' name='searchmessages' value='[index]'>\
@@ -394,14 +394,14 @@
 	if(type == "memo" || type == "watchlist entry")
 		if(type == "memo")
 			output += "<h2><center>Admin memos</h2>"
-			output += "<a href='?_src_=holder;[HrefToken()];addmemo=1'>Add memo</a></center>"
+			output += "<a href='byond://?_src_=holder;[HrefToken()];addmemo=1'>Add memo</a></center>"
 		else if(type == "watchlist entry")
 			output += "<h2><center>Watchlist entries</h2>"
-			output += "<a href='?_src_=holder;[HrefToken()];addwatchempty=1'>Add watchlist entry</a>"
+			output += "<a href='byond://?_src_=holder;[HrefToken()];addwatchempty=1'>Add watchlist entry</a>"
 			if(filter)
-				output += "<a href='?_src_=holder;[HrefToken()];showwatch=1'>Unfilter clients</a></center>"
+				output += "<a href='byond://?_src_=holder;[HrefToken()];showwatch=1'>Unfilter clients</a></center>"
 			else
-				output += "<a href='?_src_=holder;[HrefToken()];showwatchfilter=1'>Filter offline clients</a></center>"
+				output += "<a href='byond://?_src_=holder;[HrefToken()];showwatchfilter=1'>Filter offline clients</a></center>"
 		output += ruler
 		var/datum/DBQuery/query_get_type_messages = SSdbcore.NewQuery({"
 			SELECT
@@ -441,11 +441,11 @@
 			if(expire_timestamp)
 				output += " | Expires [expire_timestamp]"
 			output += "</b>"
-			output += " <a href='?_src_=holder;[HrefToken()];editmessageexpiryempty=[id]'>Change Expiry Time</a>"
-			output += " <a href='?_src_=holder;[HrefToken()];deletemessageempty=[id]'>Delete</a>"
-			output += " <a href='?_src_=holder;[HrefToken()];editmessageempty=[id]'>Edit</a>"
+			output += " <a href='byond://?_src_=holder;[HrefToken()];editmessageexpiryempty=[id]'>Change Expiry Time</a>"
+			output += " <a href='byond://?_src_=holder;[HrefToken()];deletemessageempty=[id]'>Delete</a>"
+			output += " <a href='byond://?_src_=holder;[HrefToken()];editmessageempty=[id]'>Edit</a>"
 			if(editor_key)
-				output += " <font size='2'>Last edit by [editor_key] <a href='?_src_=holder;[HrefToken()];messageedits=[id]'>(Click here to see edit log)</a></font>"
+				output += " <font size='2'>Last edit by [editor_key] <a href='byond://?_src_=holder;[HrefToken()];messageedits=[id]'>(Click here to see edit log)</a></font>"
 			output += "<br>[text]<hr style='background:#000000; border:0; height:1px'>"
 		qdel(query_get_type_messages)
 	if(target_ckey)
@@ -516,21 +516,21 @@
 			if(!linkless)
 				if(type == "note")
 					if(severity)
-						data += "<a href='?_src_=holder;[HrefToken()];editmessageseverity=[id]'>[severity=="none" ? "No" : "[capitalize(severity)]"] Severity</a>"
+						data += "<a href='byond://?_src_=holder;[HrefToken()];editmessageseverity=[id]'>[severity=="none" ? "No" : "[capitalize(severity)]"] Severity</a>"
 					else
-						data += "<a href='?_src_=holder;[HrefToken()];editmessageseverity=[id]'>N/A Severity</a>"
-				data += " <a href='?_src_=holder;[HrefToken()];editmessageexpiry=[id]'>Change Expiry Time</a>"
-				data += " <a href='?_src_=holder;[HrefToken()];deletemessage=[id]'>Delete</a>"
+						data += "<a href='byond://?_src_=holder;[HrefToken()];editmessageseverity=[id]'>N/A Severity</a>"
+				data += " <a href='byond://?_src_=holder;[HrefToken()];editmessageexpiry=[id]'>Change Expiry Time</a>"
+				data += " <a href='byond://?_src_=holder;[HrefToken()];deletemessage=[id]'>Delete</a>"
 				if(type == "note")
-					data += " <a href='?_src_=holder;[HrefToken()];secretmessage=[id]'>[secret ? "<b>Secret</b>" : "Not secret"]</a>"
+					data += " <a href='byond://?_src_=holder;[HrefToken()];secretmessage=[id]'>[secret ? "<b>Secret</b>" : "Not secret"]</a>"
 				if(type == "message sent")
-					data += " <font size='2'>Message has been sent</font>"
+					data += " <font size='2'>Wiadomość została wysłana</font>"
 					if(editor_key)
 						data += "|"
 				else
-					data += " <a href='?_src_=holder;[HrefToken()];editmessage=[id]'>Edit</a>"
+					data += " <a href='byond://?_src_=holder;[HrefToken()];editmessage=[id]'>Edit</a>"
 				if(editor_key)
-					data += " <font size='2'>Last edit by [editor_key] <a href='?_src_=holder;[HrefToken()];messageedits=[id]'>(Click here to see edit log)</a></font>"
+					data += " <font size='2'>Last edit by [editor_key] <a href='byond://?_src_=holder;[HrefToken()];messageedits=[id]'>(Click here to see edit log)</a></font>"
 			data += "</div></center>"
 			data += "<p style='[alphatext]'>[text]</p><hr style='background:#000000; border:0; height:1px; [alphatext]'>"
 			switch(type)
@@ -555,12 +555,12 @@
 			qdel(query_get_message_key)
 		output += "<h2><center>[target_key]</center></h2><center>"
 		if(!linkless)
-			output += "<a href='?_src_=holder;[HrefToken()];addnote=[target_key]'>Add note</a>"
-			output += " <a href='?_src_=holder;[HrefToken()];addmessage=[target_key]'>Add message</a>"
-			output += " <a href='?_src_=holder;[HrefToken()];addwatch=[target_key]'>Add to watchlist</a>"
-			output += " <a href='?_src_=holder;[HrefToken()];showmessageckey=[target_ckey]'>Refresh page</a></center>"
+			output += "<a href='byond://?_src_=holder;[HrefToken()];addnote=[target_key]'>Add note</a>"
+			output += " <a href='byond://?_src_=holder;[HrefToken()];addmessage=[target_key]'>Add message</a>"
+			output += " <a href='byond://?_src_=holder;[HrefToken()];addwatch=[target_key]'>Dodaj do listy obserwowanych</a>"
+			output += " <a href='byond://?_src_=holder;[HrefToken()];showmessageckey=[target_ckey]'>Refresh page</a></center>"
 		else
-			output += " <a href='?_src_=holder;[HrefToken()];showmessageckeylinkless=[target_ckey]'>Refresh page</a></center>"
+			output += " <a href='byond://?_src_=holder;[HrefToken()];showmessageckeylinkless=[target_ckey]'>Refresh page</a></center>"
 		output += ruler
 		if(messagedata)
 			output += "<h2>Messages</h2>"
@@ -574,14 +574,14 @@
 			if(!linkless)
 				if (agegate)
 					if (skipped) //the first skipped message is still shown so that we can put this link over it.
-						output += "<center><a href='?_src_=holder;[HrefToken()];showmessageckey=[target_ckey];showall=1' style='position: relative; top: -3em;'>Show [skipped] hidden messages</a></center>"
+						output += "<center><a href='byond://?_src_=holder;[HrefToken()];showmessageckey=[target_ckey];showall=1' style='position: relative; top: -3em;'>Show [skipped] hidden messages</a></center>"
 					else
-						output += "<center><a href='?_src_=holder;[HrefToken()];showmessageckey=[target_ckey];showall=1'>Show All</a></center>"
+						output += "<center><a href='byond://?_src_=holder;[HrefToken()];showmessageckey=[target_ckey];showall=1'>Pokaż wszystko</a></center>"
 				else
-					output += "<center><a href='?_src_=holder;[HrefToken()];showmessageckey=[target_ckey]'>Hide Old</a></center>"
+					output += "<center><a href='byond://?_src_=holder;[HrefToken()];showmessageckey=[target_ckey]'>Hide Old</a></center>"
 	if(index)
 		var/search
-		output += "<center><a href='?_src_=holder;[HrefToken()];addmessageempty=1'>Add message</a><a href='?_src_=holder;[HrefToken()];addwatchempty=1'>Add watchlist entry</a><a href='?_src_=holder;[HrefToken()];addnoteempty=1'>Add note</a></center>"
+		output += "<center><a href='byond://?_src_=holder;[HrefToken()];addmessageempty=1'>Add message</a><a href='byond://?_src_=holder;[HrefToken()];addwatchempty=1'>Add watchlist entry</a><a href='byond://?_src_=holder;[HrefToken()];addnoteempty=1'>Add note</a></center>"
 		output += ruler
 		switch(index)
 			if(1)
@@ -611,10 +611,10 @@
 			var/index_key = query_list_messages.item[2]
 			if(!index_key)
 				index_key = index_ckey
-			output += "<a href='?_src_=holder;[HrefToken()];showmessageckey=[index_ckey]'>[index_key]</a><br>"
+			output += "<a href='byond://?_src_=holder;[HrefToken()];showmessageckey=[index_ckey]'>[index_key]</a><br>"
 		qdel(query_list_messages)
 	else if(!type && !target_ckey && !index)
-		output += "<center><a href='?_src_=holder;[HrefToken()];addmessageempty=1'>Add message</a><a href='?_src_=holder;[HrefToken()];addwatchempty=1'>Add watchlist entry</a><a href='?_src_=holder;[HrefToken()];addnoteempty=1'>Add note</a></center>"
+		output += "<center><a href='byond://?_src_=holder;[HrefToken()];addmessageempty=1'>Add message</a><a href='byond://?_src_=holder;[HrefToken()];addwatchempty=1'>Add watchlist entry</a><a href='byond://?_src_=holder;[HrefToken()];addnoteempty=1'>Add note</a></center>"
 		output += ruler
 	var/datum/browser/browser = new(usr, "Note panel", "Manage player notes", 1000, 500)
 	var/datum/asset/notes_assets = get_asset_datum(/datum/asset/simple/notes)
@@ -624,7 +624,7 @@
 
 /proc/get_message_output(type, target_ckey)
 	if(!SSdbcore.Connect())
-		to_chat(usr, "<span class='danger'>Failed to establish database connection.</span>")
+		to_chat(usr, "<span class='danger'>Nie udało się połączyć z bazą danych.</span>")
 		return
 	if(!type)
 		return
@@ -653,7 +653,7 @@
 		var/editor_key = query_get_message_output.item[5]
 		switch(type)
 			if("message")
-				output += "<font color='red' size='3'><b>Admin message left by <span class='prefix'>[admin_key]</span> on [timestamp]</b></font>"
+				output += "<font color='red' size='3'><b>Wiadomość od admina zostawiona przez <span class='prefix'>[admin_key]</span>, [timestamp]</b></font>"
 				output += "<br><font color='red'>[text]</font><br>"
 				var/datum/DBQuery/query_message_read = SSdbcore.NewQuery(
 					"UPDATE [format_table_name("messages")] SET type = 'message sent' WHERE id = :id",
@@ -668,9 +668,9 @@
 				message_admins("<font color='red'><B>Notice: </B></font><font color='blue'>[key_name_admin(target_ckey)] has been on the watchlist since [timestamp] and has just connected - Reason: [text]</font>")
 				send2tgs_adminless_only("Watchlist", "[key_name(target_ckey)] is on the watchlist and has just connected - Reason: [text]")
 			if("memo")
-				output += "<span class='memo'>Memo by <span class='prefix'>[admin_key]</span> on [timestamp]"
+				output += "<span class='memo'>Notatka od <span class='prefix'>[admin_key]</span>, [timestamp]"
 				if(editor_key)
-					output += "<br><span class='memoedit'>Last edit by [editor_key] <A href='?_src_=holder;[HrefToken()];messageedits=[message_id]'>(Click here to see edit log)</A></span>"
+					output += "<br><span class='memoedit'>Last edit by [editor_key] <A href='byond://?_src_=holder;[HrefToken()];messageedits=[message_id]'>(Click here to see edit log)</A></span>"
 				output += "<br>[text]</span><br>"
 	qdel(query_get_message_output)
 	return output

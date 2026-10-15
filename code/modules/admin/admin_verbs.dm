@@ -189,6 +189,7 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/debug_huds,
 	/client/proc/map_template_load,
 	/client/proc/map_template_upload,
+	/client/proc/test_chamber, // aquila edit
 	/client/proc/jump_to_ruin,
 	/client/proc/generate_ruin,
 	/client/proc/clear_dynamic_transit,
@@ -355,7 +356,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	remove_verb(list(/client/proc/hide_most_verbs) + GLOB.admin_verbs_hideable)
 	add_verb(/client/proc/show_verbs)
 
-	to_chat(src, "<span class='interface'>Most of your adminverbs have been hidden.</span>")
+	to_chat(src, "<span class='interface'>Większość twoich czasowników admina została ukryta.</span>")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Hide Most Adminverbs") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
 
@@ -366,7 +367,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	remove_admin_verbs()
 	add_verb(/client/proc/show_verbs)
 
-	to_chat(src, "<span class='interface'>Almost all of your adminverbs have been hidden.</span>")
+	to_chat(src, "<span class='interface'>Prawie wszystkie twoje czasowniki admina zostały ukryte.</span>")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Hide All Adminverbs") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
 
@@ -377,7 +378,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	remove_verb(/client/proc/show_verbs)
 	add_admin_verbs()
 
-	to_chat(src, "<span class='interface'>All of your adminverbs are now visible.</span>")
+	to_chat(src, "<span class='interface'>Wszystkie twoje czasowniki admina są teraz widoczne.</span>")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Show Adminverbs") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 
@@ -401,7 +402,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 		ghost.reenter_corpse()
 		SSblackbox.record_feedback("tally", "admin_verb", 1, "Admin Reenter") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	else if(isnewplayer(mob))
-		to_chat(src, "<font color='red'>Error: Aghost: Can't admin-ghost whilst in the lobby. Join or Observe first.</font>")
+		to_chat(src, "<font color='red'>Błąd: Aghost: nie możesz zostać admin-duchem w lobby. Najpierw dołącz lub obserwuj.</font>")
 		return FALSE
 	else
 		//ghostize
@@ -423,7 +424,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 			to_chat(mob, "<span class='boldannounce'>Invisimin off. Invisibility reset.</span>")
 		else
 			mob.invisibility = INVISIBILITY_OBSERVER
-			to_chat(mob, "<span class='adminnotice'><b>Invisimin on. You are now as invisible as a ghost.</b></span>")
+			to_chat(mob, "<span class='adminnotice'><b>Invisimin włączony. Jesteś teraz niewidzialny jak duch.</b></span>")
 
 /client/proc/fix_say()
 	set name = "FIX SAY"
@@ -523,7 +524,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 				mob.name = initial(mob.name)
 				mob.mouse_opacity = initial(mob.mouse_opacity)
 		else
-			var/new_key = ckeyEx(stripped_input(usr, "Enter your desired display name.", "Fake Key", key, max_length=26))
+			var/new_key = ckeyEx(stripped_input(usr, "Podaj nazwę, która ma być wyświetlana.", "Fake Key", key, max_length=26))
 			if(!new_key)
 				return
 			holder.fakekey = new_key
@@ -544,7 +545,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	set desc = "Cause an explosion of varying strength at your location."
 
 	var/list/choices = list("Small Bomb (1, 2, 3, 3)", "Medium Bomb (2, 3, 4, 4)", "Big Bomb (3, 5, 7, 5)", "Maxcap", "Custom Bomb")
-	var/choice = input("What size explosion would you like to produce? NOTE: You can do all this rapidly and in an IC manner (using cruise missiles!) with the Config/Launch Supplypod verb. WARNING: These ignore the maxcap") as null|anything in choices
+	var/choice = input("Jaki rozmiar eksplozji chcesz wywołać? UWAGA: możesz to wszystko robić szybko i w sposób IC (pociskami manewrującymi!) czasownikiem Config/Launch Supplypod. OSTRZEŻENIE: to pomija maxcap") as null|anything in choices
 	var/turf/epicenter = mob.loc
 
 	switch(choice)
@@ -559,20 +560,20 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 		if("Maxcap")
 			explosion(epicenter, GLOB.MAX_EX_DEVESTATION_RANGE, GLOB.MAX_EX_HEAVY_RANGE, GLOB.MAX_EX_LIGHT_RANGE, GLOB.MAX_EX_FLASH_RANGE)
 		if("Custom Bomb")
-			var/devastation_range = input("Devastation range (in tiles):") as null|num
+			var/devastation_range = input("Zasięg całkowitego zniszczenia (w polach):") as null|num
 			if(devastation_range == null)
 				return
-			var/heavy_impact_range = input("Heavy impact range (in tiles):") as null|num
+			var/heavy_impact_range = input("Zasięg ciężkich uderzeń (w polach):") as null|num
 			if(heavy_impact_range == null)
 				return
-			var/light_impact_range = input("Light impact range (in tiles):") as null|num
+			var/light_impact_range = input("Zasięg lekkich uderzeń (w polach):") as null|num
 			if(light_impact_range == null)
 				return
-			var/flash_range = input("Flash range (in tiles):") as null|num
+			var/flash_range = input("Zasięg błysku (w polach):") as null|num
 			if(flash_range == null)
 				return
 			if(devastation_range > GLOB.MAX_EX_DEVESTATION_RANGE || heavy_impact_range > GLOB.MAX_EX_HEAVY_RANGE || light_impact_range > GLOB.MAX_EX_LIGHT_RANGE || flash_range > GLOB.MAX_EX_FLASH_RANGE)
-				if(alert("Bomb is bigger than the maxcap. Continue?",,"Yes","No") != "Yes")
+				if(alert("Bomba jest większa niż maxcap. Kontynuować?",,"Yes","No") != "Yes")
 					return
 			epicenter = mob.loc //We need to reupdate as they may have moved again
 			explosion(epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range, TRUE, TRUE)
@@ -636,7 +637,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	var/type_length = length_char("/obj/effect/proc_holder/spell") + 2
 	for(var/A in GLOB.spells)
 		spell_list[copytext_char("[A]", type_length)] = A
-	var/obj/effect/proc_holder/spell/S = input("Choose the spell to give to that guy", "ABRAKADABRA") as null|anything in sortList(spell_list)
+	var/obj/effect/proc_holder/spell/S = input("Wybierz zaklęcie, które chcesz mu dać", "ABRAKADABRA") as null|anything in sortList(spell_list)
 	if(!S)
 		return
 
@@ -657,7 +658,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	set desc = "Remove a spell from the selected mob."
 
 	if(T?.mind)
-		var/obj/effect/proc_holder/spell/S = input("Choose the spell to remove", "NO ABRAKADABRA") as null|anything in sortList(T.mind.spell_list)
+		var/obj/effect/proc_holder/spell/S = input("Wybierz zaklęcie do usunięcia", "NO ABRAKADABRA") as null|anything in sortList(T.mind.spell_list)
 		if(S)
 			T.mind.RemoveSpell(S)
 			log_admin("[key_name(usr)] removed the spell [S] from [key_name(T)].")
@@ -670,9 +671,9 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	set desc = "Gives a Disease to a mob."
 
 	if(!istype(T))
-		to_chat(src, "<span class='notice'>You can only give a disease to a mob of type /mob/living.</span>")
+		to_chat(src, "<span class='notice'>Chorobę możesz dać tylko mobowi typu /mob/living.</span>")
 		return
-	var/datum/disease/D = input("Choose the disease to give to that guy", "ACHOO") as null|anything in sortList(SSdisease.diseases, GLOBAL_PROC_REF(cmp_typepaths_asc))
+	var/datum/disease/D = input("Wybierz chorobę, którą chcesz mu dać", "ACHOO") as null|anything in sortList(SSdisease.diseases, GLOBAL_PROC_REF(cmp_typepaths_asc))
 	if(!D)
 		return
 	T.ForceContractDisease(new D, FALSE, TRUE)
@@ -684,7 +685,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	set category = "Adminbus"
 	set name = "OSay"
 	set desc = "Makes an object say something."
-	var/message = capped_input(usr, "What do you want the message to be?", "Make Sound")
+	var/message = capped_input(usr, "Jaka ma być wiadomość?", "Make Sound")
 	if(!message)
 		return
 	O.say(message)
@@ -720,7 +721,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 
 	holder.deactivate()
 
-	to_chat(src, "<span class='interface'>You are now a normal player.</span>")
+	to_chat(src, "<span class='interface'>Jesteś teraz zwykłym graczem.</span>")
 	log_admin("[src] deadmined themself.")
 	message_admins("[src] deadmined themself.")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Deadmin")
@@ -745,7 +746,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	if (!holder)
 		return //This can happen if an admin attempts to vv themself into somebody elses's deadmin datum by getting ref via brute force
 
-	to_chat(src, "<span class='interface'>You are now an admin.</span>")
+	to_chat(src, "<span class='interface'>Jesteś teraz adminem.</span>")
 	message_admins("[src] re-adminned themselves.")
 	log_admin("[src] re-adminned themselves.")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Readmin")
@@ -830,7 +831,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/bookid = input(usr, "What Book ID would you like to remove:", "Literally Fahrenheit 451") as null|num
+	var/bookid = input(usr, "Którą książkę (ID) chcesz usunąć:", "Literally Fahrenheit 451") as null|num
 	if(!bookid)
 		return
 
@@ -839,19 +840,19 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 		list("id" = bookid)
 	)
 	if(!query_library_print.Execute() || !query_library_print.NextRow())
-		to_chat(usr, "<span class='warning'>Failed to locate book [bookid].</span>")
+		to_chat(usr, "<span class='warning'>Nie znaleziono książki [bookid].</span>")
 		qdel(query_library_print)
 		return
 	var/author = query_library_print.item[2]
 	var/title = query_library_print.item[3]
-	var/confirmation = alert(src,"Are you sure you want to delete the book with author [author] and title [title]?","Guy Montag Incarnate","Yes","No")
+	var/confirmation = alert(src,"Czy na pewno chcesz usunąć książkę autora [author] o tytule [title]?","Guy Montag Incarnate","Yes","No")
 	if(confirmation == "Yes")
 		var/datum/DBQuery/query_burn_book = SSdbcore.NewQuery(
 			"UPDATE [format_table_name("library")] SET deleted = 1 WHERE id=:id",
 			list("id" = bookid)
 		)
 		if(!query_library_print.Execute())
-			to_chat(usr, "<span class='warning'>Failed to delete book.</span>")
+			to_chat(usr, "<span class='warning'>Nie udało się usunąć książki.</span>")
 		else
 			message_admins("[usr] deleted book number [bookid] with title [title]")
 			log_admin("[usr] deleted book number [bookid] with title [title]")

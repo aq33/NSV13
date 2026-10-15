@@ -17,8 +17,11 @@
 #define COMSIG_ATOM_SINGULARITY_TRY_MOVE "atom_singularity_try_move"
 	/// When returned from `COMSIG_ATOM_SINGULARITY_TRY_MOVE`, the singularity will move to that turf
 	#define SINGULARITY_TRY_MOVE_BLOCK (1 << 0)
-#define COMSIG_LIVING_CAN_TRACK "mob_can_track"					///from base of /mob/living/can_track()
+///from base of /mob/living/can_track()
+#define COMSIG_LIVING_CAN_TRACK "mob_can_track"
 	#define COMPONENT_CANT_TRACK 1
+/// Called when a living mob has its resting updated: (resting_state)
+#define COMSIG_LIVING_RESTING_UPDATED "resting_updated"
 
 //ALL OF THESE DO NOT TAKE INTO ACCOUNT WHETHER AMOUNT IS 0 OR LOWER AND ARE SENT REGARDLESS!
 #define COMSIG_LIVING_STATUS_STUN "living_stun"					//! from base of mob/living/Stun() (amount, update, ignore)
@@ -33,3 +36,12 @@
 #define COMSIG_LIVING_POST_FULLY_HEAL "living_post_fully_heal"	///from end of fully_heal(): (admin_revive)
 /// from base of mob/living/Life() (times_fired)
 #define COMSIG_LIVING_LIFE "living_life"
+
+///From base of mob/living/MobBump() (mob/living)
+#define COMSIG_LIVING_MOB_BUMP "living_mob_bump"
+///From base of mob/living/ZImpactDamage() (mob/living, levels, turf/t)
+#define COMSIG_LIVING_Z_IMPACT "living_z_impact"
+	#define NO_Z_IMPACT_DAMAGE (1<<0)
+// AQ EDIT - port Bee #11899
+///from /mob/living/UnarmedAttack(): (atom/target, proximity_flag, list/modifiers)
+#define COMSIG_LIVING_UNARMED_ATTACK "living_unarmed_attack"

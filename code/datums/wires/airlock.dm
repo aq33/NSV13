@@ -14,7 +14,16 @@
 	add_duds(2)
 	..()
 
+/datum/wires/airlock/interact(mob/user)
+	var/obj/machinery/door/airlock/airlock_holder = holder
+	if (!issilicon(user) && airlock_holder.isElectrified() && airlock_holder.shock(user, 100))
+		return
+
+	return ..()
+
 /datum/wires/airlock/interactable(mob/user)
+	if(!..())
+		return FALSE
 	var/obj/machinery/door/airlock/A = holder
 	if(!issilicon(user) && A.isElectrified() && A.shock(user, 100))
 		return FALSE
@@ -24,13 +33,13 @@
 /datum/wires/airlock/get_status()
 	var/obj/machinery/door/airlock/A = holder
 	var/list/status = list()
-	status += "The door bolts [A.locked ? "have fallen!" : "look up."]"
-	status += "The test light is [A.hasPower() ? "on" : "off"]."
-	status += "The AI connection light is [A.aiControlDisabled || (A.obj_flags & EMAGGED) ? "off" : "on"]."
-	status += "The check wiring light is [A.safe ? "off" : "on"]."
-	status += "The timer is powered [A.autoclose ? "on" : "off"]."
-	status += "The speed light is [A.normalspeed ? "on" : "off"]."
-	status += "The emergency light is [A.emergency ? "on" : "off"]."
+	status += "Rygle drzwi [A.locked ? "opadły!" : "są podniesione."]"
+	status += "Lampka testowa [A.hasPower() ? "świeci się" : "jest zgaszona"]."
+	status += "Lampka połączenia z SI [A.aiControlDisabled || (A.obj_flags & EMAGGED) ? "jest zgaszona" : "świeci się"]."
+	status += "Lampka kontroli okablowania [A.safe ? "jest zgaszona" : "świeci się"]."
+	status += "Zegar jest [A.autoclose ? "zasilany" : "niezasilany"]."
+	status += "Lampka prędkości [A.normalspeed ? "świeci się" : "jest zgaszona"]."
+	status += "Lampka awaryjna [A.emergency ? "świeci się" : "jest zgaszona"]."
 	return status
 
 /datum/wires/airlock/on_pulse(wire)
@@ -71,6 +80,7 @@
 			if(WIRE_SHOCK) // Pulse to shock the door for 10 ticks.
 				if(!A.secondsElectrified)
 					A.set_electrified(MACHINE_DEFAULT_ELECTRIFY_TIME, usr)
+					A.shock(usr, 100)
 			if(WIRE_SAFETY)
 				A.safe = !A.safe
 				if(!A.density)

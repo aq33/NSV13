@@ -11,9 +11,12 @@
 	healing_factor = STANDARD_ORGAN_HEALING
 	decay_factor = STANDARD_ORGAN_DECAY
 
-	high_threshold_passed = "<span class='warning'>You feel some sort of constriction around your chest as your breathing becomes shallow and rapid.</span>"
-	now_fixed = "<span class='warning'>Your lungs seem to once again be able to hold air.</span>"
-	high_threshold_cleared = "<span class='info'>The constriction around your chest loosens as your breathing calms down.</span>"
+	high_threshold_passed = "<span class='warning'>Czujesz ucisk wokół klatki piersiowej, a twój oddech staje się płytki i szybki.</span>"
+	now_fixed = "<span class='warning'>Twoje płuca znów wydają się zdolne do zatrzymania powietrza.</span>"
+	high_threshold_cleared = "<span class='info'>Ucisk wokół klatki piersiowej słabnie, a twój oddech się uspokaja.</span>"
+
+
+	food_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/medicine/salbutamol = 5)
 
 	//Breath damage
 
@@ -53,7 +56,7 @@
 	var/BZ_brain_damage_min = 1
 	var/gas_stimulation_min = 0.002 //Nitryl and Stimulum
 
-	var/cold_message = "your face freezing and an icicle forming"
+	var/cold_message = "jak zamarza ci twarz i tworzy się sopel"
 	var/cold_level_1_threshold = 260
 	var/cold_level_2_threshold = 200
 	var/cold_level_3_threshold = 120
@@ -62,7 +65,7 @@
 	var/cold_level_3_damage = COLD_GAS_DAMAGE_LEVEL_3
 	var/cold_damage_type = BURN
 
-	var/hot_message = "your face burning and a searing heat"
+	var/hot_message = "jak pali cię twarz i ogarnia piekący żar"
 	var/heat_level_1_threshold = 360
 	var/heat_level_2_threshold = 400
 	var/heat_level_3_threshold = 1000
@@ -249,12 +252,12 @@
 	// Nitryl
 		var/nitryl_pp = PP(breath,GAS_NITRYL)
 		if (prob(nitryl_pp))
-			to_chat(H, "<span class='alert'>Your mouth feels like it's burning!</span>")
+			to_chat(H, "<span class='alert'>Masz wrażenie, że twoje usta płoną!</span>")
 		if (nitryl_pp >40)
 			H.emote("gasp")
 			H.adjustFireLoss(10)
 			if (prob(nitryl_pp/2))
-				to_chat(H, "<span class='alert'>Your throat closes up!</span>")
+				to_chat(H, "<span class='alert'>Zaciska ci się gardło!</span>")
 				H.silent = max(H.silent, 3)
 		else
 			H.adjustFireLoss(nitryl_pp/4)
@@ -288,12 +291,12 @@
 				H.radiation += 10
 
 		if(prob(nucleium_pp/4))
-			to_chat(owner, "<span class='warning'>Your lungs feel like they are disintergrating!</span>")
+			to_chat(owner, "<span class='warning'>Masz wrażenie, że twoje płuca się rozpadają!</span>")
 		if(prob(nucleium_pp))
 			H.emote("gasp")
 		if(nucleium_pp > 15)
 			if(prob(2))
-				to_chat(owner, "<span class='userdanger'>Your lungs violently disintergrate!</span>")
+				to_chat(owner, "<span class='userdanger'>Twoje płuca gwałtownie się rozpadają!</span>")
 				src.Remove(H, 1)
 				QDEL_NULL(src)
 				return
@@ -333,7 +336,7 @@
 			H.apply_damage_type(cold_level_1_damage*cold_modifier, cold_damage_type)
 		if(breath_temperature < cold_level_1_threshold)
 			if(prob(20))
-				to_chat(H, "<span class='warning'>You feel [cold_message] in your [name]!</span>")
+				to_chat(H, "<span class='warning'>Czujesz, [cold_message] ([name])!</span>")
 
 	if(!HAS_TRAIT(H, TRAIT_RESISTHEAT)) // HEAT DAMAGE
 		var/heat_modifier = H.dna.species.heatmod
@@ -345,22 +348,18 @@
 			H.apply_damage_type(heat_level_3_damage*heat_modifier, heat_damage_type)
 		if(breath_temperature > heat_level_1_threshold)
 			if(prob(20))
-				to_chat(H, "<span class='warning'>You feel [hot_message] in your [name]!</span>")
+				to_chat(H, "<span class='warning'>Czujesz, [hot_message] ([name])!</span>")
 
 /obj/item/organ/lungs/on_life()
 	..()
 	if((!failed) && ((organ_flags & ORGAN_FAILING)))
 		if(owner.stat == CONSCIOUS)
-			owner.visible_message("<span class='userdanger'>[owner] grabs [owner.p_their()] throat, struggling for breath!</span>")
+			owner.visible_message("<span class='userdanger'>[owner] chwyta się za gardło, walcząc o oddech!</span>")
 		failed = TRUE
 	else if(!(organ_flags & ORGAN_FAILING))
 		failed = FALSE
 	return
 
-/obj/item/organ/lungs/prepare_eat()
-	var/obj/S = ..()
-	S.reagents.add_reagent(/datum/reagent/medicine/salbutamol, 5)
-	return S
 
 /obj/item/organ/lungs/plasmaman
 	name = "plasma filter"

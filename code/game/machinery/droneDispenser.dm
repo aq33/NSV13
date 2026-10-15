@@ -40,12 +40,12 @@
 	var/create_sound = 'sound/items/deconstruct.ogg'
 	var/recharge_sound = 'sound/machines/ping.ogg'
 
-	var/begin_create_message = "whirs to life!"
-	var/end_create_message = "dispenses a drone shell."
+	var/begin_create_message = "budzi się do życia!"
+	var/end_create_message = "wydaje powłokę drona."
 	var/recharge_message = "pings."
-	var/recharging_text = "It is whirring and clicking. It seems to be recharging."
+	var/recharging_text = "Warczy i klika. Wygląda na to, że się ładuje."
 
-	var/break_message = "lets out a tinny alarm before falling dark."
+	var/break_message = "wydaje cienki alarm, po czym gaśnie."
 	var/break_sound = 'sound/machines/warning-buzzer.ogg'
 
 /obj/machinery/droneDispenser/Initialize(mapload)
@@ -53,7 +53,11 @@
 	var/datum/component/material_container/materials = AddComponent(/datum/component/material_container, list(/datum/material/iron, /datum/material/glass), MINERAL_MATERIAL_AMOUNT * MAX_STACK_SIZE * 2, TRUE, /obj/item/stack)
 	materials.insert_amount_mat(starting_amount)
 	materials.precise_insertion = TRUE
-	using_materials = list(/datum/material/iron = iron_cost, /datum/material/glass = glass_cost)
+	using_materials = list()
+	if(iron_cost)
+		using_materials[/datum/material/iron] = iron_cost
+	if(glass_cost)
+		using_materials[/datum/material/glass] = glass_cost
 
 /obj/machinery/droneDispenser/preloaded
 	starting_amount = 5000
@@ -64,21 +68,21 @@
 	dispense_type = /obj/effect/mob_spawn/drone/syndrone
 	//If we're gonna be a jackass, go the full mile - 10 second recharge timer
 	cooldownTime = 100
-	end_create_message = "dispenses a suspicious drone shell."
+	end_create_message = "wydaje podejrzaną powłokę drona."
 	starting_amount = 25000
 
 /obj/machinery/droneDispenser/syndrone/badass //Please forgive me
 	name = "badass syndrone shell dispenser"
 	desc = "A suspicious machine that will create Syndicate exterminator drones when supplied with iron and glass. Disgusting. This one seems ominous."
 	dispense_type = /obj/effect/mob_spawn/drone/syndrone/badass
-	end_create_message = "dispenses an ominous suspicious drone shell."
+	end_create_message = "wydaje złowieszczą, podejrzaną powłokę drona."
 
 // I don't need your forgiveness, this is awesome.
 /obj/machinery/droneDispenser/snowflake
 	name = "snowflake drone shell dispenser"
 	desc = "A hefty machine that, when supplied with iron and glass, will periodically create a snowflake drone shell. Does not need to be manually operated."
 	dispense_type = /obj/effect/mob_spawn/drone/snowflake
-	end_create_message = "dispenses a snowflake drone shell."
+	end_create_message = "wydaje wyjątkową powłokę drona."
 	// Those holoprojectors aren't cheap
 	iron_cost = 2000
 	glass_cost = 2000
@@ -101,8 +105,8 @@
 	power_used = 0
 	cooldownTime = 10 //Only 1 second - hivebots are extremely weak
 	dispense_type = /mob/living/simple_animal/hostile/hivebot
-	begin_create_message = "closes and begins fabricating something within."
-	end_create_message = "slams open, revealing a hivebot!"
+	begin_create_message = "zamyka się i zaczyna coś wytwarzać w środku."
+	end_create_message = "otwiera się z hukiem, odsłaniając hivebota!"
 	recharge_sound = null
 	recharge_message = null
 
@@ -120,13 +124,13 @@
 	cooldownTime = 300 //30 seconds
 	maximum_idle = 0 // Swarmers have no restraint
 	dispense_type = /obj/effect/mob_spawn/swarmer
-	begin_create_message = "hums softly as an interface appears above it, scrolling by at unreadable speed."
-	end_create_message = "materializes a strange shell, which drops to the ground."
-	recharging_text = "Its lights are slowly increasing in brightness."
+	begin_create_message = "cicho buczy, a nad nim pojawia się interfejs przewijający się z nieczytelną szybkością."
+	end_create_message = "materializuje dziwną powłokę, która spada na ziemię."
+	recharging_text = "Jego światła powoli się rozjaśniają."
 	work_sound = 'sound/effects/empulse.ogg'
 	create_sound = 'sound/effects/phasein.ogg'
 	break_sound = 'sound/effects/empulse.ogg'
-	break_message = "slowly falls dark, lights stuttering."
+	break_message = "powoli gaśnie, a światła migoczą."
 
 /obj/machinery/droneDispenser/examine(mob/user)
 	. = ..()
@@ -142,7 +146,7 @@
 		return
 
 	var/datum/component/material_container/materials = GetComponent(/datum/component/material_container)
-	if(!materials.has_materials(using_materials))
+	if(length(using_materials) && !materials.has_materials(using_materials)) // No-cost dispensers (swarmer, hivebot) skip the check, has_materials() fails on an empty list
 		return // We require more minerals
 
 	// We are currently in the middle of something
@@ -163,7 +167,8 @@
 			update_icon()
 
 		if(DRONE_PRODUCTION)
-			materials.use_materials(using_materials)
+			if(length(using_materials))
+				materials.use_materials(using_materials)
 			if(power_used)
 				use_power(power_used)
 
@@ -209,26 +214,26 @@
 		var/datum/component/material_container/materials = GetComponent(/datum/component/material_container)
 		materials.retrieve_all()
 		I.play_tool_sound(src)
-		to_chat(user, "<span class='notice'>You retrieve the materials from [src].</span>")
+		to_chat(user, "<span class='notice'>Odzyskujesz materiały z [src].</span>")
 
 	else if(I.tool_behaviour == TOOL_WELDER)
 		if(!(machine_stat & BROKEN))
-			to_chat(user, "<span class='warning'>[src] doesn't need repairs.</span>")
+			to_chat(user, "<span class='warning'>[src] nie wymaga naprawy.</span>")
 			return
 
 		if(!I.tool_start_check(user, amount=1))
 			return
 
 		user.visible_message(
-			"<span class='notice'>[user] begins patching up [src] with [I].</span>",
-			"<span class='notice'>You begin restoring the damage to [src]...</span>")
+			"<span class='notice'>[user] zaczyna łatać [src] za pomocą [I].</span>",
+			"<span class='notice'>Zaczynasz naprawiać uszkodzenia [src]...</span>")
 
 		if(!I.use_tool(src, user, 40, volume=50, amount=1))
 			return
 
 		user.visible_message(
 			"<span class='notice'>[user] fixes [src]!</span>",
-			"<span class='notice'>You restore [src] to operation.</span>")
+			"<span class='notice'>Przywracasz [src] do działania.</span>")
 
 		set_machine_stat(machine_stat & ~BROKEN)
 		obj_integrity = max_integrity

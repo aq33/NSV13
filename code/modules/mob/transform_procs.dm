@@ -3,6 +3,9 @@
 /mob/living/carbon/proc/monkeyize(tr_flags = (TR_KEEPITEMS | TR_KEEPVIRUS | TR_DEFAULTMSG | TR_KEEPAI), skip_animation = FALSE)
 	if (notransform || transformation_timer)
 		return
+	if(has_horror_inside()) // AQ EDIT - Yogstation#13033
+		to_chat(src, "<span class='warning'>Czujesz, jak coś kurczowo trzyma się twojego człowieczeństwa!</span>")
+		return
 
 	var/list/stored_implants = list()
 
@@ -53,7 +56,7 @@
 
 	if(suiciding)
 		O.set_suicide(suiciding)
-	O.a_intent = INTENT_HARM
+	O.set_combat_mode(TRUE)
 
 	//keep viruses?
 	if (tr_flags & TR_KEEPVIRUS)
@@ -138,7 +141,7 @@
 			QDEL_NULL(O.ai_controller)
 
 	if (tr_flags & TR_DEFAULTMSG)
-		to_chat(O, "<B>You are now a monkey.</B>")
+		to_chat(O, "<B>Jesteś teraz małpą.</B>")
 
 	for(var/A in loc.vars)
 		if(loc.vars[A] == src)
@@ -211,7 +214,7 @@
 
 	if(suiciding)
 		O.set_suicide(suiciding)
-	O.a_intent = INTENT_HARM
+	O.set_combat_mode(TRUE)
 
 	//keep viruses?
 	if (tr_flags & TR_KEEPVIRUS)
@@ -289,7 +292,7 @@
 
 
 	if (tr_flags & TR_DEFAULTMSG)
-		to_chat(O, "<B>You are now a living teratoma.</B>")
+		to_chat(O, "<B>Jesteś teraz żywą teratomą.</B>")
 
 	for(var/A in loc.vars)
 		if(loc.vars[A] == src)
@@ -451,9 +454,9 @@
 			QDEL_NULL(O.ai_controller)
 
 
-	O.a_intent = INTENT_HELP
+	O.set_combat_mode(FALSE)
 	if (tr_flags & TR_DEFAULTMSG)
-		to_chat(O, "<B>You are now humanoid.</B>")
+		to_chat(O, "<B>Jesteś teraz humanoidem.</B>")
 
 	transfer_observers_to(O)
 
@@ -497,7 +500,7 @@
 			break
 		landmark_loc += sloc.loc
 	if(!landmark_loc.len)
-		to_chat(src, "Oh god sorry we can't find an unoccupied AI spawn location, so we're spawning you on top of someone.")
+		to_chat(src, "Ojej, przepraszamy, nie ma wolnego miejsca dla SI, więc pojawiasz się na kimś.")
 		for(var/obj/effect/landmark/start/ai/sloc in GLOB.landmarks_list)
 			landmark_loc += sloc.loc
 
@@ -566,10 +569,10 @@
 		if("Drone")
 			new_xeno = new /mob/living/carbon/alien/humanoid/drone(loc)
 
-	new_xeno.a_intent = INTENT_HARM
+	new_xeno.set_combat_mode(TRUE)
 	new_xeno.key = key
 
-	to_chat(new_xeno, "<B>You are now an alien.</B>")
+	to_chat(new_xeno, "<B>Jesteś teraz obcym.</B>")
 	. = new_xeno
 	qdel(src)
 
@@ -589,10 +592,10 @@
 		new_slime = pick(babies)
 	else
 		new_slime = new /mob/living/simple_animal/slime(loc)
-	new_slime.a_intent = INTENT_HARM
+	new_slime.set_combat_mode(TRUE)
 	new_slime.key = key
 
-	to_chat(new_slime, "<B>You are now a slime. Skreee!</B>")
+	to_chat(new_slime, "<B>Jesteś teraz szlamem. Skriii!</B>")
 	. = new_slime
 	qdel(src)
 
@@ -608,10 +611,10 @@
 		return
 
 	var/mob/living/simple_animal/pet/dog/corgi/new_corgi = new /mob/living/simple_animal/pet/dog/corgi (loc)
-	new_corgi.a_intent = INTENT_HARM
+	new_corgi.set_combat_mode(TRUE)
 	new_corgi.key = key
 
-	to_chat(new_corgi, "<B>You are now a Corgi. Yap Yap!</B>")
+	to_chat(new_corgi, "<B>Jesteś teraz corgi. Hau hau!</B>")
 	. = new_corgi
 	qdel(src)
 
@@ -619,12 +622,12 @@
 	if(pre_transform())
 		return
 	var/mob/living/simple_animal/hostile/gorilla/new_gorilla = new (get_turf(src))
-	new_gorilla.a_intent = INTENT_HARM
+	new_gorilla.set_combat_mode(TRUE)
 	if(mind)
 		mind.transfer_to(new_gorilla)
 	else
 		new_gorilla.key = key
-	to_chat(new_gorilla, "<B>You are now a gorilla. Ooga ooga!</B>")
+	to_chat(new_gorilla, "<B>Jesteś teraz gorylem. Uga buga!</B>")
 	. = new_gorilla
 	qdel(src)
 
@@ -632,53 +635,53 @@
 	if(pre_transform())
 		return
 	var/mob/living/simple_animal/hostile/gorilla/rabid/new_gorilla = new (get_turf(src))
-	new_gorilla.a_intent = INTENT_HARM
+	new_gorilla.set_combat_mode(TRUE)
 	var/datum/atom_hud/H = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
 	H.add_hud_to(new_gorilla)
 	if(mind)
 		mind.transfer_to(new_gorilla)
 	else
 		new_gorilla.key = key
-	to_chat(new_gorilla, "<B>You are now a gorilla. Ooga ooga!</B>")
+	to_chat(new_gorilla, "<B>Jesteś teraz gorylem. Uga buga!</B>")
 	. = new_gorilla
 	qdel(src)
 
 /mob/living/carbon/human/Animalize()
 
 	var/list/mobtypes = typesof(/mob/living/simple_animal)
-	var/mobpath = input("Which type of mob should [src] turn into?", "Choose a type") in sortList(mobtypes, GLOBAL_PROC_REF(cmp_typepaths_asc))
+	var/mobpath = input("W jaki typ moba ma się zmienić [src]?", "Choose a type") in sortList(mobtypes, GLOBAL_PROC_REF(cmp_typepaths_asc))
 
 	if(!safe_animal(mobpath))
-		to_chat(usr, "<span class='danger'>Sorry but this mob type is currently unavailable.</span>")
+		to_chat(usr, "<span class='danger'>Przepraszamy, ten typ moba jest obecnie niedostępny.</span>")
 		return
 
 	if(pre_transform())
 		return
 
-	var/mob/new_mob = new mobpath(src.loc)
+	var/mob/living/new_mob = new mobpath(src.loc)
 
 	new_mob.key = key
-	new_mob.a_intent = INTENT_HARM
+	new_mob.set_combat_mode(TRUE)
 
 
-	to_chat(new_mob, "You suddenly feel more... animalistic.")
+	to_chat(new_mob, "Nagle czujesz się bardziej... zwierzęco.")
 	. = new_mob
 	qdel(src)
 
 /mob/proc/Animalize()
 
 	var/list/mobtypes = typesof(/mob/living/simple_animal)
-	var/mobpath = input("Which type of mob should [src] turn into?", "Choose a type") in sortList(mobtypes, GLOBAL_PROC_REF(cmp_typepaths_asc))
+	var/mobpath = input("W jaki typ moba ma się zmienić [src]?", "Choose a type") in sortList(mobtypes, GLOBAL_PROC_REF(cmp_typepaths_asc))
 
 	if(!safe_animal(mobpath))
-		to_chat(usr, "<span class='danger'>Sorry but this mob type is currently unavailable.</span>")
+		to_chat(usr, "<span class='danger'>Przepraszamy, ten typ moba jest obecnie niedostępny.</span>")
 		return
 
-	var/mob/new_mob = new mobpath(src.loc)
+	var/mob/living/new_mob = new mobpath(src.loc)
 
 	new_mob.key = key
-	new_mob.a_intent = INTENT_HARM
-	to_chat(new_mob, "You feel more... animalistic")
+	new_mob.set_combat_mode(TRUE)
+	to_chat(new_mob, "Czujesz się bardziej... zwierzęco")
 
 	. = new_mob
 	qdel(src)

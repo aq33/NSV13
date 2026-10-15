@@ -8,9 +8,9 @@
 	gender = NEUTER
 	mob_biotypes = list(MOB_UNDEAD, MOB_HUMANOID)
 	turns_per_move = 5
-	speak_emote = list("rattles")
-	emote_see = list("rattles")
-	a_intent = INTENT_HARM
+	speak_emote = list("grzechocze")
+	emote_see = list("grzechocze")
+	combat_mode = TRUE
 	maxHealth = 40
 	health = 40
 	speed = 1
@@ -18,7 +18,7 @@
 	minbodytemp = 0
 	maxbodytemp = 1500
 	healable = 0 //they're skeletons how would bruise packs help them??
-	attacktext = "slashes"
+	attacktext = "tnie"
 	attack_sound = 'sound/hallucinations/growl1.ogg'
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	unsuitable_atmos_damage = 10
@@ -28,7 +28,7 @@
 	faction = list("skeleton")
 	see_in_dark = 8
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
-	deathmessage = "collapses into a pile of bones!"
+	deathmessage = "rozpada się w stos kości!"
 	del_on_death = TRUE
 	loot = list(/obj/effect/decal/remains/human)
 
@@ -49,7 +49,7 @@
 	weather_immunities = list("snow")
 	gold_core_spawnable = NO_SPAWN
 	melee_damage = 20
-	deathmessage = "collapses into a pile of bones, its gear falling to the floor!"
+	deathmessage = "rozpada się w stos kości, a jego sprzęt spada na podłogę!"
 	loot = list(/obj/effect/decal/remains/human,
 				/obj/item/spear,
 				/obj/item/clothing/shoes/winterboots,
@@ -68,11 +68,11 @@
 	speed = 2
 	gold_core_spawnable = NO_SPAWN
 	speak_chance = 1
-	speak = list("THE GODS WILL IT!","DEUS VULT!","REMOVE KABAB!")
+	speak = list("BOGOWIE TEGO CHCĄ!","DEUS VULT!","REMOVE KABAB!")
 	force_threshold = 10 //trying to simulate actually having armor
 	obj_damage = 50
 	melee_damage = 30
-	deathmessage = "collapses into a pile of bones, its gear clanging as it hits the ground!"
+	deathmessage = "rozpada się w stos kości, a jego sprzęt z brzękiem uderza o ziemię!"
 	loot = list(/obj/effect/decal/remains/human,
 				/obj/item/clothing/suit/armor/riot/chaplain,
 				/obj/item/clothing/head/helmet/chaplain,
@@ -98,9 +98,9 @@
 	health = 150
 	melee_damage = 17
 	light_color = LIGHT_COLOR_PURPLE
-	attacktext = "slashes"
+	attacktext = "tnie"
 	attack_sound = 'sound/hallucinations/growl1.ogg'
-	deathmessage = "collapses into a pile of bones, their suit dissolving among the plasma!"
+	deathmessage = "rozpada się w stos kości, a skafander rozpuszcza się w plazmie!"
 	loot = list(/obj/effect/decal/remains/plasma)
 
 /mob/living/simple_animal/hostile/skeleton/plasmaminer/jackhammer
@@ -111,7 +111,7 @@
 	maxHealth = 185
 	health = 185
 	melee_damage = 22
-	attacktext = "blasts"
+	attacktext = "razi"
 	attack_sound = 'sound/weapons/sonic_jackhammer.ogg'
 	environment_smash = ENVIRONMENT_SMASH_WALLS
 	loot = list(/obj/effect/decal/remains/plasma, /obj/item/pickaxe/drill/jackhammer)

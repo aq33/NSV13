@@ -4,7 +4,7 @@
 	icon_state = "chronohelmet"
 	item_state = "chronohelmet"
 	slowdown = 1
-	armor = list("melee" = 60, "bullet" = 60, "laser" = 60, "energy" = 60, "bomb" = 30, "bio" = 90, "rad" = 90, "fire" = 100, "acid" = 100, "stamina" = 70)
+	armor = list("melee" = 60, "bullet" = 60, "laser" = 60, "energy" = 60, "bomb" = 30, "bio" = 90, "rad" = 90, "fire" = 100, "acid" = 100, "stamina" = 70, "bleed" = 80)
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	var/obj/item/clothing/suit/space/chronos/suit
 
@@ -14,7 +14,7 @@
 		suit.deactivate(1, 1)
 
 /obj/item/clothing/head/helmet/space/chronos/Destroy()
-	dropped()
+	suit?.deactivate(1, 1) // AQ EDIT - was dropped(), which runtimes without a user
 	return ..()
 
 
@@ -24,7 +24,7 @@
 	icon_state = "chronosuit"
 	item_state = "chronosuit"
 	actions_types = list(/datum/action/item_action/toggle)
-	armor = list("melee" = 60, "bullet" = 60, "laser" = 60, "energy" = 60, "bomb" = 30, "bio" = 90, "rad" = 90, "fire" = 100, "acid" = 1000, "stamina" = 70)
+	armor = list("melee" = 60, "bullet" = 60, "laser" = 60, "energy" = 60, "bomb" = 30, "bio" = 90, "rad" = 90, "fire" = 100, "acid" = 1000, "stamina" = 70, "bleed" = 80)
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	var/list/chronosafe_items = list(/obj/item/chrono_eraser, /obj/item/gun/energy/chrono_gun)
 	var/obj/item/clothing/head/helmet/space/chronos/helmet
@@ -64,7 +64,8 @@
 		deactivate()
 
 /obj/item/clothing/suit/space/chronos/Destroy()
-	dropped()
+	if(activated) // AQ EDIT - was dropped(), which runtimes without a user
+		deactivate()
 	QDEL_NULL(teleport_now)
 	return ..()
 
@@ -77,7 +78,7 @@
 		if(1)
 			if(activated && user && ishuman(user) && (user.wear_suit == src))
 				to_chat(user, "<span class='danger'>E:FATAL:RAM_READ_FAIL\nE:FATAL:STACK_EMPTY\nE:FATAL:READ_NULL_POINT\nE:FATAL:PWR_BUS_OVERLOAD</span>")
-				to_chat(user, "<span class='userdanger'>An electromagnetic pulse disrupts your [name] and violently tears you out of time-bluespace!</span>")
+				to_chat(user, "<span class='userdanger'>Impuls elektromagnetyczny zakłóca działanie twojego [name] i gwałtownie wyrywa cię z czasoprzestrzeni bluespace!</span>")
 				user.emote("scream")
 			deactivate(1, 1)
 
@@ -129,7 +130,7 @@
 		for(var/exposed_item in exposed)
 			var/obj/item/exposed_I = exposed_item
 			if(exposed_I && !(exposed_I.type in chronosafe_items) && user.dropItemToGround(exposed_I))
-				to_chat(user, "<span class='notice'>Your [exposed_I.name] got left behind.</span>")
+				to_chat(user, "<span class='notice'>Twój [exposed_I.name] został w tyle.</span>")
 
 		user.ExtinguishMob()
 
@@ -204,7 +205,7 @@
 				activated = 1
 			else
 				to_chat(user, "\[ <span style='color: #ff0000;'>fail</span> \] Mounting /dev/helm")
-				to_chat(user, "<span style='color: #ff0000;'><b>FATAL: </b>Unable to locate /dev/helm. <b>Aborting...</b></span>")
+				to_chat(user, "<span style='color: #ff0000;'><b>FATAL: </b>Nie można znaleźć /dev/helm. <b>Przerywanie...</b></span>")
 			teleport_now.Grant(user)
 		cooldown = world.time + cooldowntime
 		activating = 0

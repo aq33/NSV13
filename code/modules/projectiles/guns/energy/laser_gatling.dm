@@ -40,12 +40,12 @@
 				armed = 1
 				if(!user.put_in_hands(gun))
 					armed = 0
-					to_chat(user, "<span class='warning'>You need a free hand to hold the gun!</span>")
+					to_chat(user, "<span class='warning'>Potrzebujesz wolnej ręki, by trzymać broń!</span>")
 					return
 				update_icon()
 				user.update_inv_back()
 		else
-			to_chat(user, "<span class='warning'>You are already holding the gun!</span>")
+			to_chat(user, "<span class='warning'>Już trzymasz broń!</span>")
 	else
 		..()
 
@@ -89,9 +89,9 @@
 	gun.forceMove(src)
 	armed = 0
 	if(user)
-		to_chat(user, "<span class='notice'>You attach the [gun.name] to the [name].</span>")
+		to_chat(user, "<span class='notice'>Mocujesz [gun.name] do [name].</span>")
 	else
-		src.visible_message("<span class='warning'>The [gun.name] snaps back onto the [name]!</span>")
+		src.visible_message("<span class='warning'>[gun.name] wskakuje z powrotem na [name]!</span>")
 	update_icon()
 	user.update_inv_back()
 
@@ -99,7 +99,7 @@
 	if(obj_flags & EMAGGED)
 		return
 	obj_flags |= EMAGGED
-	to_chat(user, "<span class='warning'>You break the heat sensor.</span>")
+	to_chat(user, "<span class='warning'>Psujesz czujnik temperatury.</span>")
 	overheat_max = 1000
 
 /obj/item/stock_parts/cell/minigun
@@ -169,13 +169,13 @@
 					playsound(get_turf(src), 'sound/weapons/heavyminigunstop.ogg', 50, 0, 0)
 					slowdown = initial(slowdown)
 				else
-					to_chat(user, "The gun's heat sensor locked the trigger to prevent lens damage.")
+					to_chat(user, "Czujnik temperatury broni zablokował spust, by zapobiec uszkodzeniu soczewki.")
 		else
 			..()
 
 /obj/item/gun/energy/minigun/afterattack(atom/target, mob/living/user, flag, params)
 	if(!ammo_pack || ammo_pack.loc != user)
-		to_chat(user, "You need the backpack power source to fire the gun!")
+		to_chat(user, "Do strzelania potrzebujesz zasilania z plecaka!")
 	. = ..()
 
 /obj/item/gun/energy/minigun/dropped(mob/living/user)

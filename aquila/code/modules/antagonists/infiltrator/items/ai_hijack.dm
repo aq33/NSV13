@@ -7,21 +7,21 @@
 /obj/item/ai_hijack_device/examine(mob/living/user)
 	. = ..()
 	if (user?.mind?.has_antag_datum(/datum/antagonist/infiltrator))
-		. += span_notice("To use, attach to the core of an AI unit and wait. [span_italics("This will alert the victim AI!")]")
+		. += span_notice("Aby użyć, przyczep do rdzenia SI i zaczekaj. [span_italics("Ofiara się o tym dowie!")]")
 
 /obj/item/ai_hijack_device/afterattack(atom/O, mob/user, proximity)
 	if(isAI(O))
 		var/mob/living/silicon/ai/A = O
 		if(A.mind && A.mind.has_antag_datum(/datum/antagonist/hijacked_ai))
-			to_chat(user, span_warning("[A] has already been hijacked!"))
+			to_chat(user, span_warning("[A] jest już przejęta!"))
 			return
 		if(A.stat == DEAD)
-			to_chat(user, span_warning("[A] is dead!"))
+			to_chat(user, span_warning("[A] nie działa!"))
 			return
 		if(A.hijacking)
-			to_chat(user, span_warning("[A] is already in the process of being hijacked!"))
+			to_chat(user, span_warning("[A] jest już w trakcie przejmowania!"))
 			return
-		user.visible_message(span_warning("[user] begins attaching something to [A]..."))
+		user.visible_message(span_warning("[user] zaczyna coś przyczepiać do [A]..."))
 		if(do_after(user, 55, target = A))
 			user.dropItemToGround(src)
 			forceMove(A)
@@ -35,6 +35,6 @@
 			to_chat(A, span_binarysay("<span style='font-size: 125%'>$ dd from=/dev/ttySL0 of=/tmp/ai-hijack bs=4096 && chmod +x /tmp/ai-hijack && tmp/ai-hijack</span>"))
 			to_chat(A, span_binarysay("<span style='font-size: 125%'>111616 bytes (112 KB, 109 KiB) copied, 1 s, 14.4 KB/s</span>"))
 			message_admins("[ADMIN_LOOKUPFLW(user)] has attached a hijacking device to [ADMIN_LOOKUPFLW(A)]!")
-			notify_ghosts("[user] has begun to hijack [A]!", source = A, action = NOTIFY_ORBIT, ghost_sound = 'sound/machines/chime.ogg')
+			notify_ghosts("[user] zaczyna przejmować [A]!", source = A, action = NOTIFY_ORBIT, ghost_sound = 'sound/machines/chime.ogg')
 	else
 		return ..()

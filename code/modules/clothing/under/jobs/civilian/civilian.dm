@@ -58,7 +58,7 @@
 
 /obj/item/clothing/under/rank/civilian/altchef
 	name = "red cook's suit"
-	desc = "A flashier chef's suit, if a bit more impractical."
+	desc = "Bardziej efektowny strój kucharza, choć mniej praktyczny."
 	icon_state = "altchef"
 	alt_covers_chest = TRUE
 
@@ -115,7 +115,7 @@
 	desc = "It's the official uniform of the station's janitor. It has minor protection from biohazards."
 	name = "janitor's jumpsuit"
 	icon_state = "janitor"
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 10, "rad" = 0, "fire" = 0, "acid" = 0, "stamina" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 10, "rad" = 0, "fire" = 0, "acid" = 0, "stamina" = 0, "bleed" = 10)
 
 /obj/item/clothing/under/rank/civilian/janitor/skirt
 	name = "janitor's jumpskirt"

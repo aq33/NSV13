@@ -8,7 +8,7 @@
 	held_lh = 'icons/mob/pets_held_lh.dmi'
 	held_rh = 'icons/mob/pets_held_rh.dmi'
 	head_icon = 'icons/mob/pets_held.dmi'
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab/mothroach = 3, /obj/item/stack/sheet/animalhide/mothroach = 1)
+	butcher_results = list(/obj/item/food/meat/slab/mothroach = 3, /obj/item/stack/sheet/animalhide/mothroach = 1)
 	gold_core_spawnable = FRIENDLY_SPAWN
 	density = TRUE
 	mob_biotypes = list(MOB_ORGANIC, MOB_BUG)
@@ -21,13 +21,13 @@
 	worn_slot_flags = ITEM_SLOT_HEAD
 	ventcrawler = VENTCRAWLER_ALWAYS
 
-	verb_say = "flutters"
-	verb_ask = "flutters inquisitively"
-	verb_exclaim = "flutters loudly"
-	verb_yell = "flutters loudly"
-	response_help = "pets"
-	speak_emote = list("flutters")
-	emote_hear = list("flutters.")
+	verb_say = "trzepocze"
+	verb_ask = "trzepocze pytająco"
+	verb_exclaim = "trzepocze głośno"
+	verb_yell = "trzepocze głośno"
+	response_help = "głaszcze"
+	speak_emote = list("trzepocze")
+	emote_hear = list("trzepocze.")
 	speak_chance = 1
 	attacked_sound = 'sound/voice/moth/scream_moth.ogg'
 

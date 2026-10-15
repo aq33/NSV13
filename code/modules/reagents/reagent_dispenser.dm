@@ -30,7 +30,7 @@
 	. = ..()
 
 /obj/structure/reagent_dispensers/proc/boom()
-	visible_message("<span class='danger'>\The [src] ruptures!</span>")
+	visible_message("<span class='danger'>[src] pęka!</span>")
 	chem_splash(loc, 5, list(reagents))
 	qdel(src)
 
@@ -95,19 +95,19 @@
 /obj/structure/reagent_dispensers/fueltank/attackby(obj/item/I, mob/living/user, params)
 	if(I.tool_behaviour == TOOL_WELDER)
 		if(!reagents.has_reagent(/datum/reagent/fuel))
-			to_chat(user, "<span class='warning'>[src] is out of fuel!</span>")
+			to_chat(user, "<span class='warning'>W [src] skończyło się paliwo!</span>")
 			return
 		var/obj/item/weldingtool/W = I
 		if(istype(W) && !W.welding)
 			if(W.reagents.has_reagent(/datum/reagent/fuel, W.max_fuel))
-				to_chat(user, "<span class='warning'>Your [W.name] is already full!</span>")
+				to_chat(user, "<span class='warning'>Twój [W.name] jest już pełny!</span>")
 				return
 			reagents.trans_to(W, W.max_fuel, transfered_by = user)
-			user.visible_message("<span class='notice'>[user] refills [user.p_their()] [W.name].</span>", "<span class='notice'>You refill [W].</span>")
+			user.visible_message("<span class='notice'>[user] refills [user.p_their()] [W.name].</span>", "<span class='notice'>Napełniasz [W].</span>")
 			playsound(src, 'sound/effects/refill.ogg', 50, 1)
 			W.update_icon()
 		else
-			user.visible_message("<span class='warning'>[user] catastrophically fails at refilling [user.p_their()] [I.name]!</span>", "<span class='userdanger'>That was stupid of you.</span>")
+			user.visible_message("<span class='warning'>[user] katastrofalnie partaczy napełnianie [I.name]!</span>", "<span class='userdanger'>To było głupie z twojej strony.</span>")
 			log_bomber(user, "detonated a", src, "via welding tool")
 
 			if (user.client)
@@ -145,20 +145,20 @@
 /obj/structure/reagent_dispensers/water_cooler/examine(mob/user)
 	. = ..()
 	if (paper_cups > 1)
-		. += "There are [paper_cups] paper cups left."
+		. += "Zostało papierowych kubków: [paper_cups]."
 	else if (paper_cups == 1)
-		. += "There is one paper cup left."
+		. += "Został jeden papierowy kubek."
 	else
-		. += "There are no paper cups left."
+		. += "Nie zostały żadne papierowe kubki."
 
 /obj/structure/reagent_dispensers/water_cooler/attack_hand(mob/living/user)
 	. = ..()
 	if(.)
 		return
 	if(!paper_cups)
-		to_chat(user, "<span class='warning'>There aren't any cups left!</span>")
+		to_chat(user, "<span class='warning'>Nie zostały żadne kubki!</span>")
 		return
-	user.visible_message("<span class='notice'>[user] takes a cup from [src].</span>", "<span class='notice'>You take a paper cup from [src].</span>")
+	user.visible_message("<span class='notice'>[user] bierze kubek z [src].</span>", "<span class='notice'>Bierzesz papierowy kubek z [src].</span>")
 	var/obj/item/reagent_containers/food/drinks/sillycup/S = new(get_turf(src))
 	user.put_in_hands(S)
 	paper_cups--
@@ -185,12 +185,12 @@
 	reagent_id = /datum/reagent/consumable/virus_food
 
 
-/obj/structure/reagent_dispensers/cooking_oil
+/obj/structure/reagent_dispensers/nutriment/fat/oil
 	name = "vat of cooking oil"
 	desc = "A huge metal vat with a tap on the front. Filled with cooking oil for use in frying food."
 	icon_state = "vat"
 	anchored = TRUE
-	reagent_id = /datum/reagent/consumable/cooking_oil
+	reagent_id = /datum/reagent/consumable/nutriment/fat/oil
 
 /obj/structure/reagent_dispensers/plumbed
 	name = "stationairy water tank"
@@ -198,17 +198,23 @@
 	icon_state = "water_stationairy"
 	desc = "A stationairy, plumbed, water tank."
 
+/obj/structure/reagent_dispensers/plumbed/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/plumbing/simple_supply)
+
 /obj/structure/reagent_dispensers/plumbed/wrench_act(mob/living/user, obj/item/I)
 	default_unfasten_wrench(user, I)
 	return TRUE
 
-/obj/structure/reagent_dispensers/plumbed/ComponentInitialize()
-	AddComponent(/datum/component/plumbing/simple_supply)
+/obj/structure/reagent_dispensers/plumbed/storage/AltClick(mob/user)
+	return ..() // This hotkey is BLACKLISTED since it's used by /datum/component/simple_rotation
 
 /obj/structure/reagent_dispensers/plumbed/storage
 	name = "stationairy storage tank"
 	icon_state = "tank_stationairy"
 	reagent_id = null //start empty
 
-/obj/structure/reagent_dispensers/plumbed/storage/ComponentInitialize()
+/obj/structure/reagent_dispensers/plumbed/storage/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/simple_rotation)
 	AddComponent(/datum/component/plumbing/tank)

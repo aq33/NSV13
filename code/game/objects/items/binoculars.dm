@@ -29,7 +29,7 @@
 
 	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(unwield))
 	listeningTo = user
-	user.visible_message("<span class='notice'>[user] holds [src] up to [user.p_their()] eyes.</span>", "<span class='notice'>You hold [src] up to your eyes.</span>")
+	user.visible_message("<span class='notice'>[user] przykłada [src] do oczu.</span>", "<span class='notice'>Przykładasz [src] do oczu.</span>")
 	item_state = "binoculars_wielded"
 	user.regenerate_icons()
 	if(!user?.client)
@@ -59,7 +59,7 @@
 	if(listeningTo)
 		UnregisterSignal(listeningTo, COMSIG_MOVABLE_MOVED)
 		listeningTo = null
-	user.visible_message("<span class='notice'>[user] lowers [src].</span>", "<span class='notice'>You lower [src].</span>")
+	user.visible_message("<span class='notice'>[user] lowers [src].</span>", "<span class='notice'>Opuszczasz [src].</span>")
 	item_state = "binoculars"
 	user.regenerate_icons()
 	if(user && user.client)

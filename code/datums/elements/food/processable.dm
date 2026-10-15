@@ -1,0 +1,73 @@
+// If an item has the processable item, it can be processed into another item with a specific tool. This adds generic behavior for those actions to make it easier to set-up generically.
+/datum/element/processable
+	element_flags = ELEMENT_BESPOKE
+	id_arg_index = 2
+	///The type of atom this creates when the processing recipe is used.
+	var/atom/result_atom_type
+	///The tool behaviour for this processing recipe
+	var/tool_behaviour
+	///Time to process the atom
+	var/time_to_process
+	///Amount of the resulting actor this will create
+	var/amount_created
+	///Whether or not the atom being processed has to be on a table or tray to process it
+	var/table_required
+	///Verb used in processing food (such as slice, flatten), defaults to process // AQ EDIT - screentips (port BeeStation #11938)
+	var/screentip_verb
+
+/datum/element/processable/Attach(datum/target, tool_behaviour, result_atom_type, amount_created = 3, time_to_process = 2 SECONDS, table_required = FALSE, screentip_verb = "Przerób") // AQ EDIT - screentip_verb (port BeeStation #11938)
+	. = ..()
+	if(!isatom(target))
+		return ELEMENT_INCOMPATIBLE
+
+	src.tool_behaviour = tool_behaviour
+	src.amount_created = amount_created
+	src.time_to_process = time_to_process
+	src.result_atom_type = result_atom_type
+	src.table_required = table_required
+	src.screentip_verb = screentip_verb // AQ EDIT - port BeeStation #11938
+
+	RegisterSignal(target, COMSIG_ATOM_TOOL_ACT(tool_behaviour), PROC_REF(try_process))
+	RegisterSignal(target, COMSIG_PARENT_EXAMINE, PROC_REF(OnExamine))
+	RegisterSignal(target, COMSIG_ATOM_ADD_CONTEXT, PROC_REF(on_requesting_context_from_item)) // AQ EDIT - port BeeStation #11938
+
+/datum/element/processable/Detach(datum/target)
+	. = ..()
+	UnregisterSignal(target, list(COMSIG_ATOM_TOOL_ACT(tool_behaviour), COMSIG_PARENT_EXAMINE, COMSIG_ATOM_ADD_CONTEXT)) // AQ EDIT - COMSIG_ATOM_ADD_CONTEXT (port BeeStation #11938)
+
+/datum/element/processable/proc/try_process(datum/source, mob/living/user, obj/item/I, list/mutable_recipes)
+	SIGNAL_HANDLER
+
+	if(table_required)
+		var/obj/item/found_item = source
+		var/found_location = found_item.loc
+		var/found_turf = isturf(found_location)
+		var/found_table = locate(/obj/structure/table) in found_location
+		var/found_tray = locate(/obj/item/storage/bag/tray) in found_location
+		if(!found_turf && !istype(found_location, /obj/item/storage/bag/tray) || found_turf && !(found_table || found_tray))
+			to_chat(user, "<span class='notice'>Nie możesz tu zrobić [initial(result_atom_type.name)]! Potrzebujesz stołu albo przynajmniej tacy.</span>")
+			return
+
+	mutable_recipes += list(list(TOOL_PROCESSING_RESULT = result_atom_type, TOOL_PROCESSING_AMOUNT = amount_created, TOOL_PROCESSING_TIME = time_to_process))
+
+///So people know what the frick they're doing without reading from a wiki page (I mean they will inevitably but i'm trying to help, ok?)
+/datum/element/processable/proc/OnExamine(atom/source, mob/user, list/examine_list)
+	SIGNAL_HANDLER
+
+	var/result_name = initial(result_atom_type.name)
+	var/result_gender = initial(result_atom_type.gender)
+	var/tool_desc = tool_behaviour_name(tool_behaviour)
+
+	// I admit, this is a lot of lines for very minor changes in the strings
+	// but at least it's readable?
+	if(amount_created > 1)
+		if(result_gender == PLURAL)
+			examine_list += "<span class='notice'>Można to przerobić na [result_name] ([amount_created] szt.) za pomocą <b>[tool_desc]</b>!</span>"
+		else
+			examine_list += "<span class='notice'>Można to przerobić na [result_name] ([amount_created] szt.) za pomocą <b>[tool_desc]</b>!</span>"
+
+	else
+		if(result_gender == PLURAL)
+			examine_list += "<span class='notice'>Można to przerobić na [result_name] za pomocą <b>[tool_desc]</b>!</span>"
+		else
+			examine_list += "<span class='notice'>Można to przerobić na [result_name] za pomocą <b>[tool_desc]</b>!</span>"

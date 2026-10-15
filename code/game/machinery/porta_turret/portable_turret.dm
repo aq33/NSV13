@@ -20,7 +20,7 @@
 
 	var/uses_stored = TRUE	//if TRUE this will cause the turret to stop working if the stored_gun var is null in process()
 
-	var/base_icon_state = "standard"
+	base_icon_state = "standard"
 	var/scan_range = 7
 	var/atom/base = null //for turrets inside other objects
 
@@ -29,7 +29,7 @@
 
 	max_integrity = 160		//the turret's health
 	integrity_failure = 80
-	armor = list("melee" = 50, "bullet" = 30, "laser" = 30, "energy" = 30, "bomb" = 30, "bio" = 0, "rad" = 0, "fire" = 90, "acid" = 90, "stamina" = 0)
+	armor = list("melee" = 50, "bullet" = 30, "laser" = 30, "energy" = 30, "bomb" = 30, "bio" = 0, "rad" = 0, "fire" = 90, "acid" = 90, "stamina" = 0, "bleed" = 0)
 
 	var/locked = TRUE			//if the turret's behaviour control access is locked
 	var/controllock = FALSE		//if the turret responds to control panels
@@ -99,6 +99,8 @@
 		underlays += base
 	if(!has_cover)
 		INVOKE_ASYNC(src, PROC_REF(popUp))
+	//NSV13 Keep track of turrets on a ship
+	get_overmap()?.turrets_in_ship |= src
 
 /obj/machinery/porta_turret/proc/toggle_on(var/set_to)
 	var/current = on
@@ -186,6 +188,8 @@
 	QDEL_NULL(stored_gun)
 	QDEL_NULL(spark_system)
 	remove_control()
+	//NSV13 Keep track of turrets on a ship
+	get_overmap()?.turrets_in_ship -= src
 	return ..()
 
 
@@ -195,27 +199,27 @@
 /obj/machinery/porta_turret/ui_interact(mob/user, datum/tgui/ui)
 	. = ..()
 	var/dat
-	dat += "Status: <a href='?src=[REF(src)];power=1'>[on ? "On" : "Off"]</a><br>"
-	dat += "Behaviour controls are [locked ? "locked" : "unlocked"]<br>"
+	dat += "Status: <a href='byond://?src=[REF(src)];power=1'>[on ? "On" : "Off"]</a><br>"
+	dat += "Sterowanie zachowaniem jest [locked ? "zablokowane" : "odblokowane"]<br>"
 
 	if(!locked)
-		dat += "Check for Weapon Authorization: <A href='?src=[REF(src)];operation=authweapon'>[auth_weapons ? "Yes" : "No"]</A><BR>"
-		dat += "Check Security Records: <A href='?src=[REF(src)];operation=checkrecords'>[check_records ? "Yes" : "No"]</A><BR>"
-		dat += "Neutralize Identified Criminals: <A href='?src=[REF(src)];operation=shootcrooks'>[criminals ? "Yes" : "No"]</A><BR>"
-		dat += "Neutralize All Non-Security and Non-Command Personnel: <A href='?src=[REF(src)];operation=shootall'>[stun_all ? "Yes" : "No"]</A><BR>"
-		dat += "Neutralize All Unidentified Life Signs: <A href='?src=[REF(src)];operation=checkxenos'>[check_anomalies ? "Yes" : "No"]</A><BR>"
-		dat += "Neutralize All Non-Loyalty Implanted Personnel: <A href='?src=[REF(src)];operation=checkloyal'>[shoot_unloyal ? "Yes" : "No"]</A><BR>"
-		dat += "Neutralize All Cyborgs: <A href='?src=[REF(src)];operation=checkborg'>[target_cyborgs ? "Yes" : "No"]</A><BR>"
+		dat += "Sprawdzaj zezwolenie na broń: <A href='byond://?src=[REF(src)];operation=authweapon'>[auth_weapons ? "Tak" : "Nie"]</A><BR>"
+		dat += "Sprawdzaj akta ochrony: <A href='byond://?src=[REF(src)];operation=checkrecords'>[check_records ? "Tak" : "Nie"]</A><BR>"
+		dat += "Neutralizuj zidentyfikowanych przestępców: <A href='byond://?src=[REF(src)];operation=shootcrooks'>[criminals ? "Tak" : "Nie"]</A><BR>"
+		dat += "Neutralizuj cały personel spoza ochrony i dowództwa: <A href='byond://?src=[REF(src)];operation=shootall'>[stun_all ? "Tak" : "Nie"]</A><BR>"
+		dat += "Neutralizuj wszystkie niezidentyfikowane formy życia: <A href='byond://?src=[REF(src)];operation=checkxenos'>[check_anomalies ? "Tak" : "Nie"]</A><BR>"
+		dat += "Neutralizuj cały personel bez implantu lojalności: <A href='byond://?src=[REF(src)];operation=checkloyal'>[shoot_unloyal ? "Tak" : "Nie"]</A><BR>"
+		dat += "Neutralizuj wszystkie cyborgi: <A href='byond://?src=[REF(src)];operation=checkborg'>[target_cyborgs ? "Tak" : "Nie"]</A><BR>"
 	if(issilicon(user))
 		if(!manual_control)
 			var/mob/living/silicon/S = user
 			if(S.hack_software)
-				dat += "Assume direct control : <a href='?src=[REF(src)];operation=manual'>Manual Control</a><br>"
+				dat += "Przejmij bezpośrednią kontrolę: <a href='byond://?src=[REF(src)];operation=manual'>Sterowanie ręczne</a><br>"
 		else
-			dat += "Warning! Remote control protocol enabled.<br>"
+			dat += "Uwaga! Włączono protokół zdalnego sterowania.<br>"
 
 
-	var/datum/browser/popup = new(user, "autosec", "Automatic Portable Turret Installation", 300, 300)
+	var/datum/browser/popup = new(user, "autosec", "Automatyczna instalacja przenośnej wieżyczki", 300, 300)
 	popup.set_content(dat)
 	popup.open()
 
@@ -229,7 +233,7 @@
 		if(anchored)	//you can't turn a turret on/off if it's not anchored/secured
 			on = !on	//toggle on/off
 		else
-			to_chat(usr, "<span class='notice'>It has to be secured first!</span>")
+			to_chat(usr, "<span class='notice'>Najpierw trzeba ją zamocować!</span>")
 		interact(usr)
 		return
 
@@ -267,18 +271,18 @@
 		if(I.tool_behaviour == TOOL_CROWBAR)
 			//If the turret is destroyed, you can remove it with a crowbar to
 			//try and salvage its components
-			to_chat(user, "<span class='notice'>You begin prying the iron coverings off...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz zdejmować łomem żelazne osłony...</span>")
 			if(I.use_tool(src, user, 20))
 				if(prob(70))
 					if(stored_gun)
 						stored_gun.forceMove(loc)
-					to_chat(user, "<span class='notice'>You remove the turret and salvage some components.</span>")
+					to_chat(user, "<span class='notice'>Zdejmujesz wieżyczkę i odzyskujesz część komponentów.</span>")
 					if(prob(50))
 						new /obj/item/stack/sheet/iron(loc, rand(1,4))
 					if(prob(50))
 						new /obj/item/assembly/prox_sensor(loc)
 				else
-					to_chat(user, "<span class='notice'>You remove the turret but did not manage to salvage anything.</span>")
+					to_chat(user, "<span class='notice'>Zdejmujesz wieżyczkę, ale nie udaje ci się niczego odzyskać.</span>")
 				qdel(src)
 
 	else if((I.tool_behaviour == TOOL_WRENCH) && (!on))
@@ -290,13 +294,13 @@
 			setAnchored(TRUE)
 			invisibility = INVISIBILITY_MAXIMUM
 			update_icon()
-			to_chat(user, "<span class='notice'>You secure the exterior bolts on the turret.</span>")
+			to_chat(user, "<span class='notice'>Dokręcasz zewnętrzne śruby wieżyczki.</span>")
 			if(has_cover)
 				cover = new /obj/machinery/porta_turret_cover(loc) //create a new turret. While this is handled in process(), this is to workaround a bug where the turret becomes invisible for a split second
 				cover.parent_turret = src //make the cover's parent src
 		else if(anchored)
 			setAnchored(FALSE)
-			to_chat(user, "<span class='notice'>You unsecure the exterior bolts on the turret.</span>")
+			to_chat(user, "<span class='notice'>Odkręcasz zewnętrzne śruby wieżyczki.</span>")
 			power_change()
 			invisibility = 0
 			qdel(cover) //deletes the cover, and the turret instance itself becomes its own cover.
@@ -305,23 +309,23 @@
 		//Behavior lock/unlock mangement
 		if(allowed(user))
 			locked = !locked
-			to_chat(user, "<span class='notice'>Controls are now [locked ? "locked" : "unlocked"].</span>")
+			to_chat(user, "<span class='notice'>Sterowanie jest teraz [locked ? "zablokowane" : "odblokowane"].</span>")
 		else
-			to_chat(user, "<span class='notice'>Access denied.</span>")
+			to_chat(user, "<span class='notice'>Odmowa dostępu.</span>")
 	else if(I.tool_behaviour == TOOL_MULTITOOL && !locked)
 		if(!multitool_check_buffer(user, I))
 			return
 		var/obj/item/multitool/M = I
 		M.buffer = src
-		to_chat(user, "<span class='notice'>You add [src] to multitool buffer.</span>")
+		to_chat(user, "<span class='notice'>Dodajesz [src] do bufora multitoola.</span>")
 	else
 		return ..()
 
 /obj/machinery/porta_turret/emag_act(mob/user)
 	if(obj_flags & EMAGGED)
 		return
-	to_chat(user, "<span class='warning'>You short out [src]'s threat assessment circuits.</span>")
-	visible_message("[src] hums oddly...")
+	to_chat(user, "<span class='warning'>Zwierasz obwody oceny zagrożenia [src].</span>")
+	visible_message("[src] dziwnie buczy...")
 	obj_flags |= EMAGGED
 	controllock = TRUE
 	toggle_on(FALSE) //turns off the turret temporarily
@@ -650,7 +654,7 @@
 		return FALSE
 	if(remote_controller)
 		if(warning_message)
-			to_chat(remote_controller, "<span class='warning'>Your uplink to [src] has been severed!</span>")
+			to_chat(remote_controller, "<span class='warning'>Twoje łącze z [src] zostało zerwane!</span>")
 		quit_action.Remove(remote_controller)
 		toggle_action.Remove(remote_controller)
 		remote_controller.click_intercept = null
@@ -742,7 +746,7 @@
 	lethal_projectile = /obj/item/projectile/bullet/p50/penetrator/shuttle
 	lethal_projectile_sound = 'sound/weapons/gunshot_smg.ogg'
 	stun_projectile_sound = 'sound/weapons/gunshot_smg.ogg'
-	armor = list("melee" = 50, "bullet" = 30, "laser" = 30, "energy" = 30, "bomb" = 80, "bio" = 0, "rad" = 0, "fire" = 90, "acid" = 90, "stamina" = 0)
+	armor = list("melee" = 50, "bullet" = 30, "laser" = 30, "energy" = 30, "bomb" = 80, "bio" = 0, "rad" = 0, "fire" = 90, "acid" = 90, "stamina" = 0, "bleed" = 0)
 
 /obj/machinery/porta_turret/syndicate/shuttle/target(atom/movable/target)
 	if(target)
@@ -881,8 +885,8 @@
 /obj/machinery/turretid/examine(mob/user)
 	. += ..()
 	if(issilicon(user) && !(machine_stat & BROKEN))
-		. += "<span class='notice'>Ctrl-click [src] to [ enabled ? "disable" : "enable"] turrets.</span>\n"+\
-				"<span class='notice'>Alt-click [src] to set turrets to [ lethal ? "stun" : "kill"].</span>"
+		. += "<span class='notice'>Ctrl-kliknij [src], by [ enabled ? "wyłączyć" : "włączyć"] wieżyczki.</span>\n"+\
+				"<span class='notice'>Alt-kliknij [src], by ustawić wieżyczki na [ lethal ? "ogłuszanie" : "zabijanie"].</span>"
 
 /obj/machinery/turretid/attackby(obj/item/I, mob/user, params)
 	if(machine_stat & BROKEN)
@@ -894,7 +898,7 @@
 		var/obj/item/multitool/M = I
 		if(M.buffer && istype(M.buffer, /obj/machinery/porta_turret))
 			turrets |= M.buffer
-			to_chat(user, "You link \the [M.buffer] with \the [src]")
+			to_chat(user, "Łączysz [M.buffer] z [src]")
 			return
 
 	if (issilicon(user))
@@ -903,18 +907,18 @@
 	if ( get_dist(src, user) == 0 )		// trying to unlock the interface
 		if (allowed(usr))
 			if(obj_flags & EMAGGED)
-				to_chat(user, "<span class='notice'>The turret control is unresponsive.</span>")
+				to_chat(user, "<span class='notice'>Sterowanie wieżyczkami nie reaguje.</span>")
 				return
 
 			locked = !locked
-			to_chat(user, "<span class='notice'>You [ locked ? "lock" : "unlock"] the panel.</span>")
+			to_chat(user, "<span class='notice'>[ locked ? "Blokujesz" : "Odblokowujesz"] panel.</span>")
 		else
-			to_chat(user, "<span class='warning'>Access denied.</span>")
+			to_chat(user, "<span class='warning'>Odmowa dostępu.</span>")
 
 /obj/machinery/turretid/emag_act(mob/user)
 	if(obj_flags & EMAGGED)
 		return
-	to_chat(user, "<span class='danger'>You short out the turret controls' access analysis module.</span>")
+	to_chat(user, "<span class='danger'>Zwierasz moduł analizy dostępu sterowania wieżyczkami.</span>")
 	obj_flags |= EMAGGED
 	locked = FALSE
 
@@ -922,13 +926,13 @@
 	if(!ailock)
 		return attack_hand(user)
 	else
-		to_chat(user, "<span class='notice'>There seems to be a firewall preventing you from accessing this device.</span>")
+		to_chat(user, "<span class='notice'>Wygląda na to, że zapora uniemożliwia ci dostęp do tego urządzenia.</span>")
 
 /obj/machinery/turretid/attack_ai(mob/user)
 	if(!ailock || IsAdminGhost(user))
 		return attack_hand(user)
 	else
-		to_chat(user, "<span class='notice'>There seems to be a firewall preventing you from accessing this device.</span>")
+		to_chat(user, "<span class='notice'>Wygląda na to, że zapora uniemożliwia ci dostęp do tego urządzenia.</span>")
 
 /obj/machinery/turretid/ui_state(mob/user)
 	return GLOB.default_state
@@ -954,7 +958,7 @@
 		return
 
 	if(!allowed(usr))
-		to_chat(usr, "<span class='warning'>Invalid access.</span>")
+		to_chat(usr, "<span class='warning'>Nieprawidłowy dostęp.</span>")
 		return
 
 	switch(action)
@@ -962,7 +966,7 @@
 			if(!usr.has_unlimited_silicon_privilege)
 				return
 			if((obj_flags & EMAGGED) || (machine_stat & BROKEN))
-				to_chat(usr, "<span class='warning'>The turret control is unresponsive!</span>")
+				to_chat(usr, "<span class='warning'>Sterowanie wieżyczkami nie reaguje!</span>")
 				return
 			locked = !locked
 			return TRUE
@@ -1123,9 +1127,9 @@
 		if(team_color == "red" && istype(H.wear_suit, /obj/item/clothing/suit/bluetag))
 			return
 
-	var/dat = "Status: <a href='?src=[REF(src)];power=1'>[on ? "On" : "Off"]</a>"
+	var/dat = "Status: <a href='byond://?src=[REF(src)];power=1'>[on ? "On" : "Off"]</a>"
 
-	var/datum/browser/popup = new(user, "autosec", "Automatic Portable Turret Installation", 300, 300)
+	var/datum/browser/popup = new(user, "autosec", "Automatyczna instalacja przenośnej wieżyczki", 300, 300)
 	popup.set_content(dat)
 	popup.open()
 

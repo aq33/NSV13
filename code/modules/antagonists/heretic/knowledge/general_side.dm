@@ -4,9 +4,9 @@
 	name = "The Relentless Heartbeat"
 	desc = "Allows you transmute a flower, a book, and a jumpsuit while standing over a rune \
 		to reroll your sacrifice targets."
-	gain_text = "The heart is the principle that continues and preserves."
+	gain_text = "Serce jest zasadą, która trwa i zachowuje."
 	required_atoms = list(
-		/obj/item/reagent_containers/food/snacks/grown/poppy = 1,
+		/obj/item/food/grown/poppy = 1,
 		/obj/item/book = 1,
 		/obj/item/clothing/under = 1,
 	)
@@ -19,7 +19,7 @@
 	// throw a fail to show the heretic that there's no point in rerolling
 	// if you don't have a heart to track the targets in the first place.
 	if(heretic_datum.has_living_heart() != HERETIC_HAS_LIVING_HEART)
-		loc.balloon_alert(user, "ritual failed, no living heart!")
+		loc.balloon_alert(user, "rytuał nieudany, brak żywego serca!")
 		return FALSE
 
 	return TRUE
@@ -33,7 +33,7 @@
 		CRASH("Heretic datum didn't have a hunt_and_sacrifice knowledge learned, what?")
 
 	if(!target_finder.obtain_targets(user))
-		loc.balloon_alert(user, "Ritual failed, no targets found!")
+		loc.balloon_alert(user, "Rytuał nieudany, nie znaleziono celów!")
 		return FALSE
 
 	return TRUE
@@ -43,8 +43,8 @@
 	desc = "Allows you to transmute a bible, a fountain pen, and hide from an animal (or human) to create a Codex Cicatrix. \
 		The Codex Cicatrix can be used when draining influences to gain additional knowledge, but comes at greater risk of being noticed. \
 		It can also be used to draw and remove transmutation runes easier."
-	gain_text = "The occult leaves fragments of knowledge and power anywhere and everywhere. The Codex Cicatrix is one such example. \
-		Within the leather-bound faces and age old pages, a path into the Mansus is revealed."
+	gain_text = "Okultyzm zostawia okruchy wiedzy i mocy wszędzie. Codex Cicatrix jest jednym z przykładów. \
+		W skórzanych okładkach i wiekowych stronicach odsłania się ścieżka do Mansusa."
 	required_atoms = list(
 		/obj/item/storage/book/bible = 1,
 		/obj/item/pen/fountain = 1,

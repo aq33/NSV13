@@ -15,8 +15,8 @@
 	var/datum/admins/holder = new(rank, "aquilaunittestadmin")
 	var/links = holder.aquila_one_click_antag_links()
 	// Same text the old full-copy override had after the upstream buttons
-	var/expected = {"<a href='?src=[REF(holder)];[HrefToken()];makeAntag=infiltrator'>Make Infiltration Team (Requires Ghosts)</a>
-		<a href='?src=[REF(holder)];[HrefToken()];makeAntag=vampire'>Make Vampire</a>
+	var/expected = {"<a href='byond://?src=[REF(holder)];[HrefToken()];makeAntag=infiltrator'>Make Infiltration Team (Requires Ghosts)</a>
+		<a href='byond://?src=[REF(holder)];[HrefToken()];makeAntag=vampire'>Make Vampire</a>
 		"}
 	GLOB.deadmins -= holder.target
 	GLOB.admin_datums -= holder.target

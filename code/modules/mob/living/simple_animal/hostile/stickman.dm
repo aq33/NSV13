@@ -9,9 +9,9 @@
 	gender = MALE
 	speak_chance = 0
 	turns_per_move = 5
-	response_help = "pokes"
-	response_disarm = "shoves"
-	response_harm = "hits"
+	response_help = "szturcha"
+	response_disarm = "popycha"
+	response_harm = "uderza"
 	speed = 0
 	stat_attack = UNCONSCIOUS
 	robust_searching = 1
@@ -20,9 +20,9 @@
 	health = 100
 	obj_damage = 0
 	melee_damage = 10
-	attacktext = "punches"
+	attacktext = "uderza"
 	attack_sound = 'sound/weapons/punch1.ogg'
-	a_intent = INTENT_HARM
+	combat_mode = TRUE
 	atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 0, "max_n2" = 0)
 	unsuitable_atmos_damage = 15
 	faction = list("hostile","stickman")

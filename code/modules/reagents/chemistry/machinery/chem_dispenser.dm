@@ -100,11 +100,11 @@
 /obj/machinery/chem_dispenser/examine(mob/user)
 	. = ..()
 	if(panel_open)
-		. += "<span class='notice'>[src]'s maintenance hatch is open!</span>"
+		. += "<span class='notice'>Właz serwisowy [src] jest otwarty!</span>"
 	if(in_range(user, src) || isobserver(user))
-		. += "<span class='notice'>The status display reads:\n"+\
-		"Recharging <b>[recharge_amount]</b> power units per interval.\n"+\
-		"Power efficiency increased by <b>[round((powerefficiency*1000)-100, 1)]%</b>.</span>"
+		. += "<span class='notice'>Wyświetlacz stanu pokazuje:\n"+\
+		"Ładowanie <b>[recharge_amount]</b> jednostek mocy na cykl.\n"+\
+		"Wydajność energetyczna zwiększona o <b>[round((powerefficiency*1000)-100, 1)]%</b>.</span>"
 
 /obj/machinery/chem_dispenser/process(delta_time)
 	if (recharge_counter >= 8)
@@ -144,9 +144,9 @@
 
 /obj/machinery/chem_dispenser/emag_act(mob/user)
 	if(obj_flags & EMAGGED)
-		to_chat(user, "<span class='warning'>[src] has no functional safeties to emag.</span>")
+		to_chat(user, "<span class='warning'>[src] nie ma działających zabezpieczeń do zemagowania.</span>")
 		return
-	to_chat(user, "<span class='notice'>You short out [src]'s safeties.</span>")
+	to_chat(user, "<span class='notice'>Zwierasz zabezpieczenia [src].</span>")
 	dispensable_reagents |= emagged_reagents//add the emagged reagents to the dispensable ones
 	obj_flags |= EMAGGED
 
@@ -260,7 +260,7 @@
 					var/free = R.maximum_volume - R.total_volume
 					var/actual = min(amount, (cell.charge * powerefficiency)*10, free)
 					if(!cell.use(actual / powerefficiency))
-						say("Not enough energy to complete operation!")
+						say("Za mało energii, by dokończyć operację!")
 						return
 					playsound(loc, 'aquila/sound/effects/dispenser.ogg', 50, 1) //AQUILA EDIT
 					R.add_reagent(reagent, actual)
@@ -296,7 +296,7 @@
 					var/actual = min(dispense_amount, (cell.charge * powerefficiency)*10, free)
 					if(actual)
 						if(!cell.use(actual / powerefficiency))
-							say("Not enough energy to complete operation!")
+							say("Za mało energii, by dokończyć operację!")
 							return
 						R.add_reagent(reagent, actual)
 						work_animation()
@@ -304,7 +304,7 @@
 					recording_recipe[key] += dispense_amount
 			. = TRUE
 		if("clear_recipes")
-			var/yesno = alert("Clear all recipes?",, "Yes","No")
+			var/yesno = alert("Usunąć wszystkie receptury?",, "Yes","No")
 			if(yesno == "Yes")
 				saved_recipes = list()
 			. = TRUE
@@ -315,14 +315,14 @@
 			var/name = stripped_input(usr,"Name","What do you want to name this recipe?", "Recipe", MAX_NAME_LEN)
 			if(!usr.canUseTopic(src, !issilicon(usr)))
 				return
-			if(saved_recipes[name] && alert("\"[name]\" already exists, do you want to overwrite it?",, "Yes", "No") != "Yes")
+			if(saved_recipes[name] && alert("\"[name]\" już istnieje, czy chcesz to nadpisać?",, "Yes", "No") != "Yes")
 				return
 			if(name && recording_recipe)
 				for(var/reagent in recording_recipe)
 					var/reagent_id = GLOB.name2reagent[translate_legacy_chem_id(reagent)]
 					if(!dispensable_reagents.Find(reagent_id))
-						visible_message("<span class='warning'>[src] buzzes.</span>", "<span class='italics'>You hear a faint buzz.</span>")
-						to_chat(usr, "<span class ='danger'>[src] cannot find <b>[reagent]</b>!</span>")
+						visible_message("<span class='warning'>[src] buzzes.</span>", "<span class='italics'>Słyszysz ciche brzęczenie.</span>")
+						to_chat(usr, "<span class ='danger'>[src] nie może znaleźć <b>[reagent]</b>!</span>")
 						playsound(src, 'sound/machines/buzz-two.ogg', 50, 1)
 						return
 				saved_recipes[name] = recording_recipe
@@ -346,11 +346,11 @@
 		if(!user.transferItemToLoc(B, src))
 			return
 		replace_beaker(user, B)
-		to_chat(user, "<span class='notice'>You add [B] to [src].</span>")
+		to_chat(user, "<span class='notice'>Dodajesz [B] do [src].</span>")
 		updateUsrDialog()
 		update_icon()
-	else if(user.a_intent != INTENT_HARM && !istype(I, /obj/item/card/emag))
-		to_chat(user, "<span class='warning'>You can't load [I] into [src]!</span>")
+	else if(!user.combat_mode && !istype(I, /obj/item/card/emag))
+		to_chat(user, "<span class='warning'>Nie możesz załadować [I] do [src]!</span>")
 		return ..()
 	else
 		return ..()
@@ -376,7 +376,7 @@
 	cell.use(total/powerefficiency)
 	cell.emp_act(severity)
 	work_animation()
-	visible_message("<span class='danger'>[src] malfunctions, spraying chemicals everywhere!</span>")
+	visible_message("<span class='danger'>[src] działa wadliwie, rozpryskując wszędzie chemikalia!</span>")
 
 /obj/machinery/chem_dispenser/RefreshParts()
 	recharge_amount = initial(recharge_amount)
@@ -418,7 +418,7 @@
 
 /obj/machinery/chem_dispenser/drinks/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/simple_rotation, ROTATION_ALTCLICK | ROTATION_CLOCKWISE)
+	AddComponent(/datum/component/simple_rotation)
 
 /obj/machinery/chem_dispenser/drinks/setDir()
 	var/old = dir
@@ -662,3 +662,17 @@
 		/datum/reagent/medicine/silibinin,
 		/datum/reagent/medicine/polypyr
 	)
+
+/// Port Bee #11899: right click ejects the beaker (Alt-click still works)
+/obj/machinery/chem_dispenser/attack_hand_secondary(mob/user, list/modifiers)
+	. = ..()
+	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
+		return
+	AltClick(user)
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+/obj/machinery/chem_dispenser/attack_robot_secondary(mob/user, list/modifiers)
+	return attack_hand_secondary(user, modifiers)
+
+/obj/machinery/chem_dispenser/attack_ai_secondary(mob/user, list/modifiers)
+	return attack_hand_secondary(user, modifiers)

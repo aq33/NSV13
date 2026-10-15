@@ -25,7 +25,7 @@
 	heat_protection = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_TEMP_PROTECT
 	resistance_flags = NONE
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 70, "acid" = 30, "stamina" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 70, "acid" = 30, "stamina" = 0, "bleed" = 0)
 
 /obj/item/clothing/gloves/combat
 	name = "combat gloves"
@@ -41,7 +41,7 @@
 	heat_protection = HANDS
 	max_heat_protection_temperature = GLOVES_MAX_TEMP_PROTECT
 	resistance_flags = NONE
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 80, "acid" = 50, "stamina" = 20)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 80, "acid" = 50, "stamina" = 20, "bleed" = 10)
 
 /obj/item/clothing/gloves/bracer
 	name = "bone bracers"
@@ -57,7 +57,7 @@
 	min_cold_protection_temperature = GLOVES_MIN_TEMP_PROTECT
 	max_heat_protection_temperature = GLOVES_MAX_TEMP_PROTECT
 	resistance_flags = NONE
-	armor = list("melee" = 15, "bullet" = 35, "laser" = 35, "energy" = 20, "bomb" = 35, "bio" = 35, "rad" = 35, "fire" = 0, "acid" = 0, "stamina" = 20)
+	armor = list("melee" = 15, "bullet" = 35, "laser" = 35, "energy" = 20, "bomb" = 35, "bio" = 35, "rad" = 35, "fire" = 0, "acid" = 0, "stamina" = 20, "bleed" = 20)
 
 /obj/item/clothing/gloves/rapid
 	name = "Gloves of the North Star"
@@ -71,12 +71,12 @@
 /obj/item/clothing/gloves/rapid/Touch(atom/A, proximity)
 	var/mob/living/M = loc
 	if(get_dist(A, M) <= 1)
-		if(isliving(A) && M.a_intent == INTENT_HARM)
+		if(isliving(A) && M.combat_mode)
 			M.changeNext_move(CLICK_CD_RAPID)
 			if(warcry)
 				M.say("[warcry]", ignore_spam = TRUE, forced = "north star warcry")
 
-	else if(M.a_intent == INTENT_HARM)
+	else if(M.combat_mode)
 		for(var/mob/living/L in oview(1, M))
 			L.attack_hand(M)
 			M.changeNext_move(CLICK_CD_RAPID)
@@ -86,11 +86,11 @@
 	.= FALSE
 
 /obj/item/clothing/gloves/rapid/attack_self(mob/user)
-	var/input = stripped_input(user,"What do you want your battlecry to be? Max length of 6 characters.", ,"", 7)
+	var/input = stripped_input(user,"Jaki ma być twój okrzyk bojowy? Maksymalnie 6 znaków.", ,"", 7)
 	if(input == "*me") //If they try to do a *me emote it will stop the attack to prompt them for an emote then they can walk away and enter the emote for a punch from far away
-		to_chat(user, "<span class='warning'>Invalid battlecry, please use another. Battlecry cannot contain *me.</span>")
+		to_chat(user, "<span class='warning'>Nieprawidłowy okrzyk bojowy, użyj innego. Okrzyk bojowy nie może zawierać *me.</span>")
 	else if(CHAT_FILTER_CHECK(input))
-		to_chat(user, "<span class='warning'>Invalid battlecry, please use another. Battlecry contains prohibited word(s).</span>")
+		to_chat(user, "<span class='warning'>Nieprawidłowy okrzyk bojowy, użyj innego. Okrzyk bojowy zawiera zakazane słowa.</span>")
 	else if(input)
 		warcry = input
 
@@ -108,7 +108,7 @@
 		if(!wand.used && range == initial(range))
 			wand.used = TRUE
 			range = 6
-			to_chat(user, "<span_class='notice'>You upgrade the [src] with the [wand].</span>")
+			to_chat(user, "<span_class='notice'>Ulepszasz [src] za pomocą [wand].</span>")
 			playsound(user, 'sound/weapons/emitter2.ogg', 25, 1, -1)
 
 /obj/item/clothing/gloves/color/white/magic/Touch(atom/A, proximity)
@@ -116,7 +116,7 @@
 	if(get_dist(A, user) <= 1 )
 		return FALSE
 	if(user in viewers(range, A))
-		user.visible_message("<span class='danger'>[user] waves their hands at [A]</span>", "<span class='notice'>You begin manipulating [A].</span>")
+		user.visible_message("<span class='danger'>[user] macha rękami w stronę [A]</span>", "<span class='notice'>Zaczynasz manipulować [A].</span>")
 		new	/obj/effect/temp_visual/telegloves(A.loc)
 		user.changeNext_move(CLICK_CD_MELEE)
 		if(do_mob(user, A, 0.8 SECONDS))

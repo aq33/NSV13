@@ -5,7 +5,7 @@
 #define TURF_FIRE_TEMP_INCREMENT_PER_POWER 3
 #define TURF_FIRE_VOLUME 150
 #define TURF_FIRE_MAX_POWER 50
-#define TURF_FIRE_SPREAD_RATE 0.5
+#define TURF_FIRE_SPREAD_RATE 0.3
 #define TURF_FIRE_MINIMUM_PRESSURE 50
 
 #define TURF_FIRE_ENERGY_PER_BURNED_OXY_MOL 12000
@@ -43,7 +43,7 @@
 	/// If false, it does not interact with atmos.
 	var/interact_with_atmos = TRUE
 	/// Color prefix of the icon states, "[base_icon_state]_small" etc
-	var/base_icon_state = "red"
+	base_icon_state = "red"
 
 ///All the subtypes are for adminbussery and or mapping
 /obj/effect/abstract/turf_fire/magical

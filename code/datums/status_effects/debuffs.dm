@@ -158,11 +158,11 @@
 	. = ..()
 	if(usr != owner)
 		return
-	to_chat(owner, "<span class='notice'>You attempt to remove the durathread strand from around your neck.</span>")
+	to_chat(owner, "<span class='notice'>Próbujesz zdjąć z szyi pasmo durathreadu.</span>")
 	if(do_after(owner, 35, null, owner))
 		if(isliving(owner))
 			var/mob/living/L = owner
-			to_chat(owner, "<span class='notice'>You succesfuly remove the durathread strand.</span>")
+			to_chat(owner, "<span class='notice'>Udaje ci się zdjąć pasmo durathreadu.</span>")
 			L.remove_status_effect(STATUS_EFFECT_CHOKINGSTRAND)
 
 /datum/status_effect/syringe
@@ -213,14 +213,14 @@
 		var/datum/status_effect/syringe/syringestatus = pick_n_take(syringes)
 		if(istype(syringestatus, /datum/status_effect/syringe))
 			var/obj/item/reagent_containers/syringe/syringe = syringestatus.syringe
-			to_chat(owner, "<span class='notice'>You begin carefully pulling the syringe out.</span>")
+			to_chat(owner, "<span class='notice'>Zaczynasz ostrożnie wyciągać strzykawkę.</span>")
 			if(do_after(C, 20, null, owner))
-				to_chat(C, "<span class='notice'>You succesfuly remove the syringe.</span>")
+				to_chat(C, "<span class='notice'>Udaje ci się wyjąć strzykawkę.</span>")
 				syringe.forceMove(C.loc)
 				C.put_in_hands(syringe)
 				qdel(syringestatus)
 			else
-				to_chat(C, "<span class='userdanger'>You screw up, and inject yourself with more chemicals by mistake!</span>")
+				to_chat(C, "<span class='userdanger'>Partaczysz i przez pomyłkę wstrzykujesz sobie więcej substancji!</span>")
 				var/amount = syringe.initial_inject
 				syringe.reagents.reaction(C, INJECT)
 				syringe.reagents.trans_to(C, amount)
@@ -409,7 +409,7 @@
 
 /datum/status_effect/neck_slice/tick()
 	var/mob/living/carbon/human/H = owner
-	if(H.stat == DEAD || H.bleed_rate <= 8)
+	if(H.stat == DEAD || H.get_bleed_rate() < BLEED_CUT)
 		H.remove_status_effect(/datum/status_effect/neck_slice)
 	if(prob(10))
 		H.emote(pick("gasp", "gag", "choke"))
@@ -513,7 +513,7 @@
 	ADD_TRAIT(owner, TRAIT_PACIFISM, "gonbolaPacify")
 	ADD_TRAIT(owner, TRAIT_MUTE, "gonbolaMute")
 	ADD_TRAIT(owner, TRAIT_JOLLY, "gonbolaJolly")
-	to_chat(owner, "<span class='notice'>You suddenly feel at peace and feel no need to make any sudden or rash actions.</span>")
+	to_chat(owner, "<span class='notice'>Nagle ogarnia cię spokój i nie czujesz potrzeby wykonywania żadnych nagłych ani pochopnych ruchów.</span>")
 	return ..()
 
 /datum/status_effect/gonbolaPacify/on_remove()
@@ -526,7 +526,7 @@
 	status_type = STATUS_EFFECT_UNIQUE
 	duration = 300
 	tick_interval = 10
-	examine_text = "<span class='warning'>SUBJECTPRONOUN seems slow and unfocused.</span>"
+	examine_text = "<span class='warning'>Wydaje się powolny i nieskupiony.</span>"
 	var/stun = TRUE
 	alert_type = /atom/movable/screen/alert/status_effect/trance
 
@@ -547,7 +547,7 @@
 	ADD_TRAIT(owner, TRAIT_MUTE, "trance")
 	if(!owner.has_quirk(/datum/quirk/monochromatic))
 		owner.add_client_colour(/datum/client_colour/monochrome)
-	owner.visible_message("[stun ? "<span class='warning'>[owner] stands still as [owner.p_their()] eyes seem to focus on a distant point.</span>" : ""]", \
+	owner.visible_message("[stun ? "<span class='warning'>[owner] stoi nieruchomo, a jego wzrok zdaje się skupiać na odległym punkcie.</span>" : ""]", \
 	"<span class='warning'>[pick("You feel your thoughts slow down.", "You suddenly feel extremely dizzy.", "You feel like you're in the middle of a dream.","You feel incredibly relaxed.")]</span>")
 	return TRUE
 
@@ -562,7 +562,7 @@
 	owner.dizziness = 0
 	if(!owner.has_quirk(/datum/quirk/monochromatic))
 		owner.remove_client_colour(/datum/client_colour/monochrome)
-	to_chat(owner, "<span class='warning'>You snap out of your trance!</span>")
+	to_chat(owner, "<span class='warning'>Wyrywasz się z transu!</span>")
 
 /datum/status_effect/trance/proc/hypnotize(datum/source, list/hearing_args, list/spans, list/message_mods = list())
 	SIGNAL_HANDLER
@@ -587,19 +587,18 @@
 		switch(rand(1,5))
 			if(1)
 				if((owner.mobility_flags & MOBILITY_MOVE) && isturf(owner.loc))
-					to_chat(owner, "<span class='warning'>Your leg spasms!</span>")
+					to_chat(owner, "<span class='warning'>Twoja noga dostaje skurczu!</span>")
 					step(owner, pick(GLOB.cardinals))
 			if(2)
 				if(owner.incapacitated())
 					return
 				var/obj/item/I = owner.get_active_held_item()
 				if(I)
-					to_chat(owner, "<span class='warning'>Your fingers spasm!</span>")
+					to_chat(owner, "<span class='warning'>Twoje palce dostają skurczu!</span>")
 					owner.log_message("used [I] due to a Muscle Spasm", LOG_ATTACK)
 					I.attack_self(owner)
 			if(3)
-				var/prev_intent = owner.a_intent
-				owner.a_intent = INTENT_HARM
+				owner.set_combat_mode(TRUE)
 
 				var/range = 1
 				if(istype(owner.get_active_held_item(), /obj/item/gun)) //get targets to shoot at
@@ -609,17 +608,16 @@
 				for(var/mob/living/M in oview(range, owner))
 					targets += M
 				if(LAZYLEN(targets))
-					to_chat(owner, "<span class='warning'>Your arm spasms!</span>")
+					to_chat(owner, "<span class='warning'>Twoja ręka dostaje skurczu!</span>")
 					owner.log_message(" attacked someone due to a Muscle Spasm", LOG_ATTACK) //the following attack will log itself
 					owner.ClickOn(pick(targets))
-				owner.a_intent = prev_intent
+				owner.set_combat_mode(FALSE)
 			if(4)
-				var/prev_intent = owner.a_intent
-				owner.a_intent = INTENT_HARM
-				to_chat(owner, "<span class='warning'>Your arm spasms!</span>")
+				owner.set_combat_mode(TRUE)
+				to_chat(owner, "<span class='warning'>Twoja ręka dostaje skurczu!</span>")
 				owner.log_message("attacked [owner.p_them()]self to a Muscle Spasm", LOG_ATTACK)
 				owner.ClickOn(owner)
-				owner.a_intent = prev_intent
+				owner.set_combat_mode(FALSE)
 			if(5)
 				if(owner.incapacitated())
 					return
@@ -628,7 +626,7 @@
 				for(var/turf/T in oview(3, get_turf(owner)))
 					targets += T
 				if(LAZYLEN(targets) && I)
-					to_chat(owner, "<span class='warning'>Your arm spasms!</span>")
+					to_chat(owner, "<span class='warning'>Twoja ręka dostaje skurczu!</span>")
 					owner.log_message("threw [I] due to a Muscle Spasm", LOG_ATTACK)
 					owner.throw_item(pick(targets))
 
@@ -640,14 +638,14 @@
 
 /datum/status_effect/convulsing/on_creation(mob/living/zappy_boy)
 	. = ..()
-	to_chat(zappy_boy, "<span class='boldwarning'>You feel a shock moving through your body! Your hands start shaking!</span>")
+	to_chat(zappy_boy, "<span class='boldwarning'>Czujesz, jak przez twoje ciało przechodzi wstrząs! Twoje dłonie zaczynają drżeć!</span>")
 
 /datum/status_effect/convulsing/tick()
 	var/mob/living/carbon/H = owner
 	if(prob(40))
 		var/obj/item/I = H.get_active_held_item()
 		if(I && H.dropItemToGround(I))
-			H.visible_message("<span class='notice'>[H]'s hand convulses, and they drop their [I.name]!</span>","<span class='userdanger'>Your hand convulses violently, and you drop what you were holding!</span>")
+			H.visible_message("<span class='notice'>Dłoń [H] przechodzi skurcz i upuszcza [I.name]!</span>","<span class='userdanger'>Twoja dłoń gwałtownie się kurczy i upuszczasz to, co trzymałeś!</span>")
 			H.jitteriness += 5
 
 /atom/movable/screen/alert/status_effect/convulsing
@@ -664,7 +662,7 @@
 
 /datum/status_effect/dna_melt/on_creation(mob/living/new_owner, set_duration, updating_canmove)
 	. = ..()
-	to_chat(new_owner, "<span class='boldwarning'>My body can't handle the mutations! I need to get my mutations removed fast!</span>")
+	to_chat(new_owner, "<span class='boldwarning'>Moje ciało nie wytrzymuje mutacji! Muszę szybko usunąć mutacje!</span>")
 
 /datum/status_effect/dna_melt/on_remove()
 	if(!owner.has_dna())
@@ -716,7 +714,7 @@
 		if(owner.confused < 10)
 			owner.confused = 10
 		running_toggled = TRUE
-		to_chat(owner, "<span class='warning'>You know you shouldn't be running here.</span>")
+		to_chat(owner, "<span class='warning'>Wiesz, że nie powinieneś tu biegać.</span>")
 	owner.add_movespeed_modifier(MOVESPEED_ID_INTERDICTION, multiplicative_slowdown=1.5)
 
 /datum/status_effect/interdiction/on_remove()
@@ -753,9 +751,9 @@
 			if(prob(2))
 				fake_msg = pick("<span class='warning'>[pick("Your head hurts a lot.", "Your head pounds incessantly.")]</span>",
 				"<span class='warning'>[pick("Your windpipe feels like a straw.", "Your breathing becomes tremendously difficult.")]</span>",
-				"<span class='warning'>You feel very [pick("dizzy","woozy","faint")].</span>",
+				"<span class='warning'>Czujesz [pick("zawroty głowy","oszołomienie","słabość")].</span>",
 				"<span class='warning'>[pick("You hear a ringing in your ear.", "Your ears pop.")]</span>",
-				"<span class='warning'>You nod off for a moment.</span>")
+				"<span class='warning'>Na chwilę przysypiasz.</span>")
 		else
 			if(prob(3))
 				if(prob(50))// coin flip to throw a message or an emote
@@ -829,7 +827,7 @@
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/H = owner
-	H.bleed_rate += 5
+	H.add_bleeding(BLEED_CUT)
 	return ..()
 
 /datum/status_effect/heretic_mark/ash
@@ -891,7 +889,7 @@
 
 /datum/status_effect/corrosion_curse/on_creation(mob/living/new_owner, ...)
 	. = ..()
-	to_chat(owner, "<span class='userdanger'>Your body starts to break apart!</span>")
+	to_chat(owner, "<span class='userdanger'>Twoje ciało zaczyna się rozpadać!</span>")
 
 /datum/status_effect/corrosion_curse/tick()
 	. = ..()
@@ -901,35 +899,35 @@
 	if (human_owner.IsSleeping())
 		return
 	var/chance = rand(0,100)
-	var/message = "Coder did fucky wucky U w U"
+	var/message = "Koder coś spieprzył U w U"
 	switch(chance)
 		if(0 to 10)
-			message = "<span class='warning'>You feel a lump build up in your throat.</span>"
+			message = "<span class='warning'>Czujesz, jak w gardle rośnie ci gula.</span>"
 			human_owner.vomit()
 		if(20 to 30)
-			message = "<span class='warning'>You feel feel very well.</span>"
+			message = "<span class='warning'>Czujesz się bardzo dobrze.</span>"
 			human_owner.Dizzy(50)
 			human_owner.Jitter(50)
 		if(30 to 40)
-			message = "<span class='warning'>You feel a sharp sting in your side.</span>"
+			message = "<span class='warning'>Czujesz ostre ukłucie w boku.</span>"
 			human_owner.adjustOrganLoss(ORGAN_SLOT_LIVER, 5)
 		if(40 to 50)
-			message = "<span class='warning'>You feel pricking around your heart.</span>"
+			message = "<span class='warning'>Czujesz kłucie wokół serca.</span>"
 			human_owner.adjustOrganLoss(ORGAN_SLOT_HEART, 5, 90)
 		if(50 to 60)
-			message = "<span class='warning'>You feel your stomach churning.</span>"
+			message = "<span class='warning'>Czujesz, jak skręca ci się żołądek.</span>"
 			human_owner.adjustOrganLoss(ORGAN_SLOT_STOMACH, 5)
 		if(60 to 70)
-			message = "<span class='warning'>Your eyes feel like they're on fire.</span>"
+			message = "<span class='warning'>Masz wrażenie, że oczy ci płoną.</span>"
 			human_owner.adjustOrganLoss(ORGAN_SLOT_EYES, 10)
 		if(70 to 80)
-			message = "<span class='warning'>You hear ringing in your hears.</span>"
+			message = "<span class='warning'>Słyszysz dzwonienie w uszach.</span>"
 			human_owner.adjustOrganLoss(ORGAN_SLOT_EARS, 10)
 		if(80 to 90)
-			message = "<span class='warning'>Your ribcage feels tighter.</span>"
+			message = "<span class='warning'>Twoja klatka piersiowa wydaje się ciaśniejsza.</span>"
 			human_owner.adjustOrganLoss(ORGAN_SLOT_LUNGS, 10)
 		if(90 to 100)
-			message = "<span class='warning'>You feel your skull pressing down on your brain.</span>"
+			message = "<span class='warning'>Czujesz, jak czaszka uciska ci mózg.</span>"
 			human_owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, 20, 190)
 	if(prob(33)) //so the victim isn't spammed with messages every 3 seconds
 		to_chat(human_owner,message)
@@ -938,7 +936,7 @@
 	id = "ghoul"
 	status_type = STATUS_EFFECT_UNIQUE
 	duration = -1
-	examine_text = "<span class='warning'>SUBJECTPRONOUN has a blank, catatonic like stare.</span>"
+	examine_text = "<span class='warning'>Ma pusty, katatoniczny wzrok.</span>"
 	alert_type = /atom/movable/screen/alert/status_effect/ghoul
 
 /atom/movable/screen/alert/status_effect/ghoul
@@ -953,19 +951,19 @@
 
 /datum/status_effect/spanish/on_apply(mob/living/new_owner, ...)
 	. = ..()
-	to_chat(owner, "<span class='warning'>Alert: Vocal cords are malfunctioning.</span>")
+	to_chat(owner, "<span class='warning'>Alarm: struny głosowe działają wadliwie.</span>")
 	owner.add_blocked_language(subtypesof(/datum/language/) - /datum/language/uncommon, LANGUAGE_EMP)
 	owner.grant_language(/datum/language/uncommon, FALSE, TRUE, LANGUAGE_EMP)
 
 /datum/status_effect/spanish/on_remove()
 	owner.remove_blocked_language(subtypesof(/datum/language/), LANGUAGE_EMP)
 	owner.remove_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_EMP)
-	to_chat(owner, "<span class='warning'>Alert: Vocal cords restored to normal function.</span>")
+	to_chat(owner, "<span class='warning'>Alarm: przywrócono normalne działanie strun głosowych.</span>")
 	return ..()
 
 /datum/status_effect/ipc/emp
 	id = "ipc_emp"
-	examine_text = "<span class='warning'>SUBJECTPRONOUN is buzzing and twitching!</span>"
+	examine_text = "<span class='warning'>Brzęczy i drga!</span>"
 	duration = 120 SECONDS
 	alert_type = /atom/movable/screen/alert/status_effect/emp
 	status_type = STATUS_EFFECT_REFRESH
@@ -1013,7 +1011,7 @@
 					grub.grubdisease = diseases
 					grub.food += 15
 				playsound(S, 'sound/effects/attackblob.ogg', 60, 1)
-				S.visible_message("<span class='warning'>[S] is eaten from the inside by [spawns] red grubs, leaving no trace!</span>")
+				S.visible_message("<span class='warning'>Czerwone larwy ([spawns]) pożerają [S] od środka, nie zostawiając śladu!</span>")
 				S.gib()
 	else
 		qdel(src)//no effect on nonslimes
@@ -1044,12 +1042,12 @@
 
 /datum/status_effect/amok/on_apply(mob/living/afflicted)
 	. = ..()
-	to_chat(owner, "<span class='boldwarning'>You feel filled with a rage that is not your own!</span>")
+	to_chat(owner, "<span class='boldwarning'>Wypełnia cię wściekłość, która nie jest twoja!</span>")
 
 /datum/status_effect/amok/tick()
 	. = ..()
-	var/prev_intent = owner.a_intent
-	owner.a_intent = INTENT_HARM
+	var/prev_combat_mode = owner.combat_mode
+	owner.set_combat_mode(TRUE)
 
 	var/list/mob/living/targets = list()
 	for(var/mob/living/potential_target in oview(owner, 1))
@@ -1059,7 +1057,7 @@
 	if(LAZYLEN(targets))
 		owner.log_message(" attacked someone due to the amok debuff.", LOG_ATTACK) //the following attack will log itself
 		owner.ClickOn(pick(targets))
-	owner.a_intent = prev_intent
+	owner.set_combat_mode(prev_combat_mode)
 
 /datum/status_effect/cloudstruck
 	id = "cloudstruck"
@@ -1093,3 +1091,101 @@
 /datum/status_effect/cloudstruck/Destroy()
 	. = ..()
 	QDEL_NULL(mob_overlay)
+
+//Deals with ants covering someone.
+/datum/status_effect/ants
+	id = "ants"
+	status_type = STATUS_EFFECT_REFRESH
+	alert_type = /atom/movable/screen/alert/status_effect/ants
+	duration = 2 MINUTES //Keeping the normal timer makes sure people can't somehow dump 300+ ants on someone at once so they stay there for like 30 minutes. Max w/ 1 dump is 57.6 brute.
+	examine_text = "<span class='warning'>Jest pokryty mrówkami!</span>"
+	/// Will act as the main timer as well as changing how much damage the ants do.
+	var/ants_remaining = 0
+	/// Common phrases people covered in ants scream
+	var/static/list/ant_debuff_speech = list(
+		"ZDEJMIJCIE JE ZE MNIE!!",
+		"O BOŻE, TE MRÓWKI!!",
+		"NIECH TO SIĘ SKOŃCZY!!",
+		"SĄ WSZĘDZIE!!",
+		"ZDEJMIJCIE JE!!",
+		"NIECH KTOŚ MI POMOŻE!!"
+	)
+
+/datum/status_effect/ants/on_creation(mob/living/new_owner, amount_left)
+	if(isnum(amount_left) && new_owner.stat < UNCONSCIOUS)
+		if(new_owner.stat < UNCONSCIOUS) // Unconcious people won't get messages
+			to_chat(new_owner, "<span class='userdanger'>Jesteś pokryty mrówkami!</span>")
+		ants_remaining += amount_left
+		RegisterSignal(new_owner, COMSIG_COMPONENT_CLEAN_ACT, PROC_REF(ants_washed))
+	. = ..()
+
+/datum/status_effect/ants/refresh(effect, amount_left)
+	var/mob/living/carbon/human/victim = owner
+	if(isnum(amount_left) && ants_remaining >= 1 && victim.stat < UNCONSCIOUS)
+		if(victim.stat < UNCONSCIOUS) // Unconcious people won't get messages
+			if(!prob(1)) // 99%
+				to_chat(victim, "<span class='userdanger'>Jesteś pokryty JESZCZE WIĘKSZĄ LICZBĄ mrówek!</span>")
+			else // 1%
+				victim.say("AAA! TA SYTUACJA STAŁA SIĘ TYLKO GORSZA PO DODANIU JESZCZE WIĘKSZEJ LICZBY MRÓWEK!!", forced = /datum/status_effect/ants)
+		ants_remaining += amount_left
+	. = ..()
+
+/datum/status_effect/ants/on_remove()
+	ants_remaining = 0
+	to_chat(owner, "<span class='notice'>Wszystkie mrówki zeszły z twojego ciała!</span>")
+	UnregisterSignal(owner, COMSIG_COMPONENT_CLEAN_ACT, PROC_REF(ants_washed))
+	. = ..()
+
+/datum/status_effect/ants/proc/ants_washed()
+	SIGNAL_HANDLER
+	owner.remove_status_effect(STATUS_EFFECT_ANTS)
+	//return COMPONENT_CLEANED
+
+/datum/status_effect/ants/tick()
+	var/mob/living/carbon/human/victim = owner
+	victim.adjustBruteLoss(max(0.1, round((ants_remaining * 0.004),0.1))) //Scales with # of ants (lowers with time). Roughly 10 brute over 50 seconds.
+	if(victim.stat <= SOFT_CRIT) //Makes sure people don't scratch at themselves while they're in a critical condition
+		if(prob(15))
+			switch(rand(1,2))
+				if(1)
+					victim.say(pick(ant_debuff_speech), forced = /datum/status_effect/ants)
+				if(2)
+					victim.emote("scream")
+		if(prob(50)) // Most of the damage is done through random chance. When tested yielded an average 100 brute with 200u ants.
+			switch(rand(1,50))
+				if (1 to 8) //16% Chance
+					var/obj/item/bodypart/head/hed = victim.get_bodypart(BODY_ZONE_HEAD)
+					to_chat(victim, "<span class='danger'>Drapiesz mrówki na skórze głowy!</span>")
+					hed.receive_damage(1,0)
+				if (9 to 29) //40% chance
+					var/obj/item/bodypart/arm = victim.get_bodypart(pick(BODY_ZONE_L_ARM,BODY_ZONE_R_ARM))
+					to_chat(victim, "<span class='danger'>Drapiesz mrówki na rękach!</span>")
+					arm.receive_damage(3,0)
+				if (30 to 49) //38% chance
+					var/obj/item/bodypart/leg = victim.get_bodypart(pick(BODY_ZONE_L_LEG,BODY_ZONE_R_LEG))
+					to_chat(victim, "<span class='danger'>Drapiesz mrówki na nodze!</span>")
+					leg.receive_damage(3,0)
+				if(50) // 2% chance
+					to_chat(victim, "<span class='danger'>Ścierasz mrówki z oczu!</span>")
+					victim.blur_eyes(3)
+					ants_remaining -= 5 // To balance out the blindness, it'll be a little shorter.
+	ants_remaining--
+	if(ants_remaining <= 0 || victim.stat >= UNCONSCIOUS)
+		victim.remove_status_effect(STATUS_EFFECT_ANTS) //If this person has no more ants on them or are dead, they are no longer affected.
+
+/atom/movable/screen/alert/status_effect/ants
+	name = "Ants!"
+	desc = "<span class='warning'>JESUS FUCKING CHRIST! CLICK TO GET THOSE THINGS OFF!</span>"
+	icon_state = "antalert"
+
+/atom/movable/screen/alert/status_effect/ants/Click()
+	var/mob/living/living = owner
+	if(!istype(living) || !living.can_resist() || living != owner)
+		return
+	to_chat(living, "<span class='notice'>Zaczynasz strząsać mrówki!</span>")
+	if(!do_after(living, 2 SECONDS, target = living))
+		return
+	for (var/datum/status_effect/ants/ant_covered in living.status_effects)
+		to_chat(living, "<span class='notice'>Udaje ci się strząsnąć część mrówek!</span>")
+		ant_covered.ants_remaining -= 10 // 5 Times more ants removed per second than just waiting in place
+

@@ -29,25 +29,25 @@
 				if(SEND_SIGNAL(item, COMSIG_ITEM_MARK_RETRIEVAL) & COMPONENT_BLOCK_MARK_RETRIEVAL)
 					continue
 				if(HAS_TRAIT(item, TRAIT_NODROP))
-					message += "Though it feels redundant, "
+					message += "Choć wydaje się to zbędne, "
 				marked_item = 		item
-				message += "You mark [item] for recall.</span>"
+				message += "oznaczasz [item] do przywołania.</span>"
 				name = "Recall [item]"
 				break
 
 			if(!marked_item)
 				if(hand_items)
-					message = "<span class='caution'>You aren't holding anything that can be marked for recall.</span>"
+					message = "<span class='caution'>Nie trzymasz niczego, co można oznaczyć do przywołania.</span>"
 				else
-					message = "<span class='notice'>You must hold the desired item in your hands to mark it for recall.</span>"
+					message = "<span class='notice'>Musisz trzymać wybrany przedmiot w rękach, by oznaczyć go do przywołania.</span>"
 
 		else if(marked_item && (marked_item in hand_items) && allow_change) //unlinking item to the spell
-			message = "<span class='notice'>You remove the mark on [marked_item] to use elsewhere.</span>"
+			message = "<span class='notice'>Usuwasz znak z [marked_item], by użyć go gdzie indziej.</span>"
 			name = "Instant Summons"
 			marked_item = 		null
 
 		else if(marked_item && QDELETED(marked_item)) //the item was destroyed at some point
-			message = "<span class='warning'>You sense your marked item has been destroyed!</span>"
+			message = "<span class='warning'>Wyczuwasz, że twój oznaczony przedmiot został zniszczony!</span>"
 			name = "Instant Summons"
 			marked_item = 		null
 			if(!allow_change)
@@ -63,7 +63,7 @@
 					var/obj/item/organ/organ = item_to_retrieve
 					if(organ.owner)
 						// If this code ever runs I will be happy
-						log_combat(L, organ.owner, "magically removed [organ.name] from", addition="INTENT: [uppertext(L.a_intent)]")
+						log_combat(L, organ.owner, "magically removed [organ.name] from", addition="COMBAT MODE: [L.combat_mode ? "ON" : "OFF"]")
 						organ.Remove(organ.owner)
 			else
 				while(!isturf(item_to_retrieve.loc) && infinite_recursion < 10) //if it's in something you get the whole thing.
@@ -75,9 +75,9 @@
 						var/mob/M = item_to_retrieve.loc
 
 						if(issilicon(M)) //Items in silicons warp the whole silicon
-							M.loc.visible_message("<span class='warning'>[M] suddenly disappears!</span>")
+							M.loc.visible_message("<span class='warning'>[M] nagle znika!</span>")
 							M.forceMove(L.loc)
-							M.loc.visible_message("<span class='caution'>[M] suddenly appears!</span>")
+							M.loc.visible_message("<span class='caution'>[M] nagle się pojawia!</span>")
 							item_to_retrieve = null
 							break
 						M.dropItemToGround(item_to_retrieve)
@@ -96,13 +96,13 @@
 				return
 
 			if(item_to_retrieve.loc)
-				item_to_retrieve.loc.visible_message("<span class='warning'>The [item_to_retrieve.name] suddenly disappears!</span>")
+				item_to_retrieve.loc.visible_message("<span class='warning'>[item_to_retrieve.name] nagle znika!</span>")
 			if(!L.put_in_hands(item_to_retrieve))
 				item_to_retrieve.forceMove(L.drop_location())
-				item_to_retrieve.loc.visible_message("<span class='caution'>The [item_to_retrieve.name] suddenly appears!</span>")
+				item_to_retrieve.loc.visible_message("<span class='caution'>[item_to_retrieve.name] nagle się pojawia!</span>")
 				playsound(get_turf(L), 'sound/magic/summonitems_generic.ogg', 50, 1)
 			else
-				item_to_retrieve.loc.visible_message("<span class='caution'>The [item_to_retrieve.name] suddenly appears in [L]'s hand!</span>")
+				item_to_retrieve.loc.visible_message("<span class='caution'>[item_to_retrieve.name] nagle pojawia się w dłoni [L]!</span>")
 				playsound(get_turf(L), 'sound/magic/summonitems_generic.ogg', 50, 1)
 
 

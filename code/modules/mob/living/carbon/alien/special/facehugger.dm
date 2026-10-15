@@ -57,11 +57,8 @@
 /obj/item/clothing/mask/facehugger/attackby(obj/item/O, mob/user, params)
 	return O.attack_obj(src, user)
 
-/obj/item/clothing/mask/facehugger/attack_alien(mob/user) //can be picked up by aliens
-	return attack_hand(user)
-
 //ATTACK HAND IGNORING PARENT RETURN VALUE
-/obj/item/clothing/mask/facehugger/attack_hand(mob/user)
+/obj/item/clothing/mask/facehugger/attack_hand(mob/user, list/modifiers)
 	if((stat == CONSCIOUS && !sterile) && !isalien(user))
 		if(Leap(user))
 			return
@@ -78,11 +75,11 @@
 		return
 	switch(stat)
 		if(DEAD, UNCONSCIOUS)
-			. += "<span class='boldannounce'>[src] is not moving.</span>"
+			. += "<span class='boldannounce'>[src] się nie rusza.</span>"
 		if(CONSCIOUS)
-			. += "<span class='boldannounce'>[src] seems to be active!</span>"
+			. += "<span class='boldannounce'>[src] wydaje się aktywny!</span>"
 	if(sterile)
-		. += "<span class='boldannounce'>It looks like the proboscis has been removed.</span>"
+		. += "<span class='boldannounce'>Wygląda na to, że usunięto mu ssawkę.</span>"
 
 
 /obj/item/clothing/mask/facehugger/temperature_expose(datum/gas_mixture/air, exposed_temperature, exposed_volume)
@@ -131,7 +128,7 @@
 		return FALSE
 	if(iscarbon(M))
 		// disallowed carbons
-		if(isalien(M) || isdevil(M))
+		if(isalien(M))
 			return FALSE
 		var/mob/living/carbon/target = M
 		// gotta have a head to be implanted (no changelings or sentient plants), gotta be able to have the xeno implanted
@@ -150,8 +147,8 @@
 		if(target.wear_mask && istype(target.wear_mask, /obj/item/clothing/mask/facehugger))
 			return FALSE
 	// passed initial checks - time to leap!
-	M.visible_message("<span class='danger'>[src] leaps at [M]'s face!</span>", \
-							"<span class='userdanger'>[src] leaps at your face!</span>")
+	M.visible_message("<span class='danger'>[src] skacze na twarz [M]!</span>", \
+							"<span class='userdanger'>[src] skacze ci na twarz!</span>")
 
 	// probiscis-blocker handling
 	if(iscarbon(M))
@@ -160,16 +157,16 @@
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
 			if(H.is_mouth_covered(head_only = 1))
-				H.visible_message("<span class='danger'>[src] smashes against [H]'s [H.head]!</span>", \
-									"<span class='userdanger'>[src] smashes against your [H.head]!</span>")
+				H.visible_message("<span class='danger'>[src] uderza w [H.head] [H]!</span>", \
+									"<span class='userdanger'>[src] uderza w twoje nakrycie głowy ([H.head])!</span>")
 				Die()
 				return FALSE
 
 		if(target.wear_mask)
 			var/obj/item/clothing/W = target.wear_mask
 			if(target.dropItemToGround(W))
-				target.visible_message("<span class='danger'>[src] tears [W] off of [target]'s face!</span>", \
-									"<span class='userdanger'>[src] tears [W] off of your face!</span>")
+				target.visible_message("<span class='danger'>[src] zrywa [W] z twarzy [target]!</span>", \
+									"<span class='userdanger'>[src] zrywa ci [W] z twarzy!</span>")
 		target.equip_to_slot_if_possible(src, ITEM_SLOT_MASK, 0, 1, 1)
 	return TRUE // time for a smoke
 
@@ -202,8 +199,8 @@
 			return
 
 	if(!sterile)
-		target.visible_message("<span class='danger'>[src] falls limp after violating [target]'s face!</span>", \
-								"<span class='userdanger'>[src] falls limp after violating your face!</span>")
+		target.visible_message("<span class='danger'>[src] opada bezwładnie po zbezczeszczeniu twarzy [target]!</span>", \
+								"<span class='userdanger'>[src] opada bezwładnie po zbezczeszczeniu twojej twarzy!</span>")
 
 		Die()
 		icon_state = "[initial(icon_state)]_impregnated"
@@ -216,7 +213,7 @@
 
 	else
 		target.visible_message("<span class='danger'>[src] violates [target]'s face!</span>", \
-								"<span class='userdanger'>[src] violates your face!</span>")
+								"<span class='userdanger'>[src] bezcześci twoją twarz!</span>")
 
 /obj/item/clothing/mask/facehugger/proc/GoActive()
 	if(stat == DEAD || stat == CONSCIOUS)
@@ -242,7 +239,7 @@
 	item_state = "facehugger_inactive"
 	stat = DEAD
 
-	visible_message("<span class='danger'>[src] curls up into a ball!</span>")
+	visible_message("<span class='danger'>[src] zwija się w kłębek!</span>")
 
 /proc/CanHug(mob/living/M)
 	if(!istype(M) || M.stat == DEAD || M.getorgan(/obj/item/organ/alien/hivenode))

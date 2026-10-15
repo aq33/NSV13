@@ -9,9 +9,9 @@
 	success_sound = 'sound/surgery/scalpel2.ogg'
 
 /datum/surgery_step/incise/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to make an incision in [target]'s [parse_zone(target_zone)]...</span>",
-		"[user] begins to make an incision in [target]'s [parse_zone(target_zone)].",
-		"[user] begins to make an incision in [target]'s [parse_zone(target_zone)].")
+	display_results(user, target, "<span class='notice'>Zaczynasz nacinać [strefa_pl(target_zone, TRUE)] [target]...</span>",
+		"[user] zaczyna nacinać [strefa_pl(target_zone, TRUE)] [target].",
+		"[user] zaczyna nacinać [strefa_pl(target_zone, TRUE)] [target].")
 
 /datum/surgery_step/incise/tool_check(mob/user, obj/item/tool)
 	if(implement_type == /obj/item && !tool.is_sharp())
@@ -22,19 +22,19 @@
 /datum/surgery_step/incise/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	if ishuman(target)
 		var/mob/living/carbon/human/H = target
-		if (!(NOBLOOD in H.dna.species.species_traits))
-			display_results(user, target, "<span class='notice'>Blood pools around the incision in [H]'s [parse_zone(target_zone)].</span>",
-				"Blood pools around the incision in [H]'s [parse_zone(target_zone)].",
+		if (!((NOBLOOD in H.dna.species.species_traits) || HAS_TRAIT(H, TRAIT_NO_BLOOD)))
+			display_results(user, target, "<span class='notice'>Wokół nacięcia ([strefa_pl(target_zone)]) [H] zbiera się krew.</span>",
+				"Wokół nacięcia ([strefa_pl(target_zone)]) [H] zbiera się krew.",
 				"")
-			H.bleed_rate += 3
+			H.add_bleeding(BLEED_CUT)
 	return TRUE
 
 /datum/surgery_step/incise/nobleed //silly friendly!
 
 /datum/surgery_step/incise/nobleed/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to <i>carefully</i> make an incision in [target]'s [parse_zone(target_zone)]...</span>",
-		"[user] begins to <i>carefully</i> make an incision in [target]'s [parse_zone(target_zone)].",
-		"[user] begins to <i>carefully</i> make an incision in [target]'s [parse_zone(target_zone)].")
+	display_results(user, target, "<span class='notice'>Zaczynasz <i>ostrożnie</i> nacinać [strefa_pl(target_zone, TRUE)] [target]...</span>",
+		"[user] zaczyna <i>ostrożnie</i> nacinać [strefa_pl(target_zone, TRUE)] [target].",
+		"[user] zaczyna <i>ostrożnie</i> nacinać [strefa_pl(target_zone, TRUE)] [target].")
 
 /datum/surgery_step/incise/nobleed/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	return TRUE
@@ -47,9 +47,9 @@
 	preop_sound = 'sound/surgery/hemostat1.ogg'
 
 /datum/surgery_step/clamp_bleeders/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to clamp bleeders in [target]'s [parse_zone(target_zone)]...</span>",
-		"[user] begins to clamp bleeders in [target]'s [parse_zone(target_zone)].",
-		"[user] begins to clamp bleeders in [target]'s [parse_zone(target_zone)].")
+	display_results(user, target, "<span class='notice'>Zaczynasz zaciskać krwawiące naczynia ([strefa_pl(target_zone)]) [target]...</span>",
+		"[user] zaczyna zaciskać krwawiące naczynia ([strefa_pl(target_zone)]) [target].",
+		"[user] zaczyna zaciskać krwawiące naczynia ([strefa_pl(target_zone)]) [target].")
 
 /datum/surgery_step/clamp_bleeders/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	if(locate(/datum/surgery_step/saw) in surgery.steps)
@@ -66,9 +66,9 @@
 	success_sound = 'sound/surgery/retractor2.ogg'
 
 /datum/surgery_step/retract_skin/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to retract the skin in [target]'s [parse_zone(target_zone)]...</span>",
-		"[user] begins to retract the skin in [target]'s [parse_zone(target_zone)].",
-		"[user] begins to retract the skin in [target]'s [parse_zone(target_zone)].")
+	display_results(user, target, "<span class='notice'>Zaczynasz odciągać skórę ([strefa_pl(target_zone)]) [target]...</span>",
+		"[user] zaczyna odciągać skórę ([strefa_pl(target_zone)]) [target].",
+		"[user] zaczyna odciągać skórę ([strefa_pl(target_zone)]) [target].")
 
 
 
@@ -82,9 +82,9 @@
 	success_sound = 'sound/surgery/cautery2.ogg'
 
 /datum/surgery_step/close/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to mend the incision in [target]'s [parse_zone(target_zone)]...</span>",
-		"[user] begins to mend the incision in [target]'s [parse_zone(target_zone)].",
-		"[user] begins to mend the incision in [target]'s [parse_zone(target_zone)].")
+	display_results(user, target, "<span class='notice'>Zaczynasz zamykać nacięcie ([strefa_pl(target_zone)]) [target]...</span>",
+		"[user] zaczyna zamykać nacięcie ([strefa_pl(target_zone)]) [target].",
+		"[user] zaczyna zamykać nacięcie ([strefa_pl(target_zone)]) [target].")
 
 /datum/surgery_step/close/tool_check(mob/user, obj/item/tool)
 	if(implement_type == TOOL_WELDER || implement_type == /obj/item)
@@ -95,6 +95,7 @@
 /datum/surgery_step/close/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	if(locate(/datum/surgery_step/saw) in surgery.steps)
 		target.heal_bodypart_damage(45,0)
+	target.cauterise_wounds()
 	return ..()
 
 
@@ -116,13 +117,13 @@
 	success_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/saw/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to saw through the bone in [target]'s [parse_zone(target_zone)]...</span>",
-		"[user] begins to saw through the bone in [target]'s [parse_zone(target_zone)].",
-		"[user] begins to saw through the bone in [target]'s [parse_zone(target_zone)].")
+	display_results(user, target, "<span class='notice'>Zaczynasz przepiłowywać kość ([strefa_pl(target_zone)]) [target]...</span>",
+		"[user] zaczyna przepiłowywać kość ([strefa_pl(target_zone)]) [target].",
+		"[user] zaczyna przepiłowywać kość ([strefa_pl(target_zone)]) [target].")
 
 /datum/surgery_step/saw/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	target.apply_damage(50, BRUTE, "[target_zone]")
-	display_results(user, target, "<span class='notice'>You saw [target]'s [parse_zone(target_zone)] open.</span>",
+	display_results(user, target, "<span class='notice'>Otwierasz piłą [strefa_pl(target_zone, TRUE)] [target].</span>",
 		"[user] saws [target]'s [parse_zone(target_zone)] open!",
 		"[user] saws [target]'s [parse_zone(target_zone)] open!")
 	return 1
@@ -141,12 +142,12 @@
 	return TRUE
 
 /datum/surgery_step/drill/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to drill into the bone in [target]'s [parse_zone(target_zone)]...</span>",
-		"[user] begins to drill into the bone in [target]'s [parse_zone(target_zone)].",
-		"[user] begins to drill into the bone in [target]'s [parse_zone(target_zone)].")
+	display_results(user, target, "<span class='notice'>Zaczynasz wiercić w kości ([strefa_pl(target_zone)]) [target]...</span>",
+		"[user] zaczyna wiercić w kości ([strefa_pl(target_zone)]) [target].",
+		"[user] zaczyna wiercić w kości ([strefa_pl(target_zone)]) [target].")
 
 /datum/surgery_step/drill/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You drill into [target]'s [parse_zone(target_zone)].</span>",
-		"[user] drills into [target]'s [parse_zone(target_zone)]!",
-		"[user] drills into [target]'s [parse_zone(target_zone)]!")
+	display_results(user, target, "<span class='notice'>Nawiercasz [strefa_pl(target_zone, TRUE)] [target].</span>",
+		"[user] nawierca [strefa_pl(target_zone, TRUE)] [target]!",
+		"[user] nawierca [strefa_pl(target_zone, TRUE)] [target]!")
 	return 1

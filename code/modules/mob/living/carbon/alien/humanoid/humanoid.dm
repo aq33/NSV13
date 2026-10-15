@@ -2,7 +2,7 @@
 	name = "alien"
 	icon_state = "alien"
 	pass_flags = PASSTABLE
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab/xeno = 5, /obj/item/stack/sheet/animalhide/xeno = 1)
+	butcher_results = list(/obj/item/food/meat/slab/xeno = 5, /obj/item/stack/sheet/animalhide/xeno = 1)
 	possible_a_intents = list(INTENT_HELP, INTENT_DISARM, INTENT_GRAB, INTENT_HARM)
 	limb_destroyer = TRUE
 	hud_type = /datum/hud/alien
@@ -38,8 +38,8 @@ GLOBAL_LIST_INIT(strippable_alien_humanoid_items, create_strippable_list(list(
 
 /mob/living/carbon/alien/humanoid/resist_grab(moving_resist)
 	if(pulledby.grab_state)
-		visible_message("<span class='danger'>[src] breaks free of [pulledby]'s grip!</span>", \
-						"<span class='danger'>You break free of [pulledby]'s grip!</span>")
+		visible_message("<span class='danger'>[src] wyrywa się z uchwytu [pulledby]!</span>", \
+						"<span class='danger'>Wyrywasz się z uchwytu [pulledby]!</span>")
 	pulledby.stop_pulling()
 	. = 0
 
@@ -59,7 +59,7 @@ GLOBAL_LIST_INIT(strippable_alien_humanoid_items, create_strippable_list(list(
 	else
 		return initial(pixel_x)
 
-/mob/living/carbon/alien/humanoid/get_permeability_protection()
+/mob/living/carbon/alien/humanoid/get_permeability_protection(list/target_zones)
 	return 0.8
 
 /mob/living/carbon/alien/humanoid/alien_evolve(mob/living/carbon/alien/humanoid/new_xeno)

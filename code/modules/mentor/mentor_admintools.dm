@@ -7,5 +7,5 @@ GLOBAL_PROTECT(mentorlog)
         dat += "<li>[l]</li>"
 
     if(!GLOB.mentorlog.len)
-        dat += "No mentors have done anything this round!"
-    usr << browse(dat, "window=mentor_log")
+        dat += "Żaden mentor nic w tej rundzie nie zrobił!"
+    usr << browse(HTML_SKELETON(dat), "window=mentor_log")

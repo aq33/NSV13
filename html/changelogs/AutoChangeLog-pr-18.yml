@@ -1,6 +1,0 @@
-author: sh4dow321
-delete-after: true
-changes:
-  - bugfix: Naprawiono funkcje zależne od zawodu (składy, ograniczenia antagonistów,
-      skalowanie ochrony, przedmioty i konta przypisane do działów), które przestały
-      działać po przetłumaczeniu nazw zawodów.

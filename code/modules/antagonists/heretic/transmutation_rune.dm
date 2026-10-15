@@ -21,8 +21,8 @@
 	if(!IS_HERETIC(user))
 		return
 
-	. += "<span class='notice'>Allows you to transmute objects by invoking the rune after collecting the prerequisites overhead.</span>"
-	. += "<span class='notice'>You can use your <i>Mansus Grasp</i> on the rune to remove it.</span>"
+	. += "<span class='notice'>Pozwala transmutować przedmioty: zbierz wymagane rzeczy na runie i ją aktywuj.</span>"
+	. += "<span class='notice'>Możesz usunąć runę <i>Uchwytem Mansusa</i>.</span>"
 
 /obj/effect/heretic_rune/can_interact(mob/living/user)
 	. = ..()
@@ -49,11 +49,11 @@
 	var/datum/antagonist/heretic/heretic_datum = IS_HERETIC(user)
 	var/list/rituals = heretic_datum.get_rituals()
 	if(!length(rituals))
-		loc.balloon_alert(user, "no rituals available!")
+		loc.balloon_alert(user, "brak dostępnych rytuałów!")
 		is_in_use = FALSE
 		return
 
-	var/chosen = tgui_input_list(user, "Chose a ritual to attempt.", "Chose a Ritual", rituals)
+	var/chosen = tgui_input_list(user, "Wybierz rytuał do odprawienia.", "Wybór rytuału", rituals)
 	if(!chosen || !istype(rituals[chosen], /datum/heretic_knowledge) || QDELETED(src) || QDELETED(user) || QDELETED(heretic_datum))
 		is_in_use = FALSE
 		return
@@ -135,9 +135,9 @@
 
 	if(length(what_are_we_missing))
 		// Let them know it screwed up
-		loc.balloon_alert(user, "ritual failed, missing components!")
+		loc.balloon_alert(user, "rytuał nieudany, brak składników!")
 		// Then let them know what they're missing
-		to_chat(user, "<span class='hierophant'>You are missing [english_list(what_are_we_missing)] in order to complete the ritual \"[ritual.name]\".</span>")
+		to_chat(user, "<span class='hierophant'>Do ukończenia rytuału \"[ritual.name]\" brakuje ci: [english_list(what_are_we_missing)].</span>")
 		return FALSE
 
 	// If we made it here, the ritual had all necessary components, and we can try to cast it.
@@ -172,7 +172,7 @@
 	// No feedback is given on failure here -
 	// the ritual itself should handle it (providing specifics as to why it failed)
 	if(ritual_result)
-		loc.balloon_alert(user, "ritual complete")
+		loc.balloon_alert(user, "rytuał ukończony")
 
 	return ritual_result
 

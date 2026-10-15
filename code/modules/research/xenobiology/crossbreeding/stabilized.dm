@@ -50,71 +50,71 @@ Stabilized extracts:
 //Colors and subtypes:
 /obj/item/slimecross/stabilized/grey
 	colour = "grey"
-	effect_desc = "Makes slimes friendly to the owner"
+	effect_desc = "Sprawia, że szlamy są przyjazne dla właściciela"
 
 /obj/item/slimecross/stabilized/orange
 	colour = "orange"
-	effect_desc = "Passively tries to increase or decrease the owner's body temperature to normal"
+	effect_desc = "Biernie próbuje podnieść lub obniżyć temperaturę ciała właściciela do normalnej"
 
 /obj/item/slimecross/stabilized/purple
 	colour = "purple"
-	effect_desc = "Provides a regeneration effect"
+	effect_desc = "Zapewnia efekt regeneracji"
 
 /obj/item/slimecross/stabilized/blue
 	colour = "blue"
-	effect_desc = "Makes the owner immune to slipping on water, soap or foam. Space lube and ice are still too slippery."
+	effect_desc = "Czyni właściciela odpornym na poślizgnięcie na wodzie, mydle lub pianie. Kosmiczny smar i lód nadal są zbyt śliskie."
 
 /obj/item/slimecross/stabilized/metal
 	colour = "metal"
-	effect_desc = "Every 30 seconds, adds a sheet of material to a random stack in the owner's backpack."
+	effect_desc = "Co 30 sekund dodaje arkusz materiału do losowego stosu w plecaku właściciela."
 
 /obj/item/slimecross/stabilized/yellow
 	colour = "yellow"
-	effect_desc = "Every ten seconds it recharges a device on the owner by 10%."
+	effect_desc = "Co dziesięć sekund ładuje jedno z urządzeń właściciela o 10%."
 
 /obj/item/slimecross/stabilized/darkpurple
 	colour = "dark purple"
-	effect_desc = "Gives you burning fingertips, automatically cooking any microwavable food you hold."
+	effect_desc = "Daje płonące opuszki palców, które automatycznie gotują każde trzymane jedzenie nadające się do mikrofalówki."
 
 /obj/item/slimecross/stabilized/darkblue
 	colour = "dark blue"
-	effect_desc = "Slowly extinguishes the owner if they are on fire, also wets items like monkey cubes, creating a monkey."
+	effect_desc = "Powoli gasi właściciela, jeśli płonie; moczy też przedmioty, takie jak kostki małpie, tworząc małpę."
 
 /obj/item/slimecross/stabilized/silver
 	colour = "silver"
-	effect_desc = "Slows the rate at which the owner loses nutrition"
+	effect_desc = "Spowalnia tempo, w jakim właściciel traci składniki odżywcze"
 
 /obj/item/slimecross/stabilized/bluespace
 	colour = "bluespace"
-	effect_desc = "On a two minute cooldown, when the owner has taken enough damage, they are teleported to a safe place."
+	effect_desc = "Z dwuminutowym odnowieniem: gdy właściciel otrzyma dość obrażeń, zostaje teleportowany w bezpieczne miejsce."
 
 /obj/item/slimecross/stabilized/sepia
 	colour = "sepia"
-	effect_desc = "Randomly adjusts the owner's speed."
+	effect_desc = "Losowo zmienia szybkość właściciela."
 
 /obj/item/slimecross/stabilized/cerulean
 	colour = "cerulean"
-	effect_desc = "Creates a duplicate of the owner. If the owner dies they will take control of the duplicate, unless the death was from beheading or gibbing."
+	effect_desc = "Tworzy duplikat właściciela. Jeśli właściciel zginie, przejmie kontrolę nad duplikatem, chyba że śmierć nastąpiła przez ścięcie lub rozerwanie na kawałki."
 
 /obj/item/slimecross/stabilized/pyrite
 	colour = "pyrite"
-	effect_desc = "Randomly colors the owner every few seconds."
+	effect_desc = "Co kilka sekund losowo barwi właściciela."
 
 /obj/item/slimecross/stabilized/red
 	colour = "red"
-	effect_desc = "Nullifies all equipment based slowdowns."
+	effect_desc = "Niweluje wszystkie spowolnienia wynikające z wyposażenia."
 
 /obj/item/slimecross/stabilized/green
 	colour = "green"
-	effect_desc = "Changes the owner's name and appearance while holding this extract."
+	effect_desc = "Zmienia imię i wygląd właściciela, gdy trzyma ten ekstrakt."
 
 /obj/item/slimecross/stabilized/pink
 	colour = "pink"
-	effect_desc = "As long as no creatures are harmed in the owner's presense, they will not attack you. If the peace is broken it takes two minutes to restore."
+	effect_desc = "Dopóki w obecności właściciela żadne stworzenie nie zostanie skrzywdzone, nie zaatakują cię. Jeśli pokój zostanie złamany, przywrócenie go trwa dwie minuty."
 
 /obj/item/slimecross/stabilized/gold
 	colour = "gold"
-	effect_desc = "Creates a pet when held."
+	effect_desc = "Gdy jest trzymany, tworzy zwierzaka."
 	var/mob_type
 	var/datum/mind/saved_mind
 	var/mob_name = "Familiar"
@@ -134,7 +134,7 @@ Stabilized extracts:
 	generate_mobtype()
 
 /obj/item/slimecross/stabilized/gold/attack_self(mob/user)
-	var/choice = input(user, "Which do you want to reset?", "Familiar Adjustment") as null|anything in sortList(list("Familiar Location", "Familiar Species", "Familiar Sentience", "Familiar Name"))
+	var/choice = input(user, "Co chcesz zresetować?", "Dostosowanie chowańca") as null|anything in sortList(list("Familiar Location", "Familiar Species", "Familiar Sentience", "Familiar Name"))
 	if(!user.canUseTopic(src, BE_CLOSE))
 		return
 	if(isliving(user))
@@ -142,48 +142,48 @@ Stabilized extracts:
 		if(L.has_status_effect(/datum/status_effect/stabilized/gold))
 			L.remove_status_effect(/datum/status_effect/stabilized/gold)
 	if(choice == "Familiar Location")
-		to_chat(user, "<span class='notice'>You prod [src], and it shudders slightly.</span>")
+		to_chat(user, "<span class='notice'>Szturchasz [src], a on lekko drży.</span>")
 		START_PROCESSING(SSobj, src)
 	if(choice == "Familiar Species")
-		to_chat(user, "<span class='notice'>You squeeze [src], and a shape seems to shift around inside.</span>")
+		to_chat(user, "<span class='notice'>Ściskasz [src], a w środku zdaje się przesuwać jakiś kształt.</span>")
 		generate_mobtype()
 		START_PROCESSING(SSobj, src)
 	if(choice == "Familiar Sentience")
-		to_chat(user, "<span class='notice'>You poke [src], and it lets out a glowing pulse.</span>")
+		to_chat(user, "<span class='notice'>Dźgasz [src], a on wysyła świecący impuls.</span>")
 		saved_mind = null
 		START_PROCESSING(SSobj, src)
 	if(choice == "Familiar Name")
-		var/newname = sanitize_name(stripped_input(user, "Would you like to change the name of [mob_name]", "Name change", mob_name, MAX_NAME_LEN))
+		var/newname = sanitize_name(stripped_input(user, "Czy chcesz zmienić imię [mob_name]", "Zmiana imienia", mob_name, MAX_NAME_LEN))
 		if(newname)
 			mob_name = newname
-		to_chat(user, "<span class='notice'>You speak softly into [src], and it shakes slightly in response.</span>")
+		to_chat(user, "<span class='notice'>Mówisz cicho do [src], a on lekko drży w odpowiedzi.</span>")
 		START_PROCESSING(SSobj, src)
 
 /obj/item/slimecross/stabilized/oil
 	colour = "oil"
-	effect_desc = "The owner will violently explode when they die while holding this extract."
+	effect_desc = "Właściciel gwałtownie eksploduje, jeśli umrze, trzymając ten ekstrakt."
 
 /obj/item/slimecross/stabilized/black
 	colour = "black"
-	effect_desc = "While strangling someone, the owner's hands melt around their neck, draining their life in exchange for food and healing."
+	effect_desc = "Podczas duszenia kogoś dłonie właściciela roztapiają się wokół szyi ofiary, wysysając z niej życie w zamian za jedzenie i leczenie."
 
 /obj/item/slimecross/stabilized/lightpink
 	colour = "light pink"
-	effect_desc = "The owner moves at high speeds while holding this extract, also stabilizes anyone in critical condition around you using Epinephrine."
+	effect_desc = "Właściciel porusza się bardzo szybko, trzymając ten ekstrakt; stabilizuje też epinefryną każdego w stanie krytycznym wokół ciebie."
 
 /obj/item/slimecross/stabilized/adamantine
 	colour = "adamantine"
-	effect_desc = "Owner gains a slight boost in damage resistance to all types."
+	effect_desc = "Właściciel zyskuje niewielką premię do odporności na wszystkie rodzaje obrażeń."
 
 /obj/item/slimecross/stabilized/rainbow
 	colour = "rainbow"
-	effect_desc = "Accepts a regenerative extract and automatically uses it if the owner enters a critical condition."
+	effect_desc = "Przyjmuje ekstrakt regeneracyjny i automatycznie go używa, gdy właściciel znajdzie się w stanie krytycznym."
 	var/obj/item/slimecross/regenerative/regencore
 
 /obj/item/slimecross/stabilized/rainbow/attackby(obj/item/O, mob/user)
 	var/obj/item/slimecross/regenerative/regen = O
 	if(istype(regen) && !regencore)
-		to_chat(user, "<span class='notice'>You place [O] in [src], prepping the extract for automatic application!</span>")
+		to_chat(user, "<span class='notice'>Umieszczasz [O] w [src], przygotowując ekstrakt do automatycznego użycia!</span>")
 		regencore = regen
 		regen.forceMove(src)
 		return

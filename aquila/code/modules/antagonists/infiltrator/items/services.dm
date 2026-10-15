@@ -17,19 +17,19 @@ GLOBAL_VAR_INIT(next_button_push, 0)
 		var/mob/living/carbon/human/H = user
 		var/obj/item/card/id/ID = H.wear_id?.GetID()
 		if(!ID)
-			to_chat(user, span_notice("You need to wear your ID to properly spoof the manifest! Try again."))
+			to_chat(user, span_notice("Musisz nosić swoją kartę, żeby prawidłowo podrobić manifest! Spróbuj ponownie."))
 			return
 		var/record_name = ID.registered_name || H.name
 		var/assignment = ID.assignment || "Unassigned"
-		if(alert(user, "Are you sure you want your crew manifest entry to be [record_name], [assignment]?", "", "Yes", "No") != "Yes")
+		if(alert(user, "Na pewno chcesz, żeby twój wpis w manifeście załogi brzmiał: [record_name], [assignment]?", "", "Yes", "No") != "Yes")
 			return
 		var/list/all_jobs = (GLOB.command_positions + GLOB.engineering_positions + GLOB.medical_positions + GLOB.science_positions + GLOB.supply_positions + GLOB.civilian_positions + GLOB.security_positions)
-		if(!(assignment in all_jobs) && (alert(user, "Are you sure you want your job to be '[assignment]'? This is not a default job, and may look strange on the manifest!", "", "Yes", "No") != "Yes"))
+		if(!(assignment in all_jobs) && (alert(user, "Na pewno chcesz mieć stanowisko '[assignment]'? To nie jest standardowe stanowisko i może dziwnie wyglądać w manifeście!", "", "Yes", "No") != "Yes"))
 			return
 		if(QDELETED(src) || !user.is_holding(src))
 			return
 		GLOB.data_core.manifest_inject(H, H.client, force = TRUE, record_name = record_name, assignment_override = assignment)
-		to_chat(user, span_notice("Added to manifest."))
+		to_chat(user, span_notice("Dodano do manifestu."))
 		log_game("[key_name(user)] spoofed a crew manifest entry as [record_name], [assignment].")
 		do_sparks(2, FALSE, src)
 		qdel(src)
@@ -40,7 +40,7 @@ GLOBAL_VAR_INIT(next_button_push, 0)
 /obj/item/service/ion/attack_self(mob/user)
 	if(GLOB.next_button_push > world.time)
 		return
-	priority_announce("Ion storm detected near the station. Please check all AI-controlled equipment for errors.", "Anomaly Alert", 'sound/ai/default/ionstorm.ogg')
+	priority_announce("W pobliżu statku wykryto burzę jonową. Sprawdźcie, czy sprzęt sterowany przez SI działa poprawnie.", "Alarm - anomalia", 'sound/ai/default/ionstorm.ogg')
 	message_admins("[key_name_admin(user)] made a fake ion storm announcement!")
 	log_game("[key_name_admin(user)] made a fake ion storm announcement!")
 	do_sparks(2, FALSE, src)
@@ -53,7 +53,7 @@ GLOBAL_VAR_INIT(next_button_push, 0)
 /obj/item/service/meteor/attack_self(mob/user)
 	if(GLOB.next_button_push > world.time)
 		return
-	priority_announce("Meteors have been detected on collision course with the station.", "Meteor Alert", 'sound/ai/default/meteors.ogg')
+	priority_announce("Wykryto meteory na kursie kolizyjnym ze statkiem.", "Alarm meteorytowy", 'sound/ai/default/meteors.ogg')
 	message_admins("[key_name_admin(user)] made a fake meteor storm announcement!")
 	log_game("[key_name_admin(user)] made a fake meteor storm announcement!")
 	do_sparks(2, FALSE, src)
@@ -66,7 +66,7 @@ GLOBAL_VAR_INIT(next_button_push, 0)
 /obj/item/service/rodgod/attack_self(mob/user)
 	if(GLOB.next_button_push > world.time)
 		return
-	priority_announce("What the fuck was that?!", "General Alert")
+	priority_announce("Co to, kurwa, było?!", "Alarm ogólny")
 	message_admins("[key_name_admin(user)] made a fake immovable rod announcement!")
 	log_game("[key_name_admin(user)] made a fake immovable rod announcement!")
 	do_sparks(2, FALSE, src)

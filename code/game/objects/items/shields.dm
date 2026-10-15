@@ -38,7 +38,7 @@
 				attackforce = (damage * 2)//simplemobs have an advantage here because of how much these blocking mechanics put them at a disadvantage
 			if(block_flags & BLOCKING_NASTY)
 				L.attackby(src, owner)
-				owner.visible_message("<span class='danger'>[L] injures themselves on [owner]'s [src]!</span>")
+				owner.visible_message("<span class='danger'>[L] rani się o [src] należący do [owner]!</span>")
 		if(attackforce)
 			owner.changeNext_move(CLICK_CD_MELEE)
 		if (obj_integrity <= attackforce)
@@ -57,14 +57,14 @@
 		if(obj_integrity < max_integrity)
 			if(!W.tool_start_check(user, amount=0))
 				return
-			user.visible_message("[user] is welding the [src].", \
-									"<span class='notice'>You begin repairing the [src]]...</span>")
+			user.visible_message("[user] spawa [src].", \
+									"<span class='notice'>Zaczynasz naprawiać [src]...</span>")
 			if(W.use_tool(src, user, 40, volume=50))
 				obj_integrity += 10
-				user.visible_message("[user.name] has repaired some dents on [src].", \
-									"<span class='notice'>You finish repairing some of the dents on [src].</span>")
+				user.visible_message("[user.name] naprawia część wgnieceń na [src].", \
+									"<span class='notice'>Kończysz naprawiać część wgnieceń na [src].</span>")
 			else
-				to_chat(user, "<span class='notice'>The [src] doesn't need repairing.</span>")
+				to_chat(user, "<span class='notice'>[src] nie wymaga naprawy.</span>")
 	return ..()
 
 /obj/item/shield/examine(mob/user)
@@ -72,11 +72,11 @@
 	var/healthpercent = round((obj_integrity/max_integrity) * 100, 1)
 	switch(healthpercent)
 		if(50 to 99)
-			. += "<span class='info'>It looks slightly damaged.</span>"
+			. += "<span class='info'>Wygląda na lekko uszkodzony.</span>"
 		if(25 to 50)
-			. += "<span class='info'>It appears heavily damaged.</span>"
+			. += "<span class='info'>Wygląda na mocno uszkodzony.</span>"
 		if(0 to 25)
-			. += "<span class='warning'>It's falling apart!</span>"
+			. += "<span class='warning'>Rozpada się!</span>"
 
 /obj/item/shield/proc/shatter(mob/living/carbon/human/owner)
 	playsound(owner, 'sound/effects/glassbr3.ogg', 100)
@@ -97,24 +97,24 @@
 	throw_range = 3
 	w_class = WEIGHT_CLASS_BULKY
 	materials = list(/datum/material/glass=7500, /datum/material/iron=1000)
-	attack_verb = list("shoved", "bashed")
+	attack_verb = list("popycha", "grzmoci")
 	var/cooldown = 0 //shield bash cooldown. based on world.time
 	transparent = TRUE
 
 /obj/item/shield/riot/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/melee/baton))
 		if(cooldown < world.time - 25)
-			user.visible_message("<span class='warning'>[user] bashes [src] with [W]!</span>")
+			user.visible_message("<span class='warning'>[user] uderza w [src] za pomocą [W]!</span>")
 			playsound(user.loc, 'sound/effects/shieldbash.ogg', 50, 1)
 			cooldown = world.time
 	else if(istype(W, /obj/item/stack/sheet/mineral/titanium))
 		if (obj_integrity >= max_integrity)
-			to_chat(user, "<span class='notice'>[src] is already in perfect condition.</span>")
+			to_chat(user, "<span class='notice'>[src] jest już w idealnym stanie.</span>")
 		else
 			var/obj/item/stack/sheet/mineral/titanium/T = W
 			T.use(1)
 			obj_integrity = max_integrity
-			to_chat(user, "<span class='notice'>You repair [src] with [T].</span>")
+			to_chat(user, "<span class='notice'>Naprawiasz [src] za pomocą [T].</span>")
 	else
 		return ..()
 
@@ -211,10 +211,10 @@
 	if(istype(W, /obj/item/assembly/flash/handheld))
 		var/obj/item/assembly/flash/handheld/flash = W
 		if(flash.burnt_out)
-			to_chat(user, "No sense replacing it with a broken bulb.")
+			to_chat(user, "Nie ma sensu wymieniać jej na przepaloną żarówkę.")
 			return
 		else
-			to_chat(user, "You begin to replace the bulb.")
+			to_chat(user, "Zaczynasz wymieniać żarówkę.")
 			if(do_after(user, 20, target = user))
 				if(flash.burnt_out || !flash || QDELETED(flash))
 					return
@@ -242,7 +242,7 @@
 /obj/item/shield/riot/flash/examine(mob/user)
 	. = ..()
 	if (embedded_flash?.burnt_out)
-		. += "<span class='info'>The mounted bulb has burnt out. You can try replacing it with a new one.</span>"
+		. += "<span class='info'>Zamontowana żarówka się przepaliła. Możesz spróbować wymienić ją na nową.</span>"
 
 /obj/item/shield/energy
 	name = "energy combat shield"
@@ -250,7 +250,7 @@
 	lefthand_file = 'icons/mob/inhands/equipment/shields_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/shields_righthand.dmi'
 	w_class = WEIGHT_CLASS_TINY
-	attack_verb = list("shoved", "bashed")
+	attack_verb = list("popycha", "grzmoci")
 	throw_range = 5
 	force = 3
 	throwforce = 3
@@ -258,7 +258,7 @@
 	max_integrity = 50
 	block_sound = 'sound/weapons/egloves.ogg'
 	block_flags = BLOCKING_PROJECTILE
-	var/base_icon_state = "eshield" // [base_icon_state]1 for expanded, [base_icon_state]0 for contracted
+	base_icon_state = "eshield" // [base_icon_state]1 for expanded, [base_icon_state]0 for contracted
 	var/on_force = 10
 	var/on_throwforce = 8
 	var/on_throw_speed = 2
@@ -270,13 +270,13 @@
 /obj/item/shield/energy/shatter(mob/living/carbon/human/owner)
 	playsound(owner, 'sound/effects/turbolift/turbolift-close.ogg', 200, 1)
 	src.attack_self(owner)
-	to_chat(owner, "<span class='warning'>The [src] overheats!.</span>")
+	to_chat(owner, "<span class='warning'>[src] się przegrzewa!</span>")
 	cooldown_timer = world.time + cooldown_duration
 	addtimer(CALLBACK(src, PROC_REF(recharged), owner), cooldown_duration)
 
 /obj/item/shield/energy/proc/recharged(mob/living/carbon/human/owner)//ree. i hate addtimer. ree.
 	playsound(owner, 'sound/effects/beepskyspinsabre.ogg', 35, 1)
-	to_chat(owner, "<span class='warning'>The [src] is ready to use!.</span>")
+	to_chat(owner, "<span class='warning'>[src] jest gotowy do użycia!</span>")
 
 /obj/item/shield/energy/Initialize(mapload)
 	. = ..()
@@ -297,7 +297,7 @@
 	if(cooldown_timer >= world.time)
 		return
 	if(clumsy_check && HAS_TRAIT(user, TRAIT_CLUMSY) && prob(50))
-		to_chat(user, "<span class='warning'>You beat yourself in the head with [src].</span>")
+		to_chat(user, "<span class='warning'>Uderzasz się w głowę [src].</span>")
 		user.take_bodypart_damage(5)
 	active = !active
 	icon_state = "[base_icon_state][active]"
@@ -307,7 +307,7 @@
 		throw_speed = on_throw_speed
 		w_class = WEIGHT_CLASS_BULKY
 		playsound(user, 'sound/weapons/saberon.ogg', 35, 1)
-		to_chat(user, "<span class='notice'>[src] is now active and back at full power.</span>")
+		to_chat(user, "<span class='notice'>[src] jest aktywny i znów ma pełną moc.</span>")
 		if(obj_integrity <= 1)
 			obj_integrity = max_integrity
 	else
@@ -316,7 +316,7 @@
 		throw_speed = initial(throw_speed)
 		w_class = WEIGHT_CLASS_TINY
 		playsound(user, 'sound/weapons/saberoff.ogg', 35, 1)
-		to_chat(user, "<span class='notice'>[src] can now be concealed.</span>")
+		to_chat(user, "<span class='notice'>[src] można teraz schować.</span>")
 	add_fingerprint(user)
 
 /obj/item/shield/riot/tele
@@ -349,12 +349,12 @@
 		throw_speed = 2
 		w_class = WEIGHT_CLASS_BULKY
 		slot_flags = ITEM_SLOT_BACK
-		to_chat(user, "<span class='notice'>You extend \the [src].</span>")
+		to_chat(user, "<span class='notice'>Rozkładasz [src].</span>")
 	else
 		force = 3
 		throwforce = 3
 		throw_speed = 3
 		w_class = WEIGHT_CLASS_NORMAL
 		slot_flags = null
-		to_chat(user, "<span class='notice'>[src] can now be concealed.</span>")
+		to_chat(user, "<span class='notice'>[src] można teraz schować.</span>")
 	add_fingerprint(user)

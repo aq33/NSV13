@@ -15,8 +15,8 @@
 	var/list/pre_vamps = list()
 
 /datum/game_mode/traitor/vampire/announce()
-	to_chat(world, "<B>The current game mode is - Traitor+Vampire!</B>")
-	to_chat(world, "<B>There are vampires on the station along with some syndicate operatives out for their own gain! Do not let the vampires and the traitors succeed!</B>")
+	to_chat(world, "<B>Obecny tryb gry to zdrajca i wampir!</B>")
+	to_chat(world, "<B>Na statku są wampiry i agenci Syndykatu działający dla własnych korzyści! Nie pozwólcie wampirom ani zdrajcom wygrać!</B>")
 
 /datum/game_mode/traitor/vampire/can_start()
 	if(!..())
@@ -45,6 +45,8 @@
 		num_vamp = max(1, min( round(num_players()/(CONFIG_GET(number/traitor_scaling_coeff)*4))+2, round(num_players()/(CONFIG_GET(number/traitor_scaling_coeff)*2)) ))
 	else
 		num_vamp = max(1, min(num_players(), vampire_amt/2))
+	if(!isnull(weighted_antag_cap)) // weighted rotation antagonist limit, one place stays for a traitor
+		num_vamp = min(num_vamp, weighted_antag_cap - 1)
 
 	var/list/old_antag_candidates = antag_candidates.Copy()
 	if(possible_vamps.len>0)
@@ -57,6 +59,9 @@
 			vamp.special_role = "Vampire"
 			vamp.restricted_roles = vampire_restricted_jobs
 		antag_candidates = old_antag_candidates // So we still have a chance for a traitor vampire.
+		// The weighted rotation limit counts vampires and traitors together
+		if(!isnull(weighted_antag_cap))
+			weighted_antag_cap = max(0, weighted_antag_cap - length(pre_vamps))
 		return ..()
 	else
 		return FALSE
@@ -82,5 +87,5 @@
 	..()
 
 /datum/game_mode/traitor/vampire/generate_report()
-	return "We have received some fuzzy reports about the Syndicate cooperating with a bluespace demon.\
-			Keep a watch out for syndicate agents, and have your Chaplain on standby."
+	return "Dotarły do nas niejasne raporty o współpracy Syndykatu z demonem z bluespace.\
+			Wypatrujcie agentów Syndykatu i trzymajcie kapelana w gotowości."

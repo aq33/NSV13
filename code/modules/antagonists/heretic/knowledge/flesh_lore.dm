@@ -34,7 +34,7 @@
 	desc = "Opens up the Path of Flesh to you. \
 		Allows you to transmute a knife and a pool of blood into a Bloody Blade. \
 		You can only create three at a time."
-	gain_text = "Hundreds of us starved, but not me... I found strength in my greed."
+	gain_text = "Setki z nas głodowały, ale nie ja... W chciwości znalazłem siłę."
 	next_knowledge = list(/datum/heretic_knowledge/limited_amount/flesh_grasp)
 	banned_knowledge = list(
 		/datum/heretic_knowledge/limited_amount/base_ash,
@@ -54,32 +54,30 @@
 	priority = MAX_KNOWLEDGE_PRIORITY - 5
 	route = HERETIC_PATH_FLESH
 
-/datum/heretic_knowledge/limited_amount/base_flesh/on_research(mob/user)
+/datum/heretic_knowledge/limited_amount/base_flesh/on_research(mob/user, datum/antagonist/heretic/our_heretic)
 	. = ..()
-	var/datum/antagonist/heretic/our_heretic = IS_HERETIC(user)
-	our_heretic.heretic_path = route
 
 	var/datum/objective/heretic_summon/summon_objective = new()
 	summon_objective.owner = our_heretic.owner
 	our_heretic.objectives += summon_objective
 
-	to_chat(user, "<span class='hierophant'>Undertaking the Path of Flesh, you are given another objective.</span>")
+	to_chat(user, "<span class='hierophant'>Wkraczając na Ścieżkę Ciała, otrzymujesz kolejny cel.</span>")
 	our_heretic.owner.announce_objectives()
 
 /datum/heretic_knowledge/limited_amount/flesh_grasp
 	name = "Grasp of Flesh"
 	desc = "Your Mansus Grasp gains the ability to create a single ghoul out of corpse with a soul. \
 		Ghouls have only 25 health and look like husks to the heathens' eyes, but can use Bloody Blades effectively."
-	gain_text = "My newfound desires drove me to greater and greater heights."
+	gain_text = "Nowe pragnienia pchały mnie coraz wyżej i wyżej."
 	next_knowledge = list(/datum/heretic_knowledge/limited_amount/flesh_ghoul)
 	limit = 1
 	cost = 1
 	route = HERETIC_PATH_FLESH
 
-/datum/heretic_knowledge/limited_amount/flesh_grasp/on_gain(mob/user)
+/datum/heretic_knowledge/limited_amount/flesh_grasp/on_gain(mob/user, datum/antagonist/heretic/our_heretic)
 	RegisterSignal(user, COMSIG_HERETIC_MANSUS_GRASP_ATTACK, PROC_REF(on_mansus_grasp))
 
-/datum/heretic_knowledge/limited_amount/flesh_grasp/on_lose(mob/user)
+/datum/heretic_knowledge/limited_amount/flesh_grasp/on_lose(mob/user, datum/antagonist/heretic/our_heretic)
 	UnregisterSignal(user, COMSIG_HERETIC_MANSUS_GRASP_ATTACK)
 
 /datum/heretic_knowledge/limited_amount/flesh_grasp/proc/on_mansus_grasp(mob/living/source, mob/living/target)
@@ -90,19 +88,19 @@
 
 	// Skeletons can't become husks, and monkeys are monkeys.
 	if(!ishuman(target) || isskeleton(target) || ismonkey(target))
-		target.balloon_alert(source, "Invalid body")
+		target.balloon_alert(source, "Nieprawidłowe ciało")
 		return COMPONENT_BLOCK_CHARGE_USE
 
 	var/mob/living/carbon/human/human_target = target
 	human_target.grab_ghost()
 	if(!human_target.mind || !human_target.client)
-		target.balloon_alert(source, "No soul")
+		target.balloon_alert(source, "Brak duszy")
 		return COMPONENT_BLOCK_CHARGE_USE
 	if(HAS_TRAIT(human_target, TRAIT_HUSK))
 		target.balloon_alert(source, "Husked")
 		return COMPONENT_BLOCK_CHARGE_USE
 	if(LAZYLEN(created_items) >= limit)
-		target.balloon_alert(source, "At ghoul limit")
+		target.balloon_alert(source, "Osiągnięto limit ghuli")
 		return COMPONENT_BLOCK_CHARGE_USE
 
 	LAZYADD(created_items, WEAKREF(human_target))
@@ -135,7 +133,7 @@
 	desc = "Allows you to transmute a corpse and a flower to create a Voiceless Dead. \
 		Voiceless Dead are mute ghouls and only have 50 health, but can use Bloody Blades effectively. \
 		You can only create two at a time. "
-	gain_text = "I found notes of a dark ritual, unfinished... yet still, I pushed forward."
+	gain_text = "Znalazłem zapiski mrocznego rytuału, niedokończone... a jednak parłem naprzód."
 	next_knowledge = list(
 		/datum/heretic_knowledge/flesh_mark,
 		/datum/heretic_knowledge/codex_cicatrix,
@@ -144,7 +142,7 @@
 	)
 	required_atoms = list(
 		/mob/living/carbon/human = 1,
-		/obj/item/reagent_containers/food/snacks/grown/poppy = 1,
+		/obj/item/food/grown/poppy = 1,
 	)
 	limit = 2
 	cost = 1
@@ -157,7 +155,7 @@
 			atoms -= body
 
 	if(!(locate(/mob/living/carbon/human) in atoms))
-		loc.balloon_alert(user, "ritual failed, no valid body!")
+		loc.balloon_alert(user, "rytuał nieudany, brak odpowiedniego ciała!")
 		return FALSE
 
 	return ..()
@@ -172,9 +170,9 @@
 
 	if(!soon_to_be_ghoul.mind || !soon_to_be_ghoul.client)
 		message_admins("[ADMIN_LOOKUPFLW(user)] is creating a voiceless dead of a body with no player.")
-		var/list/mob/dead/observer/candidates = pollCandidatesForMob("Do you want to play as a [soon_to_be_ghoul.real_name], a voiceless dead?", ROLE_HERETIC, null, ROLE_HERETIC, 5 SECONDS, soon_to_be_ghoul)
+		var/list/mob/dead/observer/candidates = pollCandidatesForMob("Chcesz zagrać jako [soon_to_be_ghoul.real_name], niemy umarły?", ROLE_HERETIC, null, ROLE_HERETIC, 5 SECONDS, soon_to_be_ghoul)
 		if(!LAZYLEN(candidates))
-			loc.balloon_alert(user, "Ritual failed, no ghosts")
+			loc.balloon_alert(user, "Rytuał nieudany, brak duchów")
 			return FALSE
 
 		var/mob/dead/observer/chosen_candidate = pick(candidates)
@@ -216,7 +214,7 @@
 	name = "Mark of Flesh"
 	desc = "Your Mansus Grasp now applies the Mark of Flesh. The mark is triggered from an attack with your Bloody Blade. \
 		When triggered, the victim begins to bleed significantly."
-	gain_text = "That's when I saw them, the marked ones. They were out of reach. They screamed, and screamed."
+	gain_text = "Wtedy ich ujrzałem, naznaczonych. Byli poza zasięgiem. Krzyczeli i krzyczeli."
 	next_knowledge = list(/datum/heretic_knowledge/knowledge_ritual/flesh)
 	banned_knowledge = list(
 		/datum/heretic_knowledge/rust_mark,
@@ -226,11 +224,11 @@
 	cost = 2
 	route = HERETIC_PATH_FLESH
 
-/datum/heretic_knowledge/flesh_mark/on_gain(mob/user)
+/datum/heretic_knowledge/flesh_mark/on_gain(mob/user, datum/antagonist/heretic/our_heretic)
 	RegisterSignal(user, COMSIG_HERETIC_MANSUS_GRASP_ATTACK, PROC_REF(on_mansus_grasp))
 	RegisterSignal(user, COMSIG_HERETIC_BLADE_ATTACK, PROC_REF(on_eldritch_blade))
 
-/datum/heretic_knowledge/flesh_mark/on_lose(mob/user)
+/datum/heretic_knowledge/flesh_mark/on_lose(mob/user, datum/antagonist/heretic/our_heretic)
 	UnregisterSignal(user, list(COMSIG_HERETIC_MANSUS_GRASP_ATTACK, COMSIG_HERETIC_BLADE_ATTACK))
 
 /datum/heretic_knowledge/flesh_mark/proc/on_mansus_grasp(mob/living/source, mob/living/target)
@@ -261,8 +259,8 @@
 	desc = "Allows you to transmute a pair of eyes, a left arm, and a pool of blood to create a Raw Prophet. \
 		Raw Prophets have a greatly increased sight range and x-ray vision, as well as a long range jaunt and \
 		the ability to link minds to communicate with ease, but are very fragile and weak in combat."
-	gain_text = "I could not continue alone. I was able to summon The Uncanny Man to help me see more. \
-		The screams... once constant, now silenced by their wretched appearance. Nothing was out of reach."
+	gain_text = "Nie mogłem iść dalej sam. Zdołałem przywołać Niesamowitego Człowieka, by pomógł mi widzieć więcej. \
+		Krzyki... niegdyś nieustanne, teraz uciszone ich nędznym wyglądem. Nic nie było poza zasięgiem."
 	next_knowledge = list(
 		/datum/heretic_knowledge/flesh_blade_upgrade,
 		/datum/heretic_knowledge/reroll_targets,
@@ -281,8 +279,8 @@
 /datum/heretic_knowledge/flesh_blade_upgrade
 	name = "Bleeding Steel"
 	desc = "Your Bloody Blade now causes enemies to bleed heavily on attack."
-	gain_text = "The Uncanny Man was not alone. They led me to the Marshal. \
-		I finally began to understand. And then, blood rained from the heavens."
+	gain_text = "Niesamowity Człowiek nie był sam. Zaprowadził mnie do Marszałka. \
+		Wreszcie zacząłem rozumieć. A potem z nieba spadł deszcz krwi."
 	next_knowledge = list(/datum/heretic_knowledge/summon/stalker)
 	banned_knowledge = list(
 		/datum/heretic_knowledge/ash_blade_upgrade,
@@ -292,10 +290,10 @@
 	cost = 2
 	route = HERETIC_PATH_FLESH
 
-/datum/heretic_knowledge/flesh_blade_upgrade/on_gain(mob/user)
+/datum/heretic_knowledge/flesh_blade_upgrade/on_gain(mob/user, datum/antagonist/heretic/our_heretic)
 	RegisterSignal(user, COMSIG_HERETIC_BLADE_ATTACK, PROC_REF(on_eldritch_blade))
 
-/datum/heretic_knowledge/flesh_blade_upgrade/on_lose(mob/user)
+/datum/heretic_knowledge/flesh_blade_upgrade/on_lose(mob/user, datum/antagonist/heretic/our_heretic)
 	UnregisterSignal(user, COMSIG_HERETIC_BLADE_ATTACK)
 
 /datum/heretic_knowledge/flesh_blade_upgrade/proc/on_eldritch_blade(mob/living/user, mob/living/target)
@@ -305,14 +303,14 @@
 		return
 
 	var/mob/living/carbon/human/human_target = target
-	human_target.bleed_rate += 5
+	human_target.add_bleeding(BLEED_DEEP_WOUND)
 
 /datum/heretic_knowledge/summon/stalker
 	name = "Lonely Ritual"
 	desc = "Allows you to transmute a tail of any kind, a stomach, a tongue, a pen and a piece of paper to create a Stalker. \
 		Stalkers can jaunt, release EMPs, shapeshift into animals or automatons, and are strong in combat."
-	gain_text = "I was able to combine my greed and desires to summon an eldritch beast I had never seen before. \
-		An ever shapeshifting mass of flesh, it knew well my goals. The Marshal approved."
+	gain_text = "Połączyłem chciwość i pragnienia, by przywołać pradawną bestię, jakiej nigdy wcześniej nie widziałem. \
+		Wiecznie zmieniająca kształt masa ciała dobrze znała moje cele. Marszałek był zadowolony."
 	next_knowledge = list(
 		/datum/heretic_knowledge/final/flesh_final,
 		/datum/heretic_knowledge/summon/ashy,
@@ -339,15 +337,15 @@
 		While in the Lord of the Night form, you can consume arms to heal and regain segments. \
 		Additionally, you can summon three times as many Ghouls and Voiceless Dead, \
 		and can create unlimited blades to arm them all."
-	gain_text = "With the Marshal's knowledge, my power had peaked. The throne was open to claim. \
-		Men of this world, hear me, for the time has come! The Marshal guides my army! \
-		Reality will bend to THE LORD OF THE NIGHT or be unraveled! WITNESS MY ASCENSION!"
+	gain_text = "Dzięki wiedzy Marszałka moja moc osiągnęła szczyt. Tron czekał na zdobycie. \
+		Ludzie tego świata, słuchajcie, bo czas nadszedł! Marszałek prowadzi moją armię! \
+		Rzeczywistość ugnie się przed PANEM NOCY albo się rozpadnie! UJRZYJCIE MOJE WNIEBOWSTĄPIENIE!"
 	required_atoms = list(/mob/living/carbon/human = 4)
 	route = HERETIC_PATH_FLESH
 
 /datum/heretic_knowledge/final/flesh_final/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
 	. = ..()
-	priority_announce("[generate_heretic_text()] Ever-coiling vortex. Reality unfolded. ARMS OUTREACHED, THE LORD OF THE NIGHT, [user.real_name] has ascended! Fear the ever-twisting hand! [generate_heretic_text()]", "[generate_heretic_text()]", ANNOUNCER_SPANOMALIES)
+	priority_announce("[generate_heretic_text()] Wiecznie skręcający się wir. Rzeczywistość rozwinięta. Z RAMIONAMI WYCIĄGNIĘTYMI PAN NOCY, [user.real_name], dostąpił wniebowstąpienia! Lękajcie się wiecznie wijącej się dłoni! [generate_heretic_text()]", "[generate_heretic_text()]", ANNOUNCER_SPANOMALIES)
 	user.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/shed_human_form)
 
 	var/datum/antagonist/heretic/heretic_datum = IS_HERETIC(user)

@@ -11,6 +11,8 @@
 	..()
 
 /datum/wires/particle_accelerator/control_box/interactable(mob/user)
+	if(!..())
+		return FALSE
 	var/obj/machinery/particle_accelerator/control_box/C = holder
 	if(C.construction_state == 2)
 		return TRUE
@@ -25,7 +27,7 @@
 		if(WIRE_INTERFACE)
 			C.interface_control = !C.interface_control
 		if(WIRE_LIMIT)
-			C.visible_message("[icon2html(C, viewers(holder))]<b>[C]</b> makes a large whirring noise.")
+			C.visible_message("[icon2html(C, viewers(holder))]<b>[C]</b> wydaje głośne furczenie.")
 
 /datum/wires/particle_accelerator/control_box/on_cut(wire, mend)
 	var/obj/machinery/particle_accelerator/control_box/C = holder

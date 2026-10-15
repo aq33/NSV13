@@ -41,7 +41,7 @@
 	if(istype(target, /obj/structure/elite_tumor))
 		var/obj/structure/elite_tumor/T = target
 		if(T.mychild == src && T.activity == TUMOR_PASSIVE)
-			var/elite_remove = alert("Re-enter the tumor?", "Despawn yourself?", "Yes", "No")
+			var/elite_remove = alert("Wrócić do guza?", "Zniknąć?", "Yes", "No")
 			if(elite_remove != "Yes" || !src || QDELETED(src))
 				return
 			T.mychild = null
@@ -114,7 +114,7 @@ While using this makes the system rely on OnFire, it still gives options for tim
 /obj/structure/elite_tumor
 	name = "pulsing tumor"
 	desc = "An odd, pulsing tumor sticking out of the ground.  You feel compelled to reach out and touch it..."
-	armor = list("melee" = 100, "bullet" = 100, "laser" = 100, "energy" = 100, "bomb" = 100, "bio" = 100, "rad" = 100, "fire" = 100, "acid" = 100, "stamina" = 0)
+	armor = list("melee" = 100, "bullet" = 100, "laser" = 100, "energy" = 100, "bomb" = 100, "bio" = 100, "rad" = 100, "fire" = 100, "acid" = 100, "stamina" = 0, "bleed" = 0)
 	resistance_flags = INDESTRUCTIBLE
 	icon = 'icons/obj/lavaland/tumor.dmi'
 	icon_state = "tumor"
@@ -140,55 +140,55 @@ While using this makes the system rely on OnFire, it still gives options for tim
 		switch(activity)
 			if(TUMOR_PASSIVE)
 				activity = TUMOR_ACTIVE
-				visible_message("<span class='boldwarning'>[src] convulses as your arm enters its radius.  Your instincts tell you to step back.</span>")
+				visible_message("<span class='boldwarning'>[src] drga, gdy twoja ręka wchodzi w jego zasięg.  Instynkt podpowiada ci, by się cofnąć.</span>")
 				activator = user
 				if(boosted)
 					mychild.playsound_local(get_turf(mychild), 'sound/effects/magic.ogg', 40, 0)
-					to_chat(mychild, "<b>Someone has activated your tumor.  You will be returned to fight shortly, get ready!</b>")
+					to_chat(mychild, "<b>Ktoś aktywował twój guz.  Wkrótce wrócisz do walki, przygotuj się!</b>")
 				addtimer(CALLBACK(src, PROC_REF(return_elite)), 30)
 				INVOKE_ASYNC(src, PROC_REF(arena_checks))
 			if(TUMOR_INACTIVE)
 				activity = TUMOR_ACTIVE
 				var/mob/dead/observer/elitemind = null
-				visible_message("<span class='boldwarning'>[src] begins to convulse.  Your instincts tell you to step back.</span>")
+				visible_message("<span class='boldwarning'>[src] zaczyna drgać.  Instynkt podpowiada ci, by się cofnąć.</span>")
 				activator = user
 				if(!boosted)
 					addtimer(CALLBACK(src, PROC_REF(spawn_elite)), 30)
 					return
-				visible_message("<span class='boldwarning'>Something within [src] stirs...</span>")
-				var/list/candidates = pollCandidatesForMob("Do you want to play as a lavaland elite?", ROLE_LAVALAND_ELITE, null, 10 SECONDS, src)
+				visible_message("<span class='boldwarning'>Coś w środku [src] się porusza...</span>")
+				var/list/candidates = pollCandidatesForMob("Chcesz zagrać jako elita Lavalandu?", ROLE_LAVALAND_ELITE, null, 10 SECONDS, src)
 				if(candidates.len)
-					audible_message("<span class='boldwarning'>The stirring sounds increase in volume!</span>")
+					audible_message("<span class='boldwarning'>Odgłosy poruszania się przybierają na sile!</span>")
 					elitemind = pick(candidates)
 					elitemind.playsound_local(get_turf(elitemind), 'sound/effects/magic.ogg', 40, 0)
-					to_chat(elitemind, "<b>You have been chosen to play as a Lavaland Elite.\nIn a few seconds, you will be summoned on Lavaland as a monster to fight your activator, in a fight to the death.\nYour attacks can be switched using the buttons on the top left of the HUD, and used by clicking on targets or tiles similar to a gun.\nWhile the opponent might have an upper hand with  powerful mining equipment and tools, you have great power normally limited by AI mobs.\nIf you want to win, you'll have to use your powers in creative ways to ensure the kill.  It's suggested you try using them all as soon as possible.\nShould you win, you'll receive extra information regarding what to do after.  Good luck!</b>")
+					to_chat(elitemind, "<b>Wybrano cię do gry jako Elita Lavalandu.\nZa kilka sekund zostaniesz przywołany na Lavaland jako potwór, by stoczyć walkę na śmierć i życie z tym, kto cię aktywował.\nAtaki przełączasz przyciskami w lewym górnym rogu HUD-u, a używasz ich, klikając cele lub pola, podobnie jak broni palnej.\nChoć przeciwnik może mieć przewagę dzięki potężnemu sprzętowi górniczemu, ty dysponujesz wielką mocą, zwykle zarezerwowaną dla mobów sterowanych przez SI.\nJeśli chcesz wygrać, musisz kreatywnie używać swoich mocy, by zapewnić sobie zabójstwo.  Zalecamy jak najszybciej wypróbować je wszystkie.\nJeśli wygrasz, otrzymasz dodatkowe informacje o tym, co robić dalej.  Powodzenia!</b>")
 					addtimer(CALLBACK(src, PROC_REF(spawn_elite), elitemind), 100)
 				else
-					visible_message("<span class='boldwarning'>The stirring stops, and nothing emerges.  Perhaps try again later.</span>")
+					visible_message("<span class='boldwarning'>Odgłosy cichną i nic się nie wyłania.  Może spróbuj później.</span>")
 					activity = TUMOR_INACTIVE
 					activator = null
 
 /obj/structure/elite_tumor/proc/spawn_elite(mob/dead/observer/elitemind)
 	var/selectedspawn = pick(potentialspawns)
 	mychild = new selectedspawn(loc)
-	visible_message("<span class='boldwarning'>[mychild] emerges from [src]!</span>")
+	visible_message("<span class='boldwarning'>[mychild] wyłania się z [src]!</span>")
 	playsound(loc,'sound/effects/phasein.ogg', 200, 0, 50, TRUE, TRUE)
 	if(boosted)
 		mychild.key = elitemind.key
 		mychild.sentience_act()
-		notify_ghosts("\A [mychild] has been awakened in \the [get_area(src)]!", source = mychild, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Lavaland Elite awakened")
+		notify_ghosts("[mychild] został przebudzony w [get_area(src)]!", source = mychild, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Przebudzono Elitę Lavalandu")
 	icon_state = "tumor_popped"
 	INVOKE_ASYNC(src, PROC_REF(arena_checks))
 
 /obj/structure/elite_tumor/proc/return_elite()
 	mychild.forceMove(loc)
-	visible_message("<span class='boldwarning'>[mychild] emerges from [src]!</span>")
+	visible_message("<span class='boldwarning'>[mychild] wyłania się z [src]!</span>")
 	playsound(loc,'sound/effects/phasein.ogg', 200, 0, 50, TRUE, TRUE)
 	mychild.revive(full_heal = TRUE, admin_revive = TRUE)
 	if(boosted)
 		mychild.maxHealth = mychild.maxHealth * 2
 		mychild.health = mychild.maxHealth
-		notify_ghosts("\A [mychild] has been challenged in \the [get_area(src)]!", source = mychild, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Lavaland Elite challenged")
+		notify_ghosts("[mychild] został wyzwany do walki w [get_area(src)]!", source = mychild, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Wyzwano Elitę Lavalandu")
 
 /obj/structure/elite_tumor/Initialize(mapload)
 	. = ..()
@@ -215,7 +215,7 @@ While using this makes the system rely on OnFire, it still gives options for tim
 		var/obj/item/organ/regenerative_core/core = I
 		if(!core.preserved)
 			return
-		visible_message("<span class='boldwarning'>As [user] drops the core into [src], [src] appears to swell.</span>")
+		visible_message("<span class='boldwarning'>Gdy [user] wrzuca rdzeń do [src], [src] zdaje się puchnąć.</span>")
 		icon_state = "advanced_tumor"
 		boosted = TRUE
 		light_range = 6
@@ -252,17 +252,17 @@ While using this makes the system rely on OnFire, it still gives options for tim
 /obj/structure/elite_tumor/proc/border_check()
 	if(activator != null && get_dist(src, activator) >= 12)
 		activator.forceMove(loc)
-		visible_message("<span class='boldwarning'>[activator] suddenly reappears above [src]!</span>")
+		visible_message("<span class='boldwarning'>[activator] nagle pojawia się ponownie nad [src]!</span>")
 		playsound(loc,'sound/effects/phasein.ogg', 200, 0, 50, TRUE, TRUE)
 	if(mychild != null && get_dist(src, mychild) >= 12)
 		mychild.forceMove(loc)
-		visible_message("<span class='boldwarning'>[mychild] suddenly reappears above [src]!</span>")
+		visible_message("<span class='boldwarning'>[mychild] nagle pojawia się ponownie nad [src]!</span>")
 		playsound(loc,'sound/effects/phasein.ogg', 200, 0, 50, TRUE, TRUE)
 
 /obj/structure/elite_tumor/proc/onEliteLoss()
 	playsound(loc,'sound/effects/tendril_destroyed.ogg', 200, 0, 50, TRUE, TRUE)
-	visible_message("<span class='boldwarning'>[src] begins to convulse violently before beginning to dissipate.</span>")
-	visible_message("<span class='boldwarning'>As [src] closes, something is forced up from down below.</span>")
+	visible_message("<span class='boldwarning'>[src] zaczyna gwałtownie drgać, po czym zaczyna się rozpływać.</span>")
+	visible_message("<span class='boldwarning'>Gdy [src] się zamyka, coś zostaje wypchnięte z dołu.</span>")
 	var/obj/structure/closet/crate/necropolis/tendril/lootbox = new /obj/structure/closet/crate/necropolis/tendril(loc)
 	if(!boosted)
 		mychild = null
@@ -288,9 +288,9 @@ While using this makes the system rely on OnFire, it still gives options for tim
 		mychild.health = mychild.maxHealth
 	if(times_won == 1)
 		mychild.playsound_local(get_turf(mychild), 'sound/effects/magic.ogg', 40, 0)
-		to_chat(mychild, "<span class='boldwarning'>As the life in the activator's eyes fade, the forcefield around you dies out and you feel your power subside.\nDespite this inferno being your home, you feel as if you aren't welcome here anymore.\nWithout any guidance, your purpose is now for you to decide.</span>")
-		to_chat(mychild, "<b>Your max health has been halved, but can now heal by standing on your tumor.  Note, it's your only way to heal.\nBear in mind, if anyone interacts with your tumor, you'll be resummoned here to carry out another fight.  In such a case, you will regain your full max health.\nAlso, be weary of your fellow inhabitants, they likely won't be happy to see you!</b>")
-		to_chat(mychild, "<span class='big bold'>Note that you are a lavaland monster, and thus not allied to the station.  You should not cooperate or act friendly with any station crew unless under extreme circumstances!</span>")
+		to_chat(mychild, "<span class='boldwarning'>Gdy z oczu aktywującego uchodzi życie, otaczające cię pole siłowe gaśnie, a ty czujesz, jak twoja moc słabnie.\nChoć to piekło jest twoim domem, masz wrażenie, że nie jesteś tu już mile widziany.\nBez żadnych wskazówek, sam decydujesz teraz o swoim celu.</span>")
+		to_chat(mychild, "<b>Twoje maksymalne zdrowie zostało zmniejszone o połowę, ale możesz się teraz leczyć, stojąc na swoim guzie.  Uwaga: to twój jedyny sposób leczenia.\nPamiętaj, że jeśli ktoś wejdzie w interakcję z twoim guzem, zostaniesz tu ponownie przywołany do kolejnej walki.  W takim wypadku odzyskasz pełne maksymalne zdrowie.\nUważaj też na innych mieszkańców, raczej nie ucieszą się na twój widok!</b>")
+		to_chat(mychild, "<span class='big bold'>Pamiętaj, że jesteś potworem z Lavalandu, więc nie jesteś sojusznikiem stacji.  Nie powinieneś współpracować ani być przyjazny wobec załogi stacji, chyba że w skrajnych okolicznościach!</span>")
 
 /obj/item/tumor_shard
 	name = "tumor shard"
@@ -310,21 +310,21 @@ While using this makes the system rely on OnFire, it still gives options for tim
 	if(istype(target, /mob/living/simple_animal/hostile/asteroid/elite) && proximity_flag)
 		var/mob/living/simple_animal/hostile/asteroid/elite/E = target
 		if(E.stat != DEAD || E.sentience_type != SENTIENCE_BOSS || !E.key)
-			user.visible_message("<span class='notice'>It appears [E] is unable to be revived right now.  Perhaps try again later.</span>")
+			user.visible_message("<span class='notice'>Wygląda na to, że nie da się teraz wskrzesić [E].  Może spróbuj później.</span>")
 			return
 		E.faction = list("neutral")
 		E.revive(full_heal = TRUE, admin_revive = TRUE)
-		user.visible_message("<span class='notice'>[user] stabs [E] with [src], reviving it.</span>")
+		user.visible_message("<span class='notice'>[user] dźga [E] za pomocą [src], wskrzeszając go.</span>")
 		E.playsound_local(get_turf(E), 'sound/effects/magic.ogg', 40, 0)
-		to_chat(E, "<span class='userdanger'>You have been revived by [user].  While you can't speak to them, you owe [user] a great debt.  Assist [user.p_them()] in achieving [user.p_their()] goals, regardless of risk.</span")
-		to_chat(E, "<span class='big bold'>Note that you now share the loyalties of [user].  You are expected not to intentionally sabotage their faction unless commanded to!</span>")
+		to_chat(E, "<span class='userdanger'>[user] cię wskrzesił.  Choć nie możesz z nim rozmawiać, masz wobec niego ogromny dług.  Pomagaj mu w osiąganiu jego celów bez względu na ryzyko.</span")
+		to_chat(E, "<span class='big bold'>Pamiętaj, że teraz podzielasz lojalności [user].  Oczekuje się, że nie będziesz celowo sabotować jego frakcji, chyba że dostaniesz taki rozkaz!</span>")
 		E.maxHealth = E.maxHealth * 0.5
 		E.health = E.maxHealth
 		E.desc = "[E.desc]  However, this one appears appears less wild in nature, and calmer around people."
 		E.sentience_type = SENTIENCE_ORGANIC
 		qdel(src)
 	else
-		to_chat(user, "<span class='info'>[src] only works on the corpse of a sentient lavaland elite.</span>")
+		to_chat(user, "<span class='info'>[src] działa tylko na zwłokach świadomej elity Lavalandu.</span>")
 
 /obj/effect/temp_visual/elite_tumor_wall
 	name = "magic wall"

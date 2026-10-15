@@ -14,13 +14,25 @@
 		if(do_after(usr, 3 SECONDS, target = src))
 			shit(usr)
 	else
-		to_chat(usr, "<span class='warning'>This mob type can't use this verb.</span>")
+		to_chat(usr, "<span class='warning'>Ten typ moba nie może użyć tego czasownika.</span>")
 
 /obj/structure/toilet/proc/shit(mob/living/user)
 	if(user.defecation > DEFECATION_VERY)
 		//user.adjust_defecation(-rand(DEFECATION_SLIGHTLY, DEFECATION_VERY))
 		user.set_defecation(DEFECATION_NONE)
-		playsound(src, 'aquila/sound/misc/toilet_flush.ogg', 100, vary = FALSE)
 		to_chat(user, "<span class='notice'><i>Ale ulga...</i></span>")
+		if(flush(user, silent = TRUE))
+			playsound(src, 'aquila/sound/misc/toilet_flush.ogg', 100, vary = FALSE)
+		else
+			to_chat(user, "<span class='warning'>Spłuczka jest pusta, nie da się spuścić wody!</span>")
+		var/datum/reagent/consumable/castor_oil/oil = user.reagents?.get_reagent(/datum/reagent/consumable/castor_oil)
+		oil?.purge(user)
 	else
 		to_chat(user, "<span class='notice'>Nie potrzebujesz skorzystać z ubikacji.</span>")
+
+/// Filling a container from the tap
+/obj/structure/sink/attackby(obj/item/O, mob/living/user, params)
+	var/filled_before = istype(O, /obj/item/reagent_containers) ? O.reagents?.total_volume : null
+	. = ..()
+	if(!isnull(filled_before) && O.reagents?.total_volume > filled_before)
+		playsound(src, 'aquila/sound/machines/sink-faucet.ogg', 50)

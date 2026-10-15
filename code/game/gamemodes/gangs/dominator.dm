@@ -13,7 +13,7 @@
 	max_integrity = 300
 	integrity_failure = 100
 	move_resist = INFINITY
-	armor = list("melee" = 20, "bullet" = 50, "laser" = 50, "energy" = 50, "bomb" = 10, "bio" = 100, "rad" = 100, "fire" = 10, "acid" = 70, "stamina" = 0)
+	armor = list("melee" = 20, "bullet" = 50, "laser" = 50, "energy" = 50, "bomb" = 10, "bio" = 100, "rad" = 100, "fire" = 10, "acid" = 70, "stamina" = 0, "bleed" = 0)
 	var/datum/team/gang/gang
 	var/operating = FALSE	//false=standby or broken, true=takeover
 	var/warned = FALSE	//if this device has set off the warning at <3 minutes yet
@@ -72,12 +72,12 @@
 
 	if(gang && gang.domination_time != NOT_DOMINATING)
 		if(gang.domination_time > world.time)
-			to_chat(user, "<span class='notice'>Hostile Takeover in progress. Estimated [gang.domination_time_remaining()] seconds remain.</span>")
+			to_chat(user, "<span class='notice'>Trwa wrogie przejęcie. Szacowany pozostały czas: [gang.domination_time_remaining()] s.</span>")
 		else
-			to_chat(user, "<span class='notice'>Hostile Takeover of [station_name()] successful. Have a great day.</span>")
+			to_chat(user, "<span class='notice'>Wrogie przejęcie [station_name()] zakończone sukcesem. Miłego dnia.</span>")
 	else
-		to_chat(user, "<span class='notice'>System on standby.</span>")
-	to_chat(user, "<span class='danger'>System Integrity: [round((obj_integrity/max_integrity)*100,1)]%</span>")
+		to_chat(user, "<span class='notice'>System w trybie czuwania.</span>")
+	to_chat(user, "<span class='danger'>Integralność systemu: [round((obj_integrity/max_integrity)*100,1)]%</span>")
 
 /obj/machinery/dominator/process()
 	if(gang && gang.domination_time != NOT_DOMINATING)
@@ -89,8 +89,8 @@
 				if(spam_prevention < DOM_BLOCKED_SPAM_CAP)
 					spam_prevention++
 				else
-					gang.message_gangtools("Warning: There are too many walls around your gang's dominator, its signal is being blocked!")
-					say("Error: Takeover signal is currently blocked! There are too many walls within 3 standard units of this device.")
+					gang.message_gangtools("Uwaga: wokół dominatora twojego gangu jest za dużo ścian, jego sygnał jest blokowany!")
+					say("Błąd: sygnał przejęcia jest zablokowany! W promieniu 3 jednostek od urządzenia jest za dużo ścian.")
 					spam_prevention = 0
 				return
 			. = TRUE
@@ -98,11 +98,11 @@
 			if(!warned && (time_remaining < 180))
 				warned = TRUE
 				var/area/domloc = get_area(loc)
-				gang.message_gangtools("Less than 3 minutes remains in hostile takeover. Defend your dominator at [domloc.map_name]!")
+				gang.message_gangtools("Do końca wrogiego przejęcia zostały niecałe 3 minuty. Brońcie dominatora w [domloc.map_name]!")
 				for(var/G in GLOB.gangs)
 					var/datum/team/gang/tempgang = G
 					if(tempgang != gang)
-						tempgang.message_gangtools("WARNING: [gang.name] Gang takeover imminent. Their dominator at [domloc.map_name] must be destroyed!",1,1)
+						tempgang.message_gangtools("UWAGA: przejęcie przez gang [gang.name] jest bliskie. Ich dominator w [domloc.map_name] musi zostać zniszczony!",1,1)
 		else
 			Cinematic(CINEMATIC_MALF,world)
 			gang.winner = TRUE
@@ -162,15 +162,15 @@
 		return
 
 	if(tempgang.domination_time != NOT_DOMINATING)
-		to_chat(user, "<span class='warning'>Error: Hostile Takeover is already in progress.</span>")
+		to_chat(user, "<span class='warning'>Błąd: wrogie przejęcie już trwa.</span>")
 		return
 
 	if(!tempgang.dom_attempts)
-		to_chat(user, "<span class='warning'>Error: Unable to breach station network. Firewall has logged our signature and is blocking all further attempts.</span>")
+		to_chat(user, "<span class='warning'>Błąd: nie można włamać się do sieci stacji. Zapora zarejestrowała naszą sygnaturę i blokuje kolejne próby.</span>")
 		return
 
 	var/time = round(tempgang.determine_domination_time()/60,0.1)
-	if(alert(user,"A takeover will require [time] minutes.\nYour gang will be unable to gain influence while it is active.\nThe entire station will likely be alerted to it once it starts.\nYou have [tempgang.dom_attempts] attempt(s) remaining. Are you ready?","Confirm","Ready","Later") == "Ready")
+	if(alert(user,"Przejęcie zajmie [time] min.\nW tym czasie gang nie będzie zdobywał wpływów.\nPo starcie cała stacja pewnie się o tym dowie.\nPozostałe próby: [tempgang.dom_attempts]. Gotowi?","Confirm","Ready","Later") == "Ready")
 		if((tempgang.domination_time != NOT_DOMINATING) || !tempgang.dom_attempts || !in_range(src, user) || !isturf(loc))
 			return 0
 
@@ -179,7 +179,7 @@
 
 		gang = tempgang
 		gang.dom_attempts --
-		priority_announce("Network breach detected in [locname]. The [gang.name] Gang is attempting to seize control of the station!", "Network Alert", SSstation.announcer.get_rand_alert_sound())
+		priority_announce("Wykryto włamanie do sieci w [locname]. Gang [gang.name] próbuje przejąć kontrolę nad stacją!", "Alarm sieciowy", SSstation.announcer.get_rand_alert_sound())
 		gang.domination()
 		SSshuttle.registerHostileEnvironment(src)
 		name = "[gang.name] Gang [name]"
@@ -192,11 +192,11 @@
 		set_light(3)
 		START_PROCESSING(SSmachines, src)
 
-		gang.message_gangtools("Hostile takeover in progress: Estimated [time] minutes until victory.[gang.dom_attempts ? "" : " This is your final attempt."]")
+		gang.message_gangtools("Trwa wrogie przejęcie: szacowany czas do zwycięstwa [time] min.[gang.dom_attempts ? "" : " To wasza ostatnia próba."]")
 		for(var/G in GLOB.gangs)
 			var/datum/team/gang/vagos = G
 			if(vagos != gang)
-				vagos.message_gangtools("Enemy takeover attempt detected in [locname]: Estimated [time] minutes until our defeat.",1,1)
+				vagos.message_gangtools("Wykryto próbę przejęcia przez wroga w [locname]: szacowany czas do naszej porażki [time] min.",1,1)
 
 /obj/machinery/dominator/proc/excessive_walls_check() // why the fuck was this even a global proc...
 	var/open = FALSE
@@ -222,13 +222,13 @@
 		if(!takeover_in_progress)
 			var/was_stranded = SSshuttle.emergency.mode == SHUTTLE_STRANDED
 			if(!was_stranded)
-				priority_announce("All hostile activity within station systems has ceased.","Network Alert", SSstation.announcer.get_rand_alert_sound())
+				priority_announce("Wszelka wroga aktywność w systemach stacji ustała.","Alarm sieciowy", SSstation.announcer.get_rand_alert_sound())
 
 			if(get_security_level() == "delta")
 				set_security_level("red")
 
 		SSshuttle.clearHostileEnvironment(src)
-		gang.message_gangtools("Hostile takeover cancelled: Dominator is no longer operational.[gang.dom_attempts ? " You have [gang.dom_attempts] attempt remaining." : " The station network will have likely blocked any more attempts by us."]",1,1)
+		gang.message_gangtools("Wrogie przejęcie anulowane: dominator nie działa.[gang.dom_attempts ? " Pozostałe próby: [gang.dom_attempts]." : " Sieć stacji pewnie zablokuje nasze kolejne próby."]",1,1)
 
 	set_light(0)
 	operating = FALSE

@@ -6,7 +6,7 @@
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 2
-	supervisors = "the quartermaster and the " + JOB_NAME_HEADOFPERSONNEL //NSV13
+	supervisors = JOB_NAME_QUARTERMASTER + " oraz " + JOB_NAME_HEADOFPERSONNEL //NSV13
 	selection_color = "#dcba97"
 
 	outfit = /datum/outfit/job/cargo_technician
@@ -35,3 +35,7 @@
 	uniform = /obj/item/clothing/under/rank/cargo/tech
 	l_hand = /obj/item/export_scanner
 
+/datum/outfit/job/cargo_technician/mod
+	name = "Cargo Technician (MODsuit)"
+
+	back = /obj/item/mod/control/pre_equipped/loader

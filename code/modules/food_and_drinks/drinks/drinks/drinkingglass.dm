@@ -92,13 +92,13 @@
 	list_reagents = list(/datum/reagent/consumable/nuka_cola = 50)
 
 /obj/item/reagent_containers/food/drinks/drinkingglass/attackby(obj/item/I, mob/user, params)
-	if(istype(I, /obj/item/reagent_containers/food/snacks/egg)) //breaking eggs
-		var/obj/item/reagent_containers/food/snacks/egg/E = I
+	if(istype(I, /obj/item/food/egg)) //breaking eggs
+		var/obj/item/food/egg/E = I
 		if(reagents)
 			if(reagents.total_volume >= reagents.maximum_volume)
-				to_chat(user, "<span class='notice'>[src] is full.</span>")
+				to_chat(user, "<span class='notice'>[src] jest pełny.</span>")
 			else
-				to_chat(user, "<span class='notice'>You break [E] in [src].</span>")
+				to_chat(user, "<span class='notice'>Rozbijasz [E] w [src].</span>")
 				reagents.add_reagent(/datum/reagent/consumable/eggyolk, 5)
 				qdel(E)
 			return
@@ -106,15 +106,15 @@
 		..()
 
 /obj/item/reagent_containers/food/drinks/drinkingglass/attack(mob/target, mob/user) //NSV13 changed to mob/target
-	if(user.a_intent == INTENT_HARM && ismob(target) && target.reagents && reagents.total_volume)
-		target.visible_message("<span class='danger'>[user] splashes the contents of [src] onto [target]!</span>", \
-						"<span class='userdanger'>[user] splashes the contents of [src] onto you!</span>")
+	if(user.combat_mode && ismob(target) && target.reagents && reagents.total_volume)
+		target.visible_message("<span class='danger'>[user] chlusta zawartością [src] na [target]!</span>", \
+						"<span class='userdanger'>[user] chlusta na ciebie zawartością [src]!</span>")
 		log_combat(user, target, "splashed", src)
 		reagents.reaction(target, TOUCH)
 		reagents.clear_reagents()
 		return //NSV13 Start
 	else if((target != user) && ishuman(target) && (istype(target.get_active_held_item(), /obj/item/reagent_containers/food/drinks/drinkingglass)))
-		user.visible_message("[user] and [target] clink glasses!", "<span class='notice'>You clink glasses with [target]!</span>", "<span class='italics'>You hear a clink!</span>")
+		user.visible_message("[user] i [target] stukają się kieliszkami!", "<span class='notice'>Stukasz się kieliszkiem z [target]!</span>", "<span class='italics'>Słyszysz brzęk szkła!</span>")
 		user.do_attack_animation(target)
 		target.do_attack_animation(user)
 		playsound(src, 'nsv13/sound/misc/clink.ogg', 50, 0)
@@ -128,9 +128,9 @@
 	if((!proximity) || !check_allowed_items(target,target_self=1))
 		return
 
-	else if(reagents.total_volume && user.a_intent == INTENT_HARM)
-		user.visible_message("<span class='danger'>[user] splashes the contents of [src] onto [target]!</span>", \
-							"<span class='notice'>You splash the contents of [src] onto [target].</span>")
+	else if(reagents.total_volume && user.combat_mode)
+		user.visible_message("<span class='danger'>[user] chlusta zawartością [src] na [target]!</span>", \
+							"<span class='notice'>Chlustasz zawartością [src] na [target].</span>")
 		reagents.reaction(target, TOUCH)
 		reagents.clear_reagents()
 		return

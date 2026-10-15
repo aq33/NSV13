@@ -5,7 +5,7 @@
  */
 /obj/item/circuit_component/not
 	display_name = "Not"
-	display_desc = "A component that inverts its input."
+	display_desc = "Komponent, który odwraca swoje wejście."
 
 	/// The input port
 	var/datum/port/input/input_port

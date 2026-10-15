@@ -73,12 +73,12 @@
   *
   */
 /datum/admins/proc/poll_list_panel()
-	var/list/output = list("Current and future polls<br>Note when editing polls or their options changes are not saved until you press Submit Poll.<br><a href='?_src_=holder;[HrefToken()];newpoll=1'>New Poll</a><a href='?_src_=holder;[HrefToken()];reloadpolls=1'>Reload Polls</a><hr>")
+	var/list/output = list("Obecne i przyszłe ankiety<br>Uwaga: zmiany w ankietach i ich opcjach nie są zapisywane, dopóki nie naciśniesz Wyślij ankietę.<br><a href='byond://?_src_=holder;[HrefToken()];newpoll=1'>Nowa ankieta</a><a href='byond://?_src_=holder;[HrefToken()];reloadpolls=1'>Odśwież ankiety</a><hr>")
 	for(var/p in GLOB.polls)
 		var/datum/poll_question/poll = p
 		output += {"[poll.question]
-		<a href='?_src_=holder;[HrefToken()];editpoll=[REF(poll)]'> Edit</a>
-		<a href='?_src_=holder;[HrefToken()];deletepoll=[REF(poll)]'> Delete</a>
+		<a href='byond://?_src_=holder;[HrefToken()];editpoll=[REF(poll)]'> Edit</a>
+		<a href='byond://?_src_=holder;[HrefToken()];deletepoll=[REF(poll)]'> Delete</a>
 		"}
 		if(poll.subtitle)
 			output += "<br>[poll.subtitle]"
@@ -86,8 +86,8 @@
 		if(poll.admin_only)
 			output += " | Admin only"
 		if(poll.dont_show)
-			output += " | Hidden from tracking until complete"
-		output += " | [poll.poll_votes] players have [poll.poll_type == POLLTYPE_TEXT ? "responded" : "voted"]<hr style='background:#000000; border:0; height:3px'>"
+			output += " | Ukryta przed śledzeniem do zakończenia"
+		output += " | [poll.poll_type == POLLTYPE_TEXT ? "Odpowiedziało" : "Zagłosowało"] graczy: [poll.poll_votes]<hr style='background:#000000; border:0; height:3px'>"
 	var/datum/browser/panel = new(usr, "plpanel", "Poll list Panel", 700, 400)
 	panel.set_content(jointext(output, ""))
 	panel.open()
@@ -97,7 +97,7 @@
   *
   */
 /datum/admins/proc/poll_management_panel(datum/poll_question/poll)
-	var/list/output = list("<form method='get' action='?src=[REF(src)]'>[HrefTokenFormField()]")
+	var/list/output = list("<form method='get' action='byond://?src=[REF(src)]'>[HrefTokenFormField()]")
 	output += {"<input type='hidden' name='src' value='[REF(src)]'>Poll type
 	<div class="select">
 		<select name='polltype' [poll ? " disabled": ""]>
@@ -214,27 +214,27 @@
 	else
 		output += "<br><input type='hidden' name='submitpoll' value='[REF(poll)]'><input type='submit' value='Submit poll'>"
 		if(poll.edit_ready)
-			output += {"<label class='inputlabel checkbox'>Clear votes on edit
+			output += {"<label class='inputlabel checkbox'>Wyczyść głosy przy edycji
 			<input type='checkbox' id='clearvotesedit' name='clearvotesedit' value='1' checked>
 			<div class='inputbox'></div>
 			</label></form>
 			<br>
 			"}
 			if(poll.poll_type == POLLTYPE_TEXT)
-				output += "<a href='?_src_=holder;[HrefToken()];clearpollvotes=[REF(poll)]'>Clear poll responses</a> [poll.poll_votes] players have responded"
+				output += "<a href='byond://?_src_=holder;[HrefToken()];clearpollvotes=[REF(poll)]'>Wyczyść odpowiedzi</a> Odpowiedziało graczy: [poll.poll_votes]"
 			else
-				output += "<a href='?_src_=holder;[HrefToken()];clearpollvotes=[REF(poll)]'>Clear poll votes</a> [poll.poll_votes] players have voted"
+				output += "<a href='byond://?_src_=holder;[HrefToken()];clearpollvotes=[REF(poll)]'>Wyczyść głosy</a> Zagłosowało graczy: [poll.poll_votes]"
 		if(poll.poll_type == POLLTYPE_TEXT)
 			output += "</div></div>"
 		else
-			output += "</div></div><hr><a href='?_src_=holder;[HrefToken()];addpolloption=[REF(poll)]'>Add Option</a><br>"
+			output += "</div></div><hr><a href='byond://?_src_=holder;[HrefToken()];addpolloption=[REF(poll)]'>Add Option</a><br>"
 			if(length(poll.options))
 				for(var/o in poll.options)
 					var/datum/poll_option/option = o
 					option_count++
 					output += {"Option [option_count]
-					<a href='?_src_=holder;[HrefToken()];editpolloption=[REF(option)];parentpoll=[REF(poll)]'> Edit</a>
-					<a href='?_src_=holder;[HrefToken()];deletepolloption=[REF(option)]'> Delete</a>
+					<a href='byond://?_src_=holder;[HrefToken()];editpolloption=[REF(option)];parentpoll=[REF(poll)]'> Edit</a>
+					<a href='byond://?_src_=holder;[HrefToken()];deletepolloption=[REF(option)]'> Delete</a>
 					<br>[option.text]
 					"}
 					if(poll.poll_type == POLLTYPE_RATING)
@@ -262,7 +262,7 @@
 	if(!check_rights(R_POLL))
 		return
 	if(!SSdbcore.Connect())
-		to_chat(usr, "<span class='danger'>Failed to establish database connection.</span>")
+		to_chat(usr, "<span class='danger'>Nie udało się połączyć z bazą danych.</span>")
 		return
 	var/list/error_state = list()
 	var/new_poll = FALSE
@@ -283,7 +283,7 @@
 				if(new_poll)
 					poll.end_datetime = poll.duration
 	if(!poll.duration)
-		error_state += "No duration was provided."
+		error_state += "Nie podano czasu trwania."
 	switch(href_list["radiostart"])
 		if("startnow")
 			poll.start_datetime = null
@@ -291,7 +291,7 @@
 			if(href_list["startdatetimetext"] && href_list["startdatetimetext"] != "YYYY-MM-DD HH:MM:SS")
 				poll.start_datetime = href_list["startdatetimetext"]
 			else
-				error_state += "Start datetime was selected but none was provided."
+				error_state += "Wybrano datę rozpoczęcia, ale jej nie podano."
 	switch(href_list["radioplaytime"])
 		if("noplaytime")
 			poll.minimumplaytime = 0
@@ -303,7 +303,7 @@
 	if(href_list["question"])
 		poll.question = href_list["question"]
 	else
-		error_state += "No question was provided."
+		error_state += "Nie podano pytania."
 	poll.subtitle = href_list["subtitle"]
 	if(href_list["adminonly"])
 		poll.admin_only = TRUE
@@ -325,18 +325,18 @@
 		if(text2num(href_list["optionsallowed"]))
 			poll.options_allowed = text2num(href_list["optionsallowed"])
 			if(poll.options_allowed == 1)
-				error_state += "Multiple choice polls require more than one option allowed, use a standard option poll for singlular voting."
+				error_state += "Ankiety wielokrotnego wyboru wymagają więcej niż jednej dozwolonej opcji; do pojedynczego głosu użyj zwykłej ankiety."
 			if(poll.options_allowed < 0)
-				error_state += "Multiple choice options allowed cannot be negative."
+				error_state += "Liczba dozwolonych opcji nie może być ujemna."
 		else
-			error_state += "Multiple choice poll was selected but no number of allowed options was provided."
+			error_state += "Wybrano ankietę wielokrotnego wyboru, ale nie podano liczby dozwolonych opcji."
 	if(submit_ready && poll.poll_type != POLLTYPE_TEXT && !length(poll.options))
-		error_state += "This poll type requires at least one option."
+		error_state += "Ten typ ankiety wymaga co najmniej jednej opcji."
 	if(error_state.len)
 		if(poll.edit_ready)
-			to_chat(usr, "<span class='danger'>Not all edits were applied because the following errors were present:\n[error_state.Join("\n")]</span>")
+			to_chat(usr, "<span class='danger'>Nie wszystkie zmiany zostały zastosowane z powodu następujących błędów:\n[error_state.Join("\n")]</span>")
 		else
-			to_chat(usr, "<span class='danger'>Poll not [new_poll ? "initialized" : "submitted"] because the following errors were present:\n[error_state.Join("\n")]</span>")
+			to_chat(usr, "<span class='danger'>Ankieta nie została [new_poll ? "utworzona" : "wysłana"] z powodu następujących błędów:\n[error_state.Join("\n")]</span>")
 			if(new_poll)
 				qdel(poll)
 		return
@@ -380,7 +380,7 @@
 	if(!check_rights(R_POLL))
 		return
 	if(!SSdbcore.Connect())
-		to_chat(usr, "<span class='danger'>Failed to establish database connection.</span>")
+		to_chat(usr, "<span class='danger'>Nie udało się połączyć z bazą danych.</span>")
 		return
 	var/datum/DBQuery/query_delete_poll = SSdbcore.NewQuery(
 		"CALL set_poll_deleted(:poll_id)",
@@ -409,7 +409,7 @@
 	if(!check_rights(R_POLL))
 		return
 	if(!SSdbcore.Connect())
-		to_chat(usr, "<span class='danger'>Failed to establish database connection.</span>")
+		to_chat(usr, "<span class='danger'>Nie udało się połączyć z bazą danych.</span>")
 		return
 	var/new_poll = !poll_id
 	if(poll_type != POLLTYPE_MULTI)
@@ -471,7 +471,7 @@
   */
 /datum/poll_question/proc/save_all_options()
 	if(!SSdbcore.Connect())
-		to_chat(usr, "<span class='danger'>Failed to establish database connection.</span>")
+		to_chat(usr, "<span class='danger'>Nie udało się połączyć z bazą danych.</span>")
 		return
 	for(var/o in options)
 		var/datum/poll_option/option = o
@@ -485,7 +485,7 @@
 	if(!check_rights(R_POLL))
 		return
 	if(!SSdbcore.Connect())
-		to_chat(usr, "<span class='danger'>Failed to establish database connection.</span>")
+		to_chat(usr, "<span class='danger'>Nie udało się połączyć z bazą danych.</span>")
 		return
 	var/table = "poll_vote"
 	if(poll_type == POLLTYPE_TEXT)
@@ -506,7 +506,7 @@
   *
   */
 /datum/admins/proc/poll_option_panel(datum/poll_question/poll, datum/poll_option/option)
-	var/list/output = list("<form method='get' action='?src=[REF(src)]'>[HrefTokenFormField()]")
+	var/list/output = list("<form method='get' action='byond://?src=[REF(src)]'>[HrefTokenFormField()]")
 	output += {"<input type='hidden' name='src' value='[REF(src)]'>	Option for poll [poll.question]
 	<br>
 	<textarea class='textbox' name='optiontext'>[option?.text]</textarea>
@@ -540,7 +540,7 @@
 			</div>
 		</div>
 		"}
-	output += {"<label class='inputlabel checkbox'>Include option in poll's results percentage calculation
+	output += {"<label class='inputlabel checkbox'>Uwzględniaj opcję przy wyliczaniu procentów wyników ankiety
 	<input type='checkbox' id='defpercalc' name='defpercalc' value='1'[option?.default_percentage_calc ? " checked": ""]>
 	<div class='inputbox'></div></label><br>
 	<input type='hidden' name='submitoption' value='[REF(option)]'>
@@ -568,7 +568,7 @@
 	if(!check_rights(R_POLL))
 		return
 	if(!SSdbcore.Connect())
-		to_chat(usr, "<span class='danger'>Failed to establish database connection.</span>")
+		to_chat(usr, "<span class='danger'>Nie udało się połączyć z bazą danych.</span>")
 		return
 	var/list/error_state = list()
 	var/new_option = FALSE
@@ -578,7 +578,7 @@
 	if(href_list["optiontext"])
 		option.text = href_list["optiontext"]
 	else
-		error_state += "No option text was provided."
+		error_state += "Nie podano tekstu opcji."
 	if(href_list["defpercalc"])
 		option.default_percentage_calc = TRUE
 	else
@@ -589,47 +589,47 @@
 			if(ISINRANGE(value_in_range, -2147483647, 2147483647))
 				option.min_val = value_in_range
 			else
-				error_state += "Minimum value out of range."
+				error_state += "Minimalna wartość poza zakresem."
 		else
-			error_state += "No minimum value was provided."
+			error_state += "Nie podano minimalnej wartości."
 		value_in_range = text2num(href_list["maxval"])
 		if(href_list["maxval"])
 			if(ISINRANGE(value_in_range, -2147483647, 2147483647))
 				if(value_in_range < option.min_val)
-					error_state += "Maximum value is less than minimum value."
+					error_state += "Maksymalna wartość jest mniejsza od minimalnej."
 				else
 					option.max_val = value_in_range
 			else
-				error_state += "Maximum value out of range."
+				error_state += "Maksymalna wartość poza zakresem."
 		else
-			error_state += "No maximum value was provided."
+			error_state += "Nie podano maksymalnej wartości."
 		if(href_list["descmincheck"])
 			if(href_list["descmintext"])
 				option.desc_min = href_list["descmintext"]
 			else
-				error_state += "Minimum value description was selected but not provided."
+				error_state += "Wybrano opis minimalnej wartości, ale go nie podano."
 		else
 			option.desc_min = null
 		if(href_list["descmidcheck"])
 			if(href_list["descmidtext"])
 				option.desc_mid = href_list["descmidtext"]
 			else
-				error_state += "Middle value description was selected but not provided."
+				error_state += "Wybrano opis środkowej wartości, ale go nie podano."
 		else
 			option.desc_mid = null
 		if(href_list["descmaxcheck"])
 			if(href_list["descmaxtext"])
 				option.desc_max = href_list["descmaxtext"]
 			else
-				error_state += "Maximum value description was selected but not provided."
+				error_state += "Wybrano opis maksymalnej wartości, ale go nie podano."
 		else
 			option.desc_max = null
 	if(error_state.len)
 		if(new_option)
-			to_chat(usr, "<span class='danger'>Option not added because the following errors were present:\n[error_state.Join("\n")]</span>")
+			to_chat(usr, "<span class='danger'>Opcja nie została dodana z powodu następujących błędów:\n[error_state.Join("\n")]</span>")
 			qdel(option)
 		else
-			to_chat(usr, "<span class='danger'>Not all edits were applied because the following errors were present:\n[error_state.Join("\n")]</span>")
+			to_chat(usr, "<span class='danger'>Nie wszystkie zmiany zostały zastosowane z powodu następujących błędów:\n[error_state.Join("\n")]</span>")
 		return
 	if(new_option)
 		poll.options += option
@@ -666,7 +666,7 @@
 	if(!check_rights(R_POLL))
 		return
 	if(!SSdbcore.Connect())
-		to_chat(usr, "<span class='danger'>Failed to establish database connection.</span>")
+		to_chat(usr, "<span class='danger'>Nie udało się połączyć z bazą danych.</span>")
 		return
 
 	var/list/values = list("text" = text, "default_percentage_calc" = default_percentage_calc, "pollid" = parent_poll.poll_id, "id" = option_id)
@@ -702,7 +702,7 @@
 	. = parent_poll
 	if(option_id)
 		if(!SSdbcore.Connect())
-			to_chat(usr, "<span class='danger'>Failed to establish database connection.</span>")
+			to_chat(usr, "<span class='danger'>Nie udało się połączyć z bazą danych.</span>")
 			return
 		var/datum/DBQuery/query_delete_poll_option = SSdbcore.NewQuery(
 			"UPDATE [format_table_name("poll_option")] AS o INNER JOIN [format_table_name("poll_vote")] AS v ON o.id = v.optionid SET o.deleted = 1, v.deleted = 1 WHERE o.id = :option_id",
@@ -720,7 +720,7 @@
   */
 /proc/load_poll_data()
 	if(!SSdbcore.Connect())
-		to_chat(usr, "<span class='danger'>Failed to establish database connection.</span>")
+		to_chat(usr, "<span class='danger'>Nie udało się połączyć z bazą danych.</span>")
 		return
 	var/datum/DBQuery/query_load_polls = SSdbcore.NewQuery("SELECT id, polltype, starttime, endtime, question, subtitle, adminonly, multiplechoiceoptions, dontshow, allow_revoting, IF(polltype='TEXT',(SELECT COUNT(ckey) FROM [format_table_name("poll_textreply")] AS t WHERE t.pollid = q.id AND deleted = 0), (SELECT COUNT(DISTINCT ckey) FROM [format_table_name("poll_vote")] AS v WHERE v.pollid = q.id AND deleted = 0)), IFNULL((SELECT byond_key FROM [format_table_name("player")] AS p WHERE p.ckey = q.createdby_ckey), createdby_ckey), IF(starttime > NOW(), 1, 0), minimumplaytime FROM [format_table_name("poll_question")] AS q WHERE NOW() < endtime AND deleted = 0")
 	if(!query_load_polls.Execute())

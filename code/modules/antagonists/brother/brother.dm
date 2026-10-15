@@ -1,5 +1,5 @@
 /datum/antagonist/brother
-	name = "Brother"
+	name = "Brat krwi"
 	antagpanel_category = "Brother"
 	banning_key = ROLE_BROTHER
 	required_living_playtime = 4
@@ -29,7 +29,7 @@
 /datum/antagonist/brother/on_removal()
 	SSticker.mode.brothers -= owner
 	if(owner.current)
-		to_chat(owner.current,"<span class='userdanger'>You are no longer the Blood Brother!</span>")
+		to_chat(owner.current,"<span class='userdanger'>Nie jesteś już bratem krwi!</span>")
 	owner.special_role = null
 	return ..()
 
@@ -51,22 +51,22 @@
 /datum/antagonist/brother/proc/give_meeting_area()
 	if(!owner.current || !team || !team.meeting_area)
 		return
-	to_chat(owner.current, "<B>Your designated meeting area:</B> [team.meeting_area]")
-	antag_memory += "<b>Meeting Area</b>: [team.meeting_area]<br>"
+	to_chat(owner.current, "<B>Wyznaczone miejsce spotkania:</B> [team.meeting_area]")
+	antag_memory += "<b>Miejsce spotkania</b>: [team.meeting_area]<br>"
 
 /datum/antagonist/brother/greet()
 	var/brother_text = get_brother_names()
-	to_chat(owner.current, "<span class='alertsyndie'>You are the Blood Brother of [brother_text].</span>")
-	to_chat(owner.current, "The Syndicate only accepts those that have proven themselves. Prove yourself and prove your [team.member_name]s by completing your objectives together! You and your team are outfitted with communication implants allowing for direct, encrypted communication.")
+	to_chat(owner.current, "<span class='alertsyndie'>Jesteś bratem krwi: [brother_text].</span>")
+	to_chat(owner.current, "Syndykat przyjmuje tylko tych, którzy się wykazali. Wykaż się ty i twoi bracia, wykonując wspólnie cele! Ty i twoja drużyna macie implanty komunikacyjne do bezpośredniej, szyfrowanej łączności.")
 	owner.announce_objectives()
 	give_meeting_area()
-	owner.current.client?.tgui_panel?.give_antagonist_popup("Blood Brother",
-		"The Syndicate only accepts those that have proven themselves. Prove yourself and prove your [team.member_name]s by completing your objectives together!")
+	owner.current.client?.tgui_panel?.give_antagonist_popup("Brat krwi",
+		"Syndykat przyjmuje tylko tych, którzy się wykazali. Wykaż się ty i twoi bracia, wykonując wspólnie cele!")
 
 /datum/antagonist/brother/proc/finalize_brother()
 	var/obj/item/implant/bloodbrother/I = new /obj/item/implant/bloodbrother()
 	I.implant(owner.current, null, TRUE, TRUE)
-	I.implant_colour = team.team_id <= 9 ? COLOR_LIST_BLOOD_BROTHERS[team.team_id] : "#ff0000"
+	I.span_implant_colour = team.team_id <= 9 ? COLOR_LIST_BLOOD_BROTHERS[team.team_id] : "cfc_redpurple" // AQ EDIT - port BeeStation #9908
 	for(var/datum/mind/M in team.members) // Link the implants of all team members
 		var/obj/item/implant/bloodbrother/T = locate() in M.current.implants
 		I.link_implant(T)
@@ -81,7 +81,7 @@
 			continue
 		candidates += L.mind
 
-	var/choice = input(admin,"Choose the blood brother.", "Brother") as null|anything in sortNames(candidates)
+	var/choice = input(admin,"Wybierz brata krwi.", "Brother") as null|anything in sortNames(candidates)
 	if(!choice)
 		return
 	var/datum/mind/bro = choice
@@ -98,10 +98,10 @@
 
 /datum/team/brother_team
 	name = "brotherhood"
-	member_name = "blood brother"
+	member_name = "brat krwi"
 	var/team_id
 	var/meeting_area
-	var/static/meeting_areas = list("The Bar", "Dorms", "Escape Dock", "Arrivals", "Holodeck", "Primary Tool Storage", "Recreation Area", "Chapel", "Library")
+	var/static/meeting_areas = list("Bar", "Kwatery", "Dok ewakuacyjny", "Hala przylotów", "Holodek", "Główny magazyn narzędzi", "Strefa rekreacji", "Kaplica", "Biblioteka")
 
 /datum/team/brother_team/New(starting_members)
 	. = ..()
@@ -126,22 +126,22 @@
 /datum/team/brother_team/roundend_report()
 	var/list/parts = list()
 
-	parts += "<span class='header'>The blood brothers of [name] were:</span>"
+	parts += "<span class='header'>Bracia krwi z drużyny [name]:</span>"
 	for(var/datum/mind/M in members)
 		parts += printplayer(M)
 	var/win = TRUE
 	var/objective_count = 1
 	for(var/datum/objective/objective in objectives)
 		if(objective.check_completion())
-			parts += "<B>Objective #[objective_count]</B>: [objective.explanation_text] <span class='greentext'>Success!</span>"
+			parts += "<B>Cel nr [objective_count]</B>: [objective.explanation_text] <span class='greentext'>Sukces!</span>"
 		else
-			parts += "<B>Objective #[objective_count]</B>: [objective.explanation_text] <span class='redtext'>Fail.</span>"
+			parts += "<B>Cel nr [objective_count]</B>: [objective.explanation_text] <span class='redtext'>Porażka.</span>"
 			win = FALSE
 		objective_count++
 	if(win)
-		parts += "<span class='greentext'>The blood brothers were successful!</span>"
+		parts += "<span class='greentext'>Bracia krwi odnieśli sukces!</span>"
 	else
-		parts += "<span class='redtext'>The blood brothers have failed!</span>"
+		parts += "<span class='redtext'>Bracia krwi ponieśli porażkę!</span>"
 
 	return "<div class='panel redborder'>[parts.Join("<br>")]</div>"
 
@@ -157,7 +157,20 @@
 /datum/team/brother_team/proc/forge_brother_objectives()
 	objectives = list()
 	var/is_hijacker = prob(10)
-	for(var/i = 1 to max(1, CONFIG_GET(number/brother_objectives_amount) + (members.len > 2) - is_hijacker))
+	var/objectives_left = max(1, CONFIG_GET(number/brother_objectives_amount) + (members.len > 2) - is_hijacker)
+	// AQ EDIT START - deploy beacon from the BeeStation traitor rework, one of the slots
+	if(objectives_left > 1 && prob(BROTHER_BEACON_PROB))
+		var/datum/objective/brother_beacon/beacon = new
+		beacon.team = src
+		if(beacon.setup_beacon())
+			objectives += beacon
+			for(var/datum/mind/member in members)
+				log_objective(member, beacon.explanation_text)
+			objectives_left--
+		else
+			qdel(beacon)
+	// AQ EDIT END
+	for(var/i = 1 to objectives_left)
 		forge_single_objective()
 	if(is_hijacker)
 		if(!locate(/datum/objective/hijack) in objectives)
@@ -177,4 +190,4 @@
 		add_objective(new/datum/objective/steal, TRUE)
 
 /datum/team/brother_team/antag_listing_name()
-	return "[name] blood brothers"
+	return "bracia krwi [name]"

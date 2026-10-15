@@ -1,16 +1,16 @@
 //Fire
 /mob/living/simple_animal/hostile/guardian/fire
-	a_intent = INTENT_HELP
+	combat_mode = FALSE
 	melee_damage = 7
 	attack_sound = 'sound/items/welder.ogg'
-	attacktext = "ignites"
+	attacktext = "podpala"
 	damage_coeff = list(BRUTE = 0.7, BURN = 0.7, TOX = 0.7, CLONE = 0.7, STAMINA = 0, OXY = 0.7)
 	range = 7
-	playstyle_string = "<span class='holoparasite'>As a <b>chaos</b> type, you have only light damage resistance, but will ignite any enemy you bump into. In addition, your melee attacks will cause human targets to see everyone as you.</span>"
-	magic_fluff_string = "<span class='holoparasite'>..And draw the Wizard, bringer of endless chaos!</span>"
-	tech_fluff_string = "<span class='holoparasite'>Boot sequence complete. Crowd control modules activated. Holoparasite swarm online.</span>"
-	carp_fluff_string = "<span class='holoparasite'>CARP CARP CARP! You caught one! OH GOD, EVERYTHING'S ON FIRE. Except you and the fish.</span>"
-	hive_fluff_string = "<span class='holoparasite'>The mass seems to generate lots of energy, causing everything except its' owner to burn to ash.</span>"
+	playstyle_string = "<span class='holoparasite'>Jako typ <b>chaos</b> masz tylko niewielką odporność na obrażenia, ale podpalasz każdego wroga, na którego wpadniesz. Ponadto twoje ataki wręcz sprawiają, że ludzie widzą wszystkich wokół jako ciebie.</span>"
+	magic_fluff_string = "<span class='holoparasite'>...I wyciągasz Czarodzieja, zwiastuna nieskończonego chaosu!</span>"
+	tech_fluff_string = "<span class='holoparasite'>Sekwencja startowa zakończona. Moduły kontroli tłumu aktywne. Rój holoparazytów aktywny.</span>"
+	carp_fluff_string = "<span class='holoparasite'>KARP KARP KARP! Złowiony! O BOŻE, WSZYSTKO PŁONIE. Oprócz ciebie i rybki.</span>"
+	hive_fluff_string = "<span class='holoparasite'>Masa wydaje się generować mnóstwo energii, przez co wszystko oprócz właściciela płonie na popiół.</span>"
 
 /mob/living/simple_animal/hostile/guardian/fire/Initialize(mapload, theme)
 	. = ..()

@@ -4,17 +4,17 @@
 GLOBAL_LIST_INIT(abstraction_crystals, list())
 
 /datum/antagonist/servant_of_ratvar/manifestation
-	name = "Servant Manifestation"
+	name = "Manifestacja sługi"
 	counts_towards_total = FALSE
 
 /datum/clockcult/scripture/create_structure/abstraction_crystal
 	name = "Abstraction Crystal"
 	desc = "Summons an Abstraction Crystal, which allows servants to manifest themself to protect the nearby area."
-	tip = "Upon your manifestation taking damage, you will only receive 40% of the damage."
+	tip = "Gdy twoja manifestacja otrzymuje obrażenia, ty dostajesz tylko 40% z nich."
 	button_icon_state = "Clockwork Obelisk"
 	power_cost = 750
 	invokation_time = 50
-	invokation_text = list("Through the boundaries and planes..", "..we break with ease")
+	invokation_text = list("Przez granice i plany...", "...przebijamy się z łatwością")
 	summoned_structure = /obj/structure/destructible/clockwork/abstraction_crystal
 	cogs_required = 5
 	category = SPELLTYPE_STRUCTURES
@@ -24,21 +24,21 @@ GLOBAL_LIST_INIT(abstraction_crystals, list())
 		return FALSE
 	var/obj/structure/destructible/clockwork/structure = locate() in get_turf(invoker)
 	if(structure)
-		to_chat(invoker, "<span class='brass'>You cannot invoke that here, the tile is occupied by [structure].</span>")
+		to_chat(invoker, "<span class='brass'>Nie możesz tego tu przywołać, pole zajmuje [structure].</span>")
 		return FALSE
 	if(locate(/obj/structure/destructible/clockwork/abstraction_crystal) in range(5))
-		to_chat(invoker, "<span class='brass'>There is an Abstraction Crystal nearby, you cannot place this here.</span>")
+		to_chat(invoker, "<span class='brass'>W pobliżu jest Kryształ Abstrakcji, nie możesz tego tu postawić.</span>")
 		return FALSE
 	return TRUE
 
 /datum/clockcult/scripture/create_structure/abstraction_crystal/invoke_success()
 	var/created_structure = new summoned_structure(get_turf(invoker))
 	var/obj/structure/destructible/clockwork/abstraction_crystal/clockwork_structure = created_structure
-	var/chosen_keyword = stripped_input(invoker, "Enter a keyword for the crystal.", "Keyword")
+	var/chosen_keyword = stripped_input(invoker, "Wpisz słowo kluczowe kryształu.", "Słowo kluczowe")
 	if(chosen_keyword)
 		clockwork_structure.key_word = chosen_keyword
 	else
-		clockwork_structure.key_word = "Abstraction Crystal - [GLOB.abstraction_crystals.len]"
+		clockwork_structure.key_word = "Kryształ Abstrakcji - [GLOB.abstraction_crystals.len]"
 	if(clockwork_structure.key_word in GLOB.abstraction_crystals)
 		clockwork_structure.deconstruct(FALSE)
 		return
@@ -61,7 +61,7 @@ GLOBAL_LIST_INIT(abstraction_crystals, list())
 	. = ..()
 	ADD_TRAIT(src, TRAIT_IGNOREDAMAGESLOWDOWN, ABSTRACTION_HOLOGRAM_TRAIT)
 	ADD_TRAIT(src, TRAIT_NODISMEMBER, ABSTRACTION_HOLOGRAM_TRAIT)
-	dna.species.species_traits |= NOBLOOD
+	ADD_TRAIT(src, TRAIT_NO_BLOOD, ABSTRACTION_HOLOGRAM_TRAIT)
 
 /mob/living/carbon/human/abstraction_hologram/death(gibbed)
 	//Put the person back in their body
@@ -110,9 +110,9 @@ GLOBAL_LIST_INIT(abstraction_crystals, list())
 	name = "abstraction crystal"
 	desc = "An other-worldly structure, its lattice pulsating with a bright, pulsating light."
 	icon_state = "obelisk_inactive"
-	clockwork_desc = "A powerful crystal allowing the user to manifest themselves at other abstraction crystals."
+	clockwork_desc = "Potężny kryształ, który pozwala użytkownikowi manifestować się przy innych kryształach abstrakcji."
 	max_integrity = 200
-	break_message = "<span class='warning'>The crystal explodes into a shower of shards!</span>"
+	break_message = "<span class='warning'>Kryształ wybucha deszczem odłamków!</span>"
 	var/key_word = ""
 	var/mob/living/activator
 	var/mob/living/carbon/human/abstraction_hologram/active_hologram
@@ -124,7 +124,7 @@ GLOBAL_LIST_INIT(abstraction_crystals, list())
 	. = ..()
 	tracked_items = list()
 
-/obj/structure/destructible/clockwork/abstraction_crystal/attack_hand(mob/user)
+/obj/structure/destructible/clockwork/abstraction_crystal/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(!is_servant_of_ratvar(user))
 		return
@@ -138,7 +138,7 @@ GLOBAL_LIST_INIT(abstraction_crystals, list())
 		return
 	var/list/valid_crystals = GLOB.abstraction_crystals.Copy()
 	valid_crystals.Remove(key_word)
-	var/selected = input(user, "Select a crystal to manifest at", "Manifestation") as null|anything in valid_crystals
+	var/selected = input(user, "Wybierz kryształ, przy którym chcesz się zmanifestować", "Manifestacja") as null|anything in valid_crystals
 	if(!selected || !(selected in valid_crystals))
 		return
 	var/obj/structure/destructible/clockwork/abstraction_crystal/AC = GLOB.abstraction_crystals[selected]
@@ -169,14 +169,14 @@ GLOBAL_LIST_INIT(abstraction_crystals, list())
 		var/mob/living/carbon/C = user
 		active_hologram.real_name = C.real_name
 	else
-		active_hologram.real_name = "the eminence"
+		active_hologram.real_name = "Eminencja"
 
 	var/mutable_appearance/forbearance = mutable_appearance('icons/effects/genetics.dmi', "servitude", -MUTATIONS_LAYER)
 	active_hologram.add_overlay(forbearance)
 
-	to_chat(active_hologram, "<span class='neovgre'>You manifest yourself at [src].</span>")
-	to_chat(active_hologram, "<span class='neovgre'>You will only take a fraction of the damage your manifestation receives.</span>")
-	to_chat(active_hologram, "<span class='neovgre'>Peer into the crystal again to return to your old body.</span>")
+	to_chat(active_hologram, "<span class='neovgre'>Manifestujesz się przy [src].</span>")
+	to_chat(active_hologram, "<span class='neovgre'>Otrzymasz tylko część obrażeń, które dostaje twoja manifestacja.</span>")
+	to_chat(active_hologram, "<span class='neovgre'>Spójrz ponownie w kryształ, żeby wrócić do dawnego ciała.</span>")
 
 	//Equip with generic gear
 	add_servant_of_ratvar(active_hologram, silent=TRUE, servant_type=/datum/antagonist/servant_of_ratvar/manifestation)

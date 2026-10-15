@@ -15,7 +15,7 @@
 
 	// Can be used to delete drained heretic influences
 	AddComponent(/datum/component/effect_remover, \
-		success_feedback = "You close %THEEFFECT with %THEWEAPON, frying its circuitry in the process.", \
+		success_feedback = "Zamykasz %THEEFFECT za pomocą %THEWEAPON, przepalając przy tym jego obwody.", \
 		on_clear_callback = CALLBACK(src, PROC_REF(on_use)), \
 		effects_we_clear = list(/obj/effect/visible_heretic_influence))
 
@@ -24,12 +24,12 @@
 	if(!proximity || !target)
 		return
 	if(istype(target, /obj/effect/anomaly/stormdrive)) //NSV13 - Not making it that easy, bucko
-		to_chat(user, "<span class='warning'>WARNING: Feedback loop detected! Aborting process!</span>")
+		to_chat(user, "<span class='warning'>OSTRZEŻENIE: wykryto pętlę sprzężenia zwrotnego! Przerywanie procesu!</span>")
 		empulse(src, 0, 1, FALSE)
 		return
 	if(istype(target, /obj/effect/anomaly))
 		var/obj/effect/anomaly/A = target
-		to_chat(user, "<span class='notice'>The circuitry of [src] fries from the strain of neutralizing [A]!</span>")
+		to_chat(user, "<span class='notice'>Obwody [src] przepalają się od wysiłku neutralizowania [A]!</span>")
 		A.anomalyNeutralize()
 		qdel(src)
 

@@ -13,7 +13,7 @@
 
 /datum/reagent/drug/bloody_eye
 	name = "Bloody Eye"
-	description = "A powerful drug of Syndicate origin. Manufactured to give the user an incredibly exciting rush, typically exilerating the user into a state of rage-induced psychosis. Boosts physical strength and allows the user to ignore the effects of critical condition."
+	description = "Silny narkotyk pochodzący z Syndykatu. Wytwarzany, by dawać użytkownikowi niesamowicie ekscytujący haj, zwykle wprawiając go w stan psychozy wywołanej wściekłością. Zwiększa siłę fizyczną i pozwala ignorować skutki stanu krytycznego."
 	reagent_state = LIQUID
 	color = "#D92323"
 	overdose_threshold = 5
@@ -33,7 +33,7 @@
 /datum/reagent/drug/bloody_eye/on_mob_life(mob/living/carbon/M)
 	. = ..()
 	if(prob(5))
-		var/high_message = pick("You see red.", "You feel like ripping out someone's throat.", "You feel like nothing could ever kill you.")
+		var/high_message = pick("Widzisz czerwień.", "Masz ochotę komuś wyrwać gardło.", "Masz wrażenie, że nic nie mogłoby cię zabić.")
 		to_chat(M, "<span class='notice'>[high_message]</span>")
 	M.AdjustStun(-40, FALSE)
 	M.AdjustKnockdown(-40, FALSE)
@@ -48,7 +48,7 @@
 	return TRUE
 
 /datum/reagent/drug/bloody_eye/overdose_start(mob/living/M)
-	to_chat(M, "<span class='userdanger'>EVERYTHING IS RED!</span>")
+	to_chat(M, "<span class='userdanger'>WSZYSTKO JEST CZERWONE!</span>")
 	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "[type]_overdose", /datum/mood_event/overdose, name)
 
 /datum/reagent/drug/bloody_eye/overdose_process(mob/living/M)
@@ -59,7 +59,7 @@
 	if(prob(20))
 		INVOKE_ASYNC(M, TYPE_PROC_REF(/mob, emote), pick("scream", "laugh"))
 	if(prob(33))
-		M.visible_message("<span class='danger'>[M]'s eyes are blood red!</span>")
+		M.visible_message("<span class='danger'>Oczy [M] są krwistoczerwone!</span>")
 		M.drop_all_held_items()
 	M.adjustToxLoss(0.25, 0)
 	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, pick(0.1, 0.15, 0.2, 0.25))
@@ -102,7 +102,7 @@
 
 /obj/item/reagent_containers/hypospray/bloody_eye/attack(mob/living/M, mob/user)
 	if(!reagents.total_volume)
-		to_chat(user, "<span class='warning'>[src] is empty!</span>")
+		to_chat(user, "<span class='warning'>[src] jest pusty!</span>")
 		return
 	if(!iscarbon(M))
 		return
@@ -114,8 +114,8 @@
 	log_combat(user, M, "attempted to spray", src, "([contained])")
 
 	if(reagents.total_volume && !M.is_eyes_covered())
-		to_chat(M, "<span class='warning'>Your eye is covered in a fine red mist!</span>")
-		to_chat(user, "<span class='notice'>You spray [M]'s eye with [src].</span>")
+		to_chat(M, "<span class='warning'>Twoje oko pokrywa drobna czerwona mgiełka!</span>")
+		to_chat(user, "<span class='notice'>Pryskasz [src] w oko [M].</span>")
 		playsound(loc, 'sound/items/hypospray.ogg', 50, 1)
 
 		var/fraction = min(amount_per_transfer_from_this/reagents.total_volume, 1)
@@ -127,12 +127,12 @@
 			else
 				trans = reagents.copy_to(M, amount_per_transfer_from_this)
 
-			to_chat(user, "<span class='notice'>[trans] unit\s sprayed.  [reagents.total_volume] unit\s remaining in [src].</span>")
+			to_chat(user, "<span class='notice'>Rozpylono [trans] j. W [src] pozostało [reagents.total_volume] j.</span>")
 
 
 			log_combat(user, M, "sprayed", src, "([contained])")
 	else
-		to_chat(M, "<span class='warning'>You have to uncover the eyes first!</span>")
+		to_chat(M, "<span class='warning'>Najpierw musisz odsłonić oczy!</span>")
 
 /datum/uplink_item/dangerous/bloody_eye
 	 name = "Bloody Eye Spray"
@@ -145,7 +145,7 @@
 	duration = -1
 	status_type = STATUS_EFFECT_UNIQUE
 	tick_interval = 1
-	examine_text = "<span class='warning'>Their eyes are blood red!</span>"
+	examine_text = "<span class='warning'>Jego oczy są krwistoczerwone!</span>"
 	alert_type = null
 
 /datum/status_effect/bloody_eye/tick()
@@ -172,7 +172,7 @@
 
 
 /datum/status_effect/bloody_eye/on_remove()
-	to_chat(owner, "<span class='warning'>See you Space Cowboy...</span>")
+	to_chat(owner, "<span class='warning'>Do zobaczenia, kosmiczny kowboju...</span>")
 	owner.clear_fullscreen("brute")
 	owner.adjustOxyLoss(25,0)
 	owner.remove_movespeed_modifier(type)

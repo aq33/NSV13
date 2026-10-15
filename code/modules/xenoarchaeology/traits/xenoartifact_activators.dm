@@ -4,7 +4,7 @@
 ///============
 /datum/xenoartifact_trait/activator/impact
 	desc = "Sturdy"
-	label_desc = "Sturdy: The material is sturdy. The amount of force applied seems to directly correlate to the size of the reaction."
+	label_desc = "Wytrzymały: materiał jest wytrzymały. Siła nacisku wydaje się bezpośrednio wpływać na wielkość reakcji."
 	charge = 25
 	signals = list(COMSIG_PARENT_ATTACKBY, COMSIG_MOVABLE_IMPACT, COMSIG_ITEM_ATTACK_SELF, COMSIG_ITEM_AFTERATTACK)
 	flags = BLUESPACE_TRAIT | PLASMA_TRAIT | URANIUM_TRAIT
@@ -20,7 +20,7 @@
 ///============
 /datum/xenoartifact_trait/activator/burn
 	desc = "Flammable"
-	label_desc = "Flammable: The material is flammable, and seems to react when ignited."
+	label_desc = "Łatwopalny: materiał jest łatwopalny i reaguje po podpaleniu."
 	charge = 25
 	signals = list(COMSIG_PARENT_ATTACKBY)
 	flags = BLUESPACE_TRAIT | URANIUM_TRAIT
@@ -32,7 +32,7 @@
 /datum/xenoartifact_trait/activator/burn/pass_input(datum/source, obj/item/thing, mob/user, atom/target, params) //xenoa item handles this, see process proc there
 	var/obj/item/xenoartifact/X = source
 	if(X.process_type != PROCESS_TYPE_LIT && thing.ignition_effect(X, user))
-		X.visible_message("<span class='danger'>The [X.name] sparks on.</span>")
+		X.visible_message("<span class='danger'>[X.name] rozbłyska iskrami.</span>")
 		X.process_type = PROCESS_TYPE_LIT
 		sleep(1.8 SECONDS) //Give them a chance to escape
 		START_PROCESSING(SSobj, X)
@@ -43,7 +43,7 @@
 ///============
 /datum/xenoartifact_trait/activator/clock
 	label_name = "Timed"
-	label_desc = "Timed: The material produces a resonance pattern similar to quartz, causing it to produce a reaction every so often."
+	label_desc = "Czasowy: materiał wytwarza wzór rezonansu podobny do kwarcu, przez co co jakiś czas wywołuje reakcję."
 	charge = 25
 	blacklist_traits = list(/datum/xenoartifact_trait/minor/capacitive)
 	signals = list(COMSIG_PARENT_ATTACKBY, COMSIG_MOVABLE_IMPACT, COMSIG_ITEM_ATTACK_SELF, COMSIG_ITEM_AFTERATTACK)
@@ -56,7 +56,7 @@
 
 /datum/xenoartifact_trait/activator/clock/on_item(obj/item/xenoartifact/X, atom/user, atom/item)
 	if(istype(item, /obj/item/clothing/neck/stethoscope))
-		to_chat(user, "<span class='info'>The [X.name] ticks deep from within.\n</span>")
+		to_chat(user, "<span class='info'>[X.name] tyka gdzieś głęboko w środku.\n</span>")
 		return TRUE
 	return ..()
 
@@ -99,14 +99,14 @@
 ///============
 /datum/xenoartifact_trait/activator/batteryneed
 	desc = "Charged"
-	label_desc = "Charged: The material has a natural power draw. Supplying any current to this will cause a reaction."
+	label_desc = "Naładowany: materiał naturalnie pobiera energię. Dostarczenie mu prądu wywoła reakcję."
 	charge = 25
 	signals = list(COMSIG_PARENT_ATTACKBY)
 	flags = BLUESPACE_TRAIT | URANIUM_TRAIT
 
 /datum/xenoartifact_trait/activator/batteryneed/on_item(obj/item/xenoartifact/X, atom/user, atom/item)
 	if(istype(item, /obj/item/multitool))
-		to_chat(user, "<span class='info'>The [item.name] displays a draw of [X.charge_req].</span>")
+		to_chat(user, "<span class='info'>[item.name] pokazuje pobór [X.charge_req].</span>")
 		return TRUE
 	return ..()
 
@@ -122,7 +122,7 @@
 ///============
 /datum/xenoartifact_trait/activator/weighted
 	desc = "Weighted"
-	label_desc = "Weighted: The material is weighted and produces a reaction when picked up."
+	label_desc = "Obciążony: materiał jest ciężki i reaguje po podniesieniu."
 	charge = 25
 	signals = list(COMSIG_ITEM_PICKUP)
 	blacklist_traits = list(/datum/xenoartifact_trait/minor/dense, /datum/xenoartifact_trait/minor/anchor, /datum/xenoartifact_trait/major/distablizer)
@@ -143,7 +143,7 @@
 ///============
 /datum/xenoartifact_trait/activator/pitch
 	label_name = "Pitched"
-	label_desc = "Pitched: The material is aerodynamic and activates when thrown."
+	label_desc = "Rzucany: materiał jest aerodynamiczny i aktywuje się po rzuceniu."
 	charge = 25
 	blacklist_traits = (/datum/xenoartifact_trait/minor/dense)
 	signals = list(COMSIG_MOVABLE_IMPACT)
@@ -158,7 +158,7 @@
 ///============
 /datum/xenoartifact_trait/activator/honk
 	desc = "Honked"
-	label_desc = "Honked: The material is squishy & humorous. Perhaps the clown would know how to use it?"
+	label_desc = "Zatrąbiony: materiał jest miękki i zabawny. Może klaun wiedziałby, jak go użyć?"
 	charge = 25
 	signals = list(COMSIG_PARENT_ATTACKBY, COMSIG_MOVABLE_IMPACT, COMSIG_ITEM_ATTACK_SELF, COMSIG_ITEM_AFTERATTACK)
 	weight = 25

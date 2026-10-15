@@ -25,7 +25,7 @@
 	return
 
 /mob/living/carbon/human/virtual_reality/canSuicide()
-	to_chat(src, "<span class='warning'>I'm sorry [first_name()], I'm afraid you can't do that.</span>")
+	to_chat(src, "<span class='warning'>Przykro mi, [first_name()], obawiam się, że nie mogę na to pozwolić.</span>")
 	return
 
 /mob/living/carbon/human/verb/suicide()
@@ -33,7 +33,7 @@
 	if(!canSuicide())
 		return
 	var/oldkey = ckey
-	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
+	var/confirm = alert("Na pewno chcesz popełnić samobójstwo?", "Potwierdź samobójstwo", "Yes", "No")
 	if(ckey != oldkey)
 		return
 	if(!canSuicide())
@@ -88,25 +88,16 @@
 
 		var/suicide_message
 
-		if(a_intent == INTENT_DISARM)
-			if(prob(25))
-				disarm_suicide()	// Snowflake suicide for a tired joke.
-				return	//above proc handles logging and death
-			suicide_message = pick("[src] is attempting to push [p_their()] own head off [p_their()] shoulders! It looks like [p_theyre()] trying to commit suicide.", \
-								"[src] is pushing [p_their()] thumbs into [p_their()] eye sockets! It looks like [p_theyre()] trying to commit suicide.")
-		else if(a_intent == INTENT_GRAB)
-			suicide_message = pick("[src] is attempting to pull [p_their()] own head off! It looks like [p_theyre()] trying to commit suicide.", \
-									"[src] is aggressively grabbing [p_their()] own neck! It looks like [p_theyre()] trying to commit suicide.", \
-									"[src] is pulling [p_their()] eyes out of their sockets! It looks like [p_theyre()] trying to commit suicide.")
-		else if(a_intent == INTENT_HELP)
-			suicide_message = pick("[src] is hugging [p_them()]self to death! It looks like [p_theyre()] trying to commit suicide.", \
-									"[src] is high-fiving [p_them()]self to death! It looks like [p_theyre()] trying to commit suicide.", \
-									"[src] is getting too high on life! It looks like [p_theyre()] trying to commit suicide.")
+		if(!combat_mode)
+			suicide_message = pick(
+				"[src] przytula się na śmierć! Wygląda na to, że próbuje popełnić samobójstwo.", \
+				"[src] przybija sobie piątkę na śmierć! Wygląda na to, że próbuje popełnić samobójstwo.", \
+				"[src] za bardzo odlatuje na haju życia! Wygląda na to, że próbuje popełnić samobójstwo.")
 		else
-			suicide_message = pick("[src] is attempting to bite [p_their()] tongue off! It looks like [p_theyre()] trying to commit suicide.", \
-								"[src] is jamming [p_their()] thumbs into [p_their()] eye sockets! It looks like [p_theyre()] trying to commit suicide.", \
-								"[src] is twisting [p_their()] own neck! It looks like [p_theyre()] trying to commit suicide.", \
-								"[src] is holding [p_their()] breath! It looks like [p_theyre()] trying to commit suicide.")
+			suicide_message = pick("[src] próbuje odgryźć sobie język! Wygląda na to, że próbuje popełnić samobójstwo.", \
+				"[src] wbija sobie kciuki w oczodoły! Wygląda na to, że próbuje popełnić samobójstwo.", \
+				"[src] skręca sobie kark! Wygląda na to, że próbuje popełnić samobójstwo.", \
+				"[src] wstrzymuje oddech! Wygląda na to, że próbuje popełnić samobójstwo.")
 
 		visible_message("<span class='danger'>[suicide_message]</span>", "<span class='userdanger'>[suicide_message]</span>")
 
@@ -119,13 +110,13 @@
 	set hidden = 1
 	if(!canSuicide())
 		return
-	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
+	var/confirm = alert("Na pewno chcesz popełnić samobójstwo?", "Potwierdź samobójstwo", "Yes", "No")
 	if(!canSuicide())
 		return
 	if(confirm == "Yes")
 		set_suicide(TRUE)
-		visible_message("<span class='danger'>[src]'s brain is growing dull and lifeless. [p_they(TRUE)] look[p_s()] like [p_theyve()] lost the will to live.</span>", \
-						"<span class='userdanger'>[src]'s brain is growing dull and lifeless. [p_they(TRUE)] look[p_s()] like [p_theyve()] lost the will to live.</span>")
+		visible_message("<span class='danger'>Mózg [src] staje się tępy i bez życia. Wygląda na to, że stracił wolę życia.</span>", \
+						"<span class='userdanger'>Mózg [src] staje się tępy i bez życia. Wygląda na to, że stracił wolę życia.</span>")
 
 		suicide_log()
 
@@ -136,13 +127,13 @@
 	set hidden = 1
 	if(!canSuicide())
 		return
-	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
+	var/confirm = alert("Na pewno chcesz popełnić samobójstwo?", "Potwierdź samobójstwo", "Yes", "No")
 	if(!canSuicide())
 		return
 	if(confirm == "Yes")
 		set_suicide(TRUE)
-		visible_message("<span class='danger'>[src] is attempting to bite [p_their()] tongue. It looks like [p_theyre()] trying to commit suicide.</span>", \
-				"<span class='userdanger'>[src] is attempting to bite [p_their()] tongue. It looks like [p_theyre()] trying to commit suicide.</span>")
+		visible_message("<span class='danger'>[src] próbuje przegryźć sobie język. Wygląda na to, że próbuje popełnić samobójstwo.</span>", \
+				"<span class='userdanger'>[src] próbuje przegryźć sobie język. Wygląda na to, że próbuje popełnić samobójstwo.</span>")
 
 		suicide_log()
 
@@ -154,13 +145,13 @@
 	set hidden = 1
 	if(!canSuicide())
 		return
-	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
+	var/confirm = alert("Na pewno chcesz popełnić samobójstwo?", "Potwierdź samobójstwo", "Yes", "No")
 	if(!canSuicide())
 		return
 	if(confirm == "Yes")
 		set_suicide(TRUE)
-		visible_message("<span class='danger'>[src] is powering down. It looks like [p_theyre()] trying to commit suicide.</span>", \
-				"<span class='userdanger'>[src] is powering down. It looks like [p_theyre()] trying to commit suicide.</span>")
+		visible_message("<span class='danger'>[src] się wyłącza. Wygląda na to, że próbuje popełnić samobójstwo.</span>", \
+				"<span class='userdanger'>[src] się wyłącza. Wygląda na to, że próbuje popełnić samobójstwo.</span>")
 
 		suicide_log()
 
@@ -173,13 +164,13 @@
 	set hidden = 1
 	if(!canSuicide())
 		return
-	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
+	var/confirm = alert("Na pewno chcesz popełnić samobójstwo?", "Potwierdź samobójstwo", "Yes", "No")
 	if(!canSuicide())
 		return
 	if(confirm == "Yes")
 		set_suicide(TRUE)
-		visible_message("<span class='danger'>[src] is powering down. It looks like [p_theyre()] trying to commit suicide.</span>", \
-				"<span class='userdanger'>[src] is powering down. It looks like [p_theyre()] trying to commit suicide.</span>")
+		visible_message("<span class='danger'>[src] się wyłącza. Wygląda na to, że próbuje popełnić samobójstwo.</span>", \
+				"<span class='userdanger'>[src] się wyłącza. Wygląda na to, że próbuje popełnić samobójstwo.</span>")
 
 		suicide_log()
 
@@ -190,31 +181,31 @@
 
 /mob/living/silicon/pai/verb/suicide()
 	set hidden = 1
-	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
+	var/confirm = alert("Na pewno chcesz popełnić samobójstwo?", "Potwierdź samobójstwo", "Yes", "No")
 	if(confirm == "Yes")
 		var/turf/T = get_turf(src.loc)
-		T.visible_message("<span class='notice'>[src] flashes a message across its screen, \"Wiping core files. Please acquire a new personality to continue using pAI device functions.\"</span>", null, \
-		 "<span class='notice'>[src] bleeps electronically.</span>")
+		T.visible_message("<span class='notice'>Na ekranie [src] wyświetla się komunikat: \"Wymazywanie plików rdzenia. Aby dalej korzystać z funkcji urządzenia pAI, pozyskaj nową osobowość.\"</span>", null, \
+		 "<span class='notice'>[src] elektronicznie piszczy.</span>")
 
 		suicide_log()
 
 		death(FALSE)
 		ghostize(FALSE,SENTIENCE_ERASE)	// Disallows reentering body and disassociates mind
 	else
-		to_chat(src, "Aborting suicide attempt.")
+		to_chat(src, "Przerywanie próby samobójczej.")
 
 /mob/living/carbon/alien/humanoid/verb/suicide()
 	set hidden = 1
 	if(!canSuicide())
 		return
-	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
+	var/confirm = alert("Na pewno chcesz popełnić samobójstwo?", "Potwierdź samobójstwo", "Yes", "No")
 	if(!canSuicide())
 		return
 	if(confirm == "Yes")
 		set_suicide(TRUE)
-		visible_message("<span class='danger'>[src] is thrashing wildly! It looks like [p_theyre()] trying to commit suicide.</span>", \
-				"<span class='userdanger'>[src] is thrashing wildly! It looks like [p_theyre()] trying to commit suicide.</span>", \
-				"<span class='italics'>You hear thrashing.</span>")
+		visible_message("<span class='danger'>[src] miota się dziko! Wygląda na to, że próbuje popełnić samobójstwo.</span>", \
+				"<span class='userdanger'>[src] miota się dziko! Wygląda na to, że próbuje popełnić samobójstwo.</span>", \
+				"<span class='italics'>Słyszysz, jak coś się miota.</span>")
 
 		suicide_log()
 
@@ -227,13 +218,13 @@
 	set hidden = 1
 	if(!canSuicide())
 		return
-	var/confirm = alert("Are you sure you want to commit suicide?", "Confirm Suicide", "Yes", "No")
+	var/confirm = alert("Na pewno chcesz popełnić samobójstwo?", "Potwierdź samobójstwo", "Yes", "No")
 	if(!canSuicide())
 		return
 	if(confirm == "Yes")
 		set_suicide(TRUE)
-		visible_message("<span class='danger'>[src] begins to fall down. It looks like [p_theyve()] lost the will to live.</span>", \
-						"<span class='userdanger'>[src] begins to fall down. It looks like [p_theyve()] lost the will to live.</span>")
+		visible_message("<span class='danger'>[src] zaczyna się przewracać. Wygląda na to, że stracił wolę życia.</span>", \
+						"<span class='userdanger'>[src] zaczyna się przewracać. Wygląda na to, że stracił wolę życia.</span>")
 
 		suicide_log()
 
@@ -255,25 +246,28 @@
 		if(CONSCIOUS)
 			return TRUE
 		if(SOFT_CRIT)
-			to_chat(src, "You can't commit suicide while in a critical condition!")
+			to_chat(src, "Nie możesz popełnić samobójstwa w stanie krytycznym!")
 		if(UNCONSCIOUS)
-			to_chat(src, "You need to be conscious to commit suicide!")
+			to_chat(src, "Musisz być przytomny, żeby popełnić samobójstwo!")
 		if(DEAD)
-			to_chat(src, "You're already dead!")
+			to_chat(src, "Już nie żyjesz!")
 	return
 
 /mob/living/carbon/canSuicide()
 	if(!..())
 		return
 	if(!(mobility_flags & MOBILITY_USE))	//just while I finish up the new 'fun' suiciding verb. This is to prevent metagaming via suicide
-		to_chat(src, "You can't commit suicide whilst immobile! ((You can type Ghost instead however.))")
+		to_chat(src, "Nie możesz popełnić samobójstwa, gdy nie możesz się ruszać! ((Możesz za to wpisać Ghost.))")
+		return
+	if(has_horror_inside()) // AQ EDIT - Yogstation#13033
+		to_chat(src, "Coś w twojej głowie powstrzymuje cię przed tym!")
 		return
 	if(CONFIG_GET(flag/restricted_suicide))
-		if(alert("Commiting suicide is strongly discouraged, and in some cases may be against the rules. Consider entering the cryopods or contacting admins. Are you sure you want to continue?",,"Confirm","Cancel") != "Confirm")
+		if(alert("Samobójstwo jest mocno odradzane, a w niektórych przypadkach łamie zasady. Rozważ wejście do kriokapsuły albo kontakt z adminami. Na pewno chcesz kontynuować?",,"Confirm","Cancel") != "Confirm")
 			return
 		if(world.time < (SSticker.round_start_time + (15 MINUTES)))
 			var/timeleft = ((SSticker.round_start_time + (15 MINUTES)) - world.time)
-			to_chat(src, "<span class='boldannounce'>Committing suicide at the start of the round is not allowed. Time until suicide is possible: [DisplayTimeText(timeleft)].</span>")
+			to_chat(src, "<span class='boldannounce'>Popełnianie samobójstwa na początku rundy jest zabronione. Czas do możliwości samobójstwa: [DisplayTimeText(timeleft)].</span>")
 			if(src.job)
 				message_admins("[key_name(src)] (job: [src.job]) attempted to commit suicide at [AREACOORD(src)]. Time until suicide is possible: [DisplayTimeText(timeleft)].")
 			return

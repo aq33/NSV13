@@ -114,12 +114,12 @@
 /obj/structure/closet/secure_closet/freezer/fridge{
 	req_access = null
 	},
-/obj/item/reagent_containers/food/snacks/meat/slab/chicken,
-/obj/item/reagent_containers/food/snacks/meat/slab/chicken,
-/obj/item/reagent_containers/food/snacks/meat/slab/chicken,
-/obj/item/reagent_containers/food/snacks/meat/slab/chicken,
-/obj/item/reagent_containers/food/snacks/meat/slab/chicken,
-/obj/item/reagent_containers/food/snacks/meat/slab/chicken,
+/obj/item/food/meat/slab/chicken,
+/obj/item/food/meat/slab/chicken,
+/obj/item/food/meat/slab/chicken,
+/obj/item/food/meat/slab/chicken,
+/obj/item/food/meat/slab/chicken,
+/obj/item/food/meat/slab/chicken,
 /obj/structure/sign/poster/official/fruit_bowl{
 	pixel_y = 26
 	},
@@ -303,11 +303,11 @@
 /area/shuttle/escape)
 "ln" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/donkpocket,
-/obj/item/reagent_containers/food/snacks/donkpocket,
-/obj/item/reagent_containers/food/snacks/donkpocket,
-/obj/item/reagent_containers/food/snacks/donkpocket,
-/obj/item/reagent_containers/food/snacks/donkpocket,
+/obj/item/food/donkpocket,
+/obj/item/food/donkpocket,
+/obj/item/food/donkpocket,
+/obj/item/food/donkpocket,
+/obj/item/food/donkpocket,
 /obj/machinery/jukebox{
 	density = 0;
 	desc = "A classic music player tied into the shuttle's intercom.";

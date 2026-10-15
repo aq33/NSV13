@@ -71,6 +71,9 @@
 /datum/uplink_item/suits/hardsuit
 	exclude_infiltrators = TRUE
 
+/datum/uplink_item/suits/modsuit
+	exclude_infiltrators = TRUE
+
 /datum/uplink_item/device_tools/failsafe
 	exclude_infiltrators = TRUE
 
@@ -140,3 +143,15 @@
 	item = /obj/item/grenade/spawnergrenade/gremlin
 	cost = 2
 	surplus = 30
+
+// AQUILA - Eldritch Horror for curators (Yogstation#13033, price from Yogstation#19619)
+/datum/uplink_item/role_restricted/horror
+	name = "Horror w pudełku"
+	desc = "Podczas sekcji głowy martwego naukowca Nanotrasenu nasi chirurdzy znaleźli w środku niezwykle osobliwe stworzenie i zdołali bezpiecznie je wydobyć. \
+	Nieudany eksperyment czy pozaziemski potwór, to stworzenie zostało wyszkolone, by pomagać temu, kto je obudzi. Jeśli nie boisz się, że wejdzie ci do głowy, może okazać się przydatnym sojusznikiem. \
+	Nie bierzemy odpowiedzialności za twoje nowo nabyte szaleństwo i nie przyjmujemy zwrotów."
+	item = /obj/item/horrorspawner
+	cost = 14
+	surplus = 0
+	restricted_roles = list(JOB_NAME_CURATOR)
+	player_minimum = 20

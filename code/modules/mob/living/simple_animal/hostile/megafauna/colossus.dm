@@ -26,14 +26,14 @@ Difficulty: Very Hard
 	desc = "A monstrous creature protected by heavy shielding."
 	health = 2500
 	maxHealth = 2500
-	attacktext = "judges"
+	attacktext = "osądza"
 	attack_sound = 'sound/magic/clockwork/ratvar_attack.ogg'
 	icon_state = "eva"
 	icon_living = "eva"
 	icon_dead = ""
-	friendly = "stares down"
+	friendly = "mierzy wzrokiem"
 	icon = 'icons/mob/lavaland/96x96megafauna.dmi'
-	speak_emote = list("roars")
+	speak_emote = list("ryczy")
 	armour_penetration = 40
 	melee_damage = 40
 	speed = 10
@@ -48,7 +48,7 @@ Difficulty: Very Hard
 	score_achievement_type = /datum/award/score/colussus_score
 	crusher_loot = list(/obj/structure/closet/crate/necropolis/colossus, /obj/item/crusher_trophy/blaster_tubes)
 	loot = list(/obj/structure/closet/crate/necropolis/colossus)
-	deathmessage = "disintegrates, leaving a glowing core in its wake."
+	deathmessage = "rozpada się, zostawiając po sobie świecący rdzeń."
 	deathsound = 'sound/magic/demon_dies.ogg'
 	attack_action_types = list(/datum/action/innate/megafauna_attack/spiral_attack,
 							   /datum/action/innate/megafauna_attack/aoe_attack,
@@ -61,28 +61,28 @@ Difficulty: Very Hard
 	name = "Spiral Shots"
 	icon_icon = 'icons/mob/actions/actions_items.dmi'
 	button_icon_state = "sniper_zoom"
-	chosen_message = "<span class='colossus'>You are now firing in a spiral.</span>"
+	chosen_message = "<span class='colossus'>Teraz strzelasz spiralnie.</span>"
 	chosen_attack_num = 1
 
 /datum/action/innate/megafauna_attack/aoe_attack
 	name = "All Directions"
 	icon_icon = 'icons/effects/effects.dmi'
 	button_icon_state = "at_shield2"
-	chosen_message = "<span class='colossus'>You are now firing in all directions.</span>"
+	chosen_message = "<span class='colossus'>Teraz strzelasz we wszystkich kierunkach.</span>"
 	chosen_attack_num = 2
 
 /datum/action/innate/megafauna_attack/shotgun
 	name = "Shotgun Fire"
 	icon_icon = 'icons/obj/guns/projectile.dmi'
 	button_icon_state = "shotgun"
-	chosen_message = "<span class='colossus'>You are now firing shotgun shots where you aim.</span>"
+	chosen_message = "<span class='colossus'>Teraz strzelasz śrutem tam, gdzie celujesz.</span>"
 	chosen_attack_num = 3
 
 /datum/action/innate/megafauna_attack/alternating_cardinals
 	name = "Alternating Shots"
 	icon_icon = 'icons/obj/guns/projectile.dmi'
 	button_icon_state = "pistol"
-	chosen_message = "<span class='colossus'>You are now firing in alternating cardinal directions.</span>"
+	chosen_message = "<span class='colossus'>Teraz strzelasz na przemian w czterech głównych kierunkach.</span>"
 	chosen_attack_num = 4
 
 /mob/living/simple_animal/hostile/megafauna/colossus/OpenFire()
@@ -122,7 +122,7 @@ Difficulty: Very Hard
 
 	if(enrage(target))
 		if(move_to_delay == initial(move_to_delay))
-			visible_message("<span class='colossus'>\"<b>You can't dodge.</b>\"</span>")
+			visible_message("<span class='colossus'>\"<b>Nie zrobisz uniku.</b>\"</span>")
 		telegraph()
 		dir_shots(GLOB.alldirs)
 		move_to_delay = 3
@@ -143,7 +143,7 @@ Difficulty: Very Hard
 			final_attack()
 
 	if(health <= maxHealth/10) 					//Ultimate attack guaranteed at below 10% HP
-		say("Die..")
+		say("Giń..")
 		visible_message("<span class='colossus'>\"<b>Die..</b>\"</span>")
 		random_attack_num = 5
 	else if(prob(20+anger_modifier))			//If more than 10% HP, determine next attack randomly
@@ -171,7 +171,7 @@ Difficulty: Very Hard
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
 		if(H.mind)
-			if(H.mind.martial_art && prob(H.mind.martial_art.deflection_chance))
+			if(istype(H.mind.martial_art, /datum/martial_art/the_sleeping_carp))
 				. = TRUE
 
 /mob/living/simple_animal/hostile/megafauna/colossus/proc/alternating_dir_shots()
@@ -200,7 +200,7 @@ Difficulty: Very Hard
 	for(var/i in 1 to 20)
 		if(finale_counter > 4)
 			telegraph()
-			say("Die!!")
+			say("Giń!!")
 			visible_message("<span class='colossus'>\"<b>Die!</b>\"</span>")
 			blast()
 		if(finale_counter > 1)
@@ -218,7 +218,7 @@ Difficulty: Very Hard
 		sleep(finale_counter)
 	for(var/iii in 1 to 4)
 		telegraph()
-		say("Die..")
+		say("Giń..")
 		visible_message("<span class='colossus'>\"<b>Die..</b>\"</span>")
 		invulnerable_finale = FALSE
 		sleep(30) //Long cooldown (total 15 seconds with one last 30 applied in ) after this attack finally concludes
@@ -359,7 +359,7 @@ GLOBAL_DATUM(blackbox, /obj/machinery/smartfridge/black_box)
 	if(!istype(O))
 		return FALSE
 	if(blacklist[O])
-		visible_message("<span class='boldwarning'>[src] ripples as it rejects [O]. The device will not accept items that have been removed from it.</span>")
+		visible_message("<span class='boldwarning'>[src] faluje, odrzucając [O]. Urządzenie nie przyjmuje przedmiotów, które zostały z niego wyjęte.</span>")
 		return FALSE
 	return TRUE
 
@@ -455,7 +455,7 @@ GLOBAL_DATUM(blackbox, /obj/machinery/smartfridge/black_box)
 /obj/machinery/anomalous_crystal
 	name = "anomalous crystal"
 	desc = "A strange chunk of crystal, being in the presence of it fills you with equal parts excitement and dread."
-	var/observer_desc = "Anomalous crystals have descriptions that only observers can see. But this one hasn't been changed from the default."
+	var/observer_desc = "Anomalne kryształy mają opisy, które widzą tylko obserwatorzy. Ale ten nie został zmieniony z domyślnego."
 	icon = 'icons/obj/lavaland/artefacts.dmi'
 	icon_state = "anomaly_crystal"
 	light_range = 8
@@ -482,14 +482,14 @@ GLOBAL_DATUM(blackbox, /obj/machinery/smartfridge/black_box)
 	. = ..()
 	if(isobserver(user))
 		. += observer_desc
-		. += "It is activated by [activation_method]."
+		. += "Aktywuje go: [activation_method]."
 
 /obj/machinery/anomalous_crystal/Hear(message, atom/movable/speaker, message_langs, raw_message, radio_freq, spans, list/message_mods = list())
 	..()
 	if(isliving(speaker))
 		ActivationReaction(speaker, ACTIVATE_SPEECH)
 
-/obj/machinery/anomalous_crystal/attack_hand(mob/user)
+/obj/machinery/anomalous_crystal/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(.)
 		return
@@ -529,7 +529,7 @@ GLOBAL_DATUM(blackbox, /obj/machinery/smartfridge/black_box)
 	ActivationReaction(null, ACTIVATE_BOMB)
 
 /obj/machinery/anomalous_crystal/honk //Strips and equips you as a clown. I apologize for nothing
-	observer_desc = "This crystal strips and equips its targets as clowns."
+	observer_desc = "Ten kryształ rozbiera swoje cele i przebiera je za klaunów."
 	possible_methods = list(ACTIVATE_MOB_BUMP, ACTIVATE_SPEECH)
 	activation_sound = 'sound/items/bikehorn.ogg'
 
@@ -544,7 +544,7 @@ GLOBAL_DATUM(blackbox, /obj/machinery/smartfridge/black_box)
 		affected_targets.Add(H)
 
 /obj/machinery/anomalous_crystal/theme_warp //Warps the area you're in to look like a new one
-	observer_desc = "This crystal warps the area around it to a theme."
+	observer_desc = "Ten kryształ przekształca otoczenie zgodnie z motywem."
 	activation_method = ACTIVATE_TOUCH
 	cooldown_add = 200
 	var/terrain_theme = "winter"
@@ -558,7 +558,7 @@ GLOBAL_DATUM(blackbox, /obj/machinery/smartfridge/black_box)
 /obj/machinery/anomalous_crystal/theme_warp/Initialize(mapload)
 	. = ..()
 	terrain_theme = pick("lavaland","winter","jungle","ayy lmao")
-	observer_desc = "This crystal changes the area around it to match the theme of \"[terrain_theme]\"."
+	observer_desc = "Ten kryształ zmienia otoczenie zgodnie z motywem \"[terrain_theme]\"."
 
 	switch(terrain_theme)
 		if("lavaland")//Depressurizes the place... and free cult metal, I guess.
@@ -614,7 +614,7 @@ GLOBAL_DATUM(blackbox, /obj/machinery/smartfridge/black_box)
 			affected_targets += A
 
 /obj/machinery/anomalous_crystal/emitter //Generates a projectile when interacted with
-	observer_desc = "This crystal generates a projectile when activated."
+	observer_desc = "Ten kryształ po aktywacji wytwarza pocisk."
 	activation_method = ACTIVATE_TOUCH
 	cooldown_add = 50
 	var/obj/item/projectile/generated_projectile = /obj/item/projectile/beam/emitter
@@ -624,7 +624,7 @@ GLOBAL_DATUM(blackbox, /obj/machinery/smartfridge/black_box)
 	generated_projectile = pick(/obj/item/projectile/colossus)
 
 	var/proj_name = initial(generated_projectile.name)
-	observer_desc = "This crystal generates \a [proj_name] when activated."
+	observer_desc = "Ten kryształ po aktywacji wytwarza: [proj_name]."
 
 /obj/machinery/anomalous_crystal/emitter/ActivationReaction(mob/user, method)
 	if(..())
@@ -646,7 +646,7 @@ GLOBAL_DATUM(blackbox, /obj/machinery/smartfridge/black_box)
 		P.fire()
 
 /obj/machinery/anomalous_crystal/dark_reprise //Revives anyone nearby, but turns them into shadowpeople and renders them uncloneable, so the crystal is your only hope of getting up again if you go down.
-	observer_desc = "When activated, this crystal revives anyone nearby, but turns them into Shadowpeople and makes them unclonable, making the crystal their only hope of getting up again."
+	observer_desc = "Po aktywacji ten kryształ wskrzesza wszystkich w pobliżu, ale zamienia ich w Ludzi Cienia i uniemożliwia ich sklonowanie, przez co kryształ staje się ich jedyną nadzieją na powrót do życia."
 	activation_method = ACTIVATE_TOUCH
 	activation_sound = 'sound/hallucinations/growl1.ogg'
 
@@ -667,7 +667,7 @@ GLOBAL_DATUM(blackbox, /obj/machinery/smartfridge/black_box)
 					H.grab_ghost(force = TRUE)
 
 /obj/machinery/anomalous_crystal/helpers //Lets ghost spawn as helpful creatures that can only heal people slightly. Incredibly fragile and they can't converse with humans
-	observer_desc = "This crystal allows ghosts to turn into a fragile creature that can heal people."
+	observer_desc = "Ten kryształ pozwala duchom zamienić się w kruchą istotę, która potrafi leczyć ludzi."
 	activation_method = ACTIVATE_TOUCH
 	activation_sound = 'sound/effects/ghost2.ogg'
 	var/ready_to_deploy = FALSE
@@ -680,14 +680,14 @@ GLOBAL_DATUM(blackbox, /obj/machinery/smartfridge/black_box)
 	if(..() && !ready_to_deploy)
 		GLOB.poi_list |= src
 		ready_to_deploy = TRUE
-		notify_ghosts("An anomalous crystal has been activated in [get_area(src)]! This crystal can always be used by ghosts hereafter.", enter_link = "<a href=?src=[REF(src)];ghostjoin=1>(Click to enter)</a>", ghost_sound = 'sound/effects/ghost2.ogg', source = src, action = NOTIFY_ATTACK, header = "Anomalous crystal activated")
+		notify_ghosts("An anomalous crystal has been activated in [get_area(src)]! This crystal can always be used by ghosts hereafter.", enter_link = "<a href=byond://?src=[REF(src)];ghostjoin=1>(Click to enter)</a>", ghost_sound = 'sound/effects/ghost2.ogg', source = src, action = NOTIFY_ATTACK, header = "Anomalous crystal activated")
 
 /obj/machinery/anomalous_crystal/helpers/attack_ghost(mob/dead/observer/user)
 	. = ..()
 	if(.)
 		return
 	if(ready_to_deploy)
-		var/be_helper = alert("Become a Lightgeist? (Warning, You can no longer be cloned!)",,"Yes","No")
+		var/be_helper = alert("Zostać Światłoduchem? (Uwaga: nie będzie można cię sklonować!)",,"Yes","No")
 		if(be_helper == "Yes" && !QDELETED(src) && isobserver(user))
 			var/mob/living/simple_animal/hostile/lightgeist/W = new /mob/living/simple_animal/hostile/lightgeist(get_turf(loc))
 			W.key = user.key
@@ -706,23 +706,23 @@ GLOBAL_DATUM(blackbox, /obj/machinery/smartfridge/black_box)
 	icon_living = "lightgeist"
 	icon_dead = "butterfly_dead"
 	turns_per_move = 1
-	response_help = "waves away"
-	response_disarm = "brushes aside"
-	response_harm = "disrupts"
-	speak_emote = list("oscillates")
+	response_help = "odgania"
+	response_disarm = "odsuwa na bok"
+	response_harm = "zakłóca"
+	speak_emote = list("oscyluje")
 	maxHealth = 2
 	health = 2
-	friendly = "mends"
+	friendly = "opatruje"
 	density = FALSE
 	movement_type = FLYING
 	pass_flags = PASSTABLE | PASSGRILLE | PASSMOB
 	ventcrawler = VENTCRAWLER_ALWAYS
 	mob_size = MOB_SIZE_TINY
 	gold_core_spawnable = HOSTILE_SPAWN
-	verb_say = "warps"
-	verb_ask = "floats inquisitively"
-	verb_exclaim = "zaps"
-	verb_yell = "bangs"
+	verb_say = "faluje"
+	verb_ask = "unosi się pytająco"
+	verb_exclaim = "iskrzy"
+	verb_yell = "huczy"
 	initial_language_holder = /datum/language_holder/lightbringer
 	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 0, CLONE = 0, STAMINA = 0, OXY = 0)
 	light_range = 4
@@ -762,7 +762,7 @@ GLOBAL_DATUM(blackbox, /obj/machinery/smartfridge/black_box)
 	name = "crystalline lightgeist"
 
 /obj/machinery/anomalous_crystal/refresher //Deletes and recreates a copy of the item, "refreshing" it.
-	observer_desc = "This crystal \"refreshes\" items that it affects, rendering them as new."
+	observer_desc = "Ten kryształ \"odświeża\" przedmioty, na które działa, czyniąc je jak nowe."
 	activation_method = ACTIVATE_TOUCH
 	cooldown_add = 50
 	activation_sound = 'sound/magic/timeparadox2.ogg'
@@ -784,7 +784,7 @@ GLOBAL_DATUM(blackbox, /obj/machinery/smartfridge/black_box)
 			qdel(CHOSEN)
 
 /obj/machinery/anomalous_crystal/possessor //Allows you to bodyjack small animals, then exit them at your leisure, but you can only do this once per activation. Because they blow up. Also, if the bodyjacked animal dies, SO DO YOU.
-	observer_desc = "When activated, this crystal allows you to take over small animals, and then exit them at the possessors leisure. Exiting the animal kills it, and if you die while possessing the animal, you die as well."
+	observer_desc = "Po aktywacji ten kryształ pozwala przejmować kontrolę nad małymi zwierzętami i opuszczać je, kiedy zechcesz. Opuszczenie zwierzęcia zabija je, a jeśli zginiesz, opętując zwierzę, zginiesz także ty."
 	activation_method = ACTIVATE_TOUCH
 
 /obj/machinery/anomalous_crystal/possessor/ActivationReaction(mob/user, method)

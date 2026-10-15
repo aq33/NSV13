@@ -13,9 +13,9 @@
 	reroll_friendly = 1
 
 	announce_span = "green"
-	announce_text = "While adrift through space, the ship has picked up an unwelcome visitor...\n\
-	<span class='green'>Bloodling Thralls</span>: Accomplish the objectives assigned to you.\n\
-	<span class='notice'>Crew</span>: Root out and eliminate the alien menace."
+	announce_text = "Dryfując w kosmosie, statek zabrał nieproszonego gościa...\n\
+	<span class='green'>Niewolnicy krwiaka</span>: wykonajcie przydzielone cele.\n\
+	<span class='notice'>Załoga</span>: wytropcie i wyeliminujcie obce zagrożenie."
 
 	title_icon = "bloodling"
 	var/mob/living/simple_animal/bloodling/master = null
@@ -34,7 +34,7 @@
 	if(CONFIG_GET(flag/protect_heads_from_antagonist))
 		restricted_jobs += GLOB.command_positions
 
-	var/num_bloodlings = bloodling_amount
+	var/num_bloodlings = weighted_cap(bloodling_amount) // AQUILA EDIT - weighted rotation antagonist limit
 
 	master = spawn_bloodling()
 	if(!master)
@@ -127,10 +127,10 @@ Helper proc to spawn the lil' blood alien creature in a vent! Adapted from alien
 
 
 /datum/game_mode/bloodling/generate_report()
-	return "The Gorlex Marauders have announced the successful raid and destruction of Central Command containment ship #S-[rand(1111, 9999)]. This ship housed only a single prisoner - \
-			codenamed \"Thing\", and it was highly adaptive and extremely dangerous. We have reason to believe that the Thing has allied with the Syndicate, and you should note that likelihood \
-			of the Thing being sent to a station in this sector is highly likely. It may be in the guise of any crew member. Trust nobody - suspect everybody. Do not announce this to the crew, \
-			as paranoia may spread and inhibit workplace efficiency."
+	return "Maruderzy Gorlex ogłosili udany napad i zniszczenie statku-więzienia Centrali nr S-[rand(1111, 9999)]. Na pokładzie był tylko jeden więzień - \
+			o kryptonimie \"Coś\", niezwykle zdolny do adaptacji i skrajnie niebezpieczny. Mamy powody sądzić, że Coś sprzymierzyło się z Syndykatem, i jest bardzo prawdopodobne, \
+			że zostanie wysłane na stację w tym sektorze. Może podszywać się pod dowolnego członka załogi. Nikomu nie ufajcie - podejrzewajcie wszystkich. Nie ogłaszajcie tego załodze, \
+			bo paranoja może się rozprzestrzenić i obniżyć wydajność pracy."
 
 //////////////////////////////////////////
 //Checks to see if someone is bloodling//
@@ -141,12 +141,12 @@ Helper proc to spawn the lil' blood alien creature in a vent! Adapted from alien
 /datum/game_mode/bloodling/generate_credit_text()
 	var/list/round_credits = list()
 
-	round_credits += "<center><h1>The Master:</h1>"
+	round_credits += "<center><h1>Pan:</h1>"
 
 	if(master && master.client)
 		round_credits += "<center><h2>[master.client.ckey]!</h2>"
 
-	round_credits += "<center><h1>Its evil minions:</h1>"
+	round_credits += "<center><h1>Jego złe sługi:</h1>"
 
 	for(var/datum/mind/M in bloodlings)
 		if(M.key)

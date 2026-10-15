@@ -16,8 +16,8 @@
 	var/const/changeling_amount = 1 //hard limit on changelings if scaling is turned off
 
 /datum/game_mode/traitor/changeling/announce()
-	to_chat(world, "<B>The current game mode is - Traitor+Changeling!</B>")
-	to_chat(world, "<B>There are alien creatures on the station along with some syndicate operatives out for their own gain! Do not let the changelings or the traitors succeed!</B>")
+	to_chat(world, "<B>Obecny tryb gry to zdrajca i zmiennokształtny!</B>")
+	to_chat(world, "<B>Na statku są obce istoty i agenci Syndykatu działający dla własnych korzyści! Nie pozwólcie zmiennokształtnym ani zdrajcom wygrać!</B>")
 
 /datum/game_mode/traitor/changeling/can_start()
 	if(!..())
@@ -46,6 +46,8 @@
 		num_changelings = max(1, min(round(num_players() / (csc * 4)) + 2, round(num_players() / (csc * 2))))
 	else
 		num_changelings = max(1, min(num_players(), changeling_amount/2))
+	if(!isnull(weighted_antag_cap)) // AQUILA EDIT - weighted rotation antagonist limit, one place stays for a traitor
+		num_changelings = min(num_changelings, weighted_antag_cap - 1)
 
 	if(possible_changelings.len>0)
 		for(var/j = 0, j < num_changelings, j++)
@@ -57,6 +59,9 @@
 			changeling.special_role = ROLE_CHANGELING
 			changelings += changeling
 			changeling.restricted_roles = restricted_jobs
+		// AQUILA EDIT - the weighted rotation limit counts changelings and traitors together
+		if(!isnull(weighted_antag_cap))
+			weighted_antag_cap = max(0, weighted_antag_cap - length(changelings))
 		return ..()
 	else
 		return 0
@@ -88,8 +93,3 @@
 
 /datum/game_mode/traitor/changeling/generate_report()
 	return "Niedawno Syndykat rozpoczął badania nad zmiennokształtnymi humanoidami. Wycieki z ich bazy danych sugerują, że ta technologia jest testowana na jednej z naszych stacji. Dodatkowo informujemy że Syndykat przydzielił agentów by bronić zmiennokształtnych. Nie ufajcie nikomu - każdy może być jednym z nich. Nie ogłaszajcie tego załodze, paranoja i strach obniżają produktywność."
-
-/datum/game_mode/traitor/changeling/trustnobody
-	name = "traitor + lings + no protected roles"
-	config_tag = "trustnobody"
-	protected_jobs = list()

@@ -3,7 +3,7 @@
 //PUBLIC -  call these wherever you want
 
 
-/mob/proc/throw_alert(category, type, severity, obj/new_master, override = FALSE)
+/mob/proc/throw_alert(category, type, severity, obj/new_master, override = FALSE, timeout_override, no_anim = FALSE) // AQ EDIT - timeout_override i no_anim dla alertów ankiet (port BeeStation #12738)
 
 /* Proc to create or update an alert. Returns the alert if the alert is new or updated, 0 if it was thrown already
  category is a text string. Each mob may only have one alert per category; the previous one will be replaced
@@ -42,6 +42,8 @@
 		thealert.override_alerts = override
 		if(override)
 			thealert.timeout = null
+		else if(timeout_override) // AQ EDIT - port BeeStation #12738
+			thealert.timeout = timeout_override
 	thealert.owner = src
 
 	if(new_master)
@@ -61,8 +63,9 @@
 	alerts[category] = thealert
 	if(client && hud_used)
 		hud_used.reorganize_alerts()
-	thealert.transform = matrix(32, 6, MATRIX_TRANSLATE)
-	animate(thealert, transform = matrix(), time = 2.5, easing = CUBIC_EASING)
+	if(!no_anim) // AQ EDIT - port BeeStation #12738
+		thealert.transform = matrix(32, 6, MATRIX_TRANSLATE)
+		animate(thealert, transform = matrix(), time = 2.5, easing = CUBIC_EASING)
 
 	if(thealert.timeout)
 		addtimer(CALLBACK(src, PROC_REF(alert_timeout), thealert, category), thealert.timeout)
@@ -101,6 +104,7 @@
 
 
 /atom/movable/screen/alert/MouseEntered(location,control,params)
+	..() // AQ EDIT - screentips potrzebują /atom/MouseEntered() (port BeeStation #11938)
 	if(!QDELETED(src))
 		openToolTip(usr,src,params,title = name,content = desc,theme = alerttooltipstyle)
 
@@ -322,7 +326,7 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 	SIGNAL_HANDLER
 
 	if(!offerer.CanReach(taker))
-		balloon_alert(owner, "You moved out of range of [offerer]!")
+		balloon_alert(owner, "Oddalasz się poza zasięg [offerer]!")
 		owner.clear_alert("[offerer]")
 
 //ALIENS
@@ -482,16 +486,16 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 	if(!(servant_antagonist?.team))
 		return
 	desc = "Stored Power - <b>[display_power(GLOB.clockcult_power)]</b>.<br>"
-	desc += "Stored Vitality - <b>[GLOB.clockcult_vitality]</b>.<br>"
+	desc += "Zgromadzona witalność - <b>[GLOB.clockcult_vitality]</b>.<br>"
 	if(GLOB.ratvar_arrival_tick)
 		if(GLOB.ratvar_arrival_tick - world.time > 6000)
-			desc += "The Ark is preparing to open, it will activate in <b>[round((GLOB.ratvar_arrival_tick - world.time - 6000) / 10)]</b> seconds.<br>"
+			desc += "Arka przygotowuje się do otwarcia, aktywuje się za <b>[round((GLOB.ratvar_arrival_tick - world.time - 6000) / 10)]</b> s.<br>"
 		else
-			desc += "Ratvar will rise in <b>[round((GLOB.ratvar_arrival_tick - world.time) / 10)]</b> seconds, protect the Ark with your life!<br>"
+			desc += "Ratvar powstanie za <b>[round((GLOB.ratvar_arrival_tick - world.time) / 10)]</b> s, chroń Arkę za cenę życia!<br>"
 	if(GLOB.human_servants_of_ratvar)
-		desc += "There [GLOB.human_servants_of_ratvar.len == 1?"is" : "are"] currently [GLOB.human_servants_of_ratvar.len] loyal servant\s.<br>"
+		desc += "Wiernych sług: [GLOB.human_servants_of_ratvar.len].<br>"
 	if(GLOB.critical_servant_count)
-		desc += "Upon reaching [GLOB.critical_servant_count] servants, the Ark will open, or it can be opened immediately by invoking Gateway Activation with 6 servants."
+		desc += "Po osiągnięciu [GLOB.critical_servant_count] sług Arka się otworzy. Można ją też otworzyć natychmiast, wywołując Aktywację Bramy z 6 sługami."
 
 //GUARDIANS
 
@@ -537,6 +541,20 @@ Recharging stations are available in robotics, the dormitory bathrooms, and the 
 	name = "Low Blood Charge"
 	desc = "Your blood's electric charge is running low, find a source of charge for your blood. Use a recharging station found in robotics or the dormitory bathrooms, or eat some Ethereal-friendly food."
 	icon_state = "etherealcharge"
+
+//MODsuit unique
+/atom/movable/screen/alert/nocore
+	name = "Missing Core"
+	desc = "Unit has no core. No modules available until a core is reinstalled. Robotics may provide assistance."
+	icon_state = "nocell"
+
+/atom/movable/screen/alert/emptycell/plasma
+	name = "Out of Power"
+	desc = "Unit's plasma core has no charge remaining. No modules available until plasma core is recharged. Unit can be refilled through plasma ore."
+
+/atom/movable/screen/alert/lowcell/plasma
+	name = "Low Charge"
+	desc = "Unit's plasma core is running low. Unit can be refilled through plasma ore."
 
 ///NSV13 - Ethereal Stuff - Start
 /atom/movable/screen/alert/etherealfull

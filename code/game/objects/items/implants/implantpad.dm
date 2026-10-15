@@ -17,12 +17,12 @@
 /obj/item/implantpad/examine(mob/user)
 	. = ..()
 	if(Adjacent(user))
-		. += "It [case ? "contains \a [case]" : "is currently empty"]."
+		. += "[case ? "Zawiera [case]" : "Jest obecnie pusty"]."
 		if(case)
-			. += "<span class='info'>Alt-click to remove [case].</span>"
+			. += "<span class='info'>Alt-kliknij, by wyjąć [case].</span>"
 	else
 		if(case)
-			. += "<span class='warning'>There seems to be something inside it, but you can't quite tell what from here...</span>"
+			. += "<span class='warning'>Coś chyba jest w środku, ale stąd nie da się stwierdzić co...</span>"
 
 /obj/item/implantpad/handle_atom_del(atom/A)
 	if(A == case)
@@ -35,7 +35,7 @@
 	if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 		return
 	if(!case)
-		to_chat(user, "<span class='warning'>There's no implant to remove from [src].</span>")
+		to_chat(user, "<span class='warning'>W [src] nie ma implantu do wyjęcia.</span>")
 		return
 
 	user.put_in_hands(case)
@@ -64,14 +64,14 @@
 		return
 
 	user.set_machine(src)
-	var/dat = "<B>Implant Mini-Computer:</B><HR>"
+	var/dat = "<B>Minikomputer implantów:</B><HR>"
 	if(case)
 		if(case.imp)
 			if(istype(case.imp, /obj/item/implant))
 				dat += case.imp.get_data()
 		else
-			dat += "The implant casing is empty."
+			dat += "Obudowa implantu jest pusta."
 	else
-		dat += "Please insert an implant casing!"
-	user << browse(dat, "window=implantpad")
+		dat += "Włóż obudowę implantu!"
+	user << browse(HTML_SKELETON(dat), "window=implantpad")
 	onclose(user, "implantpad")

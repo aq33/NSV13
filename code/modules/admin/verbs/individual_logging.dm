@@ -19,7 +19,7 @@
 		dat += " | "
 		dat += individual_logging_panel_link(M, INDIVIDUAL_OOC_LOG, LOGSRC_CLIENT, "OOC Log", source, ntype)
 		dat += " | "
-		dat += individual_logging_panel_link(M, INDIVIDUAL_SHOW_ALL_LOG, LOGSRC_CLIENT, "Show All", source, ntype)
+		dat += individual_logging_panel_link(M, INDIVIDUAL_SHOW_ALL_LOG, LOGSRC_CLIENT, "Pokaż wszystko", source, ntype)
 		dat += "</center>"
 	else
 		dat += "<p> No client attached to mob </p>"
@@ -38,7 +38,7 @@
 	dat += " | "
 	dat += individual_logging_panel_link(M, INDIVIDUAL_OOC_LOG, LOGSRC_MOB, "OOC Log", source, ntype)
 	dat += " | "
-	dat += individual_logging_panel_link(M, INDIVIDUAL_SHOW_ALL_LOG, LOGSRC_MOB, "Show All", source, ntype)
+	dat += individual_logging_panel_link(M, INDIVIDUAL_SHOW_ALL_LOG, LOGSRC_MOB, "Pokaż wszystko", source, ntype)
 	dat += "</center>"
 
 	dat += "<hr style='background:#000000; border:0; height:1px'>"
@@ -69,4 +69,4 @@
 		slabel = "<b>\[[label]\]</b>"
 	//This is necessary because num2text drops digits and rounds on big numbers. If more defines get added in the future it could break again.
 	log_type = num2text(log_type, SIGNIFICANT_PRECISION)
-	return "<a href='?_src_=holder;[HrefToken()];individuallog=[REF(M)];log_type=[log_type];log_src=[log_src]'>[slabel]</a>"
+	return "<a href='byond://?_src_=holder;[HrefToken()];individuallog=[REF(M)];log_type=[log_type];log_src=[log_src]'>[slabel]</a>"

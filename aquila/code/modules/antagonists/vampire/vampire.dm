@@ -3,9 +3,9 @@
 
 /datum/antagonist/vampire
 
-	name = "Vampire"
+	name = "Wampir"
 	antagpanel_category = "Vampire"
-	roundend_category = "vampires"
+	roundend_category = "wampiry"
 	banning_key = ROLE_VAMPIRE
 
 	var/usable_blood = 0
@@ -41,7 +41,7 @@
 
 /datum/antagonist/vampire/new_blood
 	full_vampire = FALSE
-	roundend_category = "new bloods"
+	roundend_category = "nowa krew"
 	show_in_antagpanel = FALSE
 
 /datum/antagonist/vampire/get_admin_commands()
@@ -70,7 +70,7 @@
 	owner.special_role = "vampire"
 	owner.current.faction += "vampire"
 	SSticker.mode.update_vampire_icons_added(owner)
-	handle_clown_mutation(owner.current, "Your bloodlusting desire overcomes your clownish heritage, you are able to use weapons!")
+	handle_clown_mutation(owner.current, "Żądza krwi przezwycięża twoje klaunie dziedzictwo, możesz używać broni!")
 	var/mob/living/carbon/human/C = owner.current
 	if(istype(C))
 		var/obj/item/organ/brain/B = C.getorganslot(ORGAN_SLOT_BRAIN)
@@ -94,7 +94,7 @@
 		objectives -= O
 	LAZYCLEARLIST(objectives_given)
 	if(owner.current)
-		to_chat(owner.current,"<span class='userdanger'>Your powers have been quenched! You are no longer a vampire</span>")
+		to_chat(owner.current,"<span class='userdanger'>Twoje moce zostały ugaszone! Nie jesteś już wampirem</span>")
 	owner.special_role = null
 	var/mob/living/carbon/human/C = owner.current
 	if(istype(C))
@@ -105,15 +105,15 @@
 	..()
 
 /datum/antagonist/vampire/greet()
-	to_chat(owner, "<span class='userdanger'>You are a Vampire!</span>")
-	to_chat(owner, "<span class='danger bold'>You are a creature of the night -- holy water, the chapel, and space will cause you to burn.</span>")
-	to_chat(owner, "<span class='userdanger'>Hit someone in the head with harm intent and an open hand to start sucking their blood. However, only blood from living, non-vampiric creatures is usable!</span>")
-	to_chat(owner, "<span class='notice bold'>Coffins will heal you.</span>")
+	to_chat(owner, "<span class='userdanger'>Jesteś wampirem!</span>")
+	to_chat(owner, "<span class='danger bold'>Jesteś istotą nocy -- woda święcona, kaplica i kosmos sprawiają, że płoniesz.</span>")
+	to_chat(owner, "<span class='userdanger'>Uderz kogoś w głowę otwartą dłonią z intencją krzywdy, żeby zacząć wysysać krew. Przydaje się jednak tylko krew żywych istot, które nie są wampirami!</span>")
+	to_chat(owner, "<span class='notice bold'>Trumny cię leczą.</span>")
 	to_chat(owner, "<span class='notice'>Krew żywych, humanoidalnych istot pijesz <b>uderzając je w głowę otwartą dłonią na intencji krzywdzenia</b>. Krew osób katatonicznych jest bezużyteczna, a ze zwłok i osób bez połączenia (SSD) dostajesz tylko ułamek normalnej ilości.<br>\
 		Ilość wysysanej krwi zależy od chwytu: zaczynając <b>bez chwytu</b> wysysasz <i>potajemnie</i>, ale o 50% wolniej; mając <b>chwyt za szyję lub mocniejszy</b> wysysasz o 50% szybciej, za to głośno - <i>ZAALARMUJE</i> to każdego, kto to zobaczy, a dźwięk słychać w promieniu <b>trzech metrów</b>.<br>\
 		Po zebraniu <b>150</b> jednostek krwi stracisz możliwość potajemnego wysysania.</span>")
 	if(full_vampire == FALSE)
-		to_chat(owner, "<span class='notice bold'>You are not required to obey other vampires, however, you have gained a respect for them.</span>")
+		to_chat(owner, "<span class='notice bold'>Nie musisz słuchać innych wampirów, ale zyskujesz dla nich szacunek.</span>")
 	if(LAZYLEN(objectives_given))
 		owner.announce_objectives()
 	if(full_vampire == FALSE)
@@ -191,16 +191,16 @@
 	if(prob(burn_chance) && L.health >= 50)
 		switch(L.health)
 			if(75 to 100)
-				L.visible_message("<span class='warning'>[L]'s skin begins to flake!</span>", "<span class='danger'>Your skin flakes away...</span>")
+				L.visible_message("<span class='warning'>Skóra [L] zaczyna się łuszczyć!</span>", "<span class='danger'>Twoja skóra się łuszczy...</span>")
 			if(50 to 75)
-				L.visible_message("<span class='warning'>[L]'s skin sizzles loudly!</span>", "<span class='danger'>Your skin sizzles!</span>", "You hear sizzling.")
+				L.visible_message("<span class='warning'>Skóra [L] głośno skwierczy!</span>", "<span class='danger'>Twoja skóra skwierczy!</span>", "Słyszysz skwierczenie.")
 		L.adjustFireLoss(3)
 	else if(L.health < 50)
 		if(!L.on_fire)
-			L.visible_message("<span class='warning'>[L] catches fire!</span>", "<span class='danger'>Your skin catches fire!</span>")
+			L.visible_message("<span class='warning'>[L] zajmuje się ogniem!</span>", "<span class='danger'>Twoja skóra zajmuje się ogniem!</span>")
 			L.emote("scream")
 		else
-			L.visible_message("<span class='warning'>[L] continues to burn!</span>", "<span class='danger'>Your continue to burn!</span>")
+			L.visible_message("<span class='warning'>[L] wciąż płonie!</span>", "<span class='danger'>Wciąż płoniesz!</span>")
 		L.adjust_fire_stacks(5)
 		L.IgniteMob()
 	return
@@ -267,31 +267,31 @@
 	else if(O.grab_state >= GRAB_NECK)
 		blood_to_take *= 1.5 //50% more blood from targets that are being neck grabbed or above
 	if(!silent)
-		O.visible_message("<span class='danger'>[O] grabs [H]'s neck harshly and sinks in their fangs!</span>", "<span class='danger'>You sink your fangs into [H] and begin to [blood_to_take > BLOOD_SUCK_BASE ? "quickly " : ""]drain their blood.</span>", "<span class='notice'>You hear a soft puncture and a wet sucking noise.</span>")
+		O.visible_message("<span class='danger'>[O] brutalnie chwyta [H] za szyję i wbija kły!</span>", "<span class='danger'>Wbijasz kły w [H] i zaczynasz [blood_to_take > BLOOD_SUCK_BASE ? "szybko " : ""]wysysać krew.</span>", "<span class='notice'>Słyszysz ciche przekłucie i mokre siorbanie.</span>")
 		playsound(O.loc, 'sound/weapons/bite.ogg', 50, 1)
 	else
-		to_chat(O, "<span class='notice'>You stealthily begin to drain blood from [H]. Be careful, as they will notice if their blood gets too low.</span>")
+		to_chat(O, "<span class='notice'>Ukradkiem zaczynasz wysysać krew z [H]. Uważaj, bo ofiara zauważy, jeśli straci za dużo krwi.</span>")
 		O.playsound_local(O, 'sound/weapons/bite.ogg', 50, 1)
 	H.LAssailant = WEAKREF(O)
 	while(do_mob(O, H, 50))
 		if(!is_vampire(O))
-			to_chat(O, "<span class='warning'>Your fangs have disappeared!</span>")
+			to_chat(O, "<span class='warning'>Twoje kły zniknęły!</span>")
 			return
 		if(blood_to_take > BLOOD_SUCK_BASE && (!(O.pulling == H) || O.grab_state < GRAB_NECK))//smooth movement from aggressive suck to normal suck
 			blood_to_take = BLOOD_SUCK_BASE
-			to_chat(O, "<span class='warning'>You lose your grip on [H], reducing your bloodsucking speed.</span>")
+			to_chat(O, "<span class='warning'>Tracisz uchwyt na [H], więc wolniej wysysasz krew.</span>")
 		if(blood_to_take == BLOOD_SUCK_BASE && (O.pulling == H && O.grab_state >= GRAB_NECK))//smooth movement from normal suck to aggressive suck
 			blood_to_take *= 1.5
-			to_chat(O, "<span class='warning'>Your enhanced grip on [H] allows you to extract blood faster.</span>")
+			to_chat(O, "<span class='warning'>Mocniejszy uchwyt na [H] pozwala szybciej wysysać krew.</span>")
 		if(silent && O.pulling == H) //smooth movement from stealth suck to normal suck
 			silent = FALSE
 			blood_to_take = BLOOD_SUCK_BASE
-			O.visible_message("<span class='danger'>[O] grabs [H]'s neck harshly and sinks in their fangs!</span>", "<span class='danger'>You sink your fangs into [H] and begin to drain their blood.</span>", "<span class='notice'>You hear a soft puncture and a wet sucking noise.</span>")
+			O.visible_message("<span class='danger'>[O] brutalnie chwyta [H] za szyję i wbija kły!</span>", "<span class='danger'>Wbijasz kły w [H] i zaczynasz wysysać krew.</span>", "<span class='notice'>Słyszysz ciche przekłucie i mokre siorbanie.</span>")
 			playsound(O.loc, 'sound/weapons/bite.ogg', 50, 1)
 		old_bloodtotal = total_blood
 		old_bloodusable = usable_blood
 		if(!H.blood_volume)
-			to_chat(O, "<span class='warning'>They've got no blood left to give.</span>")
+			to_chat(O, "<span class='warning'>Nie zostało już krwi do wyssania.</span>")
 			break
 		blood_coeff = 0.8 //20 blood gain at base for living, 30 with aggressive grab, 10 with stealth
 		if(H.stat == DEAD || !H.client)
@@ -301,23 +301,23 @@
 		usable_blood += blood * 0.75	//75% usable blood since it's actually used for stuff
 		check_vampire_upgrade()
 		if(old_bloodtotal != total_blood)
-			to_chat(O, "<span class='notice'><b>You have accumulated [total_blood] [total_blood > 1 ? "units" : "unit"] of blood[usable_blood != old_bloodusable ? ", and have [usable_blood] left to use" : ""].</b></span>")
+			to_chat(O, "<span class='notice'><b>Zgromadzono jednostek krwi: [total_blood][usable_blood != old_bloodusable ? ", do wykorzystania zostało: [usable_blood]" : ""].</b></span>")
 		H.blood_volume = max(H.blood_volume - blood_to_take, 0)
 		if(silent && !warned && (H.blood_volume <= (BLOOD_VOLUME_SAFE + 20)))
-			to_chat(O, "<span class='boldwarning'>Their blood is at a dangerously low level, they will likely begin to feel the effects if you continue...</span>")
+			to_chat(O, "<span class='boldwarning'>Poziom krwi ofiary jest niebezpiecznie niski - jeśli nie przestaniesz, pewnie zacznie odczuwać skutki...</span>")
 			warned = TRUE
 		if(ishuman(O))
 			O.nutrition = min(O.nutrition + (blood * 0.5), NUTRITION_LEVEL_WELL_FED)
 		if(!silent)
 			playsound(O.loc, 'sound/items/eatfood.ogg', 40, 1, extrarange = -4)//have to be within 3 tiles to hear the sucking
 		else if(H.blood_volume <= BLOOD_VOLUME_OKAY)
-			to_chat(H, "<span class='warning'>You notice [O] standing oddly close...</span>")
+			to_chat(H, "<span class='warning'>Zauważasz, że [O] stoi dziwnie blisko...</span>")
 		if(get_ability(/datum/vampire_passive/nostealth) && silent)
-			to_chat(O, "<span class='boldwarning'>You can no longer suck blood silently!</span>")
+			to_chat(O, "<span class='boldwarning'>Nie możesz już wysysać krwi po cichu!</span>")
 			break
 
 	draining = null
-	to_chat(owner, "<span class='notice'>You stop draining [H.name] of blood.</span>")
+	to_chat(owner, "<span class='notice'>Przestajesz wysysać krew z [H.name].</span>")
 
 /datum/antagonist/vampire/proc/force_add_ability(path)
 	var/spell = new path(owner)
@@ -401,18 +401,18 @@
 		var/count = 1
 		for(var/datum/objective/objective in objectives_given)
 			if(objective.check_completion())
-				objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] <span class='greentext'>Success!</span>"
+				objectives_text += "<br><B>Cel nr [count]</B>: [objective.explanation_text] <span class='greentext'>Sukces!</span>"
 			else
-				objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] <span class='redtext'>Fail.</span>"
+				objectives_text += "<br><B>Cel nr [count]</B>: [objective.explanation_text] <span class='redtext'>Porażka.</span>"
 				vampwin = FALSE
 			count++
 
 	result += objectives_text
 
 	if(vampwin)
-		result += "<span class='greentext'>The vampire was successful!</span>"
+		result += "<span class='greentext'>Wampir odniósł sukces!</span>"
 	else
-		result += "<span class='redtext'>The vampire has failed!</span>"
+		result += "<span class='redtext'>Wampir poniósł porażkę!</span>"
 		SEND_SOUND(owner.current, 'sound/ambience/ambifailure.ogg')
 
 	return result.Join("<br>")

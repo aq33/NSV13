@@ -1,7 +1,7 @@
 /datum/overmap_objective/clear_system
 	name = "Clear System of Enemies"
 	desc = "Defeat all enemies in the TARGET system"
-	brief = "Defeat all enemies in the TARGET system"
+	brief = "Pokonajcie wszystkich wrogów w systemie TARGET"
 	binary = FALSE
 	target = 1
 

@@ -21,7 +21,7 @@
 	model = "Firebot"
 	bot_core = /obj/machinery/bot_core/firebot
 	window_id = "autoextinguisher"
-	window_name = "Mobile Fire Extinguisher v1.0"
+	window_name = "Mobilna Gaśnica v1.0"
 	path_image_color = "#FFA500"
 
 	var/atom/target_fire
@@ -98,24 +98,24 @@
 	update_icon()
 
 /mob/living/simple_animal/bot/firebot/set_custom_texts()
-	text_hack = "You corrupt [name]'s safety protocols."
-	text_dehack = "You detect errors in [name] and reset his programming."
-	text_dehack_fail = "[name] is not responding to reset commands!"
+	text_hack = "Psujesz protokoły bezpieczeństwa [name]."
+	text_dehack = "Wykrywasz błędy w [name] i resetujesz jego oprogramowanie."
+	text_dehack_fail = "[name] nie reaguje na polecenia resetu!"
 
 /mob/living/simple_animal/bot/firebot/get_controls(mob/user)
 	var/dat
 	dat += hack(user)
 	dat += showpai(user)
-	dat += "<TT><B>Mobile Fire Extinguisher v1.0</B></TT><BR><BR>"
-	dat += "Status: <A href='?src=[REF(src)];power=1'>[on ? "On" : "Off"]</A><BR>"
-	dat += "Maintenance panel panel is [open ? "opened" : "closed"]<BR>"
+	dat += "<TT><B>Mobilna Gaśnica v1.0</B></TT><BR><BR>"
+	dat += "Status: <A href='byond://?src=[REF(src)];power=1'>[on ? "On" : "Off"]</A><BR>"
+	dat += "Panel serwisowy jest [open ? "otwarty" : "zamknięty"]<BR>"
 
-	dat += "Behaviour controls are [locked ? "locked" : "unlocked"]<BR>"
+	dat += "Sterowanie zachowaniem jest [locked ? "zablokowane" : "odblokowane"]<BR>"
 	if(!locked || issilicon(user) || IsAdminGhost(user))
-		dat += "Extinguish Fires: <A href='?src=[REF(src)];operation=extinguish_fires'>[extinguish_fires ? "Yes" : "No"]</A><BR>"
-		dat += "Extinguish People: <A href='?src=[REF(src)];operation=extinguish_people'>[extinguish_people ? "Yes" : "No"]</A><BR>"
-		dat += "Patrol Station: <A href='?src=[REF(src)];operation=patrol'>[auto_patrol ? "Yes" : "No"]</A><BR>"
-		dat += "Stationary Mode: <a href='?src=[REF(src)];operation=stationary_mode'>[stationary_mode ? "Yes" : "No"]</a><br>"
+		dat += "Gaszenie pożarów: <A href='byond://?src=[REF(src)];operation=extinguish_fires'>[extinguish_fires ? "Tak" : "Nie"]</A><BR>"
+		dat += "Gaszenie ludzi: <A href='byond://?src=[REF(src)];operation=extinguish_people'>[extinguish_people ? "Tak" : "Nie"]</A><BR>"
+		dat += "Patrolowanie stacji: <A href='byond://?src=[REF(src)];operation=patrol'>[auto_patrol ? "Tak" : "Nie"]</A><BR>"
+		dat += "Tryb stacjonarny: <a href='byond://?src=[REF(src)];operation=stationary_mode'>[stationary_mode ? "Tak" : "Nie"]</a><br>"
 
 	return dat
 
@@ -123,8 +123,8 @@
 	..()
 	if(emagged == 2)
 		if(user)
-			to_chat(user, "<span class='danger'>[src] buzzes and beeps.</span>")
-		audible_message("<span class='danger'>[src] buzzes oddly!</span>")
+			to_chat(user, "<span class='danger'>[src] brzęczy i pika.</span>")
+		audible_message("<span class='danger'>[src] dziwnie brzęczy!</span>")
 		playsound(src, "sparks", 75, TRUE)
 		if(user)
 			old_target_fire = user
@@ -208,10 +208,10 @@
 	if(target_fire && (get_dist(src, target_fire) <= (emagged == 2 ? 1 : 2))) // Make the bot spray water from afar when not emagged
 		if((speech_cooldown + SPEECH_INTERVAL) < world.time)
 			if(ishuman(target_fire))
-				speak("Stop, drop and roll!")
+				speak("Stój, padnij i tarzaj się!")
 				playsound(src, "sound/voice/firebot/stopdropnroll.ogg", 50, 0)
 			else
-				speak("Extinguishing!")
+				speak("Gaszenie!")
 				playsound(src, "sound/voice/firebot/extinguishing.ogg", 50, 0)
 			speech_cooldown = world.time
 
@@ -264,7 +264,7 @@
 
 	if(is_burning(scan_target))
 		if((detected_cooldown + DETECTED_VOICE_INTERVAL) < world.time)
-			speak("Fire detected!")
+			speak("Wykryto ogień!")
 			playsound(src, "sound/voice/firebot/detected.ogg", 50, 0)
 			detected_cooldown = world.time
 		result = scan_target
@@ -298,7 +298,7 @@
 
 /mob/living/simple_animal/bot/firebot/explode()
 	on = FALSE
-	visible_message("<span class='boldannounce'>[src] blows apart!</span>")
+	visible_message("<span class='boldannounce'>[src] rozpada się na kawałki!</span>")
 
 	var/atom/Tsec = drop_location()
 

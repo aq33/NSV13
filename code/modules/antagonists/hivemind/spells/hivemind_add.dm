@@ -17,40 +17,40 @@
 	var/success = FALSE
 
 	if(HAS_TRAIT(target, TRAIT_HIVE_BURNT))
-		to_chat(user, "<span class='notice'>This mind was ridden bare and holds no value anymore.</span>")
+		to_chat(user, "<span class='notice'>Ten umysł został wyeksploatowany do cna i nie ma już żadnej wartości.</span>")
 		revert_cast()
 		return
 	if(!target.mind || !target.client || target.stat == DEAD)
-		to_chat(user, "<span class='notice'>We detect no neural activity in this body.</span>")
+		to_chat(user, "<span class='notice'>Nie wykrywamy w tym ciele aktywności neuronowej.</span>")
 		revert_cast()
 		return
 
 	if((HAS_TRAIT(target, TRAIT_MINDSHIELD) && !ignore_mindshield) || istype(target.get_item_by_slot(ITEM_SLOT_HEAD), /obj/item/clothing/head/foilhat))
-		to_chat(user, "<span class='warning'>Powerful technology protects [target.name]'s mind.</span>")
+		to_chat(user, "<span class='warning'>Potężna technologia chroni umysł [target.name].</span>")
 		revert_cast()
 		return
 
 	if(HAS_TRAIT(target, TRAIT_MINDSHIELD) && ignore_mindshield)
-		to_chat(user, "<span class='notice'>We bruteforce our way past the mental barriers of [target.name] and begin linking our minds!</span>")
+		to_chat(user, "<span class='notice'>Siłą przebijamy się przez bariery umysłowe [target.name] i zaczynamy łączyć nasze umysły!</span>")
 	else
-		to_chat(user, "<span class='notice'>We begin linking our mind with [target.name]!</span>")
+		to_chat(user, "<span class='notice'>Zaczynamy łączyć nasz umysł z [target.name]!</span>")
 
 	if(do_after(user,5*(1.5**get_dist(user, target)),0,user) && (user in viewers(range, target)))
 		if(do_after(user,5*(1.5**get_dist(user, target)),0,user) && (user in viewers(range, target)))
 			if((!HAS_TRAIT(target, TRAIT_MINDSHIELD) || ignore_mindshield) && (user in viewers(range, target)))
-				to_chat(user, "<span class='notice'>[target.name] was added to the Hive!</span>")
+				to_chat(user, "<span class='notice'>[target.name] dołącza do Roju!</span>")
 				success = TRUE
 				hive.add_to_hive(target)
 				if(ignore_mindshield)
-					to_chat(user, "<span class='warning'>We are briefly exhausted by the effort required by our enhanced assimilation abilities.</span>")
+					to_chat(user, "<span class='warning'>Wysiłek wzmocnionej asymilacji na chwilę nas wyczerpuje.</span>")
 					user.Immobilize(50)
 					SEND_SIGNAL(target, COMSIG_NANITE_SET_VOLUME, 0)
 			else
-				to_chat(user, "<span class='notice'>We fail to connect to [target.name].</span>")
+				to_chat(user, "<span class='notice'>Nie udaje nam się połączyć z [target.name].</span>")
 		else
-			to_chat(user, "<span class='notice'>We fail to connect to [target.name].</span>")
+			to_chat(user, "<span class='notice'>Nie udaje nam się połączyć z [target.name].</span>")
 	else
-		to_chat(user, "<span class='notice'>We fail to connect to [target.name].</span>")
+		to_chat(user, "<span class='notice'>Nie udaje nam się połączyć z [target.name].</span>")
 
 	if(!success)
 		revert_cast()

@@ -92,12 +92,12 @@
 	if(istype(I, /obj/item/implant))
 		var/obj/item/implant/P = I
 		if(P.implant(M))
-			visible_message("<span class='warning'>[M] has been implanted by [src].</span>")
+			visible_message("<span class='warning'>[src] wszczepia implant [M].</span>")
 			return TRUE
 	else if(istype(I, /obj/item/organ))
 		var/obj/item/organ/P = I
 		P.Insert(M, FALSE, FALSE)
-		visible_message("<span class='warning'>[M] has been implanted by [src].</span>")
+		visible_message("<span class='warning'>[src] wszczepia implant [M].</span>")
 		return TRUE
 
 /obj/machinery/implantchair/update_icon()
@@ -126,23 +126,23 @@
 /obj/machinery/implantchair/container_resist(mob/living/user)
 	user.changeNext_move(CLICK_CD_BREAKOUT)
 	user.last_special = world.time + CLICK_CD_BREAKOUT
-	user.visible_message("<span class='notice'>You see [user] kicking against the door of [src]!</span>", \
-		"<span class='notice'>You lean on the back of [src] and start pushing the door open. (this will take about [DisplayTimeText(breakout_time)].)</span>", \
-		"<span class='italics'>You hear a metallic creaking from [src].</span>")
+	user.visible_message("<span class='notice'>Widzisz, jak [user] kopie w drzwi [src]!</span>", \
+		"<span class='notice'>Opierasz się o tył [src] i zaczynasz pchać drzwi. (zajmie to około [DisplayTimeText(breakout_time)].)</span>", \
+		"<span class='italics'>Słyszysz metaliczne skrzypienie z [src].</span>")
 	if(do_after(user,(breakout_time), target = src))
 		if(!user || user.stat != CONSCIOUS || user.loc != src || state_open)
 			return
-		user.visible_message("<span class='warning'>[user] successfully broke out of [src]!</span>", \
-			"<span class='notice'>You successfully break out of [src]!</span>")
+		user.visible_message("<span class='warning'>[user] wydostaje się z [src]!</span>", \
+			"<span class='notice'>Wydostajesz się z [src]!</span>")
 		open_machine()
 
 /obj/machinery/implantchair/relaymove(mob/user)
 	if(message_cooldown <= world.time)
 		message_cooldown = world.time + 50
-		to_chat(user, "<span class='warning'>[src]'s door won't budge!</span>")
+		to_chat(user, "<span class='warning'>Drzwi [src] ani drgną!</span>")
 
 /obj/machinery/implantchair/MouseDrop_T(mob/target, mob/user)
-	if(user.stat || !Adjacent(user) || !user.Adjacent(target) || !isliving(target) || !user.IsAdvancedToolUser())
+	if(user.stat || !Adjacent(user) || !user.Adjacent(target) || !isliving(target) || !ISADVANCEDTOOLUSER(user))
 		return
 	if(isliving(user))
 		var/mob/living/L = user
@@ -160,7 +160,7 @@
 	name = "Genetic purifier"
 	desc = "Used to purge a human genome of foreign influences."
 	special = TRUE
-	special_name = "Purge genome"
+	special_name = "Oczyść genom"
 	injection_cooldown = 0
 	replenish_cooldown = 300
 
@@ -181,7 +181,7 @@
 	auto_inject = FALSE
 	auto_replenish = FALSE
 	special = TRUE
-	var/objective = "Obey the law. Praise Nanotrasen."
+	var/objective = "Przestrzegaj prawa. Chwała Nanotrasen."
 	var/custom = FALSE
 
 /obj/machinery/implantchair/brainwash/implant_action(mob/living/C,mob/user)
@@ -190,7 +190,7 @@
 	if(custom)
 		if(!user || !user.Adjacent(src))
 			return FALSE
-		objective = stripped_input(usr,"What order do you want to imprint on [C]?","Enter the order","",120)
+		objective = stripped_input(usr,"Jaki rozkaz chcesz wdrukować [C]?","Podaj rozkaz","",120)
 		message_admins("[ADMIN_LOOKUPFLW(user)] set brainwash machine objective to '[objective]'.")
 		log_game("[key_name(user)] set brainwash machine objective to '[objective]'.")
 	if(HAS_TRAIT(C, TRAIT_MINDSHIELD))
@@ -198,7 +198,7 @@
 	if(ishuman(C))
 		var/mob/living/carbon/human/H = C
 		if(istype(H.get_item_by_slot(ITEM_SLOT_HEAD), /obj/item/clothing/head/foilhat))
-			to_chat(H, "<span class ='userdanger'>Your trusty tinfoil hat shorts out the implant as it plunges into your skull!</span>")
+			to_chat(H, "<span class ='userdanger'>Twoja niezawodna czapeczka z folii zwiera implant, gdy ten wbija się w twoją czaszkę!</span>")
 			H.adjustOrganLoss(ORGAN_SLOT_BRAIN, 75)
 			H.emote("scream")
 			return TRUE

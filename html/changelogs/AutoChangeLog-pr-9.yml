@@ -1,5 +1,0 @@
-author: sh4dow321
-delete-after: true
-changes:
-  - server: Naprawiono workflowy GitHuba do etykiet PR i generowania changelogów na
-      tym forku.

@@ -14,7 +14,7 @@
 /obj/effect/proc_holder/spell/targeted/rod_form/cast(list/targets,mob/user = usr)
 	var/area/A = get_area(user)
 	if(istype(A, /area/wizard_station))
-		to_chat(user, "<span class='warning'>You know better than to trash Wizard Federation property. Best wait until you leave to use [src].</span>")
+		to_chat(user, "<span class='warning'>Wiesz, że lepiej nie niszczyć mienia Federacji Czarodziejów. Poczekaj z użyciem [src], aż wyjdziesz.</span>")
 		return
 	for(var/mob/living/M in targets)
 		var/turf/start = get_turf(M)
@@ -49,8 +49,8 @@
 
 /obj/effect/immovablerod/wizard/penetrate(mob/living/L)
 	if(L.anti_magic_check())
-		L.visible_message("<span class='danger'>[src] hits [L], but it bounces back, then vanishes!</span>" , "<span class='userdanger'>[src] hits you... but it bounces back, then vanishes!</span>" , "<span class ='danger'>You hear a weak, sad, CLANG.</span>")
+		L.visible_message("<span class='danger'>[src] uderza w [L], ale odbija się i znika!</span>" , "<span class='userdanger'>[src] uderza w ciebie... ale odbija się i znika!</span>" , "<span class ='danger'>Słyszysz słabe, smutne BRZDĘK.</span>")
 		qdel(src)
 		return
-	L.visible_message("<span class='danger'>[L] is penetrated by an immovable rod!</span>" , "<span class='userdanger'>The rod penetrates you!</span>" , "<span class ='danger'>You hear a CLANG!</span>")
+	L.visible_message("<span class='danger'>Nieruchomy pręt przebija [L] na wylot!</span>" , "<span class='userdanger'>Pręt przebija cię na wylot!</span>" , "<span class ='danger'>Słyszysz BRZDĘK!</span>")
 	L.adjustBruteLoss(70 + damage_bonus)

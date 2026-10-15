@@ -84,8 +84,8 @@ Class Procs:
 	name = "machinery"
 	icon = 'icons/obj/stationobjs.dmi'
 	desc = "Some kind of machine."
-	verb_say = "beeps"
-	verb_yell = "blares"
+	verb_say = "pika"
+	verb_yell = "wyje"
 	pressure_resistance = 15
 	pass_flags_self = PASSMACHINE
 	max_integrity = 200
@@ -135,6 +135,10 @@ Class Procs:
 	var/tgui_id // ID of TGUI interface
 	var/ui_style // ID of custom TGUI style (optional)
 
+	/// world.time of last use by [/mob/living]
+	var/last_used_time = 0
+	/// Mobtype of last user. Typecast to [/mob/living] for initial() usage
+	var/mob/living/last_user_mobtype
 	/// Maximum time an EMP will disable this machine for
 	var/emp_disable_time = 2 MINUTES
 
@@ -293,11 +297,14 @@ Class Procs:
 	return
 
 /obj/machinery/can_interact(mob/user)
-	var/silicon = issilicon(user)
+	var/silicon = issilicon(user) || user.has_remote_machine_access(src) // AQ EDIT - demon impulsu steruje maszynami w przejętym obszarze jak SI
 	var/admin_ghost = IsAdminGhost(user)
 	var/living = isliving(user)
 
 	if((machine_stat & (NOPOWER|BROKEN)) && !(interaction_flags_machine & INTERACT_MACHINE_OFFLINE)) // Check if the machine is broken, and if we can still interact with it if so
+		return FALSE
+
+	if(SEND_SIGNAL(user, COMSIG_TRY_USE_MACHINE, src) & COMPONENT_CANT_USE_MACHINE_INTERACT)
 		return FALSE
 
 	if(panel_open && !(interaction_flags_machine & INTERACT_MACHINE_OPEN)) // Check if we can interact with an open panel machine, if the panel is open
@@ -337,19 +344,19 @@ Class Procs:
 			if(I)
 				var/datum/bank_account/insurance = I.registered_account
 				if(!insurance)
-					say("[market_verb] NAP Violation: No bank account found.")
+					say("[market_verb] Naruszenie zasady nieagresji: nie znaleziono konta bankowego.")
 					nap_violation(occupant)
 					return FALSE
 				else
 					if(!insurance.adjust_money(-fair_market_price))
-						say("[market_verb] NAP Violation: Unable to pay.")
+						say("[market_verb] Naruszenie zasady nieagresji: nie można zapłacić.")
 						nap_violation(occupant)
 						return FALSE
 					var/datum/bank_account/D = SSeconomy.get_dep_account(payment_department)
 					if(D && !D.is_nonstation_account())
 						D.adjust_money(fair_market_price)
 			else
-				say("[market_verb] NAP Violation: No ID card found.")
+				say("[market_verb] Naruszenie zasady nieagresji: nie znaleziono karty ID.")
 				nap_violation(occupant)
 				return FALSE
 	return TRUE
@@ -363,10 +370,12 @@ Class Procs:
 /obj/machinery/interact(mob/user, special_state)
 	if(interaction_flags_machine & INTERACT_MACHINE_SET_MACHINE)
 		user.set_machine(src)
+	update_last_used(user)
 	. = ..()
 
 /obj/machinery/ui_act(action, params)
 	add_fingerprint(usr)
+	update_last_used(usr)
 	if(isliving(usr) && in_range(src, usr))
 		play_click_sound()
 	return ..()
@@ -378,17 +387,18 @@ Class Procs:
 	if(!usr.canUseTopic(src))
 		return TRUE
 	add_fingerprint(usr)
+	update_last_used(usr)
 	return FALSE
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 
 /obj/machinery/attack_paw(mob/living/user)
-	if(user.a_intent != INTENT_HARM)
+	if(!user.combat_mode)
 		return attack_hand(user)
 	else
 		user.changeNext_move(CLICK_CD_MELEE)
 		user.do_attack_animation(src, ATTACK_EFFECT_PUNCH)
-		user.visible_message("<span class='danger'>[user.name] smashes against \the [src.name] with its paws.</span>", null, null, COMBAT_MESSAGE_RANGE)
+		user.visible_message("<span class='danger'>[user.name] wali łapami w [src.name].</span>", null, null, COMBAT_MESSAGE_RANGE)
 		take_damage(4, BRUTE, "melee", 1)
 
 /obj/machinery/attack_robot(mob/user)
@@ -404,8 +414,30 @@ Class Procs:
 	else
 		return _try_interact(user)
 
+/obj/machinery/attackby(obj/item/weapon, mob/user, params)
+	. = ..()
+	if(.)
+		return
+	update_last_used(user)
+
+/obj/machinery/attackby_secondary(obj/item/weapon, mob/user, params)
+	. = ..()
+	if(.)
+		return
+	update_last_used(user)
+
+/obj/machinery/tool_act(mob/living/user, obj/item/tool, tool_type)
+	if(SEND_SIGNAL(user, COMSIG_TRY_USE_MACHINE, src) & COMPONENT_CANT_USE_MACHINE_TOOLS)
+		return TOOL_ACT_MELEE_CHAIN_BLOCKING
+	. = ..()
+	if(. & TOOL_ACT_SIGNAL_BLOCKING)
+		return
+	update_last_used(user)
+
 /obj/machinery/_try_interact(mob/user)
 	if((interaction_flags_machine & INTERACT_MACHINE_WIRES_IF_OPEN) && panel_open && (attempt_wire_interaction(user) == WIRE_INTERACTION_BLOCK))
+		return TRUE
+	if(SEND_SIGNAL(user, COMSIG_TRY_USE_MACHINE, src) & COMPONENT_CANT_USE_MACHINE_INTERACT)
 		return TRUE
 	return ..()
 
@@ -420,7 +452,7 @@ Class Procs:
 	. = !(state_open || panel_open || is_operational || (flags_1 & NODECONSTRUCT_1)) && I.tool_behaviour == TOOL_CROWBAR
 	if(.)
 		I.play_tool_sound(src, 50)
-		visible_message("<span class='notice'>[usr] pries open \the [src].</span>", "<span class='notice'>You pry open \the [src].</span>")
+		visible_message("<span class='notice'>[usr] wyważa [src].</span>", "<span class='notice'>Wyważasz [src].</span>")
 		open_machine()
 
 /obj/machinery/proc/default_deconstruction_crowbar(obj/item/I, ignore_panel = 0)
@@ -479,11 +511,11 @@ Class Procs:
 		if(!panel_open)
 			panel_open = TRUE
 			icon_state = icon_state_open
-			to_chat(user, "<span class='notice'>You open the maintenance hatch of [src].</span>")
+			to_chat(user, "<span class='notice'>Otwierasz właz serwisowy [src].</span>")
 		else
 			panel_open = FALSE
 			icon_state = icon_state_closed
-			to_chat(user, "<span class='notice'>You close the maintenance hatch of [src].</span>")
+			to_chat(user, "<span class='notice'>Zamykasz właz serwisowy [src].</span>")
 		return 1
 	return 0
 /**
@@ -494,13 +526,13 @@ Class Procs:
 	if(panel_open && I.tool_behaviour == TOOL_WRENCH)
 		I.play_tool_sound(src, 50)
 		setDir(turn(dir,turns))
-		to_chat(user, "<span class='notice'>You rotate [src].</span>")
+		to_chat(user, "<span class='notice'>Obracasz [src].</span>")
 		return 1
 	return 0
 
 /obj/proc/can_be_unfasten_wrench(mob/user, silent) //if we can unwrench this object; returns SUCCESSFUL_UNFASTEN and FAILED_UNFASTEN, which are both TRUE, or CANT_UNFASTEN, which isn't.
 	if(!(isfloorturf(loc) || istype(loc, /turf/open/indestructible)) && !anchored)
-		to_chat(user, "<span class='warning'>[src] needs to be on the floor to be secured!</span>")
+		to_chat(user, "<span class='warning'>[src] musi stać na podłodze, by go zamocować!</span>")
 		return FAILED_UNFASTEN
 	return SUCCESSFUL_UNFASTEN
 
@@ -510,12 +542,12 @@ Class Procs:
 		if(!can_be_unfasten || can_be_unfasten == FAILED_UNFASTEN)
 			return can_be_unfasten
 		if(time)
-			to_chat(user, "<span class='notice'>You begin [anchored ? "un" : ""]securing [src]...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz [anchored ? "odczepiać" : "mocować"] [src]...</span>")
 		I.play_tool_sound(src, 50)
 		var/prev_anchored = anchored
 		//as long as we're the same anchored state and we're either on a floor or are anchored, toggle our anchored state
 		if(I.use_tool(src, user, time, extra_checks = CALLBACK(src, PROC_REF(unfasten_wrench_check), prev_anchored, user)))
-			to_chat(user, "<span class='notice'>You [anchored ? "un" : ""]secure [src].</span>")
+			to_chat(user, "<span class='notice'>[anchored ? "Odczepiasz" : "Mocujesz"] [src].</span>")
 			setAnchored(!anchored)
 			playsound(src, 'sound/items/deconstruct.ogg', 50, 1)
 			SEND_SIGNAL(src, COMSIG_OBJ_DEFAULT_UNFASTEN_WRENCH, anchored)
@@ -564,7 +596,7 @@ Class Procs:
 									B.moveToNullspace()
 							SEND_SIGNAL(W, COMSIG_TRY_STORAGE_INSERT, A, null, null, TRUE)
 							component_parts -= A
-							to_chat(user, "<span class='notice'>[capitalize(A.name)] replaced with [B.name].</span>")
+							to_chat(user, "<span class='notice'>Wymieniono [capitalize(A.name)] na [B.name].</span>")
 							shouldplaysound = 1 //Only play the sound when parts are actually replaced!
 							break
 			RefreshParts()
@@ -577,7 +609,7 @@ Class Procs:
 
 /obj/machinery/proc/display_parts(mob/user)
 	. = list()
-	. += "<span class='notice'>It contains the following parts:</span>"
+	. += "<span class='notice'>Zawiera następujące części:</span>"
 	for(var/obj/item/C in component_parts)
 		. += "<span class='notice'>[icon2html(C, user)] \A [C].</span>"
 	. = jointext(., "")
@@ -585,22 +617,22 @@ Class Procs:
 /obj/machinery/examine(mob/user)
 	. = ..()
 	if(machine_stat & BROKEN)
-		. += "<span class='notice'>It looks broken and non-functional.</span>"
+		. += "<span class='notice'>Wygląda na zepsuty i niesprawny.</span>"
 	if(!(resistance_flags & INDESTRUCTIBLE))
 		if(resistance_flags & ON_FIRE)
-			. += "<span class='warning'>It's on fire!</span>"
+			. += "<span class='warning'>Płonie!</span>"
 		var/healthpercent = (obj_integrity/max_integrity) * 100
 		switch(healthpercent)
 			if(50 to 99)
-				. += "It looks slightly damaged."
+				. += "Wygląda na lekko uszkodzony."
 			if(25 to 50)
-				. += "It appears heavily damaged."
+				. += "Wygląda na mocno uszkodzony."
 			if(0 to 25)
-				. += "<span class='warning'>It's falling apart!</span>"
+				. += "<span class='warning'>Rozpada się!</span>"
 	if(user.research_scanner && component_parts)
 		. += display_parts(user, TRUE)
 	if(return_blood_DNA())
-		. += "<span class='warning'>It's smeared with blood!</span>"
+		. += "<span class='warning'>Jest umazany krwią!</span>"
 
 //called on machinery construction (i.e from frame to machinery) but not on initialization
 /obj/machinery/proc/on_construction()
@@ -643,3 +675,8 @@ Class Procs:
 /obj/machinery/rust_heretic_act()
 	take_damage(500, BRUTE, "melee", 1)
 	return TRUE
+
+/obj/machinery/proc/update_last_used(mob/user)
+	if(isliving(user))
+		last_used_time = world.time
+		last_user_mobtype = user.type

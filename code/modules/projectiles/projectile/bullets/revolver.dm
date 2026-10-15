@@ -31,6 +31,7 @@
 	ricochet_decay_damage = 1
 
 /obj/item/projectile/bullet/c38/match/bouncy
+	bleed_force = BLEED_SCRATCH
 	name = ".38 Bouncy Rubber bullet"
 	damage = 10
 	stamina = 30
@@ -89,6 +90,7 @@
 		M.adjust_bodytemperature(((100-blocked)/100)*(temperature - M.bodytemperature))
 
 /obj/item/projectile/bullet/c38/mime
+	bleed_force = 0
 	name = "invisible .38 bullet"
 	icon_state = null
 	damage = 0
@@ -101,10 +103,10 @@
 		if(M.job == JOB_NAME_MIME)
 			var/defense = M.getarmor(CHEST, "bullet")
 			M.apply_damage(5, BRUTE, CHEST, defense)
-			M.visible_message("<span class='danger'>A bullet wound appears in [M]'s chest!</span>", \
-							"<span class='userdanger'>You get hit with a .38 bullet from a finger gun! Those hurt!...</span>")
+			M.visible_message("<span class='danger'>Na klatce piersiowej [M] pojawia się rana postrzałowa!</span>", \
+							"<span class='userdanger'>Trafia cię kula .38 z palca-pistoletu! Ale to boli!...</span>")
 		else
-			to_chat(M, "<span class='userdanger'>You get shot with the finger gun!</span>")
+			to_chat(M, "<span class='userdanger'>Trafia cię strzał z palca-pistoletu!</span>")
 
 /obj/item/projectile/bullet/c38/mime_lethal
 	name = "invisible .38 bullet"

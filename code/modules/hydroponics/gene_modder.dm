@@ -79,23 +79,23 @@
 
 	if(istype(I, /obj/item/seeds))
 		if (operation)
-			to_chat(user, "<span class='notice'>Please complete current operation.</span>")
+			to_chat(user, "<span class='notice'>Najpierw dokończ bieżącą operację.</span>")
 			return
 		if(!user.transferItemToLoc(I, src))
 			return
 		eject_seed()
 		insert_seed(I)
-		to_chat(user, "<span class='notice'>You add [I] to the machine.</span>")
+		to_chat(user, "<span class='notice'>Dodajesz [I] do maszyny.</span>")
 		interact(user)
 	else if(istype(I, /obj/item/disk/plantgene))
 		if (operation)
-			to_chat(user, "<span class='notice'>Please complete current operation.</span>")
+			to_chat(user, "<span class='notice'>Najpierw dokończ bieżącą operację.</span>")
 			return
 		if(!user.transferItemToLoc(I, src))
 			return
 		eject_disk()
 		disk = I
-		to_chat(user, "<span class='notice'>You add [I] to the machine.</span>")
+		to_chat(user, "<span class='notice'>Dodajesz [I] do maszyny.</span>")
 		interact(user)
 	else
 		..()
@@ -211,11 +211,11 @@
 	var/list/data = list()
 
 	data["stat_tooltips"] = list(
-		potency = "The 'power' of a plant. Generally effects the amount of reagent in a plant.",
-		yield = "The amount of crop yielded from a harvest",
+		potency = "„Moc” rośliny. Zwykle wpływa na ilość odczynników w roślinie.",
+		yield = "Liczba plonów zbieranych przy jednym zbiorze",
 		"production speed" = "The speed at which a plant grows. Lower is better.",
-		endurance = "The amount of health the plant has",
-		lifespan = "The time it takes before the plant starts dying of old age",
+		endurance = "Ilość zdrowia rośliny",
+		lifespan = "Czas, po którym roślina zaczyna umierać ze starości",
 		"weed vulnerability" = "The vulnerability of the plant to weeds growing",
 		"weed growth rate" = "The speed at which weeds can grow around the plant. The higher the faster they grow.",
 		)
@@ -248,7 +248,7 @@
 				return
 			eject_seed()
 			insert_seed(I)
-			to_chat(usr, "<span class='notice'>You add [I] to the machine.</span>")
+			to_chat(usr, "<span class='notice'>Dodajesz [I] do maszyny.</span>")
 			. = TRUE
 		else
 			. = eject_seed()
@@ -260,7 +260,7 @@
 				return
 			eject_disk()
 			disk = I
-			to_chat(usr, "<span class='notice'>You add [I] to the machine.</span>")
+			to_chat(usr, "<span class='notice'>Dodajesz [I] do maszyny.</span>")
 			. = TRUE
 		else
 			. = eject_disk()
@@ -458,10 +458,10 @@
 
 /obj/item/disk/plantgene/attack_self(mob/user)
 	read_only = !read_only
-	to_chat(user, "<span class='notice'>You flip the write-protect tab to [src.read_only ? "protected" : "unprotected"].</span>")
+	to_chat(user, "<span class='notice'>Przestawiasz zabezpieczenie przed zapisem na [src.read_only ? "chronione" : "niechronione"].</span>")
 
 /obj/item/disk/plantgene/examine(mob/user)
 	. = ..()
 	if(gene && (istype(gene, /datum/plant_gene/core/potency)))
-		. += "<span class='notice'>Percent is relative to potency, not maximum volume of the plant.</span>"
-	. += "The write-protect tab is set to [src.read_only ? "protected" : "unprotected"]."
+		. += "<span class='notice'>Procent jest względny wobec mocy, a nie maksymalnej objętości rośliny.</span>"
+	. += "Zabezpieczenie przed zapisem jest ustawione na [src.read_only ? "chronione" : "niechronione"]."

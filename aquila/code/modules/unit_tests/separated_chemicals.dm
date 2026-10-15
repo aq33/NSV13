@@ -20,7 +20,7 @@
 	// The glow-berry carries the gene, its parent berry doesn't
 	var/obj/item/seeds/glow_seed = allocate(/obj/item/seeds/berry/glow)
 	TEST_ASSERT(glow_seed.get_gene(/datum/plant_gene/trait/noreact), "Glow-berry seeds don't have Separated Chemicals")
-	var/obj/item/reagent_containers/food/snacks/grown/glow_berry = allocate(/obj/item/reagent_containers/food/snacks/grown/berries/glow)
+	var/obj/item/food/grown/glow_berry = allocate(/obj/item/food/grown/berries/glow)
 	TEST_ASSERT(glow_berry.reagents.flags & NO_REACT, "Glow-berries don't keep their reagents separated")
 	TEST_ASSERT(glow_berry.reagents.has_reagent(/datum/reagent/uranium), "Glow-berries lost their uranium")
 	TEST_ASSERT(glow_berry.reagents.has_reagent(/datum/reagent/iodine), "Glow-berries lost their iodine")
@@ -38,13 +38,13 @@
 	TEST_ASSERT(!berry_seed.get_gene(/datum/plant_gene/trait/noreact), "Adding the gene to a copy changed the original seed")
 
 	// Without the gene, the reagents react as they are added
-	var/obj/item/reagent_containers/food/snacks/grown/plain = grow(salt_parts, FALSE)
+	var/obj/item/food/grown/plain = grow(salt_parts, FALSE)
 	TEST_ASSERT(!(plain.reagents.flags & NO_REACT), "A plant without the gene has NO_REACT")
 	TEST_ASSERT_EQUAL(plain.reagents.get_reagent_amount(/datum/reagent/consumable/sodiumchloride), 18, "A plant without the gene didn't react")
 	TEST_ASSERT_EQUAL(plain.reagents.get_reagent_amount(/datum/reagent/water), 0, "A plant without the gene kept unreacted water")
 
 	// With the gene, they sit side by side
-	var/obj/item/reagent_containers/food/snacks/grown/separated = grow(salt_parts, TRUE)
+	var/obj/item/food/grown/separated = grow(salt_parts, TRUE)
 	TEST_ASSERT(separated.reagents.flags & NO_REACT, "A plant with the gene doesn't have NO_REACT")
 	TEST_ASSERT_EQUAL(separated.reagents.get_reagent_amount(/datum/reagent/consumable/sodiumchloride), 0, "A separated plant reacted before being squashed")
 	for(var/R in salt_parts)
@@ -69,7 +69,7 @@
 	TEST_ASSERT((locate(/obj/effect/decal/cleanable/food/salt) in T), "A separated plant splashed its reagents without reacting them")
 
 	// The reaction itself: the right products, volume kept, NO_REACT gone, and it doesn't react twice
-	var/obj/item/reagent_containers/food/snacks/grown/reacting = grow(salt_parts, TRUE)
+	var/obj/item/food/grown/reacting = grow(salt_parts, TRUE)
 	var/datum/plant_gene/trait/noreact/gene = reacting.seed.get_gene(/datum/plant_gene/trait/noreact)
 	gene.on_squashreact(reacting)
 	TEST_ASSERT(!(reacting.reagents.flags & NO_REACT), "NO_REACT stayed on after squashing")
@@ -79,13 +79,13 @@
 	TEST_ASSERT_EQUAL(reacting.reagents.get_reagent_amount(/datum/reagent/consumable/sodiumchloride), 18, "A second squash reacted again")
 
 	// One reagent: nothing to react with, nothing changes
-	var/obj/item/reagent_containers/food/snacks/grown/single = grow(list(/datum/reagent/water = 0.1), TRUE)
+	var/obj/item/food/grown/single = grow(list(/datum/reagent/water = 0.1), TRUE)
 	gene = single.seed.get_gene(/datum/plant_gene/trait/noreact)
 	gene.on_squashreact(single)
 	TEST_ASSERT_EQUAL(single.reagents.get_reagent_amount(/datum/reagent/water), 6, "A single-reagent separated plant changed when squashed")
 
 	// No reagents at all: squashing and mixing must not runtime
-	var/obj/item/reagent_containers/food/snacks/grown/empty = grow(list(), TRUE)
+	var/obj/item/food/grown/empty = grow(list(), TRUE)
 	TEST_ASSERT_EQUAL(empty.reagents.total_volume, 0, "An empty plant has reagents")
 	empty.squash(T)
 	empty.squashreact()
@@ -102,7 +102,7 @@
 	seed.reagents_add = reagents_add.Copy()
 	if(separated)
 		seed.genes += new /datum/plant_gene/trait/noreact
-	return allocate(/obj/item/reagent_containers/food/snacks/grown/berries, null, seed)
+	return allocate(/obj/item/food/grown/berries, null, seed)
 
 /datum/unit_test/separated_chemicals/proc/count_on(turf/T, type)
 	. = 0

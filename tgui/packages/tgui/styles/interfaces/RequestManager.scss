@@ -11,6 +11,8 @@
  $color-centcom: colors.bg(colors.$yellow) !default;
  $color-syndicate: colors.bg(colors.$red) !default;
  $color-nuke: colors.bg(colors.$yellow) !default;
+ $color-ert: colors.bg(colors.$blue) !default;
+ $color-crew-wake: colors.bg(colors.$teal) !default;
  $color-muted: colors.bg(colors.$label) !default;
  $color-header: colors.bg(colors.$label) !default;
  $background-color: base.$color-bg-section !default;
@@ -19,7 +21,9 @@
  .RequestManager__request_centcom,
  .RequestManager__request_nuke,
  .RequestManager__request_prayer,
- .RequestManager__request_syndicate {
+ .RequestManager__request_syndicate,
+ .RequestManager__request_response_team,
+ .RequestManager__request_crew_wake {
    margin-right: 0.5rem;
  }
  
@@ -37,6 +41,14 @@
  
  .RequestManager__request_nuke {
    color: $color-nuke;
+ }
+
+ .RequestManager__request_response_team {
+   color: $color-ert;
+ }
+
+ .RequestManager__request_crew_wake {
+   color: $color-crew-wake;
  }
  
  .RequestManager__header {

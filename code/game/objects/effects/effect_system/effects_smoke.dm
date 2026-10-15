@@ -170,7 +170,7 @@
 			if(!isnull(U.welded) && !U.welded) //must be an unwelded vent pump or vent scrubber.
 				U.welded = TRUE
 				U.update_icon()
-				U.visible_message("<span class='danger'>[U] was frozen shut!</span>")
+				U.visible_message("<span class='danger'>[U] zamarza i się blokuje!</span>")
 	for(var/mob/living/L in T)
 		L.ExtinguishMob()
 	for(var/obj/item/Item in T)
@@ -281,7 +281,7 @@
 			contained = "\[[contained]\]"
 
 		var/where = "[AREACOORD(location)]"
-		if(carry.my_atom.fingerprintslast)
+		if(carry.my_atom?.fingerprintslast)
 			var/mob/M = get_mob_by_ckey(carry.my_atom.fingerprintslast)
 			var/more = ""
 			if(M)
@@ -327,3 +327,11 @@
 	smoke.effect_type = smoke_type
 	smoke.set_up(range, location)
 	smoke.start()
+
+/obj/effect/particle_effect/smoke/chem/quick
+	lifetime = 2 //under lifetime 1, this kills itself the first time it processes, not working. i hate smoke code
+	opaque = FALSE
+	alpha = 100
+
+/datum/effect_system/smoke_spread/chem/quick
+	effect_type = /obj/effect/particle_effect/smoke/chem/quick

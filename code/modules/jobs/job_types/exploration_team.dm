@@ -6,7 +6,7 @@
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 3
-	supervisors = "the research director"
+	supervisors = JOB_NAME_RESEARCHDIRECTOR
 	minimal_player_age = 3
 	exp_requirements = 900
 	exp_type = EXP_TYPE_CREW
@@ -38,16 +38,16 @@
 	switch(exploration_job_id)
 		//Scientist is most important due to scanner
 		if(1)
-			to_chat(H, "<span class='notice big'>You are the exploration team's <span class'sciradio'>Scientist</span>!</span>")
-			to_chat(H, "<span class='notice'>Scan undiscovered creates to gain discovery research points!</span>")
+			to_chat(H, "<span class='notice big'>Jesteś <span class'sciradio'>naukowcem</span> zespołu eksploracyjnego!</span>")
+			to_chat(H, "<span class='notice'>Skanuj nieodkryte stworzenia, by zdobywać punkty badań odkryć!</span>")
 			outfit_override = /datum/outfit/job/exploration_crew/scientist
 		if(2)
-			to_chat(H, "<span class='notice big'>You are the exploration team's <span class'medradio'>Medical Doctor</span>!</span>")
-			to_chat(H, "<span class='notice'>Ensure your team's health by locating and healing injured team members.</span>")
+			to_chat(H, "<span class='notice big'>Jesteś <span class'medradio'>lekarzem</span> zespołu eksploracyjnego!</span>")
+			to_chat(H, "<span class='notice'>Dbaj o zdrowie zespołu, odnajdując i lecząc rannych członków.</span>")
 			outfit_override = /datum/outfit/job/exploration_crew/medic
 		if(3)
-			to_chat(H, "<span class='notice big'>You are the exploration team's <span class'engradio'>Engineer</span>!</span>")
-			to_chat(H, "<span class='notice'>Create entry points with your explosives and maintain the hull of your ship.</span>")
+			to_chat(H, "<span class='notice big'>Jesteś <span class'engradio'>inżynierem</span> zespołu eksploracyjnego!</span>")
+			to_chat(H, "<span class='notice'>Twórz punkty wejścia za pomocą materiałów wybuchowych i dbaj o kadłub swojego statku.</span>")
 			outfit_override = /datum/outfit/job/exploration_crew/engineer
 	. = ..(H, visualsOnly, announce, latejoin, outfit_override, preference_source)
 

@@ -10,7 +10,7 @@
     if(!linked_ckey && user.ckey)
         linked_ckey = user.ckey
         current_body = user
-        to_chat(user, "<b>You have achieved immortality</b>")
+        to_chat(user, "<b>Osiągasz nieśmiertelność</b>")
 
 /obj/item/clothing/neck/necklace/dope/cursed/equipped(mob/user, slot)
     . = ..()

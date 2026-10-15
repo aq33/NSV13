@@ -18,7 +18,7 @@
 	model = "ED-209"
 	bot_core_type = /obj/machinery/bot_core/secbot
 	window_id = "autoed209"
-	window_name = "Automatic Security Unit v2.6"
+	window_name = "Automatyczna Jednostka Ochrony v2.6"
 	allow_pai = 0
 	data_hud_type = DATA_HUD_SECURITY_ADVANCED
 	path_image_color = "#FF0000"
@@ -94,38 +94,30 @@
     return 0
 
 /mob/living/simple_animal/bot/ed209/set_custom_texts()
-	text_hack = "You disable [name]'s combat inhibitor."
-	text_dehack = "You restore [name]'s combat inhibitor."
-	text_dehack_fail = "[name] ignores your attempts to restrict him!"
+	text_hack = "Wyłączasz inhibitor bojowy [name]."
+	text_dehack = "Przywracasz inhibitor bojowy [name]."
+	text_dehack_fail = "[name] ignoruje twoje próby ograniczenia go!"
 
 /mob/living/simple_animal/bot/ed209/get_controls(mob/user)
 	var/dat
 	dat += hack(user)
 	dat += showpai(user)
 	dat += text({"
-<TT><B>Security Unit v2.6 controls</B></TT><BR><BR>
-Status: []<BR>
-Behaviour controls are [locked ? "locked" : "unlocked"]<BR>
-Maintenance panel panel is [open ? "opened" : "closed"]<BR>"},
+<TT><B>Sterowanie Jednostką Ochrony v2.6</B></TT><BR><BR>\nStan: []<BR>\nSterowanie zachowaniem jest [locked ? "zablokowane" : "odblokowane"]<BR>\nPanel serwisowy jest [open ? "otwarty" : "zamknięty"]<BR>"},
 
-"<A href='?src=[REF(src)];power=1'>[on ? "On" : "Off"]</A>" )
+"<A href='byond://?src=[REF(src)];power=1'>[on ? "On" : "Off"]</A>" )
 
 	if(!locked || issilicon(user)|| IsAdminGhost(user))
 		if(!lasercolor)
 			dat += text({"<BR>
-Arrest Unidentifiable Persons: []<BR>
-Arrest for Unauthorized Weapons: []<BR>
-Arrest for Warrant: []<BR>
-Operating Mode: []<BR>
-Report Arrests[]<BR>
-Auto Patrol[]"},
+Aresztuj niezidentyfikowane osoby: []<BR>\nAresztuj za nieautoryzowaną broń: []<BR>\nAresztuj na podstawie nakazu: []<BR>\nTryb pracy: []<BR>\nZgłaszaj aresztowania[]<BR>\nAutopatrol[]"},
 
-"<A href='?src=[REF(src)];operation=idcheck'>[idcheck ? "Yes" : "No"]</A>",
-"<A href='?src=[REF(src)];operation=weaponscheck'>[weaponscheck ? "Yes" : "No"]</A>",
-"<A href='?src=[REF(src)];operation=ignorerec'>[check_records ? "Yes" : "No"]</A>",
-"<A href='?src=[REF(src)];operation=switchmode'>[arrest_type ? "Detain" : "Arrest"]</A>",
-"<A href='?src=[REF(src)];operation=declarearrests'>[declare_arrests ? "Yes" : "No"]</A>",
-"<A href='?src=[REF(src)];operation=patrol'>[auto_patrol ? "On" : "Off"]</A>" )
+"<A href='byond://?src=[REF(src)];operation=idcheck'>[idcheck ? "Yes" : "No"]</A>",
+"<A href='byond://?src=[REF(src)];operation=weaponscheck'>[weaponscheck ? "Yes" : "No"]</A>",
+"<A href='byond://?src=[REF(src)];operation=ignorerec'>[check_records ? "Yes" : "No"]</A>",
+"<A href='byond://?src=[REF(src)];operation=switchmode'>[arrest_type ? "Detain" : "Arrest"]</A>",
+"<A href='byond://?src=[REF(src)];operation=declarearrests'>[declare_arrests ? "Yes" : "No"]</A>",
+"<A href='byond://?src=[REF(src)];operation=patrol'>[auto_patrol ? "On" : "Off"]</A>" )
 
 	return dat
 
@@ -179,13 +171,13 @@ Auto Patrol[]"},
 		mode = BOT_HUNT
 
 /mob/living/simple_animal/bot/ed209/attack_hand(mob/living/carbon/human/H)
-	if(H.a_intent == INTENT_HARM)
+	if(H.combat_mode)
 		retaliate(H)
 	return ..()
 
-/mob/living/simple_animal/bot/ed209/attackby(obj/item/W, mob/user, params)
+/mob/living/simple_animal/bot/ed209/attackby(obj/item/W, mob/living/user, params)
 	..()
-	if(W.tool_behaviour == TOOL_WELDER && user.a_intent != INTENT_HARM) // Any intent but harm will heal, so we shouldn't get angry.
+	if(W.tool_behaviour == TOOL_WELDER && !user.combat_mode) // Any intent but harm will heal, so we shouldn't get angry.
 		return
 	if(W.tool_behaviour != TOOL_SCREWDRIVER && (!target)) // Added check for welding tool to fix #2432. Welding tool behavior is handled in superclass.
 		if(W.force && W.damtype != STAMINA)//If force is non-zero and damage type isn't stamina.
@@ -197,9 +189,9 @@ Auto Patrol[]"},
 	..()
 	if(emagged == 2)
 		if(user)
-			to_chat(user, "<span class='warning'>You short out [src]'s target assessment circuits.</span>")
+			to_chat(user, "<span class='warning'>Zwierasz obwody oceny celów [src].</span>")
 			oldtarget_name = user.name
-		audible_message("<span class='danger'>[src] buzzes oddly!</span>")
+		audible_message("<span class='danger'>[src] dziwnie brzęczy!</span>")
 		declare_arrests = FALSE
 		icon_state = "[lasercolor]ed209[on]"
 		set_weapon()
@@ -357,9 +349,9 @@ Auto Patrol[]"},
 		else if(threatlevel >= 4)
 			target = C
 			oldtarget_name = C.name
-			speak("Level [threatlevel] infraction alert!")
+			speak("Alarm: wykroczenie poziomu [threatlevel]!")
 			playsound(src, pick('sound/voice/ed209_20sec.ogg', 'sound/voice/edplaceholder.ogg'), 50, FALSE)
-			visible_message("<b>[src]</b> points at [C.name]!")
+			visible_message("<b>[src]</b> wskazuje na [C.name]!")
 			mode = BOT_HUNT
 			spawn(0)
 				handle_automated_action()	// ensure bot quickly responds to a perp
@@ -374,7 +366,7 @@ Auto Patrol[]"},
 
 /mob/living/simple_animal/bot/ed209/explode()
 	SSmove_manager.stop_looping(src)
-	visible_message("<span class='boldannounce'>[src] blows apart!</span>")
+	visible_message("<span class='boldannounce'>[src] rozpada się na kawałki!</span>")
 	var/atom/Tsec = drop_location()
 
 	var/obj/item/bot_assembly/ed209/Sa = new (Tsec)
@@ -563,15 +555,15 @@ Auto Patrol[]"},
 	log_combat(src,C,"stunned")
 	if(declare_arrests)
 		var/area/location = get_area(src)
-		speak("[arrest_type ? "Detaining" : "Arresting"] level [threat] scumbag <b>[C]</b> in [location].", radio_channel)
-	C.visible_message("<span class='danger'>[src] has stunned [C]!</span>",\
-							"<span class='userdanger'>[src] has stunned you!</span>")
+		speak("[arrest_type ? "Zatrzymuję" : "Aresztuję"] szumowinę poziomu [threat] <b>[C]</b> w [location].", radio_channel)
+	C.visible_message("<span class='danger'>[src] ogłusza [C]!</span>",\
+							"<span class='userdanger'>[src] ogłusza cię!</span>")
 
 /mob/living/simple_animal/bot/ed209/proc/cuff(mob/living/carbon/C)
 	mode = BOT_ARREST
 	playsound(src, 'sound/weapons/cablecuff.ogg', 30, TRUE, -2)
-	C.visible_message("<span class='danger'>[src] is trying to put zipties on [C]!</span>",\
-						"<span class='userdanger'>[src] is trying to put zipties on you!</span>")
+	C.visible_message("<span class='danger'>[src] próbuje założyć opaski zaciskowe [C]!</span>",\
+						"<span class='userdanger'>[src] próbuje założyć ci opaski zaciskowe!</span>")
 	addtimer(CALLBACK(src, PROC_REF(attempt_handcuff), C), 60)
 
 /mob/living/simple_animal/bot/ed209/proc/attempt_handcuff(mob/living/carbon/C)

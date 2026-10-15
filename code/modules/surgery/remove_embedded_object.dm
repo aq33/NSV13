@@ -15,31 +15,36 @@
 /datum/surgery_step/remove_object/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	L = surgery.operated_bodypart
 	if(L)
-		user.visible_message("[user] looks for objects embedded in [target]'s [parse_zone(user.zone_selected)].", "<span class='notice'>You look for objects embedded in [target]'s [parse_zone(user.zone_selected)]...</span>")
-		display_results(user, target, "<span class='notice'>You look for objects embedded in [target]'s [parse_zone(user.zone_selected)]...</span>",
-			"[user] looks for objects embedded in [target]'s [parse_zone(user.zone_selected)].",
-			"[user] looks for something in [target]'s [parse_zone(user.zone_selected)].")
+		user.visible_message("[user] szuka ciał obcych w ciele [target] ([strefa_pl(user.zone_selected)]).", "<span class='notice'>Szukasz ciał obcych w ciele [target] ([strefa_pl(user.zone_selected)])...</span>")
+		display_results(user, target, "<span class='notice'>Szukasz ciał obcych w ciele [target] ([strefa_pl(user.zone_selected)])...</span>",
+			"[user] szuka ciał obcych w ciele [target] ([strefa_pl(user.zone_selected)]).",
+			"[user] szuka czegoś w ciele [target] ([strefa_pl(user.zone_selected)]).")
 	else
-		user.visible_message("[user] looks for [target]'s [parse_zone(user.zone_selected)].", "<span class='notice'>You look for [target]'s [parse_zone(user.zone_selected)]...</span>")
+		user.visible_message("[user] szuka u [target] części ciała: [strefa_pl(user.zone_selected)].", "<span class='notice'>Szukasz u [target] części ciała: [strefa_pl(user.zone_selected)]...</span>")
 
 
 /datum/surgery_step/remove_object/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	if(L)
 		if(ishuman(target))
 			var/mob/living/carbon/human/H = target
+			H.cauterise_wounds()
 			var/objects = 0
 			for(var/obj/item/I in L.embedded_objects)
 				objects++
 				H.remove_embedded_object(I)
+			// AQ EDIT - fragmenty pocisków (balistyka), aquila/code/modules/detectivework/ballistics.dm
+			for(var/obj/item/bullet_fragment/fragment in L)
+				objects++
+				fragment.forceMove(H.drop_location())
 
 			if(objects > 0)
-				display_results(user, target, "<span class='notice'>You successfully remove [objects] objects from [H]'s [L.name].</span>",
-					"[user] successfully removes [objects] objects from [H]'s [L]!",
-					"[user] successfully removes [objects] objects from [H]'s [L]!")
+				display_results(user, target, "<span class='notice'>Pomyślnie usuwasz ciała obce ([objects]) z [H] ([L.name]).</span>",
+					"[user] pomyślnie usuwa ciała obce ([objects]) z [H] ([L])!",
+					"[user] pomyślnie usuwa ciała obce ([objects]) z [H] ([L])!")
 			else
-				to_chat(user, "<span class='warning'>You find no objects embedded in [H]'s [L]!</span>")
+				to_chat(user, "<span class='warning'>Nie znajdujesz żadnych ciał obcych w [H] ([L])!</span>")
 
 	else
-		to_chat(user, "<span class='warning'>You can't find [target]'s [parse_zone(user.zone_selected)], let alone any objects embedded in it!</span>")
+		to_chat(user, "<span class='warning'>Nie możesz znaleźć u [target] części ciała ([strefa_pl(user.zone_selected)]), a co dopiero tkwiących w niej ciał obcych!</span>")
 
 	return 1

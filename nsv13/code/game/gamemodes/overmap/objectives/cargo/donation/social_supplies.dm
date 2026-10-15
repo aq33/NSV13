@@ -6,10 +6,10 @@
 /datum/overmap_objective/cargo/donation/social_supplies/New()
 	// Pick a cake
 	var/list/picked = pick( list(
-		/obj/item/reagent_containers/food/snacks/store/cake/plain,
-		/obj/item/reagent_containers/food/snacks/store/cake/birthday,
-		/obj/item/reagent_containers/food/snacks/store/cake/holy_cake,
-		/obj/item/reagent_containers/food/snacks/store/cake/pound_cake,
+		/obj/item/food/cake/plain,
+		/obj/item/food/cake/birthday,
+		/obj/item/food/cake/holy_cake,
+		/obj/item/food/cake/pound_cake,
 	) )
 	var/datum/freight_type/single/object/cake = new /datum/freight_type/single/object( picked )
 
@@ -30,17 +30,17 @@
 	// Setup presents
 	var/datum/freight_type/single/object/individually_wrapped_presents = new /datum/freight_type/single/object( /obj )
 	individually_wrapped_presents.target = 3
-	individually_wrapped_presents.item_name = "any item"
+	individually_wrapped_presents.item_name = "dowolny przedmiot"
 	individually_wrapped_presents.approve_inner_contents = TRUE
 	individually_wrapped_presents.require_loc = /obj/item/small_delivery
-	individually_wrapped_presents.require_loc_name = "a wrapped parcel"
+	individually_wrapped_presents.require_loc_name = "owinięta paczka"
 
 	var/datum/freight_type/single/object/crate_with_presents = new /datum/freight_type/single/object( /obj )
 	crate_with_presents.target = 3
-	crate_with_presents.item_name = "any item"
+	crate_with_presents.item_name = "dowolny przedmiot"
 	crate_with_presents.approve_inner_contents = TRUE
 	crate_with_presents.require_loc = /obj/structure/big_delivery
-	crate_with_presents.require_loc_name = "a wrapped crate"
+	crate_with_presents.require_loc_name = "owinięta skrzynia"
 	// I hate social supplies i HATE SOCIAL SUPPLIES
 
 	freight_type_group = new( list(

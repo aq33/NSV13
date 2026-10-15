@@ -2383,7 +2383,7 @@
 /area/science/robotics/pvp)
 "gp" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/mint,
+/obj/item/food/mint,
 /turf/open/floor/plasteel/cafeteria,
 /area/crew_quarters/cafeteria/pvp)
 "gq" = (
@@ -3457,7 +3457,7 @@
 /area/crew_quarters/heads/hos/pvp)
 "jA" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/machinery/holopad,
+/obj/machinery/holopad/secure,
 /turf/open/floor/carpet,
 /area/crew_quarters/heads/hos/pvp)
 "jB" = (
@@ -7156,7 +7156,7 @@
 	dir = 1
 	},
 /obj/item/paper{
-	default_raw_text = "You know, some people say we never abandoned the Astraeus, and that it was always there waiting to be needed again. Thank you for your service, ye most faithful of all ships.";
+	default_raw_text = "Wiesz, niektórzy mówią, że nigdy nie porzuciliśmy Astraeusa i że zawsze tu był, czekając, aż znów będzie potrzebny. Dziękujemy za służbę, najwierniejszy ze wszystkich statków.";
 	name = "The legacy"
 	},
 /turf/open/floor/plating,
@@ -9355,7 +9355,7 @@
 /obj/item/stock_parts/cell,
 /obj/item/assembly/prox_sensor,
 /obj/item/paper/fluff{
-	default_raw_text = "IF YOU MAKE A BORG, BE SURE TO EMAG IT! We're using stolen NT borg tech so it'll have their stupid laws. - Steve";
+	default_raw_text = "JEŚLI ZROBISZ BORGA, KONIECZNIE GO ZEMAGUJ! Używamy kradzionej technologii borgów NT, więc będzie miał ich głupie prawa. - Steve";
 	name = "Note from Steve the scientist"
 	},
 /obj/machinery/ecto_sniffer,
@@ -16188,7 +16188,7 @@
 /obj/structure/table/reinforced,
 /obj/item/modular_computer/tablet/preset/advanced,
 /obj/item/paper{
-	default_raw_text = "If your coolant temperature gets too high, try reducing your coolant in / outlet pumps to a lower kPa (800 works nicely). We didn't have the space to fit a full coolant loop - Engineer Gregg";
+	default_raw_text = "Jeśli temperatura chłodziwa robi się za wysoka, spróbuj zmniejszyć ciśnienie na pompach wlotu/wylotu chłodziwa (800 kPa działa dobrze). Nie mieliśmy miejsca na pełną pętlę chłodzenia - inżynier Gregg";
 	name = "In case of inadequate cooling..."
 	},
 /turf/open/floor/engine,

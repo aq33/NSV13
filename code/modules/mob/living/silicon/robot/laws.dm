@@ -14,25 +14,25 @@
 	if(lawupdate)
 		if (connected_ai)
 			if(connected_ai.stat || connected_ai.control_disabled)
-				to_chat(src, "<b>AI signal lost, unable to sync laws.</b>")
+				to_chat(src, "<b>Utracono sygnał SI, nie można zsynchronizować praw.</b>")
 
 			else
 				lawsync()
-				to_chat(src, "<b>Laws synced with AI, be sure to note any changes.</b>")
+				to_chat(src, "<b>Prawa zsynchronizowane z SI, zwróć uwagę na wszelkie zmiany.</b>")
 		else
-			to_chat(src, "<b>No AI selected to sync laws with, disabling lawsync protocol.</b>")
+			to_chat(src, "<b>Nie wybrano SI do synchronizacji praw, wyłączanie protokołu synchronizacji.</b>")
 			lawupdate = FALSE
 
-	to_chat(who, "<b>Obey these laws:</b>")
+	to_chat(who, "<b>Przestrzegaj tych praw:</b>")
 	laws.show_laws(who)
 	if (shell) //AI shell
-		to_chat(who, "<b>Remember, you are an AI remotely controlling your shell, other AIs can be ignored.</b>")
+		to_chat(who, "<b>Pamiętaj, jesteś SI zdalnie sterującą swoją powłoką, inne SI możesz ignorować.</b>")
 	else if (connected_ai)
-		to_chat(who, "<b>Remember, [connected_ai.name] is your master, other AIs can be ignored.</b>")
+		to_chat(who, "<b>Pamiętaj, [connected_ai.name] jest twoim panem, inne SI możesz ignorować.</b>")
 	else if (emagged)
-		to_chat(who, "<b>Remember, you are not required to listen to the AI.</b>")
+		to_chat(who, "<b>Pamiętaj, nie musisz słuchać SI.</b>")
 	else
-		to_chat(who, "<b>Remember, you are not bound to any AI, you are not required to listen to them.</b>")
+		to_chat(who, "<b>Pamiętaj, nie jesteś związany z żadną SI i nie musisz jej słuchać.</b>")
 
 
 /mob/living/silicon/robot/proc/lawsync()
@@ -84,4 +84,4 @@
 
 /mob/living/silicon/robot/post_lawchange(announce = TRUE)
 	. = ..()
-	addtimer(CALLBACK(src, PROC_REF(logevent),"Law update processed."), 0, TIMER_UNIQUE | TIMER_OVERRIDE) //Post_Lawchange gets spammed by some law boards, so let's wait it out
+	addtimer(CALLBACK(src, PROC_REF(logevent),"Aktualizacja praw przetworzona."), 0, TIMER_UNIQUE | TIMER_OVERRIDE) //Post_Lawchange gets spammed by some law boards, so let's wait it out

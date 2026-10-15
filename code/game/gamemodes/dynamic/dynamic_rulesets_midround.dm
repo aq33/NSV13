@@ -111,7 +111,7 @@
 	message_admins("Polling [possible_volunteers.len] players to apply for the [name] ruleset.")
 	log_game("DYNAMIC: Polling [possible_volunteers.len] players to apply for the [name] ruleset.")
 
-	candidates = pollGhostCandidates("The mode is looking for volunteers to become [initial(antag_datum.name)] for [name]", initial(antag_datum.banning_key), role_preference, poll_time = 300)
+	candidates = pollGhostCandidates("Tryb szuka ochotników na rolę [initial(antag_datum.name)] ([name])", initial(antag_datum.banning_key), role_preference, poll_time = 300)
 
 	if(!length(candidates))
 		message_admins("The ruleset [name] received no applications.")
@@ -152,7 +152,7 @@
 
 		finish_setup(new_character, i)
 		assigned += applicant
-		notify_ghosts("[applicant.name] has been picked for the ruleset [name]!", source = new_character, action = NOTIFY_ORBIT, header="Something Interesting!")
+		notify_ghosts("[applicant.name] zostaje wybrany do zestawu zasad [name]!", source = new_character, action = NOTIFY_ORBIT, header="Coś ciekawego!")
 	// No one got the role
 	if(!length(assigned))
 		message_admins("No players were eligible for the ruleset [name] - the previous applicants were revived/left and could no longer take the role.")
@@ -274,7 +274,7 @@
 	M.mind.special_role = "Malf AI"
 	M.mind.add_antag_datum(AI)
 	if(prob(ion_announce))
-		priority_announce("Ion storm detected near the station. Please check all AI-controlled equipment for errors.", "Anomaly Alert", ANNOUNCER_IONSTORM)
+		priority_announce("W pobliżu statku wykryto burzę jonową. Sprawdźcie, czy sprzęt sterowany przez SI działa poprawnie.", "Alarm - anomalia", ANNOUNCER_IONSTORM)
 		if(prob(removeDontImproveChance))
 			M.replace_random_law(generate_ion_law(), list(LAW_INHERENT, LAW_SUPPLIED, LAW_ION))
 		else
@@ -429,52 +429,7 @@
 	log_game("DYNAMIC: [key_name(new_xeno)] was spawned as an alien by the midround ruleset.")
 	return new_xeno
 
-//////////////////////////////////////////////
-//                                          //
-//           NIGHTMARE (GHOST)              //
-//                                          //
-//////////////////////////////////////////////
-
-/datum/dynamic_ruleset/midround/from_ghosts/nightmare
-	name = "Nightmare"
-	midround_ruleset_style = MIDROUND_RULESET_STYLE_LIGHT
-	antag_datum = /datum/antagonist/nightmare
-	role_preference = /datum/role_preference/midround_ghost/space_dragon
-	enemy_roles = list(JOB_NAME_SECURITYOFFICER, JOB_NAME_DETECTIVE, JOB_NAME_WARDEN, JOB_NAME_HEADOFSECURITY, JOB_NAME_CAPTAIN)
-	required_enemies = list(2,2,1,1,1,1,1,0,0,0)
-	required_candidates = 1
-	weight = 3
-	cost = 5
-	minimum_players = 15
-	repeatable = TRUE
-	var/list/spawn_locs = list()
-
-/datum/dynamic_ruleset/midround/from_ghosts/nightmare/execute()
-	for(var/X in GLOB.xeno_spawn)
-		var/turf/T = X
-		var/light_amount = T.get_lumcount()
-		if(light_amount < SHADOW_SPECIES_LIGHT_THRESHOLD)
-			spawn_locs += T
-	if(!length(spawn_locs))
-		log_game("DYNAMIC: [ruletype] ruleset [name] execute failed due to no valid spawn locations.")
-		return FALSE
-	. = ..()
-
-/datum/dynamic_ruleset/midround/from_ghosts/nightmare/generate_ruleset_body(mob/applicant)
-	var/datum/mind/player_mind = new /datum/mind(applicant.key)
-	player_mind.active = TRUE
-
-	var/mob/living/carbon/human/S = new (pick(spawn_locs))
-	player_mind.transfer_to(S)
-	player_mind.assigned_role = "Nightmare"
-	player_mind.special_role = "Nightmare"
-	player_mind.add_antag_datum(/datum/antagonist/nightmare)
-	S.set_species(/datum/species/shadow/nightmare)
-
-	playsound(S, 'sound/magic/ethereal_exit.ogg', 50, TRUE, -1)
-	message_admins("[ADMIN_LOOKUPFLW(S)] has been made into a Nightmare by the midround ruleset.")
-	log_game("DYNAMIC: [key_name(S)] was spawned as a Nightmare by the midround ruleset.")
-	return S
+// AQUILA EDIT - ruleset koszmara (NIGHTMARE (GHOST)) zastąpiony demonem cieni: aquila/code/game/dynamic/dynamic_rulesets_midround_shadow_demon.dm
 
 //////////////////////////////////////////////
 //                                          //
@@ -517,7 +472,7 @@
 	playsound(S, 'sound/magic/ethereal_exit.ogg', 50, TRUE, -1)
 	message_admins("[ADMIN_LOOKUPFLW(S)] has been made into a Space Dragon by the midround ruleset.")
 	log_game("DYNAMIC: [key_name(S)] was spawned as a Space Dragon by the midround ruleset.")
-	priority_announce("It appears a lifeform with magical traces is approaching [station_name()], please stand-by.", "Lifesign Alert")
+	priority_announce("Wygląda na to, że do [station_name()] zbliża się forma życia o magicznych śladach, prosimy czekać na dalsze informacje.", "Alarm - formy życia")
 	return S
 
 //////////////////////////////////////////////

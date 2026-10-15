@@ -3,9 +3,7 @@
 	config_tag = "clownops"
 
 	announce_span = "danger"
-	announce_text = "Clown empire forces are approaching the station in an attempt to HONK it!\n\
-	<span class='danger'>Operatives</span>: Secure the nuclear authentication disk and use your bananium fission explosive to HONK the station.\n\
-	<span class='notice'>Crew</span>: Defend the nuclear authentication disk and ensure that it leaves with you on the emergency shuttle."
+	announce_text = "Siły imperium klaunów zbliżają się do stacji, próbując ją ZAHONKOWAĆ!\n<span class='danger'>Operatorzy</span>: zdobądźcie dysk uwierzytelniania jądrowego i użyjcie bananiumowego ładunku rozszczepienia, by ZAHONKOWAĆ stację.\n<span class='notice'>Załoga</span>: brońcie dysku uwierzytelniania jądrowego i dopilnujcie, by odleciał z wami promem ewakuacyjnym."
 
 	operative_antag_datum_type = /datum/antagonist/nukeop/clownop
 	leader_antag_datum_type = /datum/antagonist/nukeop/leader/clownop

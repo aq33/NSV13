@@ -284,10 +284,10 @@ SUBSYSTEM_DEF(overmap_mode)
 	- Communication
 	*/
 
-	var/text = "<b>[GLOB.station_name]</b>, <br>You have been assigned the following mission by <b>[capitalize(mode.starting_faction)]</b> and are expected to complete it with all due haste. Please ensure your crew is properly informed of your objectives and delegate tasks accordingly."
+	var/text = "<b>[GLOB.station_name]</b>, <br>Frakcja <b>[capitalize(mode.starting_faction)]</b> przydzieliła wam następującą misję i oczekuje jej jak najszybszego wykonania. Dopilnujcie, by załoga znała cele, i odpowiednio rozdzielcie zadania."
 	var/static/title = ""
 	if(!announced_objectives)
-		title += "Mission Briefing: [random_capital_letter()][random_capital_letter()][random_capital_letter()]-[GLOB.round_id]"
+		title += "Odprawa misji: [random_capital_letter()][random_capital_letter()][random_capital_letter()]-[GLOB.round_id]"
 	else //Add an extension if this isn't roundstart
 		title += "-Ext."
 
@@ -406,7 +406,7 @@ SUBSYSTEM_DEF(overmap_mode)
 	var/debug_mode = FALSE 									//Debug var, for gamemode-specific testing
 
 	//Reminder messages
-	var/reminder_origin = "Naval Command"
+	var/reminder_origin = "Dowództwo Floty"
 	var/reminder_one = "Tu Centrala do wszystkich statków przydzielonych do patrolu Gromady Rosetta, prosimy kontynuować misję"
 	var/reminder_two = "Tu Centrala do wszystkich statków przydzielonych do patrolu Gromady Rosetta, wasza nieaktywność została zauważona i nie będzie tolerowana."
 	var/reminder_three = "Tu Centrala do wszystkich statków przydzielonych do patrolu Gromady Rosetta, nie płacimy wam za dryfowanie w kosmosie podczas wykonywania przydzielonej misji"
@@ -511,14 +511,14 @@ SUBSYSTEM_DEF(overmap_mode)
 	if(SSovermap_mode.admin_override)
 		message_admins("[GLOB.station_name] has completed its objectives but round end has been overriden by admin intervention")
 		return
-	if(SSvote.mode == "Press On Or Return Home?") // We're still voting
+	if(istype(SSvote.current_vote, /datum/vote/round_extension)) // We're still voting // AQ EDIT - vote datums
 		return
 
 	var/datum/star_system/S = SSstar_system.return_system
 	S.hidden = FALSE
 	if(!SSovermap_mode.round_extended)	//If we haven't yet extended the round, let us vote!
 		priority_announce("Misja wykonana - głosowanie w toku") //TEMP get better words
-		SSvote.initiate_vote("Press On Or Return Home?", "Centcomm", forced=TRUE, popup=FALSE)
+		SSvote.initiate_vote(/datum/vote/round_extension, "Centcomm", forced = TRUE) // AQ EDIT - vote datums
 	else	//Begin FTL return jump
 		var/obj/structure/overmap/OM = SSstar_system.find_main_overmap()
 		if(!length(OM.current_system?.enemies_in_system))
@@ -526,7 +526,7 @@ SUBSYSTEM_DEF(overmap_mode)
 			OM.force_return_jump()
 
 /datum/overmap_gamemode/proc/defeat() //Override this if defeat is to be called based on an objective
-	priority_announce("Całkowita porażka misji - Oczekujcie na sterylizacje statku z materii żywej")
+	priority_announce("Całkowita porażka misji - Oczekujcie na sterylizację statku z materii żywej")
 	SSticker.mode.check_finished(TRUE)
 	SSticker.force_ending = TRUE
 
@@ -594,7 +594,7 @@ SUBSYSTEM_DEF(overmap_mode)
 
 /datum/overmap_mode_controller/ui_interact(mob/user, datum/tgui/ui)
 	if(!SSovermap_mode.initialized)
-		to_chat(user, "<span class='notice'>You can't open the overmap gamemode controller yet, wait for it to initialize!</span>")
+		to_chat(user, "<span class='notice'>Nie możesz jeszcze otworzyć kontrolera trybu overmapy, zaczekaj na jego inicjalizację!</span>")
 		return FALSE //We don't have anything to control yet
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -631,7 +631,7 @@ SUBSYSTEM_DEF(overmap_mode)
 				return
 			var/newmode = SSovermap_mode.force_mode(S)
 			if(!newmode)
-				to_chat(usr, "<span class='notice'>You can't change the gamemode right now!</span>")
+				to_chat(usr, "<span class='notice'>Nie możesz teraz zmienić trybu gry!</span>")
 			else
 				message_admins("[key_name_admin(usr)] has changed the overmap gamemode to [newmode]")
 			return TRUE
@@ -641,7 +641,7 @@ SUBSYSTEM_DEF(overmap_mode)
 			if(isnull(S))
 				return
 			var/extra
-			if(ispath(S,/datum/overmap_objective/clear_system))
+			if(ispath(S,/datum/overmap_objective/clear_system) || ispath(S,/datum/overmap_objective/board_station))
 				extra = input(usr, "Select a target system", "Select System") as null|anything in SSstar_system.systems
 			SSovermap_mode.mode.objectives += new S(extra)
 			SSovermap_mode.instance_objectives()
@@ -722,7 +722,7 @@ SUBSYSTEM_DEF(overmap_mode)
 
 			//Choose ghost logic
 			var/target_ghost
-			switch(alert(usr, "Who is going to pilot this ghost ship?", "Pilot Select Format", "Open", "Choose", "Cancel"))
+			switch(alert(usr, "Kto będzie pilotował ten okręt widmo?", "Format wyboru pilota", "Open", "Choose", "Cancel"))
 				if("Cancel")
 					return
 				if("Open")
@@ -733,7 +733,7 @@ SUBSYSTEM_DEF(overmap_mode)
 					else
 						return
 				if("Choose")
-					target_ghost = input(usr, "Select player to pilot ghost ship:", "Select Player") as null|anything in GLOB.clients
+					target_ghost = input(usr, "Wybierz gracza, który będzie pilotował okręt widmo:", "Wybierz gracza") as null|anything in GLOB.clients
 
 			//Now the actual spawning
 			var/obj/structure/overmap/GS = new target_ship(target_location)

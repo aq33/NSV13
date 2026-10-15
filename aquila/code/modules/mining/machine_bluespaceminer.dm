@@ -35,15 +35,15 @@
 /obj/machinery/mineral/bluespace_miner/multitool_act(mob/living/user, obj/item/multitool/M)
 	if(istype(M))
 		if(!M.buffer || !istype(M.buffer, /obj/machinery/ore_silo))
-			to_chat(user, "<span class='warning'>You need to multitool the ore silo first.</span>")
+			to_chat(user, "<span class='warning'>Najpierw musisz podłączyć silos rudy multitoolem.</span>")
 			return FALSE
 
 /obj/machinery/mineral/bluespace_miner/examine(mob/user)
 	. = ..()
 	if(!materials?.silo)
-		. += "<span class='notice'>No ore silo connected. Use a multi-tool to link an ore silo to this machine.</span>"
+		. += "<span class='notice'>Nie podłączono silosu rudy. Użyj multitoola, by połączyć silos z tą maszyną.</span>"
 	else if(materials?.on_hold())
-		. += "<span class='warning'>Ore silo access is on hold, please contact the quartermaster.</span>"
+		. += "<span class='warning'>Dostęp do silosu rudy jest wstrzymany, skontaktuj się z kwatermistrzem.</span>"
 
 /obj/machinery/mineral/bluespace_miner/process()
 	if(!materials?.silo || materials?.on_hold())

@@ -12,7 +12,7 @@
 	miss_sound = 'sound/weapons/slashmiss.ogg'
 	burnmod = 1.25
 	heatmod = 1.5
-	meat = /obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/plant
+	meat = /obj/item/food/meat/slab/human/mutant/plant
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
 	species_language_holder = /datum/language_holder/plant
 	ass_image = 'icons/ass/asspodperson.png' //NSV13
@@ -56,7 +56,7 @@
 			if(prob(15))
 				H.rad_act(rand(30,80))
 				H.Paralyze(100)
-				H.visible_message("<span class='warning'>[H] writhes in pain as [H.p_their()] vacuoles boil.</span>", "<span class='userdanger'>You writhe in pain as your vacuoles boil!</span>", "<span class='italics'>You hear the crunching of leaves.</span>")
+				H.visible_message("<span class='warning'>[H] wije się z bólu, gdy jego wakuole się gotują.</span>", "<span class='userdanger'>Wijesz się z bólu, gdy twoje wakuole się gotują!</span>", "<span class='italics'>Słyszysz chrzęst liści.</span>")
 				if(prob(80))
 					H.easy_randmut(NEGATIVE+MINOR_NEGATIVE)
 				else
@@ -65,6 +65,6 @@
 				H.domutcheck()
 			else
 				H.adjustFireLoss(rand(5,15))
-				H.show_message("<span class='userdanger'>The radiation beam singes you!</span>")
+				H.show_message("<span class='userdanger'>Promień radiacji cię przypala!</span>")
 		if(/obj/item/projectile/energy/florayield)
 			H.set_nutrition(min(H.nutrition+30, NUTRITION_LEVEL_FULL))

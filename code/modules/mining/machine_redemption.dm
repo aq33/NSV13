@@ -48,9 +48,9 @@
 /obj/machinery/mineral/ore_redemption/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += "<span class='notice'>The status display reads: Smelting <b>[sheet_per_ore]</b> sheet(s) per piece of ore.<br>Reward point generation at <b>[point_upgrade*100]%</b>.</span>"
+		. += "<span class='notice'>Wyświetlacz stanu pokazuje: wytapianie <b>[sheet_per_ore]</b> arkuszy na sztukę rudy.<br>Generowanie punktów nagrody: <b>[point_upgrade*100]%</b>.</span>"
 	if(panel_open)
-		. += "<span class='notice'>Alt-click to rotate the input and output direction.</span>"
+		. += "<span class='notice'>Alt-klik, by obrócić kierunek wejścia i wyjścia.</span>"
 
 /obj/machinery/mineral/ore_redemption/proc/smelt_ore(obj/item/stack/ore/O)
 	if(QDELETED(O))
@@ -120,7 +120,7 @@
 	console_notify_timer = null
 
 	var/area/A = get_area(src)
-	var/msg = "Now available in [A]:<br>"
+	var/msg = "Teraz dostępne w [A]:<br>"
 
 	var/has_minerals = FALSE
 
@@ -192,7 +192,7 @@
 	var/obj/item/stack/ore/O = W
 	if(istype(O))
 		if(O.refined_type == null)
-			to_chat(user, "<span class='notice'>[O] has already been refined!</span>")
+			to_chat(user, "<span class='notice'>[O] zostało już przetopione!</span>")
 			return
 
 	return ..()
@@ -203,7 +203,7 @@
 	if(panel_open)
 		input_dir = turn(input_dir, -90)
 		output_dir = turn(output_dir, -90)
-		to_chat(user, "<span class='notice'>You change [src]'s I/O settings, setting the input to [dir2text(input_dir)] and the output to [dir2text(output_dir)].</span>")
+		to_chat(user, "<span class='notice'>Zmieniasz ustawienia wejścia/wyjścia [src]: wejście – [dir2text(input_dir)], wyjście – [dir2text(output_dir)].</span>")
 		unregister_input_turf() // someone just rotated the input and output directions, unregister the old turf
 		register_input_turf() // register the new one
 		return TRUE
@@ -274,17 +274,17 @@
 					points = 0
 					. = TRUE
 				else
-					to_chat(usr, "<span class='warning'>No ID detected.</span>")
+					to_chat(usr, "<span class='warning'>Nie wykryto identyfikatora.</span>")
 			else
-				to_chat(usr, "<span class='warning'>No points to claim.</span>")
+				to_chat(usr, "<span class='warning'>Brak punktów do odebrania.</span>")
 		if("Release")
 			if(!mat_container)
 				return
 
 			if(materials.on_hold())
-				to_chat(usr, "<span class='warning'>Mineral access is on hold, please contact the quartermaster.</span>")
+				to_chat(usr, "<span class='warning'>Dostęp do minerałów jest wstrzymany, skontaktuj się z kwatermistrzem.</span>")
 			else if(!allowed(usr)) //Check the ID inside, otherwise check the user
-				to_chat(usr, "<span class='warning'>Required access not found.</span>")
+				to_chat(usr, "<span class='warning'>Nie znaleziono wymaganego dostępu.</span>")
 			else
 				var/datum/material/mat = locate(params["id"])
 
@@ -301,7 +301,7 @@
 				if (params["sheets"])
 					desired = text2num(params["sheets"])
 				else
-					desired = input("How many sheets?", "How many sheets would you like to smelt?", 1) as null|num
+					desired = input("Ile arkuszy?", "Ile arkuszy chcesz wytopić?", 1) as null|num
 
 				var/sheets_to_remove = round(min(desired,50,stored_amount))
 
@@ -319,7 +319,7 @@
 				inserted_disk = disk
 				. = TRUE
 			else
-				to_chat(usr, "<span class='warning'>Not a valid Design Disk!</span>")
+				to_chat(usr, "<span class='warning'>To nie jest prawidłowy dysk projektów!</span>")
 		if("diskEject")
 			if(inserted_disk)
 				usr.put_in_hands(inserted_disk)
@@ -334,7 +334,7 @@
 			if(!mat_container)
 				return
 			if(materials.on_hold())
-				to_chat(usr, "<span class='warning'>Mineral access is on hold, please contact the quartermaster.</span>")
+				to_chat(usr, "<span class='warning'>Dostęp do minerałów jest wstrzymany, skontaktuj się z kwatermistrzem.</span>")
 				return
 			var/alloy_id = params["id"]
 			var/datum/design/alloy = stored_research.isDesignResearchedID(alloy_id)
@@ -346,7 +346,7 @@
 				if (params["sheets"])
 					desired = text2num(params["sheets"])
 				else
-					desired = input("How many sheets?", "How many sheets would you like to smelt?", 1) as null|num
+					desired = input("Ile arkuszy?", "Ile arkuszy chcesz wytopić?", 1) as null|num
 				var/amount = round(min(desired,50,smelt_amount))
 				mat_container.use_materials(alloy.materials, amount)
 				materials.silo_log(src, "released", -amount, "sheets", alloy.materials)
@@ -358,7 +358,7 @@
 				unload_mineral(output)
 				. = TRUE
 			else
-				to_chat(usr, "<span class='warning'>Required access not found.</span>")
+				to_chat(usr, "<span class='warning'>Nie znaleziono wymaganego dostępu.</span>")
 
 /obj/machinery/mineral/ore_redemption/ex_act(severity, target)
 	do_sparks(5, TRUE, src)

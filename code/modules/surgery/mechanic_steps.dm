@@ -11,9 +11,9 @@
 	success_sound = 'sound/items/screwdriver2.ogg'
 
 /datum/surgery_step/mechanic_open/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to unscrew the shell of [target]'s [parse_zone(target_zone)]...</span>",
-			"[user] begins to unscrew the shell of [target]'s [parse_zone(target_zone)].",
-			"[user] begins to unscrew the shell of [target]'s [parse_zone(target_zone)].")
+	display_results(user, target, "<span class='notice'>Zaczynasz odkręcać obudowę ([strefa_pl(target_zone)]) [target]...</span>",
+			"[user] zaczyna odkręcać obudowę ([strefa_pl(target_zone)]) [target].",
+			"[user] zaczyna odkręcać obudowę ([strefa_pl(target_zone)]) [target].")
 
 /datum/surgery_step/mechanic_incise/tool_check(mob/user, obj/item/tool)
 	if(implement_type == /obj/item && !tool.is_sharp())
@@ -36,9 +36,9 @@
 	success_sound = 'sound/items/screwdriver2.ogg'
 
 /datum/surgery_step/mechanic_close/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to screw the shell of [target]'s [parse_zone(target_zone)]...</span>",
-			"[user] begins to screw the shell of [target]'s [parse_zone(target_zone)].",
-			"[user] begins to screw the shell of [target]'s [parse_zone(target_zone)].")
+	display_results(user, target, "<span class='notice'>Zaczynasz przykręcać obudowę ([strefa_pl(target_zone)]) [target]...</span>",
+			"[user] zaczyna przykręcać obudowę ([strefa_pl(target_zone)]) [target].",
+			"[user] zaczyna przykręcać obudowę ([strefa_pl(target_zone)]) [target].")
 
 /datum/surgery_step/mechanic_close/tool_check(mob/user, obj/item/tool)
 	if(implement_type == /obj/item && !tool.is_sharp())
@@ -47,6 +47,10 @@
 		preop_sound = tool.usesound
 
 	return TRUE
+
+/datum/surgery_step/mechanic_close/success(mob/user, mob/living/carbon/target, obj/item/tool, datum/surgery/surgery, default_display_results)
+	target.cauterise_wounds()
+	return ..()
 
 //prepare electronics
 /datum/surgery_step/prepare_electronics
@@ -59,9 +63,9 @@
 	success_sound = 'sound/surgery/taperecorder_close.ogg'
 
 /datum/surgery_step/prepare_electronics/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to prepare electronics in [target]'s [parse_zone(target_zone)]...</span>",
-			"[user] begins to prepare electronics in [target]'s [parse_zone(target_zone)].",
-			"[user] begins to prepare electronics in [target]'s [parse_zone(target_zone)].")
+	display_results(user, target, "<span class='notice'>Zaczynasz przygotowywać elektronikę ([strefa_pl(target_zone)]) [target]...</span>",
+			"[user] zaczyna przygotowywać elektronikę ([strefa_pl(target_zone)]) [target].",
+			"[user] zaczyna przygotowywać elektronikę ([strefa_pl(target_zone)]) [target].")
 
 //unwrench
 /datum/surgery_step/mechanic_unwrench
@@ -73,9 +77,9 @@
 	preop_sound = 'sound/items/ratchet.ogg'
 
 /datum/surgery_step/mechanic_unwrench/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to unwrench some bolts in [target]'s [parse_zone(target_zone)]...</span>",
-			"[user] begins to unwrench some bolts in [target]'s [parse_zone(target_zone)].",
-			"[user] begins to unwrench some bolts in [target]'s [parse_zone(target_zone)].")
+	display_results(user, target, "<span class='notice'>Zaczynasz odkręcać śruby ([strefa_pl(target_zone)]) [target]...</span>",
+			"[user] zaczyna odkręcać śruby ([strefa_pl(target_zone)]) [target].",
+			"[user] zaczyna odkręcać śruby ([strefa_pl(target_zone)]) [target].")
 
 //wrench
 /datum/surgery_step/mechanic_wrench
@@ -87,9 +91,9 @@
 	preop_sound = 'sound/items/ratchet.ogg'
 
 /datum/surgery_step/mechanic_wrench/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to wrench some bolts in [target]'s [parse_zone(target_zone)]...</span>",
-			"[user] begins to wrench some bolts in [target]'s [parse_zone(target_zone)].",
-			"[user] begins to wrench some bolts in [target]'s [parse_zone(target_zone)].")
+	display_results(user, target, "<span class='notice'>Zaczynasz dokręcać śruby ([strefa_pl(target_zone)]) [target]...</span>",
+			"[user] zaczyna dokręcać śruby ([strefa_pl(target_zone)]) [target].",
+			"[user] zaczyna dokręcać śruby ([strefa_pl(target_zone)]) [target].")
 
 //open hatch
 /datum/surgery_step/open_hatch
@@ -100,6 +104,6 @@
 	preop_sound = 'sound/machines/doorclick.ogg'
 
 /datum/surgery_step/open_hatch/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to open the hatch holders in [target]'s [parse_zone(target_zone)]...</span>",
-		"[user] begins to open the hatch holders in [target]'s [parse_zone(target_zone)].",
-		"[user] begins to open the hatch holders in [target]'s [parse_zone(target_zone)].")
+	display_results(user, target, "<span class='notice'>Zaczynasz otwierać uchwyty włazu ([strefa_pl(target_zone)]) [target]...</span>",
+		"[user] zaczyna otwierać uchwyty włazu ([strefa_pl(target_zone)]) [target].",
+		"[user] zaczyna otwierać uchwyty włazu ([strefa_pl(target_zone)]) [target].")

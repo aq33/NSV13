@@ -34,6 +34,10 @@
 
 /obj/machinery/rnd/server/Initialize(mapload)
 	. = ..()
+	// AQ EDIT - the first server on the ship becomes the master server (yogstation13/Yogstation#20268)
+	if(mapload && type == /obj/machinery/rnd/server && try_become_master_server())
+		return INITIALIZE_HINT_QDEL
+	// AQ EDIT END
 
 	server_id = 0
 	while(server_id == 0)
@@ -213,7 +217,7 @@
 	if(..())
 		return
 	if(!allowed(usr))
-		to_chat(usr, "<span class='warning'>Access denied.</span>")
+		to_chat(usr, "<span class='warning'>Odmowa dostępu.</span>")
 		return
 	switch(action)
 		if("enable_server")
@@ -234,4 +238,4 @@
 		return
 	playsound(src, "sparks", 75, 1)
 	obj_flags |= EMAGGED
-	to_chat(user, "<span class='notice'>You disable the security protocols.</span>")
+	to_chat(user, "<span class='notice'>Wyłączasz protokoły bezpieczeństwa.</span>")

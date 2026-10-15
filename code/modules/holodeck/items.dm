@@ -56,14 +56,14 @@
 		w_class = WEIGHT_CLASS_BULKY
 		hitsound = 'sound/weapons/blade1.ogg'
 		playsound(user, 'sound/weapons/saberon.ogg', 20, 1)
-		to_chat(user, "<span class='warning'>[src] is now active.</span>")
+		to_chat(user, "<span class='warning'>[src] jest teraz aktywny.</span>")
 	else
 		force = 3
 		icon_state = "sword0"
 		w_class = WEIGHT_CLASS_SMALL
 		hitsound = "swing_hit"
 		playsound(user, 'sound/weapons/saberoff.ogg', 20, 1)
-		to_chat(user, "<span class='warning'>[src] can now be concealed.</span>")
+		to_chat(user, "<span class='warning'>[src] można teraz ukryć.</span>")
 	return
 
 //BASKETBALL OBJECTS
@@ -90,7 +90,7 @@
 		M.apply_damage(10, STAMINA)
 		if(prob(5))
 			M.Paralyze(60)
-			visible_message("<span class='danger'>[M] is knocked right off [M.p_their()] feet!</span>")
+			visible_message("<span class='danger'>[M] zostaje zwalony z nóg!</span>")
 
 //
 // Structures
@@ -107,20 +107,20 @@
 /obj/structure/holohoop/attackby(obj/item/W as obj, mob/user as mob, params)
 	if(get_dist(src,user)<2)
 		if(user.transferItemToLoc(W, drop_location()))
-			visible_message("<span class='warning'> [user] dunks [W] into \the [src]!</span>")
+			visible_message("<span class='warning'> [user] wsadza [W] do [src]!</span>")
 
-/obj/structure/holohoop/attack_hand(mob/user)
+/obj/structure/holohoop/attack_hand(mob/living/user)
 	. = ..()
 	if(.)
 		return
-	if(user.pulling && user.a_intent == INTENT_GRAB && isliving(user.pulling))
+	if(user.pulling && isliving(user.pulling))
 		var/mob/living/L = user.pulling
 		if(user.grab_state < GRAB_AGGRESSIVE)
-			to_chat(user, "<span class='warning'>You need a better grip to do that!</span>")
+			to_chat(user, "<span class='warning'>Potrzebujesz lepszego chwytu, żeby to zrobić!</span>")
 			return
 		L.forceMove(loc)
 		L.Paralyze(100)
-		visible_message("<span class='danger'>[user] dunks [L] into \the [src]!</span>")
+		visible_message("<span class='danger'>[user] wsadza [L] do [src]!</span>")
 		user.stop_pulling()
 	else
 		..()
@@ -129,10 +129,10 @@
 	if (isitem(AM) && !istype(AM,/obj/item/projectile))
 		if(prob(50))
 			AM.forceMove(get_turf(src))
-			visible_message("<span class='warning'>Swish! [AM] lands in [src].</span>")
+			visible_message("<span class='warning'>Swish! [AM] ląduje w [src].</span>")
 			return
 		else
-			visible_message("<span class='danger'>[AM] bounces off of [src]'s rim!</span>")
+			visible_message("<span class='danger'>[AM] odbija się od krawędzi [src]!</span>")
 			return ..()
 	else
 		return ..()
@@ -158,22 +158,22 @@
 	power_channel = AREA_USAGE_ENVIRON
 
 /obj/machinery/readybutton/attack_ai(mob/user as mob)
-	to_chat(user, "The station AI is not to interact with these devices.")
+	to_chat(user, "SI stacji nie może korzystać z tych urządzeń.")
 	return
 
 /obj/machinery/readybutton/attack_paw(mob/user as mob)
-	to_chat(user, "<span class='warning'>You are too primitive to use this device!</span>")
+	to_chat(user, "<span class='warning'>Jesteś zbyt prymitywny, by używać tego urządzenia!</span>")
 	return
 
 /obj/machinery/readybutton/attackby(obj/item/W as obj, mob/user as mob, params)
-	to_chat(user, "The device is a solid button, there's nothing you can do with it!")
+	to_chat(user, "To urządzenie to jednolity przycisk, nic nie możesz z nim zrobić!")
 
 /obj/machinery/readybutton/attack_hand(mob/user as mob)
 	. = ..()
 	if(.)
 		return
 	if(user.stat || machine_stat & (NOPOWER|BROKEN))
-		to_chat(user, "<span class='warning'>This device is not powered!</span>")
+		to_chat(user, "<span class='warning'>To urządzenie nie jest zasilane!</span>")
 		return
 
 	currentarea = get_area(src.loc)
@@ -181,7 +181,7 @@
 		qdel(src)
 
 	if(eventstarted)
-		to_chat(usr, "<span class='warning'>The event has already begun!</span>")
+		to_chat(usr, "<span class='warning'>Wydarzenie już się rozpoczęło!</span>")
 		return
 
 	ready = !ready
@@ -223,11 +223,11 @@
 
 /obj/item/paper/fluff/holodeck/trek_diploma
 	name = "paper - Starfleet Academy Diploma"
-	default_raw_text = {"<h2>Starfleet Academy</h2></br><p>Official Diploma</p></br>"}
+	default_raw_text = {"<h2>Akademia Gwiezdnej Floty</h2></br><p>Oficjalny dyplom</p></br>"}
 
 /obj/item/paper/fluff/holodeck/disclaimer
 	name = "Holodeck Disclaimer"
-	default_raw_text = "Bruises sustained in the holodeck can be healed simply by sleeping."
+	default_raw_text = "Siniaki zdobyte na holodeku można wyleczyć, po prostu się przesypiając."
 
 /obj/vehicle/ridden/scooter/skateboard/pro/holodeck
 	name = "holographic skateboard"

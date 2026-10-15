@@ -53,7 +53,7 @@ GLOBAL_LIST_EMPTY(silo_access_logs)
 	var/datum/component/material_container/materials = GetComponent(/datum/component/material_container)
 
 	// stolen from /datum/component/material_container/proc/OnAttackBy
-	if(user.a_intent != INTENT_HELP)
+	if(user.combat_mode)
 		return
 	if(I.item_flags & ABSTRACT)
 		return
@@ -62,7 +62,7 @@ GLOBAL_LIST_EMPTY(silo_access_logs)
 		return
 	var/item_mats = I.materials & materials.materials
 	if(!length(item_mats))
-		to_chat(user, "<span class='warning'>[I] does not contain sufficient materials to be accepted by [M].</span>")
+		to_chat(user, "<span class='warning'>[I] nie zawiera dość materiałów, by [M] je przyjął.</span>")
 		return
 	// assumes unlimited space...
 	var/amount = I.amount
@@ -94,7 +94,7 @@ GLOBAL_LIST_EMPTY(silo_access_logs)
 
 /obj/machinery/ore_silo/proc/generate_ui()
 	var/datum/component/material_container/materials = GetComponent(/datum/component/material_container)
-	var/list/ui = list("<head><title>Ore Silo</title></head><body><div class='statusDisplay'><h2>Stored Material:</h2>")
+	var/list/ui = list("<head><title>Silos rudy</title></head><body><div class='statusDisplay'><h2>Zmagazynowany materiał:</h2>")
 	var/any = FALSE
 	for(var/M in materials.materials)
 		var/datum/material/mat = M
@@ -103,30 +103,30 @@ GLOBAL_LIST_EMPTY(silo_access_logs)
 		var/ref = REF(M)
 		if (sheets)
 			if (sheets >= 1)
-				ui += "<a href='?src=[REF(src)];ejectsheet=[ref];eject_amt=1'>Eject</a>"
+				ui += "<a href='byond://?src=[REF(src)];ejectsheet=[ref];eject_amt=1'>Eject</a>"
 			else
 				ui += "<span class='linkOff'>Eject</span>"
 			if (sheets >= 20)
-				ui += "<a href='?src=[REF(src)];ejectsheet=[ref];eject_amt=20'>20x</a>"
+				ui += "<a href='byond://?src=[REF(src)];ejectsheet=[ref];eject_amt=20'>20x</a>"
 			else
 				ui += "<span class='linkOff'>20x</span>"
 			ui += "<b>[mat.name]</b>: [sheets] sheets<br>"
 			any = TRUE
 	if(!any)
-		ui += "Nothing!"
+		ui += "Nic!"
 
-	ui += "</div><div class='statusDisplay'><h2>Connected Machines:</h2>"
+	ui += "</div><div class='statusDisplay'><h2>Podłączone maszyny:</h2>"
 	for(var/C in connected)
 		var/datum/component/remote_materials/mats = C
 		var/atom/parent = mats.parent
 		var/hold_key = "[get_area(parent)]/[mats.category]"
-		ui += "<a href='?src=[REF(src)];remove=[REF(mats)]'>Remove</a>"
-		ui += "<a href='?src=[REF(src)];hold[!holds[hold_key]]=[rustg_url_encode(hold_key)]'>[holds[hold_key] ? "Allow" : "Hold"]</a>"
+		ui += "<a href='byond://?src=[REF(src)];remove=[REF(mats)]'>Remove</a>"
+		ui += "<a href='byond://?src=[REF(src)];hold[!holds[hold_key]]=[rustg_url_encode(hold_key)]'>[holds[hold_key] ? "Zezwól" : "Wstrzymaj"]</a>"
 		ui += " <b>[parent.name]</b> in [get_area_name(parent, TRUE)]<br>"
 	if(!connected.len)
-		ui += "Nothing!"
+		ui += "Nic!"
 
-	ui += "</div><div class='statusDisplay'><h2>Access Logs:</h2>"
+	ui += "</div><div class='statusDisplay'><h2>Dzienniki dostępu:</h2>"
 	var/list/logs = GLOB.silo_access_logs[REF(src)]
 	var/len = LAZYLEN(logs)
 	var/num_pages = 1 + round((len - 1) / 30)
@@ -136,7 +136,7 @@ GLOBAL_LIST_EMPTY(silo_access_logs)
 			if(i == page)
 				ui += "<span class='linkOff'>[i]</span>"
 			else
-				ui += "<a href='?src=[REF(src)];page=[i]'>[i]</a>"
+				ui += "<a href='byond://?src=[REF(src)];page=[i]'>[i]</a>"
 
 	ui += "<ol>"
 	any = FALSE
@@ -145,7 +145,7 @@ GLOBAL_LIST_EMPTY(silo_access_logs)
 		ui += "<li value=[len + 1 - i]>[entry.formatted]</li>"
 		any = TRUE
 	if (!any)
-		ui += "<li>Nothing!</li>"
+		ui += "<li>Nic!</li>"
 
 	ui += "</ol></div>"
 	return ui.Join()
@@ -186,7 +186,7 @@ GLOBAL_LIST_EMPTY(silo_access_logs)
 
 /obj/machinery/ore_silo/multitool_act(mob/living/user, obj/item/multitool/I)
 	if (istype(I))
-		to_chat(user, "<span class='notice'>You log [src] in the multitool's buffer.</span>")
+		to_chat(user, "<span class='notice'>Zapisujesz [src] w buforze multitoola.</span>")
 		I.buffer = src
 		return TRUE
 
@@ -206,7 +206,7 @@ GLOBAL_LIST_EMPTY(silo_access_logs)
 
 /obj/machinery/ore_silo/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>[src] can be linked to techfabs, circuit printers and protolathes with a multitool.</span>"
+	. += "<span class='notice'>[src] można połączyć z techfabami, drukarkami obwodów i protolatami za pomocą multitoola.</span>"
 
 /obj/machinery/ore_silo/on_object_saved(var/depth = 0)
 	if(depth >= 10)

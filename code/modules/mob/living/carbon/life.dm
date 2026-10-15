@@ -275,12 +275,34 @@
 /mob/living/carbon/proc/handle_breath_temperature(datum/gas_mixture/breath)
 	return
 
+/// Whether the mob has something that connects it to an internals tank: a mask, a sealed helmet or a breathing tube
+/mob/living/carbon/proc/can_breathe_internals()
+	if(getorganslot(ORGAN_SLOT_BREATHING_TUBE))
+		return TRUE
+	if(wear_mask && (wear_mask.clothing_flags & MASKINTERNALS))
+		return TRUE
+	var/obj/item/clothing/helmet = head
+	if(istype(helmet) && (helmet.clothing_flags & HEADINTERNALS))
+		return TRUE
+	return FALSE
+
+/// Whether the mob is breathing from internals it can no longer use
+/mob/living/carbon/proc/invalid_internals()
+	return internal && !can_breathe_internals()
+
+/// Closes the mob's internals
+/mob/living/carbon/proc/cutoff_internals()
+	if(!internal)
+		return
+	internal = null
+	update_internals_hud_icon(0)
+
 /mob/living/carbon/proc/get_breath_from_internal(volume_needed)
 	if(internal)
-		if(internal.loc != src && !(wear_mask.clothing_flags & MASKEXTENDRANGE)) // If the mask has extended range, do not check for internal.loc
+		if(internal.loc != src && !(wear_mask?.clothing_flags & MASKEXTENDRANGE)) // If the mask has extended range, do not check for internal.loc
 			internal = null
 			update_internals_hud_icon(0)
-		else if ((!wear_mask || !(wear_mask.clothing_flags & MASKINTERNALS)) && !getorganslot(ORGAN_SLOT_BREATHING_TUBE))
+		else if (!can_breathe_internals())
 			internal = null
 			update_internals_hud_icon(0)
 		else
@@ -530,16 +552,16 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Ej stary, co jeśli byśmy, eee, 
 		if(drunkenness >= 81)
 			adjustToxLoss(1)
 			if(prob(5) && !stat)
-				to_chat(src, "<span class='warning'>Maybe you should lie down for a bit.</span>")
+				to_chat(src, "<span class='warning'>Może warto się na chwilę położyć.</span>")
 
 		if(drunkenness >= 91)
 			adjustToxLoss(1)
 			adjustOrganLoss(ORGAN_SLOT_BRAIN, 0.4)
 			if(prob(20) && !stat)
 				if(SSshuttle.emergency.mode == SHUTTLE_DOCKED && is_station_level(z)) //QoL mainly
-					to_chat(src, "<span class='warning'>You're so tired, but you can't miss that shuttle.</span>")
+					to_chat(src, "<span class='warning'>Jesteś taki zmęczony, ale nie możesz przegapić promu.</span>")
 				else
-					to_chat(src, "<span class='warning'>Just a quick nap.</span>")
+					to_chat(src, "<span class='warning'>Tylko krótka drzemka.</span>")
 					Sleeping(900)
 
 		if(drunkenness >= 101)
@@ -586,7 +608,7 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Ej stary, co jeśli byśmy, eee, 
 		return
 	adjustToxLoss(4, TRUE,  TRUE)
 	if(prob(30))
-		to_chat(src, "<span class='warning'>You feel a stabbing pain in your abdomen!</span>")
+		to_chat(src, "<span class='warning'>Czujesz kłujący ból w brzuchu!</span>")
 
 /////////////////////////////////////
 //MONKEYS WITH TOO MUCH CHOLOESTROL//

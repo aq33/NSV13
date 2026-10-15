@@ -28,7 +28,7 @@
 
 /datum/quirk/blooddeficiency/on_process(delta_time)
 	var/mob/living/carbon/human/H = quirk_holder
-	if(NOBLOOD in H.dna.species.species_traits) //can't lose blood if your species doesn't have any
+	if((NOBLOOD in H.dna.species.species_traits) || HAS_TRAIT(H, TRAIT_NO_BLOOD)) //can't lose blood if your species doesn't have any
 		return
 	else if(H.blood_volume > (BLOOD_VOLUME_SAFE - 25)) // just barely survivable without treatment
 		H.blood_volume -= 0.275 * delta_time
@@ -37,7 +37,7 @@
 	name = "Ślepota"
 	desc = "Jesteś kompletnie ślepy, nic nie można na to poradzić."
 	value = -4
-	medical_record_text = "Patient has permanent blindness."
+	medical_record_text = "Pacjent jest trwale niewidomy."
 	gain_text = "<span class='danger'>Nic nie widzisz.</span>"
 	lose_text = "<span class='notice'>Cudownie odzyskałeś wzrok.</span>"
 	medical_record_text = "Pacjent jest ślepy."
@@ -140,7 +140,7 @@
 			if(JOB_NAME_CLOWN)
 				heirloom_type = /obj/item/bikehorn/golden
 			if(JOB_NAME_MIME)
-				heirloom_type = /obj/item/reagent_containers/food/snacks/baguette/mime
+				heirloom_type = /obj/item/food/baguette/mime
 			if(JOB_NAME_JANITOR)
 				heirloom_type = pick(/obj/item/mop, /obj/item/clothing/suit/caution, /obj/item/reagent_containers/glass/bucket)
 			if(JOB_NAME_COOK)
@@ -233,14 +233,14 @@
 		"in your right pocket" = ITEM_SLOT_RPOCKET,
 		"in your backpack" = ITEM_SLOT_BACKPACK
 	)
-	where = H.equip_in_one_of_slots(heirloom, slots, FALSE) || "at your feet"
+	where = H.equip_in_one_of_slots(heirloom, slots, FALSE) || "pod twoimi stopami"
 
 /datum/quirk/family_heirloom/post_add()
 	if(where == "in your backpack")
 		var/mob/living/carbon/human/H = quirk_holder
 		SEND_SIGNAL(H.back, COMSIG_TRY_STORAGE_SHOW, H)
 
-	to_chat(quirk_holder, "<span class='boldnotice'>There is a precious family [heirloom.name] [where], passed down from generation to generation. Keep it safe!</span>")
+	to_chat(quirk_holder, "<span class='boldnotice'>Masz cenną rodzinną pamiątkę: [heirloom.name] ([where]), przekazywaną z pokolenia na pokolenie. Strzeż jej!</span>")
 
 	var/list/names = splittext(quirk_holder.real_name, " ")
 	var/family_name = names[names.len]
@@ -526,7 +526,7 @@
 		dumb_thing = FALSE //only once per life
 		SEND_SIGNAL(quirk_holder, COMSIG_ADD_MOOD_EVENT, "anxiety_dumb", /datum/mood_event/anxiety_dumb)
 		if(prob(1))
-			new/obj/item/reagent_containers/food/snacks/spaghetti/pastatomato(get_turf(H)) //now that's what I call spaghetti code
+			new/obj/item/food/spaghetti/pastatomato(get_turf(H)) //now that's what I call spaghetti code
 
 //If you want to make some kind of junkie variant, just extend this quirk.
 /datum/quirk/junkie
@@ -634,11 +634,11 @@
 
 /datum/quirk/alcoholic
 	name = "Alcoholic"
-	desc = "You can't stand being sober."
+	desc = "Nie znosisz trzeźwości."
 	value = -1
-	gain_text = "<span class='danger'>You could really go for a drink right about now.</span>"
-	lose_text = "<span class='notice'>You feel like you should quit drinking.</span>"
-	medical_record_text = "Patient is an alcohol abuser."
+	gain_text = "<span class='danger'>Naprawdę napiłbyś się teraz czegoś.</span>"
+	lose_text = "<span class='notice'>Masz wrażenie, że powinieneś rzucić picie.</span>"
+	medical_record_text = "Pacjent nadużywa alkoholu."
 	process = TRUE
 	var/where_drink //Where the bottle spawned
 	var/drink_types = list(/obj/item/reagent_containers/food/drinks/bottle/ale,
@@ -657,10 +657,10 @@
 	drink_instance = new drink_instance()
 	var/list/slots = list("in your backpack" = ITEM_SLOT_BACKPACK)
 	var/mob/living/carbon/human/H = quirk_holder
-	where_drink = H.equip_in_one_of_slots(drink_instance, slots, FALSE) || "at your feet"
+	where_drink = H.equip_in_one_of_slots(drink_instance, slots, FALSE) || "pod twoimi stopami"
 
 /datum/quirk/alcoholic/post_add()
-	to_chat(quirk_holder, "<span class='boldnotice'>There is a small bottle of [drink_instance] [where_drink]. You only have a single bottle, might have to find some more...</span>")
+	to_chat(quirk_holder, "<span class='boldnotice'>Masz małą butelkę: [drink_instance] ([where_drink]). Masz tylko jedną, może trzeba będzie znaleźć więcej...</span>")
 
 /datum/quirk/alcoholic/on_process()
 	if(tick_number >= 6) // how many ticks should pass between a check
@@ -675,19 +675,19 @@
 			if(1 to 10)
 				SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "alcoholic", /datum/mood_event/withdrawal_light, "alcohol")
 				if(prob(5))
-					to_chat(H, "<span class='notice'>You could go for a drink right about now.</span>")
+					to_chat(H, "<span class='notice'>Napiłbyś się teraz czegoś.</span>")
 			if(10 to 20)
 				SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "alcoholic", /datum/mood_event/withdrawal_medium, "alcohol")
 				if(prob(5))
-					to_chat(H, "<span class='notice'>You feel like you need alcohol. You just can't stand being sober.</span>")
+					to_chat(H, "<span class='notice'>Czujesz, że potrzebujesz alkoholu. Po prostu nie znosisz trzeźwości.</span>")
 			if(20 to 30)
 				SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "alcoholic", /datum/mood_event/withdrawal_severe, "alcohol")
 				if(prob(5))
-					to_chat(H, "<span class='danger'>You have an intense craving for a drink.</span>")
+					to_chat(H, "<span class='danger'>Masz silną ochotę na drinka.</span>")
 			if(30 to INFINITY)
 				SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "alcoholic", /datum/mood_event/withdrawal_critical, "Alcohol")
 				if(prob(5))
-					to_chat(H, "<span class='boldannounce'>You're not feeling good at all! You really need some alcohol.</span>")
+					to_chat(H, "<span class='boldannounce'>W ogóle nie czujesz się dobrze! Naprawdę potrzebujesz alkoholu.</span>")
 			else
 				SEND_SIGNAL(H, COMSIG_CLEAR_MOOD_EVENT, "alcoholic")
 	tick_number++
@@ -705,8 +705,8 @@
 	name = "Fobia"
 	desc = "Czujesz irracjonalny lęk przed czymś."
 	value = -2
-	gain_text = "<span class='danger'>You start feeling an irrational fear of something.</span>"
-	lose_text = "<span class='notice'>You are no longer irrationally afraid.</span>"
+	gain_text = "<span class='danger'>Zaczynasz odczuwać irracjonalny strach przed czymś.</span>"
+	lose_text = "<span class='notice'>Nie odczuwasz już irracjonalnego strachu.</span>"
 	medical_record_text = "Pacjent odczuwa irracjonalny strach przed czymś."
 
 /datum/quirk/phobia/add()

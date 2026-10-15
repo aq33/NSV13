@@ -3,7 +3,7 @@ GLOBAL_VAR(command_name)
 	if (GLOB.command_name)
 		return GLOB.command_name
 
-	var/name = "Central Command"
+	var/name = "Centrala"
 
 	GLOB.command_name = name
 	return name
@@ -220,3 +220,52 @@ GLOBAL_DATUM(syndicate_code_response_regex, /regex)
 				. += "."
 			else
 				. += ", "
+
+
+/**
+ * returns an ic name of the tool needed
+ * Arguments:
+ * * tool_behaviour: the tool described!
+ */
+/proc/tool_behaviour_name(tool_behaviour)
+	switch(tool_behaviour)
+		if(TOOL_CROWBAR)
+			return "a crowbar"
+		if(TOOL_MULTITOOL)
+			return "a multitool"
+		if(TOOL_SCREWDRIVER)
+			return "a screwdriver"
+		if(TOOL_WIRECUTTER)
+			return "kombinerki"
+		if(TOOL_WRENCH)
+			return "a wrench"
+		if(TOOL_WELDER)
+			return "a welder"
+		if(TOOL_ANALYZER)
+			return "analizator"
+		if(TOOL_MINING)
+			return "narzędzie górnicze"
+		if(TOOL_SHOVEL)
+			return "narzędzie do kopania"
+		if(TOOL_RETRACTOR)
+			return "a retractor"
+		if(TOOL_HEMOSTAT)
+			return "coś do zaciśnięcia krwawienia"
+		if(TOOL_CAUTERY)
+			return "a cautery"
+		if(TOOL_DRILL)
+			return "wiertło"
+		if(TOOL_SCALPEL)
+			return "precyzyjne narzędzie tnące"
+		if(TOOL_SAW)
+			return "a saw"
+		//if(TOOL_BONESET)
+		//	return "a bone setter"
+		if(TOOL_KNIFE)
+			return "narzędzie tnące"
+		if(TOOL_BLOODFILTER)
+			return "filtr krwi"
+		if(TOOL_ROLLINGPIN)
+			return "wałek do ciasta"
+		else
+			return "coś... ale bogowie źle to ustawili (zgłoś ten błąd)"

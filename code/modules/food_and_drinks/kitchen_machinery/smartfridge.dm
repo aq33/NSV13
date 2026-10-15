@@ -4,8 +4,8 @@
 /obj/machinery/smartfridge
 	name = "smartfridge"
 	desc = "Keeps cold things cold and hot things cold."
-	icon = 'icons/obj/vending.dmi'
-	icon_state = "smartfridge"
+	icon = 'aquila/icons/obj/smartfridge.dmi' // AQ EDIT - port BeeStation #13072: new sprites
+	icon_state = "smartfridge-icon"
 	layer = BELOW_OBJ_LAYER
 	density = TRUE
 	use_power = IDLE_POWER_USE
@@ -19,6 +19,15 @@
 	var/allow_ai_retrieve = FALSE
 	var/list/initial_contents
 	var/visible_contents = TRUE
+	// AQ EDIT START - port BeeStation #13072
+	layout_prefs_used = "tgui_layout_smartfridge"
+	/// Sprite base, icon states are built from it
+	base_icon_state = "smartfridge"
+	/// Which contents overlay is shown when the fridge is filled: [base_icon_state]-[contents_overlay_icon]-1/2/3
+	var/contents_overlay_icon = "plant"
+	/// Whether the fridge glows when powered
+	var/has_emissive = TRUE
+	// AQ EDIT END
 
 /obj/machinery/smartfridge/Initialize(mapload)
 	. = ..()
@@ -39,28 +48,44 @@
 /obj/machinery/smartfridge/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += "<span class='notice'>The status display reads: This unit can hold a maximum of <b>[max_n_of_items]</b> items.</span>"
+		. += "<span class='notice'>Wyświetlacz stanu pokazuje: to urządzenie mieści maksymalnie <b>[max_n_of_items]</b> przedmiotów.</span>"
 
 /obj/machinery/smartfridge/power_change()
 	..()
 	update_icon()
 
-/obj/machinery/smartfridge/update_icon()
-	if(!machine_stat)
-		if (visible_contents)
-			switch(contents.len)
-				if(0)
-					icon_state = "[initial(icon_state)]"
-				if(1 to 25)
-					icon_state = "[initial(icon_state)]1"
-				if(26 to 75)
-					icon_state = "[initial(icon_state)]2"
-				if(76 to INFINITY)
-					icon_state = "[initial(icon_state)]3"
-		else
-			icon_state = "[initial(icon_state)]"
-	else
-		icon_state = "[initial(icon_state)]-off"
+// AQ EDIT START - port BeeStation #13072: sprites with contents levels, glass, light and broken states
+/obj/machinery/smartfridge/update_icon_state()
+	icon_state = "[base_icon_state]"
+	if(machine_stat & BROKEN)
+		icon_state += "-broken"
+	return ..()
+
+/// Returns the number of items visible in the fridge
+/obj/machinery/smartfridge/proc/visible_items()
+	return length(contents) - length(component_parts)
+
+/obj/machinery/smartfridge/update_overlays()
+	. = ..()
+	var/shown_contents_length = visible_items()
+	if(visible_contents && shown_contents_length > 0)
+		var/content_level = "[base_icon_state]-[contents_overlay_icon]"
+		switch(shown_contents_length)
+			if(1 to 25)
+				content_level += "-1"
+			if(26 to 75)
+				content_level += "-2"
+			else
+				content_level += "-3"
+		. += mutable_appearance(icon, content_level)
+	if(visible_contents)
+		. += mutable_appearance(icon, "[base_icon_state]-glass[(machine_stat & BROKEN) ? "-broken" : ""]")
+	if(has_emissive && powered() && !(machine_stat & BROKEN))
+		. += mutable_appearance(icon, "[base_icon_state]-powered")
+		. += emissive_appearance(icon, "[base_icon_state]-light-mask", layer, alpha = src.alpha)
+	if(panel_open)
+		. += mutable_appearance(icon, "[base_icon_state]-panel")
+// AQ EDIT END
 
 
 
@@ -68,11 +93,9 @@
 *   Item Adding
 ********************/
 
-/obj/machinery/smartfridge/attackby(obj/item/O, mob/user, params)
+/obj/machinery/smartfridge/attackby(obj/item/O, mob/living/user, params)
 	if(default_deconstruction_screwdriver(user, icon_state, icon_state, O))
-		cut_overlays()
-		if(panel_open)
-			add_overlay("[initial(icon_state)]-panel")
+		update_appearance() // AQ EDIT - the panel overlay is in update_overlays()
 		ui_update()
 		return
 
@@ -89,12 +112,12 @@
 	if(!machine_stat)
 
 		if(contents.len >= max_n_of_items)
-			to_chat(user, "<span class='warning'>\The [src] is full!</span>")
+			to_chat(user, "<span class='warning'>[src] jest pełna!</span>")
 			return FALSE
 
 		if(accept_check(O))
-			load(O)
-			user.visible_message("[user] has added \the [O] to \the [src].", "<span class='notice'>You add \the [O] to \the [src].</span>")
+			load(O, user)
+			user.visible_message("[user] dodaje [O] do [src].", "<span class='notice'>Dodajesz [O] do [src].</span>")
 			if (visible_contents)
 				update_icon()
 			return TRUE
@@ -106,23 +129,23 @@
 				if(contents.len >= max_n_of_items)
 					break
 				if(accept_check(G))
-					load(G)
+					load(G, user)
 					loaded++
 
 			if(loaded)
 				if(contents.len >= max_n_of_items)
-					user.visible_message("[user] loads \the [src] with \the [O].", \
-									 "<span class='notice'>You fill \the [src] with \the [O].</span>")
+					user.visible_message("[user] ładuje [O] do [src].", \
+									 "<span class='notice'>Napełniasz [src] zawartością [O].</span>")
 				else
-					user.visible_message("[user] loads \the [src] with \the [O].", \
-										 "<span class='notice'>You load \the [src] with \the [O].</span>")
+					user.visible_message("[user] ładuje [O] do [src].", \
+										 "<span class='notice'>Ładujesz [O] do [src].</span>")
 				if(O.contents.len > 0)
-					to_chat(user, "<span class='warning'>Some items are refused.</span>")
+					to_chat(user, "<span class='warning'>Niektóre przedmioty zostały odrzucone.</span>")
 				if (visible_contents)
 					update_icon()
 				return TRUE
 			else
-				to_chat(user, "<span class='warning'>There is nothing in [O] to put in [src]!</span>")
+				to_chat(user, "<span class='warning'>W [O] nie ma niczego, co można włożyć do [src]!</span>")
 				return FALSE
 
 		if(istype(O, /obj/item/organ_storage))
@@ -131,8 +154,8 @@
 				var/obj/item/I = S.contents[1]
 				if(accept_check(I))
 					load(I)
-					user.visible_message("[user] inserts \the [I] into \the [src].", \
-									 "<span class='notice'>You insert \the [I] into \the [src].</span>")
+					user.visible_message("[user] wkłada [I] do [src].", \
+									 "<span class='notice'>Wkładasz [I] do [src].</span>")
 					O.cut_overlays()
 					O.icon_state = "evidenceobj"
 					O.desc = "A container for holding body parts."
@@ -140,14 +163,14 @@
 						update_icon()
 					return TRUE
 				else
-					to_chat(user, "<span class='warning'>[src] does not accept [I]!</span>")
+					to_chat(user, "<span class='warning'>[src] nie przyjmuje [I]!</span>")
 					return FALSE
 			else
-				to_chat(user, "<span class='warning'>There is nothing in [O] to put into [src]!</span>")
+				to_chat(user, "<span class='warning'>W [O] nie ma niczego, co można włożyć do [src]!</span>")
 				return FALSE
 
-	if(user.a_intent != INTENT_HARM)
-		to_chat(user, "<span class='warning'>\The [src] smartly refuses [O].</span>")
+	if(!user.combat_mode)
+		to_chat(user, "<span class='warning'>[src] sprytnie odrzuca [O].</span>")
 		return FALSE
 	else
 		return ..()
@@ -166,11 +189,11 @@
 
 
 /obj/machinery/smartfridge/proc/accept_check(obj/item/O)
-	if(istype(O, /obj/item/reagent_containers/food/snacks/grown/) || istype(O, /obj/item/seeds/) || istype(O, /obj/item/grown/))
+	if(istype(O, /obj/item/food/grown/) || istype(O, /obj/item/seeds/) || istype(O, /obj/item/grown/) || istype(O, /obj/item/food/seaweed_sheet))
 		return TRUE
 	return FALSE
 
-/obj/machinery/smartfridge/proc/load(obj/item/O)
+/obj/machinery/smartfridge/proc/load(obj/item/O, mob/user)
 	if(ismob(O.loc))
 		var/mob/M = O.loc
 		if(!M.transferItemToLoc(O, src))
@@ -206,23 +229,35 @@
 		ui.set_autoupdate(FALSE)
 		ui.open()
 
+// AQ EDIT START - port BeeStation #13072: data for the SmartVend window from Bee (grid with item icons)
 /obj/machinery/smartfridge/ui_data(mob/user)
 	. = list()
-
-	var/listofitems = list()
-	for (var/I in src)
-		var/atom/movable/O = I
-		if (!QDELETED(O))
-			var/md5name = rustg_hash_string(RUSTG_HASH_MD5, O.name)				// This needs to happen because of a bug in a TGUI component, https://github.com/ractivejs/ractive/issues/744
-			if (listofitems[md5name])				// which is fixed in a version we cannot use due to ie8 incompatibility
-				listofitems[md5name]["amount"]++	// The good news is, #30519 made smartfridge UIs non-auto-updating
-			else
-				listofitems[md5name] = list("name" = O.name, "type" = O.type, "amount" = 1)
-	sortList(listofitems)
-
-	.["contents"] = listofitems
+	var/list/listofitems = list()
+	for(var/atom/movable/stored in src)
+		// We do not vend our own components
+		if(stored in component_parts)
+			continue
+		if(QDELETED(stored))
+			continue
+		var/key = smartfridge_item_key(stored)
+		if(listofitems[key])
+			listofitems[key]["amount"]++
+		else
+			listofitems[key] = list(
+				"path" = key,
+				"name" = capitalize(stored.name),
+				"icon" = stored.icon,
+				"icon_state" = stored.icon_state,
+				"amount" = 1,
+			)
+	.["contents"] = sortList(listofitems)
 	.["name"] = name
 	.["isdryer"] = FALSE
+
+/// Groups the same items in the window: type and name, without the \proper and \improper markers
+/obj/machinery/smartfridge/proc/smartfridge_item_key(atom/movable/stored)
+	return "[stored.type]-[replacetext(replacetext(stored.name, "\proper", ""), "\improper", "")]"
+// AQ EDIT END
 
 
 /obj/machinery/smartfridge/handle_atom_del(atom/A) // Update the UIs in case something inside gets deleted
@@ -237,13 +272,13 @@
 			var/desired = 0
 
 			if(!allow_ai_retrieve && isAI(usr))
-				to_chat(usr, "<span class='warning'>[src] does not seem to be configured to respect your authority!</span>")
+				to_chat(usr, "<span class='warning'>Wygląda na to, że [src] nie jest skonfigurowana, by respektować twój autorytet!</span>")
 				return
 
 			if (params["amount"])
 				desired = text2num(params["amount"])
 			else
-				desired = input("How many items?", "How many items would you like to take out?", 1) as null|num
+				desired = input("Ile przedmiotów?", "Ile przedmiotów chcesz wyjąć?", 1) as null|num
 
 			if(!isnum_safe(desired) || desired <= 0)
 				return
@@ -252,7 +287,9 @@
 				return
 
 			for(var/obj/item/O in src)
-				if(O.name == params["name"])
+				if(O in component_parts) // AQ EDIT - never hand out our own parts
+					continue
+				if(params["path"] ? (smartfridge_item_key(O) == params["path"]) : (O.name == params["name"])) // AQ EDIT - port BeeStation #13072: the window sends a type-name key
 					dispense(O, usr)
 					desired--
 					. = TRUE
@@ -268,17 +305,24 @@
 /obj/machinery/smartfridge/drying_rack
 	name = "drying rack"
 	desc = "A wooden contraption, used to dry plant products, food and leather."
-	icon = 'icons/obj/hydroponics/equipment.dmi'
-	icon_state = "drying_rack"
+	icon_state = "drying-rack" // AQ EDIT - port BeeStation #13072: new sprite
+	base_icon_state = "drying-rack"
 	use_power = NO_POWER_USE
 	visible_contents = FALSE
+	has_emissive = FALSE
 	var/drying = FALSE
+	/// The reference to the last user's mind. Needed for the chef made trait to be properly applied correctly to dried food.
+	var/datum/weakref/current_user
 
 /obj/machinery/smartfridge/drying_rack/Initialize(mapload)
 	. = ..()
 	if(component_parts?.len)
 		component_parts.Cut()
 	component_parts = null
+
+/obj/machinery/smartfridge/drying_rack/Destroy()
+	current_user = null
+	return ..()
 
 /obj/machinery/smartfridge/drying_rack/on_deconstruction()
 	new /obj/item/stack/sheet/mineral/wood(drop_location(), 10)
@@ -306,65 +350,69 @@
 		return
 	switch(action)
 		if("Dry")
-			toggle_drying(FALSE)
+			toggle_drying(FALSE, usr)
 			return TRUE
 	return FALSE
 
-/obj/machinery/smartfridge/drying_rack/load() //For updating the filled overlay
-	..()
-	update_icon()
+/obj/machinery/smartfridge/drying_rack/powered()
+	if(!anchored)
+		return FALSE
+	return ..()
 
-/obj/machinery/smartfridge/drying_rack/update_icon()
-	..()
-	cut_overlays()
+/obj/machinery/smartfridge/drying_rack/power_change()
+	. = ..()
+	if(!powered())
+		toggle_drying(TRUE)
+
+/obj/machinery/smartfridge/drying_rack/load(obj/item/dried_object, mob/user) //For updating the filled overlay
+	. = ..()
+	if(!.)
+		return
+	update_appearance()
+	if(drying && user?.mind)
+		current_user = WEAKREF(user.mind)
+
+// AQ EDIT START - port BeeStation #13072
+/obj/machinery/smartfridge/drying_rack/update_icon_state()
+	. = ..()
+	icon_state = base_icon_state // no broken sprite for the rack
+
+/obj/machinery/smartfridge/drying_rack/update_overlays()
+	. = ..()
 	if(drying)
-		add_overlay("drying_rack_drying")
+		. += "[base_icon_state]-drying"
 	if(contents.len)
-		add_overlay("drying_rack_filled")
+		. += "[base_icon_state]-filled"
+// AQ EDIT END
 
 /obj/machinery/smartfridge/drying_rack/process()
 	..()
 	if(drying)
-		if(rack_dry())//no need to update unless something got dried
-			SStgui.update_uis(src)
-			update_icon()
+		for(var/obj/item/item_iterator in src)
+			if(!accept_check(item_iterator))
+				continue
+			rack_dry(item_iterator)
+
+		SStgui.update_uis(src)
+		update_icon()
 
 /obj/machinery/smartfridge/drying_rack/accept_check(obj/item/O)
-	if(istype(O, /obj/item/reagent_containers/food/snacks/))
-		var/obj/item/reagent_containers/food/snacks/S = O
-		if(S.dried_type)
-			return TRUE
-	if(istype(O, /obj/item/stack/sheet/wetleather/))
+	if(HAS_TRAIT(O, TRAIT_DRYABLE)) //set on dryable element
 		return TRUE
 	return FALSE
 
-/obj/machinery/smartfridge/drying_rack/proc/toggle_drying(forceoff)
+/obj/machinery/smartfridge/drying_rack/proc/toggle_drying(forceoff, mob/user)
 	if(drying || forceoff)
 		drying = FALSE
+		current_user = FALSE
 	else
 		drying = TRUE
-	update_icon()
+		if(user?.mind)
+			current_user = WEAKREF(user.mind)
+	update_appearance()
 
-/obj/machinery/smartfridge/drying_rack/proc/rack_dry()
-	for(var/obj/item/reagent_containers/food/snacks/S in src)
-		if(S.dried_type == S.type)//if the dried type is the same as the object's type, don't bother creating a whole new item...
-			S.add_atom_colour("#ad7257", FIXED_COLOUR_PRIORITY)
-			S.dry = TRUE
-			S.forceMove(drop_location())
-		else
-			var/dried = S.dried_type
-			dried = new dried(drop_location())
-			if(istype(dried, /obj/item/reagent_containers)) // If the product is a reagent container, transfer reagents
-				var/obj/item/reagent_containers/R = dried
-				R.reagents.clear_reagents()
-				S.reagents.copy_to(R)
-			qdel(S)
-		return TRUE
-	for(var/obj/item/stack/sheet/wetleather/WL in src)
-		new /obj/item/stack/sheet/leather(drop_location(), WL.amount)
-		qdel(WL)
-		return TRUE
-	return FALSE
+/obj/machinery/smartfridge/drying_rack/proc/rack_dry(obj/item/target)
+	SEND_SIGNAL(target, COMSIG_ITEM_DRIED, current_user)
 
 /obj/machinery/smartfridge/drying_rack/emp_act(severity)
 	. = ..()
@@ -378,6 +426,7 @@
 // ----------------------------
 /obj/machinery/smartfridge/drinks
 	name = "drink showcase"
+	contents_overlay_icon = "drink" // AQ EDIT - port BeeStation #13072
 	desc = "A refrigerated storage unit for tasty tasty alcohol."
 
 /obj/machinery/smartfridge/drinks/accept_check(obj/item/O)
@@ -391,9 +440,10 @@
 // ----------------------------
 /obj/machinery/smartfridge/food
 	desc = "A refrigerated storage unit for food."
+	contents_overlay_icon = "food" // AQ EDIT - port BeeStation #13072
 
 /obj/machinery/smartfridge/food/accept_check(obj/item/O)
-	if(istype(O, /obj/item/reagent_containers/food/snacks/))
+	if(IS_EDIBLE(O))
 		return TRUE
 	return FALSE
 
@@ -402,6 +452,7 @@
 // -------------------------------------
 /obj/machinery/smartfridge/extract
 	name = "smart slime extract storage"
+	contents_overlay_icon = "slime" // AQ EDIT - port BeeStation #13072
 	desc = "A refrigerated storage unit for slime extracts."
 
 /obj/machinery/smartfridge/extract/accept_check(obj/item/O)
@@ -419,6 +470,7 @@
 // -------------------------
 /obj/machinery/smartfridge/organ
 	name = "smart organ storage"
+	contents_overlay_icon = "organ" // AQ EDIT - port BeeStation #13072
 	desc = "A refrigerated storage unit for organ storage."
 	max_n_of_items = 20	//vastly lower to prevent processing too long
 	var/repair_rate = 0
@@ -428,12 +480,17 @@
 		return TRUE
 	return FALSE
 
-/obj/machinery/smartfridge/organ/load(obj/item/O)
+/obj/machinery/smartfridge/organ/load(obj/item/item, mob/user)
 	. = ..()
 	if(!.)	//if the item loads, clear can_decompose
 		return
-	var/obj/item/organ/organ = O
-	organ.organ_flags |= ORGAN_FROZEN
+	if(isorgan(item))
+		var/obj/item/organ/organ = item
+		organ.organ_flags |= ORGAN_FROZEN
+	if(isbodypart(item))
+		var/obj/item/bodypart/bodypart = item
+		for(var/obj/item/organ/stored in bodypart.contents)
+			stored.organ_flags |= ORGAN_FROZEN
 
 /obj/machinery/smartfridge/organ/RefreshParts()
 	for(var/obj/item/stock_parts/matter_bin/B in component_parts)
@@ -458,6 +515,7 @@
 // -----------------------------
 /obj/machinery/smartfridge/chemistry
 	name = "smart chemical storage"
+	contents_overlay_icon = "chem" // AQ EDIT - port BeeStation #13072
 	desc = "A refrigerated storage unit for medicine storage."
 
 /obj/machinery/smartfridge/chemistry/accept_check(obj/item/O)
@@ -490,6 +548,7 @@
 // ----------------------------
 /obj/machinery/smartfridge/chemistry/virology
 	name = "smart virus storage"
+	contents_overlay_icon = "viro" // AQ EDIT - port BeeStation #13072
 	desc = "A refrigerated storage unit for volatile sample storage."
 
 /obj/machinery/smartfridge/chemistry/virology/preloaded
@@ -541,6 +600,7 @@
 	name = "disk compartmentalizer"
 	desc = "A machine capable of storing a variety of disks. Denoted by most as the DSU (disk storage unit)."
 	icon_state = "disktoaster"
+	base_icon_state = "disktoaster" // AQ EDIT - port BeeStation #13072
 	pass_flags = PASSTABLE
 	visible_contents = FALSE
 

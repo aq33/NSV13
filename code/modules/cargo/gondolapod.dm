@@ -2,9 +2,9 @@
 	name = "gondola"
 	real_name = "gondola"
 	desc = "The silent walker. This one seems to be part of a delivery agency."
-	response_help = "pets"
-	response_disarm = "bops"
-	response_harm = "kicks"
+	response_help = "głaszcze"
+	response_disarm = "pstryka"
+	response_harm = "kopie"
 	faction = list("gondola")
 	turns_per_move = 10
 	icon = 'icons/obj/supplypods.dmi'
@@ -13,7 +13,7 @@
 	base_pixel_x = -16//2x2 sprite
 	base_pixel_y = -5
 	layer = TABLE_LAYER//so that deliveries dont appear underneath it
-	loot = list(/obj/effect/decal/cleanable/blood/gibs, /obj/item/stack/sheet/animalhide/gondola = 2, /obj/item/reagent_containers/food/snacks/meat/slab/gondola = 2)
+	loot = list(/obj/effect/decal/cleanable/blood/gibs, /obj/item/stack/sheet/animalhide/gondola = 2, /obj/item/food/meat/slab/gondola = 2)
 	//Gondolas aren't affected by cold.
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
@@ -43,9 +43,9 @@
 /mob/living/simple_animal/pet/gondola/gondolapod/examine(mob/user)
 	. = ..()
 	if (contents.len)
-		. += "<span class='notice'>It looks like it hasn't made its delivery yet.</b></span>"
+		. += "<span class='notice'>Wygląda na to, że jeszcze nie dostarczył przesyłki.</b></span>"
 	else
-		. += "<span class='notice'>It looks like it has already made its delivery.</b></span>"
+		. += "<span class='notice'>Wygląda na to, że już dostarczył przesyłkę.</b></span>"
 
 /mob/living/simple_animal/pet/gondola/gondolapod/verb/check()
 	set name = "Count Contents"
@@ -53,9 +53,9 @@
 	set desc = "Take a deep look inside youself, and count up what's inside"
 	var/total = contents.len
 	if (total)
-		to_chat(src, "<span class='notice'>You detect [total] object\s within your incredibly vast belly.</span>")
+		to_chat(src, "<span class='notice'>Wykrywasz obiekty w swoim niewiarygodnie przepastnym brzuchu (liczba: [total]).</span>")
 	else
-		to_chat(src, "<span class='notice'>A closer look inside yourself reveals... nothing.</span>")
+		to_chat(src, "<span class='notice'>Bliższe spojrzenie w głąb siebie ujawnia... nic.</span>")
 
 /mob/living/simple_animal/pet/gondola/gondolapod/setOpened()
 	opened = TRUE

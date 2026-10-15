@@ -78,6 +78,9 @@
 	nograv_required = TRUE
 	qdel_in_time = 20
 
+/datum/effect_system/trail_follow/ion/grav_allowed
+	nograv_required = FALSE
+
 /datum/effect_system/trail_follow/proc/set_dir(obj/effect/particle_effect/ion_trails/I)
 	I.setDir(holder.dir)
 
@@ -102,7 +105,7 @@
 
 /datum/effect_system/reagents_explosion/start()
 	if(explosion_message)
-		location.visible_message("<span class='danger'>The solution violently explodes!</span>", \
-								"<span class='italics'>You hear an explosion!</span>")
+		location.visible_message("<span class='danger'>Roztwór gwałtownie wybucha!</span>", \
+								"<span class='italics'>Słyszysz wybuch!</span>")
 
 	dyn_explosion(location, amount, flashing_factor)

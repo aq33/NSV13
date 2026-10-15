@@ -24,7 +24,7 @@
 		qdel(PA)
 
 /obj/item/chrono_eraser/Destroy()
-	dropped()
+	QDEL_NULL(PA) // AQ EDIT - was dropped(), which runtimes without a user
 	return ..()
 
 /obj/item/chrono_eraser/ui_action_click(mob/user)
@@ -84,14 +84,14 @@
 	var/mob/living/user = loc
 	if(F.gun)
 		if(isliving(user) && F.captured)
-			to_chat(user, "<span class='alert'><b>FAIL: <i>[F.captured]</i> already has an existing connection.</b></span>")
+			to_chat(user, "<span class='alert'><b>BŁĄD: <i>[F.captured]</i> ma już istniejące połączenie.</b></span>")
 		field_disconnect(F)
 	else
 		startpos = get_turf(src)
 		field = F
 		F.gun = src
 		if(isliving(user) && F.captured)
-			to_chat(user, "<span class='notice'>Connection established with target: <b>[F.captured]</b></span>")
+			to_chat(user, "<span class='notice'>Nawiązano połączenie z celem: <b>[F.captured]</b></span>")
 
 
 /obj/item/gun/energy/chrono_gun/proc/field_disconnect(obj/structure/chrono_field/F)
@@ -100,7 +100,7 @@
 		if(F.gun == src)
 			F.gun = null
 		if(isliving(user) && F.captured)
-			to_chat(user, "<span class='alert'>Disconnected from target: <b>[F.captured]</b></span>")
+			to_chat(user, "<span class='alert'>Rozłączono z celem: <b>[F.captured]</b></span>")
 	field = null
 	startpos = null
 
@@ -220,7 +220,7 @@
 				AM.forceMove(drop_location())
 			qdel(src)
 		else if(timetokill <= 0)
-			to_chat(captured, "<span class='boldnotice'>As the last essence of your being is erased from time, you are taken back to your most enjoyable memory. You feel happy...</span>")
+			to_chat(captured, "<span class='boldnotice'>Gdy ostatnia esencja twojego istnienia zostaje wymazana z czasu, przenosisz się do swojego najprzyjemniejszego wspomnienia. Czujesz się szczęśliwy...</span>")
 			var/mob/dead/observer/ghost = captured.ghostize(TRUE,SENTIENCE_ERASE)
 			if(captured.mind)
 				if(ghost)

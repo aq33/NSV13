@@ -3,6 +3,7 @@
  */
 
 /datum/component/shielded
+	dupe_mode = COMPONENT_DUPE_UNIQUE
 	/// The person currently wearing us
 	var/mob/living/wearer
 	/// How many charges we can have max, and how many we start with
@@ -25,6 +26,8 @@
 	COOLDOWN_DECLARE(charge_add_cd)
 	/// A callback for the sparks/message that play when a charge is used, see [/datum/component/shielded/proc/default_run_hit_callback]
 	var/datum/callback/on_hit_effects
+	/// An item type besides the battlemage armour that can be recharged with wizard runes (MODsuit battlemage shield)
+	var/recharge_path
 
 /datum/component/shielded/Initialize(max_charges = 3, recharge_start_delay = 20 SECONDS, charge_increment_delay = 1 SECONDS, shield_icon_file = 'icons/effects/effects.dmi', shield_icon = "shield-old", shield_inhand = FALSE, run_hit_callback)
 	if(!isitem(parent) || max_charges <= 0)
@@ -56,9 +59,19 @@
 	RegisterSignal(parent, COMSIG_ITEM_DROPPED, PROC_REF(lost_wearer))
 	RegisterSignal(parent, COMSIG_ITEM_HIT_REACT, PROC_REF(on_hit_react))
 	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, PROC_REF(check_recharge_item))
+	// Components added to an already worn item (MODsuit shield modules) need to pick up the wearer right away
+	var/atom/shield = parent
+	if(ismob(shield.loc))
+		var/mob/holder = shield.loc
+		if(holder.is_holding(parent) && !shield_inhand)
+			return
+		set_wearer(holder)
 
 /datum/component/shielded/UnregisterFromParent()
 	UnregisterSignal(parent, list(COMSIG_ITEM_EQUIPPED, COMSIG_ITEM_DROPPED, COMSIG_ITEM_HIT_REACT, COMSIG_PARENT_ATTACKBY))
+	var/atom/shield = parent
+	if(wearer && shield.loc == wearer)
+		lost_wearer(src, wearer)
 
 // Handle recharging, if we want to
 /datum/component/shielded/process(delta_time)
@@ -88,6 +101,14 @@
 		lost_wearer(source, user)
 		return
 
+	set_wearer(user)
+
+/// Starts shielding the given mob
+/datum/component/shielded/proc/set_wearer(mob/user)
+	if(wearer == user)
+		return
+	if(wearer)
+		lost_wearer(src, wearer)
 	wearer = user
 	RegisterSignal(wearer, COMSIG_ATOM_UPDATE_OVERLAYS, PROC_REF(on_update_overlays))
 	RegisterSignal(wearer, COMSIG_PARENT_QDELETING, PROC_REF(lost_wearer))
@@ -141,9 +162,9 @@
 /// Default on_hit proc, since cult robes are stupid and have different descriptions/sparks
 /datum/component/shielded/proc/default_run_hit_callback(mob/living/owner, attack_text, current_charges)
 	do_sparks(2, TRUE, owner)
-	owner.visible_message("<span class='danger'>[owner]'s shields deflect [attack_text] in a shower of sparks!<span>")
+	owner.visible_message("<span class='danger'>Tarcze [owner] odbijają [attack_text] w deszczu iskier!<span>")
 	if(current_charges <= 0)
-		owner.visible_message("<span class='warning'>[owner]'s shield overloads!</span>")
+		owner.visible_message("<span class='warning'>Tarcza [owner] się przeciąża!</span>")
 
 /datum/component/shielded/proc/check_recharge_item(datum/source, obj/item/item, mob/living/user)
 	SIGNAL_HANDLER
@@ -151,10 +172,10 @@
 	if(istype(item, /obj/item/wizard_armour_charge))
 		. = COMPONENT_NO_AFTERATTACK
 		var/obj/item/wizard_armour_charge/recharge_rune = item
-		if(!istype(parent, /obj/item/clothing/suit/space/hardsuit/shielded/wizard))
-			to_chat(user, "<span class='warning'>The rune can only be used on battlemage armour!</span>")
+		if(!istype(parent, /obj/item/clothing/suit/space/hardsuit/shielded/wizard) && !istype(item, recharge_path))
+			to_chat(user, "<span class='warning'>Runy można użyć tylko na pancerzu bitewnego maga!</span>")
 			return
 
 		current_charges += recharge_rune.restored_charges
-		to_chat(user, "<span class='notice'>You charge \the [parent]. It can now absorb [current_charges] hits.</span>")
+		to_chat(user, "<span class='notice'>Ładujesz [parent]. Może teraz pochłonąć [current_charges] trafień.</span>")
 		qdel(recharge_rune)

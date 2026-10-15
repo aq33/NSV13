@@ -6,7 +6,7 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "your laws and the AI"	//Nodrak
+	supervisors = "twoje prawa i SI"	//Nodrak
 	selection_color = "#ddffdd"
 	minimal_player_age = 21
 	exp_requirements = 0
@@ -27,4 +27,4 @@
 	R.apply_pref_name("cyborg", M.client) //NSV13
 
 /datum/job/cyborg/radio_help_message(mob/M)
-	to_chat(M, "<b>Prefix your message with :b to speak with other cyborgs and AI.</b>")
+	to_chat(M, "<b>Poprzedź wiadomość :b, by rozmawiać z innymi cyborgami i SI.</b>")

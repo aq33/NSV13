@@ -76,7 +76,7 @@
 /obj/effect/decal/cleanable/blood/examine()
 	. = ..()
 	if(is_old)
-		. += "Looks like it's been here a while.  Eew.<br>"
+		. += "Wygląda na to, że leży tu od dawna. Fuj.<br>"
 
 /obj/effect/decal/cleanable/blood/proc/make_old()
 	ASSERT(!is_old)
@@ -151,7 +151,7 @@
 /obj/effect/decal/cleanable/blood/gibs/examine()
 	. = ..()
 	if(is_old)
-		. += "Space Jesus, why didn't anyone clean this up?<br>"
+		. += "Kosmiczny Jezu, czemu nikt tego nie posprzątał?<br>"
 
 /obj/effect/decal/cleanable/blood/gibs/make_fresh()
 	. = ..()

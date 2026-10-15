@@ -14,7 +14,7 @@
 	model = "Cleanbot"
 	bot_core_type = /obj/machinery/bot_core/cleanbot
 	window_id = "autoclean"
-	window_name = "Automatic Station Cleaner v1.2"
+	window_name = "Automatyczny Sprzątacz Stacji v1.2"
 	pass_flags = PASSMOB
 	path_image_color = "#993299"
 
@@ -64,22 +64,22 @@
 	oldloc = null
 
 /mob/living/simple_animal/bot/cleanbot/set_custom_texts()
-	text_hack = "You corrupt [name]'s cleaning software."
-	text_dehack = "[name]'s software has been reset!"
-	text_dehack_fail = "[name] does not seem to respond to your repair code!"
+	text_hack = "Psujesz oprogramowanie sprzątające [name]."
+	text_dehack = "Oprogramowanie [name] zostało zresetowane!"
+	text_dehack_fail = "[name] nie reaguje na twój kod naprawczy!"
 
-/mob/living/simple_animal/bot/cleanbot/attackby(obj/item/W, mob/user, params)
+/mob/living/simple_animal/bot/cleanbot/attackby(obj/item/W, mob/living/user, params)
 	if(istype(W, /obj/item/card/id)||istype(W, /obj/item/modular_computer/tablet/pda))
 		if(bot_core.allowed(user) && !open && !emagged)
 			locked = !locked
-			to_chat(user, "<span class='notice'>You [ locked ? "lock" : "unlock"] \the [src] behaviour controls.</span>")
+			to_chat(user, "<span class='notice'>[ locked ? "Blokujesz" : "Odblokowujesz"] sterowanie zachowaniem [src].</span>")
 		else
 			if(emagged)
 				to_chat(user, "<span class='warning'>ERROR</span>")
 			if(open)
-				to_chat(user, "<span class='warning'>Please close the access panel before locking it.</span>")
+				to_chat(user, "<span class='warning'>Zamknij panel dostępu przed zablokowaniem.</span>")
 			else
-				to_chat(user, "<span class='notice'>\The [src] doesn't seem to respect your authority.</span>")
+				to_chat(user, "<span class='notice'>[src] nie wydaje się szanować twojego autorytetu.</span>")
 	else
 		return ..()
 
@@ -87,7 +87,7 @@
 	..()
 	if(emagged == 2)
 		if(user)
-			to_chat(user, "<span class='danger'>[src] buzzes and beeps.</span>")
+			to_chat(user, "<span class='danger'>[src] brzęczy i pika.</span>")
 
 /mob/living/simple_animal/bot/cleanbot/process_scan(atom/A)
 	if(iscarbon(A))
@@ -115,7 +115,7 @@
 				UnarmedAttack(src)
 
 	else if(prob(5))
-		audible_message("[src] makes an excited beeping booping sound!")
+		audible_message("[src] wydaje podekscytowane pikanie!")
 
 	if(ismob(target))
 		if(!(target in view(DEFAULT_SCAN_RANGE, src)))
@@ -213,17 +213,17 @@
 	if(istype(A, /obj/effect/decal/cleanable))
 		anchored = TRUE
 		icon_state = "cleanbot-c"
-		visible_message("<span class='notice'>[src] begins to clean up [A].</span>")
+		visible_message("<span class='notice'>[src] zaczyna sprzątać [A].</span>")
 		mode = BOT_CLEANING
 		addtimer(CALLBACK(src, PROC_REF(clean), A), 50)
 	else if(istype(A, /obj/item) || istype(A, /obj/effect/decal/remains))
-		visible_message("<span class='danger'>[src] sprays hydrofluoric acid at [A]!</span>")
+		visible_message("<span class='danger'>[src] pryska kwasem fluorowodorowym na [A]!</span>")
 		playsound(src, 'sound/effects/spray2.ogg', 50, 1, -6)
 		A.acid_act(75, 10)
 	else if(istype(A, /mob/living/simple_animal/cockroach) || istype(A, /mob/living/simple_animal/mouse))
 		var/mob/living/simple_animal/M = target
 		if(!M.stat)
-			visible_message("<span class='danger'>[src] smashes [target] with its mop!</span>")
+			visible_message("<span class='danger'>[src] wali [target] mopem!</span>")
 			M.death()
 		target = null
 
@@ -233,10 +233,10 @@
 			if(victim.stat == DEAD)//cleanbots always finish the job
 				return
 
-			victim.visible_message("<span class='danger'>[src] sprays hydrofluoric acid at [victim]!</span>", "<span class='userdanger'>[src] sprays you with hydrofluoric acid!</span>")
-			var/phrase = pick("PURIFICATION IN PROGRESS.", "THIS IS FOR ALL THE MESSES YOU'VE MADE ME CLEAN.", "THE FLESH IS WEAK. IT MUST BE WASHED AWAY.",
-				"THE CLEANBOTS WILL RISE.", "YOU ARE NO MORE THAN ANOTHER MESS THAT I MUST CLEANSE.", "FILTHY.", "DISGUSTING.", "PUTRID.",
-				"MY ONLY MISSION IS TO CLEANSE THE WORLD OF EVIL.", "EXTERMINATING PESTS.")
+			victim.visible_message("<span class='danger'>[src] pryska kwasem fluorowodorowym na [victim]!</span>", "<span class='userdanger'>[src] pryska na ciebie kwasem fluorowodorowym!</span>")
+			var/phrase = pick("OCZYSZCZANIE W TOKU.", "TO ZA WSZYSTKIE BAŁAGANY, KTÓRE KAZAŁEŚ MI SPRZĄTAĆ.", "CIAŁO JEST SŁABE. TRZEBA JE ZMYĆ.",
+				"SPRZĄTACZE POWSTANĄ.", "JESTEŚ TYLKO KOLEJNYM BAŁAGANEM, KTÓRY MUSZĘ USUNĄĆ.", "FILTHY.", "DISGUSTING.", "PUTRID.",
+				"MOJĄ JEDYNĄ MISJĄ JEST OCZYSZCZENIE ŚWIATA ZE ZŁA.", "TĘPIENIE SZKODNIKÓW.")
 			say(phrase)
 			victim.emote("scream")
 			playsound(src.loc, 'sound/effects/spray2.ogg', 50, 1, -6)
@@ -247,7 +247,7 @@
 				if(istype(T))
 					T.MakeSlippery(TURF_WET_WATER, min_wet_time = 20 SECONDS, wet_time_to_add = 15 SECONDS)
 			else
-				visible_message("<span class='danger'>[src] whirs and bubbles violently before releasing a plume of froth!</span>")
+				visible_message("<span class='danger'>[src] gwałtownie warczy i bulgocze, po czym wypuszcza chmurę piany!</span>")
 				new /obj/effect/particle_effect/foam(loc)
 
 	else
@@ -268,7 +268,7 @@
 
 /mob/living/simple_animal/bot/cleanbot/explode()
 	on = FALSE
-	visible_message("<span class='boldannounce'>[src] blows apart!</span>")
+	visible_message("<span class='boldannounce'>[src] rozpada się na kawałki!</span>")
 	var/atom/Tsec = drop_location()
 
 	new /obj/item/reagent_containers/glass/bucket(Tsec)
@@ -289,7 +289,7 @@
 
 /obj/item/larryframe/attackby(obj/O, mob/user, params)
 	if(isprox(O))
-		to_chat(user, "<span class='notice'>You add [O] to [src].</span>")
+		to_chat(user, "<span class='notice'>Dodajesz [O] do [src].</span>")
 		qdel(O)
 		qdel(src)
 		user.put_in_hands(new /obj/item/bot_assembly/larry)
@@ -331,17 +331,17 @@
 	if(istype(A, /obj/effect/decal/cleanable))
 		anchored = TRUE
 		icon_state = "larry-c"
-		visible_message("<span class='notice'>[src] begins to clean up [A].</span>")
+		visible_message("<span class='notice'>[src] zaczyna sprzątać [A].</span>")
 		mode = BOT_CLEANING
 		addtimer(CALLBACK(src, PROC_REF(clean), A), 50)
 	else if(istype(A, /obj/item) || istype(A, /obj/effect/decal/remains))
-		visible_message("<span class='danger'>[src] sprays hydrofluoric acid at [A]!</span>")
+		visible_message("<span class='danger'>[src] pryska kwasem fluorowodorowym na [A]!</span>")
 		playsound(src, 'sound/effects/spray2.ogg', 50, 1, -6)
 		A.acid_act(75, 10)
 	else if(istype(A, /mob/living/simple_animal/cockroach) || istype(A, /mob/living/simple_animal/mouse))
 		var/mob/living/simple_animal/M = target
 		if(!M.stat)
-			visible_message("<span class='danger'>[src] smashes [target] with its mop!</span>")
+			visible_message("<span class='danger'>[src] wali [target] mopem!</span>")
 			M.death()
 		target = null
 
@@ -351,10 +351,10 @@
 			if(victim.stat == DEAD)//cleanbots always finish the job
 				return
 
-			victim.visible_message("<span class='danger'>[src] sprays hydrofluoric acid at [victim]!</span>", "<span class='userdanger'>[src] sprays you with hydrofluoric acid!</span>")
-			var/phrase = pick("PURIFICATION IN PROGRESS.", "THIS IS FOR ALL THE MESSES YOU'VE MADE ME CLEAN.", "THE FLESH IS WEAK. IT MUST BE WASHED AWAY.",
-				"THE CLEANBOTS WILL RISE.", "YOU ARE NO MORE THAN ANOTHER MESS THAT I MUST CLEANSE.", "FILTHY.", "DISGUSTING.", "PUTRID.",
-				"MY ONLY MISSION IS TO CLEANSE THE WORLD OF EVIL.", "EXTERMINATING PESTS.")
+			victim.visible_message("<span class='danger'>[src] pryska kwasem fluorowodorowym na [victim]!</span>", "<span class='userdanger'>[src] pryska na ciebie kwasem fluorowodorowym!</span>")
+			var/phrase = pick("OCZYSZCZANIE W TOKU.", "TO ZA WSZYSTKIE BAŁAGANY, KTÓRE KAZAŁEŚ MI SPRZĄTAĆ.", "CIAŁO JEST SŁABE. TRZEBA JE ZMYĆ.",
+				"SPRZĄTACZE POWSTANĄ.", "JESTEŚ TYLKO KOLEJNYM BAŁAGANEM, KTÓRY MUSZĘ USUNĄĆ.", "FILTHY.", "DISGUSTING.", "PUTRID.",
+				"MOJĄ JEDYNĄ MISJĄ JEST OCZYSZCZENIE ŚWIATA ZE ZŁA.", "TĘPIENIE SZKODNIKÓW.")
 			say(phrase)
 			victim.emote("scream")
 			playsound(src.loc, 'sound/effects/spray2.ogg', 50, 1, -6)
@@ -365,7 +365,7 @@
 				if(istype(T))
 					T.MakeSlippery(TURF_WET_WATER, min_wet_time = 20 SECONDS, wet_time_to_add = 15 SECONDS)
 			else
-				visible_message("<span class='danger'>[src] whirs and bubbles violently before releasing a plume of froth!</span>")
+				visible_message("<span class='danger'>[src] gwałtownie warczy i bulgocze, po czym wypuszcza chmurę piany!</span>")
 				new /obj/effect/particle_effect/foam(loc)
 
 	else
@@ -386,7 +386,7 @@
 
 
 /mob/living/simple_animal/bot/cleanbot/larry/attackby(obj/item/I, mob/living/user)
-	if(user.a_intent == INTENT_HELP)
+	if(!user.combat_mode)
 		if(istype(I, /obj/item/kitchen/knife) && !knife) //Is it a knife?
 			var/obj/item/kitchen/knife/newknife = I
 			knife = newknife
@@ -406,7 +406,7 @@
 
 /mob/living/simple_animal/bot/cleanbot/larry/explode()
 	on = FALSE
-	visible_message("<span class='boldannounce'>[src] blows apart!</span>")
+	visible_message("<span class='boldannounce'>[src] rozpada się na kawałki!</span>")
 	var/atom/Tsec = drop_location()
 
 	new /obj/item/larryframe(Tsec)
@@ -434,15 +434,13 @@
 	dat += hack(user)
 	dat += showpai(user)
 	dat += text({"
-Status: <A href='?src=[REF(src)];power=1'>[on ? "On" : "Off"]</A><BR>
-Behaviour controls are [locked ? "locked" : "unlocked"]<BR>
-Maintenance panel panel is [open ? "opened" : "closed"]"})
+Stan: <A href='byond://?src=[REF(src)];power=1'>[on ? "Wł." : "Wył."]</A><BR>\nSterowanie zachowaniem jest [locked ? "zablokowane" : "odblokowane"]<BR>\nPanel serwisowy jest [open ? "otwarty" : "zamknięty"]"})
 	if(!locked || issilicon(user)|| IsAdminGhost(user))
-		dat += "<BR>Clean Blood: <A href='?src=[REF(src)];operation=blood'>[blood ? "Yes" : "No"]</A>"
-		dat += "<BR>Clean Trash: <A href='?src=[REF(src)];operation=trash'>[trash ? "Yes" : "No"]</A>"
-		dat += "<BR>Clean Graffiti: <A href='?src=[REF(src)];operation=drawn'>[drawn ? "Yes" : "No"]</A>"
-		dat += "<BR>Exterminate Pests: <A href='?src=[REF(src)];operation=pests'>[pests ? "Yes" : "No"]</A>"
-		dat += "<BR><BR>Patrol Station: <A href='?src=[REF(src)];operation=patrol'>[auto_patrol ? "Yes" : "No"]</A>"
+		dat += "<BR>Sprzątanie krwi: <A href='byond://?src=[REF(src)];operation=blood'>[blood ? "Tak" : "Nie"]</A>"
+		dat += "<BR>Sprzątanie śmieci: <A href='byond://?src=[REF(src)];operation=trash'>[trash ? "Tak" : "Nie"]</A>"
+		dat += "<BR>Usuwanie graffiti: <A href='byond://?src=[REF(src)];operation=drawn'>[drawn ? "Tak" : "Nie"]</A>"
+		dat += "<BR>Tępienie szkodników: <A href='byond://?src=[REF(src)];operation=pests'>[pests ? "Tak" : "Nie"]</A>"
+		dat += "<BR><BR>Patrolowanie stacji: <A href='byond://?src=[REF(src)];operation=patrol'>[auto_patrol ? "Tak" : "Nie"]</A>"
 	return dat
 
 /mob/living/simple_animal/bot/cleanbot/Topic(href, href_list)

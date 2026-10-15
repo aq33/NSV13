@@ -72,7 +72,7 @@
 	var/target_loc = get_turf(remote_eye)
 
 	if(istype(get_area(target_loc), /area/ai_monitored))
-		to_chat(owner, "<span class='warning'>Due to significant interference, this area cannot be warped to!</span>")
+		to_chat(owner, "<span class='warning'>Z powodu silnych zakłóceń nie można się tu przenieść!</span>")
 		return
 
 	if(GLOB.cameranet.checkTurfVis(remote_eye.loc))
@@ -104,7 +104,7 @@
 	var/target_loc = get_turf(remote_eye)
 
 	if(istype(get_area(target_loc), /area/ai_monitored))
-		to_chat(owner, "<span class='warning'>Due to significant interference, this area cannot be warped to!</span>")
+		to_chat(owner, "<span class='warning'>Z powodu silnych zakłóceń nie można się tu przenieść!</span>")
 		return
 
 	if(GLOB.cameranet.checkTurfVis(remote_eye.loc))

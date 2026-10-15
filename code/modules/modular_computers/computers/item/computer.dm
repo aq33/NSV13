@@ -6,7 +6,7 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 /obj/item/modular_computer
 	name = "modular microcomputer"
 	desc = "A small portable microcomputer."
-	light_system = MOVABLE_LIGHT
+	light_system = MOVABLE_LIGHT_DIRECTIONAL
 	light_range = 3
 	light_power = 0.6
 	light_color = "#FFFFFF"
@@ -54,7 +54,7 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 
 	integrity_failure = 50
 	max_integrity = 100
-	armor = list("melee" = 0, "bullet" = 20, "laser" = 20, "energy" = 100, "bomb" = 0, "bio" = 100, "rad" = 100, "fire" = 0, "acid" = 0, "stamina" = 0)
+	armor = list("melee" = 0, "bullet" = 20, "laser" = 20, "energy" = 100, "bomb" = 0, "bio" = 100, "rad" = 100, "fire" = 0, "acid" = 0, "stamina" = 0, "bleed" = 0)
 
 	/// List of "connection ports" in this computer and the components with which they are plugged
 	var/list/all_components = list()
@@ -243,13 +243,13 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 	if(enabled)
 		ui_interact(user)
 	else if(IsAdminGhost(user))
-		var/response = alert(user, "This computer is turned off. Would you like to turn it on?", "Admin Override", "Yes", "No")
+		var/response = alert(user, "Ten komputer jest wyłączony. Czy chcesz go włączyć?", "Obejście admina", "Yes", "No")
 		if(response == "Yes")
 			turn_on(user)
 
 /obj/item/modular_computer/emag_act(mob/user)
 	if(!enabled)
-		to_chat(user, "<span class='warning'>You'd need to turn the [src] on first.</span>")
+		to_chat(user, "<span class='warning'>Najpierw musisz włączyć [src].</span>")
 		return FALSE
 	obj_flags |= EMAGGED //Mostly for consistancy purposes; the programs will do their own emag handling
 	var/newemag = FALSE
@@ -260,7 +260,7 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 		if(app.run_emag())
 			newemag = TRUE
 	if(newemag)
-		to_chat(user, "<span class='notice'>You swipe \the [src]. A console window momentarily fills the screen, with white text rapidly scrolling past.</span>")
+		to_chat(user, "<span class='notice'>Przeciągasz [src]. Na ekranie na chwilę pojawia się okno konsoli z szybko przewijającym się białym tekstem.</span>")
 		kill_program(forced = TRUE, update = FALSE)
 
 		var/datum/computer_file/program/emag_console/emag_console = new(src)
@@ -270,15 +270,15 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 		ui_interact(user)
 		update_icon()
 		return TRUE
-	to_chat(user, "<span class='notice'>You swipe \the [src]. A console window fills the screen, but it quickly closes itself after only a few lines are written to it.</span>")
+	to_chat(user, "<span class='notice'>Przeciągasz [src]. Na ekranie pojawia się okno konsoli, ale po kilku linijkach szybko samo się zamyka.</span>")
 	return FALSE
 
 /obj/item/modular_computer/examine(mob/user)
 	. = ..()
 	if(obj_integrity <= integrity_failure)
-		. += "<span class='danger'>It is heavily damaged!</span>"
+		. += "<span class='danger'>Jest poważnie uszkodzony!</span>"
 	else if(obj_integrity < max_integrity)
-		. += "<span class='warning'>It is damaged.</span>"
+		. += "<span class='warning'>Jest uszkodzony.</span>"
 
 	. += get_modular_computer_parts_examine(user)
 
@@ -309,9 +309,9 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 	var/issynth = issilicon(user) // Robots and AIs get different activation messages.
 	if(obj_integrity <= integrity_failure)
 		if(issynth)
-			to_chat(user, "<span class='warning'>You send an activation signal to \the [src], but it responds with an error code. It must be damaged.</span>")
+			to_chat(user, "<span class='warning'>Wysyłasz sygnał aktywacji do [src], ale odpowiada kodem błędu. Musi być uszkodzony.</span>")
 		else
-			to_chat(user, "<span class='warning'>You press the power button, but the computer fails to boot up, displaying variety of errors before shutting down again.</span>")
+			to_chat(user, "<span class='warning'>Naciskasz przycisk zasilania, ale komputer się nie uruchamia; wyświetla mnóstwo błędów i znów się wyłącza.</span>")
 		return FALSE
 
 	// If we have a recharger, enable it automatically. Lets computer without a battery work.
@@ -321,9 +321,9 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 
 	if(all_components[MC_CPU] && use_power()) // use_power() checks if the PC is powered
 		if(issynth)
-			to_chat(user, "<span class='notice'>You send an activation signal to \the [src], turning it on.</span>")
+			to_chat(user, "<span class='notice'>Wysyłasz sygnał aktywacji do [src], włączając go.</span>")
 		else
-			to_chat(user, "<span class='notice'>You press the power button and start up \the [src].</span>")
+			to_chat(user, "<span class='notice'>Naciskasz przycisk zasilania i uruchamiasz [src].</span>")
 		enabled = 1
 		update_icon()
 		if(open_ui)
@@ -331,9 +331,9 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 		return TRUE
 	else // Unpowered
 		if(issynth)
-			to_chat(user, "<span class='warning'>You send an activation signal to \the [src] but it does not respond.</span>")
+			to_chat(user, "<span class='warning'>Wysyłasz sygnał aktywacji do [src], ale nie odpowiada.</span>")
 		else
-			to_chat(user, "<span class='warning'>You press the power button but \the [src] does not respond.</span>")
+			to_chat(user, "<span class='warning'>Naciskasz przycisk zasilania, ale [src] nie odpowiada.</span>")
 	return FALSE
 
 // Process currently calls handle_power(), may be expanded in future if more things are added.
@@ -389,10 +389,10 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 	if(!caller || !caller.alert_able || caller.alert_silenced || !alerttext) //Yeah, we're checking alert_able. No, you don't get to make alerts that the user can't silence.
 		return
 	playsound(src, sound, 50, TRUE)
-	visible_message("<span class='notice'>The [src] displays a [caller.filedesc] notification: [alerttext]</span>")
+	visible_message("<span class='notice'>[src] wyświetla powiadomienie z [caller.filedesc]: [alerttext]</span>")
 	var/mob/living/holder = loc
 	if(istype(holder))
-		to_chat(holder, "[icon2html(src)] <span class='notice'>The [src] displays a [caller.filedesc] notification: [alerttext]</span>")
+		to_chat(holder, "[icon2html(src)] <span class='notice'>[src] wyświetla powiadomienie z [caller.filedesc]: [alerttext]</span>")
 
 /obj/item/modular_computer/proc/ring(ringtone) // bring bring
 	if(HAS_TRAIT(SSstation, STATION_TRAIT_PDA_GLITCHED))
@@ -485,7 +485,7 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 		CRASH("tried to open program that does not belong to this computer")
 
 	if(!program || !istype(program)) // Program not found or it's not executable program.
-		to_chat(user, "<span class='danger'>\The [src]'s screen shows \"I/O ERROR - Unable to run program\" warning.</span>")
+		to_chat(user, "<span class='danger'>Ekran [src] wyświetla ostrzeżenie „BŁĄD WE/WY – nie można uruchomić programu”.</span>")
 		return FALSE
 
 	if(!program.is_supported_by_hardware(hardware_flag, 1, user))
@@ -504,11 +504,11 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 		return TRUE
 	var/obj/item/computer_hardware/processor_unit/PU = all_components[MC_CPU]
 	if(idle_threads.len > PU.max_idle_programs)
-		to_chat(user, "<span class='danger'>\The [src] displays a \"Maximal CPU load reached. Unable to run another program.\" error.</span>")
+		to_chat(user, "<span class='danger'>[src] wyświetla błąd „Osiągnięto maksymalne obciążenie procesora. Nie można uruchomić kolejnego programu.”</span>")
 		return FALSE
 
 	if(program.requires_ntnet && !get_ntnet_status(program.requires_ntnet_feature)) // The program requires NTNet connection, but we are not connected to NTNet.
-		to_chat(user, "<span class='danger'>\The [src]'s screen shows \"Unable to connect to NTNet. Please retry. If problem persists contact your system administrator.\" warning.</span>")
+		to_chat(user, "<span class='danger'>Ekran [src] wyświetla ostrzeżenie „Nie można połączyć się z NTNet. Spróbuj ponownie. Jeśli problem się powtarza, skontaktuj się z administratorem systemu.”</span>")
 		return FALSE
 
 	if(!program.on_start(user))
@@ -544,7 +544,7 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 		P.kill_program(forced = TRUE)
 		idle_threads.Remove(P)
 	if(loud)
-		physical.visible_message("<span class='notice'>\The [src] shuts down.</span>")
+		physical.visible_message("<span class='notice'>[src] się wyłącza.</span>")
 	enabled = 0
 	update_icon()
 
@@ -583,14 +583,14 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 	if(!deconstructable)
 		return
 	if(!length(all_components))
-		balloon_alert(user, "no components installed!")
+		balloon_alert(user, "brak zainstalowanych komponentów!")
 		return
 	var/list/component_names = list()
 	for(var/h in all_components)
 		var/obj/item/computer_hardware/H = all_components[h]
 		component_names.Add(H.name)
 
-	var/choice = input(user, "Which component do you want to uninstall?", "Computer maintenance", null) as null|anything in sortList(component_names)
+	var/choice = input(user, "Który komponent chcesz odinstalować?", "Konserwacja komputera", null) as null|anything in sortList(component_names)
 
 	if(!choice)
 		return
@@ -621,7 +621,7 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 			for(var/datum/computer_file/program/messenger/messenger in hdd.stored_files)
 				saved_image = pic.picture
 				messenger.ProcessPhoto()
-				to_chat(user, "<span class='notice'>You scan \the [pic] into \the [src]'s messenger.</span>")
+				to_chat(user, "<span class='notice'>Skanujesz [pic] do komunikatora [src].</span>")
 				ui_update()
 			return
 
@@ -640,7 +640,7 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 		// If the pAI moves out of the PDA, remove the reference.
 		RegisterSignal(stored_pai_card, COMSIG_MOVABLE_MOVED, PROC_REF(stored_pai_moved))
 		RegisterSignal(stored_pai_card, COMSIG_PARENT_QDELETING, PROC_REF(remove_pai))
-		to_chat(user, "<span class='notice'>You slot \the [attacking_item] into [src].</span>")
+		to_chat(user, "<span class='notice'>Wkładasz [attacking_item] do [src].</span>")
 		playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50)
 		update_icon()
 
@@ -654,7 +654,7 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 
 	if(attacking_item.tool_behaviour == TOOL_WRENCH)
 		if(length(all_components))
-			balloon_alert(user, "remove the other components!")
+			balloon_alert(user, "najpierw usuń pozostałe komponenty!")
 			return
 		attacking_item.play_tool_sound(src, user, 20, volume=20)
 		new /obj/item/stack/sheet/iron( get_turf(src.loc), steel_sheet_cost )
@@ -665,16 +665,16 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 
 	if(attacking_item.tool_behaviour == TOOL_WELDER)
 		if(obj_integrity == max_integrity)
-			to_chat(user, "<span class='warning'>\The [src] does not require repairs.</span>")
+			to_chat(user, "<span class='warning'>[src] nie wymaga naprawy.</span>")
 			return
 
 		if(!attacking_item.tool_start_check(user, amount=1))
 			return
 
-		to_chat(user, "<span class='notice'>You begin repairing damage to \the [src]...</span>")
+		to_chat(user, "<span class='notice'>Zaczynasz naprawiać uszkodzenia [src]...</span>")
 		if(attacking_item.use_tool(src, user, 20, volume=50, amount=1))
 			obj_integrity = max_integrity
-			to_chat(user, "<span class='notice'>You repair \the [src].</span>")
+			to_chat(user, "<span class='notice'>Naprawiasz [src].</span>")
 			update_icon()
 		return
 
@@ -689,7 +689,7 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 /// Handle when the pAI moves to exit the PDA
 /obj/item/modular_computer/proc/stored_pai_moved()
 	if(istype(stored_pai_card) && stored_pai_card.loc != src)
-		visible_message("<span class='notice'>[stored_pai_card] ejects itself from [src]!</span>")
+		visible_message("<span class='notice'>[stored_pai_card] sam wysuwa się z [src]!</span>")
 		remove_pai()
 
 /// Set the internal pAI card to null - this is NOT "Ejecting" it.

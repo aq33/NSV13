@@ -1,9 +1,9 @@
 /datum/computer_file/program/budgetorders
 	filename = "orderapp"
-	filedesc = "Nanotrasen Internal Requisition Network (NIRN)"
+	filedesc = "Wewnętrzna Sieć Zamówień Nanotrasen (NIRN)"
 	category = PROGRAM_CATEGORY_SUPL
 	program_icon_state = "request"
-	extended_desc = "A request network that utilizes the Nanotrasen Ordering network to purchase supplies using a department budget account."
+	extended_desc = "Sieć zamówień korzystająca z sieci zamówień Nanotrasen do kupowania zaopatrzenia z budżetu działu."
 	requires_ntnet = TRUE
 	usage_flags = PROGRAM_LAPTOP | PROGRAM_TABLET
 	size = 20
@@ -18,11 +18,9 @@
 	//Can this console approve purchase requests?
 	var/can_approve_requests = FALSE
 	//What do we say when the shuttle moves with living beings on it.
-	var/safety_warning = "For safety and ethical reasons, the automated supply shuttle \
-		cannot transport live organisms, human remains, classified nuclear weaponry, \
-		homing beacons, mail, or machinery housing any form of artificial intelligence."
+	var/safety_warning = "Ze względów bezpieczeństwa i etycznych zautomatyzowany prom zaopatrzenia nie może przewozić żywych organizmów, ludzkich szczątków, tajnej broni jądrowej, nadajników naprowadzających, poczty ani maszyn zawierających jakąkolwiek formę sztucznej inteligencji."
 	//If you're being raided by pirates, what do you tell the crew?
-	var/blockade_warning = "Bluespace instability detected. Shuttle movement impossible."
+	var/blockade_warning = "Wykryto niestabilność bluespace. Ruch promu niemożliwy."
 
 /datum/computer_file/program/budgetorders/proc/get_export_categories()
 	return EXPORT_CARGO
@@ -107,7 +105,7 @@
 	data["can_send"] = FALSE	//There is no situation where I want the app to be able to send the shuttle AWAY from the station, but conversely is fine.
 	data["can_approve_requests"] = can_approve_requests
 	data["app_cost"] = TRUE
-	var/message = "Remember to stamp and send back the supply manifests."
+	var/message = "Pamiętaj, by podstemplować i odesłać manifesty zaopatrzenia."
 	if(SSshuttle.centcom_message)
 		message = SSshuttle.centcom_message
 	if(SSshuttle.supplyBlocked)
@@ -149,11 +147,11 @@
 			if(SSshuttle.supply.getDockedId() == "supply_home")
 				SSshuttle.supply.export_categories = get_export_categories()
 				SSshuttle.moveShuttle("supply", "supply_away", TRUE)
-				computer.say("The supply shuttle is departing.")
+				computer.say("Prom zaopatrzenia odlatuje.")
 				computer.investigate_log("[key_name(usr)] sent the supply shuttle away.", INVESTIGATE_CARGO)
 			else
 				computer.investigate_log("[key_name(usr)] called the supply shuttle.", INVESTIGATE_CARGO)
-				computer.say("The supply shuttle has been called and will arrive in [SSshuttle.supply.timeLeft(600)] minutes.")
+				computer.say("Prom zaopatrzenia został wezwany i przybędzie za [SSshuttle.supply.timeLeft(600)] min.")
 				SSshuttle.moveShuttle("supply", "supply_home", TRUE)
 			. = TRUE
 		if("loan")
@@ -168,7 +166,7 @@
 				return
 			else
 				SSshuttle.shuttle_loan.loan_shuttle()
-				computer.say("The supply shuttle has been loaned to CentCom.")
+				computer.say("Prom zaopatrzenia został wypożyczony Centrali.")
 				computer.investigate_log("[key_name(usr)] accepted a shuttle loan event.", INVESTIGATE_CARGO)
 				log_game("[key_name(usr)] accepted a shuttle loan event.")
 				. = TRUE
@@ -181,7 +179,7 @@
 				return
 
 			var/name = "*None Provided*"
-			var/rank = "*None Provided*"
+			var/rank = "*Nie podano*"
 			var/ckey = usr.ckey
 			if(ishuman(usr))
 				var/mob/living/carbon/human/H = usr
@@ -195,14 +193,14 @@
 			if(self_paid && ishuman(usr))
 				var/obj/item/card/id/id_card = get_buyer_id(usr)
 				if(!istype(id_card))
-					computer.say("No ID card detected.")
+					computer.say("Nie wykryto karty identyfikacyjnej.")
 					return
 				if(istype(id_card, /obj/item/card/id/departmental_budget))
-					computer.say("The application rejects [id_card].")
+					computer.say("Aplikacja odrzuca [id_card].")
 					return
 				account = id_card.registered_account
 				if(!istype(account))
-					computer.say("Invalid bank account.")
+					computer.say("Nieprawidłowe konto bankowe.")
 					return
 
 			var/reason = ""
@@ -214,22 +212,22 @@
 			if(!self_paid && ishuman(usr) && !account)
 				var/obj/item/card/id/id_card = get_buyer_id(usr)
 				if(!istype(id_card))
-					computer.say("No ID card detected.")
+					computer.say("Nie wykryto karty identyfikacyjnej.")
 					return
 				var/access = id_card.GetAccess()
 				if(!(computer.obj_flags & EMAGGED) && pack.access_budget && !(pack.access_budget in access))
-					computer.say("Insufficient access on [id_card].")
+					computer.say("Niewystarczający dostęp na [id_card].")
 					return
 				if(istype(id_card, /obj/item/card/id/departmental_budget))
-					computer.say("The application rejects [id_card].")
+					computer.say("Aplikacja odrzuca [id_card].")
 					return
 				else
 					account = SSeconomy.get_dep_account(id_card?.registered_account?.account_department)
 					if(isnull(account))
-						computer.say("The application failed to identify [id_card].")
+						computer.say("Aplikacja nie zdołała zidentyfikować [id_card].")
 						return
 					else if(account.is_nonstation_account())
-						computer.say("The application rejects [id_card].")
+						computer.say("Aplikacja odrzuca [id_card].")
 						return
 
 
@@ -241,7 +239,7 @@
 			else
 				SSshuttle.shoppinglist += SO
 				if(self_paid)
-					computer.say("Order processed. The price will be charged to [account.account_holder]'s bank account on delivery.")
+					computer.say("Zamówienie przetworzone. Kwota zostanie pobrana z konta bankowego [account.account_holder] przy dostawie.")
 			. = TRUE
 		if("remove")
 			var/id = text2num(params["id"])

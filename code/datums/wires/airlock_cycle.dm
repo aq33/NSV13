@@ -11,6 +11,8 @@
 	..()
 
 /datum/wires/advanced_airlock_controller/interactable(mob/user)
+	if(!..())
+		return FALSE
 	var/obj/machinery/advanced_airlock_controller/A = holder
 	if(A.panel_open && A.buildstage == 2)
 		return TRUE
@@ -18,9 +20,9 @@
 /datum/wires/advanced_airlock_controller/get_status()
 	var/obj/machinery/advanced_airlock_controller/A = holder
 	var/list/status = list()
-	status += "The interface light is [A.locked ? "red" : "green"]."
-	status += "The short indicator is [A.shorted ? "lit" : "off"]."
-	status += "The AI connection light is [!A.aidisabled ? "on" : "off"]."
+	status += "Lampka interfejsu jest [A.locked ? "czerwona" : "zielona"]."
+	status += "Wskaźnik zwarcia [A.shorted ? "świeci się" : "jest zgaszony"]."
+	status += "Lampka połączenia z SI [!A.aidisabled ? "świeci się" : "jest zgaszona"]."
 	return status
 
 /datum/wires/advanced_airlock_controller/on_pulse(wire)

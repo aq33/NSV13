@@ -23,33 +23,33 @@
 
 /obj/item/radio/intercom/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Use [MODE_TOKEN_INTERCOM] when nearby to speak into it.</span>"
+	. += "<span class='notice'>Gdy jesteś w pobliżu, użyj [MODE_TOKEN_INTERCOM], by mówić do niego.</span>"
 	if(!unscrewed)
-		. += "<span class='notice'>It's <b>screwed</b> and secured to the wall.</span>"
+		. += "<span class='notice'>Jest <b>przykręcony</b> do ściany.</span>"
 	else
-		. += "<span class='notice'>It's <i>unscrewed</i> from the wall, and can be <b>detached</b>.</span>"
+		. += "<span class='notice'>Jest <i>odkręcony</i> od ściany i można go <b>zdjąć</b>.</span>"
 
 /obj/item/radio/intercom/attackby(obj/item/I, mob/living/user, params)
 	if(I.tool_behaviour == TOOL_SCREWDRIVER)
 		if(unscrewed)
-			user.visible_message("<span class='notice'>[user] starts tightening [src]'s screws...</span>", "<span class='notice'>You start screwing in [src]...</span>")
+			user.visible_message("<span class='notice'>[user] zaczyna dokręcać śruby [src]...</span>", "<span class='notice'>Zaczynasz przykręcać [src]...</span>")
 			if(I.use_tool(src, user, 30, volume=50))
-				user.visible_message("<span class='notice'>[user] tightens [src]'s screws!</span>", "<span class='notice'>You tighten [src]'s screws.</span>")
+				user.visible_message("<span class='notice'>[user] tightens [src]'s screws!</span>", "<span class='notice'>Dokręcasz śruby [src].</span>")
 				unscrewed = FALSE
 		else
-			user.visible_message("<span class='notice'>[user] starts loosening [src]'s screws...</span>", "<span class='notice'>You start unscrewing [src]...</span>")
+			user.visible_message("<span class='notice'>[user] zaczyna luzować śruby [src]...</span>", "<span class='notice'>Zaczynasz odkręcać [src]...</span>")
 			if(I.use_tool(src, user, 40, volume=50))
-				user.visible_message("<span class='notice'>[user] loosens [src]'s screws!</span>", "<span class='notice'>You unscrew [src], loosening it from the wall.</span>")
+				user.visible_message("<span class='notice'>[user] loosens [src]'s screws!</span>", "<span class='notice'>Odkręcasz [src], luzując go od ściany.</span>")
 				unscrewed = TRUE
 		return
 	else if(I.tool_behaviour == TOOL_WRENCH)
 		if(!unscrewed)
-			to_chat(user, "<span class='warning'>You need to unscrew [src] from the wall first!</span>")
+			to_chat(user, "<span class='warning'>Najpierw musisz odkręcić [src] od ściany!</span>")
 			return
-		user.visible_message("<span class='notice'>[user] starts unsecuring [src]...</span>", "<span class='notice'>You start unsecuring [src]...</span>")
+		user.visible_message("<span class='notice'>[user] zaczyna odczepiać [src]...</span>", "<span class='notice'>Zaczynasz odczepiać [src]...</span>")
 		I.play_tool_sound(src)
 		if(I.use_tool(src, user, 80))
-			user.visible_message("<span class='notice'>[user] unsecures [src]!</span>", "<span class='notice'>You detach [src] from the wall.</span>")
+			user.visible_message("<span class='notice'>[user] unsecures [src]!</span>", "<span class='notice'>Zdejmujesz [src] ze ściany.</span>")
 			playsound(src, 'sound/items/deconstruct.ogg', 50, 1)
 			new/obj/item/wallframe/intercom(get_turf(src))
 			qdel(src)
@@ -62,7 +62,7 @@
 /obj/item/radio/intercom/attack_paw(mob/user)
 	return attack_hand(user)
 
-/obj/item/radio/intercom/attack_hand(mob/user)
+/obj/item/radio/intercom/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(.)
 		return

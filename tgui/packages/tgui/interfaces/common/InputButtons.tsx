@@ -2,7 +2,8 @@ import { useBackend } from '../../backend';
 import { Box, Button, Flex } from '../../components';
 
 type InputButtonsData = {
-  preferences: Preferences;
+  large_buttons: boolean;
+  swapped_buttons: boolean;
 };
 
 type InputButtonsProps = {
@@ -10,14 +11,9 @@ type InputButtonsProps = {
   message?: string;
 };
 
-export type Preferences = {
-  large_buttons: boolean;
-  swapped_buttons: boolean;
-};
-
-export const InputButtons = (props: InputButtonsProps, context) => {
-  const { act, data } = useBackend<InputButtonsData>(context);
-  const { large_buttons, swapped_buttons } = data.preferences;
+export const InputButtons = (props: InputButtonsProps) => {
+  const { act, data } = useBackend<InputButtonsData>();
+  const { large_buttons, swapped_buttons } = data;
   const { input, message } = props;
   const submitButton = (
     <Button
@@ -31,7 +27,8 @@ export const InputButtons = (props: InputButtonsProps, context) => {
       pt={large_buttons ? 0.33 : 0}
       textAlign="center"
       tooltip={large_buttons && message}
-      width={!large_buttons && 6}>
+      width={!large_buttons && 6}
+    >
       Submit
     </Button>
   );
@@ -46,7 +43,8 @@ export const InputButtons = (props: InputButtonsProps, context) => {
       pr={2}
       pt={large_buttons ? 0.33 : 0}
       textAlign="center"
-      width={!large_buttons && 6}>
+      width={!large_buttons && 6}
+    >
       Cancel
     </Button>
   );
@@ -56,7 +54,8 @@ export const InputButtons = (props: InputButtonsProps, context) => {
       align="center"
       direction={!swapped_buttons ? 'row' : 'row-reverse'}
       fill
-      justify="space-around">
+      justify="space-around"
+    >
       {large_buttons ? (
         <Flex.Item grow>{cancelButton}</Flex.Item>
       ) : (

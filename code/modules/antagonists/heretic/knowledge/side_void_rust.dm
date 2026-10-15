@@ -4,8 +4,8 @@
 	name = "Armorer's Ritual"
 	desc = "Allows you to transmute a table and a gas mask to create Eldritch Armor. \
 		Eldritch Armor provides great protection while also acting as a focus when hooded."
-	gain_text = "The Rusted Hills welcomed the Blacksmith in their generosity. And the Blacksmith \
-		returned their generosity in kind."
+	gain_text = "Rdzawe Wzgórza hojnie przyjęły Kowala. A Kowal \
+		odwdzięczył się im tym samym."
 	next_knowledge = list(
 		/datum/heretic_knowledge/rust_regen,
 		/datum/heretic_knowledge/cold_snap,
@@ -22,8 +22,8 @@
 	name = "Mawed Crucible"
 	desc = "Allows you to transmute a portable water tank and a table to create a Mawed Crucible. \
 		The Mawed Crubile can brew powerful potions for combat and utility, but must be fed bodyparts and organs between uses."
-	gain_text = "This is pure agony. I wasn't able to summon the figure of the Aristocrat, \
-		but with the Priest's attention I stumbled upon a different recipe..."
+	gain_text = "To czysta agonia. Nie zdołałem przywołać postaci Arystokraty, \
+		ale dzięki uwadze Kapłana natknąłem się na inny przepis..."
 	next_knowledge = list(
 		/datum/heretic_knowledge/spell/void_phase,
 		/datum/heretic_knowledge/spell/area_conversion,
@@ -40,7 +40,7 @@
 	name = "Rusted Ritual"
 	desc = "Allows you to transmute a pool of vomit, a book, and a head into a Rust Walker. \
 		Rust Walkers excel at spreading rust and are moderately strong in combat."
-	gain_text = "I combined my principle of hunger with my desire for corruption. The Marshal knew my name, and the Rusted Hills echoed out."
+	gain_text = "Połączyłem swoją zasadę głodu z żądzą zepsucia. Marszałek znał moje imię, a Rdzawe Wzgórza odpowiedziały echem."
 	next_knowledge = list(
 		/datum/heretic_knowledge/spell/voidpull,
 		/datum/heretic_knowledge/spell/entropic_plume,

@@ -43,6 +43,11 @@
 /datum/round_event_control/wizard
 	wizardevent = TRUE
 
+/// AQ EDIT - the weight SSevents.spawnEvent() picks with. Every event has the same chance, `weight` itself is ignored there,
+/// except that weight 0 still means "does not roll" (and a negative value marks round-start events)
+/datum/round_event_control/proc/get_random_weight()
+	return weight > 0 ? 10 : 0
+
 // Checks if the event can be spawned. Used by event controller and "false alarm" event.
 // Admin-created events override this.
 /datum/round_event_control/proc/canSpawnEvent(var/players_amt, var/gamemode)
@@ -80,7 +85,7 @@
 
 	triggering = TRUE
 	if (alert_observers)
-		message_admins("Random Event triggering in [RANDOM_EVENT_ADMIN_INTERVENTION_TIME] seconds: [name] (<a href='?src=[REF(src)];cancel=1'>CANCEL</a>)")
+		message_admins("Random Event triggering in [RANDOM_EVENT_ADMIN_INTERVENTION_TIME] seconds: [name] (<a href='byond://?src=[REF(src)];cancel=1'>CANCEL</a>)")
 		sleep(RANDOM_EVENT_ADMIN_INTERVENTION_TIME SECONDS)
 		var/gamemode = SSticker.mode.config_tag
 		var/players_amt = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE)
@@ -97,7 +102,7 @@
 	..()
 	if(href_list["cancel"])
 		if(!triggering)
-			to_chat(usr, "<span class='admin'>You are too late to cancel that event</span>")
+			to_chat(usr, "<span class='admin'>Za późno, żeby anulować ten event</span>")
 			return
 		triggering = FALSE
 		message_admins("[key_name_admin(usr)] cancelled event [name].")
@@ -115,7 +120,7 @@
 	if(random)
 		log_game("Random Event triggering: [name] ([typepath])")
 	if (alert_observers)
-		deadchat_broadcast("<span class='deadsay'><b>[name]</b> has just been[random ? " randomly" : ""] triggered!</span>") //STOP ASSUMING IT'S BADMINS!
+		deadchat_broadcast("<span class='deadsay'><b>[name]</b> właśnie został[random ? " losowo" : ""] uruchomiony!</span>") //STOP ASSUMING IT'S BADMINS!
 	return E
 
 //Special admins setup
@@ -156,7 +161,7 @@
 //Only called once.
 /datum/round_event/proc/announce_to_ghosts(atom/atom_of_interest)
 	if(control.alert_observers && atom_of_interest)
-		notify_ghosts("[control.name] has an object of interest: [atom_of_interest]!", source=atom_of_interest, action=NOTIFY_ORBIT, header="Something's Interesting!")
+		notify_ghosts("[control.name] ma ciekawy obiekt: [atom_of_interest]!", source=atom_of_interest, action=NOTIFY_ORBIT, header="Coś ciekawego!")
 	return
 
 //Called when the tick is equal to the announceWhen variable.

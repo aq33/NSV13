@@ -14,9 +14,9 @@
 	health = 40
 	melee_damage = 10
 	melee_damage_type = BURN
-	attacktext = "slashes"
+	attacktext = "tnie"
 	attack_sound = 'sound/effects/curseattack.ogg'
-	throw_message = "passes through the smokey body of"
+	throw_message = "przenika przez dymne ciało"
 	obj_damage = 0
 	environment_smash = ENVIRONMENT_SMASH_NONE
 	sentience_type = SENTIENCE_BOSS

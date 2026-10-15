@@ -2,7 +2,7 @@
 	name = "Geladikinesis"
 	desc = "Allows the user to concentrate moisture and sub-zero forces into snow."
 	quality = POSITIVE
-	text_gain_indication = "<span class='notice'>Your hand feels cold.</span>"
+	text_gain_indication = "<span class='notice'>Twoja dłoń wydaje się zimna.</span>"
 	instability = 10
 	difficulty = 10
 	synchronizer_coeff = 1
@@ -20,7 +20,7 @@
 	name = "Waxy Saliva"
 	desc = "Allows the user to secrete wax."
 	quality = POSITIVE
-	text_gain_indication = "<span class='notice'>Your mouth feels waxy.</span>"
+	text_gain_indication = "<span class='notice'>Twoje usta wydają się woskowe.</span>"
 	instability = 10
 	difficulty = 10
 	synchronizer_coeff = 1
@@ -39,7 +39,7 @@
 	name = "Cryokinesis"
 	desc = "Draws negative energy from the sub-zero void to freeze surrounding temperatures at subject's will."
 	quality = POSITIVE //upsides and downsides
-	text_gain_indication = "<span class='notice'>Your hand feels cold.</span>"
+	text_gain_indication = "<span class='notice'>Twoja dłoń wydaje się zimna.</span>"
 	instability = 20
 	difficulty = 12
 	synchronizer_coeff = 1
@@ -55,7 +55,7 @@
 	projectile_type = /obj/item/projectile/temp/cryo
 	base_icon_state = "icebeam"
 	action_icon_state = "icebeam"
-	active_msg = "You focus your cryokinesis!"
-	deactive_msg = "You relax."
+	active_msg = "Skupiasz swoją kriokinezę!"
+	deactive_msg = "Rozluźniasz się."
 	active = FALSE
 

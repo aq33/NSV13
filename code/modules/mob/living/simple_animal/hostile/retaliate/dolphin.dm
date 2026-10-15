@@ -8,24 +8,24 @@
 	icon_gib = "dolphin_gib"
 	speak_chance = 0
 	turns_per_move = 5
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/dolphinmeat = 2)
-	response_help = "pets"
-	response_disarm = "gently pushes aside"
-	response_harm = "hits"
+	butcher_results = list(/obj/item/food/meat/slab/dolphinmeat = 2)
+	response_help = "głaszcze"
+	response_disarm = "delikatnie odsuwa na bok"
+	response_harm = "uderza"
 	emote_taunt = list("gnashes")
 	taunt_chance = 30
 	speed = 0
 	maxHealth = 25
 	health = 25
-	a_intent = "harm"
+	combat_mode = TRUE
 	spacewalk = TRUE
 
 	environment_smash = 0
 	melee_damage = 15
 	pass_flags = PASSTABLE
-	attacktext = "bites"
+	attacktext = "gryzie"
 	attack_sound = 'sound/weapons/bite.ogg'
-	speak_emote = list("chitters", "squeeks", "clicks")
+	speak_emote = list("terkocze", "piszczy", "klika")
 
 	//Space dolphins aren't affected by cold.
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)

@@ -9,6 +9,8 @@
 // AQ EDIT
 /// Requests for an ERT
 #define REQUEST_ERT "request_response_team"
+/// Requests to wake up crew from cryostasis
+#define REQUEST_CREW_WAKE "request_crew_wake"
 
 /**
  * # Request
@@ -48,6 +50,9 @@
 	if(req_type == REQUEST_NUKE && CONFIG_GET(flag/allow_nuke_request_auto_accept)) // AQ EDIT
 		spawn(0)
 			auto_generate_nuke_code()
-	if(req_type == REQUEST_ERT && CONFIG_GET(flag/allow_nuke_request_auto_accept)) // AQ EDIT
+	if(req_type == REQUEST_ERT && CONFIG_GET(flag/allow_ert_request_auto_accept)) // AQ EDIT
 		spawn(0)
 			auto_create_response_team()
+	if(req_type == REQUEST_CREW_WAKE && CONFIG_GET(flag/allow_crew_wake_request_auto_accept)) // AQ EDIT
+		spawn(0)
+			auto_wake_crew()

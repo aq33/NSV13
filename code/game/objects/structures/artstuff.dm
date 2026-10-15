@@ -21,7 +21,7 @@
 		painting = canvas
 		canvas.forceMove(get_turf(src))
 		canvas.layer = layer+0.1
-		user.visible_message("<span class='notice'>[user] puts \the [canvas] on \the [src].</span>", "<span class='notice'>You place \the [canvas] on \the [src].</span>")
+		user.visible_message("<span class='notice'>[user] stawia [canvas] na [src].</span>", "<span class='notice'>Stawiasz [canvas] na [src].</span>")
 	else
 		return ..()
 
@@ -90,7 +90,7 @@
 		ui.open()
 
 /obj/item/canvas/attackby(obj/item/I, mob/living/user, params)
-	if(user.a_intent == INTENT_HELP)
+	if(!user.combat_mode)
 		ui_interact(user)
 	else
 		return ..()
@@ -188,13 +188,13 @@
 		return canvas_color
 
 /obj/item/canvas/proc/try_rename(mob/user)
-	var/new_name = stripped_input(user,"What do you want to name the painting?")
+	var/new_name = stripped_input(user,"Jak chcesz nazwać obraz?")
 	if(new_name != painting_name && new_name && user.canUseTopic(src,BE_CLOSE))
 		if(!CHAT_FILTER_CHECK(new_name))
 			painting_name = new_name
 			SStgui.update_uis(src)
 		else
-			to_chat(user, "<span class='warning'>That name is prohibited by the Nanotrasen Ministry of Truth!")
+			to_chat(user, "<span class='warning'>Ta nazwa jest zakazana przez Ministerstwo Prawdy Nanotrasen!")
 
 /obj/item/canvas/nineteen_nineteen
 	icon_state = "19x19"
@@ -247,7 +247,7 @@
 	desc = "Art or \"Art\"? You decide."
 	icon = 'icons/obj/decals.dmi'
 	icon_state = "frame-empty"
-	var/base_icon_state = "frame" //temporal replacement before the update_appearance() port
+	base_icon_state = "frame" //temporal replacement before the update_appearance() port
 	buildable_sign = FALSE
 	///Canvas we're currently displaying.
 	var/obj/item/canvas/current_canvas
@@ -279,17 +279,17 @@
 /obj/structure/sign/painting/examine(mob/user)
 	. = ..()
 	if(persistence_id)
-		. += "<span class='notice'>Any painting placed here will be archived at the end of the shift.</span>"
+		. += "<span class='notice'>Każdy obraz tu zawieszony zostanie zarchiwizowany pod koniec zmiany.</span>"
 	if(current_canvas)
 		current_canvas.ui_interact(user)
-		. += "<span class='notice'>Use wirecutters to remove the painting.</span>"
+		. += "<span class='notice'>Użyj nożyc do drutu, by zdjąć obraz.</span>"
 
 /obj/structure/sign/painting/wirecutter_act(mob/living/user, obj/item/I)
 	. = ..()
 	if(current_canvas)
 		current_canvas.forceMove(drop_location())
 		current_canvas = null
-		to_chat(user, "<span class='notice'>You remove the painting from the frame.</span>")
+		to_chat(user, "<span class='notice'>Zdejmujesz obraz z ramy.</span>")
 		update_painting_stuff()
 		return TRUE
 
@@ -298,7 +298,7 @@
 		current_canvas = new_canvas
 		if(!current_canvas.finalized)
 			current_canvas.finalize(user)
-		to_chat(user,"<span class='notice'>You frame [current_canvas].</span>")
+		to_chat(user,"<span class='notice'>Oprawiasz [current_canvas].</span>")
 	update_painting_stuff()
 
 /obj/structure/sign/painting/proc/try_rename(mob/user)
@@ -407,19 +407,19 @@
 /obj/structure/sign/painting/library
 	name = "\improper Public Painting Exhibit mounting"
 	desc = "For art pieces hung by the public."
-	desc_with_canvas = "A piece of art (or \"art\"). Anyone could've hung it."
+	desc_with_canvas = "Dzieło sztuki (albo \"sztuki\"). Każdy mógł je powiesić."
 	persistence_id = "library"
 
 /obj/structure/sign/painting/library_secure
 	name = "\improper Curated Painting Exhibit mounting"
 	desc = "For masterpieces hand-picked by the curator."
-	desc_with_canvas = "A masterpiece hand-picked by the curator, supposedly."
+	desc_with_canvas = "Arcydzieło podobno osobiście wybrane przez kuratora."
 	persistence_id = "library_secure"
 
 /obj/structure/sign/painting/library_private // keep your smut away from prying eyes, or non-librarians at least
 	name = "\improper Private Painting Exhibit mounting"
 	desc = "For art pieces deemed too subversive or too illegal to be shared outside of curators."
-	desc_with_canvas = "A painting hung away from lesser minds."
+	desc_with_canvas = "Obraz zawieszony z dala od pośledniejszych umysłów."
 	persistence_id = "library_private"
 
 /obj/structure/sign/painting/vv_get_dropdown()
@@ -433,7 +433,7 @@
 			return
 		var/mob/user = usr
 		if(!persistence_id || !current_canvas)
-			to_chat(user,"<span class='notice'>This is not a persistent painting.</span>")
+			to_chat(user,"<span class='notice'>To nie jest trwały obraz.</span>")
 			return
 		var/md5 = md5(lowertext(current_canvas.get_data_string()))
 		var/author = current_canvas.author_ckey

@@ -15,67 +15,67 @@
 
 GLOBAL_LIST_EMPTY(allDevils)
 GLOBAL_LIST_INIT(lawlorify, list (
-		LORE = list(
-			OBLIGATION_FOOD = "This devil seems to always offer its victims food before slaughtering them.",
-			OBLIGATION_FIDDLE = "This devil will never turn down a musical challenge.",
-			OBLIGATION_DANCEOFF = "This devil will never turn down a dance off.",
-			OBLIGATION_GREET = "This devil seems to only be able to converse with people it knows the name of.",
-			OBLIGATION_PRESENCEKNOWN = "This devil seems to be unable to attack from stealth.",
-			OBLIGATION_SAYNAME = "He will always chant his name upon killing someone.",
-			OBLIGATION_ANNOUNCEKILL = "This devil always loudly announces his kills for the world to hear.",
-			OBLIGATION_ANSWERTONAME = "This devil always responds to his truename.",
-			BANE_SILVER = "Silver seems to gravely injure this devil.",
-			BANE_SALT = "Throwing salt at this devil will hinder his ability to use infernal powers temporarily.",
-			BANE_LIGHT = "Bright flashes will disorient the devil, likely causing him to flee.",
-			BANE_IRON = "Cold iron will slowly injure him, until he can purge it from his system.",
-			BANE_WHITECLOTHES = "Wearing clean white clothing will help ward off this devil.",
-			BANE_HARVEST = "Presenting the labors of a harvest will disrupt the devil.",
-			BANE_TOOLBOX = "That which holds the means of creation also holds the means of the devil's undoing.",
-			BAN_HURTWOMAN = "This devil seems to prefer hunting men.",
-			BAN_CHAPEL = "This devil avoids holy ground.",
-			BAN_HURTPRIEST = "The annointed clergy appear to be immune to his powers.",
-			BAN_AVOIDWATER = "The devil seems to have some sort of aversion to water, though it does not appear to harm him.",
-			BAN_STRIKEUNCONSCIOUS = "This devil only shows interest in those who are awake.",
-			BAN_HURTLIZARD = "This devil will not strike a lizardman first.",
-			BAN_HURTANIMAL = "This devil avoids hurting animals.",
-			BANISH_WATER = "To banish the devil, you must infuse its body with holy water.",
-			BANISH_COFFIN = "This devil will return to life if its remains are not placed within a coffin.",
-			BANISH_FORMALDYHIDE = "To banish the devil, you must inject its lifeless body with embalming fluid.",
-			BANISH_RUNES = "This devil will resurrect after death, unless its remains are within a rune.",
-			BANISH_CANDLES = "A large number of nearby lit candles will prevent it from resurrecting.",
-			BANISH_DESTRUCTION = "Its corpse must be utterly destroyed to prevent resurrection.",
-			BANISH_FUNERAL_GARB = "If clad in funeral garments, this devil will be unable to resurrect.  Should the clothes not fit, lay them gently on top of the devil's corpse."
+		/*LORE = */list(
+			OBLIGATION_FOOD = "Ten diabeł zawsze częstuje swoje ofiary jedzeniem, zanim je zarżnie.",
+			OBLIGATION_FIDDLE = "Ten diabeł nigdy nie odmówi muzycznego wyzwania.",
+			OBLIGATION_DANCEOFF = "Ten diabeł nigdy nie odmówi pojedynku tanecznego.",
+			OBLIGATION_GREET = "Ten diabeł zdaje się rozmawiać tylko z ludźmi, których imię zna.",
+			OBLIGATION_PRESENCEKNOWN = "Ten diabeł zdaje się nie potrafić atakować z ukrycia.",
+			OBLIGATION_SAYNAME = "Po zabiciu kogoś zawsze wykrzykuje swoje imię.",
+			OBLIGATION_ANNOUNCEKILL = "Ten diabeł zawsze głośno ogłasza swoje zabójstwa całemu światu.",
+			OBLIGATION_ANSWERTONAME = "Ten diabeł zawsze odpowiada na swoje prawdziwe imię.",
+			BANE_SILVER = "Srebro zdaje się poważnie ranić tego diabła.",
+			BANE_SALT = "Rzucenie w tego diabła solą tymczasowo utrudni mu używanie piekielnych mocy.",
+			BANE_LIGHT = "Jasne błyski zdezorientują diabła i pewnie sprawią, że ucieknie.",
+			BANE_IRON = "Zimne żelazo będzie go powoli ranić, dopóki nie usunie go ze swojego organizmu.",
+			BANE_WHITECLOTHES = "Noszenie czystych, białych ubrań pomoże odstraszyć tego diabła.",
+			BANE_HARVEST = "Pokazanie owoców żniw zakłóci działanie diabła.",
+			BANE_TOOLBOX = "To, co kryje w sobie środki tworzenia, kryje też środki zguby diabła.",
+			BAN_HURTWOMAN = "Ten diabeł zdaje się wolić polować na mężczyzn.",
+			BAN_CHAPEL = "Ten diabeł unika poświęconej ziemi.",
+			BAN_HURTPRIEST = "Namaszczone duchowieństwo zdaje się być odporne na jego moce.",
+			BAN_AVOIDWATER = "Diabeł zdaje się mieć jakąś awersję do wody, choć ta mu nie szkodzi.",
+			BAN_STRIKEUNCONSCIOUS = "Ten diabeł interesuje się tylko tymi, którzy nie śpią.",
+			BAN_HURTLIZARD = "Ten diabeł nie zaatakuje pierwszy jaszczuroczłeka.",
+			BAN_HURTANIMAL = "Ten diabeł unika krzywdzenia zwierząt.",
+			BANISH_WATER = "Aby wygnać diabła, musisz nasycić jego ciało wodą święconą.",
+			BANISH_COFFIN = "Ten diabeł wróci do życia, jeśli jego szczątki nie zostaną złożone w trumnie.",
+			BANISH_FORMALDYHIDE = "Aby wygnać diabła, musisz wstrzyknąć jego martwemu ciału płyn do balsamowania.",
+			BANISH_RUNES = "Ten diabeł zmartwychwstanie po śmierci, chyba że jego szczątki będą na runie.",
+			BANISH_CANDLES = "Duża liczba zapalonych świec w pobliżu uniemożliwi mu zmartwychwstanie.",
+			BANISH_DESTRUCTION = "Aby zapobiec zmartwychwstaniu, jego zwłoki muszą zostać doszczętnie zniszczone.",
+			BANISH_FUNERAL_GARB = "Ubrany w szaty pogrzebowe, ten diabeł nie będzie mógł zmartwychwstać. Jeśli ubrania nie pasują, połóż je delikatnie na zwłokach diabła."
 		),
-		LAW = list(
-			OBLIGATION_FOOD = "When not acting in self defense, you must always offer your victim food before harming them.",
-			OBLIGATION_FIDDLE = "When not in immediate danger, if you are challenged to a musical duel, you must accept it.  You are not obligated to duel the same person twice.",
-			OBLIGATION_DANCEOFF = "When not in immediate danger, if you are challenged to a dance off, you must accept it. You are not obligated to face off with the same person twice.",
-			OBLIGATION_GREET = "You must always greet other people by their last name before talking with them.",
-			OBLIGATION_PRESENCEKNOWN = "You must always make your presence known before attacking.",
-			OBLIGATION_SAYNAME = "You must always say your true name after you kill someone.",
-			OBLIGATION_ANNOUNCEKILL = "Upon killing someone, you must make your deed known to all within earshot, over comms if reasonably possible.",
-			OBLIGATION_ANSWERTONAME = "If you are not under attack, you must always respond to your true name.",
-			BAN_HURTWOMAN = "You must never harm a female outside of self defense.",
-			BAN_CHAPEL = "You must never attempt to enter the chapel.",
-			BAN_HURTPRIEST = "You must never attack a priest.",
-			BAN_AVOIDWATER = "You must never willingly touch a wet surface.",
-			BAN_STRIKEUNCONSCIOUS = "You must never strike an unconscious person.",
-			BAN_HURTLIZARD = "You must never harm a lizardman outside of self defense.",
-			BAN_HURTANIMAL = "You must never harm a non-sentient creature or robot outside of self defense.",
-			BANE_SILVER = "Silver, in all of its forms shall be your downfall.",
-			BANE_SALT = "Salt will disrupt your magical abilities.",
-			BANE_LIGHT = "Blinding lights will prevent you from using offensive powers for a time.",
-			BANE_IRON = "Cold wrought iron shall act as poison to you.",
-			BANE_WHITECLOTHES = "Those clad in pristine white garments will strike you true.",
-			BANE_HARVEST = "The fruits of the harvest shall be your downfall.",
-			BANE_TOOLBOX = "Toolboxes are bad news for you, for some reason.",
-			BANISH_WATER = "If your corpse is filled with holy water, you will be unable to resurrect.",
-			BANISH_COFFIN = "If your corpse is in a coffin, you will be unable to resurrect.",
-			BANISH_FORMALDYHIDE = "If your corpse is embalmed, you will be unable to resurrect.",
-			BANISH_RUNES = "If your corpse is placed within a rune, you will be unable to resurrect.",
-			BANISH_CANDLES = "If your corpse is near lit candles, you will be unable to resurrect.",
-			BANISH_DESTRUCTION = "If your corpse is destroyed, you will be unable to resurrect.",
-			BANISH_FUNERAL_GARB = "If your corpse is clad in funeral garments, you will be unable to resurrect."
+		/*LAW = */list(
+			OBLIGATION_FOOD = "Jeśli nie działasz w samoobronie, zawsze musisz poczęstować ofiarę jedzeniem, zanim zrobisz jej krzywdę.",
+			OBLIGATION_FIDDLE = "Jeśli nie grozi ci bezpośrednie niebezpieczeństwo, a ktoś wyzwie cię na pojedynek muzyczny, musisz go przyjąć. Nie musisz pojedynkować się dwa razy z tą samą osobą.",
+			OBLIGATION_DANCEOFF = "Jeśli nie grozi ci bezpośrednie niebezpieczeństwo, a ktoś wyzwie cię na pojedynek taneczny, musisz go przyjąć. Nie musisz mierzyć się dwa razy z tą samą osobą.",
+			OBLIGATION_GREET = "Zanim z kimś porozmawiasz, zawsze musisz przywitać go po nazwisku.",
+			OBLIGATION_PRESENCEKNOWN = "Przed atakiem zawsze musisz ujawnić swoją obecność.",
+			OBLIGATION_SAYNAME = "Po zabiciu kogoś zawsze musisz wypowiedzieć swoje prawdziwe imię.",
+			OBLIGATION_ANNOUNCEKILL = "Po zabiciu kogoś musisz ogłosić swój czyn wszystkim w zasięgu słuchu, a jeśli to rozsądnie możliwe, przez radio.",
+			OBLIGATION_ANSWERTONAME = "Jeśli nie jesteś atakowany, zawsze musisz odpowiadać na swoje prawdziwe imię.",
+			BAN_HURTWOMAN = "Nigdy nie możesz skrzywdzić kobiety poza samoobroną.",
+			BAN_CHAPEL = "Nigdy nie możesz próbować wejść do kaplicy.",
+			BAN_HURTPRIEST = "Nigdy nie możesz zaatakować kapłana.",
+			BAN_AVOIDWATER = "Nigdy nie możesz dobrowolnie dotknąć mokrej powierzchni.",
+			BAN_STRIKEUNCONSCIOUS = "Nigdy nie możesz uderzyć nieprzytomnej osoby.",
+			BAN_HURTLIZARD = "Nigdy nie możesz skrzywdzić jaszczuroczłeka poza samoobroną.",
+			BAN_HURTANIMAL = "Nigdy nie możesz skrzywdzić nieświadomego stworzenia ani robota poza samoobroną.",
+			BANE_SILVER = "Srebro we wszystkich swoich postaciach będzie twoją zgubą.",
+			BANE_SALT = "Sól zakłóci twoje magiczne zdolności.",
+			BANE_LIGHT = "Oślepiające światła na pewien czas uniemożliwią ci używanie mocy ofensywnych.",
+			BANE_IRON = "Zimne kute żelazo będzie dla ciebie trucizną.",
+			BANE_WHITECLOTHES = "Ci, którzy noszą nieskazitelnie białe szaty, zadadzą ci prawdziwe ciosy.",
+			BANE_HARVEST = "Owoce żniw będą twoją zgubą.",
+			BANE_TOOLBOX = "Skrzynki z narzędziami z jakiegoś powodu źle ci wróżą.",
+			BANISH_WATER = "Jeśli twoje zwłoki zostaną wypełnione wodą święconą, nie będziesz mógł zmartwychwstać.",
+			BANISH_COFFIN = "Jeśli twoje zwłoki będą w trumnie, nie będziesz mógł zmartwychwstać.",
+			BANISH_FORMALDYHIDE = "Jeśli twoje zwłoki zostaną zabalsamowane, nie będziesz mógł zmartwychwstać.",
+			BANISH_RUNES = "Jeśli twoje zwłoki zostaną umieszczone na runie, nie będziesz mógł zmartwychwstać.",
+			BANISH_CANDLES = "Jeśli twoje zwłoki będą w pobliżu zapalonych świec, nie będziesz mógł zmartwychwstać.",
+			BANISH_DESTRUCTION = "Jeśli twoje zwłoki zostaną zniszczone, nie będziesz mógł zmartwychwstać.",
+			BANISH_FUNERAL_GARB = "Jeśli twoje zwłoki zostaną ubrane w szaty pogrzebowe, nie będziesz mógł zmartwychwstać."
 		)
 	))
 
@@ -85,8 +85,8 @@ GLOBAL_LIST_INIT(devil_title, list("Lord ", "Prelate ", "Count ", "Viscount ", "
 GLOBAL_LIST_INIT(devil_syllable, list("hal", "ve", "odr", "neit", "ci", "quon", "mya", "folth", "wren", "geyr", "hil", "niet", "twou", "phi", "coa"))
 GLOBAL_LIST_INIT(devil_suffix, list(" the Red", " the Soulless", " the Master", ", the Lord of all things", ", Jr."))
 /datum/antagonist/devil
-	name = "Devil"
-	roundend_category = "devils"
+	name = "Diabeł"
+	roundend_category = "diabły"
 	antagpanel_category = "Devil"
 	banning_key = ROLE_DEVIL
 	//Don't delete upon mind destruction, otherwise soul re-selling will break.
@@ -128,7 +128,7 @@ GLOBAL_LIST_INIT(devil_suffix, list(" the Red", " the Soulless", " the Master", 
 	log_admin("[key_name_admin(admin)] set [key_name(owner)] devil ascendable to [ascendable])")
 
 /datum/antagonist/devil/admin_add(datum/mind/new_owner,mob/admin)
-	switch(alert(admin,"Should the devil be able to ascend",,"Yes","No","Cancel"))
+	switch(alert(admin,"Czy diabeł powinien móc wstąpić na wyższy poziom",,"Yes","No","Cancel"))
 		if("Yes")
 			ascendable = TRUE
 		if("No")
@@ -182,11 +182,11 @@ GLOBAL_LIST_INIT(devil_suffix, list(" the Red", " the Soulless", " the Master", 
 		return
 	soulsOwned += soul
 	owner.current.set_nutrition(NUTRITION_LEVEL_FULL)
-	to_chat(owner.current, "<span class='warning'>You feel satiated as you received a new soul.</span>")
+	to_chat(owner.current, "<span class='warning'>Czujesz się nasycony, otrzymawszy nową duszę.</span>")
 	update_hud()
 	switch(SOULVALUE)
 		if(0)
-			to_chat(owner.current, "<span class='warning'>Your hellish powers have been restored.</span>")
+			to_chat(owner.current, "<span class='warning'>Twoje piekielne moce zostały przywrócone.</span>")
 			give_appropriate_spells()
 		if(BLOOD_THRESHOLD)
 			increase_blood_lizard()
@@ -198,7 +198,7 @@ GLOBAL_LIST_INIT(devil_suffix, list(" the Red", " the Soulless", " the Master", 
 /datum/antagonist/devil/proc/remove_soul(datum/mind/soul)
 	if(soulsOwned.Remove(soul))
 		check_regression()
-		to_chat(owner.current, "<span class='warning'>You feel as though a soul has slipped from your grasp.</span>")
+		to_chat(owner.current, "<span class='warning'>Czujesz, jakby jakaś dusza wymknęła ci się z rąk.</span>")
 		update_hud()
 
 /datum/antagonist/devil/proc/check_regression()
@@ -211,10 +211,10 @@ GLOBAL_LIST_INIT(devil_suffix, list(" the Red", " the Soulless", " the Master", 
 		regress_humanoid()
 	if(SOULVALUE < 0)
 		give_appropriate_spells()
-		to_chat(owner.current, "<span class='warning'>As punishment for your failures, all of your powers except contract creation have been revoked.</span>")
+		to_chat(owner.current, "<span class='warning'>W ramach kary za twoje porażki odebrano ci wszystkie moce poza tworzeniem kontraktów.</span>")
 
 /datum/antagonist/devil/proc/regress_humanoid()
-	to_chat(owner.current, "<span class='warning'>Your powers weaken, have more contracts be signed to regain power.</span>")
+	to_chat(owner.current, "<span class='warning'>Twoje moce słabną; doprowadź do podpisania kolejnych kontraktów, by odzyskać moc.</span>")
 	if(ishuman(owner.current))
 		var/mob/living/carbon/human/H = owner.current
 		H.set_species(/datum/species/human, 1)
@@ -226,7 +226,7 @@ GLOBAL_LIST_INIT(devil_suffix, list(" the Red", " the Soulless", " the Master", 
 
 /datum/antagonist/devil/proc/regress_blood_lizard()
 	var/mob/living/carbon/true_devil/D = owner.current
-	to_chat(D, "<span class='warning'>Your powers weaken, have more contracts be signed to regain power.</span>")
+	to_chat(D, "<span class='warning'>Twoje moce słabną; doprowadź do podpisania kolejnych kontraktów, by odzyskać moc.</span>")
 	D.oldform.forceMove(D.drop_location())
 	owner.transfer_to(D.oldform)
 	give_appropriate_spells()
@@ -236,7 +236,7 @@ GLOBAL_LIST_INIT(devil_suffix, list(" the Red", " the Soulless", " the Master", 
 
 
 /datum/antagonist/devil/proc/increase_blood_lizard()
-	to_chat(owner.current, "<span class='warning'>You feel as though your humanoid form is about to shed.  You will soon turn into a blood lizard.</span>")
+	to_chat(owner.current, "<span class='warning'>Czujesz, że twoja humanoidalna postać zaraz opadnie. Wkrótce zmienisz się w krwawego jaszczura.</span>")
 	sleep(50)
 	if(ishuman(owner.current))
 		var/mob/living/carbon/human/H = owner.current
@@ -254,7 +254,7 @@ GLOBAL_LIST_INIT(devil_suffix, list(" the Red", " the Soulless", " the Master", 
 
 
 /datum/antagonist/devil/proc/increase_true_devil()
-	to_chat(owner.current, "<span class='warning'>You feel as though your current form is about to shed.  You will soon turn into a true devil.</span>")
+	to_chat(owner.current, "<span class='warning'>Czujesz, że twoja obecna postać zaraz opadnie. Wkrótce zmienisz się w prawdziwego diabła.</span>")
 	sleep(50)
 	var/mob/living/carbon/true_devil/A = new /mob/living/carbon/true_devil(owner.current.loc)
 	A.faction |= "hell"
@@ -270,22 +270,22 @@ GLOBAL_LIST_INIT(devil_suffix, list(" the Red", " the Soulless", " the Master", 
 	if(!ascendable)
 		return
 	var/mob/living/carbon/true_devil/D = owner.current
-	to_chat(D, "<span class='warning'>You feel as though your form is about to ascend.</span>")
+	to_chat(D, "<span class='warning'>Czujesz, że twoja postać zaraz wstąpi na wyższy poziom.</span>")
 	sleep(50)
 	if(!D)
 		return
-	D.visible_message("<span class='warning'>[D]'s skin begins to erupt with spikes.</span>", \
-		"<span class='warning'>Your flesh begins creating a shield around yourself.</span>")
+	D.visible_message("<span class='warning'>Ze skóry [D] zaczynają wyrastać kolce.</span>", \
+		"<span class='warning'>Twoje ciało zaczyna tworzyć wokół ciebie osłonę.</span>")
 	sleep(100)
 	if(!D)
 		return
-	D.visible_message("<span class='warning'>The horns on [D]'s head slowly grow and elongate.</span>", \
-		"<span class='warning'>Your body continues to mutate. Your telepathic abilities grow.</span>")
+	D.visible_message("<span class='warning'>Rogi na głowie [D] powoli rosną i się wydłużają.</span>", \
+		"<span class='warning'>Twoje ciało dalej mutuje. Twoje zdolności telepatyczne rosną.</span>")
 	sleep(90)
 	if(!D)
 		return
-	D.visible_message("<span class='warning'>[D]'s body begins to violently stretch and contort.</span>", \
-		"<span class='warning'>You begin to rend apart the final barriers to ultimate power.</span>")
+	D.visible_message("<span class='warning'>Ciało [D] zaczyna się gwałtownie rozciągać i wykrzywiać.</span>", \
+		"<span class='warning'>Zaczynasz rozdzierać ostatnie bariery dzielące cię od najwyższej mocy.</span>")
 	sleep(40)
 	if(!D)
 		return
@@ -301,7 +301,7 @@ GLOBAL_LIST_INIT(devil_suffix, list(" the Red", " the Soulless", " the Master", 
 	sleep(1)
 	if(!D)
 		return
-	send_to_playing_players("<font size=5><span class='danger'><b>\"SLOTH, WRATH, GLUTTONY, ACEDIA, ENVY, GREED, PRIDE! FIRES OF HELL AWAKEN!!\"</font></span>")
+	send_to_playing_players("<font size=5><span class='danger'><b>\"LENISTWO, GNIEW, OBŻARSTWO, ACEDIA, ZAZDROŚĆ, CHCIWOŚĆ, PYCHA! OGNIE PIEKŁA, PRZEBUDŹCIE SIĘ!!\"</font></span>")
 	sound_to_playing_players('sound/hallucinations/veryfar_noise.ogg')
 	give_appropriate_spells()
 	D.convert_to_archdevil()
@@ -309,7 +309,7 @@ GLOBAL_LIST_INIT(devil_suffix, list(" the Red", " the Soulless", " the Master", 
 		D.forceMove(get_turf(D))//Fixes dying while jaunted leaving you permajaunted.
 	var/area/A = get_area(owner.current)
 	if(A)
-		notify_ghosts("An arch devil has ascended in \the [A.name]. Reach out to the devil to be given a new shell for your soul.", source = owner.current, action=NOTIFY_ATTACK)
+		notify_ghosts("W [A.name] wstąpił arcydiabeł. Zwróć się do diabła, by otrzymać nową powłokę dla swojej duszy.", source = owner.current, action=NOTIFY_ATTACK)
 	sleep(50)
 	if(!SSticker.mode.devil_ascended)
 		SSshuttle.emergency.request(null, set_coefficient = 0.3)
@@ -362,23 +362,23 @@ GLOBAL_LIST_INIT(devil_suffix, list(" the Red", " the Soulless", " the Master", 
 
 /datum/antagonist/devil/proc/beginResurrectionCheck(mob/living/body)
 	if(SOULVALUE>0)
-		to_chat(owner.current, "<span class='userdanger'>Your body has been damaged to the point that you may no longer use it.  At the cost of some of your power, you will return to life soon.  Remain in your body.</span>")
+		to_chat(owner.current, "<span class='userdanger'>Twoje ciało zostało uszkodzone do tego stopnia, że nie możesz już go używać. Kosztem części swojej mocy wkrótce wrócisz do życia. Pozostań w swoim ciele.</span>")
 		sleep(DEVILRESURRECTTIME)
 		if (!body ||  body.stat == DEAD)
 			if(SOULVALUE>0)
 				if(check_banishment(body))
-					to_chat(owner.current, "<span class='userdanger'>Unfortunately, the mortals have finished a ritual that prevents your resurrection.</span>")
+					to_chat(owner.current, "<span class='userdanger'>Niestety śmiertelnicy dokończyli rytuał, który uniemożliwia ci zmartwychwstanie.</span>")
 					return -1
 				else
 					to_chat(owner.current, "<span class='userdanger'>WE LIVE AGAIN!</span>")
 					return hellish_resurrection(body)
 			else
-				to_chat(owner.current, "<span class='userdanger'>Unfortunately, the power that stemmed from your contracts has been extinguished.  You no longer have enough power to resurrect.</span>")
+				to_chat(owner.current, "<span class='userdanger'>Niestety moc płynąca z twoich kontraktów wygasła. Nie masz już dość mocy, by zmartwychwstać.</span>")
 				return -1
 		else
-			to_chat(owner.current, "<span class='danger'> You seem to have resurrected without your hellish powers.</span>")
+			to_chat(owner.current, "<span class='danger'> Wygląda na to, że zmartwychwstałeś bez swoich piekielnych mocy.</span>")
 	else
-		to_chat(owner.current, "<span class='userdanger'>Your hellish powers are too weak to resurrect yourself.</span>")
+		to_chat(owner.current, "<span class='userdanger'>Twoje piekielne moce są zbyt słabe, by cię wskrzesić.</span>")
 
 /datum/antagonist/devil/proc/check_banishment(mob/living/body)
 	switch(banish)
@@ -488,24 +488,18 @@ GLOBAL_LIST_INIT(devil_suffix, list(" the Red", " the Soulless", " the Master", 
 			C.hud_used.devilsouldisplay.update_counter(SOULVALUE)
 
 /datum/antagonist/devil/greet()
-	to_chat(owner.current, "<span class='warning'><b>You remember your link to the infernal.  You are [truename], an agent of hell, a devil.  And you were sent to the plane of creation for a reason.  A greater purpose.  Convince the crew to sin, and embroiden Hell's grasp.</b></span>")
-	to_chat(owner.current, "<span class='warning'><b>However, your infernal form is not without weaknesses.</b></span>")
-	to_chat(owner.current, "You may not use violence to coerce someone into selling their soul.")
-	to_chat(owner.current, "You may not directly and knowingly physically harm a devil, other than yourself.")
+	to_chat(owner.current, "<span class='warning'><b>Przypominasz sobie swoją więź z piekłem. Jesteś [truename], agentem piekła, diabłem. I zostałeś zesłany na plan stworzenia nie bez powodu. W wyższym celu. Przekonaj załogę do grzechu i umocnij uścisk Piekła.</b></span>")
+	to_chat(owner.current, "<span class='warning'><b>Jednak twoja piekielna postać nie jest pozbawiona słabości.</b></span>")
+	to_chat(owner.current, "Nie możesz używać przemocy, by zmusić kogoś do sprzedania duszy.")
+	to_chat(owner.current, "Nie możesz bezpośrednio i świadomie fizycznie krzywdzić diabła, poza sobą samym.")
 	to_chat(owner.current, GLOB.lawlorify[LAW][bane])
 	to_chat(owner.current, GLOB.lawlorify[LAW][ban])
 	to_chat(owner.current, GLOB.lawlorify[LAW][obligation])
 	to_chat(owner.current, GLOB.lawlorify[LAW][banish])
-	to_chat(owner.current, "<span class='warning'>Remember, the crew can research your weaknesses if they find out your devil name.</span><br>")
+	to_chat(owner.current, "<span class='warning'>Pamiętaj, że załoga może zbadać twoje słabości, jeśli pozna twoje diabelskie imię.</span><br>")
 	.=..()
 	owner.current.client?.tgui_panel?.give_antagonist_popup("Devil",
-		"Summon contracts to purchase the souls of the crew.\n\
-		You may not use violence to coerce someone into selling their soul.\n\
-		You may not directly and knowingly physically harm a devil, other than yourself.\n\
-		[GLOB.lawlorify[LAW][bane]]\n\
-		[GLOB.lawlorify[LAW][ban]]\n\
-		[GLOB.lawlorify[LAW][obligation]]\n\
-		[GLOB.lawlorify[LAW][banish]]")
+		"Przywołuj kontrakty, by kupować dusze załogi.\nNie możesz używać przemocy, by zmusić kogoś do sprzedania duszy.\nNie możesz bezpośrednio i świadomie fizycznie krzywdzić diabła, poza sobą samym.\n[GLOB.lawlorify[LAW][bane]]\n[GLOB.lawlorify[LAW][ban]]\n[GLOB.lawlorify[LAW][obligation]]\n[GLOB.lawlorify[LAW][banish]]")
 
 /datum/antagonist/devil/on_gain()
 	truename = randomDevilName()
@@ -515,17 +509,17 @@ GLOBAL_LIST_INIT(devil_suffix, list(" the Red", " the Soulless", " the Master", 
 	banish = randomdevilbanish()
 	GLOB.allDevils[lowertext(truename)] = src
 
-	antag_memory += "Your devilic true name is [truename]<br>[GLOB.lawlorify[LAW][ban]]<br>You may not use violence to coerce someone into selling their soul.<br>You may not directly and knowingly physically harm a devil, other than yourself.<br>[GLOB.lawlorify[LAW][bane]]<br>[GLOB.lawlorify[LAW][obligation]]<br>[GLOB.lawlorify[LAW][banish]]<br>"
+	antag_memory += "Twoje prawdziwe diabelskie imię to [truename]<br>[GLOB.lawlorify[LAW][ban]]<br>Nie możesz używać przemocy, by zmusić kogoś do sprzedania duszy.<br>Nie możesz bezpośrednio i świadomie fizycznie krzywdzić diabła, poza sobą samym.<br>[GLOB.lawlorify[LAW][bane]]<br>[GLOB.lawlorify[LAW][obligation]]<br>[GLOB.lawlorify[LAW][banish]]<br>"
 	if(issilicon(owner.current))
 		var/mob/living/silicon/robot_devil = owner.current
-		var/laws = list("You may not use violence to coerce someone into selling their soul.", "You may not directly and knowingly physically harm a devil, other than yourself.", GLOB.lawlorify[LAW][ban], GLOB.lawlorify[LAW][obligation], "Accomplish your objectives at all costs.")
+		var/laws = list("Nie możesz używać przemocy, by zmusić kogoś do sprzedania duszy.", "Nie możesz bezpośrednio i świadomie fizycznie krzywdzić diabła, poza sobą samym.", GLOB.lawlorify[LAW][ban], GLOB.lawlorify[LAW][obligation], "Wykonaj swoje cele za wszelką cenę.")
 		robot_devil.set_law_sixsixsix(laws)
 	sleep(10)
-	handle_clown_mutation(owner.current, "Your infernal nature has allowed you to overcome your clownishness.")
+	handle_clown_mutation(owner.current, "Twoja piekielna natura pozwoliła ci przezwyciężyć klaunowatość.")
 	.=..()
 
 /datum/antagonist/devil/on_removal()
-	to_chat(owner.current, "<span class='userdanger'>Your infernal link has been severed! You are no longer a devil!</span>")
+	to_chat(owner.current, "<span class='userdanger'>Twoja piekielna więź została zerwana! Nie jesteś już diabłem!</span>")
 	handle_clown_mutation(owner.current, removing=FALSE)
 	.=..()
 
@@ -545,8 +539,8 @@ GLOBAL_LIST_INIT(devil_suffix, list(" the Red", " the Soulless", " the Master", 
 
 /datum/antagonist/devil/proc/printdevilinfo()
 	var/list/parts = list()
-	parts += "The devil's true name is: [truename]"
-	parts += "The devil's bans were:"
+	parts += "Prawdziwe imię diabła to: [truename]"
+	parts += "Zakazy diabła:"
 	parts += "[GLOB.TAB][GLOB.lawlorify[LORE][ban]]"
 	parts += "[GLOB.TAB][GLOB.lawlorify[LORE][bane]]"
 	parts += "[GLOB.TAB][GLOB.lawlorify[LORE][obligation]]"

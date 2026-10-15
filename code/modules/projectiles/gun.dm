@@ -17,7 +17,7 @@
 	throw_range = 5
 	force = 5
 	item_flags = NEEDS_PERMIT
-	attack_verb = list("struck", "hit", "bashed")
+	attack_verb = list("uderza", "uderza", "grzmoci")
 
 	var/fire_sound = "gunshot"
 	var/vary_fire_sound = TRUE
@@ -147,27 +147,27 @@
 
 	if(!no_pin_required)
 		if(pin)
-			. += "It has \a [pin] installed."
-			. += "<span class='info'>[pin] looks like it could be removed with some <b>tools</b>.</span>"
+			. += "Ma zamontowane: [pin]."
+			. += "<span class='info'>Wygląda na to, że [pin] da się wyjąć za pomocą <b>narzędzi</b>.</span>"
 		else
-			. += "It doesn't have a <b>firing pin</b> installed, and won't fire."
+			. += "Nie ma zamontowanej <b>iglicy</b> i nie wystrzeli."
 
 	if(gun_light)
-		. += "It has \a [gun_light] [can_flashlight ? "" : "permanently "]mounted on it."
+		. += "Ma zamontowane: [gun_light][can_flashlight ? "" : " (na stałe)"]."
 		if(can_flashlight) //if it has a light and this is false, the light is permanent.
-			. += "<span class='info'>[gun_light] looks like it can be <b>unscrewed</b> from [src].</span>"
+			. += "<span class='info'>Wygląda na to, że [gun_light] da się <b>odkręcić</b> od [src].</span>"
 	else if(can_flashlight)
-		. += "It has a mounting point for a <b>seclite</b>."
+		. += "Ma miejsce na montaż <b>latarki seclite</b>."
 
 	if(bayonet)
-		. += "It has \a [bayonet] [can_bayonet ? "" : "permanently "]affixed to it."
+		. += "Ma zamocowane: [bayonet][can_bayonet ? "" : " (na stałe)"]."
 		if(can_bayonet) //if it has a bayonet and this is false, the bayonet is permanent.
-			. += "<span class='info'>[bayonet] looks like it can be <b>unscrewed</b> from [src].</span>"
+			. += "<span class='info'>Wygląda na to, że [bayonet] da się <b>odkręcić</b> od [src].</span>"
 	else if(can_bayonet)
-		. += "It has a <b>bayonet</b> lug on it."
+		. += "Ma zaczep na <b>bagnet</b>."
 
 	if(weapon_weight == WEAPON_HEAVY)
-		. += "This weapon is too heavy to use with just 1 hand!"
+		. += "Ta broń jest zbyt ciężka, by używać jej jedną ręką!"
 
 
 /obj/item/gun/equipped(mob/living/user, slot)
@@ -205,21 +205,21 @@
 		if(message)
 			if(tk_firing(user))
 				user.visible_message(
-					"<span class='danger'>[src] fires itself[pointblank ? " point blank at [pbtarget]!" : "!"]</span>", \
+					"<span class='danger'>[src] sam wystrzeliwuje[pointblank ? " z przyłożenia w [pbtarget]!" : "!"]</span>", \
 					null ,\
-					"<span class='hear'>You hear a gunshot!</span>", \
+					"<span class='hear'>Słyszysz wystrzał!</span>", \
 					COMBAT_MESSAGE_RANGE
 					)
 
 			else if(pointblank)
 				user.visible_message(
-					"<span class='danger'>[user] fires [src] point blank at [pbtarget]!</span>", \
-					"<span class='danger'>You fire [src] point blank at [pbtarget]!</span>", \
-					"<span class='hear'>You hear a gunshot!</span>", \
+					"<span class='danger'>[user] strzela z [src] z przyłożenia w [pbtarget]!</span>", \
+					"<span class='danger'>Strzelasz z [src] z przyłożenia w [pbtarget]!</span>", \
+					"<span class='hear'>Słyszysz wystrzał!</span>", \
 					COMBAT_MESSAGE_RANGE, \
 					pbtarget
 				)
-				to_chat(pbtarget, "<span class='danger'>[user] fires [src] point blank at you!</span>")
+				to_chat(pbtarget, "<span class='danger'>[user] strzela w ciebie z [src] z przyłożenia!</span>")
 				if(pb_knockback > 0 && ismob(pbtarget))
 					var/mob/PBT = pbtarget
 					var/atom/throw_target = get_edge_target_turf(PBT, user.dir)
@@ -227,8 +227,8 @@
 			else if(!tk_firing(user))
 				user.visible_message(
 					"<span class='danger'>[user] fires [src]!</span>", \
-					"<span class='danger'>You fire [src]!</span>", \
-					"<span class='hear'>You hear a gunshot!</span>", \
+					"<span class='danger'>Strzelasz z [src]!</span>", \
+					"<span class='hear'>Słyszysz wystrzał!</span>", \
 					COMBAT_MESSAGE_RANGE, \
 					user
 				)
@@ -251,7 +251,7 @@
 	if(flag) //It's adjacent, is the user, or is on the user's person
 		if(target in user.contents) //can't shoot stuff inside us.
 			return
-		if(!ismob(target) || user.a_intent == INTENT_HARM) //melee attack
+		if(!ismob(target) || user.combat_mode) //melee attack // AQ EDIT - port Bee #13155: w trybie walki z przyłożenia uderzasz, bez niego strzelasz
 			return
 		if(target == user && user.zone_selected != BODY_ZONE_PRECISE_MOUTH) //so we can't shoot ourselves (unless mouth selected)
 			return
@@ -276,20 +276,20 @@
 	if(clumsy_check)
 		if(istype(user))
 			if (HAS_TRAIT(user, TRAIT_CLUMSY) && prob(40))
-				to_chat(user, "<span class='userdanger'>You shoot yourself in the foot with [src]!</span>")
+				to_chat(user, "<span class='userdanger'>Strzelasz sobie w stopę z [src]!</span>")
 				var/shot_leg = pick(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 				process_fire(user, user, FALSE, params, shot_leg)
 				user.dropItemToGround(src, TRUE)
 				return
 
 	if(weapon_weight == WEAPON_HEAVY && !is_wielded)
-		balloon_alert(user, "You need both hands free to fire [src]!")
+		balloon_alert(user, "Musisz mieć obie ręce wolne, by strzelać z [src]!")
 		return
 
 	//DUAL (or more!) WIELDING
 	var/bonus_spread = 0
 	var/loop_counter = 0
-	if(ishuman(user) && user.a_intent == INTENT_HARM)
+	if(ishuman(user) && user.combat_mode)
 		var/mob/living/carbon/human/H = user
 		for(var/obj/item/gun/G in H.held_items)
 			if(G == src || G.weapon_weight >= WEAPON_MEDIUM || weapon_weight >= WEAPON_MEDIUM)
@@ -316,7 +316,7 @@
 			pin.auth_fail(user)
 			return FALSE
 	else
-		balloon_alert(user, "[src] doesn't seem to have a firing pin installed..")
+		balloon_alert(user, "Wygląda na to, że [src] nie ma zamontowanej iglicy..")
 	return FALSE
 
 /obj/item/gun/proc/recharge_newshot()
@@ -333,7 +333,7 @@
 	if(chambered && chambered.BB)
 		if(HAS_TRAIT(user, TRAIT_PACIFISM)) // If the user has the pacifist trait, then they won't be able to fire [src] if the round chambered inside of [src] is lethal.
 			if(chambered.harmful) // Is the bullet chambered harmful?
-				to_chat(user, "<span class='notice'> [src] is lethally chambered! You don't want to risk harming anyone...</span>")
+				to_chat(user, "<span class='notice'> [src] ma w komorze amunicję bojową! Nie chcesz ryzykować, że kogoś skrzywdzisz...</span>")
 				return
 		if(randomspread)
 			sprd = round((rand() - 0.5) * DUALWIELD_PENALTY_EXTRA_MULTIPLIER * (randomized_gun_spread + randomized_bonus_spread))
@@ -387,7 +387,7 @@
 		if(chambered)
 			if(HAS_TRAIT(user, TRAIT_PACIFISM)) // If the user has the pacifist trait, then they won't be able to fire [src] if the round chambered inside of [src] is lethal.
 				if(chambered.harmful) // Is the bullet chambered harmful?
-					to_chat(user, "<span class='notice'> [src] is lethally chambered! You don't want to risk harming anyone...</span>")
+					to_chat(user, "<span class='notice'> [src] ma w komorze amunicję bojową! Nie chcesz ryzykować, że kogoś skrzywdzisz...</span>")
 					return
 			sprd = round((rand() - 0.5) * DUALWIELD_PENALTY_EXTRA_MULTIPLIER * (randomized_gun_spread + randomized_bonus_spread))
 			before_firing(target, user, aimed)
@@ -457,8 +457,8 @@
 /obj/item/gun/proc/reset_semicd()
 	semicd = FALSE
 
-/obj/item/gun/attack(mob/M as mob, mob/user)
-	if(user.a_intent == INTENT_HARM) //Flogging
+/obj/item/gun/attack(mob/M, mob/living/user)
+	if(user.combat_mode) //Flogging
 		if(bayonet)
 			M.attackby(bayonet, user)
 			return
@@ -467,14 +467,14 @@
 	return
 
 /obj/item/gun/attack_obj(obj/O, mob/user)
-	if(user.a_intent == INTENT_HARM)
+	if(user.combat_mode)
 		if(bayonet)
 			O.attackby(bayonet, user)
 			return
 	return ..()
 
-/obj/item/gun/attackby(obj/item/I, mob/user, params)
-	if(user.a_intent == INTENT_HARM)
+/obj/item/gun/attackby(obj/item/I, mob/living/user, params)
+	if(user.combat_mode)
 		return ..()
 	else if(istype(I, /obj/item/flashlight/seclite))
 		if(!can_flashlight)
@@ -483,7 +483,7 @@
 		if(!gun_light)
 			if(!user.transferItemToLoc(I, src))
 				return
-			balloon_alert(user, "You attach [S] to [src].")
+			balloon_alert(user, "Montujesz [S] na [src].")
 			set_gun_light(S)
 			update_gunlight()
 			alight = new(src)
@@ -495,7 +495,7 @@
 			return ..()
 		if(!user.transferItemToLoc(I, src))
 			return
-		balloon_alert(user, "You attach [K] to [src].")
+		balloon_alert(user, "Montujesz [K] na [src].")
 		bayonet = K
 		update_icon() // AQ EDIT - drawn by get_attachment_overlays(), the old priority overlay doubled up and lingered after removal
 	else
@@ -509,7 +509,7 @@
 		return
 	if((can_flashlight && gun_light) && (can_bayonet && bayonet)) //give them a choice instead of removing both
 		var/list/possible_items = list(gun_light, bayonet)
-		var/obj/item/item_to_remove = input(user, "Select an attachment to remove", "Attachment Removal") as null|obj in sortNames(possible_items)
+		var/obj/item/item_to_remove = input(user, "Wybierz dodatek do zdjęcia", "Zdejmowanie dodatku") as null|obj in sortNames(possible_items)
 		if(!item_to_remove || !user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 			return
 		return remove_gun_attachment(user, I, item_to_remove)
@@ -521,13 +521,13 @@
 		return remove_gun_attachment(user, I, bayonet, "unfix")
 
 	else if(pin && user.is_holding(src))
-		user.visible_message("<span class='warning'>[user] attempts to remove [pin] from [src] with [I].</span>",
-		"<span class='notice'>You attempt to remove [pin] from [src]. (It will take [DisplayTimeText(FIRING_PIN_REMOVAL_DELAY)].)</span>", null, 3)
+		user.visible_message("<span class='warning'>[user] próbuje wyjąć [pin] z [src] za pomocą [I].</span>",
+		"<span class='notice'>Próbujesz wyjąć [pin] z [src]. (Zajmie to [DisplayTimeText(FIRING_PIN_REMOVAL_DELAY)].)</span>", null, 3)
 		if(I.use_tool(src, user, FIRING_PIN_REMOVAL_DELAY, volume = 50))
 			if(!pin) //check to see if the pin is still there, or we can spam messages by clicking multiple times during the tool delay
 				return
-			user.visible_message("<span class='notice'>[pin] was pried out of [src] by [user], destroying the pin in the process.</span>",
-								"<span class='warning'>You pried [pin] out with [I], destroying the pin in the process.</span>", null, 3)
+			user.visible_message("<span class='notice'>[user] wyważa [pin] z [src], niszcząc przy tym iglicę.</span>",
+								"<span class='warning'>Wyważasz [pin] za pomocą [I], niszcząc przy tym iglicę.</span>", null, 3)
 			QDEL_NULL(pin)
 			return TRUE
 
@@ -539,13 +539,13 @@
 	if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 		return
 	if(pin && user.is_holding(src))
-		user.visible_message("<span class='warning'>[user] attempts to remove [pin] from [src] with [I].</span>",
-		"<span class='notice'>You attempt to remove [pin] from [src]. (It will take [DisplayTimeText(FIRING_PIN_REMOVAL_DELAY)].)</span>", null, 3)
+		user.visible_message("<span class='warning'>[user] próbuje wyjąć [pin] z [src] za pomocą [I].</span>",
+		"<span class='notice'>Próbujesz wyjąć [pin] z [src]. (Zajmie to [DisplayTimeText(FIRING_PIN_REMOVAL_DELAY)].)</span>", null, 3)
 		if(I.use_tool(src, user, FIRING_PIN_REMOVAL_DELAY, 5, volume = 50))
 			if(!pin) //check to see if the pin is still there, or we can spam messages by clicking multiple times during the tool delay
 				return
-			user.visible_message("<span class='notice'>[pin] was spliced out of [src] by [user], melting part of the pin in the process.</span>",
-								"<span class='warning'>You spliced [pin] out of [src] with [I], melting part of the pin in the process.</span>", null, 3)
+			user.visible_message("<span class='notice'>[user] wycina [pin] z [src], topiąc przy tym część iglicy.</span>",
+								"<span class='warning'>Wycinasz [pin] z [src] za pomocą [I], topiąc przy tym część iglicy.</span>", null, 3)
 			QDEL_NULL(pin)
 			return TRUE
 
@@ -556,20 +556,20 @@
 	if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 		return
 	if(pin && user.is_holding(src))
-		user.visible_message("<span class='warning'>[user] attempts to remove [pin] from [src] with [I].</span>",
-		"<span class='notice'>You attempt to remove [pin] from [src]. (It will take [DisplayTimeText(FIRING_PIN_REMOVAL_DELAY)].)</span>", null, 3)
+		user.visible_message("<span class='warning'>[user] próbuje wyjąć [pin] z [src] za pomocą [I].</span>",
+		"<span class='notice'>Próbujesz wyjąć [pin] z [src]. (Zajmie to [DisplayTimeText(FIRING_PIN_REMOVAL_DELAY)].)</span>", null, 3)
 		if(I.use_tool(src, user, FIRING_PIN_REMOVAL_DELAY, volume = 50))
 			if(!pin) //check to see if the pin is still there, or we can spam messages by clicking multiple times during the tool delay
 				return
-			user.visible_message("<span class='notice'>[pin] was ripped out of [src] by [user], mangling the pin in the process.</span>",
-								"<span class='warning'>You ripped [pin] out of [src] with [I], mangling the pin in the process.</span>", null, 3)
+			user.visible_message("<span class='notice'>[user] wyrywa [pin] z [src], niszcząc przy tym iglicę.</span>",
+								"<span class='warning'>Wyrywasz [pin] z [src] za pomocą [I], niszcząc przy tym iglicę.</span>", null, 3)
 			QDEL_NULL(pin)
 			return TRUE
 
 /obj/item/gun/proc/remove_gun_attachment(mob/living/user, obj/item/tool_item, obj/item/item_to_remove, removal_verb)
 	if(tool_item)
 		tool_item.play_tool_sound(src)
-	balloon_alert(user, "You remove [item_to_remove] from [src].")
+	balloon_alert(user, "Zdejmujesz [item_to_remove] z [src].")
 	item_to_remove.forceMove(drop_location())
 
 	if(Adjacent(user) && !issilicon(user))
@@ -631,7 +631,7 @@
 	var/mob/living/carbon/human/user = usr
 	gun_light.on = !gun_light.on
 	gun_light.update_brightness()
-	balloon_alert(user, "You turn the flashlight [gun_light.on ? "on" : "off"].")
+	balloon_alert(user, "[gun_light.on ? "Włączasz" : "Wyłączasz"] latarkę.")
 
 	playsound(user, 'sound/weapons/empty.ogg', 100, TRUE)
 	update_gunlight()
@@ -665,26 +665,30 @@
 		return
 
 	if(user == target)
-		target.visible_message("<span class='warning'>[user] sticks [src] in [user.p_their()] mouth, ready to pull the trigger...</span>", \
-			"<span class='userdanger'>You stick [src] in your mouth, ready to pull the trigger...</span>")
+		target.visible_message("<span class='warning'>[user] wkłada [src] do ust, gotów pociągnąć za spust...</span>", \
+			"<span class='userdanger'>Wkładasz [src] do ust, gotów pociągnąć za spust...</span>")
 	else
-		target.visible_message("<span class='warning'>[user] points [src] at [target]'s head, ready to pull the trigger...</span>", \
-			"<span class='userdanger'>[user] points [src] at your head, ready to pull the trigger...</span>")
+		target.visible_message("<span class='warning'>[user] celuje z [src] w głowę [target], gotów pociągnąć za spust...</span>", \
+			"<span class='userdanger'>[user] celuje z [src] w twoją głowę, gotów pociągnąć za spust...</span>")
 
 	semicd = TRUE
 
 	if(!bypass_timer && (!do_mob(user, target, 120) || user.zone_selected != BODY_ZONE_PRECISE_MOUTH))
 		if(user)
 			if(user == target)
-				user.visible_message("<span class='notice'>[user] decided not to shoot.</span>")
+				user.visible_message("<span class='notice'>[user] postanawia nie strzelać.</span>")
 			else if(target && target.Adjacent(user))
-				target.visible_message("<span class='notice'>[user] has decided to spare [target].</span>", "<span class='notice'>[user] has decided to spare your life!</span>")
+				target.visible_message("<span class='notice'>[user] postanawia oszczędzić [target].</span>", "<span class='notice'>[user] postanawia oszczędzić ci życie!</span>")
 		semicd = FALSE
 		return
 
 	semicd = FALSE
 
-	target.visible_message("<span class='warning'>[user] pulls the trigger!</span>", "<span class='userdanger'>[(user == target) ? "You pull" : "[user] pulls"] the trigger!</span>")
+	if(user == target && user.has_horror_inside()) // AQ EDIT - Yogstation#13033
+		user.visible_message("<span class='warning'>[user] rezygnuje ze strzału.</span>", "<span class='notice'>Coś w twojej głowie powstrzymuje cię przed tym!</span>")
+		return
+
+	target.visible_message("<span class='warning'>[user] pociąga za spust!</span>", "<span class='userdanger'>[(user == target) ? "Pociągasz" : "[user] pociąga"] za spust!</span>")
 
 	if(chambered?.BB)
 		chambered.BB.damage *= 5

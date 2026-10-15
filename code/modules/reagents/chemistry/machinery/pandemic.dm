@@ -31,15 +31,26 @@
 	if(beaker)
 		var/is_close
 		if(Adjacent(user)) //don't reveal exactly what's inside unless they're close enough to see the UI anyway.
-			. += "It contains \a [beaker]."
+			. += "Zawiera [beaker]."
 			is_close = TRUE
 		else
-			. += "It has a beaker inside it."
-		. += "<span class='info'>Alt-click to eject [is_close ? beaker : "the beaker"].</span>"
+			. += "W środku jest zlewka."
+		. += "<span class='info'>Alt-kliknij, by wysunąć [is_close ? beaker : "zlewkę"].</span>"
 
-/obj/machinery/computer/pandemic/AltClick(mob/user)
-	if(user.canUseTopic(src, BE_CLOSE))
-		eject_beaker()
+/obj/machinery/computer/pandemic/attack_hand_secondary(mob/user, list/modifiers)
+	. = ..()
+	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
+		return
+	if(!can_interact(user) || !user.canUseTopic(src, !issilicon(user), FALSE, NO_TK))
+		return
+	eject_beaker()
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+/obj/machinery/computer/pandemic/attack_robot_secondary(mob/user, list/modifiers)
+	return attack_hand_secondary(user, modifiers)
+
+/obj/machinery/computer/pandemic/attack_ai_secondary(mob/user, list/modifiers)
+	return attack_hand_secondary(user, modifiers)
 
 /obj/machinery/computer/pandemic/handle_atom_del(atom/A)
 	if(A == beaker)
@@ -215,7 +226,7 @@
 			var/id = get_virus_id_by_index(text2num(params["index"]))
 			var/datum/disease/advance/A = SSdisease.archive_diseases[id]
 			if(!istype(A) || !A.mutable)
-				to_chat(usr, "<span class='warning'>ERROR: Cannot replicate virus strain.</span>")
+				to_chat(usr, "<span class='warning'>BŁĄD: nie można powielić szczepu wirusa.</span>")
 				return
 			A = A.Copy()
 			var/list/data = list("viruses" = list(A))
@@ -249,13 +260,13 @@
 		if(machine_stat & (NOPOWER|BROKEN))
 			return
 		if(beaker)
-			to_chat(user, "<span class='warning'>A container is already loaded into [src]!</span>")
+			to_chat(user, "<span class='warning'>W [src] jest już załadowany pojemnik!</span>")
 			return
 		if(!user.transferItemToLoc(I, src))
 			return
 
 		beaker = I
-		to_chat(user, "<span class='notice'>You insert [I] into [src].</span>")
+		to_chat(user, "<span class='notice'>Wkładasz [I] do [src].</span>")
 		update_icon()
 		ui_update()
 	else

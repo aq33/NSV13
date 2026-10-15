@@ -20,22 +20,22 @@
 	if(S.using_special)
 		return
 	if(S.can_summon_rifts)
-		to_chat(S, "<span class='warning'>Your failure has left you unable to summon rifts!</span>")
+		to_chat(S, "<span class='warning'>Przez twoją porażkę nie możesz przywoływać szczelin!</span>")
 		return
 	var/area/A = get_area(S)
 	if(!(A in dragon.chosen_rift_areas))
-		to_chat(S, "<span class='warning'>You can't summon a rift here!</span>")
+		to_chat(S, "<span class='warning'>Nie możesz tu przywołać szczeliny!</span>")
 		return
 	for(var/obj/structure/carp_rift/rift in dragon.rift_list)
 		var/area/RA = get_area(rift)
 		if(RA == A)
-			to_chat(S, "<span class='warning'>You've already summoned a rift in this area! You have to summon again somewhere else!</span>")
+			to_chat(S, "<span class='warning'>Już przywołałeś szczelinę w tym obszarze! Następną musisz przywołać gdzie indziej!</span>")
 			return
 	var/turf/rift_spawn_turf = get_turf(S)
 	if(istype(rift_spawn_turf, /turf/open/openspace))
-		owner.balloon_alert(S, "needs stable ground!")
+		owner.balloon_alert(S, "potrzebny stabilny grunt!")
 		return
-	to_chat(S, "<span class='warning'>You begin to open a rift...</span>")
+	to_chat(S, "<span class='warning'>Zaczynasz otwierać szczelinę...</span>")
 	if(do_after(S, 100, target = S))
 		for(var/obj/structure/carp_rift/c in rift_spawn_turf.contents)
 			return
@@ -44,8 +44,8 @@
 		dragon.stop_rift_timer() // the rift needs to finish charging before we should worry about the dragon summoning another in time
 		CR.dragon = dragon
 		dragon.rift_list += CR
-		to_chat(S, "<span class='boldwarning'>The rift has been summoned. Prevent the crew from destroying it at all costs!</span>")
-		notify_ghosts("The Space Dragon has opened a rift!", source = CR, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Carp Rift Opened")
+		to_chat(S, "<span class='boldwarning'>Szczelina została przywołana. Za wszelką cenę nie pozwól załodze jej zniszczyć!</span>")
+		notify_ghosts("Kosmiczny smok otworzył szczelinę!", source = CR, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Otwarto szczelinę karpi")
 		qdel(src)
 
 /**
@@ -60,7 +60,7 @@
 /obj/structure/carp_rift
 	name = "carp rift"
 	desc = "A rift akin to the ones space carp use to travel long distances."
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 100, "bomb" = 50, "bio" = 100, "rad" = 100, "fire" = 100, "acid" = 100, "stamina" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 100, "bomb" = 50, "bio" = 100, "rad" = 100, "fire" = 100, "acid" = 100, "stamina" = 0, "bleed" = 0)
 	max_integrity = 300
 	icon = 'icons/obj/carp_rift.dmi'
 	icon_state = "carp_rift_carpspawn"
@@ -99,12 +99,12 @@
 /obj/structure/carp_rift/examine(mob/user)
 	. = ..()
 	if(time_charged < max_charge)
-		. += "<span class='notice'>It seems to be [(time_charged / max_charge) * 100]% charged.</span>"
+		. += "<span class='notice'>Wygląda na naładowaną w [(time_charged / max_charge) * 100]%.</span>"
 	else
-		. += "<span class='warning'>This one is fully charged. In this state, it is poised to transport a much larger amount of carp than normal.</span>"
+		. += "<span class='warning'>Ta jest w pełni naładowana. W tym stanie przeniesie znacznie więcej karpi niż zwykle.</span>"
 
 	if(isobserver(user))
-		. += "<span class='notice'>It has [carp_stored] carp available to spawn as.</span>"
+		. += "<span class='notice'>Dostępne karpie do odrodzenia: [carp_stored].</span>"
 
 /obj/structure/carp_rift/play_attack_sound(damage_amount, damage_type = BRUTE, damage_flag = 0)
 	playsound(src, 'sound/magic/lightningshock.ogg', 50, TRUE)
@@ -114,7 +114,7 @@
 	if(time_charged != max_charge + 1)
 		dragon?.destroy_rifts()
 		if(dragon)
-			to_chat(dragon, "<span class='boldwarning'>A rift has been destroyed! You have failed, and find yourself weakened.</span>")
+			to_chat(dragon, "<span class='boldwarning'>Szczelina została zniszczona! Ponosisz porażkę i czujesz się osłabiony.</span>")
 			dragon = null
 	return ..()
 
@@ -164,14 +164,14 @@
 		if(light_color != LIGHT_COLOR_PURPLE)
 			set_light_color(LIGHT_COLOR_PURPLE)
 			update_light()
-		notify_ghosts("The carp rift can summon an additional carp!", source = src, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Carp Spawn Available")
+		notify_ghosts("Szczelina karpi może przywołać dodatkowego karpia!", source = src, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Dostępny karp")
 		last_carp_inc -= carp_interval
 
 	// Is the rift now fully charged?
 	if(time_charged >= max_charge)
 		charge_state = CHARGE_COMPLETED
 		var/area/A = get_area(src)
-		priority_announce("Spatial object has reached peak energy charge in [initial(A.name)], please stand-by.", "Central Command Wildlife Observations")
+		priority_announce("Obiekt przestrzenny w [initial(A.name)] osiągnął szczytowy poziom energii, prosimy czekać na dalsze informacje.", "Obserwacja Fauny Centrali")
 		obj_integrity = INFINITY
 		icon_state = "carp_rift_charged"
 		set_light_color(LIGHT_COLOR_YELLOW)
@@ -190,7 +190,7 @@
 	if(charge_state < CHARGE_FINALWARNING && time_charged >= (max_charge * 0.5))
 		charge_state = CHARGE_FINALWARNING
 		var/area/A = get_area(src)
-		priority_announce("A rift is causing an unnaturally large energy flux in [initial(A.name)]. Stop it at all costs!", "Central Command Wildlife Observations", ANNOUNCER_SPANOMALIES)
+		priority_announce("Szczelina wywołuje nienaturalnie duży strumień energii w [initial(A.name)]. Powstrzymajcie ją za wszelką cenę!", "Obserwacja Fauny Centrali", ANNOUNCER_SPANOMALIES)
 
 /**
   * Used to create carp controlled by ghosts when the option is available.
@@ -207,14 +207,14 @@
 	var/is_listed = FALSE
 	if (user.ckey in ckey_list)
 		if(carp_stored == 1)
-			to_chat(user, "<span class='warning'>You've already become a carp using this rift! Either wait for a backlog of carp spawns or until the next rift!</span>")
+			to_chat(user, "<span class='warning'>Już stałeś się karpiem dzięki tej szczelinie! Zaczekaj na kolejne odrodzenia karpi albo na następną szczelinę!</span>")
 			return FALSE
 		is_listed = TRUE
-	var/carp_ask = alert("Become a carp?", "Help bring forth the horde?", "Yes", "No")
+	var/carp_ask = alert("Zostać karpiem?", "Pomóc sprowadzić hordę?", "Yes", "No")
 	if(carp_ask == "No" || !src || QDELETED(src) || QDELETED(user))
 		return FALSE
 	if(carp_stored <= 0)
-		to_chat(user, "<span class='warning'>The rift already summoned enough carp!</span>")
+		to_chat(user, "<span class='warning'>Szczelina przywołała już dość karpi!</span>")
 		return FALSE
 	var/mob/living/simple_animal/hostile/carp/advanced/newcarp = new(loc)
 	var/datum/action/innate/wavespeak/wave_action = new
@@ -224,7 +224,7 @@
 	newcarp.key = user.key
 	newcarp.unique_name = TRUE
 	dragon.carp += newcarp.mind
-	to_chat(newcarp, "<span class='boldwarning'>You have arrived in order to assist the space dragon with securing the rifts. Do not jeopardize the mission, and protect the rifts at all costs!</span>")
+	to_chat(newcarp, "<span class='boldwarning'>Przybywasz, by pomóc kosmicznemu smokowi w zabezpieczeniu szczelin. Nie narażaj misji i za wszelką cenę chroń szczeliny!</span>")
 	carp_stored--
 	if(carp_stored <= 0 && charge_state < CHARGE_COMPLETED)
 		icon_state = "carp_rift"

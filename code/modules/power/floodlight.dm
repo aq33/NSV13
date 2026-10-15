@@ -10,25 +10,25 @@
 
 /obj/structure/floodlight_frame/attackby(obj/item/O, mob/user, params)
 	if(O.tool_behaviour == TOOL_WRENCH && (state == FLOODLIGHT_NEEDS_WRENCHING))
-		to_chat(user, "<span class='notice'>You secure [src].</span>")
+		to_chat(user, "<span class='notice'>Mocujesz [src].</span>")
 		anchored = TRUE
 		state = FLOODLIGHT_NEEDS_WIRES
 		desc = "A bare metal frame looking vaguely like a floodlight. Requires wiring."
 	else if(istype(O, /obj/item/stack/cable_coil) && (state == FLOODLIGHT_NEEDS_WIRES))
 		var/obj/item/stack/S = O
 		if(S.use(5))
-			to_chat(user, "<span class='notice'>You wire [src].</span>")
+			to_chat(user, "<span class='notice'>Okablowujesz [src].</span>")
 			name = "wired [name]"
 			desc = "A bare metal frame looking vaguely like a floodlight. Requires securing with a screwdriver."
 			icon_state = "floodlight_c2"
 			state = FLOODLIGHT_NEEDS_SECURING
 	else if(istype(O, /obj/item/light/tube) && (state == FLOODLIGHT_NEEDS_LIGHTS))
 		if(user.transferItemToLoc(O))
-			to_chat(user, "<span class='notice'>You put lights in [src].</span>")
+			to_chat(user, "<span class='notice'>Wkładasz lampy do [src].</span>")
 			new /obj/machinery/power/floodlight(src.loc)
 			qdel(src)
 	else if(O.tool_behaviour == TOOL_SCREWDRIVER && (state == FLOODLIGHT_NEEDS_SECURING))
-		to_chat(user, "<span class='notice'>You fasten the wiring and electronics in [src].</span>")
+		to_chat(user, "<span class='notice'>Mocujesz okablowanie i elektronikę w [src].</span>")
 		name = "secured [name]"
 		desc = "A bare metal frame that looks like a floodlight. Requires light tubes."
 		icon_state = "floodlight_c3"
@@ -74,13 +74,13 @@
 		if(1)
 			setting_text = "OFF"
 		if(2)
-			setting_text = "low power"
+			setting_text = "niska moc"
 		if(3)
-			setting_text = "standard lighting"
+			setting_text = "standardowe oświetlenie"
 		if(4)
-			setting_text = "high power"
+			setting_text = "wysoka moc"
 	if(user)
-		to_chat(user, "You set [src] to [setting_text].")
+		to_chat(user, "Ustawiasz [src] na: [setting_text].")
 
 /obj/machinery/power/floodlight/attackby(obj/item/O, mob/user, params)
 	if(O.tool_behaviour == TOOL_WRENCH)
@@ -93,7 +93,7 @@
 	else
 		. = ..()
 
-/obj/machinery/power/floodlight/attack_hand(mob/user)
+/obj/machinery/power/floodlight/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(.)
 		return

@@ -5,7 +5,7 @@
  */
 /obj/item/circuit_component/length
 	display_name = "Length"
-	display_desc = "A component that returns the length of its input."
+	display_desc = "Komponent, który zwraca długość swojego wejścia."
 
 	/// The input port
 	var/datum/port/input/input_port

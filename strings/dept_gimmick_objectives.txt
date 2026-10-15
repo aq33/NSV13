@@ -1,10 +1,10 @@
-Get everyone to hate %DEPARTMENT, through misdirection, slander, and sabotage.
-Incite a strike in %DEPARTMENT.
-Impede the work of those at %DEPARTMENT while keeping those working in it alive.
-Keep power & cameras cut in %DEPARTMENT.
-Disguise yourself as a member of %DEPARTMENT and sabotage them from within.
-Vandalize %DEPARTMENT as much as possible.
-Destroy %DEPARTMENT utterly and entirely. Deaths within the department are of no concern, but limit the destruction to %DEPARTMENT.
-Steal equipment critical for %DEPARTMENT to function.
-Attempt to kidnap a member of %DEPARTMENT to take with you alive on an escape pod or a shuttle, for questioning at Syndicate HQ.
-Hack all doors in %DEPARTMENT to be shocked, bolted, or inaccessible by the AI.
+Spraw, by wszyscy znienawidzili dział %DEPARTMENT, za pomocą zmyłek, oszczerstw i sabotażu.
+Wywołaj strajk w dziale %DEPARTMENT.
+Utrudniaj pracę w dziale %DEPARTMENT, ale nie pozwól, by zginęli jego pracownicy.
+Utrzymuj odcięte zasilanie i kamery w dziale %DEPARTMENT.
+Przebierz się za pracownika działu %DEPARTMENT i sabotuj go od środka.
+Zdemoluj dział %DEPARTMENT najbardziej, jak się da.
+Zniszcz dział %DEPARTMENT doszczętnie i całkowicie. Śmierć w tym dziale nie ma znaczenia, ale ogranicz zniszczenia do działu %DEPARTMENT.
+Ukradnij sprzęt niezbędny do działania działu %DEPARTMENT.
+Spróbuj porwać pracownika działu %DEPARTMENT i zabrać go żywego kapsułą ratunkową lub promem na przesłuchanie w kwaterze głównej Syndykatu.
+Zhakuj wszystkie drzwi w dziale %DEPARTMENT tak, by raziły prądem, były zaryglowane lub niedostępne dla SI.

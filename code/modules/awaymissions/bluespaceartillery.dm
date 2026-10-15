@@ -26,26 +26,26 @@
 
 /obj/machinery/artillerycontrol/ui_interact(mob/user)
 	. = ..()
-	var/dat = "<B>Bluespace Artillery Control:</B><BR>"
-	dat += "Locked on<BR>"
-	dat += "<B>Charge progress: [reload]/[reload_cooldown]:</B><BR>"
-	dat += "<A href='byond://?src=[REF(src)];fire=1'>Open Fire</A><BR>"
-	dat += "Deployment of weapon authorized by <br>Nanotrasen Naval Command<br><br>Remember, friendly fire is grounds for termination of your contract and life.<HR>"
-	user << browse(dat, "window=scroll")
+	var/dat = "<B>Sterowanie artylerią bluespace:</B><BR>"
+	dat += "Namierzono<BR>"
+	dat += "<B>Postęp ładowania: [reload]/[reload_cooldown]:</B><BR>"
+	dat += "<A href='byond://?src=[REF(src)];fire=1'>Otwórz ogień</A><BR>"
+	dat += "Użycie broni zatwierdzone przez <br>Dowództwo Marynarki Nanotrasen<br><br>Pamiętaj, ostrzał sojuszników jest podstawą do rozwiązania twojego kontraktu i zakończenia twojego życia.<HR>"
+	user << browse(HTML_SKELETON(dat), "window=scroll")
 	onclose(user, "scroll")
 
 /obj/machinery/artillerycontrol/Topic(href, href_list)
 	if(..())
 		return
 	var/A
-	A = input("Area to bombard", "Open Fire", A) in GLOB.teleportlocs
+	A = input("Obszar do ostrzału", "Otwórz ogień", A) in GLOB.teleportlocs
 	var/area/thearea = GLOB.teleportlocs[A]
 	if(usr.stat || usr.restrained())
 		return
 	if(reload < reload_cooldown)
 		return
 	if(usr.contents.Find(src) || (in_range(src, usr) && isturf(loc)) || issilicon(usr))
-		priority_announce("Bluespace artillery fire detected. Brace for impact.", sound = SSstation.announcer.get_rand_alert_sound())
+		priority_announce("Wykryto ostrzał artylerii bluespace. Przygotować się na uderzenie.", sound = SSstation.announcer.get_rand_alert_sound())
 		message_admins("[ADMIN_LOOKUPFLW(usr)] has launched an artillery strike.")
 		var/list/L = list()
 		for(var/turf/T in get_area_turfs(thearea.type))

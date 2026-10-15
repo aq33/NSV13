@@ -19,7 +19,7 @@
 	var/can_max_release_pressure = (ONE_ATMOSPHERE * 10)
 	var/can_min_release_pressure = (ONE_ATMOSPHERE / 10)
 
-	armor = list("melee" = 50, "bullet" = 50, "laser" = 50, "energy" = 100, "bomb" = 10, "bio" = 100, "rad" = 100, "fire" = 80, "acid" = 50, "stamina" = 0)
+	armor = list("melee" = 50, "bullet" = 50, "laser" = 50, "energy" = 100, "bomb" = 10, "bio" = 100, "rad" = 100, "fire" = 80, "acid" = 50, "stamina" = 0, "bleed" = 0)
 	max_integrity = 250
 	integrity_failure = 100
 	pressure_resistance = 7 * ONE_ATMOSPHERE
@@ -61,7 +61,7 @@
 
 /obj/machinery/portable_atmospherics/canister/interact(mob/user)
 	if(!allowed(user))
-		to_chat(user, "<span class='warning'>Error - Unauthorized User</span>")
+		to_chat(user, "<span class='warning'>Błąd – nieupoważniony użytkownik</span>")
 		playsound(src, 'sound/misc/compiler-failure.ogg', 50, 1)
 		return
 	..()
@@ -278,19 +278,38 @@
 			new /obj/item/stack/sheet/iron (loc, 5)
 	qdel(src)
 
-/obj/machinery/portable_atmospherics/canister/welder_act(mob/living/user, obj/item/I)
-	if(user.a_intent == INTENT_HARM)
+/obj/machinery/portable_atmospherics/canister/welder_act_secondary(mob/living/user, obj/item/I)
+	. = ..()
+	if(!I.tool_start_check(user, amount=1))
+		return TRUE
+	var/pressure = air_contents.return_pressure()
+	if(pressure > 300)
+		to_chat(user, "<span class='alert'>Manometr [src] wskazuje wysokie ciśnienie w środku... może lepiej się zastanów?</span>")
+		message_admins("[src] deconstructed by [ADMIN_LOOKUPFLW(user)]")
+		log_game("[src] deconstructed by [key_name(user)]")
+	to_chat(user, "<span class='notice'>Zaczynasz rozcinać [src]...</span>")
+	if(I.use_tool(src, user, 3 SECONDS, volume=50))
+		to_chat(user, "<span class='notice'>Rozcinasz [src].</span>")
+		deconstruct(TRUE)
+	return TRUE
+
+/obj/machinery/portable_atmospherics/canister/welder_act(mob/living/user, obj/item/tool)
+	. = ..()
+	if(user.combat_mode)
 		return FALSE
-
+	if(obj_integrity >= max_integrity)
+		return TRUE
 	if(machine_stat & BROKEN)
-		if(!I.tool_start_check(user, amount=0))
+		return TRUE
+	if(!tool.tool_start_check(user, amount=1))
+		return TRUE
+	to_chat(user, "<span class='notice'>Zaczynasz łatać pęknięcia w [src]...</span>")
+	while(tool.use_tool(src, user, 2.5 SECONDS, volume=40))
+		obj_integrity = min(obj_integrity + 25, max_integrity)
+		if(obj_integrity >= max_integrity)
+			to_chat(user, "<span class='notice'>Kończysz naprawiać [src].</span>")
 			return TRUE
-		to_chat(user, "<span class='notice'>You begin cutting [src] apart...</span>")
-		if(I.use_tool(src, user, 30, volume=50))
-			deconstruct(TRUE)
-	else
-		to_chat(user, "<span class='notice'>You cannot slice [src] apart when it isn't broken.</span>")
-
+		to_chat(user, "<span class='notice'>Łatasz część pęknięć w [src]...</span>")
 	return TRUE
 
 /obj/machinery/portable_atmospherics/canister/obj_break(damage_flag)
@@ -391,7 +410,7 @@
 		return
 	switch(action)
 		if("relabel")
-			var/label = input("New canister label:", name) as null|anything in sortList(label2types)
+			var/label = input("Nowa etykieta kanistra:", name) as null|anything in sortList(label2types)
 			if(label && !..())
 				var/newtype = label2types[label]
 				if(newtype)
@@ -421,7 +440,7 @@
 				pressure = can_max_release_pressure
 				. = TRUE
 			else if(pressure == "input")
-				pressure = input("New release pressure ([can_min_release_pressure]-[can_max_release_pressure] kPa):", name, release_pressure) as num|null
+				pressure = input("Nowe ciśnienie wypuszczania ([can_min_release_pressure]-[can_max_release_pressure] kPa):", name, release_pressure) as num|null
 				if(!isnull(pressure) && !..())
 					. = TRUE
 			else if(text2num(pressure) != null)

@@ -10,7 +10,7 @@ Its best use is to combine it with the bitwise component to put multiple boolean
 
 /obj/item/circuit_component/compare/bitflag
 	display_name = "Bitflag"
-	display_desc = "A component that can determine if a specified bit of a number is on or off."
+	display_desc = "Komponent, który określa, czy dany bit liczby jest włączony, czy wyłączony."
 
 	//default compare ports aren't used
 	input_port_amount = 0

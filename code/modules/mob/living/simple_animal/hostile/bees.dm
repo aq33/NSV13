@@ -1,14 +1,16 @@
 
-#define BEE_IDLE_ROAMING		70 //The value of idle at which a bee in a beebox will try to wander
-#define BEE_IDLE_GOHOME			0  //The value of idle at which a bee will try to go home
-#define BEE_PROB_GOHOME			35 //Probability to go home when idle is below BEE_IDLE_GOHOME
-#define BEE_PROB_GOROAM			5 //Probability to go roaming when idle is above BEE_IDLE_ROAMING
-#define BEE_TRAY_RECENT_VISIT	200	//How long in deciseconds until a tray can be visited by a bee again
-#define BEE_DEFAULT_COLOUR		"#e5e500" //the colour we make the stripes of the bee if our reagent has no colour (or we have no reagent)
+#define BEE_IDLE_ROAMING 70 //The value of idle at which a bee in a beebox will try to wander
+#define BEE_IDLE_GOHOME 0  //The value of idle at which a bee will try to go home
+#define BEE_PROB_GOHOME 35 //Probability to go home when idle is below BEE_IDLE_GOHOME
+#define BEE_PROB_GOROAM 5 //Probability to go roaming when idle is above BEE_IDLE_ROAMING
+#define BEE_TRAY_RECENT_VISIT 200 //How long in deciseconds until a tray can be visited by a bee again
+#define BEE_DEFAULT_COLOUR "#e5e500" //the colour we make the stripes of the bee if our reagent has no colour (or we have no reagent)
 
-#define BEE_POLLINATE_YIELD_CHANCE		33
-#define BEE_POLLINATE_PEST_CHANCE		33
-#define BEE_POLLINATE_POTENCY_CHANCE	50
+#define BEE_POLLINATE_YIELD_CHANCE 33
+#define BEE_POLLINATE_PEST_CHANCE 33
+#define BEE_POLLINATE_POTENCY_CHANCE 50
+
+#define BEE_FOODGROUPS RAW | MEAT | GORE /*| BUGS*/
 
 /mob/living/simple_animal/hostile/poison/bees
 	name = "bee"
@@ -17,14 +19,14 @@
 	icon_living = ""
 	icon = 'icons/mob/bees.dmi'
 	gender = FEMALE
-	speak_emote = list("buzzes")
-	emote_hear = list("buzzes")
+	speak_emote = list("brzęczy")
+	emote_hear = list("brzęczy")
 	turns_per_move = 0
 	melee_damage = 1
-	attacktext = "stings"
-	response_help  = "shoos"
-	response_disarm = "swats away"
-	response_harm   = "squashes"
+	attacktext = "żądli"
+	response_help  = "przegania"
+	response_disarm = "odgania"
+	response_harm   = "zgniata"
 	maxHealth = 6
 	health = 6
 	spacewalk = TRUE
@@ -81,7 +83,7 @@
 	. = ..()
 
 	if(!beehome)
-		. += "<span class='warning'>This bee is homeless!</span>"
+		. += "<span class='warning'>Ta pszczoła jest bezdomna!</span>"
 
 /mob/living/simple_animal/hostile/poison/bees/ListTargets() // Bee processing is expessive, so we override them finding targets here.
 	if(!search_objects) //In case we want to have purely hostile bees
@@ -276,18 +278,18 @@
 				if(queen && queen.beegent)
 					qb.queen.assign_reagent(queen.beegent) //Bees use the global singleton instances of reagents, so we don't need to worry about one bee being deleted and her copies losing their reagents.
 				user.put_in_active_hand(qb)
-				user.visible_message("<span class='notice'>[user] injects [src] with royal bee jelly, causing it to split into two bees, MORE BEES!</span>","<span class ='warning'>You inject [src] with royal bee jelly, causing it to split into two bees, MORE BEES!</span>")
+				user.visible_message("<span class='notice'>[user] wstrzykuje [src] królewskie mleczko, przez co pszczoła dzieli się na dwie. WIĘCEJ PSZCZÓŁ!</span>","<span class ='warning'>Wstrzykujesz [src] królewskie mleczko, przez co pszczoła dzieli się na dwie. WIĘCEJ PSZCZÓŁ!</span>")
 			else
-				to_chat(user, "<span class='warning'>You don't have enough royal bee jelly to split a bee in two!</span>")
+				to_chat(user, "<span class='warning'>Masz za mało królewskiego mleczka, by podzielić pszczołę na dwie!</span>")
 		else
 			var/datum/reagent/R = GLOB.chemical_reagents_list[S.reagents.get_master_reagent_id()]
 			if(R && S.reagents.has_reagent(R.type, 5))
 				S.reagents.remove_reagent(R.type,5)
 				queen.assign_reagent(R)
-				user.visible_message("<span class='warning'>[user] injects [src]'s genome with [R.name], mutating its DNA!</span>","<span class='warning'>You inject [src]'s genome with [R.name], mutating its DNA!</span>")
+				user.visible_message("<span class='warning'>[user] wstrzykuje do genomu [src] [R.name], mutując jej DNA!</span>","<span class='warning'>Wstrzykujesz do genomu [src] [R.name], mutując jej DNA!</span>")
 				name = queen.name
 			else
-				to_chat(user, "<span class='warning'>You don't have enough units of that chemical to modify the bee's DNA!</span>")
+				to_chat(user, "<span class='warning'>Masz za mało tej substancji, by zmodyfikować DNA pszczoły!</span>")
 	..()
 
 

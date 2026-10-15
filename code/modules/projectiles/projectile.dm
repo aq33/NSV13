@@ -248,7 +248,7 @@
 					if(prob(25))
 						new /obj/effect/decal/cleanable/oil(target_loca)
 				else
-					new /obj/effect/temp_visual/dir_setting/bloodsplatter(target_loca, splatter_dir)
+					new /obj/effect/temp_visual/dir_setting/bloodsplatter(target_loca, splatter_dir, L.get_blood_color())
 				if(prob(33))
 					L.add_splatter_floor(target_loca)
 		else if(impact_effect_type && !hitscan)
@@ -257,18 +257,18 @@
 		var/organ_hit_text = ""
 		var/limb_hit = L.check_limb_hit(def_zone)//to get the correct message info.
 		if(limb_hit)
-			organ_hit_text = " in \the [parse_zone(limb_hit)]"
+			organ_hit_text = " w [strefa_pl(limb_hit, TRUE)]"
 		if(suppressed==SUPPRESSED_VERY)
 			playsound(loc, hitsound, 5, TRUE, -1)
 		else if(suppressed)
 			playsound(loc, hitsound, 5, 1, -1)
-			to_chat(L, "<span class='userdanger'>You're shot by \a [src][organ_hit_text]!</span>")
+			to_chat(L, "<span class='userdanger'>Trafia cię [src][organ_hit_text]!</span>")
 		else
 			if(hitsound)
 				var/volume = vol_by_damage()
 				playsound(src, hitsound, volume, TRUE, -1)
-			L.visible_message("<span class='danger'>[L] is hit by \a [src][organ_hit_text]!</span>", \
-					"<span class='userdanger'>You're hit by \a [src][organ_hit_text]!</span>", null, COMBAT_MESSAGE_RANGE)
+			L.visible_message("<span class='danger'>[src] trafia [L][organ_hit_text]!</span>", \
+					"<span class='userdanger'>Trafia cię [src][organ_hit_text]!</span>", null, COMBAT_MESSAGE_RANGE)
 		L.on_hit(src)
 
 	var/reagent_note
@@ -875,7 +875,8 @@
 		qdel(src)
 
 /proc/calculate_projectile_angle_and_pixel_offsets(mob/user, params)
-	var/list/mouse_control = params2list(params)
+	// AQUILA EDIT: combat mode passes already parsed modifiers; params2list() on a list gave nothing, so every shot went north
+	var/list/mouse_control = islist(params) ? params : params2list(params)
 	var/p_x = 0
 	var/p_y = 0
 	var/angle = 0

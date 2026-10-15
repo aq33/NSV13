@@ -8,7 +8,7 @@
 	icon_state = "pod-off"
 	density = TRUE
 	max_integrity = 350
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 100, "bomb" = 0, "bio" = 100, "rad" = 100, "fire" = 30, "acid" = 30, "stamina" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 100, "bomb" = 0, "bio" = 100, "rad" = 100, "fire" = 30, "acid" = 30, "stamina" = 0, "bleed" = 0)
 	layer = ABOVE_WINDOW_LAYER
 	state_open = FALSE
 	circuit = /obj/item/circuitboard/machine/cryo_tube
@@ -74,7 +74,7 @@
 /obj/machinery/atmospherics/components/unary/cryo_cell/examine(mob/user) //this is leaving out everything but efficiency since they follow the same idea of "better beaker, better results"
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += "<span class='notice'>The status display reads: Efficiency at <b>[efficiency*100]%</b>.</span>"
+		. += "<span class='notice'>Wyświetlacz stanu pokazuje: wydajność <b>[efficiency*100]%</b>.</span>"
 
 /obj/machinery/atmospherics/components/unary/cryo_cell/Destroy()
 	QDEL_NULL(radio)
@@ -197,14 +197,14 @@
 	if(!occupant)//Won't operate unless there's an occupant.
 		on = FALSE
 		update_icon()
-		var/msg = "Aborting. No occupant detected."
+		var/msg = "Przerwano. Nie wykryto pacjenta."
 		radio.talk_into(src, msg, radio_channel)
 		return
 
 	if(!beaker?.reagents?.reagent_list.len) //No beaker or beaker without reagents with stop the machine from running.
 		on = FALSE
 		update_icon()
-		var/msg = "Aborting. No beaker or chemicals installed."
+		var/msg = "Przerwano. Nie zainstalowano zlewki ani substancji."
 		radio.talk_into(src, msg, radio_channel)
 		return
 
@@ -248,7 +248,7 @@
 	if(!nodes[1] || !airs[1] || air1.get_moles(GAS_O2) < 5) // Turn off if the machine won't work due to not having enough moles to operate.
 		on = FALSE
 		update_icon()
-		var/msg = "Aborting. Not enough gas present to operate."
+		var/msg = "Przerwano. Za mało gazu do działania."
 		radio.talk_into(src, msg, radio_channel)
 		return
 
@@ -280,7 +280,7 @@
 /obj/machinery/atmospherics/components/unary/cryo_cell/relaymove(mob/user)
 	if(message_cooldown <= world.time)
 		message_cooldown = world.time + 50
-		to_chat(user, "<span class='warning'>[src]'s door won't budge!</span>")
+		to_chat(user, "<span class='warning'>Drzwi [src] ani drgną!</span>")
 
 /obj/machinery/atmospherics/components/unary/cryo_cell/open_machine(drop = FALSE)
 	if(!state_open && !panel_open)
@@ -303,14 +303,14 @@
 /obj/machinery/atmospherics/components/unary/cryo_cell/container_resist(mob/living/user)
 	user.changeNext_move(CLICK_CD_BREAKOUT)
 	user.last_special = world.time + CLICK_CD_BREAKOUT
-	user.visible_message("<span class='notice'>You see [user] kicking against the glass of [src]!</span>", \
-		"<span class='notice'>You struggle inside [src], kicking the release with your foot... (this will take about [DisplayTimeText(breakout_time)].)</span>", \
-		"<span class='italics'>You hear a thump from [src].</span>")
+	user.visible_message("<span class='notice'>Widzisz, jak [user] kopie w szybę [src]!</span>", \
+		"<span class='notice'>Szarpiesz się w [src], kopiąc stopą w zwalniacz... (zajmie to około [DisplayTimeText(breakout_time)].)</span>", \
+		"<span class='italics'>Słyszysz łomot z [src].</span>")
 	if(do_after(user, breakout_time, target = src))
 		if(!user || user.stat != CONSCIOUS || user.loc != src )
 			return
-		user.visible_message("<span class='warning'>[user] successfully broke out of [src]!</span>", \
-			"<span class='notice'>You successfully break out of [src]!</span>")
+		user.visible_message("<span class='warning'>[user] wydostaje się z [src]!</span>", \
+			"<span class='notice'>Udaje ci się wydostać z [src]!</span>")
 		open_machine()
 
 /obj/machinery/atmospherics/components/unary/cryo_cell/examine(mob/user)
@@ -319,9 +319,9 @@
 		if(on)
 			. += "Someone's inside [src]!"
 		else
-			. += "You can barely make out a form floating in [src]."
+			. += "Ledwo widzisz kształt unoszący się w [src]."
 	else
-		. += "[src] seems empty."
+		. += "[src] wydaje się pusta."
 
 /obj/machinery/atmospherics/components/unary/cryo_cell/MouseDrop_T(mob/target, mob/user)
 	if(user.incapacitated() || !Adjacent(user) || !user.Adjacent(target) || !iscarbon(target) || !user.IsAdvancedToolUser())
@@ -331,7 +331,7 @@
 		if(L.incapacitated())
 			close_machine(target)
 	else
-		user.visible_message("<b>[user]</b> starts shoving [target] inside [src].", "<span class='notice'>You start shoving [target] inside [src].</span>")
+		user.visible_message("<b>[user]</b> zaczyna wpychać [target] do [src].", "<span class='notice'>Zaczynasz wpychać [target] do [src].</span>")
 		if (do_after(user, 25, target=target))
 			close_machine(target)
 
@@ -339,13 +339,13 @@
 	if(istype(I, /obj/item/reagent_containers/glass))
 		. = 1 //no afterattack
 		if(beaker)
-			to_chat(user, "<span class='warning'>A beaker is already loaded into [src]!</span>")
+			to_chat(user, "<span class='warning'>W [src] jest już załadowana zlewka!</span>")
 			return
 		if(!user.transferItemToLoc(I, src))
 			return
 		beaker = I
-		user.visible_message("[user] places [I] in [src].", \
-							"<span class='notice'>You place [I] in [src].</span>")
+		user.visible_message("[user] umieszcza [I] w [src].", \
+							"<span class='notice'>Umieszczasz [I] w [src].</span>")
 		var/reagentlist = pretty_string_from_reagent_list(I.reagents.reagent_list)
 		log_game("[key_name(user)] added an [I] to cryo containing [reagentlist]")
 		return
@@ -356,7 +356,7 @@
 		update_icon()
 		return
 	else if(I.tool_behaviour == TOOL_SCREWDRIVER)
-		to_chat(user, "<span class='notice'>You can't access the maintenance panel while the pod is " \
+		to_chat(user, "<span class='notice'>Nie masz dostępu do panelu serwisowego, gdy kapsuła jest " \
 		+ (on ? "active" : (occupant ? "full" : "open")) + ".</span>")
 		return
 	return ..()

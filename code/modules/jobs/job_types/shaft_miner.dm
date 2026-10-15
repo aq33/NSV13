@@ -6,7 +6,7 @@
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 2
-	supervisors = "the quartermaster and the " + JOB_NAME_HEADOFPERSONNEL //NSV13
+	supervisors = JOB_NAME_QUARTERMASTER + " oraz " + JOB_NAME_HEADOFPERSONNEL //NSV13
 	selection_color = "#dcba97"
 
 	outfit = /datum/outfit/job/miner
@@ -82,3 +82,10 @@
 	name = "Shaft Miner (Equipment + Hardsuit)"
 	suit = /obj/item/clothing/suit/space/hardsuit/mining
 	mask = /obj/item/clothing/mask/breath
+
+/datum/outfit/job/miner/equipped/mod
+	name = "Shaft Miner (Equipment + MODsuit)"
+
+	back = /obj/item/mod/control/pre_equipped/mining
+	suit = null
+	mask = /obj/item/clothing/mask/gas/explorer

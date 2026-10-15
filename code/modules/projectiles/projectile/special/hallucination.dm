@@ -48,10 +48,10 @@
 
 /obj/item/projectile/hallucination/proc/target_on_hit(mob/M)
 	if(M == hal_target)
-		to_chat(hal_target, "<span class='userdanger'>[M] is hit by \a [src] in the chest!</span>")
+		to_chat(hal_target, "<span class='userdanger'>[src] trafia [M] w klatkę piersiową!</span>")
 		hal_apply_effect()
 	else if(M in view(hal_target))
-		to_chat(hal_target, "<span class='danger'>[M] is hit by \a [src] in the chest!!</span>")
+		to_chat(hal_target, "<span class='danger'>[src] trafia [M] w klatkę piersiową!!</span>")
 	if(damage_type == BRUTE)
 		var/splatter_dir = dir
 		if(starting)
@@ -72,6 +72,7 @@
 		splatter_icon_state = "splatter[pick(3, 4, 5)]"
 
 	var/image/blood = image('icons/effects/blood.dmi', M, splatter_icon_state, ABOVE_MOB_LAYER)
+	blood.color = COLOR_BLOOD
 	var/target_pixel_x = 0
 	var/target_pixel_y = 0
 	switch(set_dir)

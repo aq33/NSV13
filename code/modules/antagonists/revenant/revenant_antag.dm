@@ -1,5 +1,5 @@
 /datum/antagonist/revenant
-	name = "Revenant"
+	name = "Upiór"
 	show_in_antagpanel = FALSE
 	show_name_in_check_antagonists = TRUE
 	show_to_ghosts = TRUE
@@ -7,8 +7,8 @@
 
 /datum/antagonist/revenant/greet()
 	owner.announce_objectives()
-	owner.current.client?.tgui_panel?.give_antagonist_popup("Revenant",
-		"You are a spirit that has managed to stay in the mortal realm. Take vengance on those that walk this plane without you.")
+	owner.current.client?.tgui_panel?.give_antagonist_popup("Upiór",
+		"Jesteś duchem, któremu udało się zostać w świecie śmiertelników. Zemścij się na tych, którzy chodzą po tym planie bez ciebie.")
 
 /datum/antagonist/revenant/proc/forge_objectives()
 	var/datum/objective/revenant/objective = new

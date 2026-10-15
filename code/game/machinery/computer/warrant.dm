@@ -11,16 +11,16 @@
 /obj/machinery/computer/warrant/ui_interact(mob/user)
 	. = ..()
 
-	var/list/dat = list("Logged in as: ")
+	var/list/dat = list("Zalogowano jako: ")
 	if(authenticated)
-		dat += {"<a href='?src=[REF(src)];choice=Logout'>[authenticated]</a><hr>"}
+		dat += {"<a href='byond://?src=[REF(src)];choice=Logout'>[authenticated]</a><hr>"}
 		if(current)
 			var/background
 			var/notice = ""
 			switch(current.fields["criminal"])
 				if("Arrest")
 					background = "background-color:#990000;"
-					notice = "<br>**REPORT TO THE BRIG**"
+					notice = "<br>**ZGŁOŚ SIĘ DO ARESZTU**"
 				if("Incarcerated")
 					background = "background-color:#CD6500;"
 				if("Search")
@@ -35,7 +35,7 @@
 					background = "background-color:#4F7529;"
 				if("")
 					background = "''" //"'background-color:#FFFFFF;'"
-			dat += "<font size='4'><b>Warrant Data</b></font>"
+			dat += "<font size='4'><b>Dane nakazu</b></font>"
 			dat += {"<table>
 			<tr><td>Name:</td><td>&nbsp;[current.fields["name"]]&nbsp;</td></tr>
 			<tr><td>ID:</td><td>&nbsp;[current.fields["id"]]&nbsp;</td></tr>
@@ -64,9 +64,9 @@
 				<td>[c.time]</td>"}
 				if(owed > 0)
 					dat += {"<td>$[owed]</td>
-					<td><A href='?src=[REF(src)];choice=Pay;field=citation_pay;cdataid=[c.dataId]'>\[Pay\]</A></td>"}
+					<td><A href='byond://?src=[REF(src)];choice=Pay;field=citation_pay;cdataid=[c.dataId]'>\[Pay\]</A></td>"}
 				else
-					dat += "<td colspan='2'>All Paid Off</td>"
+					dat += "<td colspan='2'>Wszystko spłacone</td>"
 				dat += "</tr>"
 			dat += "</table>"
 
@@ -86,11 +86,11 @@
 				</tr>"}
 			dat += "</table>"
 		else
-			dat += {"<span>** No security record found for this ID **</span>"}
+			dat += {"<span>** Nie znaleziono akt ochrony dla tego ID **</span>"}
 	else
-		dat += {"<a href='?src=[REF(src)];choice=Login'>------------</a><hr>"}
+		dat += {"<a href='byond://?src=[REF(src)];choice=Login'>------------</a><hr>"}
 
-	var/datum/browser/popup = new(user, "warrant", "Security Warrant Console", 600, 400)
+	var/datum/browser/popup = new(user, "warrant", "Konsola nakazów ochrony", 600, 400)
 	popup.set_content(dat.Join())
 	popup.open()
 
@@ -122,17 +122,17 @@
 					if(C && istype(C))
 						var/pay = C.get_item_credit_value()
 						if(!pay)
-							to_chat(M, "<span class='warning'>[C] doesn't seem to be worth anything!</span>")
+							to_chat(M, "<span class='warning'>[C] wydaje się nic nie być wart!</span>")
 						else
 							var/diff = p.fine - p.paid
 							GLOB.data_core.payCitation(current.fields["id"], text2num(href_list["cdataid"]), pay)
-							to_chat(M, "<span class='notice'>You have paid [pay] credit\s towards your fine.</span>")
+							to_chat(M, "<span class='notice'>Wpłacasz [pay] kredytów na poczet grzywny.</span>")
 							if (pay == diff || pay > diff || pay >= diff)
 								investigate_log("Citation Paid off: <strong>[p.crimeName]</strong> Fine: [p.fine] | Paid off by [key_name(usr)]", INVESTIGATE_RECORDS)
-								to_chat(M, "<span class='notice'>The fine has been paid in full.</span>")
+								to_chat(M, "<span class='notice'>Grzywna została spłacona w całości.</span>")
 							qdel(C)
 							playsound(src, "terminal_type", 25, 0)
 					else
-						to_chat(M, "<span class='warning'>Fines can only be paid with holochips.</span>")
+						to_chat(M, "<span class='warning'>Grzywny można płacić tylko holożetonami.</span>")
 	updateUsrDialog()
 	add_fingerprint(M)

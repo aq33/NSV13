@@ -3,7 +3,7 @@
 	desc = "A cheap single use autoinjector that injects the user with DNA."
 	icon = 'icons/obj/syringe.dmi'
 	icon_state = "dnainjector"
-	var/base_icon_state = "dnainjector"
+	base_icon_state = "dnainjector"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
 	throw_speed = 3
@@ -27,7 +27,7 @@
 		for(var/HM in remove_mutations)
 			M.dna.remove_mutation(HM)
 		if(length(remove_mutations))
-			log_msg += " (mutation removal: [english_list(remove_mutations)])"
+			log_msg += " (usuwane mutacje: [english_list(remove_mutations)])"
 		for(var/HM in add_mutations)
 			if(HM == RACEMUT)
 				message_admins("[ADMIN_LOOKUPFLW(user)] injected [key_name_admin(M)] with the [name] <span class='danger'>(MONKEY)</span>")
@@ -51,34 +51,34 @@
 
 /obj/item/dnainjector/attack(mob/living/target, mob/living/user)
 	if(!user.IsAdvancedToolUser())
-		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
+		to_chat(user, "<span class='warning'>Brakuje ci zręczności, by to zrobić!</span>")
 		return
 	if(used)
-		to_chat(user, "<span class='warning'>This injector is used up!</span>")
+		to_chat(user, "<span class='warning'>Ten iniektor jest zużyty!</span>")
 		return
 	if(!target.can_inject(user, TRUE))
 		return
 	log_combat(user, target, "attempted to inject", src)
 
 	if(target != user)
-		target.visible_message("<span class='danger'>[user] is trying to inject [target] with [src]!</span>", \
-			"<span class='userdanger'>[user] is trying to inject you with [src]!</span>")
+		target.visible_message("<span class='danger'>[user] próbuje wstrzyknąć [target] [src]!</span>", \
+			"<span class='userdanger'>[user] próbuje wstrzyknąć ci [src]!</span>")
 		if(!do_mob(user, target) || used)
 			return
-		target.visible_message("<span class='danger'>[user] injects [target] with the syringe with [src]!", \
-						"<span class='userdanger'>[user] injects you with the syringe with [src]!</span>")
+		target.visible_message("<span class='danger'>[user] wstrzykuje [target] zawartość [src]!", \
+						"<span class='userdanger'>[user] wstrzykuje ci zawartość [src]!</span>")
 
 	else
-		to_chat(user, "<span class='notice'>You inject yourself with [src].</span>")
+		to_chat(user, "<span class='notice'>Wstrzykujesz sobie [src].</span>")
 
 	log_combat(user, target, "injected", src)
 
 	if(!inject(target, user))	//Now we actually do the heavy lifting.
-		to_chat(user, "<span class='notice'>It appears that [target] does not have compatible DNA.</span>")
+		to_chat(user, "<span class='notice'>Wygląda na to, że [target] nie ma kompatybilnego DNA.</span>")
 
 	used = TRUE
 	icon_state = "[base_icon_state]0"
-	desc += " This one is spent, you better recycle it!"
+	desc += " Ten jest zużyty, lepiej go zutylizuj!"
 
 
 /obj/item/dnainjector/antihulk
@@ -488,7 +488,7 @@
 
 /obj/item/dnainjector/timed/inject(mob/living/carbon/M, mob/user)
 	if(M.stat == DEAD)	//prevents dead people from having their DNA changed
-		to_chat(user, "<span class='notice'>You can't modify [M]'s DNA while [M.p_theyre()] dead.</span>")
+		to_chat(user, "<span class='notice'>Nie możesz modyfikować DNA [M], gdy nie żyje.</span>")
 		return FALSE
 
 	if(M.has_dna() && !(HAS_TRAIT(M, TRAIT_BADDNA)))

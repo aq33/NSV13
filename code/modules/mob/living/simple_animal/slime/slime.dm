@@ -12,11 +12,11 @@
 
 	icon_living = "grey baby slime"
 	icon_dead = "grey baby slime dead"
-	response_help  = "pets"
-	response_disarm = "shoos"
-	response_harm   = "stomps on"
-	emote_see = list("jiggles", "bounces in place")
-	speak_emote = list("blorbles")
+	response_help  = "głaszcze"
+	response_disarm = "przegania"
+	response_harm   = "depcze"
+	emote_see = list("trzęsie się", "podskakuje w miejscu")
+	speak_emote = list("bulgocze")
 	bubble_icon = "slime"
 	initial_language_holder = /datum/language_holder/slime
 	chat_color = "#A6E398"
@@ -31,10 +31,10 @@
 
 	see_in_dark = 8
 
-	verb_say = "blorbles"
-	verb_ask = "inquisitively blorbles"
-	verb_exclaim = "loudly blorbles"
-	verb_yell = "loudly blorbles"
+	verb_say = "bulgocze"
+	verb_ask = "bulgocze pytająco"
+	verb_exclaim = "bulgocze głośno"
+	verb_yell = "bulgocze głośno"
 
 	// canstun and canknockdown don't affect slimes because they ignore stun and knockdown variables
 	// for the sake of cleanliness, though, here they are.
@@ -243,17 +243,17 @@
 /mob/living/simple_animal/slime/get_stat_tab_status()
 	var/list/tab_data = ..()
 	if(!docile)
-		tab_data["Nutrition"] = GENERATE_STAT_TEXT("[nutrition]/[get_max_nutrition()]")
+		tab_data["Odżywienie"] = GENERATE_STAT_TEXT("[nutrition]/[get_max_nutrition()]")
 	if(amount_grown >= SLIME_EVOLUTION_THRESHOLD)
 		if(is_adult)
-			tab_data["Slime Status"] = GENERATE_STAT_TEXT("You can reproduce!")
+			tab_data["Stan szlamu"] = GENERATE_STAT_TEXT("Możesz się rozmnożyć!")
 		else
-			tab_data["Slime Status"] = GENERATE_STAT_TEXT("You can evolve!")
+			tab_data["Stan szlamu"] = GENERATE_STAT_TEXT("Możesz ewoluować!")
 
 	if(stat == UNCONSCIOUS)
-		tab_data["Unconscious"] = GENERATE_STAT_TEXT("You are knocked out by high levels of BZ!")
+		tab_data["Nieprzytomność"] = GENERATE_STAT_TEXT("Wysoki poziom BZ pozbawił cię przytomności!")
 	else
-		tab_data["Power Level"] = GENERATE_STAT_TEXT("[powerlevel]")
+		tab_data["Poziom mocy"] = GENERATE_STAT_TEXT("[powerlevel]")
 	return tab_data
 
 /mob/living/simple_animal/slime/adjustFireLoss(amount, updating_health = TRUE, forced = FALSE)
@@ -298,8 +298,8 @@
 			return
 		if(buckled)
 			Feedstop(silent = TRUE)
-			visible_message("<span class='danger'>[M] pulls [src] off!</span>", \
-				"<span class='danger'>You pull [src] off!</span>")
+			visible_message("<span class='danger'>[M] odrywa [src]!</span>", \
+				"<span class='danger'>Odrywasz [src]!</span>")
 			return
 		attacked += 5
 		if(nutrition >= 100) //steal some nutrition. negval handled in life()
@@ -324,30 +324,30 @@
 		attacked += 10
 
 /mob/living/simple_animal/slime/attack_hulk(mob/living/carbon/human/user, does_attack_animation = 0)
-	if(user.a_intent == INTENT_HARM)
+	if(user.combat_mode)
 		discipline_slime(user)
 		return ..()
 
-/mob/living/simple_animal/slime/attack_hand(mob/living/carbon/human/M)
+/mob/living/simple_animal/slime/attack_hand(mob/living/carbon/human/M, list/modifiers)
 	if(buckled)
 		M.do_attack_animation(src, ATTACK_EFFECT_DISARM)
 		if(bucklestrength >= 0)
-			M.visible_message("<span class='warning'>[M] attempts to wrestle \the [name] off!</span>", \
-				"<span class='danger'>You attempt to wrestle \the [name] off!</span>")
+			M.visible_message("<span class='warning'>[M] próbuje zerwać [name]!</span>", \
+				"<span class='danger'>Próbujesz zerwać [name]!</span>")
 			playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
 			bucklestrength --
 
 		else
-			M.visible_message("<span class='warning'>[M] manages to wrestle \the [name] off!</span>", \
-				"<span class='notice'>You manage to wrestle \the [name] off!</span>")
+			M.visible_message("<span class='warning'>[M] udaje się zerwać [name]!</span>", \
+				"<span class='notice'>Udaje ci się zerwać [name]!</span>")
 			playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
 
 			discipline_slime(M)
 	else
 		if(stat == DEAD && surgeries.len)
-			if(M.a_intent == INTENT_HELP || M.a_intent == INTENT_DISARM)
+			if(!M.combat_mode || LAZYACCESS(modifiers, RIGHT_CLICK))
 				for(var/datum/surgery/S in surgeries)
-					if(S.next_step(M,M.a_intent))
+					if(S.next_step(M, modifiers))
 						return 1
 		if(..()) //successful attack
 			attacked += 10
@@ -360,13 +360,14 @@
 
 /mob/living/simple_animal/slime/attackby(obj/item/W, mob/living/user, params)
 	if(stat == DEAD && surgeries.len)
-		if(user.a_intent == INTENT_HELP || user.a_intent == INTENT_DISARM)
+		var/list/modifiers = params2list(params)
+		if(!user.combat_mode || LAZYACCESS(modifiers, RIGHT_CLICK))
 			for(var/datum/surgery/S in surgeries)
-				if(S.next_step(user,user.a_intent))
+				if(S.next_step(user, modifiers))
 					return 1
 	if(istype(W, /obj/item/stack/sheet/mineral/plasma) && !stat) //Let's you feed slimes plasma.
 		add_friendship(user, 1)
-		to_chat(user, "<span class='notice'>You feed the slime the plasma. It chirps happily.</span>")
+		to_chat(user, "<span class='notice'>Karmisz szlam plazmą. Radośnie świergocze.</span>")
 		var/obj/item/stack/sheet/mineral/plasma/S = W
 		S.use(1)
 		return
@@ -375,7 +376,7 @@
 		if(prob(25))
 			user.do_attack_animation(src)
 			user.changeNext_move(CLICK_CD_MELEE)
-			to_chat(user, "<span class='danger'>[W] passes right through [src]!</span>")
+			to_chat(user, "<span class='danger'>[W] przechodzi prosto przez [src]!</span>")
 			return
 		if(Discipline && prob(50)) // wow, buddy, why am I getting attacked??
 			Discipline = 0
@@ -388,7 +389,7 @@
 	if(istype(W, /obj/item/storage/bag/bio))
 		var/obj/item/storage/P = W
 		if(!effectmod)
-			to_chat(user, "<span class='warning'>The slime is not currently being mutated.</span>")
+			to_chat(user, "<span class='warning'>Ten szlam nie jest obecnie mutowany.</span>")
 			return
 		var/hasOutput = FALSE //Have we outputted text?
 		var/hasFound = FALSE //Have we found an extract to be added?
@@ -399,23 +400,23 @@
 				applied++
 				hasFound = TRUE
 			if(applied >= SLIME_EXTRACT_CROSSING_REQUIRED)
-				to_chat(user, "<span class='notice'>You feed the slime as many of the extracts from the bag as you can, and it mutates!</span>")
+				to_chat(user, "<span class='notice'>Karmisz szlam tyloma ekstraktami z torby, ile się da, i szlam mutuje!</span>")
 				playsound(src, 'sound/effects/attackblob.ogg', 50, 1)
 				spawn_corecross()
 				hasOutput = TRUE
 				break
 		if(!hasOutput)
 			if(!hasFound)
-				to_chat(user, "<span class='warning'>There are no extracts in the bag that this slime will accept!</span>")
+				to_chat(user, "<span class='warning'>W torbie nie ma ekstraktów, które ten szlam by przyjął!</span>")
 			else
-				to_chat(user, "<span class='notice'>You feed the slime some extracts from the bag.</span>")
+				to_chat(user, "<span class='notice'>Karmisz szlam kilkoma ekstraktami z torby.</span>")
 				playsound(src, 'sound/effects/attackblob.ogg', 50, 1)
 		return
 	..()
 
 /mob/living/simple_animal/slime/proc/spawn_corecross()
 	var/static/list/crossbreeds = subtypesof(/obj/item/slimecross)
-	visible_message("<span class='danger'>[src] shudders, its mutated core consuming the rest of its body!</span>")
+	visible_message("<span class='danger'>[src] drży, a jego zmutowany rdzeń pochłania resztę ciała!</span>")
 	playsound(src, 'sound/magic/smoke.ogg', 50, 1)
 	var/crosspath
 	for(var/X in crossbreeds)
@@ -426,7 +427,7 @@
 	if(crosspath)
 		new crosspath(loc)
 	else
-		visible_message("<span class='warning'>The mutated core shudders, and collapses into a puddle, unable to maintain its form.</span>")
+		visible_message("<span class='warning'>Zmutowany rdzeń drży i rozpada się w kałużę, nie mogąc utrzymać formy.</span>")
 	qdel(src)
 
 /mob/living/simple_animal/slime/proc/apply_water()
@@ -441,32 +442,32 @@
 	return
 
 /mob/living/simple_animal/slime/examine(mob/user)
-	. = list("<span class='info'>This is [icon2html(src, user)] \a <EM>[src]</EM>!")
+	. = list("<span class='info'>To [icon2html(src, user)] <EM>[src]</EM>!")
 	if (stat == DEAD)
-		. += "<span class='deadsay'>It is limp and unresponsive.</span>"
+		. += "<span class='deadsay'>Jest bezwładny i nie reaguje.</span>"
 	else
 		if (stat == UNCONSCIOUS) // Slime stasis
-			. += "<span class='deadsay'>It appears to be alive but unresponsive.</span>"
+			. += "<span class='deadsay'>Wygląda na żywy, ale nie reaguje.</span>"
 		if (getBruteLoss())
 			. += "<span class='warning'>"
 			if (getBruteLoss() < 40)
-				. += "It has some punctures in its flesh!"
+				. += "Ma kilka przebić w ciele!"
 			else
-				. += "<B>It has severe punctures and tears in its flesh!</B>"
+				. += "<B>Ma poważne przebicia i rozdarcia w ciele!</B>"
 			. += "</span>\n"
 
 		switch(powerlevel)
 			if(2 to 3)
-				. += "It is flickering gently with a little electrical activity."
+				. += "Lekko migocze, wykazując niewielką aktywność elektryczną."
 
 			if(4 to 5)
-				. += "It is glowing gently with moderate levels of electrical activity."
+				. += "Delikatnie świeci, wykazując umiarkowaną aktywność elektryczną."
 
 			if(6 to 9)
-				. += "<span class='warning'>It is glowing brightly with high levels of electrical activity.</span>"
+				. += "<span class='warning'>Jasno świeci, wykazując wysoką aktywność elektryczną.</span>"
 
 			if(10)
-				. += "<span class='warning'><B>It is radiating with massive levels of electrical activity!</B></span>"
+				. += "<span class='warning'><B>Promieniuje ogromną aktywnością elektryczną!</B></span>"
 
 	. += "</span>"
 
@@ -527,14 +528,14 @@
 	. = ..()
 	if (.)
 		if(mind && master)
-			mind.store_memory("<b>Serve [master.real_name], your master.</b>")
+			mind.store_memory("<b>Służ [master.real_name], swojemu panu.</b>")
 	return .
 
 /mob/living/simple_animal/slime/get_spawner_desc()
 	return "be a slime[master ? " under the command of [master.real_name]" : ""]."
 
 /mob/living/simple_animal/slime/get_spawner_flavour_text()
-	return "You are a slime born and raised in a laboratory.[master ? " Your duty is to follow the orders of [master.real_name].": ""]"
+	return "Jesteś szlamem urodzonym i wychowanym w laboratorium.[master ? " Twoim obowiązkiem jest wykonywać rozkazy [master.real_name].": ""]"
 
 /mob/living/simple_animal/slime/proc/make_master(mob/user)
 	Friends[user] += SLIME_FRIENDSHIP_ATTACK * 2

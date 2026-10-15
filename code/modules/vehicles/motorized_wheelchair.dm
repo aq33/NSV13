@@ -42,17 +42,17 @@
 		if(!canmove)
 			return FALSE
 		if(!power_cell)
-			to_chat(user, "<span class='warning'>There seems to be no cell installed in [src].</span>")
+			to_chat(user, "<span class='warning'>Wygląda na to, że w [src] nie ma ogniwa.</span>")
 			canmove = FALSE
 			addtimer(VARSET_CALLBACK(src, canmove, TRUE), 20)
 			return FALSE
 		if(power_cell.charge < power_usage / max(power_efficiency, 1))
-			to_chat(user, "<span class='warning'>The display on [src] blinks 'Out of Power'.</span>")
+			to_chat(user, "<span class='warning'>Wyświetlacz [src] miga komunikatem „Brak zasilania”.</span>")
 			canmove = FALSE
 			addtimer(VARSET_CALLBACK(src, canmove, TRUE), 20)
 			return FALSE
 		if(user.get_num_arms() < arms_required)
-			to_chat(user, "<span class='warning'>You don't have enough arms to operate the motor controller!</span>")
+			to_chat(user, "<span class='warning'>Masz za mało rąk, by obsługiwać sterownik silnika!</span>")
 			canmove = FALSE
 			addtimer(VARSET_CALLBACK(src, canmove, TRUE), 20)
 			return FALSE
@@ -75,7 +75,7 @@
 		power_cell.update_icon()
 		user.put_in_hands(power_cell)
 		power_cell = null
-		to_chat(user, "<span class='notice'>You remove the power cell from [src].</span>")
+		to_chat(user, "<span class='notice'>Wyjmujesz ogniwo z [src].</span>")
 		return
 	return ..()
 
@@ -83,16 +83,16 @@
 	if(I.tool_behaviour == TOOL_SCREWDRIVER)
 		I.play_tool_sound(src)
 		panel_open = !panel_open
-		user.visible_message("<span class='notice'>[user] [panel_open ? "opens" : "closes"] the maintenance panel on [src].</span>", "<span class='notice'>You [panel_open ? "open" : "close"] the maintenance panel.</span>")
+		user.visible_message("<span class='notice'>[user] [panel_open ? "otwiera" : "zamyka"] panel serwisowy [src].</span>", "<span class='notice'>[panel_open ? "Otwierasz" : "Zamykasz"] panel serwisowy.</span>")
 		return
 	if(panel_open)
 		if(istype(I, /obj/item/stock_parts/cell))
 			if(power_cell)
-				to_chat(user, "<span class='warning'>There is a power cell already installed.</span>")
+				to_chat(user, "<span class='warning'>Ogniwo jest już zamontowane.</span>")
 			else
 				I.forceMove(src)
 				power_cell = I
-				to_chat(user, "<span class='notice'>You install the [I].</span>")
+				to_chat(user, "<span class='notice'>Montujesz [I].</span>")
 			refresh_parts()
 			return
 		if(istype(I, /obj/item/stock_parts))
@@ -107,16 +107,16 @@
 					if(B.get_part_rating() > A.get_part_rating())
 						B.forceMove(src)
 						user.put_in_hands(A)
-						user.visible_message("<span class='notice'>[user] replaces [A] with [B] in [src].</span>", "<span class='notice'>You replace [A] with [B].</span>")
+						user.visible_message("<span class='notice'>[user] zastępuje [A] przez [B] w [src].</span>", "<span class='notice'>Zastępujesz [A] przez [B].</span>")
 						break
 			refresh_parts()
 			return
 	return ..()
 
 /obj/vehicle/ridden/wheelchair/motorized/wrench_act(mob/living/user, obj/item/I)
-	to_chat(user, "<span class='notice'>You begin to detach the wheels...</span>")
+	to_chat(user, "<span class='notice'>Zaczynasz odłączać koła...</span>")
 	if(I.use_tool(src, user, 40, volume=50))
-		to_chat(user, "<span class='notice'>You detach the wheels and deconstruct the chair.</span>")
+		to_chat(user, "<span class='notice'>Odłączasz koła i rozbierasz wózek.</span>")
 		new /obj/item/stack/rods(drop_location(), 8)
 		new /obj/item/stack/sheet/iron(drop_location(), 10)
 		var/turf/T = get_turf(src)
@@ -131,12 +131,12 @@
 /obj/vehicle/ridden/wheelchair/motorized/examine(mob/user)
 	. = ..()
 	if(panel_open)
-		. += "There is a small screen on it, [(in_range(user, src) || isobserver(user)) ? "[power_cell ? "it reads:" : "but it is dark."]" : "but you can't see it from here."]"
+		. += "Jest na nim mały ekran, [(in_range(user, src) || isobserver(user)) ? "[power_cell ? "który pokazuje:" : "ale jest ciemny."]" : "ale stąd go nie widzisz."]"
 	if(!power_cell || (!in_range(user, src) && !isobserver(user)))
 		return
 	. += "Speed: [speed]"
-	. += "Energy efficiency: [power_efficiency]"
-	. += "Power: [power_cell.charge] out of [power_cell.maxcharge]"
+	. += "Wydajność energetyczna: [power_efficiency]"
+	. += "Zasilanie: [power_cell.charge] z [power_cell.maxcharge]"
 
 /obj/vehicle/ridden/wheelchair/motorized/Bump(atom/movable/M)
 	. = ..()
@@ -154,7 +154,7 @@
 			D.throw_at(throw_target, 2, 3)
 			D.Knockdown(80)
 			D.adjustStaminaLoss(35)
-			visible_message("<span class='danger'>[src] crashes into [M], sending [H] and [D] flying!</span>")
+			visible_message("<span class='danger'>[src] wjeżdża w [M], posyłając [H] i [D] w powietrze!</span>")
 		else
-			visible_message("<span class='danger'>[src] crashes into [M], sending [H] flying!</span>")
+			visible_message("<span class='danger'>[src] wjeżdża w [M], posyłając [H] w powietrze!</span>")
 		playsound(src, 'sound/effects/bang.ogg', 50, 1)

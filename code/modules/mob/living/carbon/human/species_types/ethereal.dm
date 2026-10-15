@@ -5,11 +5,11 @@
 	attack_verb = "burn"
 	attack_sound = 'sound/weapons/etherealhit.ogg'
 	miss_sound = 'sound/weapons/etherealmiss.ogg'
-	meat = /obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/ethereal
+	meat = /obj/item/food/meat/slab/human/mutant/ethereal
 	mutantstomach = /obj/item/organ/stomach/battery/ethereal
 	mutanttongue = /obj/item/organ/tongue/ethereal
 	mutant_heart = /obj/item/organ/heart/ethereal //NSV13 - Crystalized Ethereals
-	exotic_blood = /datum/reagent/consumable/liquidelectricity //Liquid Electricity. fuck you think of something better gamer
+	exotic_bloodtype = "E"
 	siemens_coeff = 0.5 //They thrive on energy
 	brutemod = 1.25 //They're weak to punches
 	attack_type = BURN //burn bish
@@ -31,58 +31,53 @@
 	species_r_leg = /obj/item/bodypart/r_leg/ethereal
 
 	var/current_color
-	var/EMPeffect = FALSE
-	var/emageffect = FALSE
+	//var/default_color
 	var/r1
 	var/g1
 	var/b1
 	var/static/r2 = 237
 	var/static/g2 = 164
 	var/static/b2 = 149
+	var/EMPeffect = FALSE
+	var/emageffect = FALSE
 	//this is shit but how do i fix it? no clue.
 	var/drain_time = 0 //used to keep ethereals from spam draining power sources
 	inert_mutation = OVERLOAD
 	var/obj/effect/dummy/lighting_obj/ethereal_light
 
-
 /datum/species/ethereal/Destroy(force)
-	if(ethereal_light)
-		QDEL_NULL(ethereal_light)
+	QDEL_NULL(ethereal_light)
 	return ..()
 
-/datum/species/ethereal/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load)
-	ethereal_light = C.mob_light()
-
+/datum/species/ethereal/on_species_gain(mob/living/carbon/new_ethereal, datum/species/old_species, pref_load)
 	. = ..()
-
-	if(!ishuman(C))
+	if(!ishuman(new_ethereal))
 		return
-	var/mob/living/carbon/human/ethereal = C
+	var/mob/living/carbon/human/ethereal = new_ethereal
 	default_color = "#[ethereal.dna.features["ethcolor"]]"
 	r1 = GETREDPART(default_color)
 	g1 = GETGREENPART(default_color)
 	b1 = GETBLUEPART(default_color)
 	RegisterSignal(ethereal, COMSIG_ATOM_EMAG_ACT, PROC_REF(on_emag_act))
 	RegisterSignal(ethereal, COMSIG_ATOM_EMP_ACT, PROC_REF(on_emp_act))
-
+	ethereal_light = ethereal.mob_light(light_type = /obj/effect/dummy/lighting_obj/moblight/species)
 	spec_updatehealth(ethereal)
 
 	//NSV13 - Ethereal Crystalization
-	var/obj/item/organ/heart/ethereal/ethereal_heart = C.getorganslot(ORGAN_SLOT_HEART)
+	var/obj/item/organ/heart/ethereal/ethereal_heart = ethereal.getorganslot(ORGAN_SLOT_HEART)
 	ethereal_heart.ethereal_color = default_color
 
 	//The following code is literally only to make admin-spawned ethereals not be black.
-	C.dna.features["mcolor"] = C.dna.features["ethcolor"] //Ethcolor and Mut color are both dogshit and will be replaced
-	for(var/obj/item/bodypart/BP as() in C.bodyparts)
-		if(BP.limb_id == SPECIES_ETHEREAL)
-			BP.update_limb(is_creating = TRUE)
+	new_ethereal.dna.features["mcolor"] = new_ethereal.dna.features["ethcolor"] //Ethcolor and Mut color are both dogshit and will be replaced
+	for(var/obj/item/bodypart/limb as anything in new_ethereal.bodyparts)
+		if(limb.limb_id == SPECIES_ETHEREAL)
+			limb.update_limb(is_creating = TRUE)
 
 /datum/species/ethereal/on_species_loss(mob/living/carbon/human/C, datum/species/new_species, pref_load)
 	UnregisterSignal(C, COMSIG_ATOM_EMAG_ACT)
 	UnregisterSignal(C, COMSIG_ATOM_EMP_ACT)
 	QDEL_NULL(ethereal_light)
 	return ..()
-
 
 /datum/species/ethereal/random_name(gender, unique, lastname, attempts)
 	. = "[pick(GLOB.ethereal_names)] [random_capital_letter()]"
@@ -93,11 +88,12 @@
 		if(findname(.))
 			. = .(gender, TRUE, lastname, ++attempts)
 
-
-/datum/species/ethereal/spec_updatehealth(mob/living/carbon/human/H)
+/datum/species/ethereal/spec_updatehealth(mob/living/carbon/human/ethereal)
 	. = ..()
-	if(H.stat != DEAD && !EMPeffect)
-		var/healthpercent = max(H.health, 0) / 100
+	if(!ethereal_light)
+		return
+	if(ethereal.stat != DEAD && !EMPeffect)
+		var/healthpercent = max(ethereal.health, 0) / 100
 		if(!emageffect)
 			current_color = rgb(r2 + ((r1-r2)*healthpercent), g2 + ((g1-g2)*healthpercent), b2 + ((b1-b2)*healthpercent))
 		ethereal_light.set_light_range_power_color(2 + (3 * healthpercent), 2 + (2 * healthpercent), current_color) //NSV13- Makes the base brightness a radius of two, and reduces the rate of brightness decline from damage.
@@ -106,15 +102,14 @@
 	else
 		ethereal_light.set_light_on(FALSE)
 		fixed_mut_color = rgb(128,128,128)
-	H.update_body()
-	H.update_hair() // This should fix the ethereal hair not changing with body, no clue as to why hair is not in update_body but okay - NSV13
+	ethereal.update_body()
+	ethereal.update_hair() // This should fix the ethereal hair not changing with body, no clue as to why hair is not in update_body but okay - NSV13
 
 /datum/species/ethereal/proc/on_emp_act(mob/living/carbon/human/H, severity)
 	SIGNAL_HANDLER
-
 	EMPeffect = TRUE
 	spec_updatehealth(H)
-	to_chat(H, "<span class='notice'>You feel the light of your body leave you.</span>")
+	to_chat(H, "<span class='notice'>Czujesz, jak opuszcza cię światło twojego ciała.</span>")
 	switch(severity)
 		if(EMP_LIGHT)
 			addtimer(CALLBACK(src, PROC_REF(stop_emp), H), 10 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE) //We're out for 10 seconds
@@ -128,15 +123,15 @@
 		return
 	emageffect = TRUE
 	if(user)
-		to_chat(user, "<span class='notice'>You tap [H] on the back with your card.</span>")
-	H.visible_message("<span class='danger'>[H] starts flickering in an array of colors!</span>")
+		to_chat(user, "<span class='notice'>Stukasz [H] kartą w plecy.</span>")
+	H.visible_message("<span class='danger'>[H] zaczyna migotać wszystkimi kolorami!</span>")
 	handle_emag(H)
 	addtimer(CALLBACK(src, PROC_REF(stop_emag), H), 30 SECONDS) //Disco mode for 30 seconds! This doesn't affect the ethereal at all besides either annoying some players, or making someone look badass.
 
 /datum/species/ethereal/proc/stop_emp(mob/living/carbon/human/H)
 	EMPeffect = FALSE
 	spec_updatehealth(H)
-	to_chat(H, "<span class='notice'>You feel more energized as your shine comes back.</span>")
+	to_chat(H, "<span class='notice'>Czujesz przypływ energii, gdy wraca twój blask.</span>")
 
 /datum/species/ethereal/proc/handle_emag(mob/living/carbon/human/H)
 	if(!emageffect)
@@ -148,7 +143,7 @@
 /datum/species/ethereal/proc/stop_emag(mob/living/carbon/human/H)
 	emageffect = FALSE
 	spec_updatehealth(H)
-	H.visible_message("<span class='danger'>[H] stops flickering and goes back to their normal state!</span>")
+	H.visible_message("<span class='danger'>[H] przestaje migotać i wraca do normalnego stanu!</span>")
 
 //NSV13 - Ethereal Stuff - Start
 #define NUTRITION_LEVEL_VERY_STARVING 50

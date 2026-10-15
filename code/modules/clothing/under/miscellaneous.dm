@@ -21,7 +21,7 @@
 
 /obj/item/clothing/under/misc/vice_officer
 	name = "vice officer's jumpsuit"
-	desc = "It's the standard issue pretty-boy outfit, as seen on Holo-Vision."
+	desc = "Standardowy strój przystojniaka, taki jak w Holo-Wizji."
 	icon_state = "vice"
 	item_state = "gy_suit"
 	can_adjust = FALSE
@@ -34,7 +34,7 @@
 	gas_transfer_coefficient = 0.01
 	permeability_coefficient = 0.01
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
-	armor = list("melee" = 100, "bullet" = 100, "laser" = 100,"energy" = 100, "bomb" = 100, "bio" = 100, "rad" = 100, "fire" = 100, "acid" = 100, "stamina" = 100)
+	armor = list("melee" = 100, "bullet" = 100, "laser" = 100,"energy" = 100, "bomb" = 100, "bio" = 100, "rad" = 100, "fire" = 100, "acid" = 100, "stamina" = 100, "bleed" = 100)
 	cold_protection = CHEST | GROIN | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_TEMP_PROTECT
 	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
@@ -53,7 +53,7 @@
 
 /obj/item/clothing/under/misc/overalls
 	name = "laborer's overalls"
-	desc = "A set of durable overalls for getting the job done."
+	desc = "Wytrzymałe ogrodniczki do roboty."
 	icon_state = "overalls"
 	item_state = "lb_suit"
 	can_adjust = FALSE
@@ -61,7 +61,7 @@
 
 /obj/item/clothing/under/misc/assistantformal
 	name = "assistant's formal uniform"
-	desc = "An assistant's formal-wear. Why an assistant needs formal-wear is still unknown."
+	desc = "Strój wyjściowy majtka. Po co majtkowi strój wyjściowy, wciąż nie wiadomo."
 	icon_state = "assistant_formal"
 	item_state = "gy_suit"
 	can_adjust = FALSE
@@ -84,7 +84,7 @@
 
 /obj/item/clothing/under/plasmaman/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>There are [extinguishes_left] extinguisher charges left in this suit.</span>"
+	. += "<span class='notice'>W tym kombinezonie pozostało ładunków gaśnicy: [extinguishes_left].</span>"
 
 /obj/item/clothing/under/plasmaman/proc/Extinguish(mob/living/carbon/human/H)
 	if(!istype(H))
@@ -96,7 +96,7 @@
 				return
 			next_extinguish = world.time + extinguish_cooldown
 			extinguishes_left--
-			H.visible_message("<span class='warning'>[H]'s suit automatically extinguishes [H.p_them()]!</span>","<span class='warning'>Your suit automatically extinguishes you.</span>")
+			H.visible_message("<span class='warning'>Kombinezon [H] automatycznie go gasi!</span>","<span class='warning'>Twój kombinezon automatycznie cię gasi.</span>")
 			H.ExtinguishMob()
 			new /obj/effect/particle_effect/water(get_turf(H))
 	return 0
@@ -105,11 +105,11 @@
 	..()
 	if (istype(E, /obj/item/extinguisher_refill))
 		if (extinguishes_left == 5)
-			to_chat(user, "<span class='notice'>The inbuilt extinguisher is full.</span>")
+			to_chat(user, "<span class='notice'>Wbudowana gaśnica jest pełna.</span>")
 			return
 		else
 			extinguishes_left = 5
-			to_chat(user, "<span class='notice'>You refill the suit's built-in extinguisher, using up the cartridge.</span>")
+			to_chat(user, "<span class='notice'>Uzupełniasz wbudowaną gaśnicę kombinezonu, zużywając wkład.</span>")
 			qdel(E)
 			return
 
@@ -125,11 +125,11 @@
 
 /obj/item/clothing/under/gangster
 	name = "gangstar suit"
-	desc = "Those who carry on the will of those who passed must keep moving forward."
+	desc = "Ci, którzy niosą wolę tych, którzy odeszli, muszą iść naprzód."
 	icon_state = "gangster"
 	can_adjust = FALSE
 
 /obj/item/clothing/under/gangster/purple
-	desc = "I have a dream."
+	desc = "Mam marzenie."
 	icon_state = "gangster_p"
 	armor = list("melee" = 10, "laser" = 10, "fire" = 40, "acid" = 10, "bomb" = 5, "stamina" = 30)

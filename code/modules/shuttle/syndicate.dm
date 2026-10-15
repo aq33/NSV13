@@ -15,7 +15,7 @@
 /obj/machinery/computer/shuttle_flight/syndicate/recall
 	name = "syndicate shuttle recall terminal"
 	desc = "Use this if your friends left you behind."
-	request_shuttle_message = "Recall Infiltrator"
+	request_shuttle_message = "Odwołaj infiltratora"
 	recall_docking_port_id = "syndicate_away"
 
 ///obj/machinery/computer/shuttle_flight/syndicate/ui_act(action, params)
@@ -50,6 +50,6 @@
 	possible_destinations = null
 	clockwork = TRUE //it'd look weird
 	recall_docking_port_id = "null"	//Make it a recall shuttle, with no default dest
-	request_shuttle_message = "INITIATE ASSAULT"
+	request_shuttle_message = "ROZPOCZNIJ SZTURM"
 
 #undef SYNDICATE_CHALLENGE_TIMER

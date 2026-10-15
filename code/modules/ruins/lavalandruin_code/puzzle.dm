@@ -7,7 +7,7 @@
 	var/list/elements
 	var/floor_type = /turf/open/floor/vault
 	var/finished = FALSE
-	var/reward_type = /obj/item/reagent_containers/food/snacks/cookie
+	var/reward_type = /obj/item/food/cookie
 	var/element_type = /obj/structure/puzzle_element
 	var/auto_setup = TRUE
 	var/empty_tile_id
@@ -283,7 +283,7 @@
 
 /obj/effect/sliding_puzzle/prison/Destroy()
 	if(prisoner)
-		to_chat(prisoner,"<span class='userdanger'>With the cube broken by force, you can feel your body falling apart.</span>")
+		to_chat(prisoner,"<span class='userdanger'>Gdy kostka zostaje rozbita siłą, czujesz, jak twoje ciało się rozpada.</span>")
 		prisoner.death()
 		qdel(prisoner)
 	. = ..()
@@ -295,7 +295,7 @@
 
 //Some armor so it's harder to kill someone by mistake.
 /obj/structure/puzzle_element/prison
-	armor = list("melee" = 50, "bullet" = 50, "laser" = 50, "energy" = 50, "bomb" = 50, "bio" = 50, "rad" = 50, "fire" = 50, "acid" = 50, "stamina" = 0)
+	armor = list("melee" = 50, "bullet" = 50, "laser" = 50, "energy" = 50, "bomb" = 50, "bio" = 50, "rad" = 50, "fire" = 50, "acid" = 50, "stamina" = 0, "bleed" = 0)
 
 /obj/structure/puzzle_element/prison/relaymove(mob/user)
 	return
@@ -315,12 +315,12 @@
 	//Handcuffed or unconcious
 	if(istype(carbon_victim) && carbon_victim.handcuffed || victim.stat != CONSCIOUS)
 		if(!puzzle_imprison(target))
-			to_chat(user,"<span class='warning'>[src] does nothing.</span>")
+			to_chat(user,"<span class='warning'>[src] nic nie robi.</span>")
 			return
-		to_chat(user,"<span class='warning'>You trap [victim] in the prison cube!</span>")
+		to_chat(user,"<span class='warning'>Zamykasz [victim] w kostce-więzieniu!</span>")
 		qdel(src)
 	else
-		to_chat(user,"<span class='notice'>[src] only accepts restrained or unconcious prisoners.</span>")
+		to_chat(user,"<span class='notice'>[src] przyjmuje tylko skrępowanych lub nieprzytomnych więźniów.</span>")
 
 /proc/puzzle_imprison(mob/living/prisoner)
 	var/turf/T = get_turf(prisoner)
@@ -332,7 +332,7 @@
 	//First grab the prisoner and move them temporarily into the generator so they won't get thrown around.
 	prisoner.notransform = TRUE
 	prisoner.forceMove(cube)
-	to_chat(prisoner,"<span class='userdanger'>You're trapped by the prison cube! You will remain trapped until someone solves it.</span>")
+	to_chat(prisoner,"<span class='userdanger'>Zostajesz uwięziony w kostce-więzieniu! Pozostaniesz w niej, dopóki ktoś jej nie rozwiąże.</span>")
 
 	//Clear the area from objects (and cube user)
 	var/list/things_to_throw = list()

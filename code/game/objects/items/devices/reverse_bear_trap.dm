@@ -45,7 +45,7 @@
 		to_chat(loc, "<span class='userdanger'>*ding*</span>")
 		addtimer(CALLBACK(src, PROC_REF(snap)), 2)
 
-/obj/item/reverse_bear_trap/attack_hand(mob/user)
+/obj/item/reverse_bear_trap/attack_hand(mob/user, list/modifiers)
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		if(C.get_item_by_slot(ITEM_SLOT_HEAD) == src)
@@ -54,26 +54,26 @@
 				var/fear_string
 				switch(time_left)
 					if(0 to 5)
-						fear_string = "agonizingly"
+						fear_string = "Z bólem"
 					if(5 to 20)
-						fear_string = "desperately"
+						fear_string = "Desperacko"
 					if(20 to 40)
-						fear_string = "panickedly"
+						fear_string = "W panice"
 					if(40 to 50)
-						fear_string = "shakily"
+						fear_string = "Drżącymi rękami"
 					if(50 to 60)
 						fear_string = ""
-				C.visible_message("<span class='danger'>[C] fiddles with and pulls at [src]...</span>", \
-				"<span class='danger'>You [fear_string] try to pull at [src]...</span>", "<i>You hear clicking and ticking.</i>")
+				C.visible_message("<span class='danger'>[C] majstruje przy [src] i za nią szarpie...</span>", \
+				"<span class='danger'>[fear_string] próbujesz szarpnąć [src]...</span>", "<i>Słyszysz klikanie i tykanie.</i>")
 				if(!do_after(user, 20, target = src))
 					struggling = FALSE
 					return
 				if(!prob(escape_chance))
-					to_chat(user, "<span class='warning'>It doesn't budge!</span>")
+					to_chat(user, "<span class='warning'>Ani drgnie!</span>")
 					escape_chance++
 				else
-					user.visible_message("<span class='warning'>The lock on [user]'s [name] pops open!</span>", \
-					"<span class='userdanger'>You force open the padlock!</span>", "<i>You hear a single, pronounced click!</i>")
+					user.visible_message("<span class='warning'>Kłódka [name] na [user] się otwiera!</span>", \
+					"<span class='userdanger'>Wyłamujesz kłódkę!</span>", "<i>Słyszysz pojedyncze, wyraźne kliknięcie!</i>")
 					REMOVE_TRAIT(src, TRAIT_NODROP, REVERSE_BEAR_TRAP_TRAIT)
 				struggling = FALSE
 			else
@@ -83,16 +83,16 @@
 
 /obj/item/reverse_bear_trap/attack(mob/living/target, mob/living/user)
 	if(target.get_item_by_slot(ITEM_SLOT_HEAD))
-		to_chat(user, "<span class='warning'>Remove [target.p_their()] headgear first!</span>")
+		to_chat(user, "<span class='warning'>Najpierw zdejmij mu nakrycie głowy!</span>")
 		return
-	target.visible_message("<span class='warning'>[user] starts forcing [src] onto [target]'s head!</span>", \
-	"<span class='userdanger'>[target] starts forcing [src] onto your head!</span>", "<i>You hear clanking.</i>")
-	to_chat(user, "<span class='danger'>You start forcing [src] onto [target]'s head...</span>")
+	target.visible_message("<span class='warning'>[user] zaczyna wciskać [src] na głowę [target]!</span>", \
+	"<span class='userdanger'>[target] zaczyna wciskać [src] na twoją głowę!</span>", "<i>Słyszysz szczęk.</i>")
+	to_chat(user, "<span class='danger'>Zaczynasz wciskać [src] na głowę [target]...</span>")
 	if(!do_after(user, 30, target = target) || target.get_item_by_slot(ITEM_SLOT_HEAD))
 		return
-	target.visible_message("<span class='warning'>[user] forces and locks [src] onto [target]'s head!</span>", \
-	"<span class='userdanger'>[target] locks [src] onto your head!</span>", "<i>You hear a click, and then a timer ticking down.</i>")
-	to_chat(user, "<span class='danger'>You force [src] onto [target]'s head and click the padlock shut.</span>")
+	target.visible_message("<span class='warning'>[user] wciska i zamyka [src] na głowie [target]!</span>", \
+	"<span class='userdanger'>[target] zamyka [src] na twojej głowie!</span>", "<i>Słyszysz kliknięcie, a potem tykanie odliczającego timera.</i>")
+	to_chat(user, "<span class='danger'>Wciskasz [src] na głowę [target] i zatrzaskujesz kłódkę.</span>")
 	user.dropItemToGround(src)
 	target.equip_to_slot_if_possible(src, ITEM_SLOT_HEAD)
 	arm()
@@ -102,11 +102,11 @@
 	reset()
 	var/mob/living/carbon/human/H = loc
 	if(!istype(H) || H.get_item_by_slot(ITEM_SLOT_HEAD) != src)
-		visible_message("<span class='warning'>[src]'s jaws snap open with an ear-piercing crack!</span>")
+		visible_message("<span class='warning'>Szczęki [src] rozwierają się z ogłuszającym trzaskiem!</span>")
 		playsound(src, 'sound/effects/snap.ogg', 75, TRUE)
 	else
 		var/mob/living/carbon/human/jill = loc
-		jill.visible_message("<span class='boldwarning'>[src] goes off in [jill]'s mouth, ripping [jill.p_their()] head apart!</span>", "<span class='userdanger'>[src] goes off!</span>")
+		jill.visible_message("<span class='boldwarning'>[src] odpala w ustach [jill], rozrywając mu głowę!</span>", "<span class='userdanger'>[src] odpala!</span>")
 		jill.emote("scream")
 		playsound(src, 'sound/effects/snap.ogg', 75, TRUE, frequency = 0.5)
 		playsound(src, 'sound/effects/splat.ogg', 50, TRUE, frequency = 0.5)

@@ -253,13 +253,13 @@
 	. = ..()
 	AddComponent(/datum/component/anti_magic, TRUE, TRUE, null, FALSE)
 	AddComponent(/datum/component/effect_remover, \
-	success_feedback = "You disrupt the magic of %THEEFFECT with %THEWEAPON.", \
-	success_forcesay = "BEGONE FOUL MAGIKS!!", \
+	success_feedback = "Zakłócasz magię %THEEFFECT za pomocą %THEWEAPON.", \
+	success_forcesay = "PRECZ, PLUGAWA MAGIO!!", \
 	on_clear_callback = CALLBACK(src, PROC_REF(on_cult_rune_removed)), \
 	effects_we_clear = list(/obj/effect/rune, /obj/effect/heretic_rune))
 
 /obj/item/nullrod/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is killing [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to get closer to god!</span>")
+	user.visible_message("<span class='suicide'>[user] zabija się [src]! Wygląda na to, że próbuje zbliżyć się do boga!</span>")
 	return (BRUTELOSS|FIRELOSS)
 
 /obj/item/nullrod/attack_self(mob/user)
@@ -278,7 +278,7 @@
 		var/obj/item/itemtype = V //AQUILA EDIT
 		display_names[initial(itemtype.name)] = itemtype //AQUILA EDIT
 
-	var/choice = input(M,"What theme would you like for your holy weapon?","Holy Weapon Theme") as null|anything in sortList(display_names, GLOBAL_PROC_REF(cmp_typepaths_asc))
+	var/choice = input(M,"Jaki motyw ma mieć twoja święta broń?","Motyw świętej broni") as null|anything in sortList(display_names, GLOBAL_PROC_REF(cmp_typepaths_asc))
 	if(QDELETED(src) || !choice || M.stat || !in_range(M, src) || M.incapacitated() || reskinned)
 		return
 
@@ -318,7 +318,7 @@
 	w_class = WEIGHT_CLASS_HUGE
 	hitsound = 'sound/weapons/sear.ogg'
 	damtype = BURN
-	attack_verb = list("punched", "cross countered", "pummeled")
+	attack_verb = list("uderza pięścią", "kontruje krzyżowo", "okłada pięściami")
 	block_upgrade_walk = 0
 
 /obj/item/nullrod/godhand/Initialize(mapload)
@@ -352,6 +352,7 @@
 	shield_icon = "shield-old"
 
 /obj/item/nullrod/claymore
+	bleed_force = BLEED_CUT
 	icon_state = "claymore"
 	item_state = "claymore"
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
@@ -365,7 +366,7 @@
 	block_power = 30
 	sharpness = IS_SHARP
 	hitsound = 'sound/weapons/bladeslice.ogg'
-	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "tore", "ripped", "diced", "cut")
+	attack_verb = list("atakuje", "ciacha", "dźga", "kroi", "rozdziera", "rozrywa", "sieka", "tnie")
 
 /obj/item/nullrod/claymore/darkblade
 	icon_state = "cultblade"
@@ -385,7 +386,7 @@
 	name = "sacred chainsaw sword"
 	desc = "Suffer not a heretic to live."
 	slot_flags = ITEM_SLOT_BELT
-	attack_verb = list("sawed", "tore", "cut", "chopped", "diced")
+	attack_verb = list("piłuje", "rozdziera", "tnie", "rąbie", "sieka")
 	hitsound = 'sound/weapons/chainsawhit.ogg'
 	tool_behaviour = TOOL_SAW
 	toolspeed = 1.5 //slower than a real saw
@@ -450,7 +451,7 @@
 	force = 4.13
 	throwforce = 1
 	hitsound = 'sound/weapons/bladeslice.ogg'
-	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "tore", "ripped", "diced", "cut")
+	attack_verb = list("atakuje", "ciacha", "dźga", "kroi", "rozdziera", "rozrywa", "sieka", "tnie")
 	block_level = 1
 
 /obj/item/nullrod/sord/on_block(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", damage = 0, attack_type = MELEE_ATTACK)
@@ -458,10 +459,11 @@
 		var/obj/item/I = hitby
 		owner.attackby(src)
 		owner.attackby(src, owner)
-		owner.visible_message("<span class='danger'>[owner] can't get a grip, and stabs himself with both the [I] and the[src] while trying to parry the [I]!</span>")
+		owner.visible_message("<span class='danger'>[owner] nie może złapać pewnego chwytu i, próbując sparować [I], dźga się zarówno [I], jak i [src]!</span>")
 	return ..()
 
 /obj/item/nullrod/scythe
+	bleed_force = BLEED_CUT
 	icon_state = "scythe1"
 	item_state = "scythe1"
 	lefthand_file = 'icons/mob/inhands/weapons/polearms_lefthand.dmi'
@@ -475,7 +477,7 @@
 	block_flags = BLOCKING_ACTIVE | BLOCKING_NASTY
 	slot_flags = ITEM_SLOT_BACK
 	sharpness = IS_SHARP
-	attack_verb = list("chopped", "sliced", "cut", "reaped")
+	attack_verb = list("rąbie", "kroi", "tnie", "żnie")
 
 /obj/item/nullrod/scythe/Initialize(mapload)
 	. = ..()
@@ -488,7 +490,7 @@
 	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
 	name = "high frequency blade"
 	desc = "Bad references are the DNA of the soul."
-	attack_verb = list("chopped", "sliced", "cut", "zandatsu'd")
+	attack_verb = list("rąbie", "kroi", "tnie", "zandatsuje")
 	hitsound = 'sound/weapons/rapierhit.ogg'
 
 /obj/item/nullrod/scythe/spellblade
@@ -508,7 +510,7 @@
 	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
 	name = "possessed blade"
 	desc = "When the station falls into chaos, it's nice to have a friend by your side."
-	attack_verb = list("chopped", "sliced", "cut")
+	attack_verb = list("rąbie", "kroi", "tnie")
 	hitsound = 'sound/weapons/rapierhit.ogg'
 	var/possessed = FALSE
 
@@ -519,36 +521,36 @@
 	if(possessed)
 		return
 	if(!(GLOB.ghost_role_flags & GHOSTROLE_STATION_SENTIENCE))
-		to_chat(user, "<span class='notice'>Anomalous otherworldly energies block you from awakening the blade!</span>")
+		to_chat(user, "<span class='notice'>Anomalne energie z innego świata nie pozwalają ci przebudzić ostrza!</span>")
 		return
 
-	to_chat(user, "You attempt to wake the spirit of the blade...")
+	to_chat(user, "Próbujesz przebudzić ducha ostrza...")
 
 	possessed = TRUE
 
-	var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you want to play as the spirit of [user.real_name]'s blade?", ROLE_SPECTRAL_BLADE, null, 10 SECONDS, ignore_category = POLL_IGNORE_SPECTRAL_BLADE)
+	var/list/mob/dead/observer/candidates = pollGhostCandidates("Chcesz zagrać jako duch ostrza [user.real_name]?", ROLE_SPECTRAL_BLADE, null, 10 SECONDS, ignore_category = POLL_IGNORE_SPECTRAL_BLADE)
 
 	if(LAZYLEN(candidates))
 		var/mob/dead/observer/C = pick(candidates)
 		var/mob/living/simple_animal/shade/S = new(src)
 		S.ckey = C.ckey
-		S.fully_replace_character_name(null, "The spirit of [name]")
+		S.fully_replace_character_name(null, "Duch [name]")
 		S.status_flags |= GODMODE
 		S.copy_languages(user, LANGUAGE_MASTER)	//Make sure the sword can understand and communicate with the user.
 		S.update_atom_languages()
 		grant_all_languages(FALSE, FALSE, TRUE)	//Grants omnitongue
-		var/input = sanitize_name(stripped_input(S,"What are you named?", ,"", MAX_NAME_LEN))
+		var/input = sanitize_name(stripped_input(S,"Jak się nazywasz?", ,"", MAX_NAME_LEN))
 
 		if(src && input)
 			name = input
-			S.fully_replace_character_name(null, "The spirit of [input]")
+			S.fully_replace_character_name(null, "Duch [input]")
 	else
-		to_chat(user, "The blade is dormant. Maybe you can try again later.")
+		to_chat(user, "Ostrze jest uśpione. Może spróbuj później.")
 		possessed = FALSE
 
 /obj/item/nullrod/scythe/talking/Destroy()
 	for(var/mob/living/simple_animal/shade/S in contents)
-		to_chat(S, "You were destroyed!")
+		to_chat(S, "Zostajesz zniszczony!")
 		qdel(S)
 	return ..()
 
@@ -560,7 +562,7 @@
 	chaplain_spawnable = FALSE
 	force = 30
 	slot_flags = ITEM_SLOT_BELT
-	attack_verb = list("sawed", "tore", "cut", "chopped", "diced")
+	attack_verb = list("piłuje", "rozdziera", "tnie", "rąbie", "sieka")
 	hitsound = 'sound/weapons/chainsawhit.ogg'
 	tool_behaviour = TOOL_SAW
 	toolspeed = 0.5 //faster than normal saw
@@ -574,10 +576,11 @@
 	desc = "This war hammer cost the chaplain forty thousand space dollars."
 	slot_flags = ITEM_SLOT_BELT
 	w_class = WEIGHT_CLASS_HUGE
-	attack_verb = list("smashed", "bashed", "hammered", "crunched")
+	attack_verb = list("rozbija", "grzmoci", "wali młotem", "chrupie")
 	attack_weight = 2
 
 /obj/item/nullrod/chainsaw
+	bleed_force = BLEED_CUT
 	name = "chainsaw hand"
 	desc = "Good? Bad? You're the guy with the chainsaw hand."
 	icon_state = "chainsaw_on"
@@ -587,7 +590,7 @@
 	w_class = WEIGHT_CLASS_HUGE
 	item_flags = ABSTRACT
 	sharpness = IS_SHARP
-	attack_verb = list("sawed", "tore", "cut", "chopped", "diced")
+	attack_verb = list("piłuje", "rozdziera", "tnie", "rąbie", "sieka")
 	hitsound = 'sound/weapons/chainsawhit.ogg'
 	tool_behaviour = TOOL_SAW
 	toolspeed = 2 //slower than a real saw
@@ -601,6 +604,7 @@
 	AddComponent(/datum/component/butchering, 30, 100, 0, hitsound)
 
 /obj/item/nullrod/clown
+	bleed_force = BLEED_CUT
 	icon = 'icons/obj/wizard.dmi'
 	icon_state = "clownrender"
 	item_state = "render"
@@ -608,7 +612,7 @@
 	desc = "Used for absolutely hilarious sacrifices."
 	hitsound = 'sound/items/bikehorn.ogg'
 	sharpness = IS_SHARP
-	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "tore", "ripped", "diced", "cut")
+	attack_verb = list("atakuje", "ciacha", "dźga", "kroi", "rozdziera", "rozrywa", "sieka", "tnie")
 
 /obj/item/nullrod/pride_hammer
 	icon_state = "pride"
@@ -618,7 +622,7 @@
 	throwforce = 15
 	w_class = 4
 	slot_flags = ITEM_SLOT_BACK
-	attack_verb = list("attacked", "smashed", "crushed", "splattered", "cracked")
+	attack_verb = list("atakuje", "rozbija", "miażdży", "rozpryskuje", "rozłupuje")
 	hitsound = 'sound/weapons/blade1.ogg'
 	attack_weight = 2
 
@@ -629,8 +633,8 @@
 	if(prob(30) && ishuman(A))
 		var/mob/living/carbon/human/H = A
 		user.reagents.trans_to(H, user.reagents.total_volume, 1, 1, 0, transfered_by = user)
-		to_chat(user, "<span class='notice'>Your pride reflects on [H].</span>")
-		to_chat(H, "<span class='userdanger'>You feel insecure, taking on [user]'s burden.</span>")
+		to_chat(user, "<span class='notice'>Twoja duma odbija się na [H].</span>")
+		to_chat(H, "<span class='userdanger'>Czujesz się niepewnie, biorąc na siebie ciężar [user].</span>")
 
 /obj/item/nullrod/whip
 	name = "holy whip"
@@ -640,7 +644,7 @@
 	lefthand_file = 'icons/mob/inhands/weapons/melee_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/melee_righthand.dmi'
 	slot_flags = ITEM_SLOT_BELT
-	attack_verb = list("whipped", "lashed")
+	attack_verb = list("chłoszcze", "smaga")
 	hitsound = 'sound/weapons/chainhit.ogg'
 
 /obj/item/nullrod/fedora
@@ -651,13 +655,15 @@
 	slot_flags = ITEM_SLOT_HEAD
 	icon = 'icons/obj/clothing/hats.dmi'
 	force = 0
+	bleed_force = BLEED_CUT
 	throw_speed = 4
 	throw_range = 7
 	throwforce = 30
 	sharpness = IS_SHARP
-	attack_verb = list("enlightened", "redpilled")
+	attack_verb = list("oświeca", "redpilluje")
 
 /obj/item/nullrod/armblade
+	bleed_force = BLEED_CUT
 	name = "dark blessing"
 	desc = "Particularly twisted deities grant gifts of dubious value."
 	icon = 'icons/obj/changeling_items.dmi'
@@ -689,14 +695,14 @@
 	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
 	force = 15
-	attack_verb = list("bitten", "eaten", "fin slapped")
+	attack_verb = list("gryzie", "zjada", "smaga płetwą")
 	hitsound = 'sound/weapons/bite.ogg'
 	var/used_blessing = FALSE
 
 /obj/item/nullrod/carp/attack_self(mob/living/user)
 	if(used_blessing)
 	else if(user.mind && (user.mind.holy_role))
-		to_chat(user, "You are blessed by Carp-Sie. Wild space carp will no longer attack you.")
+		to_chat(user, "Karp-Sie cię błogosławi. Dzikie kosmiczne karpie nie będą cię już atakować.")
 		user.faction |= "carp"
 		used_blessing = TRUE
 
@@ -709,7 +715,7 @@
 	slot_flags = ITEM_SLOT_BACK
 	sharpness = IS_BLUNT
 	hitsound = "swing_hit"
-	attack_verb = list("smashed", "slammed", "whacked", "thwacked")
+	attack_verb = list("rozbija", "grzmoci", "wali", "trzaska")
 	icon = 'icons/obj/items_and_weapons.dmi'
 	icon_state = "bostaff0"
 	item_state = "bostaff0"
@@ -717,6 +723,7 @@
 	righthand_file = 'icons/mob/inhands/weapons/staves_righthand.dmi'
 
 /obj/item/nullrod/tribal_knife
+	bleed_force = BLEED_CUT
 	icon_state = "crysknife"
 	item_state = "crysknife"
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
@@ -727,13 +734,13 @@
 	sharpness = IS_SHARP
 	slot_flags = null
 	hitsound = 'sound/weapons/bladeslice.ogg'
-	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "tore", "ripped", "diced", "cut")
+	attack_verb = list("atakuje", "ciacha", "dźga", "kroi", "rozdziera", "rozrywa", "sieka", "tnie")
 	item_flags = SLOWS_WHILE_IN_HAND
 
 /obj/item/nullrod/tribal_knife/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj, src)
-	AddComponent(/datum/component/butchering, 50, 100)
+	AddComponent(/datum/component/butchering, 50, 100, null, null, TRUE)
 
 /obj/item/nullrod/tribal_knife/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -747,13 +754,14 @@
 			wielder.update_equipment_speed_mods()
 
 /obj/item/nullrod/pitchfork
+	bleed_force = BLEED_CUT
 	icon_state = "pitchfork0"
 	lefthand_file = 'icons/mob/inhands/weapons/polearms_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/polearms_righthand.dmi'
 	name = "unholy pitchfork"
 	w_class = WEIGHT_CLASS_NORMAL
 	desc = "Holding this makes you look absolutely devilish."
-	attack_verb = list("poked", "impaled", "pierced", "jabbed")
+	attack_verb = list("szturcha", "nadziewa", "przebija", "dźga")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	sharpness = IS_SHARP
 
@@ -766,7 +774,7 @@
 	lefthand_file = 'icons/mob/inhands/weapons/staves_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/staves_righthand.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
-	attack_verb = list("bashes", "smacks", "whacks")
+	attack_verb = list("grzmoci", "trzepie", "wali")
 
 /obj/item/nullrod/hypertool
 	icon = 'icons/obj/device.dmi'
@@ -779,10 +787,11 @@
 	desc = "A tool so powerful even you cannot perfectly use it."
 	armour_penetration = 35
 	damtype = BRAIN
-	attack_verb = list("pulsed", "mended", "cut")
+	attack_verb = list("pulsuje w", "łata", "tnie")
 	hitsound = 'sound/effects/sparks4.ogg'
 
 /obj/item/nullrod/spear
+	bleed_force = BLEED_CUT
 	name = "ancient spear"
 	desc = "An ancient spear made of brass, I mean gold, I mean bronze. It looks highly mechanical."
 	icon_state = "ratvarian_spear"
@@ -794,5 +803,5 @@
 	armour_penetration = 10
 	sharpness = IS_SHARP_ACCURATE
 	w_class = WEIGHT_CLASS_BULKY
-	attack_verb = list("stabbed", "poked", "slashed", "clocked")
+	attack_verb = list("dźga", "szturcha", "ciacha", "zdziela")
 	hitsound = 'sound/weapons/bladeslice.ogg'

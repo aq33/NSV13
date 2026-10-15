@@ -4,7 +4,7 @@
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	permeability_coefficient = 0.9
 	slot_flags = ITEM_SLOT_ICLOTHING
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0, "stamina" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0, "stamina" = 0, "bleed" = 10)
 	drop_sound = 'sound/items/handling/cloth_drop.ogg'
 	pickup_sound =  'sound/items/handling/cloth_pickup.ogg'
 	var/fitted = FEMALE_UNIFORM_FULL // For use in alternate clothing styles for women
@@ -24,7 +24,9 @@
 		if(damaged_clothes)
 			. += mutable_appearance('icons/effects/item_damage.dmi', "damageduniform")
 		if(HAS_BLOOD_DNA(src))
-			. += mutable_appearance('icons/effects/blood.dmi', "uniformblood")
+			var/mutable_appearance/bloody_uniform = mutable_appearance('icons/effects/blood.dmi', "uniformblood")
+			bloody_uniform.color = get_blood_dna_color(return_blood_DNA())
+			. += bloody_uniform
 		if(accessory_overlay)
 			. += accessory_overlay
 
@@ -34,10 +36,18 @@
 		C.use(1)
 		has_sensor = HAS_SENSORS
 		update_sensors(NO_SENSORS)
-		to_chat(user,"<span class='notice'>You repair the suit sensors on [src] with [C].</span>")
+		to_chat(user,"<span class='notice'>Naprawiasz czujniki kombinezonu [src] za pomocą [C].</span>")
 		return 1
 	if(!attach_accessory(I, user))
 		return ..()
+
+/obj/item/clothing/under/attack_hand_secondary(mob/user, params)
+	. = ..()
+	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
+		return
+
+	toggle()
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/item/clothing/under/update_clothes_damaged_state(damaging = TRUE)
 	..()
@@ -68,7 +78,7 @@
 		var/new_sensor_mode = pick(SENSOR_OFF, SENSOR_OFF, SENSOR_OFF, SENSOR_LIVING, SENSOR_LIVING, SENSOR_VITALS, SENSOR_VITALS, SENSOR_COORDS)
 		if(ismob(loc))
 			var/mob/M = loc
-			to_chat(M,"<span class='warning'>The sensors on the [src] change rapidly!</span>")
+			to_chat(M,"<span class='warning'>Czujniki [src] gwałtownie się zmieniają!</span>")
 		update_sensors(new_sensor_mode)
 
 /obj/item/clothing/under/emp_act()
@@ -77,7 +87,7 @@
 		sensor_mode = pick(SENSOR_OFF, SENSOR_OFF, SENSOR_OFF, SENSOR_LIVING, SENSOR_LIVING, SENSOR_VITALS, SENSOR_VITALS, SENSOR_COORDS)
 		if(ismob(loc))
 			var/mob/M = loc
-			to_chat(M,"<span class='warning'>The sensors on the [src] change rapidly!</span>")
+			to_chat(M,"<span class='warning'>Czujniki [src] gwałtownie się zmieniają!</span>")
 
 /obj/item/clothing/under/equipped(mob/user, slot)
 	..()
@@ -125,7 +135,7 @@
 		var/obj/item/clothing/accessory/A = I
 		if(attached_accessory)
 			if(user)
-				to_chat(user, "<span class='warning'>[src] already has an accessory.</span>")
+				to_chat(user, "<span class='warning'>[src] ma już dodatek.</span>")
 			return
 		else
 
@@ -137,7 +147,7 @@
 				return
 
 			if(user && notifyAttach)
-				to_chat(user, "<span class='notice'>You attach [I] to [src].</span>")
+				to_chat(user, "<span class='notice'>Przypinasz [I] do [src].</span>")
 
 			var/accessory_color = attached_accessory.icon_state
 			// NSV13 starts here - Checks if accessory is NSV exclusive
@@ -169,9 +179,9 @@
 		var/obj/item/clothing/accessory/A = attached_accessory
 		attached_accessory.detach(src, user)
 		if(user.put_in_hands(A))
-			to_chat(user, "<span class='notice'>You detach [A] from [src].</span>")
+			to_chat(user, "<span class='notice'>Odpinasz [A] od [src].</span>")
 		else
-			to_chat(user, "<span class='notice'>You detach [A] from [src] and it falls on the floor.</span>")
+			to_chat(user, "<span class='notice'>Odpinasz [A] od [src], a on spada na podłogę.</span>")
 
 		if(ishuman(loc))
 			var/mob/living/carbon/human/H = loc
@@ -207,23 +217,23 @@
 /obj/item/clothing/under/examine(mob/user)
 	. = ..()
 	if(freshly_laundered)
-		. += "It looks fresh and clean."
+		. += "Wygląda świeżo i czysto."
 	if(can_adjust)
-		. += "Alt-click on [src] to wear it [adjusted == ALT_STYLE ? "normally" : "casually"]."
+		. += "Alt-klik na [src], by nosić go [adjusted == ALT_STYLE ? "normalnie" : "swobodnie"]."
 	if (has_sensor == BROKEN_SENSORS)
-		. += "Its sensors appear to be shorted out."
+		. += "Wygląda na to, że jego czujniki uległy zwarciu."
 	else if(has_sensor > NO_SENSORS)
 		switch(sensor_mode)
 			if(SENSOR_OFF)
-				. += "Its sensors appear to be disabled."
+				. += "Wygląda na to, że jego czujniki są wyłączone."
 			if(SENSOR_LIVING)
-				. += "Its binary life sensors appear to be enabled."
+				. += "Wygląda na to, że jego podstawowe czujniki życia są włączone."
 			if(SENSOR_VITALS)
-				. += "Its vital tracker appears to be enabled."
+				. += "Wygląda na to, że jego monitor funkcji życiowych jest włączony."
 			if(SENSOR_COORDS)
-				. += "Its vital tracker and tracking beacon appear to be enabled."
+				. += "Wygląda na to, że jego monitor funkcji życiowych i nadajnik lokalizacyjny są włączone."
 	if(attached_accessory)
-		. += "\A [attached_accessory] is attached to it."
+		. += "Jest do niego przypięte: [attached_accessory]."
 
 /obj/item/clothing/under/rank
 	dying_key = DYE_REGISTRY_UNDER
@@ -293,7 +303,8 @@
 	base.Insert(back, dir = NORTH)//Insert faces into the base
 
 	//Mix in GAG color
-	base.Blend(greyscale_colors, ICON_MULTIPLY)
+	if(greyscale_colors) // AQ EDIT - Blend(null) is a runtime on 516
+		base.Blend(greyscale_colors, ICON_MULTIPLY)
 
 	//Finished!
 	monkey_icon = base

@@ -29,7 +29,7 @@
 /obj/machinery/atmospherics/components/trinary/mixer/AltClick(mob/user)
 	if(can_interact(user))
 		target_pressure = MAX_OUTPUT_PRESSURE
-		balloon_alert(user, "You set the target pressure to [target_pressure] kPa.")
+		balloon_alert(user, "Ustawiasz docelowe ciśnienie na [target_pressure] kPa.")
 		update_icon()
 		ui_update()
 	return
@@ -68,7 +68,7 @@
 	airs[3] = air3
 
 /obj/machinery/atmospherics/components/trinary/mixer/process_atmos()
-	if(!on || !(nodes[1] && nodes[2] && nodes[3]) && !is_operational)
+	if(!on || !(nodes[1] && nodes[2] && nodes[3]) || !is_operational) // AQUILA EDIT - było "&& !is_operational", więc niepodłączony mikser sięgał do pustej sieci rur
 		return
 
 	//Get those gases, mah boiiii
@@ -189,7 +189,7 @@
 /obj/machinery/atmospherics/components/trinary/mixer/can_unwrench(mob/user)
 	. = ..()
 	if(. && on && is_operational)
-		to_chat(user, "<span class='warning'>You cannot unwrench [src], turn it off first!</span>")
+		to_chat(user, "<span class='warning'>Nie możesz odkręcić [src], najpierw go wyłącz!</span>")
 		return FALSE
 
 // mapping

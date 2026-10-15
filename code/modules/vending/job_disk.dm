@@ -2,7 +2,7 @@
 /obj/machinery/vending/job_disk
 	name = "\improper PTech"
 	desc = "Job disks for PDAs."
-	product_slogans = "Disks to go!"
+	product_slogans = "Dyski na wynos!"
 	icon_state = "cart"
 	icon_deny = "cart-deny"
 	light_color = LIGHT_COLOR_WHITE

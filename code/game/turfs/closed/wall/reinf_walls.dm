@@ -20,19 +20,19 @@
 /turf/closed/wall/r_wall/deconstruction_hints(mob/user)
 	switch(d_state)
 		if(INTACT)
-			return "<span class='notice'>The outer <b>grille</b> is fully intact.</span>"
+			return "<span class='notice'>Zewnętrzna <b>krata</b> jest nienaruszona.</span>"
 		if(SUPPORT_LINES)
-			return "<span class='notice'>The outer <i>grille</i> has been cut, and the support lines are <b>screwed</b> securely to the outer cover.</span>"
+			return "<span class='notice'>Zewnętrzna <i>krata</i> została przecięta, a linie wsporcze są <b>przykręcone</b> do zewnętrznej osłony.</span>"
 		if(COVER)
-			return "<span class='notice'>The support lines have been <i>unscrewed</i>, and the metal cover is <b>welded</b> firmly in place.</span>"
+			return "<span class='notice'>Linie wsporcze zostały <i>odkręcone</i>, a metalowa osłona jest mocno <b>przyspawana</b> na miejscu.</span>"
 		if(CUT_COVER)
-			return "<span class='notice'>The metal cover has been <i>sliced through</i>, and is <b>connected loosely</b> to the girder.</span>"
+			return "<span class='notice'>Metalowa osłona została <i>przecięta</i> i jest <b>luźno połączona</b> z dźwigarem.</span>"
 		if(ANCHOR_BOLTS)
-			return "<span class='notice'>The outer cover has been <i>pried away</i>, and the bolts anchoring the support rods are <b>wrenched</b> in place.</span>"
+			return "<span class='notice'>Zewnętrzna osłona została <i>wyważona</i>, a śruby kotwiące pręty wsporcze są <b>dokręcone</b>.</span>"
 		if(SUPPORT_RODS)
-			return "<span class='notice'>The bolts anchoring the support rods have been <i>loosened</i>, but are still <b>welded</b> firmly to the girder.</span>"
+			return "<span class='notice'>Śruby kotwiące pręty wsporcze zostały <i>poluzowane</i>, ale nadal są mocno <b>przyspawane</b> do dźwigara.</span>"
 		if(SHEATH)
-			return "<span class='notice'>The support rods have been <i>sliced through</i>, and the outer sheath is <b>connected loosely</b> to the girder.</span>"
+			return "<span class='notice'>Pręty wsporcze zostały <i>przecięte</i>, a zewnętrzna powłoka jest <b>luźno połączona</b> z dźwigarem.</span>"
 
 /turf/closed/wall/r_wall/devastate_wall()
 	new sheet_type(src, sheet_amount)
@@ -48,7 +48,7 @@
 		playsound(src, 'sound/effects/meteorimpact.ogg', 100, 1)
 	else
 		playsound(src, 'sound/effects/bang.ogg', 50, 1)
-		to_chat(M, "<span class='warning'>This wall is far too strong for you to destroy.</span>")
+		to_chat(M, "<span class='warning'>Ta ściana jest o wiele za mocna, byś mógł ją zniszczyć.</span>")
 
 /turf/closed/wall/r_wall/try_destroy(obj/item/I, mob/user, turf/T)
 	return FALSE
@@ -61,138 +61,138 @@
 				W.play_tool_sound(src, 100)
 				d_state = SUPPORT_LINES
 				update_icon()
-				balloon_alert(user, "You cut the outer grille.")
+				balloon_alert(user, "Przecinasz zewnętrzną kratę.")
 				return TRUE
 
 		if(SUPPORT_LINES)
 			if(W.tool_behaviour == TOOL_SCREWDRIVER)
-				balloon_alert(user, "You begin unsecuring the support lines...")
+				balloon_alert(user, "Zaczynasz odkręcać linie wsporcze...")
 				if(W.use_tool(src, user, 40, volume=100))
 					if(!istype(src, /turf/closed/wall/r_wall) || d_state != SUPPORT_LINES)
 						return TRUE
 					d_state = COVER
 					update_icon()
-					balloon_alert(user, "You unsecure the support lines.")
+					balloon_alert(user, "Odkręcasz linie wsporcze.")
 				return TRUE
 
 			else if(W.tool_behaviour == TOOL_WIRECUTTER)
 				W.play_tool_sound(src, 100)
 				d_state = INTACT
 				update_icon()
-				balloon_alert(user, "You repair the outer grille.")
+				balloon_alert(user, "Naprawiasz zewnętrzną kratę.")
 				return TRUE
 
 		if(COVER)
 			if(W.tool_behaviour == TOOL_WELDER)
 				if(!W.tool_start_check(user, amount=0))
 					return
-				balloon_alert(user, "You begin slicing through the metal cover...")
+				balloon_alert(user, "Zaczynasz przecinać metalową osłonę...")
 				if(W.use_tool(src, user, 60, volume=100))
 					if(!istype(src, /turf/closed/wall/r_wall) || d_state != COVER)
 						return TRUE
 					d_state = CUT_COVER
 					update_icon()
-					balloon_alert(user, "You remove the metal cover.")
+					balloon_alert(user, "Zdejmujesz metalową osłonę.")
 				return TRUE
 
 			if(W.tool_behaviour == TOOL_SCREWDRIVER)
-				balloon_alert(user, "You begin securing the support lines...")
+				balloon_alert(user, "Zaczynasz przykręcać linie wsporcze...")
 				if(W.use_tool(src, user, 40, volume=100))
 					if(!istype(src, /turf/closed/wall/r_wall) || d_state != COVER)
 						return TRUE
 					d_state = SUPPORT_LINES
 					update_icon()
-					balloon_alert(user, "You secure the support lines.")
+					balloon_alert(user, "Przykręcasz linie wsporcze.")
 				return TRUE
 
 		if(CUT_COVER)
 			if(W.tool_behaviour == TOOL_CROWBAR)
-				balloon_alert(user, "You struggle to pry off the cover...")
+				balloon_alert(user, "Z trudem wyważasz osłonę...")
 				if(W.use_tool(src, user, 100, volume=100))
 					if(!istype(src, /turf/closed/wall/r_wall) || d_state != CUT_COVER)
 						return TRUE
 					d_state = ANCHOR_BOLTS
 					update_icon()
-					balloon_alert(user, "You pry the cover off.")
+					balloon_alert(user, "Wyważasz osłonę.")
 				return TRUE
 
 			if(W.tool_behaviour == TOOL_WELDER)
 				if(!W.tool_start_check(user, amount=0))
 					return
-				balloon_alert(user, "You begin welding the metal cover back to the frame...")
+				balloon_alert(user, "Zaczynasz przyspawywać metalową osłonę z powrotem do ramy...")
 				if(W.use_tool(src, user, 60, volume=100))
 					if(!istype(src, /turf/closed/wall/r_wall) || d_state != CUT_COVER)
 						return TRUE
 					d_state = COVER
 					update_icon()
-					balloon_alert(user, "You welded the metal cover to the frame.")
+					balloon_alert(user, "Przyspawujesz metalową osłonę do ramy.")
 				return TRUE
 
 		if(ANCHOR_BOLTS)
 			if(W.tool_behaviour == TOOL_WRENCH)
-				balloon_alert(user, "You start loosening the anchoring bolts which secure the support rods to their frame...")
+				balloon_alert(user, "Zaczynasz luzować śruby kotwiące pręty wsporcze do ramy...")
 				if(W.use_tool(src, user, 40, volume=100))
 					if(!istype(src, /turf/closed/wall/r_wall) || d_state != ANCHOR_BOLTS)
 						return TRUE
 					d_state = SUPPORT_RODS
 					update_icon()
-					balloon_alert(user, "You remove the bolts.")
+					balloon_alert(user, "Wykręcasz śruby.")
 				return TRUE
 
 			if(W.tool_behaviour == TOOL_CROWBAR)
-				balloon_alert(user, "You start to pry the cover back into place...")
+				balloon_alert(user, "Zaczynasz wciskać osłonę z powrotem na miejsce...")
 				if(W.use_tool(src, user, 20, volume=100))
 					if(!istype(src, /turf/closed/wall/r_wall) || d_state != ANCHOR_BOLTS)
 						return TRUE
 					d_state = CUT_COVER
 					update_icon()
-					balloon_alert(user, "You pry the metal cover back in place.")
+					balloon_alert(user, "Wciskasz metalową osłonę z powrotem na miejsce.")
 				return TRUE
 
 		if(SUPPORT_RODS)
 			if(W.tool_behaviour == TOOL_WELDER)
 				if(!W.tool_start_check(user, amount=0))
 					return
-				balloon_alert(user, "You start slicing through the support rods...")
+				balloon_alert(user, "Zaczynasz przecinać pręty wsporcze...")
 				if(W.use_tool(src, user, 100, volume=100))
 					if(!istype(src, /turf/closed/wall/r_wall) || d_state != SUPPORT_RODS)
 						return TRUE
 					d_state = SHEATH
 					update_icon()
-					balloon_alert(user, "You have sliced through the support rods.")
+					balloon_alert(user, "Przecinasz pręty wsporcze.")
 				return TRUE
 
 			if(W.tool_behaviour == TOOL_WRENCH)
-				balloon_alert(user, "You start tightening the bolts securing the support rods...")
+				balloon_alert(user, "Zaczynasz dokręcać śruby mocujące pręty wsporcze...")
 				W.play_tool_sound(src, 100)
 				if(W.use_tool(src, user, 40))
 					if(!istype(src, /turf/closed/wall/r_wall) || d_state != SUPPORT_RODS)
 						return TRUE
 					d_state = ANCHOR_BOLTS
 					update_icon()
-					balloon_alert(user, "You tighten the bolts.")
+					balloon_alert(user, "Dokręcasz śruby.")
 				return TRUE
 
 		if(SHEATH)
 			if(W.tool_behaviour == TOOL_CROWBAR)
-				balloon_alert(user, "You start prying off the outer sheath...")
+				balloon_alert(user, "Zaczynasz wyważać zewnętrzną powłokę...")
 				if(W.use_tool(src, user, 100, volume=100))
 					if(!istype(src, /turf/closed/wall/r_wall) || d_state != SHEATH)
 						return TRUE
-					balloon_alert(user, "You pried the outer sheath off.")
+					balloon_alert(user, "Wyważasz zewnętrzną powłokę.")
 					dismantle_wall()
 				return TRUE
 
 			if(W.tool_behaviour == TOOL_WELDER)
 				if(!W.tool_start_check(user, amount=0))
 					return
-				balloon_alert(user, "You start welding the support rods back together...")
+				balloon_alert(user, "Zaczynasz zespawywać pręty wsporcze z powrotem...")
 				if(W.use_tool(src, user, 100, volume=100))
 					if(!istype(src, /turf/closed/wall/r_wall) || d_state != SHEATH)
 						return TRUE
 					d_state = SUPPORT_RODS
 					update_icon()
-					balloon_alert(user, "You weld the support rods back together.")
+					balloon_alert(user, "Zespawujesz pręty wsporcze z powrotem.")
 				return TRUE
 	return FALSE
 

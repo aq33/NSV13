@@ -33,28 +33,28 @@
 	//upgrade messages
 	var/has_upgrades
 	if(emp_module)
-		. += "It has electromagnetic interference shielding installed."
+		. += "Ma zainstalowane ekranowanie przed zakłóceniami elektromagnetycznymi."
 		has_upgrades = TRUE
 	else if(state == STATE_WIRED)
-		. += "<span class='info'>It can be shielded against electromagnetic interference with some <b>plasma</b>.</span>"
+		. += "<span class='info'>Można ją osłonić przed zakłóceniami elektromagnetycznymi odrobiną <b>plazmy</b>.</span>"
 	if(proxy_module)
-		. += "It has a proximity sensor installed."
+		. += "Ma zainstalowany czujnik zbliżeniowy."
 		has_upgrades = TRUE
 	else if(state == STATE_WIRED)
-		. += "<span class='info'>It can be upgraded with a <b>proximity sensor</b>.</span>"
+		. += "<span class='info'>Można ją ulepszyć <b>czujnikiem zbliżeniowym</b>.</span>"
 
 	//construction states
 	switch(state)
 		if(STATE_WRENCHED)
-			. += "<span class='info'>You can secure it in place with a <b>welder</b>, or removed with a <b>wrench</b>.</span>"
+			. += "<span class='info'>Możesz ją przymocować <b>spawarką</b> albo zdjąć <b>kluczem</b>.</span>"
 		if(STATE_WELDED)
-			. += "<span class='info'>You can add <b>wires</b> to it, or <b>unweld</b> it from the wall.</span>"
+			. += "<span class='info'>Możesz dodać do niej <b>przewody</b> albo <b>odspawać</b> ją od ściany.</span>"
 		if(STATE_WIRED)
 			if(has_upgrades)
-				. += "<span class='info'>You can remove the contained upgrades with a <b>crowbar</b>.</span>"
-			. += "<span class='info'>You can complete it with a <b>screwdriver</b>, or <b>unwire</b> it to start removal.</span>"
+				. += "<span class='info'>Zawarte ulepszenia możesz wyjąć <b>łomem</b>.</span>"
+			. += "<span class='info'>Możesz ją dokończyć <b>śrubokrętem</b> albo <b>odłączyć przewody</b>, by zacząć demontaż.</span>"
 		if(STATE_FINISHED)
-			. += "<span class='boldwarning'>You shouldn't be seeing this, tell a coder!</span>"
+			. += "<span class='boldwarning'>Nie powinieneś tego widzieć, powiedz koderowi!</span>"
 
 /obj/structure/camera_assembly/Initialize(mapload, ndir, building)
 	. = ..()
@@ -101,7 +101,7 @@
 		if(STATE_WRENCHED)
 			if(W.tool_behaviour == TOOL_WELDER)
 				if(weld(W, user))
-					to_chat(user, "<span class='notice'>You weld [src] securely into place.</span>")
+					to_chat(user, "<span class='notice'>Mocno przyspawujesz [src] na miejscu.</span>")
 					setAnchored(TRUE)
 					state = STATE_WELDED
 				return
@@ -110,17 +110,17 @@
 			if(istype(W, /obj/item/stack/cable_coil))
 				var/obj/item/stack/cable_coil/C = W
 				if(C.use(2))
-					to_chat(user, "<span class='notice'>You add wires to [src].</span>")
+					to_chat(user, "<span class='notice'>Podłączasz przewody do [src].</span>")
 					state = STATE_WIRED
 				else
-					to_chat(user, "<span class='warning'>You need two lengths of cable to wire a camera!</span>")
+					to_chat(user, "<span class='warning'>Do okablowania kamery potrzebujesz dwóch odcinków kabla!</span>")
 					return
 				return
 
 			else if(W.tool_behaviour == TOOL_WELDER)
 
 				if(weld(W, user))
-					to_chat(user, "<span class='notice'>You unweld [src] from its place.</span>")
+					to_chat(user, "<span class='notice'>Odspawujesz [src] od miejsca.</span>")
 					state = STATE_WRENCHED
 					setAnchored(TRUE)
 				return
@@ -128,7 +128,7 @@
 		if(STATE_WIRED)	// Upgrades!
 			if(istype(W, /obj/item/stack/sheet/mineral/plasma)) //emp upgrade
 				if(emp_module)
-					to_chat(user, "<span class='warning'>[src] already contains a [emp_module]!</span>")
+					to_chat(user, "<span class='warning'>[src] już zawiera [emp_module]!</span>")
 					return
 				if(!W.use_tool(src, user, 0, amount=1)) //only use one sheet, otherwise the whole stack will be consumed.
 					return
@@ -136,16 +136,16 @@
 				if(malf_xray_firmware_active)
 					malf_xray_firmware_active = FALSE //flavor reason: MALF AI Upgrade Camera Network ability's firmware is incompatible with the new part
 														//real reason: make it a normal upgrade so the finished camera's icons and examine texts are restored.
-				to_chat(user, "<span class='notice'>You attach [W] into [src]'s inner circuits.</span>")
+				to_chat(user, "<span class='notice'>Podłączasz [W] do wewnętrznych obwodów [src].</span>")
 				return
 
 			else if(istype(W, /obj/item/assembly/prox_sensor)) //motion sensing upgrade
 				if(proxy_module)
-					to_chat(user, "<span class='warning'>[src] already contains a [proxy_module]!</span>")
+					to_chat(user, "<span class='warning'>[src] już zawiera [proxy_module]!</span>")
 					return
 				if(!user.transferItemToLoc(W, src))
 					return
-				to_chat(user, "<span class='notice'>You attach [W] into [src]'s inner circuits.</span>")
+				to_chat(user, "<span class='notice'>Podłączasz [W] do wewnętrznych obwodów [src].</span>")
 				proxy_module = W
 				return
 
@@ -161,10 +161,10 @@
 		droppable_parts += proxy_module
 	if(!droppable_parts.len)
 		return
-	var/obj/item/choice = input(user, "Select a part to remove:", src) as null|obj in sortNames(droppable_parts)
+	var/obj/item/choice = input(user, "Wybierz część do wyjęcia:", src) as null|obj in sortNames(droppable_parts)
 	if(!choice || !user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 		return
-	to_chat(user, "<span class='notice'>You remove [choice] from [src].</span>")
+	to_chat(user, "<span class='notice'>Wyjmujesz [choice] z [src].</span>")
 	drop_upgrade(choice)
 	tool.play_tool_sound(src)
 	return TRUE
@@ -177,13 +177,13 @@
 		return FALSE
 
 	tool.play_tool_sound(src)
-	var/input = stripped_input(user, "Which networks would you like to connect this camera to? Separate networks with a comma. No Spaces!\nFor example: SS13,Security,Secret ", "Set Network", "SS13")
+	var/input = stripped_input(user, "Do których sieci chcesz podłączyć tę kamerę? Oddziel sieci przecinkami. Bez spacji!\nNa przykład: SS13,Security,Secret ", "Ustaw sieć", "SS13")
 	if(!input)
-		to_chat(user, "<span class='warning'>No input found, please hang up and try your call again!</span>")
+		to_chat(user, "<span class='warning'>Nie podano danych, rozłącz się i spróbuj ponownie!</span>")
 		return
 	var/list/tempnetwork = splittext(input, ",")
 	if(tempnetwork.len < 1)
-		to_chat(user, "<span class='warning'>No network found, please hang up and try your call again!</span>")
+		to_chat(user, "<span class='warning'>Nie znaleziono sieci, rozłącz się i spróbuj ponownie!</span>")
 		return
 	for(var/i in tempnetwork)
 		tempnetwork -= i
@@ -204,7 +204,7 @@
 
 	new /obj/item/stack/cable_coil(drop_location(), 2)
 	I.play_tool_sound(src)
-	to_chat(user, "<span class='notice'>You cut the wires from the circuits.</span>")
+	to_chat(user, "<span class='notice'>Odcinasz przewody od obwodów.</span>")
 	state = STATE_WELDED
 	return TRUE
 
@@ -212,7 +212,7 @@
 	if(state != STATE_WRENCHED)
 		return FALSE
 	I.play_tool_sound(src)
-	to_chat(user, "<span class='notice'>You detach [src] from its place.</span>")
+	to_chat(user, "<span class='notice'>Zdejmujesz [src] z miejsca.</span>")
 	new /obj/item/wallframe/camera(drop_location())
 	//drop upgrades
 	if(emp_module)
@@ -226,7 +226,7 @@
 /obj/structure/camera_assembly/proc/weld(obj/item/weldingtool/W, mob/living/user)
 	if(!W.tool_start_check(user, amount=3))
 		return FALSE
-	to_chat(user, "<span class='notice'>You start to weld [src]...</span>")
+	to_chat(user, "<span class='notice'>Zaczynasz spawać [src]...</span>")
 	if(W.use_tool(src, user, 20, amount=3, volume = 50))
 		return TRUE
 	return FALSE

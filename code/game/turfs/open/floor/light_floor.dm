@@ -15,9 +15,9 @@
 
 /turf/open/floor/light/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>There's a <b>small crack</b> on the edge of it.</span>"
+	. += "<span class='notice'>Przy krawędzi jest <b>małe pęknięcie</b>.</span>"
 	if(broken)
-		. += "<span class='notice'>It seems to be completely broken.</span>"
+		. += "<span class='notice'>Wygląda na zupełnie zepsute.</span>"
 
 /turf/open/floor/light/Initialize(mapload)
 	. = ..()
@@ -54,7 +54,7 @@
 	set_light(0)
 	return ..()
 
-/turf/open/floor/light/attack_hand(mob/user)
+/turf/open/floor/light/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(.)
 		return
@@ -83,9 +83,9 @@
 			qdel(C)
 			state = 0 //fixing it by bashing it with a light bulb, fun eh?
 			update_icon()
-			to_chat(user, "<span class='notice'>You replace the light bulb.</span>")
+			to_chat(user, "<span class='notice'>Wymieniasz żarówkę.</span>")
 		else
-			to_chat(user, "<span class='notice'>The light bulb seems fine, no need to replace it.</span>")
+			to_chat(user, "<span class='notice'>Żarówka wydaje się w porządku, nie trzeba jej wymieniać.</span>")
 
 
 //Cycles through all of the colours

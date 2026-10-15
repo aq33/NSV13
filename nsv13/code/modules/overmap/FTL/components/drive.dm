@@ -75,7 +75,7 @@
 	return ..()
 
 /obj/machinery/computer/ship/ftl_core/swarmer_act(mob/living/simple_animal/hostile/swarmer/S)
-	to_chat(S, "<span class='warning'>This equipment should be preserved, it will be a useful resource to our masters in the future. Aborting.</span>")
+	to_chat(S, "<span class='warning'>Ten sprzęt należy zachować, w przyszłości będzie cennym zasobem dla naszych panów. Przerywanie.</span>")
 	S.LoseTarget()
 	return FALSE
 
@@ -110,16 +110,16 @@
 
 /obj/machinery/computer/ship/ftl_core/proc/spoolup()
 	if(!is_operational || !anchored)
-		visible_message("FTL core is damaged or unpowered, startup procedure cancelled.")
+		visible_message("Rdzeń FTL jest uszkodzony lub bez zasilania, procedura uruchamiania anulowana.")
 		return
 	if(cooldown)
-		say("FTL core temperature beyond safety limits, please wait for cooldown cycle to complete.")
+		say("Temperatura rdzenia FTL przekracza limity bezpieczeństwa, zaczekaj na zakończenie cyklu chłodzenia.")
 		return
 	if(progress || ftl_state != FTL_STATE_IDLE)
-		say("FTL manifold is already active.")
+		say("Kolektor FTL jest już aktywny.")
 		return
 	if(!check_pylons())
-		say("You must construct additional pylons.")
+		say("Musisz zbudować dodatkowe pylony.")
 		return
 	var/active_pylons = 0
 	for(var/obj/machinery/atmospherics/components/binary/drive_pylon/P as() in pylons)
@@ -128,17 +128,17 @@
 		active_pylons++
 		if(min_pylons > active_pylons)
 			continue
-		visible_message("<span class='info'>Core fuel cycle starting.</span>")
+		visible_message("<span class='info'>Rozpoczynanie cyklu paliwowego rdzenia.</span>")
 		active = TRUE
 		START_PROCESSING(SSmachines, src)
 		soundloop_ftl.start()
 		playsound(src, 'nsv13/sound/voice/ftl_spoolup.wav', 100, FALSE)
-		radio.talk_into(src, "FTL spoolup initiated.", radio_channel)
+		radio.talk_into(src, "Rozpoczęto rozgrzewanie FTL.", radio_channel)
 		icon_state = "core_active"
 		use_power = 500
 		return TRUE
 
-	visible_message("<span class='warning'>Insufficient active drive pylons.</span>")
+	visible_message("<span class='warning'>Za mało aktywnych pylonów napędu.</span>")
 
 
 /obj/machinery/computer/ship/ftl_core/process(delta_time)
@@ -180,12 +180,12 @@
 		var/obj/item/ftl_slipstream_chip/FI = I
 		if(FI.tier > tier)
 			playsound(src, 'sound/machines/terminal_insert_disc.ogg', 100, 0)
-			to_chat(user, "<span class='notice'>You slot [I] into [src], updating its vector calculation systems.</span>")
+			to_chat(user, "<span class='notice'>Wkładasz [I] do [src], aktualizując jego systemy obliczania wektorów.</span>")
 			tier = FI.tier
 			qdel(FI)
 			upgrade()
 		else
-			to_chat(user, "<span class='notice'>\The [src] has already been upgraded to a higher tier than [FI] can offer.</span>")
+			to_chat(user, "<span class='notice'>[src] został już ulepszony do wyższego poziomu, niż może zaoferować [FI].</span>")
 
 /obj/machinery/computer/ship/ftl_core/vv_edit_var(var_name, var_value)
 	. = ..()
@@ -212,8 +212,8 @@
 	if(!linked.ftl_safety_override)
 		return
 	await_emergency_ftl_confirm = world.time + 15 SECONDS
-	say("Emergency FTL request signal received from Navigation system. Manual confirmation required.")
-	radio.talk_into(src, "Emergency FTL request signal received from Navigation system. Manual confirmation required.", radio_channel)
+	say("Otrzymano sygnał awaryjnego żądania FTL z systemu nawigacji. Wymagane ręczne potwierdzenie.")
+	radio.talk_into(src, "Otrzymano sygnał awaryjnego żądania FTL z systemu nawigacji. Wymagane ręczne potwierdzenie.", radio_channel)
 
 /*
 Preset classes of FTL drive with pre-programmed behaviours
@@ -248,12 +248,12 @@ Preset classes of FTL drive with pre-programmed behaviours
 
 /obj/machinery/computer/ship/ftl_core/attack_hand(mob/user)
 	if(!has_overmap())
-		to_chat(user, "<span class='warning'>\The [src] can't connect to the ship!<span/>")
+		to_chat(user, "<span class='warning'>[src] nie może połączyć się z okrętem!<span/>")
 		return
 	if(!allowed(user))
 		var/sound/S = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 		playsound(src, S, 100, 1)
-		to_chat(user, "<span class='warning'>Access denied.</span>")
+		to_chat(user, "<span class='warning'>Odmowa dostępu.</span>")
 		return
 	ui_interact(user)
 
@@ -278,11 +278,11 @@ Preset classes of FTL drive with pre-programmed behaviours
 			switch(P.pylon_state)
 				if(PYLON_STATE_OFFLINE)
 					if(P.try_enable()) // enables it if it passes
-						visible_message("<span class='notice'>Pylon power cycle starting.</span>")
+						visible_message("<span class='notice'>Rozpoczynanie cyklu zasilania pylonu.</span>")
 					else
-						visible_message("<span class='warning'>Pylon power cycle failed, Power source missing.</span>")
+						visible_message("<span class='warning'>Cykl zasilania pylonu nieudany, brak źródła zasilania.</span>")
 				if(PYLON_STATE_SHUTDOWN)
-					visible_message("<span class='warning'>Please wait for pylon power cycle to complete before reactivating.</span>")
+					visible_message("<span class='warning'>Zaczekaj na zakończenie cyklu zasilania pylonu przed ponownym włączeniem.</span>")
 				else
 					P.set_state(PYLON_STATE_SHUTDOWN)
 					. = TRUE
@@ -310,13 +310,13 @@ Preset classes of FTL drive with pre-programmed behaviours
 			if(!linked.ftl_safety_override)
 				return
 			if(world.time < linked.next_emergency_jump)
-				say("Failsafe Capacitor still recharging. Emergency transition unavailable.")
+				say("Kondensator awaryjny wciąż się ładuje. Przejście awaryjne niedostępne.")
 				await_emergency_ftl_confirm = 0
 				return
 			if(world.time > await_emergency_ftl_confirm)
 				return
 			if(progress / req_charge < 0.25)
-				say("FTL not sufficiently spooled for emergency transition. 25% of full charge required.")
+				say("FTL nie jest wystarczająco rozkręcony do przejścia awaryjnego. Wymagane 25% pełnego ładunku.")
 				await_emergency_ftl_confirm = 0
 				return
 			await_emergency_ftl_confirm = 0
@@ -352,13 +352,13 @@ Preset classes of FTL drive with pre-programmed behaviours
 /obj/machinery/computer/ship/ftl_core/proc/jump(datum/star_system/target_system, force=FALSE, misjump = FALSE)
 	ftl_state = FTL_STATE_JUMPING
 	if(!target_system)
-		radio.talk_into(src, "ERROR. Specified star_system no longer exists.", radio_channel)
+		radio.talk_into(src, "BŁĄD. Wskazany system gwiezdny już nie istnieje.", radio_channel)
 		return
 	linked.begin_jump(target_system, force, misjump)
 	playsound(src, 'nsv13/sound/voice/ftl_start.wav', 100, FALSE)
-	radio.talk_into(src, "Initiating FTL translation.", radio_channel)
+	radio.talk_into(src, "Rozpoczynanie translacji FTL.", radio_channel)
 	playsound(src, 'nsv13/sound/effects/ship/freespace2/computer/escape.wav', 100, 1)
-	visible_message("<span class='notice'>Initiating FTL jump.</span>")
+	visible_message("<span class='notice'>Rozpoczynanie skoku FTL.</span>")
 
 /// Begins a jump regardless of whether we have enough fuel or power. Should only be used for debugging and round events
 /obj/machinery/computer/ship/ftl_core/proc/force_jump(datum/star_system/target_system)
@@ -369,14 +369,14 @@ Preset classes of FTL drive with pre-programmed behaviours
 
 /obj/machinery/computer/ship/ftl_core/proc/ready_ftl()
 	playsound(src, 'nsv13/sound/voice/ftl_ready.wav', 100, FALSE)
-	radio.talk_into(src, "FTL fuel cycle complete. Ready to commence FTL translation.", radio_channel)
+	radio.talk_into(src, "Cykl paliwowy FTL zakończony. Gotowość do rozpoczęcia translacji FTL.", radio_channel)
 	playsound(src, 'nsv13/sound/effects/ship/freespace2/computer/escape.wav', 100, 1)
 	ftl_state = FTL_STATE_READY
 
 /obj/machinery/computer/ship/ftl_core/proc/cancel_ftl()
 	ftl_state = FTL_STATE_SPOOLING
 	playsound(src, 'nsv13/sound/voice/ftl_cancelled.wav', 100, FALSE)
-	radio.talk_into(src, "FTL translation cancelled.", radio_channel)
+	radio.talk_into(src, "Anulowano translację FTL.", radio_channel)
 
 /obj/machinery/computer/ship/ftl_core/update_icon()
 	return //Override computer updates

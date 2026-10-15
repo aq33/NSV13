@@ -2,9 +2,9 @@
 /obj/effect/proc_holder/spell/aimed
 	name = "aimed projectile spell"
 	var/projectile_type = /obj/item/projectile/magic/teleport
-	var/deactive_msg = "You discharge your projectile..."
-	var/active_msg = "You charge your projectile!"
-	var/base_icon_state = "projectile"
+	var/deactive_msg = "Rozładowujesz pocisk..."
+	var/active_msg = "Ładujesz pocisk!"
+	base_icon_state = "projectile"
 	var/active_icon_state = "projectile"
 	var/list/projectile_var_overrides = list()
 	var/projectile_amount = 1	//Projectiles per cast.
@@ -17,7 +17,7 @@
 		return
 	var/msg
 	if(!can_cast(user))
-		msg = "<span class='warning'>You can no longer cast [name]!</span>"
+		msg = "<span class='warning'>Nie możesz już rzucić [name]!</span>"
 		remove_ranged_ability(msg)
 		return
 	if(active)
@@ -29,7 +29,7 @@
 		remove_ranged_ability(msg)
 		on_deactivation(user)
 	else
-		msg = "<span class='notice'>[active_msg] <B>Left-click to shoot it at a target!</B></span>"
+		msg = "<span class='notice'>[active_msg] <B>Kliknij lewym przyciskiem, by wystrzelić w cel!</B></span>"
 		current_amount = projectile_amount
 		add_ranged_ability(user, msg, TRUE)
 		on_activation(user)
@@ -104,8 +104,8 @@
 	sound = 'sound/magic/lightningbolt.ogg'
 	active = FALSE
 	projectile_var_overrides = list("tesla_range" = 15, "tesla_power" = 20000, "tesla_flags" = TESLA_MOB_DAMAGE)
-	active_msg = "You energize your hand with arcane lightning!"
-	deactive_msg = "You let the energy flow out of your hands back into yourself..."
+	active_msg = "Nasycasz dłoń tajemną błyskawicą!"
+	deactive_msg = "Pozwalasz energii spłynąć z dłoni z powrotem do ciebie..."
 	projectile_type = /obj/item/projectile/magic/aoe/lightning
 
 /obj/effect/proc_holder/spell/aimed/fireball
@@ -122,8 +122,8 @@
 	base_icon_state = "fireball"
 	action_icon_state = "fireball0"
 	sound = 'sound/magic/fireball.ogg'
-	active_msg = "You prepare to cast your fireball spell!"
-	deactive_msg = "You extinguish your fireball... for now."
+	active_msg = "Przygotowujesz się do rzucenia kuli ognia!"
+	deactive_msg = "Gasisz kulę ognia... na razie."
 	active = FALSE
 
 /obj/effect/proc_holder/spell/aimed/spell_cards

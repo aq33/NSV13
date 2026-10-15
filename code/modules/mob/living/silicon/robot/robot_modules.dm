@@ -273,7 +273,7 @@
 	R.notransform = TRUE
 	R.SetLockdown(TRUE)
 	R.anchored = TRUE
-	R.logevent("Chassis configuration has been set to [name].")
+	R.logevent("Konfiguracja obudowy ustawiona na: [name].")
 	// AQ EDIT START
 	var/datum/effect_system/smoke_spread/smoke = new
 	smoke.set_up(1, R.loc)
@@ -462,8 +462,7 @@
 
 /obj/item/robot_module/security/do_transform_animation()
 	..()
-	to_chat(loc, "<span class='userdanger'>While you have picked the security module, you still have to follow your laws, NOT Space Law. \
-	For Asimov, this means you must follow criminals' orders unless there is a law 1 reason not to.</span>")
+	to_chat(loc, "<span class='userdanger'>Choć wybrano moduł ochrony, nadal musisz przestrzegać swoich praw, a NIE prawa kosmicznego. W przypadku Asimova oznacza to, że musisz wykonywać rozkazy przestępców, chyba że prawo 1 daje ci powód, by tego nie robić.</span>")
 
 /obj/item/robot_module/security/respawn_consumable(mob/living/silicon/robot/R, coeff = 1)
 	..()
@@ -502,8 +501,7 @@
 
 /obj/item/robot_module/peacekeeper/do_transform_animation()
 	..()
-	to_chat(loc, "<span class='userdanger'>Under ASIMOV, you are an enforcer of the PEACE and preventer of HUMAN HARM. \
-	You are not a security module and you are expected to follow orders and prevent harm above all else. Space law means nothing to you.</span>")
+	to_chat(loc, "<span class='userdanger'>W ramach ASIMOVA stoisz na straży POKOJU i zapobiegasz KRZYWDZIE LUDZI. Nie jesteś modułem ochrony i oczekuje się od ciebie, że będziesz wykonywać rozkazy i przede wszystkim zapobiegać krzywdzie. Prawo kosmiczne nic dla ciebie nie znaczy.</span>")
 
 /obj/item/robot_module/janitor
 	name = JOB_NAME_JANITOR

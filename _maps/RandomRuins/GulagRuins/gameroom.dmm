@@ -282,13 +282,13 @@
 /turf/open/floor/plasteel/freezer,
 /area/ruin/space/has_grav/powered)
 "nQ" = (
-/obj/item/reagent_containers/food/snacks/grown/carrot,
-/obj/item/reagent_containers/food/snacks/grown/cabbage,
+/obj/item/food/grown/carrot,
+/obj/item/food/grown/cabbage,
 /obj/structure/closet/crate{
 	name = "Healthy Food Rations"
 	},
-/obj/item/reagent_containers/food/snacks/grown/apple,
-/obj/item/reagent_containers/food/snacks/grown/parsnip,
+/obj/item/food/grown/apple,
+/obj/item/food/grown/parsnip,
 /turf/open/floor/plating/asteroid,
 /area/ruin/space/has_grav)
 "og" = (
@@ -342,43 +342,43 @@
 /area/ruin/space/has_grav/powered)
 "vr" = (
 /obj/structure/closet/crate,
-/obj/item/reagent_containers/food/snacks/chips{
+/obj/item/food/chips{
 	pixel_x = -6;
 	pixel_y = -7
 	},
-/obj/item/reagent_containers/food/snacks/chips{
+/obj/item/food/chips{
 	pixel_x = 3;
 	pixel_y = -6
 	},
-/obj/item/reagent_containers/food/snacks/chips{
+/obj/item/food/chips{
 	pixel_x = 11;
 	pixel_y = -6
 	},
-/obj/item/reagent_containers/food/snacks/chips{
+/obj/item/food/chips{
 	pixel_x = 2;
 	pixel_y = -6
 	},
-/obj/item/reagent_containers/food/snacks/chips{
+/obj/item/food/chips{
 	pixel_x = -9;
 	pixel_y = -4
 	},
-/obj/item/reagent_containers/food/snacks/cheesiehonkers{
+/obj/item/food/cheesiehonkers{
 	pixel_x = 2;
 	pixel_y = 5
 	},
-/obj/item/reagent_containers/food/snacks/cheesiehonkers{
+/obj/item/food/cheesiehonkers{
 	pixel_x = 8;
 	pixel_y = 3
 	},
-/obj/item/reagent_containers/food/snacks/cheesiehonkers{
+/obj/item/food/cheesiehonkers{
 	pixel_x = 1;
 	pixel_y = 7
 	},
-/obj/item/reagent_containers/food/snacks/cheesiehonkers{
+/obj/item/food/cheesiehonkers{
 	pixel_x = 7;
 	pixel_y = 4
 	},
-/obj/item/reagent_containers/food/snacks/cheesiehonkers{
+/obj/item/food/cheesiehonkers{
 	pixel_x = 5;
 	pixel_y = 7
 	},
@@ -402,35 +402,35 @@
 /area/ruin/space/has_grav/powered)
 "vv" = (
 /obj/structure/closet/crate,
-/obj/item/reagent_containers/food/snacks/chocolatebar{
+/obj/item/food/chocolatebar{
 	pixel_x = -9;
 	pixel_y = -8
 	},
-/obj/item/reagent_containers/food/snacks/chocolatebar{
+/obj/item/food/chocolatebar{
 	pixel_x = -4;
 	pixel_y = -9
 	},
-/obj/item/reagent_containers/food/snacks/chocolatebar{
+/obj/item/food/chocolatebar{
 	pixel_x = 2;
 	pixel_y = -9
 	},
-/obj/item/reagent_containers/food/snacks/chocolatebar{
+/obj/item/food/chocolatebar{
 	pixel_x = 6;
 	pixel_y = -9
 	},
-/obj/item/reagent_containers/food/snacks/no_raisin{
+/obj/item/food/no_raisin{
 	pixel_x = -10;
 	pixel_y = 4
 	},
-/obj/item/reagent_containers/food/snacks/no_raisin{
+/obj/item/food/no_raisin{
 	pixel_x = -9;
 	pixel_y = 6
 	},
-/obj/item/reagent_containers/food/snacks/no_raisin{
+/obj/item/food/no_raisin{
 	pixel_x = -7;
 	pixel_y = 7
 	},
-/obj/item/reagent_containers/food/snacks/no_raisin{
+/obj/item/food/no_raisin{
 	pixel_x = -5;
 	pixel_y = 8
 	},
@@ -978,7 +978,7 @@
 /area/ruin/space/has_grav/powered)
 "XM" = (
 /obj/structure/table/wood/poker,
-/obj/item/reagent_containers/food/snacks/chips{
+/obj/item/food/chips{
 	pixel_x = -5;
 	pixel_y = 1
 	},

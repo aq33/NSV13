@@ -4,7 +4,7 @@
 	if(!check_rights(0))
 		return
 	if(!SSdbcore.IsConnected())
-		to_chat(src, "<span class='danger'>Failed to establish database connection.</span>")
+		to_chat(src, "<span class='danger'>Nie udało się połączyć z bazą danych.</span>")
 		return
 	var/memotask = input(usr,"Choose task.","Memo") in list("Show","Write","Edit","Remove")
 	if(!memotask)
@@ -17,7 +17,7 @@
 	if(!is_mentor())
 		return
 	if(!SSdbcore.IsConnected())
-		to_chat(src, "<span class='danger'>Failed to establish database connection.</span>")
+		to_chat(src, "<span class='danger'>Nie udało się połączyć z bazą danych.</span>")
 		return
 	mentor_memo_output("Show")
 
@@ -25,7 +25,7 @@
 	if(!task)
 		return
 	if(!SSdbcore.IsConnected())
-		to_chat(src, "<span class='danger'>Failed to establish database connection.</span>")
+		to_chat(src, "<span class='danger'>Nie udało się połączyć z bazą danych.</span>")
 		return
 	switch(task)
 		if("Write")
@@ -39,10 +39,10 @@
 				qdel(query_memocheck)
 				return
 			if(query_memocheck.NextRow())
-				to_chat(src, "You already have set a memo.")
+				to_chat(src, "Masz już ustawioną notatkę.")
 				qdel(query_memocheck)
 				return
-			var/memotext = capped_multiline_input(src,"Write your Memo","Memo")
+			var/memotext = capped_multiline_input(src,"Napisz swoją notatkę","Memo")
 			if(!memotext)
 				qdel(query_memocheck)
 				return
@@ -73,10 +73,10 @@
 				var/lkey = query_memolist.item[1]
 				memolist += "[lkey]"
 			if(!memolist.len)
-				to_chat(src, "No memos found in database.")
+				to_chat(src, "W bazie danych nie znaleziono notatek.")
 				qdel(query_memolist)
 				return
-			var/target_ckey = input(src, "Select whose memo to edit", "Select memo") as null|anything in memolist
+			var/target_ckey = input(src, "Wybierz, czyją notatkę edytować", "Select memo") as null|anything in memolist
 			if(!target_ckey)
 				qdel(query_memolist)
 				return
@@ -97,7 +97,7 @@
 					qdel(query_memolist)
 					qdel(query_memofind)
 					return
-				var/edit_text = "Edited by [ckey] on [SQLtime()] from<br>[old_memo]<br>to<br>[new_memo]<hr>"
+				var/edit_text = "Edytowane przez [ckey], [SQLtime()], z<br>[old_memo]<br>na<br>[new_memo]<hr>"
 				var/datum/DBQuery/update_query = SSdbcore.NewQuery(
 					"UPDATE [format_table_name("mentor_memo")] SET memotext = :new_memo, last_editor = :ckey, edits = CONCAT(IFNULL(edits,''),:edit_text) WHERE ckey = :target_ckey",
 					list("new_memo" = new_memo, "ckey" = ckey, "edit_text" = edit_text, "target_ckey" = target_ckey)
@@ -131,12 +131,12 @@
 				var/memotext = query_memoshow.item[2]
 				var/timestamp = query_memoshow.item[3]
 				var/last_editor = query_memoshow.item[4]
-				output += "<span class='memo'>Mentor memo by <span class='prefix'>[ckey]</span> on [timestamp]"
+				output += "<span class='memo'>Notatka mentora od <span class='prefix'>[ckey]</span>, [timestamp]"
 				if(last_editor)
-					output += "<br><span class='memoedit'>Last edit by [last_editor] <A href='?_src_=holder;mentormemoeditlist=[ckey];[HrefToken(TRUE)]'>(Click here to see edit log)</A></span>"
+					output += "<br><span class='memoedit'>Ostatnia edycja: [last_editor] <A href='byond://?_src_=holder;mentormemoeditlist=[ckey];[HrefToken(TRUE)]'>(Kliknij, by zobaczyć historię edycji)</A></span>"
 				output += "<br>[memotext]</span><br>"
 			if(!output)
-				to_chat(src, "No memos found in database.")
+				to_chat(src, "W bazie danych nie znaleziono notatek.")
 				qdel(query_memoshow)
 				return
 			to_chat(src, output)
@@ -153,10 +153,10 @@
 				var/ckey = query_memodellist.item[1]
 				memolist += "[ckey]"
 			if(!memolist.len)
-				to_chat(src, "No memos found in database.")
+				to_chat(src, "W bazie danych nie znaleziono notatek.")
 				qdel(query_memodellist)
 				return
-			var/target_ckey = input(src, "Select whose mentor memo to delete", "Select mentor memo") as null|anything in memolist
+			var/target_ckey = input(src, "Wybierz, czyją notatkę mentora usunąć", "Select mentor memo") as null|anything in memolist
 			if(!target_ckey)
 				qdel(query_memodellist)
 				return

@@ -31,17 +31,17 @@ Note: Must be placed within 3 tiles of the R&D Console
 	linked_console.linked_destroy = null
 	..()
 
-/obj/machinery/rnd/destructive_analyzer/Insert_Item(obj/item/O, mob/user)
-	if(user.a_intent != INTENT_HARM)
+/obj/machinery/rnd/destructive_analyzer/Insert_Item(obj/item/O, mob/living/user)
+	if(!user.combat_mode)
 		. = 1
 		if(!is_insertion_ready(user))
 			return
 		if(!user.transferItemToLoc(O, src))
-			to_chat(user, "<span class='warning'>\The [O] is stuck to your hand, you cannot put it in the [src.name]!</span>")
+			to_chat(user, "<span class='warning'>[O] przykleił ci się do ręki, nie możesz włożyć go do [src.name]!</span>")
 			return
 		busy = TRUE
 		loaded_item = O
-		to_chat(user, "<span class='notice'>You add the [O.name] to the [src.name]!</span>")
+		to_chat(user, "<span class='notice'>Dodajesz [O.name] do [src.name]!</span>")
 		flick("d_analyzer_la", src)
 		addtimer(CALLBACK(src, PROC_REF(finish_loading)), 10)
 		if (linked_console)
@@ -134,10 +134,10 @@ Note: Must be placed within 3 tiles of the R&D Console
 			point_value = list()
 		var/user_mode_string = ""
 		if(length(point_value))
-			user_mode_string = " for [json_encode(point_value)] points"
+			user_mode_string = " za [json_encode(point_value)] pkt"
 		else if(loaded_item.materials.len)
-			user_mode_string = " for material reclamation"
-		var/choice = input("Are you sure you want to destroy [loaded_item][user_mode_string]?") in list("Proceed", "Cancel")
+			user_mode_string = " w celu odzysku materiałów"
+		var/choice = input("Czy na pewno chcesz zniszczyć [loaded_item][user_mode_string]?") in list("Proceed", "Cancel")
 		if(choice != "Proceed")
 			return FALSE
 		if(QDELETED(loaded_item) || QDELETED(linked_console) || !user.Adjacent(linked_console) || QDELETED(src))

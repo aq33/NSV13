@@ -3,7 +3,7 @@
 
 /obj/item/pinpointer/nuke/examine(mob/user)
 	. = ..()
-	var/msg = "Its tracking indicator reads "
+	var/msg = "Wskaźnik namierzania pokazuje "
 	switch(mode)
 		if(TRACK_NUKE_DISK)
 			msg += "\"nuclear_disk\"."
@@ -12,11 +12,11 @@
 		if(TRACK_INFILTRATOR)
 			msg += "\"vasvygengbefuvc\"."
 		else
-			msg = "Its tracking indicator is blank."
+			msg = "Wskaźnik namierzania jest pusty."
 	. += msg
 	for(var/obj/machinery/nuclearbomb/bomb in GLOB.machines)
 		if(bomb.timing)
-			. += "Extreme danger. Arming signal detected. Time remaining: [bomb.get_time_left()]."
+			. += "Skrajne niebezpieczeństwo. Wykryto sygnał uzbrojenia. Pozostały czas: [bomb.get_time_left()]."
 
 /obj/item/pinpointer/nuke/process()
 	..()
@@ -28,7 +28,7 @@
 					playsound(src, 'sound/items/nuke_toy_lowpower.ogg', 50, 0)
 					if(isliving(loc))
 						var/mob/living/L = loc
-						to_chat(L, "<span class='userdanger'>Your [name] vibrates and lets out a tinny alarm. Uh oh.</span>")
+						to_chat(L, "<span class='userdanger'>Twój [name] wibruje i wydaje cienki alarm. Ojej.</span>")
 
 /obj/item/pinpointer/nuke/scan_for_target()
 	target = null
@@ -52,7 +52,7 @@
 /obj/item/pinpointer/nuke/proc/switch_mode_to(new_mode)
 	if(isliving(loc))
 		var/mob/living/L = loc
-		to_chat(L, "<span class='userdanger'>Your [name] beeps as it reconfigures it's tracking algorithms.</span>")
+		to_chat(L, "<span class='userdanger'>Twój [name] pika, rekonfigurując algorytmy namierzania.</span>")
 		playsound(L, 'sound/machines/triple_beep.ogg', 50, 1)
 	mode = new_mode
 	scan_for_target()

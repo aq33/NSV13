@@ -7,13 +7,13 @@
 	var/buckle_prevents_pull = FALSE
 
 //Interaction
-/atom/movable/attack_hand(mob/living/user)
+/atom/movable/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
 	if(.)
 		return
 	if(can_buckle && has_buckled_mobs())
 		if(buckled_mobs.len > 1)
-			var/unbuckled = input(user, "Who do you wish to unbuckle?","Unbuckle Who?") as null|mob in sortNames(buckled_mobs)
+			var/unbuckled = input(user, "Kogo chcesz odpiąć?","Unbuckle Who?") as null|mob in sortNames(buckled_mobs)
 			if(user_unbuckle_mob(unbuckled,user))
 				return 1
 		else
@@ -58,9 +58,9 @@
 	M.buckling = src
 	if(!M.can_buckle() && !force)
 		if(M == usr)
-			to_chat(M, "<span class='warning'>You are unable to buckle yourself to [src]!</span>")
+			to_chat(M, "<span class='warning'>Nie możesz przypiąć się do [src]!</span>")
 		else
-			to_chat(usr, "<span class='warning'>You are unable to buckle [M] to [src]!</span>")
+			to_chat(usr, "<span class='warning'>Nie możesz przypiąć [M] do [src]!</span>")
 		M.buckling = null
 		return FALSE
 
@@ -182,7 +182,7 @@
 	// If the person attempting to buckle is stood on this atom's turf and they're not buckling themselves,
 	// buckling shouldn't be possible as they're blocking it.
 	if((target != user) && (user != src) && (get_turf(user) == get_turf(src)))
-		to_chat(user, "<span class='warning'>You are unable to buckle [target] to [src] while it is blocked!</span>")
+		to_chat(user, "<span class='warning'>Nie możesz przypiąć [target] do [src], gdy jest zablokowany!</span>")
 		return FALSE
 
 	return TRUE
@@ -198,9 +198,9 @@
 	// If the mob we're attempting to buckle is not stood on this atom's turf and it isn't the user buckling themselves,
 	// we'll try it with a 2 second do_after delay.
 	if(M != user && (get_turf(M) != get_turf(src)))
-		M.visible_message("<span class='warning'>[user] starts buckling [M] to [src]!</span>",\
-			"<span class='userdanger'>[user] starts buckling you to [src]!</span>",\
-			"<span class='hear'>You hear metal clanking.</span>")
+		M.visible_message("<span class='warning'>[user] zaczyna przypinać [M] do [src]!</span>",\
+			"<span class='userdanger'>[user] zaczyna przypinać cię do [src]!</span>",\
+			"<span class='hear'>Słyszysz brzęk metalu.</span>")
 		if(!do_after(user, 2 SECONDS, TRUE, M))
 			return FALSE
 
@@ -213,27 +213,27 @@
 	if(.)
 		if(M == user)
 			M.visible_message(\
-				"<span class='notice'>[M] buckles [M.p_them()]self to [src].</span>",\
-				"<span class='notice'>You buckle yourself to [src].</span>",\
-				"<span class='italics'>You hear metal clanking.</span>")
+				"<span class='notice'>[M] przypina się do [src].</span>",\
+				"<span class='notice'>Przypinasz się do [src].</span>",\
+				"<span class='italics'>Słyszysz brzęk metalu.</span>")
 		else
-			M.visible_message("<span class='warning'>[user] buckles [M] to [src]!</span>",\
-				"<span class='warning'>[user] buckles you to [src]!</span>",\
-				"<span class='hear'>You hear metal clanking.</span>")
+			M.visible_message("<span class='warning'>[user] przypina [M] do [src]!</span>",\
+				"<span class='warning'>[user] przypina cię do [src]!</span>",\
+				"<span class='hear'>Słyszysz brzęk metalu.</span>")
 
 /atom/movable/proc/user_unbuckle_mob(mob/living/buckled_mob, mob/user)
 	var/mob/living/M = unbuckle_mob(buckled_mob)
 	if(M)
 		if(M != user)
 			M.visible_message(\
-				"<span class='notice'>[user] unbuckles [M] from [src].</span>",\
-				"<span class='notice'>[user] unbuckles you from [src].</span>",\
-				"<span class='italics'>You hear metal clanking.</span>")
+				"<span class='notice'>[user] odpina [M] od [src].</span>",\
+				"<span class='notice'>[user] odpina cię od [src].</span>",\
+				"<span class='italics'>Słyszysz brzęk metalu.</span>")
 		else
 			M.visible_message(\
-				"<span class='notice'>[M] unbuckles [M.p_them()]self from [src].</span>",\
-				"<span class='notice'>You unbuckle yourself from [src].</span>",\
-				"<span class='italics'>You hear metal clanking.</span>")
+				"<span class='notice'>[M] odpina się od [src].</span>",\
+				"<span class='notice'>Odpinasz się od [src].</span>",\
+				"<span class='italics'>Słyszysz brzęk metalu.</span>")
 		add_fingerprint(user)
 		if(isliving(M.pulledby))
 			var/mob/living/L = M.pulledby

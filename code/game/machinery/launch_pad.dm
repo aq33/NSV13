@@ -52,7 +52,7 @@
 /obj/machinery/launchpad/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += "<span class='notice'>The status display reads: Maximum range: <b>[range]</b> units.</span>"
+		. += "<span class='notice'>Wyświetlacz stanu pokazuje: maksymalny zasięg: <b>[range]</b> jednostek.</span>"
 
 /obj/machinery/launchpad/attackby(obj/item/I, mob/user, params)
 	if(stationary)
@@ -66,7 +66,7 @@
 					return
 				var/obj/item/multitool/M = I
 				M.buffer = src
-				to_chat(user, "<span class='notice'>You save the data in the [I.name]'s buffer.</span>")
+				to_chat(user, "<span class='notice'>Zapisujesz dane w buforze [I.name].</span>")
 				return 1
 
 		if(default_deconstruction_crowbar(I))
@@ -112,13 +112,13 @@
 
 /obj/machinery/launchpad/proc/doteleport(mob/user, sending)
 	if(teleporting)
-		to_chat(user, "<span class='warning'>ERROR: Launchpad busy.</span>")
+		to_chat(user, "<span class='warning'>BŁĄD: wyrzutnia zajęta.</span>")
 		return
 
 	var/turf/dest = get_turf(src)
 
 	if(dest && is_centcom_level(dest.z))
-		to_chat(user, "<span class='warning'>ERROR: Launchpad not operative. Heavy area shielding makes teleporting impossible.</span>")
+		to_chat(user, "<span class='warning'>BŁĄD: wyrzutnia nie działa. Silne ekranowanie obszaru uniemożliwia teleportację.</span>")
 		return
 
 	var/target_x = x + x_offset
@@ -248,11 +248,9 @@
 /obj/machinery/launchpad/briefcase/MouseDrop(over_object, src_location, over_location)
 	. = ..()
 	if(over_object == usr)
-		if(!briefcase || !usr.can_hold_items())
+		if(!briefcase || !usr.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, TRUE))
 			return
-		if(!usr.canUseTopic(src, BE_CLOSE, ismonkey(usr)))
-			return
-		usr.visible_message("<span class='notice'>[usr] starts closing [src]...</span>", "<span class='notice'>You start closing [src]...</span>")
+		usr.visible_message("<span class='notice'>[usr] zaczyna składać [src]...</span>", "<span class='notice'>Zaczynasz składać [src]...</span>")
 		if(do_after(usr, 30, target = usr))
 			usr.put_in_hands(briefcase)
 			moveToNullspace() //hides it from suitcase contents
@@ -265,7 +263,7 @@
 		if(L.pad == WEAKREF(src)) //do not attempt to link when already linked
 			return ..()
 		L.pad = WEAKREF(src)
-		to_chat(user, "<span class='notice'>You link [src] to [L].</span>")
+		to_chat(user, "<span class='notice'>Łączysz [src] z [L].</span>")
 	else
 		return ..()
 
@@ -290,7 +288,7 @@
 	if(!isturf(user.loc)) //no setting up in a locker
 		return
 	add_fingerprint(user)
-	user.visible_message("<span class='notice'>[user] starts setting down [src]...", "You start setting up [pad]...</span>")
+	user.visible_message("<span class='notice'>[user] zaczyna rozkładać [src]...", "Zaczynasz rozkładać [pad]...</span>")
 	if(do_after(user, 30, target = user))
 		pad.forceMove(get_turf(src))
 		pad.update_indicator()
@@ -304,7 +302,7 @@
 		if(L.pad == WEAKREF(src.pad)) //do not attempt to link when already linked
 			return ..()
 		L.pad = WEAKREF(src.pad)
-		to_chat(user, "<span class='notice'>You link [pad] to [L].</span>")
+		to_chat(user, "<span class='notice'>Łączysz [pad] z [L].</span>")
 	else
 		return ..()
 
@@ -325,7 +323,7 @@
 /obj/item/launchpad_remote/attack_self(mob/user)
 	. = ..()
 	ui_interact(user)
-	to_chat(user, "<span class='notice'>[src] projects a display onto your retina.</span>")
+	to_chat(user, "<span class='notice'>[src] wyświetla obraz na twojej siatkówce.</span>")
 
 
 /obj/item/launchpad_remote/ui_state(mob/user)
@@ -355,10 +353,10 @@
 
 /obj/item/launchpad_remote/proc/teleport(mob/user, obj/machinery/launchpad/pad)
 	if(QDELETED(pad))
-		to_chat(user, "<span class='warning'>ERROR: Launchpad not responding. Check launchpad integrity.</span>")
+		to_chat(user, "<span class='warning'>BŁĄD: wyrzutnia nie odpowiada. Sprawdź jej integralność.</span>")
 		return
 	if(!pad.isAvailable())
-		to_chat(user, "<span class='warning'>ERROR: Launchpad not operative. Make sure the launchpad is ready and powered.</span>")
+		to_chat(user, "<span class='warning'>BŁĄD: wyrzutnia nie działa. Upewnij się, że jest gotowa i zasilana.</span>")
 		return
 	pad.doteleport(user, sending)
 
@@ -391,7 +389,7 @@
 			. = TRUE
 		if("remove")
 			. = TRUE
-			if(usr && alert(usr, "Are you sure?", "Unlink Launchpad", "I'm Sure", "Abort") == "I'm Sure")
+			if(usr && alert(usr, "Na pewno?", "Odłącz wyrzutnię", "I'm Sure", "Abort") == "I'm Sure")
 				pad = null
 		if("launch")
 			sending = TRUE

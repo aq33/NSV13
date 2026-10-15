@@ -9,7 +9,7 @@
 	update_explanation_text()
 
 /datum/objective/hivemind/hivesize/update_explanation_text()
-	explanation_text = "End the round with at least [target_amount] beings assimilated into the hive."
+	explanation_text = "Zakończ rundę z co najmniej [target_amount] istotami przyłączonymi do roju."
 
 /datum/objective/hivemind/hivesize/check_completion()
 	var/datum/antagonist/hivemind/host = owner.has_antag_datum(/datum/antagonist/hivemind)
@@ -26,7 +26,7 @@
 	update_explanation_text()
 
 /datum/objective/hivemind/hiveescape/update_explanation_text()
-	explanation_text = "Have at least [target_amount] members of the hive escape on the shuttle alive and free."
+	explanation_text = "Spraw, by co najmniej [target_amount] członków roju uciekło promem żywych i wolnych."
 
 /datum/objective/hivemind/hiveescape/check_completion()
 	var/count = 0
@@ -39,7 +39,7 @@
 	return (count >= target_amount) || ..()
 
 /datum/objective/hivemind/biggest
-	explanation_text = "End the round with more vessels than any other hivemind host."
+	explanation_text = "Zakończ rundę z większą liczbą naczyń niż jakikolwiek inny nosiciel roju."
 
 /datum/objective/hivemind/biggest/check_completion()
 	var/datum/antagonist/hivemind/host = owner.has_antag_datum(/datum/antagonist/hivemind)
@@ -54,7 +54,7 @@
 
 /datum/objective/hivemind/dominance
 	name = "dominance"
-	explanation_text = "Assert dominance after having twenty more vessels and more integrations than any other hive."
+	explanation_text = "Zdominuj pozostałych, mając o dwadzieścia naczyń i więcej integracji niż jakikolwiek inny rój."
 
 /datum/objective/hivemind/dominance/check_completion()
 	var/datum/antagonist/hivemind/host = owner.has_antag_datum(/datum/antagonist/hivemind)
@@ -68,9 +68,9 @@
 
 /datum/objective/hivemind/awaken/update_explanation_text()
 	if(target && target.current)
-		explanation_text = "Turn [target.name], the [!target_role_type ? target.assigned_role : target.special_role], into an awakened vessel."
+		explanation_text = "Zmień [target.name] ([!target_role_type ? target.assigned_role : target.special_role]) w przebudzone naczynie."
 	else
-		explanation_text = "Free Objective"
+		explanation_text = "Cel dowolny"
 
 /datum/objective/hivemind/awaken/check_completion()
 	var/datum/antagonist/hivemind/host = owner.has_antag_datum(/datum/antagonist/hivemind)
@@ -83,7 +83,7 @@
 
 /datum/objective/hivemind/integrate
 	name = "integrate"
-	explanation_text = "Integrate at least one other Hive Host."
+	explanation_text = "Zintegruj co najmniej jednego innego nosiciela roju."
 
 /datum/objective/hivemind/integrate/check_completion()
 	var/datum/antagonist/hivemind/host = owner.has_antag_datum(/datum/antagonist/hivemind)

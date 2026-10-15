@@ -237,13 +237,13 @@
 		if (merge_stacks)
 			if (istype(active_stack) && istype(I_stack, active_stack.merge_type))
 				if (I_stack.merge(active_stack))
-					to_chat(usr, "<span class='notice'>Your [active_stack.name] stack now contains [active_stack.get_amount()] [active_stack.singular_name]\s.</span>")
+					to_chat(usr, "<span class='notice'>Stos [active_stack.name] ma teraz [active_stack.get_amount()] szt.</span>")
 					return TRUE
 			else
 				var/obj/item/stack/inactive_stack = get_inactive_held_item()
 				if (istype(inactive_stack) && istype(I_stack, inactive_stack.merge_type))
 					if (I_stack.merge(inactive_stack))
-						to_chat(usr, "<span class='notice'>Your [inactive_stack.name] stack now contains [inactive_stack.get_amount()] [inactive_stack.singular_name]\s.</span>")
+						to_chat(usr, "<span class='notice'>Stos [inactive_stack.name] ma teraz [inactive_stack.get_amount()] szt.</span>")
 						return TRUE
 
 	if(put_in_active_hand(I, forced))
@@ -324,6 +324,9 @@
 	if(HAS_TRAIT(I, TRAIT_NODROP) && !force)
 		return FALSE
 
+	if((SEND_SIGNAL(I, COMSIG_ITEM_PRE_UNEQUIP, force, newloc, no_move, invdrop, silent) & COMPONENT_ITEM_BLOCK_UNEQUIP) && !force)
+		return FALSE
+
 	var/hand_index = get_held_index_of_item(I)
 	if(hand_index)
 		held_items[hand_index] = null
@@ -339,6 +342,7 @@
 			else
 				I.forceMove(newloc)
 		I.dropped(src, was_thrown, silent)
+	SEND_SIGNAL(src, COMSIG_MOB_UNEQUIPPED_ITEM, I, force, newloc, no_move, invdrop, silent)
 	return TRUE
 
 //Outdated but still in use apparently. This should at least be a human proc.
@@ -422,13 +426,15 @@
 		obscured |= ITEM_SLOT_FEET
 	if(hidden_slots & HIDESUITSTORAGE)
 		obscured |= ITEM_SLOT_SUITSTORE
+	if(hidden_slots & HIDEBELT)
+		obscured |= ITEM_SLOT_BELT
 
 	return obscured
 
 
 /obj/item/proc/equip_to_best_slot(mob/M)
 	if(src != M.get_active_held_item())
-		to_chat(M, "<span class='warning'>You are not holding anything to equip!</span>")
+		to_chat(M, "<span class='warning'>Nie trzymasz niczego do założenia!</span>")
 		return FALSE
 
 	if(M.equip_to_appropriate_slot(src))
@@ -449,7 +455,7 @@
 		if(SEND_SIGNAL(I, COMSIG_TRY_STORAGE_INSERT, src, M))
 			return TRUE
 
-	to_chat(M, "<span class='warning'>You are unable to equip that!</span>")
+	to_chat(M, "<span class='warning'>Nie możesz tego założyć!</span>")
 	return FALSE
 
 

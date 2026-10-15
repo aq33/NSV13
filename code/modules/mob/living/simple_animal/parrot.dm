@@ -45,21 +45,21 @@
 
 	speak = list("Cześć!","Witam!","Krakers?","BAWWWWK george mellons mnie ugryzł!")
 	speak_emote = list("kracze","mówi","krzyczy")
-	emote_hear = list("drze się.","bawks!")
+	emote_hear = list("drze się.","skrzeczy!")
 	emote_see = list("trzepocze skrzydłami.")
 
 	speak_chance = 1 //1% (1 in 100) chance every tick; So about once per 150 seconds, assuming an average tick is 1.5s
 	turns_per_move = 5
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/cracker/ = 1)
+	butcher_results = list(/obj/item/food/cracker/ = 1)
 	melee_damage = 5
 
 	response_help  = "głaszcze"
 	response_disarm = "delikatnie przesuwa na bok"
 	response_harm   = "paca"
 	stop_automated_movement = 1
-	a_intent = INTENT_HARM //parrots now start "aggressive" since only player parrots will nuzzle.
+	combat_mode = TRUE //parrots now start "aggressive" since only player parrots will nuzzle.
 	attacktext = "chrupie"
-	friendly = "grooms"
+	friendly = "iska"
 	mob_size = MOB_SIZE_SMALL
 	movement_type = FLYING
 	gold_core_spawnable = FRIENDLY_SPAWN
@@ -150,8 +150,8 @@
 
 /mob/living/simple_animal/parrot/get_stat_tab_status()
 	var/list/tab_data = ..()
-	tab_data["Held Item"] = GENERATE_STAT_TEXT("[held_item]")
-	tab_data["Mode"] = GENERATE_STAT_TEXT("[a_intent]")
+	tab_data["Trzymany przedmiot"] = GENERATE_STAT_TEXT("[held_item]")
+	tab_data["Tryb"] = GENERATE_STAT_TEXT("[combat_mode ? "harm" : "help"]")
 	return tab_data
 
 /mob/living/simple_animal/parrot/Hear(message, atom/movable/speaker, message_langs, raw_message, radio_freq, list/spans, list/message_mods = list())
@@ -286,7 +286,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 	..()
 	if(client)
 		return
-	if(!stat && M.a_intent == INTENT_HARM)
+	if(!stat && M.combat_mode)
 
 		icon_state = icon_living //It is going to be flying regardless of whether it flees or attacks
 
@@ -301,7 +301,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 		else
 			parrot_state |= PARROT_FLEE		//Otherwise, fly like a bat out of hell!
 			drop_held_item(0)
-	if(stat != DEAD && M.a_intent == INTENT_HELP)
+	if(stat != DEAD && !M.combat_mode)
 		handle_automated_speech(1) //assured speak/emote
 	return
 
@@ -328,7 +328,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 
 //Mobs with objects
 /mob/living/simple_animal/parrot/attackby(obj/item/O, mob/living/user, params)
-	if(!stat && !client && !istype(O, /obj/item/stack/medical) && !istype(O, /obj/item/reagent_containers/food/snacks/cracker))
+	if(!stat && !client && !istype(O, /obj/item/stack/medical) && !istype(O, /obj/item/food/cracker))
 		if(O.force)
 			if(parrot_state == PARROT_PERCH)
 				parrot_sleep_dur = parrot_sleep_max //Reset it's sleep timer if it was perched
@@ -341,7 +341,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 				parrot_state |= PARROT_FLEE
 			icon_state = icon_living
 			drop_held_item(0)
-	else if(istype(O, /obj/item/reagent_containers/food/snacks/cracker)) //Poly wants a cracker.
+	else if(istype(O, /obj/item/food/cracker)) //Poly wants a cracker.
 		qdel(O)
 		if(health < maxHealth)
 			adjustBruteLoss(-10)
@@ -575,7 +575,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 		var/mob/living/L = parrot_interest
 		if(melee_damage == 0)
 			melee_damage = parrot_damage_upper
-			a_intent = INTENT_HARM
+			set_combat_mode(TRUE)
 
 		//If the mob is close enough to interact with
 		if(Adjacent(parrot_interest))
@@ -737,7 +737,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 		if(stolen_item)
 			C.transferItemToLoc(stolen_item, src, TRUE)
 			held_item = stolen_item
-			visible_message("[src] grabs [held_item] out of [C]'s hand!", "<span class='notice'>Wyrywasz [held_item] z rąk [C]!</span>", "<span class='italics'>Słyszysz dźwięk agresywnego trzepotania skrzydeł.</span>")
+			visible_message("[src] wyrywa [held_item] z ręki [C]!", "<span class='notice'>Wyrywasz [held_item] z rąk [C]!</span>", "<span class='italics'>Słyszysz dźwięk agresywnego trzepotania skrzydeł.</span>")
 			return held_item
 
 	to_chat(src, "<span class='warning'>Nie ma tu nic interesującego do zabrania!</span>")
@@ -770,7 +770,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 
 
 //parrots will eat crackers instead of dropping them
-	if(istype(held_item, /obj/item/reagent_containers/food/snacks/cracker) && (drop_gently))
+	if(istype(held_item, /obj/item/food/cracker) && (drop_gently))
 		qdel(held_item)
 		held_item = null
 		if(health < maxHealth)
@@ -868,13 +868,13 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 	if(stat || !client)
 		return
 
-	if(a_intent != INTENT_HELP)
+	if(combat_mode)
 		melee_damage = 0
-		a_intent = INTENT_HELP
+		set_combat_mode(FALSE)
 	else
 		melee_damage = parrot_damage_upper
-		a_intent = INTENT_HARM
-	to_chat(src, "Będziesz teraz [a_intent] innych.")
+		set_combat_mode(TRUE)
+	to_chat(src, "Będziesz teraz [combat_mode ? "ranić" : "pomagać"] innym.")
 	return
 
 /*
@@ -896,19 +896,19 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 	available_channels = list(":e")
 	Read_Memory()
 	if(rounds_survived == longest_survival)
-		speak += pick("...[longest_survival].", "Widziałem te rzeczy!", "Przeżyłem wiele żyć!", "What are you before me?")
-		desc += " Old as sin, and just as loud. Claimed to be [rounds_survived]."
+		speak += pick("...[longest_survival].", "Widziałem te rzeczy!", "Przeżyłem wiele żyć!", "Czym jesteś przede mną?")
+		desc += " Stara jak grzech i równie głośna. Twierdzi, że ma [rounds_survived]."
 		speak_chance = 20 //His hubris has made him more annoying/easier to justify killing
 		add_atom_colour("#EEEE22", FIXED_COLOUR_PRIORITY)
 	else if(rounds_survived == longest_deathstreak)
 		speak += pick("Na co czekasz?!", "Przemoc rodzi przemoc!", "Krew! Krew!", "Uderz mnie jeśli się nie boisz!")
-		desc += " The squawks of [-rounds_survived] dead parrots ring out in your ears..."
+		desc += " W uszach dźwięczą ci skrzeki [-rounds_survived] martwych papug..."
 		add_atom_colour("#BB7777", FIXED_COLOUR_PRIORITY)
 	else if(rounds_survived > 0)
 		speak += pick("Znów?", "Nie, to koniec!", "Wypuść mnie!", "To się nigdy nie skończy!")
-		desc += " Over [rounds_survived] shifts without a \"terrible\" \"accident\"!"
+		desc += " Ponad [rounds_survived] zmian bez \"strasznego\" \"wypadku\"!"
 	else
-		speak += pick("żywy?", "To nie jest niebo dla papug!", "Żyję, Umieram, Przyjdę ponownie!", "The void fades!")
+		speak += pick("żywy?", "To nie jest niebo dla papug!", "Żyję, Umieram, Przyjdę ponownie!", "Pustka zanika!")
 
 	. = ..()
 
@@ -1006,7 +1006,7 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 	forceMove(H)
 	H.ForceContractDisease(P)
 	parrot_interest = null
-	H.visible_message("<span class='danger'>[src] dive bombs into [H]'s chest and vanishes!</span>", "<span class='userdanger'>[src] dive bombs into your chest, vanishing! This can't be good!</span>")
+	H.visible_message("<span class='danger'>[src] nurkuje w klatkę piersiową [H] i znika!</span>", "<span class='userdanger'>[src] nurkuje w twoją klatkę piersiową i znika! To nie może być nic dobrego!</span>")
 
 
 /mob/living/simple_animal/parrot/clock_hawk
@@ -1015,10 +1015,10 @@ GLOBAL_LIST_INIT(strippable_parrot_items, create_strippable_list(list(
 	icon_state = "clock_hawk_fly"
 	icon_living = "clock_hawk_fly"
 	icon_sit = "clock_hawk_sit"
-	speak = list("Penpxre!", "Ratvar vf n qhzo anzr naljnl!")
-	speak_emote = list("squawks rustily", "says crassly", "yells brassly")
-	emote_hear = list("squawks rustily.", "bawks metallically!")
-	emote_see = list("flutters its metal wings.")
+	speak = list("Xenxref!", "Ratvar vf n qhzo anzr naljnl!")
+	speak_emote = list("skrzeczy zgrzytliwie", "mówi prostacko", "wrzeszczy blaszanie")
+	emote_hear = list("skrzeczy zgrzytliwie.", "gdacze metalicznie!")
+	emote_see = list("trzepocze metalowymi skrzydłami.")
 	faction = list("ratvar")
 	gold_core_spawnable = NO_SPAWN
 	del_on_death = TRUE

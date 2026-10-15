@@ -12,7 +12,7 @@
 	slowdown = 1
 	actions_types = list(/datum/action/item_action/toggle_mister)
 	max_integrity = 200
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 30, "stamina" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 30, "stamina" = 0, "bleed" = 0)
 	resistance_flags = FIRE_PROOF
 
 	var/obj/item/noz
@@ -34,7 +34,7 @@
 	if(!istype(user))
 		return
 	if(user.get_item_by_slot(user.getBackSlot()) != src)
-		to_chat(user, "<span class='warning'>The watertank must be worn properly to use!</span>")
+		to_chat(user, "<span class='warning'>Aby go używać, zbiornik na wodę musi być prawidłowo założony!</span>")
 		return
 	if(user.incapacitated())
 		return
@@ -44,7 +44,7 @@
 	if(noz in src)
 		//Detach the nozzle into the user's hands
 		if(!user.put_in_hands(noz))
-			to_chat(user, "<span class='warning'>You need a free hand to hold the mister!</span>")
+			to_chat(user, "<span class='warning'>Potrzebujesz wolnej ręki, by trzymać zraszacz!</span>")
 			return
 	else
 		//Remove from their hands and put back "into" the tank
@@ -117,22 +117,27 @@
 	item_flags = NOBLUDGEON | ABSTRACT  // don't put in storage
 	slot_flags = 0
 
-	var/obj/item/watertank/tank
+	/// What we draw reagents from: a backpack watertank or a MODsuit mister module
+	var/obj/item/tank
 
 /obj/item/reagent_containers/spray/mister/Initialize(mapload)
 	. = ..()
 	tank = loc
-	if(!istype(tank))
+	if(!tank?.reagents)
 		return INITIALIZE_HINT_QDEL
 	reagents = tank.reagents	//This mister is really just a proxy for the tank's reagents
 
 /obj/item/reagent_containers/spray/mister/attack_self()
 	return
 
+/obj/item/reagent_containers/spray/mister/attack_self_secondary(mob/user) // AQ EDIT - port Bee #11899
+	return
+
 /obj/item/reagent_containers/spray/mister/doMove(atom/destination)
-	if(destination && (destination != tank.loc || !ismob(destination)))
+	// MODsuit modules pull the mister back on their own
+	if(istype(tank, /obj/item/watertank) && destination && (destination != tank.loc || !ismob(destination)))
 		if (loc != tank)
-			to_chat(tank.loc, "<span class='notice'>The mister snaps back onto the watertank.</span>")
+			to_chat(tank.loc, "<span class='notice'>Zraszacz wskakuje z powrotem na zbiornik na wodę.</span>")
 		destination = tank
 	..()
 
@@ -169,7 +174,7 @@
 
 /obj/item/reagent_containers/spray/mister/janitor/attack_self(var/mob/user)
 	amount_per_transfer_from_this = (amount_per_transfer_from_this == 10 ? 5 : 10)
-	to_chat(user, "<span class='notice'>You [amount_per_transfer_from_this == 10 ? "remove" : "fix"] the nozzle. You'll now use [amount_per_transfer_from_this] units per spray.</span>")
+	to_chat(user, "<span class='notice'>[amount_per_transfer_from_this == 10 ? "Zdejmujesz" : "Zakładasz"] dyszę. Teraz zużyjesz [amount_per_transfer_from_this] j. na jedno spryskanie.</span>")
 
 //ATMOS FIRE FIGHTING BACKPACK
 
@@ -215,7 +220,8 @@
 	cooling_power = 5
 	w_class = WEIGHT_CLASS_HUGE
 	item_flags = ABSTRACT  // don't put in storage
-	var/obj/item/watertank/tank
+	/// What we draw reagents from: a backpack watertank or a MODsuit mister module
+	var/obj/item/tank
 	var/nozzle_mode = 0
 	var/metal_synthesis_cooldown = 0
 	COOLDOWN_DECLARE(resin_cooldown)
@@ -223,10 +229,10 @@
 /obj/item/extinguisher/mini/nozzle/Initialize(mapload)
 	. = ..()
 	tank = loc
-	if (!istype(tank))
+	if (!tank?.reagents)
 		return INITIALIZE_HINT_QDEL
 	reagents = tank.reagents
-	max_water = tank.volume
+	max_water = tank.reagents.maximum_volume
 
 /obj/item/extinguisher/mini/nozzle/Destroy()
 	reagents = null
@@ -234,9 +240,10 @@
 	return ..()
 
 /obj/item/extinguisher/mini/nozzle/doMove(atom/destination)
-	if(destination && (destination != tank.loc || !ismob(destination)))
+	// MODsuit modules pull the nozzle back on their own
+	if(istype(tank, /obj/item/watertank) && destination && (destination != tank.loc || !ismob(destination)))
 		if(loc != tank)
-			to_chat(tank.loc, "<span class='notice'>The nozzle snaps back onto the tank!</span>")
+			to_chat(tank.loc, "<span class='notice'>Dysza wskakuje z powrotem na zbiornik!</span>")
 		destination = tank
 	..()
 
@@ -244,18 +251,21 @@
 	switch(nozzle_mode)
 		if(EXTINGUISHER)
 			nozzle_mode = RESIN_LAUNCHER
-			tank.icon_state = "waterbackpackatmos_1"
-			to_chat(user, "Swapped to resin launcher")
+			if(istype(tank, /obj/item/watertank/atmos))
+				tank.icon_state = "waterbackpackatmos_1"
+			to_chat(user, "Przełączono na wyrzutnię żywicy")
 			return
 		if(RESIN_LAUNCHER)
 			nozzle_mode = RESIN_FOAM
-			tank.icon_state = "waterbackpackatmos_2"
-			to_chat(user, "Swapped to resin foamer")
+			if(istype(tank, /obj/item/watertank/atmos))
+				tank.icon_state = "waterbackpackatmos_2"
+			to_chat(user, "Przełączono na spieniacz żywicy")
 			return
 		if(RESIN_FOAM)
 			nozzle_mode = EXTINGUISHER
-			tank.icon_state = "waterbackpackatmos_0"
-			to_chat(user, "Swapped to water extinguisher")
+			if(istype(tank, /obj/item/watertank/atmos))
+				tank.icon_state = "waterbackpackatmos_0"
+			to_chat(user, "Przełączono na gaśnicę wodną")
 			return
 	return
 
@@ -271,10 +281,10 @@
 			return //Safety check so you don't blast yourself trying to refill your tank
 		var/datum/reagents/R = reagents
 		if(R.total_volume < 100)
-			to_chat(user, "<span class='warning'>You need at least 100 units of water to use the resin launcher!</span>")
+			to_chat(user, "<span class='warning'>Aby użyć wyrzutni żywicy, potrzebujesz co najmniej 100 j. wody!</span>")
 			return
 		if(!COOLDOWN_FINISHED(src, resin_cooldown))
-			to_chat(user, "<span class='warning'>Resin launcher is still recharging...</span>")
+			to_chat(user, "<span class='warning'>Wyrzutnia żywicy wciąż się ładuje...</span>")
 			return
 		COOLDOWN_START(src, resin_cooldown, 10 SECONDS)
 		R.remove_any(100)
@@ -300,7 +310,7 @@
 			metal_synthesis_cooldown++
 			addtimer(CALLBACK(src, PROC_REF(reduce_metal_synth_cooldown)), 10 SECONDS)
 		else
-			to_chat(user, "<span class='warning'>Resin foam mix is still being synthesized...</span>")
+			to_chat(user, "<span class='warning'>Mieszanka piany żywicznej wciąż jest syntetyzowana...</span>")
 			return
 
 /obj/item/extinguisher/mini/nozzle/proc/resin_stop_check(datum/move_loop/source, succeeded)
@@ -379,7 +389,7 @@
 	if(!istype(user))
 		return
 	if (user.get_item_by_slot(ITEM_SLOT_BACK) != src)
-		to_chat(user, "<span class='warning'>The chemtank needs to be on your back before you can activate it!</span>")
+		to_chat(user, "<span class='warning'>Aby aktywować zbiornik chemiczny, musisz mieć go na plecach!</span>")
 		return
 	if(on)
 		turn_off()
@@ -409,7 +419,7 @@
 	on = TRUE
 	START_PROCESSING(SSobj, src)
 	if(ismob(loc))
-		to_chat(loc, "<span class='notice'>[src] turns on.</span>")
+		to_chat(loc, "<span class='notice'>[src] się włącza.</span>")
 
 /obj/item/reagent_containers/chemtank/proc/turn_off()
 	on = FALSE

@@ -1,13 +1,13 @@
 /obj/item/storage/box/damage_control
-	name = "Damage Control Kit"
-	desc = "A kit containing supplies for repairing small breaches."
+	name = "zestaw kontroli uszkodzeń"
+	desc = "Zestaw z materiałami do łatania małych wyłomów."
 	icon = 'nsv13/icons/obj/storage.dmi'
 	icon_state = "squadbox"
 	illustration = "dc_kit"
 
 /obj/item/storage/box/squad_kit
-	name = "Squad Kit"
-	desc = "An impossibly small box that contains a squad loadout."
+	name = "zestaw składu"
+	desc = "Niemożliwie małe pudełko, w którym mieści się cały zestaw składu."
 	icon = 'nsv13/icons/obj/storage.dmi'
 	icon_state = "squadbox"
 	illustration = "pilot_kit"
@@ -21,8 +21,8 @@
 	new /obj/item/crowbar(src)
 
 /obj/machinery/squad_vendor
-	name = "squad Vendor"
-	desc = "A machine which can dispense equipment to squads. <i>Kits taken from this machine must be returned before you can get a new one.</i>"
+	name = "automat składu"
+	desc = "Automat wydający wyposażenie składom. <i>Pobrany zestaw trzeba zwrócić, zanim dostaniesz następny.</i>"
 	icon = 'nsv13/icons/obj/computers.dmi'
 	icon_state = "squadvend"
 	anchored = TRUE
@@ -116,23 +116,23 @@
 				return FALSE
 			var/list/must_return = loans_info[H]
 			var/total = length(must_return) * 300
-			if(alert(usr, "You will be charged [total] credits.", "Lost Item Fine", "OK", "Cancel") == "OK")
+			if(alert(usr, "Zostaniesz obciążony kwotą [total] kredytów.", "Grzywna za zgubiony przedmiot", "OK", "Cancel") == "OK")
 				// Why the fuck is there no proc for this
 				var/obj/item/card/id/C = H.get_idcard(TRUE)
 				if(!C)
-					say("No ID card found.")
+					say("Nie znaleziono karty ID.")
 					return
 				else if (!C.registered_account)
-					say("No bank account found.")
+					say("Nie znaleziono konta bankowego.")
 					return
 				var/datum/bank_account/account = C.registered_account
 				if(!account.adjust_money(-total))
-					say("You do not possess the funds for this.")
+					say("Nie masz na to środków.")
 					return
 				// Success!
 				loans_info -= H
 				playsound(src, 'sound/machines/terminal_insert_disc.ogg', 100, 0)
-				say("Fee processed. Have a secure day.")
+				say("Opłata przetworzona. Bezpiecznego dnia.")
 				ui_update()
 				return TRUE
 
@@ -158,9 +158,9 @@
 			I.forceMove(src)
 			qdel(I)
 			if(!quiet)
-				say("Thank you for recycling.")
+				say("Dziękujemy za recykling.")
 		else if(!quiet)
-			to_chat(user, "<span class='warning'>The box must be empty to be returned.</span>")
+			to_chat(user, "<span class='warning'>Pudełko musi być puste, by je zwrócić.</span>")
 		ui_update()
 		return TRUE
 
@@ -168,99 +168,99 @@
 	var/list/must_return = loans_info[user]
 	if(length(must_return))
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 50, 0)
-		to_chat(user, "<span class='warning'>You still have [length(must_return)] more item(s) to return.</span>")
+		to_chat(user, "<span class='warning'>Musisz zwrócić jeszcze przedmiotów: [length(must_return)].</span>")
 	else
 		playsound(src, 'sound/machines/terminal_insert_disc.ogg', 100, 0)
-		say("Items returned. Have a secure day.")
+		say("Przedmioty zwrócone. Bezpiecznego dnia.")
 
 /datum/squad_loadout
 	var/name = "Parent"
-	var/desc = "A standardised equipment set for Blue Phalanx marines. This set is designed for use in pressurized areas, it comes with lightweight armour to protect the wearer from most hazards."
+	var/desc = "Standardowy zestaw marines Blue Phalanx do pomieszczeń z ciśnieniem. Lekki pancerz chroni przed większością zagrożeń."
 	var/list/items = list(/obj/item/clothing/under/ship/marine, /obj/item/clothing/suit/ship/squad, /obj/item/clothing/head/helmet/ship/squad, /obj/item/ammo_box/magazine/glock/lethal, /obj/item/gun/ballistic/automatic/pistol/glock)
 	var/leader_only = FALSE
 	var/list/allowed_roles = SQUAD_TYPES
 
 /datum/squad_loadout/nt/marine
-	name = "Squad Marine (Standard)"
+	name = "Żołnierz składu (standardowy)"
 
 /datum/squad_loadout/nt/space
-	name = "Squad Marine (Hazardous Environment)"
-	desc = "For hazardous, low pressure environments. This kit contains a reinforced skinsuit which, while slow, will protect marines from the elements."
+	name = "Żołnierz składu (trudne warunki)"
+	desc = "Na trudne warunki i niskie ciśnienie. Wzmocniony skafander spowalnia, ale chroni przed żywiołami."
 	items = list(/obj/item/clothing/under/ship/marine, /obj/item/clothing/suit/ship/squad/space, /obj/item/clothing/head/helmet/ship/squad/space, /obj/item/ammo_box/magazine/glock/lethal, /obj/item/gun/ballistic/automatic/pistol/glock)
 
 /datum/squad_loadout/nt/leader
-	name = "Squad Leader (Standard)"
-	desc = "For hazardous, low pressure environments. This kit contains a reinforced skinsuit which, while slow, will protect marines from the elements."
+	name = "Dowódca składu (standardowy)"
+	desc = "Na trudne warunki i niskie ciśnienie. Wzmocniony skafander spowalnia, ale chroni przed żywiołami."
 	items = list(/obj/item/clothing/under/ship/marine, /obj/item/megaphone, /obj/item/clothing/suit/ship/squad, /obj/item/clothing/head/helmet/ship/squad/leader, /obj/item/ammo_box/magazine/glock/lethal, /obj/item/gun/ballistic/automatic/pistol/glock)
 	leader_only = TRUE
 
 /datum/squad_loadout/nt/leader/space
-	name = "Squad Leader (Hazardous Environment)"
-	desc = "For hazardous, low pressure environments. This kit contains a reinforced skinsuit which, while slow, will protect marines from the elements."
+	name = "Dowódca składu (trudne warunki)"
+	desc = "Na trudne warunki i niskie ciśnienie. Wzmocniony skafander spowalnia, ale chroni przed żywiołami."
 	items = list(/obj/item/clothing/under/ship/marine, /obj/item/megaphone, /obj/item/clothing/suit/ship/squad/space, /obj/item/clothing/head/helmet/ship/squad/space, /obj/item/ammo_box/magazine/glock/lethal, /obj/item/gun/ballistic/automatic/pistol/glock)
 
 /datum/squad_loadout/nt/engineer
-	name = "Squad Engineer (Standard)"
-	desc = "This kit contains everything a squad engineer needs to effect repairs in non-hazardous environments. Recommended only for planetside operations where speed is necessary."
+	name = "Inżynier składu (standardowy)"
+	desc = "Wszystko, czego inżynier składu potrzebuje do napraw w bezpiecznym otoczeniu. Polecany tylko tam, gdzie liczy się szybkość."
 	items = list(/obj/item/clothing/under/ship/marine/engineer, /obj/item/storage/belt/utility/full, /obj/item/storage/box/damage_control, /obj/item/clothing/glasses/welding, /obj/item/clothing/suit/ship/squad, /obj/item/clothing/head/helmet/ship/squad, /obj/item/ammo_box/magazine/glock/lethal, /obj/item/gun/ballistic/automatic/pistol/glock)
 	allowed_roles = list(DC_SQUAD, MUNITIONS_SUPPORT, COMBAT_AIR_PATROL)
 
 /datum/squad_loadout/nt/engineer/space
-	name = "Squad Engineer (Hazardous Environment)"
-	desc = "For hazardous, low pressure environments. This kit contains everything a squad engineer needs to effect repairs in the heat of battle, no matter the condition of the ship they're on."
+	name = "Inżynier składu (trudne warunki)"
+	desc = "Na trudne warunki i niskie ciśnienie. Wszystko, czego inżynier składu potrzebuje do napraw w ogniu walki, bez względu na stan statku."
 	items = list(/obj/item/clothing/under/ship/marine/engineer, /obj/item/storage/belt/utility/full, /obj/item/storage/box/damage_control, /obj/item/clothing/glasses/welding, /obj/item/clothing/suit/ship/squad/space,/obj/item/clothing/head/helmet/ship/squad/space, /obj/item/ammo_box/magazine/glock/lethal, /obj/item/gun/ballistic/automatic/pistol/glock)
 
 /datum/squad_loadout/nt/medic
-	name = "Squad Medic (Standard)"
-	desc = "A kit containing battlefield medical equipment and light squad armour."
+	name = "Medyk składu (standardowy)"
+	desc = "Sprzęt medyczny na pole walki i lekki pancerz składu."
 	items = list(/obj/item/clothing/under/ship/marine/medic, /obj/item/storage/firstaid/regular, /obj/item/reagent_containers/medspray/sterilizine, /obj/item/reagent_containers/medspray/styptic, /obj/item/clothing/suit/ship/squad, /obj/item/clothing/head/helmet/ship/squad, /obj/item/ammo_box/magazine/glock/lethal, /obj/item/gun/ballistic/automatic/pistol/glock)
 	allowed_roles = list(MEDICAL_SQUAD)
 
 /datum/squad_loadout/nt/medic/space
-	name = "Squad Medic (Hazardous Environment)"
-	desc = "For hazardous, low pressure environments. This kit contains specialist equipment for treating common battlefield injuries."
+	name = "Medyk składu (trudne warunki)"
+	desc = "Na trudne warunki i niskie ciśnienie. Specjalistyczny sprzęt do leczenia typowych ran bojowych."
 	items = list(/obj/item/clothing/under/ship/marine/medic, /obj/item/storage/firstaid/regular, /obj/item/reagent_containers/medspray/sterilizine, /obj/item/reagent_containers/medspray/styptic, /obj/item/storage/firstaid/o2, /obj/item/clothing/suit/ship/squad/space, /obj/item/clothing/head/helmet/ship/squad/space, /obj/item/ammo_box/magazine/glock/lethal, /obj/item/gun/ballistic/automatic/pistol/glock)
 
 
 
 /datum/squad_loadout/solgov/marine
-	name = "Squad Marine (Standard)"
+	name = "Żołnierz składu (standardowy)"
 	items = list(/obj/item/clothing/under/ship/marine, /obj/item/clothing/suit/ship/squad, /obj/item/clothing/head/helmet/ship/squad, /obj/item/gun/energy/laser/retro)
 
 /datum/squad_loadout/solgov/space
-	name = "Squad Marine (Hazardous Environment)"
-	desc = "For hazardous, low pressure environments. This kit contains a reinforced skinsuit which, while slow, will protect marines from the elements."
+	name = "Żołnierz składu (trudne warunki)"
+	desc = "Na trudne warunki i niskie ciśnienie. Wzmocniony skafander spowalnia, ale chroni przed żywiołami."
 	items = list(/obj/item/clothing/under/ship/marine, /obj/item/clothing/suit/ship/squad/space, /obj/item/clothing/head/helmet/ship/squad/space, /obj/item/gun/energy/laser/retro)
 
 /datum/squad_loadout/solgov/leader
-	name = "Squad Leader (Standard)"
-	desc = "For hazardous, low pressure environments. This kit contains a reinforced skinsuit which, while slow, will protect marines from the elements."
+	name = "Dowódca składu (standardowy)"
+	desc = "Na trudne warunki i niskie ciśnienie. Wzmocniony skafander spowalnia, ale chroni przed żywiołami."
 	items = list(/obj/item/clothing/under/ship/marine, /obj/item/megaphone, /obj/item/clothing/suit/ship/squad, /obj/item/clothing/head/helmet/ship/squad/leader, /obj/item/gun/energy/laser/retro)
 	leader_only = TRUE
 
 /datum/squad_loadout/solgov/leader/space
-	name = "Squad Leader (Hazardous Environment)"
-	desc = "For hazardous, low pressure environments. This kit contains a reinforced skinsuit which, while slow, will protect marines from the elements."
+	name = "Dowódca składu (trudne warunki)"
+	desc = "Na trudne warunki i niskie ciśnienie. Wzmocniony skafander spowalnia, ale chroni przed żywiołami."
 	items = list(/obj/item/clothing/under/ship/marine, /obj/item/megaphone, /obj/item/clothing/suit/ship/squad/space, /obj/item/clothing/head/helmet/ship/squad/space, /obj/item/gun/energy/laser/retro)
 
 /datum/squad_loadout/solgov/engineer
-	name = "Squad Engineer (Standard)"
-	desc = "This kit contains everything a squad engineer needs to effect repairs in non-hazardous environments. Recommended only for planetside operations where speed is necessary."
+	name = "Inżynier składu (standardowy)"
+	desc = "Wszystko, czego inżynier składu potrzebuje do napraw w bezpiecznym otoczeniu. Polecany tylko tam, gdzie liczy się szybkość."
 	items = list(/obj/item/clothing/under/ship/marine/engineer, /obj/item/storage/belt/utility/full, /obj/item/storage/box/damage_control, /obj/item/clothing/glasses/welding, /obj/item/clothing/suit/ship/squad, /obj/item/clothing/head/helmet/ship/squad, /obj/item/gun/energy/laser/retro)
 	allowed_roles = list(DC_SQUAD, MUNITIONS_SUPPORT, COMBAT_AIR_PATROL)
 
 /datum/squad_loadout/solgov/engineer/space
-	name = "Squad Engineer (Hazardous Environment)"
-	desc = "For hazardous, low pressure environments. This kit contains everything a squad engineer needs to effect repairs in the heat of battle, no matter the condition of the ship they're on."
+	name = "Inżynier składu (trudne warunki)"
+	desc = "Na trudne warunki i niskie ciśnienie. Wszystko, czego inżynier składu potrzebuje do napraw w ogniu walki, bez względu na stan statku."
 	items = list(/obj/item/clothing/under/ship/marine/engineer, /obj/item/storage/belt/utility/full, /obj/item/storage/box/damage_control, /obj/item/clothing/glasses/welding, /obj/item/clothing/suit/ship/squad/space,/obj/item/clothing/head/helmet/ship/squad/space, /obj/item/gun/energy/laser/retro)
 
 /datum/squad_loadout/solgov/medic
-	name = "Squad Medic (Standard)"
-	desc = "A kit containing battlefield medical equipment and light squad armour."
+	name = "Medyk składu (standardowy)"
+	desc = "Sprzęt medyczny na pole walki i lekki pancerz składu."
 	items = list(/obj/item/clothing/under/ship/marine/medic, /obj/item/storage/firstaid/regular, /obj/item/reagent_containers/medspray/sterilizine, /obj/item/reagent_containers/medspray/styptic, /obj/item/clothing/suit/ship/squad, /obj/item/clothing/head/helmet/ship/squad, /obj/item/gun/energy/laser/retro)
 	allowed_roles = list(MEDICAL_SQUAD)
 
 /datum/squad_loadout/solgov/medic/space
-	name = "Squad Medic (Hazardous Environment)"
-	desc = "For hazardous, low pressure environments. This kit contains specialist equipment for treating common battlefield injuries."
+	name = "Medyk składu (trudne warunki)"
+	desc = "Na trudne warunki i niskie ciśnienie. Specjalistyczny sprzęt do leczenia typowych ran bojowych."
 	items = list(/obj/item/clothing/under/ship/marine/medic, /obj/item/storage/firstaid/regular, /obj/item/reagent_containers/medspray/sterilizine, /obj/item/reagent_containers/medspray/styptic, /obj/item/storage/firstaid/o2, /obj/item/clothing/suit/ship/squad/space, /obj/item/clothing/head/helmet/ship/squad/space, /obj/item/gun/energy/laser/retro)

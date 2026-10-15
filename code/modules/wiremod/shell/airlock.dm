@@ -16,7 +16,7 @@
 
 /obj/item/circuit_component/airlock
 	display_name = "Airlock"
-	display_desc = "The general interface with an airlock. Includes general statuses of the airlock"
+	display_desc = "Ogólny interfejs śluzy. Zawiera ogólne stany śluzy"
 
 	/// Called when attack_hand is called on the shell.
 	var/obj/machinery/door/airlock/attached_airlock

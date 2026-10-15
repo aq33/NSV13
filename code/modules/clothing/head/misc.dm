@@ -18,7 +18,7 @@
 
 /obj/item/clothing/head/that
 	name = "top-hat"
-	desc = "It's an amish looking hat."
+	desc = "Kapelusz wyglądający jak u amiszów."
 	icon_state = "tophat"
 	item_state = "that"
 	dog_fashion = /datum/dog_fashion/head
@@ -64,7 +64,7 @@
 
 /obj/item/clothing/head/cueball
 	name = "cueball helmet"
-	desc = "A large, featureless white orb meant to be worn on your head. How do you even see out of this thing?"
+	desc = "Duża, gładka biała kula do noszenia na głowie. Jak ty w ogóle przez to coś widzisz?"
 	icon_state = "cueball"
 	item_state="cueball"
 	flags_cover = HEADCOVERSEYES|HEADCOVERSMOUTH
@@ -107,7 +107,7 @@
 
 /obj/item/clothing/head/flatcap
 	name = "flat cap"
-	desc = "A working man's cap."
+	desc = "Czapka człowieka pracy."
 	icon_state = "flat_cap"
 	item_state = "detective"
 
@@ -126,7 +126,7 @@
 		return
 	if(slot == ITEM_SLOT_HEAD)
 		user.grant_language(/datum/language/piratespeak/, TRUE, TRUE, LANGUAGE_HAT)
-		to_chat(user, "You suddenly know how to speak like a pirate!")
+		to_chat(user, "Nagle wiesz, jak mówić jak pirat!")
 
 /obj/item/clothing/head/pirate/dropped(mob/user)
 	..()
@@ -135,7 +135,7 @@
 	var/mob/living/carbon/human/H = user
 	if(H.get_item_by_slot(ITEM_SLOT_HEAD) == src && !QDELETED(src)) //This can be called as a part of destroy
 		user.remove_language(/datum/language/piratespeak/, TRUE, TRUE, LANGUAGE_HAT)
-		to_chat(user, "You can no longer speak like a pirate.")
+		to_chat(user, "Już nie potrafisz mówić jak pirat.")
 
 /obj/item/clothing/head/pirate/captain
 	icon_state = "hgpiratecap"
@@ -150,7 +150,7 @@
 
 /obj/item/clothing/head/bowler
 	name = "bowler-hat"
-	desc = "Gentleman, elite aboard!"
+	desc = "Dżentelmeni, elita na pokładzie!"
 	icon_state = "bowler"
 	item_state = "bowler"
 	dynamic_hair_suffix = ""
@@ -196,14 +196,14 @@
 	name = "fedora"
 	icon_state = "fedora"
 	item_state = "fedora"
-	desc = "A really cool hat if you're a mobster. A really lame hat if you're not."
+	desc = "Naprawdę fajny kapelusz, jeśli jesteś mafiozem. Naprawdę żałosny, jeśli nie jesteś."
 	pocket_storage_component_path = /datum/component/storage/concrete/pockets/small
 
 /obj/item/clothing/head/fedora/suicide_act(mob/user)
 	if(user.gender == FEMALE)
 		return 0
 	var/mob/living/carbon/human/H = user
-	user.visible_message("<span class='suicide'>[user] is donning [src]! It looks like [user.p_theyre()] trying to be nice to girls.</span>")
+	user.visible_message("<span class='suicide'>[user] zakłada [src]! Wygląda na to, że próbuje być miły dla dziewczyn.</span>")
 	user.say("M'lady.", forced = "fedora suicide")
 	sleep(10)
 	H.facial_hair_style = "Neckbeard"
@@ -213,7 +213,7 @@
 	name = "sombrero"
 	icon_state = "sombrero"
 	item_state = "sombrero"
-	desc = "You can practically taste the fiesta."
+	desc = "Niemal czujesz smak fiesty."
 	flags_inv = HIDEHAIR
 
 	dog_fashion = /datum/dog_fashion/head/sombrero
@@ -222,7 +222,7 @@
 	name = "green sombrero"
 	icon_state = "greensombrero"
 	item_state = "greensombrero"
-	desc = "As elegant as a dancing cactus."
+	desc = "Elegancki jak tańczący kaktus."
 	flags_inv = HIDEHAIR|HIDEFACE|HIDEEARS
 	dog_fashion = null
 
@@ -262,7 +262,7 @@
 	throw_speed = 2
 	throw_range = 5
 	w_class = WEIGHT_CLASS_SMALL
-	attack_verb = list("warned", "cautioned", "smashed")
+	attack_verb = list("ostrzega", "upomina", "rozbija")
 	resistance_flags = NONE
 	dynamic_hair_suffix = ""
 
@@ -355,7 +355,7 @@
 
 /obj/item/clothing/head/delinquent
 	name = "delinquent hat"
-	desc = "Good grief."
+	desc = "Dobry Boże."
 	icon_state = "delinquent"
 
 /obj/item/clothing/head/frenchberet
@@ -433,23 +433,23 @@
 	name = "rainbow flower crown"
 	desc = "A flower crown made out of the flowers of the rainbow bunch plant."
 	dynamic_hair_suffix = ""
-	attack_verb = list("crowned")
+	attack_verb = list("koronuje")
 
 /obj/item/clothing/head/rainbowbunchcrown/Initialize(mapload)
 	. = ..()
 	var/crown_type = rand(1,4)
 	switch(crown_type)
 		if(1)
-			desc += " This one has red, yellow and white flowers."
+			desc += " Ten ma czerwone, żółte i białe kwiaty."
 			icon_state = "rainbow_bunch_crown_1"
 		if(2)
-			desc += " This one has blue, yellow, green and white flowers."
+			desc += " Ten ma niebieskie, żółte, zielone i białe kwiaty."
 			icon_state = "rainbow_bunch_crown_2"
 		if(3)
-			desc += " This one has red, blue, purple and pink flowers."
+			desc += " Ten ma czerwone, niebieskie, fioletowe i różowe kwiaty."
 			icon_state = "rainbow_bunch_crown_3"
 		if(4)
-			desc += " This one has yellow, green and white flowers."
+			desc += " Ten ma żółte, zielone i białe kwiaty."
 			icon_state = "rainbow_bunch_crown_4"
 
 /obj/item/clothing/head/sunflowercrown
@@ -457,21 +457,21 @@
 	desc = "A bright flower crown made out sunflowers that is sure to brighten up anyone's day!"
 	icon_state = "sunflower_crown"
 	dynamic_hair_suffix = ""
-	attack_verb = list("crowned")
+	attack_verb = list("koronuje")
 
 /obj/item/clothing/head/poppycrown
 	name = "poppy crown"
 	desc = "A flower crown made out of a string of bright red poppies."
 	icon_state = "poppy_crown"
 	dynamic_hair_suffix = ""
-	attack_verb = list("crowned")
+	attack_verb = list("koronuje")
 
 /obj/item/clothing/head/lilycrown
 	name = "lily crown"
 	desc = "A leafy flower crown with a cluster of large white lilies at at the front."
 	icon_state = "lily_crown"
 	dynamic_hair_suffix = ""
-	attack_verb = list("crowned")
+	attack_verb = list("koronuje")
 
 /////////////////
 //DONATOR ITEMS//
@@ -479,23 +479,23 @@
 
 /obj/item/clothing/head/gangsterwig
 	name = "gangstar wig"
-	desc = "Like father like son."
+	desc = "Jaki ojciec, taki syn."
 	icon_state = "gangster_wig"
 	flags_inv = HIDEHAIR
 
 /obj/item/clothing/head/oldhat
 	name = "old man hat"
-	desc = "OH MY GOD."
+	desc = "O MÓJ BOŻE."
 	icon_state = "oldmanhat"
 
 /obj/item/clothing/head/marine
 	name = "mariner hat"
-	desc = "There's nothing quite like the ocean breeze in the morning."
+	desc = "Nie ma to jak poranna bryza od oceanu."
 	icon_state = "marine"
 
 /obj/item/clothing/head/chicken_head_retro
 	name = "chicken head"
-	desc = "Looks just like a real one."
+	desc = "Wygląda zupełnie jak prawdziwa."
 	icon_state = "chicken"
 	flags_inv = HIDEHAIR
 

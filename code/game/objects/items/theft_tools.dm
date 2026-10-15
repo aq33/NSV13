@@ -37,7 +37,7 @@
 		radiation_pulse(src, 400, 2)
 
 /obj/item/nuke_core/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is rubbing [src] against [user.p_them()]self! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] pociera się [src]! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	return (TOXLOSS)
 
 //nuke core box, for carrying the core
@@ -61,7 +61,7 @@
 	ncore.forceMove(src)
 	core = ncore
 	icon_state = "core_container_loaded"
-	to_chat(user, "<span class='warning'>Container is sealing...</span>")
+	to_chat(user, "<span class='warning'>Pojemnik się zamyka...</span>")
 	addtimer(CALLBACK(src, PROC_REF(seal)), 50)
 	return TRUE
 
@@ -71,12 +71,12 @@
 		icon_state = "core_container_sealed"
 		playsound(src, 'sound/items/deconstruct.ogg', 60, 1)
 		if(ismob(loc))
-			to_chat(loc, "<span class='warning'>[src] is permanently sealed, [core]'s radiation is contained.</span>")
+			to_chat(loc, "<span class='warning'>[src] jest trwale zamknięty, promieniowanie [core] jest odizolowane.</span>")
 
 /obj/item/nuke_core_container/attackby(obj/item/nuke_core/core, mob/user)
 	if(istype(core))
 		if(!user.temporarilyRemoveItemFromInventory(core))
-			to_chat(user, "<span class='warning'>The [core] is stuck to your hand!</span>")
+			to_chat(user, "<span class='warning'>[core] przykleił się do twojej ręki!</span>")
 			return
 		else
 			load(core, user)
@@ -96,28 +96,13 @@
 	greyscale_config_inhand_right = null
 
 /obj/item/paper/guides/antag/nuke_instructions
-	default_raw_text = "How to break into a Nanotrasen self-destruct terminal and remove its plutonium core:<br>\
-	<ul>\
-	<li>Use a screwdriver with a very thin tip (provided) to unscrew the terminal's front panel</li>\
-	<li>Dislodge and remove the front panel with a crowbar</li>\
-	<li>Cut the inner metal plate with a welding tool</li>\
-	<li>Pry off the inner plate with a crowbar to expose the radioactive core</li>\
-	<li>Use the core container to remove the plutonium core; the container will take some time to seal</li>\
-	<li>???</li>\
+	default_raw_text = "Jak włamać się do terminala samozniszczenia Nanotrasen i wyjąć jego rdzeń plutonowy:<br><ul><li>Odkręć przedni panel terminala śrubokrętem z bardzo cienką końcówką (w zestawie)</li><li>Podważ i zdejmij przedni panel łomem</li><li>Przetnij wewnętrzną metalową płytę spawarką</li><li>Podważ wewnętrzną płytę łomem, by odsłonić radioaktywny rdzeń</li><li>Wyjmij rdzeń plutonowy za pomocą pojemnika na rdzeń; zamknięcie pojemnika zajmie trochę czasu</li><li>???</li>\
 	</ul>"
 
 // STEALING SUPERMATTER
 
 /obj/item/paper/guides/antag/supermatter_sliver
-	default_raw_text = "How to safely extract a supermatter sliver:<br>\
-	<ul>\
-	<li>Approach an active supermatter crystal with radiation shielded personal protective equipment. DO NOT MAKE PHYSICAL CONTACT.</li>\
-	<li>Use a supermatter scalpel (provided) to slice off a sliver of the crystal.</li>\
-	<li>Use supermatter extraction tongs (also provided) to safely pick up the sliver you sliced off.</li>\
-	<li>Physical contact of any object with the sliver will dust the object, as well as yourself.</li>\
-	<li>Use the tongs to place the sliver into the provided container, which will take some time to seal.</li>\
-	<li>Get the hell out before the crystal delaminates.</li>\
-	<li>???</li>\
+	default_raw_text = "Jak bezpiecznie pozyskać odłamek supermaterii:<br><ul><li>Podejdź do aktywnego kryształu supermaterii w sprzęcie ochronnym osłaniającym przed promieniowaniem. NIE DOTYKAJ GO.</li><li>Odetnij odłamek kryształu skalpelem z supermaterii (w zestawie).</li><li>Bezpiecznie podnieś odcięty odłamek szczypcami do supermaterii (również w zestawie).</li><li>Fizyczny kontakt dowolnego obiektu z odłamkiem obróci go w pył, podobnie jak ciebie.</li><li>Umieść odłamek szczypcami w dołączonym pojemniku; zamknięcie pojemnika zajmie trochę czasu.</li><li>Uciekaj, zanim kryształ ulegnie delaminacji.</li><li>???</li>\
 	</ul>"
 
 /obj/item/nuke_core/supermatter_sliver
@@ -137,16 +122,16 @@
 	if(istype(W, /obj/item/hemostat/supermatter))
 		var/obj/item/hemostat/supermatter/tongs = W
 		if (tongs.sliver)
-			to_chat(user, "<span class='notice'>\The [tongs] is already holding a supermatter sliver!</span>")
+			to_chat(user, "<span class='notice'>[tongs] już trzymają odłamek supermaterii!</span>")
 			return FALSE
 		forceMove(tongs)
 		tongs.sliver = src
 		tongs.update_icon()
-		to_chat(user, "<span class='notice'>You carefully pick up [src] with [tongs].</span>")
+		to_chat(user, "<span class='notice'>Ostrożnie podnosisz [src] za pomocą [tongs].</span>")
 	else if(istype(W, /obj/item/scalpel/supermatter) || istype(W, /obj/item/nuke_core_container/supermatter/)) // we don't want it to dust
 		return
 	else
-		to_chat(user, "<span class='notice'>As it touches \the [src], both \the [src] and \the [W] burst into dust!</span>")
+		to_chat(user, "<span class='notice'>Gdy dotyka [src], zarówno [src], jak i [W] obracają się w pył!</span>")
 		radiation_pulse(user, 100)
 		playsound(src, 'sound/effects/supermatter.ogg', 50, 1)
 		qdel(W)
@@ -157,9 +142,9 @@
 	if(!iscarbon(user))
 		return FALSE
 	var/mob/ded = user
-	user.visible_message("<span class='danger'>[ded] reaches out and tries to pick up [src]. [ded.p_their()] body starts to glow and bursts into flames before flashing into dust!</span>",\
-			"<span class='userdanger'>You reach for [src] with your hands. That was dumb.</span>",\
-			"<span class='italics'>Everything suddenly goes silent.</span>")
+	user.visible_message("<span class='danger'>[ded] sięga, by podnieść [src]. Jego ciało zaczyna świecić i staje w płomieniach, po czym obraca się w pył!</span>",\
+			"<span class='userdanger'>Sięgasz po [src] gołymi rękami. To było głupie.</span>",\
+			"<span class='italics'>Nagle zapada zupełna cisza.</span>")
 	radiation_pulse(user, 500, 2)
 	playsound(get_turf(user), 'sound/effects/supermatter.ogg', 50, 1)
 	ded.dust()
@@ -181,7 +166,7 @@
 	T.sliver = null
 	T.icon_state = "supermatter_tongs"
 	icon_state = "core_container_loaded"
-	to_chat(user, "<span class='warning'>Container is sealing...</span>")
+	to_chat(user, "<span class='warning'>Pojemnik się zamyka...</span>")
 	addtimer(CALLBACK(src, PROC_REF(seal)), 50)
 	return TRUE
 
@@ -191,7 +176,7 @@
 		icon_state = "core_container_sealed"
 		playsound(src, 'sound/items/Deconstruct.ogg', 60, 1)
 		if(ismob(loc))
-			to_chat(loc, "<span class='warning'>[src] is permanently sealed, [sliver] is safely contained.</span>")
+			to_chat(loc, "<span class='warning'>[src] jest trwale zamknięty, [sliver] jest bezpiecznie odizolowany.</span>")
 
 /obj/item/nuke_core_container/supermatter/attackby(obj/item/hemostat/supermatter/tongs, mob/user)
 	if(istype(tongs))
@@ -243,7 +228,7 @@
 /obj/item/hemostat/supermatter/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum) // no instakill supermatter javelins
 	if(sliver)
 		sliver.forceMove(loc)
-		visible_message("<span class='notice'>\The [sliver] falls out of \the [src] as it hits the ground.</span>")
+		visible_message("<span class='notice'>[sliver] wypada z [src], gdy ten uderza o ziemię.</span>")
 		sliver = null
 		update_icon()
 	..()
@@ -258,9 +243,9 @@
 		investigate_log("has consumed [AM].", "supermatter")
 		qdel(AM)
 	if (user)
-		user.visible_message("<span class='danger'>As [user] touches [AM] with \the [src], both flash into dust and silence fills the room...</span>",\
-			"<span class='userdanger'>You touch [AM] with [src], and everything suddenly goes silent.\n[AM] and [sliver] flash into dust, and soon as you can register this, you do as well.</span>",\
-			"<span class='italics'>Everything suddenly goes silent.</span>")
+		user.visible_message("<span class='danger'>Gdy [user] dotyka [AM] za pomocą [src], oba obracają się w pył, a pomieszczenie wypełnia cisza...</span>",\
+			"<span class='userdanger'>Dotykasz [AM] za pomocą [src] i nagle zapada cisza.\n[AM] i [sliver] obracają się w pył, a zanim zdążysz to pojąć, ty również.</span>",\
+			"<span class='italics'>Nagle zapada zupełna cisza.</span>")
 		user.dust()
 	radiation_pulse(src, 500, 2)
 	playsound(src, 'sound/effects/supermatter.ogg', 50, 1)

@@ -44,7 +44,7 @@
 		return
 	caster.loader = src
 	linked_gun = caster
-	to_chat(user, "<span class='notice'>You connect [src] to [caster].</span>")
+	to_chat(user, "<span class='notice'>Łączysz [src] z [caster].</span>")
 
 /obj/machinery/atmospherics/components/unary/plasma_loader/on_construction()
 	var/obj/item/circuitboard/machine/thermomachine/board = circuit
@@ -55,9 +55,9 @@
 /obj/machinery/atmospherics/components/unary/plasma_loader/attack_hand(mob/user)
 	. = ..()
 	if(panel_open)
-		to_chat(user, "<span class='notice'>You must turn close the panel on [src] before turning it on.</span>")
+		to_chat(user, "<span class='notice'>Przed włączeniem [src] musisz zamknąć panel.</span>")
 		return
-	to_chat(user, "<span class='notice'>You press [src]'s power button.</span>")
+	to_chat(user, "<span class='notice'>Naciskasz przycisk zasilania [src].</span>")
 	on = !on
 	update_icon()
 
@@ -72,7 +72,7 @@
 
 /obj/machinery/atmospherics/components/unary/plasma_loader/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/simple_rotation,ROTATION_ALTCLICK | ROTATION_CLOCKWISE | ROTATION_COUNTERCLOCKWISE | ROTATION_VERBS )
+	AddComponent(/datum/component/simple_rotation)
 
 /obj/machinery/atmospherics/components/unary/plasma_loader/process_atmos()
 	..()
@@ -98,7 +98,7 @@
 			non_phoron = TRUE //Stop putting suggestive variables in my code BOBBANZ1!
 
 	if(non_phoron)
-		say("Non-Phoron gas detected! Venting gas!") //BURN THEM ALL
+		say("Wykryto gaz inny niż foron! Wypuszczanie gazu!") //BURN THEM ALL
 		on = !on
 		update_icon()
 		non_phoron = FALSE

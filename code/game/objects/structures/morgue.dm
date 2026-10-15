@@ -54,14 +54,14 @@ GLOBAL_LIST_EMPTY(bodycontainers) //Let them act as spawnpoints for revenants an
 	if(locked)
 		if(message_cooldown <= world.time)
 			message_cooldown = world.time + 50
-			to_chat(user, "<span class='warning'>[src]'s door won't budge!</span>")
+			to_chat(user, "<span class='warning'>Drzwi [src] ani drgną!</span>")
 		return
 	open()
 
 /obj/structure/bodycontainer/attack_paw(mob/user)
 	return attack_hand(user)
 
-/obj/structure/bodycontainer/attack_hand(mob/user)
+/obj/structure/bodycontainer/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(.)
 		return
@@ -69,7 +69,7 @@ GLOBAL_LIST_EMPTY(bodycontainers) //Let them act as spawnpoints for revenants an
 		to_chat(user, "<span class='danger'>It's locked.</span>")
 		return
 	if(!connected)
-		to_chat(user, "That doesn't appear to have a tray.")
+		to_chat(user, "To chyba nie ma tacy.")
 		return
 	if(connected.loc == src)
 		open()
@@ -86,9 +86,9 @@ GLOBAL_LIST_EMPTY(bodycontainers) //Let them act as spawnpoints for revenants an
 	add_fingerprint(user)
 	if(istype(P, /obj/item/pen))
 		if(!user.is_literate())
-			to_chat(user, "<span class='notice'>You scribble illegibly on the side of [src]!</span>")
+			to_chat(user, "<span class='notice'>Bazgrzesz nieczytelnie na boku [src]!</span>")
 			return
-		var/t = stripped_input(user, "What would you like the label to be?", text("[]", name), null)
+		var/t = stripped_input(user, "Jaka ma być etykieta?", text("[]", name), null)
 		if (user.get_active_held_item() != P)
 			return
 		if(!user.canUseTopic(src, BE_CLOSE))
@@ -113,13 +113,13 @@ GLOBAL_LIST_EMPTY(bodycontainers) //Let them act as spawnpoints for revenants an
 	user.changeNext_move(CLICK_CD_BREAKOUT)
 	user.last_special = world.time + CLICK_CD_BREAKOUT
 	user.visible_message(null, \
-		"<span class='notice'>You lean on the back of [src] and start pushing the tray open... (this will take about [DisplayTimeText(breakout_time)].)</span>", \
-		"<span class='italics'>You hear a metallic creaking from [src].</span>")
+		"<span class='notice'>Opierasz się o tył [src] i zaczynasz wypychać tacę... (zajmie to około [DisplayTimeText(breakout_time)].)</span>", \
+		"<span class='italics'>Słyszysz metaliczne skrzypienie z [src].</span>")
 	if(do_after(user,(breakout_time), target = src))
 		if(!user || user.stat != CONSCIOUS || user.loc != src )
 			return
-		user.visible_message("<span class='warning'>[user] successfully broke out of [src]!</span>", \
-			"<span class='notice'>You successfully break out of [src]!</span>")
+		user.visible_message("<span class='warning'>[user] wydostaje się z [src]!</span>", \
+			"<span class='notice'>Wydostajesz się z [src]!</span>")
 		open()
 
 /obj/structure/bodycontainer/proc/open()
@@ -166,13 +166,13 @@ GLOBAL_LIST_EMPTY(bodycontainers) //Let them act as spawnpoints for revenants an
 
 /obj/structure/bodycontainer/morgue/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>The speaker is [beeper ? "enabled" : "disabled"]. Alt-click to toggle it.</span>"
+	. += "<span class='notice'>Głośnik jest [beeper ? "włączony" : "wyłączony"]. Alt-kliknij, by go przełączyć.</span>"
 
 /obj/structure/bodycontainer/morgue/AltClick(mob/user)
 	if(!user.canUseTopic(src, !issilicon(user)))
 		return
 	beeper = !beeper
-	to_chat(user, "<span class='notice'>You turn the speaker function [beeper ? "on" : "off"].</span>")
+	to_chat(user, "<span class='notice'>[beeper ? "Włączasz" : "Wyłączasz"] funkcję głośnika.</span>")
 
 /obj/structure/bodycontainer/morgue/update_icon()
 	if (!connected || connected.loc != src) // Open or tray is gone.
@@ -200,7 +200,7 @@ GLOBAL_LIST_EMPTY(bodycontainers) //Let them act as spawnpoints for revenants an
 
 /obj/item/paper/guides/jobs/medical/morgue
 	name = "morgue memo"
-	default_raw_text = "<font size='2'>Since this station's medbay never seems to fail to be staffed by the mindless monkeys meant for genetics experiments, I'm leaving a reminder here for anyone handling the pile of cadavers the quacks are sure to leave.</font><BR><BR><font size='4'><font color=red>Red lights mean there's a plain ol' dead body inside.</font><BR><BR><font color=orange>Yellow lights mean there's non-body objects inside.</font><BR><font size='2'>Probably stuff pried off a corpse someone grabbed, or if you're lucky it's stashed booze.</font><BR><BR><font color=green>Green lights mean the morgue system detects the body may be able to be cloned.</font></font><BR><font size='2'>I don't know how that works, but keep it away from the kitchen and go yell at the geneticists.</font><BR><BR>- CentCom medical inspector"
+	default_raw_text = "<font size='2'>Ponieważ ambulatorium tej stacji chyba nigdy nie narzeka na brak bezmyślnych małp przeznaczonych do eksperymentów genetycznych, zostawiam tu przypomnienie dla każdego, kto zajmuje się stosem trupów, które konowały na pewno zostawią.</font><BR><BR><font size='4'><font color=red>Czerwone światło oznacza, że w środku jest zwykłe martwe ciało.</font><BR><BR><font color=orange>Żółte światło oznacza, że w środku są przedmioty inne niż ciało.</font><BR><font size='2'>Pewnie rzeczy zdjęte z czyichś zwłok, a jak masz szczęście, to schowana gorzała.</font><BR><BR><font color=green>Zielone światło oznacza, że system kostnicy wykrywa, że ciało może dać się sklonować.</font></font><BR><font size='2'>Nie wiem, jak to działa, ale trzymaj to z dala od kuchni i idź nakrzyczeć na genetyków.</font><BR><BR>- Inspektor medyczny Centrali"
 
 /*
  * Crematorium
@@ -214,7 +214,7 @@ GLOBAL_LIST_EMPTY(crematoriums)
 	var/id = 1
 
 /obj/structure/bodycontainer/crematorium/attack_robot(mob/user) //Borgs can't use crematoriums without help
-	to_chat(user, "<span class='warning'>[src] is locked against you.</span>")
+	to_chat(user, "<span class='warning'>[src] jest przed tobą zablokowany.</span>")
 	return
 
 /obj/structure/bodycontainer/crematorium/Destroy()
@@ -252,11 +252,11 @@ GLOBAL_LIST_EMPTY(crematoriums)
 	var/list/conts = GetAllContents() - src - connected
 
 	if(!conts.len)
-		audible_message("<span class='italics'>You hear a hollow crackle.</span>")
+		audible_message("<span class='italics'>Słyszysz głuchy trzask.</span>")
 		return
 
 	else
-		audible_message("<span class='italics'>You hear a roar as the crematorium activates.</span>")
+		audible_message("<span class='italics'>Słyszysz ryk uruchamianego krematorium.</span>")
 
 		locked = TRUE
 		update_icon()
@@ -302,7 +302,7 @@ GLOBAL_LIST_EMPTY(crematoriums)
 /obj/structure/bodycontainer/crematorium/creamatorium/cremate(mob/user)
 	var/list/icecreams = new()
 	for(var/i_scream in GetAllContents(/mob/living))
-		var/obj/item/reagent_containers/food/snacks/icecream/IC = new()
+		var/obj/item/food/icecream/IC = new()
 		IC.set_cone_type("waffle")
 		IC.add_mob_flavor(i_scream)
 		icecreams += IC
@@ -338,7 +338,10 @@ GLOBAL_LIST_EMPTY(crematoriums)
 /obj/structure/tray/attack_paw(mob/user)
 	return attack_hand(user)
 
-/obj/structure/tray/attack_hand(mob/user)
+/obj/structure/tray/attack_robot(mob/user, list/modifiers)
+	return attack_hand(user, modifiers)
+
+/obj/structure/tray/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(.)
 		return
@@ -346,7 +349,7 @@ GLOBAL_LIST_EMPTY(crematoriums)
 		connected.close()
 		add_fingerprint(user)
 	else
-		to_chat(user, "<span class='warning'>That's not connected to anything!</span>")
+		to_chat(user, "<span class='warning'>To nie jest do niczego podłączone!</span>")
 
 /obj/structure/tray/attackby(obj/P, mob/user, params)
 	if(!istype(P, /obj/item/riding_offhand))
@@ -377,7 +380,7 @@ GLOBAL_LIST_EMPTY(crematoriums)
 			return
 	O.forceMove(src.loc)
 	if (user != O)
-		visible_message("<span class='warning'>[user] stuffs [O] into [src].</span>")
+		visible_message("<span class='warning'>[user] wpycha [O] do [src].</span>")
 	return
 
 /*

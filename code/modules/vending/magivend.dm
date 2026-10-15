@@ -5,7 +5,7 @@
 	product_slogans = "Ciskaj zaklęciami prawidłowo z MagiVend!;Bądź swoim własnym Houdinim! Użyj MagiVend!"
 	vend_reply = "Czarującego wieczoru!"
 	light_color = LIGHT_COLOR_PURPLE
-	product_ads = "FJKLFJSD;AJKFLBJAKL;1234 LOONIES LOL!;>MFW;Kill them fuckers!;GET DAT FUKKEN DISK;HONK!;EI NATH;Destroy the station!;Admin conspiracies since forever!;Space-time bending hardware!"
+	product_ads = "FJKLFJSD;AJKFLBJAKL;1234 LOONIES LOL!;>MFW;Pozabijać skurwieli!;DAWAJ TEN PIEPRZONY DYSK;HONK!;EI NATH;Zniszczcie stację!;Spiski adminów od zawsze!;Sprzęt zakrzywiający czasoprzestrzeń!"
 	products = list(/obj/item/clothing/head/wizard = 1,
 		            /obj/item/clothing/suit/wizrobe = 1,
 		            /obj/item/clothing/head/wizard/red = 1,
@@ -15,7 +15,7 @@
 		            /obj/item/clothing/shoes/sandal/magic = 1,
 		            /obj/item/staff = 2)
 	contraband = list(/obj/item/reagent_containers/glass/bottle/wizarditis = 1)	//No one can get to the machine to hack it anyways; for the lulz - Microwave
-	armor = list("melee" = 100, "bullet" = 100, "laser" = 100, "energy" = 100, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 50, "stamina" = 0)
+	armor = list("melee" = 100, "bullet" = 100, "laser" = 100, "energy" = 100, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 50, "stamina" = 0, "bleed" = 0)
 	resistance_flags = FIRE_PROOF
 	default_price = 25
 	extra_price = 50

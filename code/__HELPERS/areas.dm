@@ -50,7 +50,7 @@ GLOBAL_LIST_INIT(typecache_powerfailure_safe_areas, typecacheof(list(
 
 	if(creator)
 		if(creator.create_area_cooldown >= world.time)
-			to_chat(creator, "<span class='warning'>You're trying to create a new area a little too fast.</span>")
+			to_chat(creator, "<span class='warning'>Za szybko próbujesz utworzyć nowy obszar.</span>")
 			return
 		creator.create_area_cooldown = world.time + 10
 
@@ -60,10 +60,10 @@ GLOBAL_LIST_INIT(typecache_powerfailure_safe_areas, typecacheof(list(
 		))
 	var/list/turf/turfs = detect_room(get_turf(creator), area_or_turf_fail_types)
 	if(!turfs)
-		to_chat(creator, "<span class='warning'>The new area must be completely airtight and not a part of a shuttle.</span>")
+		to_chat(creator, "<span class='warning'>Nowy obszar musi być całkowicie szczelny i nie może być częścią promu.</span>")
 		return
 	if(turfs.len > BP_MAX_ROOM_SIZE)
-		to_chat(creator, "<span class='warning'>The room you're in is too big. It is [((turfs.len / BP_MAX_ROOM_SIZE)-1)*100]% larger than allowed.</span>")
+		to_chat(creator, "<span class='warning'>Pomieszczenie, w którym jesteś, jest za duże. Przekracza dozwolony rozmiar o [((turfs.len / BP_MAX_ROOM_SIZE)-1)*100]%.</span>")
 		return
 	var/list/areas = list("New Area" = /area)
 	for(var/i in 1 to turfs.len)
@@ -75,11 +75,11 @@ GLOBAL_LIST_INIT(typecache_powerfailure_safe_areas, typecacheof(list(
 		if(!TURF_SHARES(turfs[i])) // No expanding areas of walls/something blocking this turf because that defeats the whole point of them used to separate areas
 			continue
 		areas[place.name] = place
-	var/area_choice = input(creator, "Choose an area to expand or make a new area.", "Area Expansion") as null|anything in areas
+	var/area_choice = input(creator, "Wybierz obszar do rozszerzenia albo utwórz nowy.", "Area Expansion") as null|anything in areas
 	area_choice = areas[area_choice]
 
 	if(!area_choice)
-		to_chat(creator, "<span class='warning'>No choice selected. The area remains undefined.</span>")
+		to_chat(creator, "<span class='warning'>Nic nie wybrano. Obszar pozostaje nieokreślony.</span>")
 		return
 	var/area/newA
 	var/area/oldA = get_area(get_turf(creator))
@@ -88,10 +88,10 @@ GLOBAL_LIST_INIT(typecache_powerfailure_safe_areas, typecacheof(list(
 		if(!str || !length(str)) //cancel
 			return
 		if(length(str) > 50)
-			to_chat(creator, "<span class='warning'>The given name is too long. The area remains undefined.</span>")
+			to_chat(creator, "<span class='warning'>Podana nazwa jest za długa. Obszar pozostaje nieokreślony.</span>")
 			return
 		if(CHAT_FILTER_CHECK(str))
-			to_chat(creator, "<span class='warning'>The given name contains prohibited word(s). The area remains undefined.</span>")
+			to_chat(creator, "<span class='warning'>Podana nazwa zawiera zakazane słowa. Obszar pozostaje nieokreślony.</span>")
 			return
 		newA = new area_choice
 		newA.setup(str)
@@ -113,7 +113,7 @@ GLOBAL_LIST_INIT(typecache_powerfailure_safe_areas, typecacheof(list(
 		var/obj/machinery/door/firedoor/FD = door
 		FD.CalculateAffectingAreas()
 
-	to_chat(creator, "<span class='notice'>You have created a new area, named [newA.name]. It is now weather proof, and constructing an APC will allow it to be powered.</span>")
+	to_chat(creator, "<span class='notice'>Utworzono nowy obszar o nazwie [newA.name]. Jest teraz odporny na warunki pogodowe, a zbudowanie APC pozwoli go zasilić.</span>")
 	return TRUE
 
 #undef BP_MAX_ROOM_SIZE

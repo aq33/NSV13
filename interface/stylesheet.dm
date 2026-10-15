@@ -94,11 +94,11 @@ h1.alert, h2.alert		{color: #000000;}
 .green					{color: #03ff39;}
 .nicegreen					{color: #14a833;}
 .shadowling				{color: #3b2769;}
-.cult					{color: #960000;}
-.cultlarge				{color: #960000; font-weight: bold; font-size: 3;}
-.narsie					{color: #960000; font-weight: bold; font-size: 15;}
-.narsiesmall			{color: #960000; font-weight: bold; font-size: 6;}
-.narsiesmaller			{color: #960000; font-weight: bold; font-size: 3;}
+.cult					{color: #973e3b;}
+.cultlarge				{color: #973e3b; font-weight: bold; font-size: 3;}
+.narsie					{color: #973e3b; font-weight: bold; font-size: 15;}
+.narsiesmall			{color: #973e3b; font-weight: bold; font-size: 6;}
+.narsiesmaller			{color: #973e3b; font-weight: bold; font-size: 3;}
 .colossus				{color: #7F282A; font-size: 5;}
 .hierophant				{color: #660099; font-weight: bold; font-style: italic;}
 .hierophant_warning		{color: #660099; font-style: italic;}
@@ -122,8 +122,8 @@ h1.alert, h2.alert		{color: #000000;}
 .large_brass			{color: #BE8700; font-size: 3;}
 .leader_brass			{color: #BE8700; font-size: 16px;}
 .big_brass				{color: #BE8700; font-size: 3; font-weight: bold; font-style: italic;}
-.ratvar					{color: #BE8700; font-size: 6; font-weight: bold; font-style: italic; animation: ratvarcolor 5000ms infinite;}
-.ratvarsmall			{color: #BE8700; font-size: 3; font-weight: bold; font-style: italic; animation: ratvarcolor 5000ms infinite;}
+.ratvar					{color: #BE8700; font-size: 6; font-weight: bold; font-style: italic;}
+.ratvarsmall			{color: #BE8700; font-size: 3; font-weight: bold; font-style: italic;}
 .alloy					{color: #42474D;}
 .heavy_alloy			{color: #42474D; font-weight: bold; font-style: italic;}
 .nezbere_large			{color: #42474D; font-size: 3; font-weight: bold; font-style: italic;}
@@ -142,21 +142,6 @@ h1.alert, h2.alert		{color: #000000;}
 .neovgre				{color: #6E001A; font-weight: bold; font-style: italic;}
 .neovgre_small			{color: #6E001A;}
 
-@keyframes ratvarcolor {
-	0% { color: #0d0d0d; }
-	9% { color: #BE8700; }
-	18% { color: #0d0d0d; }
-	27% { color: #42474D; }
-	36% { color: #0d0d0d; }
-	45% { color: #AF0AAF; }
-	54% { color: #0d0d0d; }
-	63% { color: #1E8CE1; }
-	72% { color: #0d0d0d; }
-	81% { color: #DAAA18; }
-	90% { color: #0d0d0d; }
-	100% { color: #6E001A; }
-}
-
 .newscaster				{color: #800000;}
 .ghostalert				{color: #5c00e6;	font-style: italic; font-weight: bold;}
 
@@ -169,6 +154,9 @@ h1.alert, h2.alert		{color: #000000;}
 
 .spider					{color: #4d004d;}
 .spiderlarge			{color: #4d004d;	font-size: 3 ; font-weight: bold;}
+.spiderbroodmother	{color: #4d004d;	font-size: 2.5 ; font-weight: bold;}
+.spiderbreacher		{color: #c08040;	font-size: 2 ; font-weight: bold;}
+.spiderscout		{color: #3040b0;	font-size: 1.5 ; font-weight: bold;}
 
 .interface				{color: #330033;}
 
@@ -187,21 +175,9 @@ h1.alert, h2.alert		{color: #000000;}
 .clown					{color: #FF69Bf;	font-size: 3; font-family: "Comic Sans MS", cursive, sans-serif; font-weight: bold;}
 .singing				{font-family: "Trebuchet MS", cursive, sans-serif; font-style: italic;}
 .his_grace				{color: #15D512;	font-family: "Courier New", cursive, sans-serif; font-style: italic;}
-.hypnophrase			{color: #3bb5d3;	font-weight: bold; animation: hypnocolor 1500ms infinite;}
-@keyframes hypnocolor {
-    0% { color: #0d0d0d; }
-    25% { color: #410194; }
-    50% { color: #7f17d8; }
-	75% { color: #410194; }
-	100% { color: #3bb5d3; }
-}
+.hypnophrase			{color: #3bb5d3;	font-weight: bold;}
 
-.phobia			{color: #dd0000;	font-weight: bold; animation: phobia 750ms infinite;}
-	@keyframes phobia {
-		0% { color: #0d0d0d; }
-		50% { color: #dd0000; }
-		100% { color: #0d0d0d; }
-}
+.phobia			{color: #dd0000;	font-weight: bold;}
 
 .icon 					{height: 1em;	width: auto;}
 

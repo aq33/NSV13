@@ -48,6 +48,7 @@ GLOBAL_LIST_INIT(military_storage_allowed, typecacheof(list(
 	/obj/item/ammo_box,
 	/obj/item/ammo_casing,
 	/obj/item/detective_scanner,
+	/obj/item/reagent_containers/spray/luminol,
 	/obj/item/taperecorder,
 	/obj/item/gun,
 	/obj/item/melee,
@@ -181,3 +182,33 @@ GLOBAL_LIST_INIT(civilian_hardsuit_allowed, typecacheof(list(
 	/obj/item/pinpointer)))
 
 //jest masa przedmiotów które mogłem pominąć, chodzi o to by małe przedmioty było można tak samo dać do exo_storage
+
+/// AQUILA - narzędzia, których można używać prosto ze skrzynki (port tgstation/tgstation#88252)
+GLOBAL_LIST_INIT(tool_items, typecacheof(list(
+	/obj/item/airlock_painter,
+	/obj/item/analyzer,
+	/obj/item/assembly/signaler,
+	/obj/item/construction/rcd,
+	/obj/item/construction/rld,
+	/obj/item/crowbar,
+	/obj/item/extinguisher/mini,
+	/obj/item/flashlight,
+	/obj/item/forcefield_projector,
+	/obj/item/geiger_counter,
+	/obj/item/holosign_creator/atmos,
+	/obj/item/holosign_creator/engineering,
+	/obj/item/inducer,
+	/obj/item/lightreplacer,
+	/obj/item/multitool,
+	/obj/item/pipe_dispenser,
+	/obj/item/pipe_painter,
+	/obj/item/plunger,
+	/obj/item/powertool,
+	/obj/item/radio,
+	/obj/item/screwdriver,
+	/obj/item/stack/cable_coil,
+	/obj/item/t_scanner,
+	/obj/item/weldingtool,
+	/obj/item/wirecutters,
+	/obj/item/wrench,
+)))

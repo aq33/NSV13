@@ -3,12 +3,12 @@
 	name = "Fungal tuberculosis"
 	max_stages = 5
 	spread_text = "Airborne"
-	cure_text = "Spaceacillin & salbutamol"
+	cure_text = "Spacyklina i salbutamol"
 	cures = list(/datum/reagent/medicine/spaceacillin, /datum/reagent/medicine/salbutamol)
 	agent = "Fungal Tubercle bacillus Cosmosis"
 	viable_mobtypes = list(/mob/living/carbon/human)
 	cure_chance = 5//like hell are you getting out of hell
-	desc = "A rare highly transmissible virulent virus. Few samples exist, rumoured to be carefully grown and cultured by clandestine bio-weapon specialists. Causes fever, blood vomiting, lung damage, weight loss, and fatigue."
+	desc = "Rzadki, wysoce zakaźny, zjadliwy wirus. Istnieje niewiele próbek, podobno starannie hodowanych przez tajnych specjalistów od broni biologicznej. Powoduje gorączkę, wymioty krwią, uszkodzenie płuc, utratę wagi i zmęczenie."
 	required_organs = list(/obj/item/organ/lungs)
 	danger = DISEASE_BIOHAZARD
 	bypasses_immunity = TRUE // TB primarily impacts the lungs; it's also bacterial or fungal in nature; viral immunity should do nothing.
@@ -19,21 +19,21 @@
 		if(2, 3)
 			if(prob(2))
 				affected_mob.emote("cough")
-				to_chat(affected_mob, "<span class='danger'>Your chest hurts.</span>")
+				to_chat(affected_mob, "<span class='danger'>Boli cię klatka piersiowa.</span>")
 			if(prob(2))
-				to_chat(affected_mob, "<span class='danger'>Your stomach violently rumbles!</span>")
+				to_chat(affected_mob, "<span class='danger'>Twój żołądek gwałtownie burczy!</span>")
 			if(prob(5))
-				to_chat(affected_mob, "<span class='danger'>You feel a cold sweat form.</span>")
+				to_chat(affected_mob, "<span class='danger'>Oblewa cię zimny pot.</span>")
 		if(4, 5)
 			if(prob(2))
-				to_chat(affected_mob, "<span class='userdanger'>You see four of everything!</span>")
+				to_chat(affected_mob, "<span class='userdanger'>Widzisz wszystko poczwórnie!</span>")
 				affected_mob.Dizzy(5)
 			if(prob(2))
-				to_chat(affected_mob, "<span class='danger'>You feel a sharp pain from your lower chest!</span>")
+				to_chat(affected_mob, "<span class='danger'>Czujesz ostry ból w dolnej części klatki piersiowej!</span>")
 				affected_mob.adjustOxyLoss(5)
 				affected_mob.emote("gasp")
 			if(prob(10))
-				to_chat(affected_mob, "<span class='danger'>You feel air escape from your lungs painfully.</span>")
+				to_chat(affected_mob, "<span class='danger'>Czujesz, jak powietrze boleśnie ucieka ci z płuc.</span>")
 				affected_mob.adjustOxyLoss(25)
 				affected_mob.emote("gasp")
 			if(stage >= 5)
@@ -42,10 +42,10 @@
 					affected_mob.adjustStaminaLoss(70)
 				if(prob(10))
 					affected_mob.adjustStaminaLoss(100)
-					affected_mob.visible_message("<span class='warning'>[affected_mob] faints!</span>", "<span class='userdanger'>You surrender yourself and feel at peace.</span>")
+					affected_mob.visible_message("<span class='warning'>[affected_mob] faints!</span>", "<span class='userdanger'>Poddajesz się i czujesz spokój.</span>")
 					affected_mob.AdjustSleeping(100)
 				if(prob(2))
-					to_chat(affected_mob, "<span class='userdanger'>You feel your mind relax and your thoughts drift!</span>")
+					to_chat(affected_mob, "<span class='userdanger'>Czujesz, jak twój umysł się rozluźnia, a myśli dryfują!</span>")
 					affected_mob.confused = min(100, affected_mob.confused + 8)
 				if(prob(10))
 					affected_mob.vomit(20)

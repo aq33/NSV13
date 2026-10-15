@@ -41,7 +41,7 @@
 	new /obj/structure/falsewall/brass(loc)
 	qdel(src)
 
-/obj/structure/falsewall/attack_hand(mob/user)
+/obj/structure/falsewall/attack_hand(mob/user, list/modifiers)
 	if(opening)
 		return
 	. = ..()
@@ -90,22 +90,22 @@
 
 /obj/structure/falsewall/attackby(obj/item/W, mob/user, params)
 	if(opening)
-		to_chat(user, "<span class='warning'>You must wait until the door has stopped moving!</span>")
+		to_chat(user, "<span class='warning'>Musisz zaczekać, aż drzwi przestaną się ruszać!</span>")
 		return
 
 	if(W.tool_behaviour == TOOL_SCREWDRIVER)
 		if(density)
 			var/turf/T = get_turf(src)
 			if(T.density)
-				to_chat(user, "<span class='warning'>[src] is blocked!</span>")
+				to_chat(user, "<span class='warning'>[src] jest zablokowana!</span>")
 				return
 			if(!isfloorturf(T))
-				to_chat(user, "<span class='warning'>[src] bolts must be tightened on the floor!</span>")
+				to_chat(user, "<span class='warning'>Śruby [src] muszą zostać dokręcone do podłogi!</span>")
 				return
-			user.visible_message("<span class='notice'>[user] tightens some bolts on the wall.</span>", "<span class='notice'>You tighten the bolts on the wall.</span>")
+			user.visible_message("<span class='notice'>[user] dokręca kilka śrub w ścianie.</span>", "<span class='notice'>Dokręcasz śruby w ścianie.</span>")
 			ChangeToWall()
 		else
-			to_chat(user, "<span class='warning'>You can't reach, close it first!</span>")
+			to_chat(user, "<span class='warning'>Nie sięgasz, najpierw ją zamknij!</span>")
 
 	else if(W.tool_behaviour == TOOL_WELDER)
 		if(W.use_tool(src, user, 0, volume=50))
@@ -117,7 +117,7 @@
 		return ..()
 
 /obj/structure/falsewall/proc/dismantle(mob/user, disassembled=TRUE, obj/item/tool = null)
-	user.visible_message("[user] dismantles the false wall.", "<span class='notice'>You dismantle the false wall.</span>")
+	user.visible_message("[user] rozbiera fałszywą ścianę.", "<span class='notice'>Rozbierasz fałszywą ścianę.</span>")
 	if(tool)
 		tool.play_tool_sound(src, 100)
 	else
@@ -137,7 +137,7 @@
 	return null
 
 /obj/structure/falsewall/examine_status(mob/user) //So you can't detect falsewalls by examine.
-	to_chat(user, "<span class='notice'>The outer plating is <b>welded</b> firmly in place.</span>")
+	to_chat(user, "<span class='notice'>Zewnętrzne poszycie jest mocno <b>przyspawane</b>.</span>")
 	return null
 
 /*
@@ -153,7 +153,7 @@
 	mineral = /obj/item/stack/sheet/plasteel
 
 /obj/structure/falsewall/reinforced/examine_status(mob/user)
-	to_chat(user, "<span class='notice'>The outer <b>grille</b> is fully intact.</span>")
+	to_chat(user, "<span class='notice'>Zewnętrzna <b>krata</b> jest nienaruszona.</span>")
 	return null
 
 /obj/structure/falsewall/reinforced/attackby(obj/item/tool, mob/user)
@@ -180,7 +180,7 @@
 	radiate()
 	return ..()
 
-/obj/structure/falsewall/uranium/attack_hand(mob/user)
+/obj/structure/falsewall/uranium/attack_hand(mob/user, list/modifiers)
 	radiate()
 	. = ..()
 

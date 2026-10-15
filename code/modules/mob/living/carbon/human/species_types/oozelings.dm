@@ -9,7 +9,7 @@
 	hair_alpha = 150
 	mutantlungs = /obj/item/organ/lungs/oozeling
 	mutanttongue = /obj/item/organ/tongue/slime
-	meat = /obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/slime
+	meat = /obj/item/food/meat/slab/human/mutant/slime
 	exotic_blood = /datum/reagent/toxin/slimeooze
 	damage_overlay_type = ""
 	var/datum/action/innate/regenerate_limbs/regenerate_limbs
@@ -57,7 +57,7 @@
 	if(!H.blood_volume)
 		H.blood_volume += 5
 		H.adjustBruteLoss(5)
-		to_chat(H, "<span class='danger'>You feel empty!</span>")
+		to_chat(H, "<span class='danger'>Czujesz pustkę!</span>")
 	if(H.nutrition >= NUTRITION_LEVEL_WELL_FED && H.blood_volume <= 672)
 		if(H.nutrition >= NUTRITION_LEVEL_ALMOST_FULL)
 			H.adjust_nutrition(-5)
@@ -68,12 +68,12 @@
 		if(H.nutrition <= NUTRITION_LEVEL_STARVING)
 			H.blood_volume -= 8
 			if(prob(5))
-				to_chat(H, "<span class='info'>You're starving! Get some food!</span>")
+				to_chat(H, "<span class='info'>Umierasz z głodu! Zjedz coś!</span>")
 		else
 			if(prob(35))
 				H.blood_volume -= 2
 				if(prob(5))
-					to_chat(H, "<span class='danger'>You're feeling pretty hungry...</span>")
+					to_chat(H, "<span class='danger'>Jesteś dość głodny...</span>")
 	var/atmos_sealed = FALSE
 	if(H.wear_suit && H.head && isclothing(H.wear_suit) && isclothing(H.head))
 		var/obj/item/clothing/CS = H.wear_suit
@@ -91,11 +91,11 @@
 			if(environment.get_moles(GAS_H2O) >= 1)
 				H.blood_volume -= 15
 				if(prob(50))
-					to_chat(H, "<span class='danger'>Your ooze melts away rapidly in the water vapor!</span>")
+					to_chat(H, "<span class='danger'>Twój szlam szybko topi się w parze wodnej!</span>")
 			if(H.blood_volume <= 672 && environment.get_moles(GAS_PLASMA) >= 1)
 				H.blood_volume += 15
 	if(H.blood_volume < BLOOD_VOLUME_OKAY && prob(5))
-		to_chat(H, "<span class='danger'>You feel drained!</span>")
+		to_chat(H, "<span class='danger'>Czujesz się wyczerpany!</span>")
 	if(H.blood_volume < BLOOD_VOLUME_OKAY)
 		Cannibalize_Body(H)
 	if(regenerate_limbs)
@@ -111,7 +111,7 @@
 		limbs_to_consume -= list(BODY_ZONE_R_ARM, BODY_ZONE_L_ARM)
 	consumed_limb = H.get_bodypart(pick(limbs_to_consume))
 	consumed_limb.drop_limb()
-	to_chat(H, "<span class='userdanger'>Your [consumed_limb] is drawn back into your body, unable to maintain its shape!</span>")
+	to_chat(H, "<span class='userdanger'>[consumed_limb] wraca do twojego ciała, nie mogąc utrzymać kształtu!</span>")
 	qdel(consumed_limb)
 	H.blood_volume += 80
 	H.nutrition += 20
@@ -135,15 +135,15 @@
 	var/mob/living/carbon/human/H = owner
 	var/list/limbs_to_heal = H.get_missing_limbs()
 	if(!LAZYLEN(limbs_to_heal))
-		to_chat(H, "<span class='notice'>You feel intact enough as it is.</span>")
+		to_chat(H, "<span class='notice'>Czujesz się wystarczająco cały.</span>")
 		return
-	to_chat(H, "<span class='notice'>You focus intently on your missing [limbs_to_heal.len >= 2 ? "limbs" : "limb"]...</span>")
+	to_chat(H, "<span class='notice'>Intensywnie skupiasz się na [limbs_to_heal.len >= 2 ? "brakujących kończynach" : "brakującej kończynie"]...</span>")
 	if(H.blood_volume >= 80*limbs_to_heal.len+BLOOD_VOLUME_OKAY)
 		if(do_after(H, 60, target = H))
 			H.regenerate_limbs()
 			H.blood_volume -= 80*limbs_to_heal.len
 			H.nutrition -= 20*limbs_to_heal.len
-			to_chat(H, "<span class='notice'>...and after a moment you finish reforming!</span>")
+			to_chat(H, "<span class='notice'>...i po chwili kończysz się odtwarzać!</span>")
 		return
 	if(H.blood_volume >= 80)//We can partially heal some limbs
 		while(H.blood_volume >= BLOOD_VOLUME_OKAY+80 && LAZYLEN(limbs_to_heal))
@@ -153,15 +153,15 @@
 				limbs_to_heal -= healed_limb
 				H.blood_volume -= 80
 				H.nutrition -= 20
-			to_chat(H, "<span class='warning'>...but there is not enough of you to fix everything! You must attain more blood volume to heal completely!</span>")
+			to_chat(H, "<span class='warning'>...ale nie starczy cię na naprawę wszystkiego! Musisz zdobyć więcej krwi, żeby się w pełni uleczyć!</span>")
 		return
-	to_chat(H, "<span class='warning'>...but there is not enough of you to go around! You must attain more blood volume to heal!</span>")
+	to_chat(H, "<span class='warning'>...ale nie starczy cię na wszystko! Musisz zdobyć więcej krwi, żeby się uleczyć!</span>")
 
 /datum/species/oozeling/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H)
 	if(chem.type == /datum/reagent/water)
 		if(chem.volume > 10)
 			H.reagents.remove_reagent(chem.type, chem.volume - 10)
-			to_chat(H, "<span class='warning'>The water you consumed is melting away your insides!</span>")
+			to_chat(H, "<span class='warning'>Wypita woda rozpuszcza twoje wnętrzności!</span>")
 		H.blood_volume -= 25
 		H.reagents.remove_reagent(chem.type, chem.metabolization_rate)
 		return TRUE

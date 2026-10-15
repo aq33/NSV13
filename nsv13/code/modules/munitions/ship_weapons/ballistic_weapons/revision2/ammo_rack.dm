@@ -47,7 +47,7 @@
 			if(!AS)
 				return
 			if(!AS.pop())
-				to_chat(usr, "<span class='warning'>[src] displays an error message!</span>")
+				to_chat(usr, "<span class='warning'>[src] wyświetla komunikat o błędzie!</span>")
 		if("unlink")
 			if(!AS)
 				return
@@ -55,7 +55,7 @@
 		if("rename")
 			if(!AS)
 				return
-			var/new_name = stripped_input(usr, message="Enter a new name for [AS]", max_length=MAX_CHARTER_LEN)
+			var/new_name = stripped_input(usr, message="Podaj nową nazwę dla [AS]", max_length=MAX_CHARTER_LEN)
 
 			if(!new_name)
 				return
@@ -102,7 +102,7 @@
 		return TRUE
 	var/obj/item/multitool/M = I
 	M.buffer = src
-	to_chat(user, "<span class='notice'>You add [src] to [M]'s buffer.</span>")
+	to_chat(user, "<span class='notice'>Dodajesz [src] do bufora [M].</span>")
 	return TRUE
 
 /obj/machinery/computer/ammo_sorter/proc/linkSorter(var/obj/machinery/ammo_sorter/AS)
@@ -157,64 +157,64 @@
 	if(!jammed && default_deconstruction_crowbar(I))
 		return
 	// Smacking
-	if(user.a_intent == INTENT_HARM)
+	if(user.combat_mode)
 		return ..()
 	if(busy)
-		to_chat(user, "<span class='warning'>Someone's already working on [src]!</span>")
+		to_chat(user, "<span class='warning'>Ktoś już pracuje przy [src]!</span>")
 		return TRUE
 	if(panel_open && istype(I, /obj/item/reagent_containers))
 		if(jammed)
-			to_chat(user, "<span class='warning'>You can't lubricate a jammed machine!</span>")
+			to_chat(user, "<span class='warning'>Nie możesz smarować zaciętej maszyny!</span>")
 			return TRUE
 		if(durability >= max_durability)
-			to_chat(user, "<span class='warning'>[src] doesn't need any oil right now!</span>")
+			to_chat(user, "<span class='warning'>[src] nie potrzebuje teraz oleju!</span>")
 			return TRUE
 		if(!I.reagents.has_reagent(/datum/reagent/oil))
-			to_chat(user, "<span class='warning'>You need oil to lubricate this!</span>")
+			to_chat(user, "<span class='warning'>Do smarowania potrzebujesz oleju!</span>")
 			return TRUE
 		// get how much oil we have
 		var/oil_amount = min(I.reagents.get_reagent_amount(/datum/reagent/oil), max_durability/repair_multiplier)
 		var/oil_needed = CLAMP(ROUND_UP((max_durability-durability)/repair_multiplier), 1, oil_amount)
 		oil_amount = min(oil_amount, oil_needed)
-		user.visible_message("<span class='notice'>[user] begins lubricating [src]...</span>", \
-					"<span class='notice'>You start lubricating the inner workings of [src]...</span>")
+		user.visible_message("<span class='notice'>[user] zaczyna smarować [src]...</span>", \
+					"<span class='notice'>Zaczynasz smarować wnętrze [src]...</span>")
 		busy = TRUE
 		if(!do_after(user, 5 SECONDS, target=src))
 			busy = FALSE
-			to_chat(user, "<span class='warning'>You were interrupted!</span>")
+			to_chat(user, "<span class='warning'>Przerwano ci!</span>")
 			return TRUE
 		if(!I.reagents.has_reagent(/datum/reagent/oil, oil_amount)) //things can change, check again.
-			to_chat(user, "<span class='warning'>You don't have enough oil left to lubricate [src]!</span>")
+			to_chat(user, "<span class='warning'>Masz za mało oleju, by nasmarować [src]!</span>")
 			busy = FALSE
 			return TRUE
 		user.visible_message("<span class='notice'>[user] lubricates [src].</span>", \
-					"<span class='notice'>You lubricate the inner workings of [src].</span>")
+					"<span class='notice'>Smarujesz wnętrze [src].</span>")
 		durability = min(durability + (oil_amount * repair_multiplier), max_durability)
 		I.reagents.remove_reagent(/datum/reagent/oil, oil_amount)
 		busy = FALSE
 		return TRUE
 	if(jammed && I.tool_behaviour == TOOL_CROWBAR)
 		if(panel_open)
-			to_chat(user, "<span class='notice'>You need to close the panel to get at the jammed machinery.</span>")
+			to_chat(user, "<span class='notice'>Musisz zamknąć panel, by dostać się do zaciętej maszynerii.</span>")
 			return TRUE
 		busy = TRUE
-		user.visible_message("<span class='notice'>[user] begins clearing the jam in [src].</span>", \
-					"<span class='notice'>You being clearing the jam in [src].</span>")
+		user.visible_message("<span class='notice'>[user] zaczyna usuwać zacięcie w [src].</span>", \
+					"<span class='notice'>Zaczynasz usuwać zacięcie w [src].</span>")
 		if(!do_after(user, 10 SECONDS, target=src))
 			busy = FALSE
-			to_chat(user, "<span class='warning'>You were interrupted!</span>")
+			to_chat(user, "<span class='warning'>Przerwano ci!</span>")
 			return TRUE
-		user.visible_message("<span class='notice'>[user] clears the jam in [src].</span>", \
-					"<span class='notice'>You clear the jam in [src].</span>")
+		user.visible_message("<span class='notice'>[user] usuwa zacięcie w [src].</span>", \
+					"<span class='notice'>Usuwasz zacięcie w [src].</span>")
 		playsound(src, 'nsv13/sound/effects/ship/mac_load_unjam.ogg', 100, 1)
 		jammed = FALSE
 		durability += rand(0,5) //give the poor fools a few more uses if they're lucky
 		busy = FALSE
 		return TRUE
 	if(istype(I, /obj/item/ship_weapon/ammunition) || istype(I, /obj/item/powder_bag))
-		to_chat(user, "<span class='notice'>You start to load [src] with [I].</span>")
+		to_chat(user, "<span class='notice'>Zaczynasz ładować [I] do [src].</span>")
 		if(!do_after(user, 0.5 SECONDS , target = src))
-			to_chat(user, "<span class='warning'>You were interrupted!</span>")
+			to_chat(user, "<span class='warning'>Przerwano ci!</span>")
 			return TRUE
 		load(I, user)
 		return TRUE
@@ -236,14 +236,14 @@
 /obj/machinery/ammo_sorter/multitool_act(mob/living/user, obj/item/I)
 	var/obj/item/multitool/M = I
 	if(!(M.buffer && istype(M.buffer, /obj/machinery/computer/ammo_sorter)))
-		to_chat(user, "<span class='warning'>There is no control console in [M]'s buffer.")
+		to_chat(user, "<span class='warning'>W buforze [M] nie ma konsoli sterowania.")
 		return TRUE
 	var/obj/machinery/computer/ammo_sorter/C = M.buffer
 	if(LAZYFIND(C.linked_sorters, src))
-		to_chat(user, "<span class='warning'>This sorter is already linked to [C]!")
+		to_chat(user, "<span class='warning'>Ten sortownik jest już połączony z [C]!")
 		return TRUE
 	C.linkSorter(src)
-	to_chat(user, "<span class='notice'>You link [src] to [C].")
+	to_chat(user, "<span class='notice'>Łączysz [src] z [C].")
 	return TRUE
 
 /obj/machinery/ammo_sorter/Destroy()
@@ -255,20 +255,20 @@
 /obj/machinery/ammo_sorter/examine(mob/user)
 	. = ..()
 	if(panel_open)
-		. += "<span class='notice'>It's maintenance panel is open, you could probably add some oil to lubricate it.</span>" //it didnt tell the players if this was the case before.
+		. += "<span class='notice'>Jego panel serwisowy jest otwarty, pewnie można dodać trochę oleju, by go nasmarować.</span>" //it didnt tell the players if this was the case before.
 	if(jammed)
-		. += "<span class='notice'>It's jammed shut.</span>"	//if it's jammed, don't show durability. only thing they need to know is that it's jammed.
+		. += "<span class='notice'>Jest zacięty.</span>"	//if it's jammed, don't show durability. only thing they need to know is that it's jammed.
 	else
 		switch(durability)
 			if(71 to 100)
-				. += "<span class='notice'>It doesn't need any maintenance right now.</span>"
+				. += "<span class='notice'>Nie wymaga teraz konserwacji.</span>"
 			if(31 to 70)
-				. += "<span class='notice'>It might need some maintenance done soon.</span>"
+				. += "<span class='notice'>Może wkrótce wymagać konserwacji.</span>"
 			if(11 to 30)
-				. += "<span class='notice'>It could really do with some maintenance.</span>"
+				. += "<span class='notice'>Przydałaby mu się konserwacja.</span>"
 			if(0 to 10)
-				. += "<span class='notice'>It's completely wrecked.</span>"
-	. += "<br/><span class='notice'>It's currently holding [length(loaded)]/[max_capacity] items:</span>"
+				. += "<span class='notice'>Jest całkowicie zniszczony.</span>"
+	. += "<br/><span class='notice'>Obecnie trzyma przedmiotów: [length(loaded)]/[max_capacity]:</span>"
 	if(length(loaded))
 		var/listofitems = list()
 		for(var/obj/item/C in loaded)
@@ -293,7 +293,7 @@
 		return FALSE
 	//You can store any kind of ammo here for now.
 	if(istype(A, /obj/item/ship_weapon/ammunition) || istype(A, /obj/item/powder_bag))
-		to_chat(user, "<span class='notice'>You start to load [src] with [A].</span>")
+		to_chat(user, "<span class='notice'>Zaczynasz ładować [A] do [src].</span>")
 		if(do_after(user, 2 SECONDS , target = src))
 			load(A, user)
 
@@ -330,7 +330,7 @@
 		return TRUE
 	if(length(loaded) >= max_capacity)
 		if(user)
-			to_chat(user, "<span class='warning'>[src] is full!</span>")
+			to_chat(user, "<span class='warning'>[src] jest pełny!</span>")
 		return FALSE
 	if(jammed || !(istype(A, /obj/item/ship_weapon/ammunition) || istype(A, /obj/item/powder_bag)))
 		return FALSE

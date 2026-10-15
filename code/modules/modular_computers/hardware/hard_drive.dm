@@ -36,7 +36,7 @@
 
 /obj/item/computer_hardware/hard_drive/examine(user)
 	. = ..()
-	. += "<span class='notice'>It has [max_capacity] GQ of storage capacity.</span>"
+	. += "<span class='notice'>Ma [max_capacity] GQ pojemności.</span>"
 
 /// Return true if nothing happens, return false to cancel attack action
 /obj/item/computer_hardware/hard_drive/proc/process_pre_attack(atom/target, mob/living/user, params)
@@ -45,8 +45,8 @@
 /obj/item/computer_hardware/hard_drive/diagnostics(var/mob/user)
 	..()
 	// 999 is a byond limit that is in place. It's unlikely someone will reach that many files anyway, since you would sooner run out of space.
-	to_chat(user, "NT-NFS File Table Status: [stored_files.len]/999")
-	to_chat(user, "Storage capacity: [used_capacity]/[max_capacity]GQ")
+	to_chat(user, "Stan tabeli plików NT-NFS: [stored_files.len]/999")
+	to_chat(user, "Pojemność: [used_capacity]/[max_capacity] GQ")
 
 // Use this proc to add file to the drive. Returns 1 on success and 0 on failure. Contains necessary sanity checks.
 /obj/item/computer_hardware/hard_drive/proc/store_file(var/datum/computer_file/F)

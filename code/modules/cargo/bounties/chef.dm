@@ -1,144 +1,144 @@
 /datum/bounty/item/chef/birthday_cake
 	name = "Birthday Cake"
-	description = "Nanotrasen's birthday is coming up! Ship them a birthday cake to celebrate!"
+	description = "Zbliżają się urodziny Nanotrasen! Wyślijcie tort urodzinowy, by to uczcić!"
 	reward = 4000
-	wanted_types = list(/obj/item/reagent_containers/food/snacks/store/cake/birthday, /obj/item/reagent_containers/food/snacks/cakeslice/birthday)
+	wanted_types = list(/obj/item/food/cake/birthday, /obj/item/food/cakeslice/birthday)
 
 /datum/bounty/item/chef/soup
 	name = "Soup"
-	description = "To quell the homeless uprising, Nanotrasen will be serving soup to all underpaid workers. Ship any type of soup."
+	description = "Aby stłumić bunt bezdomnych, Nanotrasen będzie serwować zupę wszystkim niedopłacanym pracownikom. Wyślijcie dowolną zupę."
 	reward = 3000
 	required_count = 3
-	wanted_types = list(/obj/item/reagent_containers/food/snacks/soup)
+	wanted_types = list(/obj/item/food/soup)
 
 /datum/bounty/item/chef/popcorn
 	name = "Popcorn Bags"
-	description = "Upper management wants to host a movie night. Ship bags of popcorn for the occasion."
+	description = "Wyższe kierownictwo chce zorganizować wieczór filmowy. Wyślijcie torebki popcornu na tę okazję."
 	reward = 3000
 	required_count = 3
-	wanted_types = list(/obj/item/reagent_containers/food/snacks/popcorn)
+	wanted_types = list(/obj/item/food/popcorn)
 
 /datum/bounty/item/chef/onionrings
 	name = "Onion Rings"
-	description = "Nanotrasen is remembering Saturn day. Ship onion rings to show the station's support."
+	description = "Nanotrasen obchodzi Dzień Saturna. Wyślijcie krążki cebulowe, by okazać wsparcie stacji."
 	reward = 3000
 	required_count = 3
-	wanted_types = list(/obj/item/reagent_containers/food/snacks/onionrings)
+	wanted_types = list(/obj/item/food/onionrings)
 
 /datum/bounty/item/chef/icecreamsandwich
 	name = "Ice Cream Sandwiches"
-	description = "Upper management has been screaming non-stop for ice cream. Please send some."
+	description = "Wyższe kierownictwo bez przerwy domaga się lodów. Wyślijcie trochę."
 	reward = 4000
 	required_count = 3
-	wanted_types = list(/obj/item/reagent_containers/food/snacks/icecreamsandwich)
+	wanted_types = list(/obj/item/food/icecreamsandwich)
 
 /datum/bounty/item/chef/strawberryicecreamsandwich
 	name = " Strawberry Ice Cream Sandwiches"
-	description = "Upper management has been screaming non-stop for more flavourful ice cream. Please send some."
+	description = "Wyższe kierownictwo bez przerwy domaga się lodów o wyrazistszym smaku. Wyślijcie trochę."
 	reward = 5000
 	required_count = 3
-	wanted_types = list(/obj/item/reagent_containers/food/snacks/strawberryicecreamsandwich)
+	wanted_types = list(/obj/item/food/strawberryicecreamsandwich)
 
 /datum/bounty/item/chef/bread
 	name = "Bread"
-	description = "Problems with central planning have led to bread prices skyrocketing. Ship some bread to ease tensions."
+	description = "Problemy z planowaniem centralnym sprawiły, że ceny chleba poszybowały w górę. Wyślijcie trochę chleba, by załagodzić napięcia."
 	reward = 1000
-	wanted_types = list(/obj/item/reagent_containers/food/snacks/store/bread, /obj/item/reagent_containers/food/snacks/breadslice, /obj/item/reagent_containers/food/snacks/bun, /obj/item/reagent_containers/food/snacks/pizzabread, /obj/item/reagent_containers/food/snacks/rawpastrybase)
+	wanted_types = list(/obj/item/food/bread, /obj/item/food/breadslice, /obj/item/food/bun, /obj/item/food/pizzabread, /obj/item/food/rawpastrybase)
 
 /datum/bounty/item/chef/pie
 	name = "Pie"
-	description = "3.14159? No! CentCom management wants edible pie! Ship a whole one."
+	description = "3,14159? Nie! Kierownictwo Centrali chce jadalnego ciasta! Wyślijcie całe."
 	reward = 3142
-	wanted_types = list(/obj/item/reagent_containers/food/snacks/pie)
+	wanted_types = list(/obj/item/food/pie)
 
 /datum/bounty/item/chef/salad
 	name = "Salad or Rice Bowls"
-	description = "CentCom management is going on a health binge. Your order is to ship salad or rice bowls."
+	description = "Kierownictwo Centrali przechodzi na zdrowe odżywianie. Macie wysłać sałatki albo miski ryżu."
 	reward = 3000
 	required_count = 3
-	wanted_types = list(/obj/item/reagent_containers/food/snacks/salad)
+	wanted_types = list(/obj/item/food/salad)
 
 /datum/bounty/item/chef/carrotfries
 	name = "Carrot Fries"
-	description = "Night sight can mean life or death! A shipment of carrot fries is the order."
+	description = "Widzenie w nocy może oznaczać życie albo śmierć! Zamówienie: frytki z marchewki."
 	reward = 3500
 	required_count = 3
-	wanted_types = list(/obj/item/reagent_containers/food/snacks/carrotfries)
+	wanted_types = list(/obj/item/food/carrotfries)
 
 /datum/bounty/item/chef/superbite
 	name = "Super Bite Burger"
-	description = "Commander Tubbs thinks he can set a competitive eating world record. All he needs is a super bite burger shipped to him."
+	description = "Komandor Tubbs myśli, że może pobić rekord świata w jedzeniu na czas. Potrzebuje tylko burgera super kęs."
 	reward = 12000
-	wanted_types = list(/obj/item/reagent_containers/food/snacks/burger/superbite)
+	wanted_types = list(/obj/item/food/burger/superbite)
 
 /datum/bounty/item/chef/poppypretzel
 	name = "Poppy Pretzel"
-	description = "Central Command needs a reason to fire their HR head. Send over a poppy pretzel to force a failed drug test."
+	description = "Centrala potrzebuje pretekstu, by zwolnić szefa działu kadr. Wyślijcie precla z makiem, by oblał test na narkotyki."
 	reward = 3000
-	wanted_types = list(/obj/item/reagent_containers/food/snacks/poppypretzel)
+	wanted_types = list(/obj/item/food/poppypretzel)
 
 /datum/bounty/item/chef/cubancarp
 	name = "Cuban Carp"
-	description = "To celebrate the birth of Castro XXVII, ship one cuban carp to CentCom."
+	description = "Aby uczcić narodziny Castro XXVII, wyślijcie do Centrali jednego kubańskiego karpia."
 	reward = 8000
-	wanted_types = list(/obj/item/reagent_containers/food/snacks/cubancarp)
+	wanted_types = list(/obj/item/food/cubancarp)
 
 /datum/bounty/item/chef/hotdog
 	name = "Hot Dog"
-	description = "Nanotrasen is conducting taste tests to determine the best hot dog recipe. Ship your station's version to participate."
+	description = "Nanotrasen przeprowadza testy smaku, by ustalić najlepszy przepis na hot doga. Wyślijcie wersję z waszej stacji, by wziąć udział."
 	reward = 8000
-	wanted_types = list(/obj/item/reagent_containers/food/snacks/hotdog)
+	wanted_types = list(/obj/item/food/hotdog)
 
 /datum/bounty/item/chef/eggplantparm
 	name = "Eggplant Parmigianas"
-	description = "A famous singer will be arriving at CentCom, and their contract demands that they only be served Eggplant Parmigiana. Ship some, please!"
+	description = "Do Centrali przyjeżdża słynny piosenkarz, a jego kontrakt wymaga, by podawano mu wyłącznie bakłażana po parmeńsku. Wyślijcie trochę!"
 	reward = 3500
 	required_count = 3
-	wanted_types = list(/obj/item/reagent_containers/food/snacks/eggplantparm)
+	wanted_types = list(/obj/item/food/eggplantparm)
 
 /datum/bounty/item/chef/muffin
 	name = "Muffins"
-	description = "The Muffin Man is visiting CentCom, but he's forgotten his muffins! Your order is to rectify this."
+	description = "Muffin Man odwiedza Centralę, ale zapomniał muffinek! Macie temu zaradzić."
 	reward = 3000
 	required_count = 3
-	wanted_types = list(/obj/item/reagent_containers/food/snacks/muffin)
+	wanted_types = list(/obj/item/food/muffin)
 
 /datum/bounty/item/chef/chawanmushi
 	name = "Chawanmushi"
-	description = "Nanotrasen wants to improve relations with its sister company, Japanotrasen. Ship Chawanmushi immediately."
+	description = "Nanotrasen chce poprawić relacje ze swoją siostrzaną firmą, Japanotrasen. Natychmiast wyślijcie chawanmushi."
 	reward = 8000
-	wanted_types = list(/obj/item/reagent_containers/food/snacks/chawanmushi)
+	wanted_types = list(/obj/item/food/chawanmushi)
 
 /datum/bounty/item/chef/kebab
 	name = "Kebabs"
-	description = "Remove all kebab from station you are best food. Ship to CentCom to remove from the premises."
+	description = "Usunąć kebab ze stacji, ty najlepsze jedzenie. Wyślij do Centrali, by usunąć z terenu."
 	reward = 3500
 	required_count = 3
-	wanted_types = list(/obj/item/reagent_containers/food/snacks/kebab)
+	wanted_types = list(/obj/item/food/kebab)
 
 /datum/bounty/item/chef/soylentgreen
 	name = "Soylent Green"
-	description = "CentCom has heard wonderful things about the product 'Soylent Green', and would love to try some. If you endulge them, expect a pleasant bonus."
+	description = "Centrala słyszała wspaniałe rzeczy o produkcie „Soylent Green” i chętnie by go spróbowała. Jeśli spełnicie tę zachciankę, spodziewajcie się miłej premii."
 	reward = 5000
-	wanted_types = list(/obj/item/reagent_containers/food/snacks/soylentgreen)
+	wanted_types = list(/obj/item/food/soylentgreen)
 
 /datum/bounty/item/chef/pancakes
 	name = "Pancakes"
-	description = "Here at Nanotrasen we consider employees to be family. And you know what families love? Pancakes. Ship a baker's dozen."
+	description = "W Nanotrasen uważamy pracowników za rodzinę. A wiecie, co rodziny kochają? Naleśniki. Wyślijcie piekarski tuzin."
 	reward = 5000
 	required_count = 13
-	wanted_types = list(/obj/item/reagent_containers/food/snacks/pancakes)
+	wanted_types = list(/obj/item/food/pancakes)
 
 /datum/bounty/item/chef/nuggies
 	name = "Chicken Nuggets"
-	description = "The vice president's son won't shut up about chicken nuggies. Would you mind shipping some?"
+	description = "Syn wiceprezesa nie przestaje gadać o kurczakowych nuggetsach. Moglibyście wysłać trochę?"
 	reward = 4000
 	required_count = 6
-	wanted_types = list(/obj/item/reagent_containers/food/snacks/nugget)
+	wanted_types = list(/obj/item/food/nugget)
 
 /datum/bounty/item/chef/parmesan
 	name = "Parmesan Wheel"
-	description = "We're having pasta for dinner, but we ran out of parmesan. Send us a wheel."
+	description = "Na obiad jest makaron, ale skończył nam się parmezan. Wyślijcie nam krąg."
 	reward = 10000
 	required_count = 1
-	wanted_types = list(/obj/item/reagent_containers/food/snacks/store/cheesewheel/parmesan)
+	wanted_types = list(/obj/item/food/cheese/wheel/parmesan)

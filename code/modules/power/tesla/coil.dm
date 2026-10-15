@@ -46,7 +46,7 @@
 /obj/machinery/power/tesla_coil/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += "<span class='notice'>The status display reads: Power generation at <b>[input_power_multiplier*100]%</b>.<br>Shock interval at <b>[zap_cooldown*0.1]</b> seconds.</span>"
+		. += "<span class='notice'>Wyświetlacz stanu pokazuje: wytwarzana moc: <b>[input_power_multiplier*100]%</b>.<br>Odstęp między wyładowaniami: <b>[zap_cooldown*0.1]</b> s.</span>"
 
 /obj/machinery/power/tesla_coil/on_construction()
 	if(anchored)

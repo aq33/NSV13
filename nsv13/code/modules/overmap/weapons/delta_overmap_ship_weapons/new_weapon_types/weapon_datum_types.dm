@@ -7,7 +7,7 @@
 	burst_size = 1
 	fire_delay = 3.5 SECONDS
 	optimal_range = 50
-	select_alert = "<span class='notice'>Naval artillery primed.</span>"
+	select_alert = "<span class='notice'>Artyleria okrętowa gotowa.</span>"
 	overmap_firing_sounds = list('nsv13/sound/effects/ship/battleship_gun2.ogg')
 	overmap_select_sound = 'nsv13/sound/effects/ship/mac_ready.ogg'
 	screen_shake = 2
@@ -35,7 +35,7 @@
 	burst_size = 1
 	fire_delay = 1.5 SECONDS
 	optimal_range = 20
-	select_alert = "<span class='notice'>Charging railgun hardpoints...</span>"
+	select_alert = "<span class='notice'>Ładowanie punktów mocowania działa szynowego...</span>"
 	overmap_firing_sounds = list('nsv13/sound/effects/ship/railgun_fire.ogg')
 	overmap_select_sound = 'nsv13/sound/effects/ship/mac_hold.ogg'
 	screen_shake = 1
@@ -57,7 +57,7 @@
 	burst_size = 1
 	fire_delay = 1 SECONDS
 	optimal_range = 50
-	select_alert = "<span class='notice'>Charging hybrid railgun hardpoints...</span>"
+	select_alert = "<span class='notice'>Ładowanie punktów mocowania hybrydowego działa szynowego...</span>"
 	overmap_firing_sounds = list('nsv13/sound/effects/ship/mac_fire.ogg')
 	overmap_select_sound = 'nsv13/sound/effects/ship/mac_charge.ogg'
 	weapon_aim_flags = OSW_AIMING_BEAM
@@ -69,7 +69,7 @@
 	standard_projectile_type = /obj/item/projectile/guided_munition/torpedo
 	burst_size = 1
 	fire_delay = 0.5 SECONDS
-	select_alert = "<span class='notice'>Torpedo target acquisition systems: online.</span>"
+	select_alert = "<span class='notice'>Systemy namierzania torped: aktywne.</span>"
 	overmap_firing_sounds = list(
 		'nsv13/sound/effects/ship/torpedo.ogg',
 		'nsv13/sound/effects/ship/freespace2/m_shrike.wav',
@@ -114,7 +114,7 @@
 	optimal_range = 15
 	overmap_select_sound = 'nsv13/sound/effects/ship/pdc_start.ogg'
 	overmap_firing_sounds = list('nsv13/sound/weapons/pdc_single.ogg')
-	select_alert = "<span class='notice'>Activating anti-air guns..</span>"
+	select_alert = "<span class='notice'>Włączanie dział przeciwlotniczych..</span>"
 	miss_chance = 33
 	max_miss_distance = 6
 	ai_fire_delay = 1 SECONDS
@@ -138,7 +138,7 @@
 	optimal_range = 20
 	overmap_select_sound = 'nsv13/sound/effects/ship/phaser_adjust.ogg'
 	overmap_firing_sounds = list('nsv13/sound/effects/ship/burst_phaser.ogg', 'nsv13/sound/effects/ship/burst_phaser2.ogg')
-	select_alert = "<span class='notice'>Activating frontal phasers..</span>"
+	select_alert = "<span class='notice'>Włączanie przednich fazerów..</span>"
 	miss_chance = 33
 	max_miss_distance = 6
 	ai_fire_delay = 0.5 SECONDS
@@ -153,7 +153,7 @@
 	burst_size = 1
 	fire_delay = 1.5 SECONDS
 	optimal_range = 60
-	select_alert = "<span class='notice'>Phaser banks standing by...</span>"
+	select_alert = "<span class='notice'>Baterie fazerów w gotowości...</span>"
 	overmap_firing_sounds = list('nsv13/sound/effects/ship/phaser.ogg')
 	overmap_select_sound = 'nsv13/sound/effects/ship/phaser_select.ogg' //Sound effect provided by: "All Sounds" https://www.youtube.com/watch?v=EpaCJ75T3fo under creative commons. Trimmed by Kmc2000
 	screen_shake = 1
@@ -173,7 +173,7 @@
 	burst_fire_delay = 0.25 SECONDS
 	fire_delay = 1.5 SECONDS
 	optimal_range = 16
-	select_alert = "<span class='notice'>Light phaser banks standing by...</span>"
+	select_alert = "<span class='notice'>Baterie lekkich fazerów w gotowości...</span>"
 	overmap_firing_sounds = list('nsv13/sound/effects/ship/burst_phaser.ogg')
 	overmap_select_sound = 'nsv13/sound/effects/ship/phaser_select.ogg'
 	miss_chance = 20
@@ -187,7 +187,7 @@
 	standard_projectile_type = /obj/item/projectile/beam/laser/heavylaser/bsa
 	burst_size = 1
 	fire_delay = 20 SECONDS
-	select_alert = "<span class='notice'>Bluespace artillery ready.</span>"
+	select_alert = "<span class='notice'>Artyleria bluespace gotowa.</span>"
 	overmap_firing_sounds = list('nsv13/sound/weapons/bsa_fire.ogg')
 	overmap_select_sound = 'nsv13/sound/weapons/bsa_select.ogg'
 	screen_shake = 5
@@ -211,7 +211,7 @@
 	burst_size = 1
 	fire_delay = 0.5 SECONDS
 	optimal_range = 30
-	select_alert = "<span class='notice'>Missile target acquisition systems: online.</span>"
+	select_alert = "<span class='notice'>Systemy namierzania rakiet: aktywne.</span>"
 	overmap_firing_sounds = list(
 		'nsv13/sound/effects/ship/torpedo.ogg',
 		'nsv13/sound/effects/ship/freespace2/m_shrike.wav',
@@ -252,7 +252,7 @@
 	optimal_range = 18
 	overmap_select_sound = 'nsv13/sound/effects/ship/pdc_start.ogg'
 	overmap_firing_sounds = list('nsv13/sound/effects/fighters/autocannon.ogg')
-	select_alert = "<span class='notice'>Cannon selected. DRADIS assisted targeting: online.</span>"
+	select_alert = "<span class='notice'>Wybrano działo. Celowanie wspomagane DRADIS-em: aktywne.</span>"
 	firing_arc = 20
 	weapon_facing_flags = OSW_FACING_FRONT
 	weapon_firing_flags = OSW_ALWAYS_FIRES_FORWARD
@@ -270,7 +270,7 @@
 	optimal_range = 18
 	overmap_select_sound = 'nsv13/sound/effects/ship/pdc_start.ogg'
 	overmap_firing_sounds = list('nsv13/sound/effects/fighters/BRRTTTTTT.ogg')
-	select_alert = "<span class='notice'>Cannon selected. DRADIS assisted targeting: online..</span>"
+	select_alert = "<span class='notice'>Wybrano działo. Celowanie wspomagane DRADIS-em: aktywne..</span>"
 	firing_arc = 20
 	weapon_facing_flags = OSW_FACING_FRONT
 	weapon_firing_flags = OSW_ALWAYS_FIRES_FORWARD
@@ -310,7 +310,7 @@
 	optimal_range = 18
 	overmap_select_sound = 'nsv13/sound/effects/ship/pdc_start.ogg'
 	overmap_firing_sounds = list('nsv13/sound/effects/fighters/autocannon.ogg')
-	select_alert = "<span class='notice'>Primary mount selected.</span>"
+	select_alert = "<span class='notice'>Wybrano główne stanowisko.</span>"
 	weapon_control_flags = OSW_CONTROL_PILOT|OSW_CONTROL_GUNNER
 	weapon_firing_flags = OSW_ALWAYS_FIRES_FORWARD
 	weapon_slot = OSW_FIGHTER_MAIN_WEAPON
@@ -323,7 +323,7 @@
 	burst_size = 1
 	fire_delay = 0.5 SECONDS
 	optimal_range = 30
-	select_alert = "<span class='notice'>Secondary mount selected.</span>"
+	select_alert = "<span class='notice'>Wybrano dodatkowe stanowisko.</span>"
 	overmap_firing_sounds = list(
 		'nsv13/sound/effects/ship/torpedo.ogg',
 		'nsv13/sound/effects/ship/freespace2/m_shrike.wav',
@@ -346,7 +346,7 @@
 	burst_size = 2
 	fire_delay = 3 SECONDS
 	optimal_range = 18
-	select_alert = "<span class='notice'>Activating gauss weapon systems...</span>"
+	select_alert = "<span class='notice'>Włączanie systemów broni Gaussa...</span>"
 	overmap_firing_sounds = list('nsv13/sound/effects/ship/gauss.ogg')
 	overmap_select_sound = 'nsv13/sound/effects/ship/mac_hold.ogg'
 	miss_chance = 20
@@ -361,7 +361,7 @@
 	burst_size = 3
 	fire_delay = 0.25 SECONDS
 	optimal_range = 10
-	select_alert = "<span class='notice'>Activating point defense system...</span>"
+	select_alert = "<span class='notice'>Włączanie systemu obrony punktowej...</span>"
 	overmap_firing_sounds = list('nsv13/sound/effects/ship/pdc.ogg','nsv13/sound/effects/ship/pdc2.ogg','nsv13/sound/effects/ship/pdc3.ogg')
 	overmap_select_sound = 'nsv13/sound/effects/ship/mac_hold.ogg'
 	miss_chance = 33
@@ -390,7 +390,7 @@
 	optimal_range = 8
 	overmap_select_sound = 'nsv13/sound/effects/ship/freespace2/computer/escape.wav'
 	overmap_firing_sounds = list('nsv13/sound/effects/ship/flak/flakhit1.ogg','nsv13/sound/effects/ship/flak/flakhit2.ogg','nsv13/sound/effects/ship/flak/flakhit3.ogg')
-	select_alert = "<span class='notice'>Defensive flak screens: <b>OFFLINE</b>. Activating manual flak control.</span>"
+	select_alert = "<span class='notice'>Ochronne zasłony flakowe: <b>WYŁĄCZONE</b>. Włączanie ręcznego sterowania flakiem.</span>"
 	miss_chance = 33
 	max_miss_distance = 8
 	ai_fire_delay = 0.5 SECONDS
@@ -418,7 +418,7 @@
 	fire_delay = 0.5 SECONDS
 	optimal_range = 12
 	standard_projectile_type = /obj/item/projectile/bullet/broadside
-	select_alert = "<span class='notice'>Locking Broadside Cannons...</span>"
+	select_alert = "<span class='notice'>Blokowanie dział burtowych...</span>"
 	overmap_firing_sounds = list('nsv13/sound/effects/ship/broadside.ogg')
 	overmap_select_sound = 'nsv13/sound/effects/ship/mac_load_unjam.ogg'
 	miss_chance = 10
@@ -440,7 +440,7 @@
 	burst_size = 1
 	fire_delay = 0.35 SECONDS
 	optimal_range = 30
-	select_alert = "<span class='notice'>STS missile target acquisition systems: online.</span>" //Tiny message difference for ghost ships with both.
+	select_alert = "<span class='notice'>Systemy namierzania rakiet STS: aktywne.</span>" //Tiny message difference for ghost ships with both.
 	overmap_firing_sounds = list(
 		'nsv13/sound/effects/ship/torpedo.ogg',
 		'nsv13/sound/effects/ship/freespace2/m_shrike.wav',
@@ -470,7 +470,7 @@
 	burst_size = 1
 	fire_delay = 0.35 SECONDS
 	optimal_range = 30
-	select_alert = "<span class='notice'>Laser target acquisition systems: online.</span>"
+	select_alert = "<span class='notice'>Systemy namierzania laserowego: aktywne.</span>"
 	overmap_firing_sounds = list('nsv13/sound/effects/ship/burst_phaser.ogg', 'nsv13/sound/effects/ship/burst_phaser2.ogg')
 	overmap_select_sound = 'nsv13/sound/effects/ship/reload.ogg'
 	permitted_ams_modes = list( "Anti-missile countermeasures" = 1 )
@@ -484,7 +484,7 @@
 	fire_delay = 5 SECONDS //Everyone's right, weapon code is jank...
 	max_ai_range = 25000 //It will continue to
 	standard_projectile_type = /obj/item/projectile/bullet/plasma_caster
-	select_alert = "<span class='notice'>Charging magnetic accelerator...</span>"
+	select_alert = "<span class='notice'>Ładowanie akceleratora magnetycznego...</span>"
 	overmap_firing_sounds = list('nsv13/sound/effects/ship/plasma_gun_fire.ogg')
 	overmap_select_sound = 'nsv13/sound/effects/ship/phaser_select.ogg'
 	ai_fire_delay = 180 SECONDS

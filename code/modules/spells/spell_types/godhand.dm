@@ -25,7 +25,7 @@
 	if(!iscarbon(user)) //Look ma, no hands
 		return
 	if(!(user.mobility_flags & MOBILITY_USE))
-		to_chat(user, "<span class='warning'>You can't reach out!</span>")
+		to_chat(user, "<span class='warning'>Nie możesz sięgnąć!</span>")
 		return
 	..()
 
@@ -69,7 +69,7 @@
 	if(!proximity || target == user || !ismob(target) || !iscarbon(user) || !(user.mobility_flags & MOBILITY_USE)) //exploding after touching yourself would be bad
 		return
 	if(!user.can_speak_vocal())
-		to_chat(user, "<span class='notice'>You can't get the words out!</span>")
+		to_chat(user, "<span class='notice'>Nie możesz wydusić z siebie słów!</span>")
 		return
 	var/mob/M = target
 	do_sparks(4, FALSE, M.loc)
@@ -79,8 +79,8 @@
 	var/atom/A = M.anti_magic_check()
 	if(A)
 		if(isitem(A))
-			target.visible_message("<span class='warning'>[target]'s [A] glows brightly as it wards off the spell!</span>")
-		user.visible_message("<span class='warning'>The feedback blows [user]'s arm off!</span>","<span class='userdanger'>The spell bounces from [M]'s skin back into your arm!</span>")
+			target.visible_message("<span class='warning'>[A] [target] jasno świeci, odpierając zaklęcie!</span>")
+		user.visible_message("<span class='warning'>Sprzężenie zwrotne urywa [user] rękę!</span>","<span class='userdanger'>Zaklęcie odbija się od skóry [M] z powrotem w twoją rękę!</span>")
 		user.flash_act()
 		var/obj/item/bodypart/part = user.get_holding_bodypart_of_item(src)
 		if(part)
@@ -88,7 +88,7 @@
 		return ..()
 	var/obj/item/clothing/suit/hooded/bloated_human/suit = M.get_item_by_slot(ITEM_SLOT_OCLOTHING)
 	if(istype(suit))
-		M.visible_message("<span class='danger'>[M]'s [suit] explodes off of them into a puddle of gore!</span>")
+		M.visible_message("<span class='danger'>[suit] [M] eksploduje, zamieniając się w kałużę krwawej brei!</span>")
 		M.dropItemToGround(suit)
 		qdel(suit)
 		new /obj/effect/gibspawner(M.loc)
@@ -108,15 +108,15 @@
 	if(!proximity || target == user || !isliving(target) || !iscarbon(user)) //getting hard after touching yourself would also be bad
 		return
 	if(!(user.mobility_flags & MOBILITY_USE))
-		to_chat(user, "<span class='warning'>You can't reach out!</span>")
+		to_chat(user, "<span class='warning'>Nie możesz sięgnąć!</span>")
 		return
 	if(!user.can_speak_vocal())
-		to_chat(user, "<span class='notice'>You can't get the words out!</span>")
+		to_chat(user, "<span class='notice'>Nie możesz wydusić z siebie słów!</span>")
 		return
 	var/mob/living/M = target
 	if(M.anti_magic_check())
-		to_chat(user, "<span class='warning'>The spell can't seem to affect [M]!</span>")
-		to_chat(M, "<span class='warning'>You feel your flesh turn to stone for a moment, then revert back!</span>")
+		to_chat(user, "<span class='warning'>Wygląda na to, że zaklęcie nie działa na [M]!</span>")
+		to_chat(M, "<span class='warning'>Czujesz, jak twoje ciało na chwilę zmienia się w kamień, a potem wraca do normy!</span>")
 		..()
 		return
 	M.Stun(40)
@@ -156,7 +156,7 @@
 
 /obj/item/melee/touch_attack/megahonk/attack_self(mob/user)
 	. = ..()
-	to_chat(user, "<span class='notice'>\The [src] disappears, to honk another day.</span>")
+	to_chat(user, "<span class='notice'>[src] znika, by honkać innego dnia.</span>")
 	qdel(src)
 
 /obj/item/melee/touch_attack/bspie
@@ -169,22 +169,22 @@
 
 /obj/item/melee/touch_attack/bspie/attack_self(mob/user)
 	. = ..()
-	to_chat(user, "<span class='notice'>You smear \the [src] on your chest! </span>")
+	to_chat(user, "<span class='notice'>Rozsmarowujesz [src] na klatce piersiowej! </span>")
 	qdel(src)
 
 /obj/item/melee/touch_attack/bspie/afterattack(atom/target, mob/living/carbon/user, proximity)
 	if(!proximity || !iscarbon(target) || !iscarbon(user) || user.handcuffed)
 		return
 	if(target == user)
-		to_chat(user, "<span class='notice'>You smear \the [src] on your chest!</span>")
+		to_chat(user, "<span class='notice'>Rozsmarowujesz [src] na klatce piersiowej!</span>")
 		qdel(src)
 		return
 	var/mob/living/carbon/M = target
 
-	user.visible_message("<span class='warning'>[user] is trying to stuff [M]\s body into \the [src]!</span>")
+	user.visible_message("<span class='warning'>[user] próbuje wepchnąć ciało [M] do [src]!</span>")
 	if(do_mob(user, M, 250))
 		var/name = M.real_name
-		var/obj/item/reagent_containers/food/snacks/pie/cream/body/pie = new(get_turf(M))
+		var/obj/item/food/pie/cream/body/pie = new(get_turf(M))
 		pie.name = "\improper [name] [pie.name]"
 
 		. = ..()

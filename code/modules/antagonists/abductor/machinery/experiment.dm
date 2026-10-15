@@ -10,7 +10,7 @@
 	var/list/history
 	var/list/abductee_minds
 	/// Machine feedback message
-	var/flash = "Awaiting subject."
+	var/flash = "Oczekiwanie na obiekt."
 	var/obj/machinery/abductor/console/console
 	var/message_cooldown = 0
 	var/breakout_time = 450
@@ -39,19 +39,19 @@
 		return
 	if(message_cooldown <= world.time)
 		message_cooldown = world.time + 50
-		to_chat(user, "<span class='warning'>[src]'s door won't budge!</span>")
+		to_chat(user, "<span class='warning'>Drzwi [src] ani drgną!</span>")
 
 /obj/machinery/abductor/experiment/container_resist(mob/living/user)
 	user.changeNext_move(CLICK_CD_BREAKOUT)
 	user.last_special = world.time + CLICK_CD_BREAKOUT
-	user.visible_message("<span class='notice'>You see [user] kicking against the door of [src]!</span>", \
-		"<span class='notice'>You lean on the back of [src] and start pushing the door open... (this will take about [DisplayTimeText(breakout_time)].)</span>", \
-		"<span class='italics'>You hear a metallic creaking from [src].</span>")
+	user.visible_message("<span class='notice'>Widzisz, jak [user] kopie w drzwi [src]!</span>", \
+		"<span class='notice'>Opierasz się o tył [src] i zaczynasz pchać drzwi... (zajmie to około [DisplayTimeText(breakout_time)].)</span>", \
+		"<span class='italics'>Słyszysz metaliczne skrzypienie z [src].</span>")
 	if(do_after(user,(breakout_time), target = src))
 		if(!user || user.stat != CONSCIOUS || user.loc != src || state_open)
 			return
-		user.visible_message("<span class='warning'>[user] successfully broke out of [src]!</span>", \
-			"<span class='notice'>You successfully break out of [src]!</span>")
+		user.visible_message("<span class='warning'>[user] wyrywa się z [src]!</span>", \
+			"<span class='notice'>Udaje ci się wyrwać z [src]!</span>")
 		open_machine()
 
 /obj/machinery/abductor/experiment/ui_status(mob/user)
@@ -118,33 +118,33 @@
 
 	var/datum/antagonist/abductor/user_abductor = user.mind.has_antag_datum(/datum/antagonist/abductor)
 	if(!user_abductor)
-		return "Authorization failure. Contact mothership immediately."
+		return "Błąd autoryzacji. Natychmiast skontaktuj się ze statkiem-matką."
 
 	var/point_reward = 0
 	if(!H)
-		return "Invalid or missing specimen."
+		return "Nieprawidłowy okaz lub jego brak."
 	if(H in history)
-		return "Specimen already in database."
+		return "Okaz jest już w bazie danych."
 	if(H.stat == DEAD)
-		say("Specimen deceased - please provide fresh sample.")
-		return "Specimen deceased."
+		say("Okaz martwy - dostarcz świeżą próbkę.")
+		return "Okaz martwy."
 	var/obj/item/organ/heart/gland/GlandTest = locate() in H.internal_organs
 	if(!GlandTest)
-		say("Experimental dissection not detected!")
-		return "No glands detected!"
+		say("Nie wykryto eksperymentalnej sekcji!")
+		return "Nie wykryto gruczołów!"
 	if(H.mind != null && H.ckey != null)
 		LAZYINITLIST(abductee_minds)
 		LAZYADD(history, H)
 		LAZYADD(abductee_minds, H.mind)
-		say("Processing specimen...")
+		say("Przetwarzanie okazu...")
 		sleep(5)
 		switch(text2num(type))
 			if(1)
-				to_chat(H, "<span class='warning'>You feel violated.</span>")
+				to_chat(H, "<span class='warning'>Czujesz się zbezczeszczony.</span>")
 			if(2)
-				to_chat(H, "<span class='warning'>You feel yourself being sliced apart and put back together.</span>")
+				to_chat(H, "<span class='warning'>Czujesz, jak ktoś cię rozcina i składa z powrotem.</span>")
 			if(3)
-				to_chat(H, "<span class='warning'>You feel intensely watched.</span>")
+				to_chat(H, "<span class='warning'>Czujesz, że ktoś intensywnie cię obserwuje.</span>")
 		sleep(5)
 		user_abductor.team.abductees += H.mind
 		H.mind.add_antag_datum(/datum/antagonist/abductee)
@@ -158,15 +158,15 @@
 			playsound(src.loc, 'sound/machines/ding.ogg', 50, 1)
 			points += point_reward
 			credits += point_reward
-			return "Experiment successful! [point_reward] new data-points collected."
+			return "Eksperyment udany! Zebrano nowe punkty danych: [point_reward]."
 		else
 			playsound(src.loc, 'sound/machines/buzz-sigh.ogg', 50, 1)
-			return "Experiment failed! No replacement organ detected."
+			return "Eksperyment nieudany! Nie wykryto zastępczego organu."
 	else
-		say("Brain activity nonexistent - disposing sample...")
+		say("Brak aktywności mózgu - utylizacja próbki...")
 		open_machine()
 		send_back(H)
-		return "Specimen braindead - disposed."
+		return "Okaz w śmierci mózgowej - zutylizowany."
 
 /**
  * send_back: Sends a mob back to a selected teleport location if safe
@@ -177,6 +177,7 @@
 /obj/machinery/abductor/experiment/proc/send_back(mob/living/carbon/human/H)
 	H.Sleeping(160)
 	H.uncuff()
+	H.cauterise_wounds()
 	if(console && console.pad && console.pad.teleport_target)
 		do_teleport(H, console.pad.teleport_target, channel = TELEPORT_CHANNEL_FREE, no_effects = TRUE, teleport_mode = TELEPORT_MODE_ABDUCTORS)
 		return

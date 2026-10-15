@@ -106,9 +106,9 @@
 						pawn.visible_message("[pawn] can't see [blackboard[BB_FOLLOW_TARGET]]!")
 						return
 				else
-					pawn.visible_message("[pawn] doesn't see anything to follow!")
+					pawn.visible_message("[pawn] nie widzi niczego, za czym mógłby podążać!")
 					return
-			pawn.visible_message("[pawn] starts to follow [blackboard[BB_FOLLOW_TARGET]]!")
+			pawn.visible_message("[pawn] zaczyna podążać za [blackboard[BB_FOLLOW_TARGET]]!")
 			current_movement_target = blackboard[BB_FOLLOW_TARGET]
 			queue_behavior(/datum/ai_behavior/tamed_follow)
 
@@ -116,7 +116,7 @@
 			blackboard[BB_DOG_ORDER_MODE] = TAMED_COMMAND_ATTACK
 			CancelActions()
 			if(!blackboard[BB_ATTACK_TARGET])
-				pawn.visible_message("[pawn] doesn't see anything to attack!")
+				pawn.visible_message("[pawn] nie widzi niczego do zaatakowania!")
 				return
 			if(!can_see(pawn, blackboard[BB_ATTACK_TARGET], AI_DOG_VISION_RANGE))
 				pawn.visible_message("[pawn] can't see [blackboard[BB_ATTACK_TARGET]]!")
@@ -134,7 +134,7 @@
 /datum/ai_controller/tamed/proc/on_attack_hand(datum/source, mob/living/user)
 	SIGNAL_HANDLER
 
-	if(user.a_intent == INTENT_HARM && !blackboard[BB_DOG_FRIENDS][WEAKREF(user)])
+	if(user.combat_mode && !blackboard[BB_DOG_FRIENDS][WEAKREF(user)])
 		blackboard[BB_ATTACK_TARGET] = user
 		set_command_mode(null, TAMED_COMMAND_ATTACK)
 

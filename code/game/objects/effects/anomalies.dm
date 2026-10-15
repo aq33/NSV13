@@ -149,14 +149,14 @@
 		boing = 0
 
 /obj/effect/anomaly/grav/high
-	var/grav_field
+	var/datum/proximity_monitor/advanced/gravity/grav_field
 
 /obj/effect/anomaly/grav/high/Initialize(mapload, new_lifespan)
 	. = ..()
 	setup_grav_field()
 
 /obj/effect/anomaly/grav/high/proc/setup_grav_field()
-	grav_field = make_field(/datum/proximity_monitor/advanced/gravity, list("current_range" = 7, "host" = src, "gravity_value" = rand(0,3)))
+	grav_field = new(src, 7, TRUE, rand(0, 3))
 
 /obj/effect/anomaly/grav/high/Destroy()
 	QDEL_NULL(grav_field)
@@ -208,9 +208,9 @@
 			return
 		else
 			M.adjustFireLoss(shockdamage)
-			M.visible_message("<span class='danger'>[M] was shocked by \the [name]!</span>", \
-		"<span class='userdanger'>You feel a powerful shock coursing through your body!</span>", \
-		"<span class='italics'>You hear a heavy electrical crack.</span>")
+			M.visible_message("<span class='danger'>[name] razi prądem [M]!</span>", \
+		"<span class='userdanger'>Czujesz, jak przez twoje ciało przepływa potężny wstrząs!</span>", \
+		"<span class='italics'>Słyszysz głośny trzask elektryczny.</span>")
 
 /obj/effect/anomaly/flux/detonate()
 	switch(explosive)
@@ -258,7 +258,7 @@
 			var/turf/TO = get_turf(chosen) // the turf of origin we're travelling TO
 
 			playsound(TO, 'sound/effects/phasein.ogg', 100, 1)
-			priority_announce("Massive bluespace translocation detected.", "Anomaly Alert", SSstation.announcer.get_rand_alert_sound())
+			priority_announce("Wykryto masową translokację bluespace.", "Alarm anomalii", SSstation.announcer.get_rand_alert_sound())
 
 			var/list/flashers = list()
 			for(var/mob/living/carbon/C in viewers(TO))
@@ -437,11 +437,11 @@
 		near.hallucination += strength * dist
 		near.hallucination = clamp(near.hallucination, 0, 150)
 		var/list/messages = list(
-			"You feel your conscious mind fall apart!",
-			"Reality warps around you!",
-			"Something's wispering around you!",
-			"You are going insane!",
-			"What was that?!"
+			"Czujesz, jak twój świadomy umysł się rozpada!",
+			"Rzeczywistość wokół ciebie się wypacza!",
+			"Coś szepcze wokół ciebie!",
+			"Wariujesz!",
+			"Co to było?!"
 		)
 		to_chat(near, "<span class='warning'>[pick(messages)]</span>")
 
@@ -473,7 +473,7 @@
 	for(var/mob/living/carbon/target in range(range, owner))
 		if(!ignore_owner && target == owner)
 			continue
-		if(target.run_armor_check(attack_flag = "bio", absorb_text = "Your armor protects you from [owner]!") >= 100)
+		if(target.run_armor_check(attack_flag = "bio", absorb_text = "Twój pancerz chroni cię przed [owner]!") >= 100)
 			continue //We are protected
 
 		// Add target
@@ -502,7 +502,7 @@
 		new_part.replace_limb(target, TRUE, is_creating = TRUE)
 		qdel(picked_user_part)
 		target.update_body(TRUE)
-		to_chat(target, "<span class='warning'>Something feels different...</span>")
+		to_chat(target, "<span class='warning'>Coś jest inaczej...</span>")
 		log_game("[key_name(owner)] has caused a delimber pulse affecting [english_list(affected)].")
 		target.log_message("[owner] has caused [target]'s [picked_part] to turn into [new_part.name] and delimbed their [picked_user_part.name].", LOG_ATTACK)
 

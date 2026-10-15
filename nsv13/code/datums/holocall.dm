@@ -5,32 +5,32 @@
 	preset_record_text = {"
 	NAME Almayer Gervais
 	DELAY 10
-	SAY So tell me, why are we dumping a load of stasis beds in the dormitories?
+	SAY Powiedz mi, czemu zwalamy kupę łóżek stazy do kwater?
 	DELAY 20
 	PRESET /datum/preset_holoimage/engineer/ce/rig
 	NAME Oscar Leonidas
-	SAY Why does NT do anything strange, they've probably hit some kinda delay in a project.
+	SAY A czemu NT robi cokolwiek dziwnego? Pewnie mają jakieś opóźnienie w projekcie.
 	DELAY 10
-	SAY And instead of admitting they made a mistake, they ship something. Even if it's wildly off spec.
+	SAY I zamiast przyznać się do błędu, wysyłają cokolwiek. Nawet jeśli kompletnie nie trzyma specyfikacji.
 	DELAY 20
 	NAME Almayer Gervais
 	PRESET /datum/preset_holoimage/engineer/rig
-	SAY Sounds pretty scummy.
+	SAY Brzmi dość podle.
 	DELAY 5
-	SAY Oh well, work orders are work orders, we got them all hooked up?
+	SAY No trudno, zlecenie to zlecenie. Wszystkie podłączone?
 	PRESET /datum/preset_holoimage/engineer/ce/rig
 	NAME Oscar Leonidas
-	SAY Yeah they're all set, Next up's uh... Something about a transit tube?
+	SAY No, wszystkie gotowe. Następne jest, eee... coś o rurze transportowej?
 	DELAY 15
-	SAY Ah who cares, Let's get moving
+	SAY A kogo to obchodzi, ruszajmy
 	DELAY 20
 	PRESET /datum/preset_holoimage/corgi
 	NAME Burst Data
 	LANGUAGE /datum/language/machine
-	SAY START NTINTEL METADATA
-	SAY RECORDED 12-17-0000
-	SAY SECURITY CLASS UNCLASSIFIED
-	SAY END NTINTEL METADATA
+	SAY POCZĄTEK METADANYCH NTINTEL
+	SAY NAGRANO 12-17-0000
+	SAY KLAUZULA BEZPIECZEŃSTWA: JAWNE
+	SAY KONIEC METADANYCH NTINTEL
 "}
 
 /obj/item/disk/holodisk/enterprise_log
@@ -40,44 +40,44 @@
 	preset_record_text = {"
 	NAME Joshua Griggs
 	DELAY 10
-	SAY You got a minute? I need a hand removing this circuit. Damn thing's stuck
+	SAY Masz chwilę? Pomóż mi wyjąć ten obwód. Cholerstwo się zaklinowało
 	DELAY 20
 	PRESET /datum/preset_holoimage/engineer/ce/rig
 	NAME Stewart Caltrone
-	SAY Try a screwdriver.
+	SAY Spróbuj śrubokrętem.
 	DELAY 20
 	NAME Joshua Griggs
 	PRESET /datum/preset_holoimage/engineer
-	SAY Thanks. So why are we stripping out these shield relays anyway?
+	SAY Dzięki. Właściwie czemu wyrywamy te przekaźniki osłon?
 	DELAY 20
 	PRESET /datum/preset_holoimage/engineer/ce/rig
 	NAME Stewart Caltrone
-	SAY Quiet down airman. That's classified. But I'll tell you something... I wouldn't trust a Nanotrasen crew with more complicated than a paperclip.
+	SAY Ciszej, szeregowy. To tajne. Ale coś ci powiem... Nie powierzyłbym załodze Nanotrasen niczego bardziej skomplikowanego niż spinacz.
 	DELAY 20
 	NAME Joshua Griggs
 	PRESET /datum/preset_holoimage/engineer
-	SAY That's true...but don't you think it's a little dishonest how we're hiding this from them?
+	SAY To prawda... ale nie uważasz, że to trochę nieuczciwe, że to przed nimi ukrywamy?
 	DELAY 20
 	PRESET /datum/preset_holoimage/engineer/ce/rig
 	NAME Stewart Caltrone
-	SAY It's a need to know basis. Central is lending them this ship on humanitarian grounds and nothing more. To be honest, the Syndicate have only openly declared hostilities towards Nanotrasen, not us. This isn't really a SolGov problem at all.
+	SAY Wiedza tylko dla upoważnionych. Centrala pożycza im ten statek ze względów humanitarnych i tyle. Szczerze mówiąc, Syndykat otwarcie wypowiedział wrogość tylko Nanotrasen, nie nam. To w ogóle nie jest problem SolGovu.
 	DELAY 20
 	NAME Joshua Griggs
 	PRESET /datum/preset_holoimage/engineer
-	SAY I guess. Just doesn't sit right with me. I just hope that whichever crew that ends up inheriting this ship takes good care of it.
+	SAY Może i tak. Po prostu mi się to nie podoba. Mam tylko nadzieję, że załoga, która odziedziczy ten statek, dobrze o niego zadba.
 	DELAY 20
 	PRESET /datum/preset_holoimage/captain
 	NAME Dayton Lux
-	SAY Airmen, you've got a job to do. Cut the chatter and move down to frame 5 J-7, the supervisor wants to see you.
+	SAY Szeregowi, macie robotę do zrobienia. Koniec gadania, idźcie do wręgi 5 J-7, kierownik chce was widzieć.
 	DELAY 20
 	NAME Joshua Griggs
 	PRESET /datum/preset_holoimage/engineer
-	SAY Sir yes sir!
+	SAY Tak jest!
 	DELAY 20
-	SAY START METADATA
-	SAY RECORDED 12-17-0000
-	SAY SECURITY CLASS: CLASSIFIED
-	SAY END METADATA
+	SAY POCZĄTEK METADANYCH
+	SAY NAGRANO 12-17-0000
+	SAY KLAUZULA BEZPIECZEŃSTWA: TAJNE
+	SAY KONIEC METADANYCH
 "}
 
 /obj/item/disk/holodisk/enterprise_log/two
@@ -87,48 +87,48 @@
 	preset_record_text = {"
 	NAME Stewart Lance
 	DELAY 20
-	SAY So..you hear about NT's new Hammerhead class of ships?
+	SAY To... słyszałeś o nowej klasie statków NT, Hammerhead?
 	DELAY 20
 	PRESET /datum/preset_holoimage/engineer
 	NAME Joshua Griggs
-	SAY I heard that they're big. What of it?
+	SAY Słyszałem, że są duże. I co z tego?
 	DELAY 20
 	PRESET /datum/preset_holoimage/researcher
 	NAME Stewart Lance
-	SAY Y'know, the ones that replaced their godawful Aegis class...
+	SAY No wiesz, te, które zastąpiły tę ich okropną klasę Aegis...
 	DELAY 20
 	PRESET /datum/preset_holoimage/engineer
 	NAME Joshua Griggs
-	SAY Not really. That's not really my department. I'm here to maintain SolGov ships, not worry about whatever the hell Nanotrasen are up to.
+	SAY Nie bardzo. To nie mój dział. Jestem tu, żeby utrzymywać statki SolGovu, a nie martwić się tym, co, do diabła, kombinuje Nanotrasen.
 	DELAY 20
 	PRESET /datum/preset_holoimage/researcher
 	NAME Stewart Lance
-	SAY That's fair... well rumour has it that the Hammerhead's prototype was built in a week. Least that's what I heard from my cousin Francis.
+	SAY W sumie racja... ale plotka głosi, że prototyp Hammerheada zbudowano w tydzień. Przynajmniej tak słyszałem od kuzyna Francisa.
 	DELAY 20
 	PRESET /datum/preset_holoimage/engineer
 	NAME Joshua Griggs
-	SAY A week!? how the hell can you plan and produce a ship in a week?!
+	SAY W tydzień!? Jak, do diabła, można zaprojektować i zbudować statek w tydzień?!
 	DELAY 20
 	PRESET /datum/preset_holoimage/researcher
 	NAME Stewart Lance
-	SAY And get this....the Aegis prototype was produced in a weekend.
+	SAY I słuchaj tego... prototyp Aegisa zrobiono w weekend.
 	DELAY 20
 	PRESET /datum/preset_holoimage/engineer
 	NAME Joshua Griggs
-	SAY Jesus. I knew NT liked to cut corners, but that's just something else. I'm starting to think I made the right choice when I signed on with SolGov.
+	SAY Jezu. Wiedziałem, że NT lubi iść na skróty, ale to już przesada. Zaczynam myśleć, że dobrze wybrałem, zaciągając się do SolGovu.
 	DELAY 20
 	PRESET /datum/preset_holoimage/captain
 	NAME Dayton Lux
-	SAY Engineer, Researcher. Are you done cleaning out the Akulas yet? The supervisor needs someone to unload the cargo shuttle.
+	SAY Inżynierze, badaczu. Skończyliście już sprzątać Akule? Kierownik potrzebuje kogoś do rozładunku promu towarowego.
 	DELAY 20
 	PRESET /datum/preset_holoimage/engineer
 	NAME Joshua Griggs
-	SAY Yessir. I'll take care of it.
+	SAY Tak jest. Zajmę się tym.
 	DELAY 20
-	SAY START METADATA
-	SAY RECORDED 12-19-0000
-	SAY SECURITY CLASS: CLASSIFIED
-	SAY END METADATA
+	SAY POCZĄTEK METADANYCH
+	SAY NAGRANO 12-19-0000
+	SAY KLAUZULA BEZPIECZEŃSTWA: TAJNE
+	SAY KONIEC METADANYCH
 "}
 
 /datum/preset_holoimage/curator
@@ -139,20 +139,20 @@
 	desc = "An informational holodisk carrying information about the history of the SGV Solaria."
 	preset_image_type = /datum/preset_holoimage/curator
 	preset_record_text = {"
-	SAY LOADING INFORMATIONAL HOLOTAPE #1
-	SAY WELCOME TO THE SOLARIA.
+	SAY WCZYTYWANIE HOLOTAŚMY INFORMACYJNEJ NR 1
+	SAY WITAMY NA SOLARII.
 	NAME Joe 'Schlomo' Speedwagon
-	SAY Welcome to the SGV Solaria! I'm Joe, and I'll be your guide.
+	SAY Witamy na SGV Solaria! Jestem Joe i będę waszym przewodnikiem.
 	DELAY 30
-	SAY This is the first of several informational holotapes recorded by VICKER media on behalf of the Solarian Government.
+	SAY To pierwsza z kilku informacyjnych holotaśm nagranych przez VICKER media na zlecenie Rządu Solarnego.
 	DELAY 30
-	SAY We start our journey 30 years ago, when this ship was first built. She was designed as a battleship to head the SolGov fleet in a response to Nanotrasen's aggressive military expansion in the 2210s, and boasted an impressive amount of firepower.
+	SAY Naszą podróż zaczynamy 30 lat temu, gdy zbudowano ten statek. Zaprojektowano go jako pancernik, który miał stanąć na czele floty SolGovu w odpowiedzi na agresywną ekspansję militarną Nanotrasen w latach 2210., i dysponował imponującą siłą ognia.
 	DELAY 30
-	SAY Estimates put this ship's firepower on par with three Nanotrasen Aegis class light cruisers, however it has since been decommissioned and turned into a museum due to its historical significance!
+	SAY Szacunki stawiają siłę ognia tego statku na równi z trzema lekkimi krążownikami Nanotrasen klasy Aegis, jednak od tamtej pory wycofano go ze służby i ze względu na znaczenie historyczne zamieniono w muzeum!
 	DELAY 30
-	SAY In the next installment, you can find out about the Solaria's importance in several key conflicts. But for now, goodbye! And please, enjoy the museum...
+	SAY W następnej części dowiecie się o znaczeniu Solarii w kilku kluczowych konfliktach. A na razie do widzenia! I miłego zwiedzania muzeum...
 	DELAY 30
-	SAY END OF RECORDING. PLEASE INSERT NEXT FLOPPY DISK.
+	SAY KONIEC NAGRANIA. WŁÓŻ NASTĘPNĄ DYSKIETKĘ.
 "}
 
 /obj/item/disk/holodisk/galactica_history/history
@@ -160,20 +160,20 @@
 	desc = "An informational holodisk carrying information about the history of the SGV Solaria, part 2 in the series."
 	preset_image_type = /datum/preset_holoimage/curator
 	preset_record_text = {"
-	SAY LOADING INFORMATIONAL HOLOTAPE #2
-	SAY WELCOME TO THE SOLARIA.
+	SAY WCZYTYWANIE HOLOTAŚMY INFORMACYJNEJ NR 2
+	SAY WITAMY NA SOLARII.
 	NAME Joe 'Schlomo' Speedwagon
-	SAY Welcome to the SGV Solaria! I'm Joe, and I'll be your guide.
+	SAY Witamy na SGV Solaria! Jestem Joe i będę waszym przewodnikiem.
 	DELAY 30
-	SAY This is the second installment of several informational holotapes recorded by VICKER media on behalf of the Solarian Government.
+	SAY To druga część z kilku informacyjnych holotaśm nagranych przez VICKER media na zlecenie Rządu Solarnego.
 	DELAY 30
-	SAY The Solaria participated in many border skirmishes, however as she was created primarily as a peacekeeping ship, she rarely saw heavy combat.
+	SAY Solaria brała udział w wielu potyczkach granicznych, jednak jako że stworzono ją głównie jako statek pokojowy, rzadko widziała ciężkie walki.
 	DELAY 30
-	SAY Most famously, the Solaria dealt a crushing blow to the Jovian felinid-abduction rings, taking on an entire fleet of transport ships by itself!
+	SAY Najsłynniejszym jej wyczynem było zadanie miażdżącego ciosu jowiszowym siatkom porywaczy felinidów, gdy w pojedynkę stawiła czoła całej flocie transportowców!
 	DELAY 30
-	SAY Unfortunately, that's all I've got time for today. Tune in to the next installment to find out all about the Solaria's technical specifications. For now, goodbye! And please, enjoy the museum...
+	SAY Niestety, na dziś to wszystko. Obejrzyjcie następną część, by poznać specyfikację techniczną Solarii. A na razie do widzenia! I miłego zwiedzania muzeum...
 	DELAY 30
-	SAY END OF RECORDING. PLEASE INSERT NEXT FLOPPY DISK.
+	SAY KONIEC NAGRANIA. WŁÓŻ NASTĘPNĄ DYSKIETKĘ.
 "}
 
 /obj/item/disk/holodisk/galactica_history/tech_specs
@@ -181,25 +181,25 @@
 	desc = "An informational holodisk carrying information about the history of the SGV Solaria, the final part in the series."
 	preset_image_type = /datum/preset_holoimage/curator
 	preset_record_text = {"
-	SAY LOADING INFORMATIONAL HOLOTAPE #3
-	SAY WELCOME TO THE SOLARIA.
+	SAY WCZYTYWANIE HOLOTAŚMY INFORMACYJNEJ NR 3
+	SAY WITAMY NA SOLARII.
 	NAME Joe 'Schlomo' Speedwagon
-	SAY Welcome to the SGV Solaria! I'm Joe, and I'll be your guide.
+	SAY Witamy na SGV Solaria! Jestem Joe i będę waszym przewodnikiem.
 	DELAY 30
-	SAY This is the final installment of several informational holotapes recorded by VICKER media on behalf of the Solarian Government.
+	SAY To ostatnia z kilku informacyjnych holotaśm nagranych przez VICKER media na zlecenie Rządu Solarnego.
 	DELAY 30
-	SAY Last installment, I told you all about the Solaria's rich history, but now it's time to talk tech!
+	SAY W ostatniej części opowiedziałem wam o bogatej historii Solarii, a teraz czas na technikę!
 	DELAY 30
-	SAY The Solaria boasts 8 Gauss cannon, 4 electromagnetic railguns, and even more torpedo tubes!
+	SAY Solaria może się pochwalić 8 działami Gaussa, 4 elektromagnetycznymi działami szynowymi i jeszcze większą liczbą wyrzutni torped!
 	DELAY 30
-	SAY She's rated to withstand a thermonuclear blast of up to 200MT, though this has never been tested!
+	SAY Ma wytrzymać wybuch termojądrowy o mocy do 200 Mt, choć nigdy tego nie sprawdzono!
 	DELAY 30
-	SAY The Solaria is capable of long range faster-than-light travel, and boasted an experimental class 2 stormdrive at its peak, capable of delivering megawatts of power! Though unfortunately, after decomissioning, the Solaria's stormdrive was replaced with a more stable fission reactor.
+	SAY Solaria jest zdolna do dalekich podróży z prędkością nadświetlną, a w szczytowym okresie miała eksperymentalny stormdrive klasy 2, zdolny dostarczać megawaty mocy! Niestety po wycofaniu ze służby stormdrive Solarii zastąpiono stabilniejszym reaktorem rozszczepieniowym.
 	DELAY 30
-	SAY Thank you for joining me on this journey, and hopefully your quest for knowledge doesn't end here! There's plenty of reading material for you around the museum, or you can look at some of the ship's departments - preserved exactly as they would've been used 30 years ago!.
+	SAY Dziękuję, że wyruszyliście ze mną w tę podróż, i mam nadzieję, że wasza pogoń za wiedzą się tu nie kończy! W muzeum jest mnóstwo materiałów do czytania, możecie też obejrzeć niektóre działy statku, zachowane dokładnie tak, jak używano ich 30 lat temu!
 	DELAY 30
-	SAY This is me, Joe Speedwagon, Signing off.
-	SAY END OF SERIES.
+	SAY Tu Joe Speedwagon, bez odbioru.
+	SAY KONIEC SERII.
 "}
 
 //Nsv galactica 3 log files!
@@ -208,20 +208,20 @@
 	desc = "An informational holodisk carrying information about the history of the SGV Solaria."
 	preset_image_type = /datum/preset_holoimage/curator
 	preset_record_text = {"
-	SAY LOADING INFORMATIONAL HOLOTAPE #1
-	SAY WELCOME TO THE NSV GALACTICA.
+	SAY WCZYTYWANIE HOLOTAŚMY INFORMACYJNEJ NR 1
+	SAY WITAMY NA NSV GALACTICA.
 	NAME David 'Record Keeper' Bregg
-	SAY Welcome to VICKER media educational chronicles! Throughout this series, you will learn all about crucial historical events as they happened.
+	SAY Witamy w kronikach edukacyjnych VICKER media! W tej serii dowiecie się wszystkiego o kluczowych wydarzeniach historycznych, tak jak się wydarzyły.
 	DELAY 20
-	SAY Edit me!
+	SAY Edytuj mnie!
 	DELAY 30
-	SAY We start our journey 30 years ago, when this ship was first built. She was designed as a battleship to head the SolGov fleet in a response to Nanotrasen's aggressive military expansion in the 2210s, and boasted an impressive amount of firepower.
+	SAY Naszą podróż zaczynamy 30 lat temu, gdy zbudowano ten statek. Zaprojektowano go jako pancernik, który miał stanąć na czele floty SolGovu w odpowiedzi na agresywną ekspansję militarną Nanotrasen w latach 2210., i dysponował imponującą siłą ognia.
 	DELAY 30
-	SAY Estimates put this ship's firepower on par with three Nanotrasen Aegis class light cruisers, however it has since been decommissioned and turned into a museum due to its historical significance!
+	SAY Szacunki stawiają siłę ognia tego statku na równi z trzema lekkimi krążownikami Nanotrasen klasy Aegis, jednak od tamtej pory wycofano go ze służby i ze względu na znaczenie historyczne zamieniono w muzeum!
 	DELAY 30
-	SAY In the next installment, you can find out about the Solaria's importance in several key conflicts. But for now, goodbye! And please, enjoy the museum...
+	SAY W następnej części dowiecie się o znaczeniu Solarii w kilku kluczowych konfliktach. A na razie do widzenia! I miłego zwiedzania muzeum...
 	DELAY 30
-	SAY END OF RECORDING. PLEASE INSERT NEXT FLOPPY DISK.
+	SAY KONIEC NAGRANIA. WŁÓŻ NASTĘPNĄ DYSKIETKĘ.
 "}
 
 /obj/item/disk/holodisk/nsv_history/galactica
@@ -229,58 +229,58 @@
 	desc = "An informational holodisk carrying information about the history of the NSV Galactica."
 	preset_image_type = /datum/preset_holoimage/engineer
 	preset_record_text = {"
-	SAY LOADING INFORMATIONAL HOLOTAPE #1
-	SAY WELCOME TO THE NSV GALACTICA.
+	SAY WCZYTYWANIE HOLOTAŚMY INFORMACYJNEJ NR 1
+	SAY WITAMY NA NSV GALACTICA.
 	NAME Senior Fleetyard Engineer Beck
-	SAY The NSV Galactica, initially developed under the title 'Iowa' is the current Nanotrasen flagship. Weighing in at 500,000 tonnes it's the largest ship in active service to date!
+	SAY NSV Galactica, pierwotnie rozwijana pod nazwą „Iowa”, to obecny okręt flagowy Nanotrasen. Ważąca 500 000 ton jest największym statkiem w czynnej służbie!
 	DELAY 20
-	SAY Third in the line of great ships to bear the name Galactica, this iteration is by far the most destructive of its lineage.
+	SAY Trzecia z linii wielkich okrętów noszących imię Galactica, ta wersja jest zdecydowanie najbardziej niszczycielska w swoim rodzie.
 	DELAY 30
-	SAY Coming from the SGV Solaria, SolGov flagship of yore, the original Galactica sailed briefly a few years ago, culminating in the battle of Tartarus, where heroic engineer Patel blew up a planet in the name of the corporation.
+	SAY Wywodząca się z SGV Solaria, dawnego okrętu flagowego SolGovu, pierwotna Galactica pływała krótko kilka lat temu, a jej rejs zakończył się bitwą o Tartar, w której bohaterski inżynier Patel wysadził planetę w imię korporacji.
 	DELAY 30
-	SAY Patel sacrificed himself to destroy a Syndicate sleeper agent programming facility, however the original Galactica's voyage ended soon after as it was caught in the wake of the explosion.
+	SAY Patel poświęcił się, by zniszczyć ośrodek programowania uśpionych agentów Syndykatu, jednak wkrótce potem rejs pierwotnej Galactiki dobiegł końca, gdy dosięgła ją fala wybuchu.
 	DELAY 30
-	SAY After the destruction of the Galactica, CaracalCorp scavengers immediately began salvage operations. Entire departments had been torn asunder and left relatively in-tact...
+	SAY Po zniszczeniu Galactiki szabrownicy CaracalCorp natychmiast przystąpili do prac ratunkowych. Całe działy zostały rozerwane, ale pozostały względnie nienaruszone...
 	DELAY 30
-	SAY END OF RECORDING. PLEASE INSERT NEXT FLOPPY DISK.
+	SAY KONIEC NAGRANIA. WŁÓŻ NASTĘPNĄ DYSKIETKĘ.
 "}
 
 /obj/item/disk/holodisk/nsv_history/galactica/two
 	name = "NSV Galactica History #2 - Breakthroughs"
 	preset_image_type = /datum/preset_holoimage/engineer
 	preset_record_text = {"
-	SAY LOADING INFORMATIONAL HOLOTAPE #2
-	SAY WELCOME TO THE NSV GALACTICA.
+	SAY WCZYTYWANIE HOLOTAŚMY INFORMACYJNEJ NR 2
+	SAY WITAMY NA NSV GALACTICA.
 	NAME Senior Fleetyard Engineer Beck
-	SAY After salvage operations came to a close due to Syndicate interference, the remaining pieces of the former Solaria were shipped back to fleetyard.
+	SAY Gdy prace ratunkowe zakończyły się przez ingerencję Syndykatu, pozostałe części dawnej Solarii odesłano do stoczni.
 	DELAY 20
-	SAY TitanWerks engineers have been studying the wrecks for several years now, but an important discovery was made... Before handing the Solaria over to us to become the Galactica, SolGov stripped it of all their signature tech.
+	SAY Inżynierowie TitanWerks od kilku lat badają wraki i dokonali ważnego odkrycia... Zanim SolGov przekazał nam Solarię, by stała się Galacticą, ogołocił ją ze wszystkich swoich charakterystycznych technologii.
 	DELAY 30
-	SAY As it turns out, the ship still had all the necessary focal points for shield generation in-tact, despite being stripped of all shield projection aparatus.
+	SAY Okazało się, że statek wciąż miał nienaruszone wszystkie punkty ogniskowe potrzebne do generowania osłon, mimo że usunięto cały aparat projekcji osłon.
 	DELAY 30
-	SAY While I can't physically record the technical specs of the ship in too much detail, what I can say is this: the Galactica is one of a kind.
+	SAY Choć nie mogę fizycznie nagrać zbyt szczegółowo danych technicznych statku, mogę powiedzieć tyle: Galactica jest jedyna w swoim rodzaju.
 	DELAY 30
-	SAY END OF RECORDING. PLEASE INSERT NEXT FLOPPY DISK.
+	SAY KONIEC NAGRANIA. WŁÓŻ NASTĘPNĄ DYSKIETKĘ.
 "}
 
 /obj/item/disk/holodisk/nsv_history/galactica/three
 	name = "NSV Galactica History #3 - Firepower"
 	preset_image_type = /datum/preset_holoimage/engineer
 	preset_record_text = {"
-	SAY LOADING INFORMATIONAL HOLOTAPE #2
-	SAY WELCOME TO THE NSV GALACTICA.
+	SAY WCZYTYWANIE HOLOTAŚMY INFORMACYJNEJ NR 2
+	SAY WITAMY NA NSV GALACTICA.
 	NAME Senior Fleetyard Engineer Beck
-	SAY The NSV Galactica is a ship of war. You are unlikely to find luxury amenities here, it's built for one purpose, at which it excels.
+	SAY NSV Galactica to okręt wojenny. Raczej nie znajdziecie tu luksusów; zbudowano ją w jednym celu i w nim się wyróżnia.
 	DELAY 20
-	SAY The NSV Galactica is equipped with 4 main batteries, featuring 8 NT-BSG gauss guns, 6 NT-HOOD naval artillery cannon and an experimental Bluespace Artillery.
+	SAY NSV Galactica ma 4 baterie główne z 8 działami Gaussa NT-BSG, 6 działami artylerii morskiej NT-HOOD i eksperymentalną artylerią bluespace.
 	DELAY 30
-	SAY Alongside its impressive physical artillery, the bluespace artillery beam is a new breakthrough in bluespace technology, and does not in-fact violate any SolGov sanctions!
+	SAY Obok imponującej artylerii fizycznej wiązka artylerii bluespace to nowy przełom w technologii bluespace, który wcale nie narusza żadnych sankcji SolGovu!
 	DELAY 30
-	SAY The Galactica was built in direct response to Syndicate aggression and is equipped to level colonies and entire fleets alike.
+	SAY Galacticę zbudowano w bezpośredniej odpowiedzi na agresję Syndykatu i jest wyposażona, by zrównywać z ziemią zarówno kolonie, jak i całe floty.
 	DELAY 30
-	SAY That concludes our miniseries on technical specs, enjoy the rest of the museum!
+	SAY Na tym kończymy naszą miniserię o danych technicznych, miłego zwiedzania reszty muzeum!
 	DELAY 30
-	SAY END OF RECORDING. PLEASE INSERT NEXT FLOPPY DISK.
+	SAY KONIEC NAGRANIA. WŁÓŻ NASTĘPNĄ DYSKIETKĘ.
 "}
 
 /obj/item/disk/holodisk/pdsr
@@ -290,48 +290,48 @@
 	preset_record_text = {"
 	NAME Almayer Gervais
 	DELAY 10
-	SAY This holotape and its contents are classified under ARD-level C8 clearance.
+	SAY Ta holotaśma i jej zawartość są objęte klauzulą ARD poziomu C8.
 	DELAY 20
-	SAY Before continuing, ensure that this room is sealed. No officers except the flag officer of Engineering should be present.
+	SAY Przed kontynuowaniem upewnij się, że pomieszczenie jest zamknięte. Poza oficerem flagowym inżynierii nie powinien być obecny żaden oficer.
 	DELAY 20
-	SAY You have 15 seconds to comply.
+	SAY Masz 15 sekund na wykonanie polecenia.
 	DELAY 150
-	SAY Project Zelbinion is a defensive screen reactor. It works by projecting hardened particles around the ship.
+	SAY Projekt Zelbinion to reaktor ekranu obronnego. Działa poprzez projekcję utwardzonych cząstek wokół statku.
 	DELAY 50
-	SAY The reactor runs off of Nucleium, a byproduct of plasma enriched nuclear fission.
+	SAY Reaktor zasilany jest Nukleum, produktem ubocznym rozszczepienia jądrowego wzbogaconego plazmą.
 	DELAY 50
-	SAY Once activated, the reactor must be run constantly until termination. The particle stream cannot be interrupted, or you risk an emission.
+	SAY Po uruchomieniu reaktor musi pracować bez przerwy aż do wyłączenia. Strumienia cząstek nie można przerwać, inaczej grozi to emisją.
 	DELAY 50
-	SAY Project Zelbinion is equipped with automated shutdown measures which should prevent causality failure, however your ship will NOT be unscathed.
+	SAY Projekt Zelbinion ma automatyczne procedury wyłączania, które powinny zapobiec awarii przyczynowości, jednak twój statek NIE wyjdzie z tego bez szwanku.
 	DELAY 50
-	SAY The reactor runs off of two consoles. Use them in tandem to control the reaction.
+	SAY Reaktor obsługuje się z dwóch konsol. Używaj ich razem, by sterować reakcją.
 	DELAY 50
-	SAY The first stat you have control over is input power. Ensure you do not exceed the stated maximum power, or be below the minimum. This will lead to emission.
+	SAY Pierwszym parametrem, który kontrolujesz, jest moc wejściowa. Nie przekraczaj podanej mocy maksymalnej i nie schodź poniżej minimalnej. Grozi to emisją.
 	DELAY 50
-	SAY As you raise your input power, you also raise the ability for the PDSR to project particles around the ship, leading to a stronger particle screen.
+	SAY Zwiększając moc wejściową, zwiększasz też zdolność PDSR do projekcji cząstek wokół statku, co daje silniejszy ekran cząstek.
 	DELAY 50
-	SAY The next reaction variable you can control is Nucleium injection rate. A higher rate, like power, leads to a more powerful shield.
+	SAY Kolejną zmienną reakcji, którą kontrolujesz, jest tempo wtrysku Nukleum. Wyższe tempo, podobnie jak moc, daje silniejszą osłonę.
 	DELAY 50
-	SAY Nucleium injection can be spiked for a quick combat boost, but be warned that this will destabilise the reactor.
+	SAY Wtrysk Nukleum można gwałtownie zwiększyć dla szybkiego wzmocnienia w walce, ale uwaga: zdestabilizuje to reaktor.
 	DELAY 50
-	SAY The shield variables themselves can be controlled separately. Use them to your advantage.
+	SAY Samymi zmiennymi osłony można sterować osobno. Wykorzystaj to na swoją korzyść.
 	DELAY 50
-	SAY The reactor's stability is affected by the reaction polarity. Flip the injection polarity from negative to positive as needed to keep the polarity as close to 0 as possible.
+	SAY Na stabilność reaktora wpływa polaryzacja reakcji. W razie potrzeby przełączaj polaryzację wtrysku z ujemnej na dodatnią, by utrzymać polaryzację jak najbliżej 0.
 	DELAY 50
-	SAY If you need to shut down the reactor, lower the nucleium injection rate slowly. You can cycle coolant in an emergency for a quick cooling boost.
+	SAY Jeśli musisz wyłączyć reaktor, powoli zmniejszaj tempo wtrysku Nukleum. W sytuacji awaryjnej możesz przepłukać chłodziwo, by szybko schłodzić reaktor.
 	DELAY 50
-	SAY The reaction can be terminated when the reactor core is under 200 Celsius. Ensure cooling is adequate to achieve this.
+	SAY Reakcję można zakończyć, gdy rdzeń reaktora ma poniżej 200 stopni Celsjusza. Zadbaj o odpowiednie chłodzenie, by to osiągnąć.
 	DELAY 50
-	SAY Finally. If your minimum input power ever starts to converge on the maximum, you are heading towards an emission. Rectify this immediately, or shut down the reactor safely.
+	SAY Na koniec: jeśli minimalna moc wejściowa zacznie zbliżać się do maksymalnej, zmierzasz ku emisji. Natychmiast to napraw albo bezpiecznie wyłącz reaktor.
 	DELAY 50
-	SAY In the event that the Iowa is lost, the Chief Engineer is authorised to destroy the PDSR using the included evidence removal terminal.
+	SAY W razie utraty Iowy Główny Inżynier jest upoważniony do zniszczenia PDSR za pomocą dołączonego terminalu usuwania dowodów.
 	DELAY 50
-	SAY Do your duty. This tape should be destroyed after use. Shield technology does not exist. Glory to Nanotrasen.
+	SAY Wykonaj swój obowiązek. Ta taśma powinna zostać zniszczona po użyciu. Technologia osłon nie istnieje. Chwała Nanotrasen.
 	NAME Burst Data
 	LANGUAGE /datum/language/machine
 	DELAY 20
-	SAY START METADATA
-	SAY RECORDED 5-25-0000
-	SAY SECURITY CLASS: ARD-C8 CLASSIFIED
-	SAY END METADATA
+	SAY POCZĄTEK METADANYCH
+	SAY NAGRANO 5-25-0000
+	SAY KLAUZULA BEZPIECZEŃSTWA: ARD-C8 TAJNE
+	SAY KONIEC METADANYCH
 "}

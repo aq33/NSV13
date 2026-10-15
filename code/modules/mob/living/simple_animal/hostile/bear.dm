@@ -7,18 +7,18 @@
 	icon_dead = "bear_dead"
 	icon_gib = "bear_gib"
 	mob_biotypes = list(MOB_ORGANIC, MOB_BEAST)
-	speak = list("RAWR!","Rawr!","GRR!","Growl!")
-	speak_emote = list("growls", "roars")
-	emote_hear = list("rawrs.","grumbles.","grawls.")
-	emote_taunt = list("stares ferociously", "stomps")
+	speak = list("RAWR!","Rawr!","GRR!","Grrr!")
+	speak_emote = list("warczy", "ryczy")
+	emote_hear = list("ryczy.","burczy.","warczy.")
+	emote_taunt = list("patrzy groźnie", "stomps")
 	speak_chance = 1
 	taunt_chance = 25
 	turns_per_move = 5
 	see_in_dark = 6
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab/bear = 5, /obj/item/clothing/head/bearpelt = 1)
-	response_help  = "pets"
-	response_disarm = "gently pushes aside"
-	response_harm   = "hits"
+	butcher_results = list(/obj/item/food/meat/slab/bear = 5, /obj/item/clothing/head/bearpelt = 1)
+	response_help  = "głaszcze"
+	response_disarm = "delikatnie odsuwa na bok"
+	response_harm   = "uderza"
 	maxHealth = 60
 	health = 60
 	spacewalk = TRUE
@@ -26,9 +26,9 @@
 
 	obj_damage = 60
 	melee_damage = 25
-	attacktext = "claws"
+	attacktext = "drapie"
 	attack_sound = 'sound/weapons/bladeslice.ogg'
-	friendly = "bear hugs"
+	friendly = "miażdży w niedźwiedzim uścisku"
 	chat_color = "#CAA25B"
 
 	//Space bears aren't affected by cold.
@@ -62,7 +62,7 @@
 	icon_living = "combatbear"
 	icon_dead = "combatbear_dead"
 	faction = list("russian")
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab/bear = 5, /obj/item/clothing/head/bearpelt = 1, /obj/item/bear_armor = 1)
+	butcher_results = list(/obj/item/food/meat/slab/bear = 5, /obj/item/clothing/head/bearpelt = 1, /obj/item/bear_armor = 1)
 	melee_damage = 30
 	armour_penetration = 20
 	health = 120
@@ -86,7 +86,7 @@
 	if(istype(target, /mob/living/simple_animal/hostile/bear) && proximity_flag)
 		var/mob/living/simple_animal/hostile/bear/A = target
 		if(A.armored)
-			to_chat(user, "<span class='warning'>[A] has already been armored up!</span>")
+			to_chat(user, "<span class='warning'>[A] ma już pancerz!</span>")
 			return
 		A.armored = TRUE
 		A.maxHealth += 60
@@ -94,7 +94,7 @@
 		A.armour_penetration += 20
 		A.melee_damage += 5
 		A.update_icons()
-		to_chat(user, "<span class='info'>You strap the armor plating to [A] and sharpen [A.p_their()] claws with the nail filer. This was a great idea.</span>")
+		to_chat(user, "<span class='info'>Przypinasz [A] płyty pancerza i ostrzysz mu pazury pilniczkiem do paznokci. To był świetny pomysł.</span>")
 		qdel(src)
 
 /mob/living/simple_animal/hostile/bear/butter //The mighty companion to Cak. Several functions used from it.
@@ -107,12 +107,12 @@
 	obj_damage = 11
 	melee_damage = 1
 	armour_penetration = 0
-	response_harm = "takes a bite out of"
+	response_harm = "odgryza kawałek"
 	attacked_sound = 'sound/items/eatfood.ogg'
-	deathmessage = "loses its false life and collapses!"
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/butter = 6, /obj/item/reagent_containers/food/snacks/meat/slab = 3, /obj/item/organ/brain = 1, /obj/item/organ/heart = 1)
+	deathmessage = "traci swoje fałszywe życie i pada!"
+	butcher_results = list(/obj/item/food/butter = 6, /obj/item/food/meat/slab = 3, /obj/item/organ/brain = 1, /obj/item/organ/heart = 1)
 	attack_sound = 'sound/weapons/slap.ogg'
-	attacktext = "slaps"
+	attacktext = "policzkuje"
 
 /mob/living/simple_animal/hostile/bear/butter/Life() //Heals butter bear really fast when he takes damage.
 	if(stat)
@@ -122,7 +122,7 @@
 
 /mob/living/simple_animal/hostile/bear/butter/attack_hand(mob/living/L) //Borrowed code from Cak, feeds people if they hit you. More nutriment but less vitamin to represent BUTTER.
 	..()
-	if(L.a_intent == INTENT_HARM && L.reagents && !stat)
+	if(L.combat_mode && L.reagents && !stat)
 		L.reagents.add_reagent(/datum/reagent/consumable/nutriment, 1)
 		L.reagents.add_reagent(/datum/reagent/consumable/nutriment/vitamin, 0.1)
 
@@ -132,12 +132,10 @@
 	if(!B || !B.brainmob || !B.brainmob.mind)
 		return
 	B.brainmob.mind.transfer_to(src)
-	to_chat(src, "<span class='big bold'>You are a butter bear!</span><b> You're a mostly harmless bear/butter hybrid that everyone loves. People can take bites out of you if they're hungry, but you regenerate health \
-	so quickly that it generally doesn't matter. You're remarkably resilient to any damage besides this and it's hard for you to really die at all. You should go around and bring happiness and \
-	free butter to the station!</b>")
-	var/new_name = stripped_input(src, "Enter your name, or press \"Cancel\" to stick with Terrygold.", "Name Change")
+	to_chat(src, "<span class='big bold'>Jesteś maślanym niedźwiedziem!</span><b> Jesteś w większości nieszkodliwą hybrydą niedźwiedzia i masła, którą wszyscy kochają. Głodni mogą odgryzać z ciebie kawałki, ale regenerujesz zdrowie tak szybko, że zwykle nie ma to znaczenia. Jesteś niezwykle odporny na wszelkie inne obrażenia i naprawdę trudno cię zabić. Chodź po stacji i rozdawaj szczęście oraz darmowe masło!</b>")
+	var/new_name = stripped_input(src, "Podaj swoje imię lub naciśnij \"Cancel\", by zostać przy imieniu Terrygold.", "Zmiana imienia")
 	if(new_name)
-		to_chat(src, "<span class='notice'>Your name is now <b>\"new_name\"</b>!</span>")
+		to_chat(src, "<span class='notice'>Twoje imię to teraz <b>\"new_name\"</b>!</span>")
 		name = new_name
 
 /mob/living/simple_animal/hostile/bear/butter/AttackingTarget() //Makes some attacks by the butter bear slip those who dare cross its path.
@@ -146,7 +144,7 @@
 		if((L.mobility_flags & MOBILITY_STAND))
 			L.Knockdown(20)
 			playsound(loc, 'sound/misc/slip.ogg', 15)
-			L.visible_message("<span class='danger'>[L] slips on butter!</span>")
+			L.visible_message("<span class='danger'>[L] poślizguje się na maśle!</span>")
 
 
 

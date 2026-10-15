@@ -31,7 +31,7 @@
 
 /datum/element/rust/proc/handle_examine(datum/source, mob/user, list/examine_text)
 	SIGNAL_HANDLER
-	examine_text += "<span class='notice'>[source] is very rusty, you could probably <i>burn</i> or <i>scrape</i> it off.</span>"
+	examine_text += "<span class='notice'>[source] jest bardzo zardzewiały, pewnie da się tę rdzę <i>wypalić</i> albo <i>zeskrobać</i>.</span>"
 
 /datum/element/rust/proc/apply_rust_overlay(atom/parent_atom, list/overlays)
 	SIGNAL_HANDLER
@@ -48,16 +48,16 @@
 	switch(item.tool_behaviour)
 		if(TOOL_WELDER)
 			if(item.use(5))
-				user.balloon_alert(user, "You start burning off the rust...")
+				user.balloon_alert(user, "Zaczynasz wypalać rdzę...")
 				if(!do_after(user, 5 SECONDS * item.toolspeed, target = source))
 					return
-				user.balloon_alert(user, "Sucessfully burned off the rust!")
+				user.balloon_alert(user, "Udało się wypalić rdzę!")
 				Detach(source)
 				return
 		if(TOOL_RUSTSCRAPER)
-			user.balloon_alert(user, "You start scraping off the rust...")
+			user.balloon_alert(user, "Zaczynasz zeskrobywać rdzę...")
 			if(!do_after(user, 2 SECONDS * item.toolspeed, target = source))
 				return
-			user.balloon_alert(user, "Sucessfully scraped off the rust!")
+			user.balloon_alert(user, "Udało się zeskrobać rdzę!")
 			Detach(source)
 			return

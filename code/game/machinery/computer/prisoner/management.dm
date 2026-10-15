@@ -20,18 +20,18 @@
 		playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
 	var/dat = ""
 	if(screen == 0)
-		dat += "<HR><A href='?src=[REF(src)];lock=1'>{Log In}</A>"
+		dat += "<HR><A href='byond://?src=[REF(src)];lock=1'>{Zaloguj}</A>"
 	else if(screen == 1)
-		dat += "<H3>Prisoner ID Management</H3>"
+		dat += "<H3>Zarządzanie kartami więźniów</H3>"
 		if(contained_id)
-			dat += text("<A href='?src=[REF(src)];id=eject'>[contained_id]</A><br>")
-			dat += text("Collected Points: [contained_id.points]. <A href='?src=[REF(src)];id=reset'>Reset.</A><br>")
-			dat += text("Card goal: [contained_id.goal].  <A href='?src=[REF(src)];id=setgoal'>Set</A> <A href='?src=[REF(src)];id=setpermanent'>Make [contained_id.permanent ? "temporary" : "permanent"].</A><br>")
-			dat += text("Space Law recommends quotas of 100 points per minute they would normally serve in the brig.<BR>")
+			dat += text("<A href='byond://?src=[REF(src)];id=eject'>[contained_id]</A><br>")
+			dat += text("Collected Points: [contained_id.points]. <A href='byond://?src=[REF(src)];id=reset'>Reset.</A><br>")
+			dat += text("Card goal: [contained_id.goal].  <A href='byond://?src=[REF(src)];id=setgoal'>Set</A> <A href='byond://?src=[REF(src)];id=setpermanent'>Make [contained_id.permanent ? "temporary" : "permanent"].</A><br>")
+			dat += text("Prawo kosmiczne zaleca normę 100 punktów za każdą minutę, którą więzień normalnie spędziłby w areszcie.<BR>")
 		else
-			dat += text("<A href='?src=[REF(src)];id=insert'>Insert Prisoner ID.</A><br>")
-		dat += "<H3>Prisoner Implant Management</H3>"
-		dat += "<HR>Chemical Implants<BR>"
+			dat += text("<A href='byond://?src=[REF(src)];id=insert'>Insert Prisoner ID.</A><br>")
+		dat += "<H3>Zarządzanie implantami więźniów</H3>"
+		dat += "<HR>Implanty chemiczne<BR>"
 		var/turf/Tr = null
 		for(var/obj/item/implant/chem/C in GLOB.tracked_chem_implants)
 			Tr = get_turf(C)
@@ -39,13 +39,13 @@
 				continue//Out of range
 			if(!C.imp_in)
 				continue
-			dat += "ID: [C.imp_in.name] | Remaining Units: [C.reagents.total_volume] <BR>"
+			dat += "ID: [C.imp_in.name] | Pozostało jednostek: [C.reagents.total_volume] <BR>"
 			dat += "| Inject: "
-			dat += "<A href='?src=[REF(src)];inject1=[REF(C)]'>(<font class='bad'>(1)</font>)</A>"
-			dat += "<A href='?src=[REF(src)];inject5=[REF(C)]'>(<font class='bad'>(5)</font>)</A>"
-			dat += "<A href='?src=[REF(src)];inject10=[REF(C)]'>(<font class='bad'>(10)</font>)</A><BR>"
+			dat += "<A href='byond://?src=[REF(src)];inject1=[REF(C)]'>(<font class='bad'>(1)</font>)</A>"
+			dat += "<A href='byond://?src=[REF(src)];inject5=[REF(C)]'>(<font class='bad'>(5)</font>)</A>"
+			dat += "<A href='byond://?src=[REF(src)];inject10=[REF(C)]'>(<font class='bad'>(10)</font>)</A><BR>"
 			dat += "********************************<BR>"
-		dat += "<HR>Tracking Implants<BR>"
+		dat += "<HR>Implanty śledzące<BR>"
 		for(var/obj/item/implant/tracking/T in GLOB.tracked_implants)
 			if(!isliving(T.imp_in))
 				continue
@@ -59,11 +59,11 @@
 				var/turf/mob_loc = get_turf(M)
 				loc_display = mob_loc.loc
 
-			dat += "ID: [T.imp_in.name] | Location: [loc_display]<BR>"
-			dat += "<A href='?src=[REF(src)];warn=[REF(T)]'>(<font class='bad'><i>Message Holder</i></font>)</A> |<BR>"
+			dat += "ID: [T.imp_in.name] | Lokalizacja: [loc_display]<BR>"
+			dat += "<A href='byond://?src=[REF(src)];warn=[REF(T)]'>(<font class='bad'><i>Wiadomość do nosiciela</i></font>)</A> |<BR>"
 			dat += "********************************<BR>"
-		dat += "<HR><A href='?src=[REF(src)];lock=1'>{Log Out}</A>"
-	var/datum/browser/popup = new(user, "computer", "Prisoner Management Console", 400, 500)
+		dat += "<HR><A href='byond://?src=[REF(src)];lock=1'>{Wyloguj}</A>"
+	var/datum/browser/popup = new(user, "computer", "Konsola zarządzania więźniami", 400, 500)
 	popup.set_content(dat)
 	popup.open()
 	return
@@ -73,7 +73,7 @@
 		if(screen)
 			id_insert(user)
 		else
-			to_chat(user, "<span class='danger'>Unauthorized access.</span>")
+			to_chat(user, "<span class='danger'>Brak autoryzacji.</span>")
 	else
 		return ..()
 
@@ -98,7 +98,7 @@
 					if("reset")
 						contained_id.points = 0
 					if("setgoal")
-						var/num = round(input(usr, "Choose prisoner's goal:", "Input an Integer", null) as num|null)
+						var/num = round(input(usr, "Wybierz cel więźnia:", "Podaj liczbę całkowitą", null) as num|null)
 						if(num >= 0)
 							num = min(num, 1500) //Cap the quota to the equivilent of 10 minutes.
 							contained_id.goal = num
@@ -122,20 +122,20 @@
 				screen = !screen
 				playsound(src, 'sound/machines/terminal_on.ogg', 50, FALSE)
 			else
-				to_chat(usr, "<span class='danger'>Unauthorized access.</span>")
+				to_chat(usr, "<span class='danger'>Brak autoryzacji.</span>")
 
 		else if(href_list["warn"])
-			var/warning = stripped_input(usr, "Message:", "Enter your message here!", "", MAX_MESSAGE_LEN)
+			var/warning = stripped_input(usr, "Message:", "Wpisz tu swoją wiadomość!", "", MAX_MESSAGE_LEN)
 			if(!warning)
 				return
 			if(CHAT_FILTER_CHECK(warning))
-				to_chat(usr, "<span class='warning'>Your message contains forbidden words.</span>")
+				to_chat(usr, "<span class='warning'>Twoja wiadomość zawiera zakazane słowa.</span>")
 				return
 			warning = usr.treat_message_min(warning)
 			var/obj/item/implant/I = locate(href_list["warn"]) in GLOB.tracked_implants
 			if(I && istype(I) && I.imp_in)
 				var/mob/living/R = I.imp_in
-				to_chat(R, "<span class='hear'>You hear a voice in your head saying: '[warning]'</span>")
+				to_chat(R, "<span class='hear'>Słyszysz w głowie głos, który mówi: '[warning]'</span>")
 				log_directed_talk(usr, R, warning, LOG_SAY, "implant message")
 
 		src.add_fingerprint(usr)

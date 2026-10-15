@@ -35,14 +35,14 @@
 
 /obj/machinery/light_switch/examine(mob/user)
 	. = ..()
-	. += "It is [area.lightswitch ? "on" : "off"]."
+	. += "Jest [area.lightswitch ? "włączony" : "wyłączony"]."
 
 /obj/machinery/light_switch/interact(mob/user)
 	. = ..()
 
 	area.lightswitch = !area.lightswitch
 //	play_click_sound("button") AQUILA EDIT
-	playsound(usr.loc,'aquila/sound/effects/lightswitch.ogg', 100, 1) //AQUILA EDIT
+	playsound(src, 'aquila/sound/effects/lightswitch.ogg', 100, 1) //AQUILA EDIT - src, not usr.loc: usr is null when a monkey AI flips the switch
 	area.update_icon()
 
 	for(var/obj/machinery/light_switch/L in area)
@@ -80,6 +80,6 @@
 
 /obj/machinery/light_switch/eminence_act(mob/living/simple_animal/eminence/eminence)
 	. = ..()
-	to_chat(usr, "<span class='brass'>You begin manipulating [src]!</span>")
+	to_chat(usr, "<span class='brass'>Zaczynasz majstrować przy [src]!</span>")
 	if(do_after(eminence, 20, target=get_turf(eminence)))
 		interact(eminence)

@@ -62,7 +62,7 @@
 		var/obj/item/projectile/P = linked.fire_projectile(T.projectile_type, target, firing_flags = linked_overmap_ship_weapon.weapon_firing_flags)
 		if(T.contents.len)
 			for(var/atom/movable/AM in T.contents)
-				to_chat(AM, "<span class='warning'>You feel slightly nauseous as you're shot out into space...</span>")
+				to_chat(AM, "<span class='warning'>Robi ci się trochę niedobrze, gdy zostajesz wystrzelony w kosmos...</span>")
 				AM.forceMove(P)
 
 /obj/machinery/ship_weapon/vls/Initialize(mapload)

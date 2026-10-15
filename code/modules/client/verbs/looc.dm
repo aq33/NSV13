@@ -8,7 +8,7 @@
 	set category = "OOC"
 
 	if(GLOB.say_disabled)    //This is here to try to identify lag problems
-		to_chat(usr, "<span class='danger'> Speech is currently admin-disabled.</span>")
+		to_chat(usr, "<span class='danger'> Mowa jest obecnie wyłączona przez administrację.</span>")
 		return
 
 	if(!mob?.ckey)
@@ -21,38 +21,38 @@
 	var/raw_msg = msg
 
 	if(!(prefs.chat_toggles & CHAT_LOOC)) //nsv13 - toggles -> chat_toggles, CHAT_OOC -> CHAT_LOOC
-		to_chat(src, "<span class='danger'>You have LOOC muted.</span>")
+		to_chat(src, "<span class='danger'>Masz wyciszone LOOC.</span>")
 		return
 
 	if(is_banned_from(mob.ckey, BAN_OOC))
-		to_chat(src, "<span class='danger'>You have been banned from OOC and LOOC.</span>")
+		to_chat(src, "<span class='danger'>Masz bana na OOC i LOOC.</span>")
 		return
 
 	if(!holder)
 		if(!GLOB.looc_allowed) //nsv13 - ooc_allowed -> looc_allowed
-			to_chat(src, "<span class='danger'>LOOC is globally muted.</span>")
+			to_chat(src, "<span class='danger'>LOOC jest wyciszone globalnie.</span>")
 			return
 		if(!GLOB.dooc_allowed && (mob.stat == DEAD))
-			to_chat(usr, "<span class='danger'>LOOC for dead mobs has been turned off.</span>")
+			to_chat(usr, "<span class='danger'>LOOC dla martwych istot jest wyłączone.</span>")
 			return
 		if(prefs.muted & MUTE_LOOC) //nsv13 - MUTE_OOC -> MUTE_LOOC
-			to_chat(src, "<span class='danger'>You cannot use LOOC (muted).</span>")
+			to_chat(src, "<span class='danger'>Nie możesz używać LOOC (wyciszenie).</span>")
 			return
 		if(handle_spam_prevention(msg, MUTE_LOOC)) //nsv13 - MUTE_OOC -> MUTE_LOOC
 			return
 		if(findtext(msg, "byond://"))
-			to_chat(src, "<span class='bold danger'>Advertising other servers is not allowed.</span>")
+			to_chat(src, "<span class='bold danger'>Reklamowanie innych serwerów jest zabronione.</span>")
 			log_admin("[key_name(src)] has attempted to advertise in LOOC: [msg]")
 			return
 		if(mob.stat)
-			to_chat(src, "<span class='danger'>You cannot salt in LOOC while unconscious or dead.</span>")
+			to_chat(src, "<span class='danger'>Nie możesz się żalić na LOOC, będąc nieprzytomnym lub martwym.</span>")
 			return
 		if(isdead(mob))
-			to_chat(src, "<span class='danger'>You cannot use LOOC while ghosting.</span>")
+			to_chat(src, "<span class='danger'>Nie możesz używać LOOC jako duch.</span>")
 			return
 
 		if(OOC_FILTER_CHECK(raw_msg))
-			to_chat(src, "<span class='warning'>That message contained a word prohibited in OOC chat! Consider reviewing the server rules.\n<span replaceRegex='show_filtered_ooc_chat'>\"[raw_msg]\"</span></span>")
+			to_chat(src, "<span class='warning'>Ta wiadomość zawiera słowo zakazane na czacie OOC! Zapoznaj się ponownie z zasadami serwera.\n<span replaceRegex='show_filtered_ooc_chat'>\"[raw_msg]\"</span></span>")
 			return
 
 	msg = emoji_parse(msg)
@@ -90,6 +90,17 @@
 			continue
 		var/prefix = "[(client in targets) ? "" : "(R)"]LOOC"
 		to_chat(client, "<span class='looc'><span class='prefix'>[prefix]:</span> <EM>[ADMIN_LOOKUPFLW(mob)]:</EM> <span class='message'>[msg]</span></span>", avoid_highlighting = (client == src))
+		if(in_view[get_turf(client.mob)]) // AQ EDIT - port BeeStation #12918: admini w zasięgu też widzą LOOC nad głową
+			targets |= client
+
+	// AQ EDIT START - port BeeStation #12918: LOOC nad głową mówiącego
+	var/list/client/runechat_targets = list()
+	for(var/client/client as anything in targets)
+		if((client.prefs.toggles & PREFTOGGLE_RUNECHAT_GLOBAL) && !(client.prefs.chat_toggles & CHAT_DISABLE_LOOC_RUNECHAT))
+			runechat_targets += client
+	if(length(runechat_targets))
+		new /datum/chatmessage("\[LOOC: [raw_msg]\]", mob, runechat_targets, null, list("looc"))
+	// AQ EDIT END
 
 /proc/toggle_looc(toggle = null) //nsv13 - adds a toggle for looc
 	if(toggle != null) //if we're specifically en/disabling looc

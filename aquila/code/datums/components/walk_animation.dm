@@ -1,0 +1,270 @@
+/**
+ * Animacja chodu: ręce i nogi ruszają się przy każdym kroku, niezależnie od stroju.
+ *
+ * Mob rysuje się tylko do bufora (render_target z "*"), a pięć fragmentów w jego vis_contents
+ * pokazuje ten obraz przycięty maskami alfa: tułów, dwie ręce i dwie nogi. Ubranie i nakładki
+ * są więc cięte razem z ciałem. Przedmioty w dłoniach są kopiowane na osobne fragmenty ("hand_1" lewa,
+ * "hand_2" prawa) i pokazywane w całości, ruszając się razem ze swoją ręką.
+ * Maski są kierunkowe (aquila/icons/mob/walk_masks.dmi) i dziedziczą kierunek moba po stronie klienta.
+ * "arm_a"/"leg_a" to strona lewa na ekranie przy widoku z przodu i z tyłu; w widoku z boku
+ * "arm_a" to ręka bliżej patrzącego, a "leg_a" i "leg_b" pokazują obie nogi w pełnej szerokości.
+ * Z boku "leg_b" jest widoczna tylko w trakcie kroku, żeby w spoczynku nogi nie były rysowane podwójnie.
+ * Z boku "arm_b" jest pusta: dalsza dłoń, która w sprite'ach wystaje 1 px przed brzuch, jest wycięta na stałe.
+ */
+/datum/component/walk_animation
+	/// Bufor, do którego rysuje się mob
+	var/body_target
+	/// render_target moba sprzed podpięcia komponentu (blokada emisji)
+	var/old_render_target
+	/// Nazwa maski -> fragment ciała, który ją pokazuje
+	var/list/limbs = list()
+	/// Obiekty masek, rysowane tylko do własnych buforów
+	var/list/masks = list()
+	/// Blokada emisji dla nowego bufora; stara czyta render_target, który tu podmieniamy
+	var/atom/movable/emissive_blocker/em_block
+	/// Która para ręka/noga rusza się przy tym kroku
+	var/phase = FALSE
+	/// Czy przedmioty w dłoniach są teraz za ciałem (widok z tyłu)
+	var/held_behind = FALSE
+	/// Kotwice bufora ciała dodane mobowi (add_bounds_anchors)
+	var/list/body_anchors
+
+/datum/component/walk_animation/Initialize()
+	if(!ishuman(parent))
+		return COMPONENT_INCOMPATIBLE
+	var/mob/living/carbon/human/H = parent
+
+	body_target = "*walk_body[REF(H)]"
+	old_render_target = H.render_target
+	H.render_target = body_target
+	body_anchors = add_bounds_anchors(H)
+
+	em_block = new(null, body_target)
+	H.vis_contents += em_block
+
+	// Nogi pod tułowiem (wysuwana z boku nad tylną), ręce nad nim
+	add_limb(H, "leg_a", FLOAT_LAYER - 0.2)
+	add_limb(H, "leg_b", FLOAT_LAYER - 0.15)
+	add_limb(H, "torso_cut", FLOAT_LAYER - 0.1, MASK_INVERSE)
+	add_limb(H, "arm_a", FLOAT_LAYER - 0.05)
+	add_limb(H, "arm_b", FLOAT_LAYER - 0.05)
+	// Przedmioty w dłoniach nad wszystkim, jak HANDS_LAYER; tyłem pod ciałem (update_held_dir)
+	for(var/index in 1 to 2)
+		var/obj/effect/overlay/walk_held/held = new
+		limbs["hand_[index]"] = held
+		H.vis_contents += held
+	update_side_leg(H.dir)
+	update_held_dir(H.dir)
+	detach_held_items()
+
+	RegisterSignal(H, COMSIG_MOVABLE_MOVED, PROC_REF(on_moved))
+	RegisterSignal(H, COMSIG_ATOM_DIR_CHANGE, PROC_REF(on_dir_change))
+
+/datum/component/walk_animation/Destroy()
+	var/mob/living/carbon/human/H = parent
+	if(H)
+		UnregisterSignal(H, list(COMSIG_MOVABLE_MOVED, COMSIG_ATOM_DIR_CHANGE))
+		if(H.render_target == body_target)
+			H.render_target = old_render_target
+		H.cut_overlay(body_anchors)
+		H.vis_contents -= em_block
+		for(var/state in limbs)
+			H.vis_contents -= limbs[state]
+		for(var/state in masks)
+			H.vis_contents -= masks[state]
+		// Wyłączenie w trakcie gry: przedmioty w dłoniach są zdjęte z moba, więc budujemy je od nowa
+		if(!QDELETED(H))
+			H.update_inv_hands()
+	QDEL_NULL(em_block)
+	QDEL_LIST_ASSOC_VAL(limbs)
+	QDEL_LIST_ASSOC_VAL(masks)
+	return ..()
+
+/datum/component/walk_animation/proc/add_limb(mob/living/carbon/human/H, state, layer, mask_flags)
+	var/obj/effect/overlay/walk_mask/mask = new
+	mask.icon_state = state
+	mask.render_target = "*walk_[state][REF(H)]"
+	add_bounds_anchors(mask) // ten sam obszar co bufor ciała, niezależnie od tego, jak filtr kotwiczy maskę
+	masks[state] = mask
+	H.vis_contents += mask
+
+	var/obj/effect/overlay/walk_limb/limb = new
+	limb.layer = layer
+	limb.render_source = body_target
+	limb.add_filter("walk_mask", 1, alpha_mask_filter(render_source = mask.render_target, flags = mask_flags))
+	limbs[state] = limb
+	H.vis_contents += limb
+
+/// BYOND 516 (1648) zmienił kotwiczenie obrazu z render_source, a bufor jest przycinany do tego, co się
+/// w nim narysowało. Bez wystających nakładek obraz ciała rozjeżdżał się z maskami (zostawał wąski pasek).
+/// Dwa prawie przezroczyste piksele w rogach obszaru 96x96 wokół kafla dają buforom ciała i masek stały
+/// rozmiar; sprawdzone w Dream Seeker 516 dla zwykłego i zmienionego wzrostu oraz leżenia, bez przesunięć.
+/datum/component/walk_animation/proc/add_bounds_anchors(atom/target)
+	var/mutable_appearance/lower_left = mutable_appearance('aquila/icons/mob/walk_masks.dmi', "anchor_ll")
+	lower_left.pixel_x = -world.icon_size
+	lower_left.pixel_y = -world.icon_size
+	var/mutable_appearance/upper_right = mutable_appearance('aquila/icons/mob/walk_masks.dmi', "anchor_ur")
+	upper_right.pixel_x = world.icon_size
+	upper_right.pixel_y = world.icon_size
+	. = list(lower_left, upper_right)
+	target.add_overlay(.)
+
+/// Przenosi przedmioty z dłoni 1 i 2 na fragmenty "hand_1"/"hand_2", żeby maski ich nie cięły.
+/// Fragment dostaje kopię nakładki, a kierunek ustawia mu update_held_dir(), więc sprite obraca się z postacią.
+/// Oryginał jest zdejmowany z moba: nakładka z render_target "*" nie znikała z bufora ciała i rysowała się drugi raz.
+/// Wołane po każdym update_inv_hands().
+/datum/component/walk_animation/proc/detach_held_items()
+	if(QDELING(src)) // update_inv_hands() z Destroy() ma zostawić zwykłe nakładki
+		return
+	var/mob/living/carbon/human/H = parent
+	for(var/index in 1 to 2)
+		var/obj/effect/overlay/walk_held/held = limbs["hand_[index]"]
+		held.cut_overlays()
+	var/list/hand_overlays = H.overlays_standing[HANDS_LAYER]
+	if(!length(hand_overlays))
+		return
+	H.remove_overlay(HANDS_LAYER)
+	// update_inv_hands() buduje listę w kolejności held_items, pomijając puste dłonie
+	var/list/kept_overlays = list()
+	var/overlay_index = 0
+	for(var/obj/item/I in H.held_items)
+		overlay_index++
+		if(overlay_index > length(hand_overlays))
+			break
+		var/hand_index = H.get_held_index_of_item(I)
+		var/mutable_appearance/hand_overlay = hand_overlays[overlay_index]
+		if(hand_index > 2 || !istype(hand_overlay))
+			kept_overlays += hand_overlay
+			continue
+		var/obj/effect/overlay/walk_held/held = limbs["hand_[hand_index]"]
+		held.add_overlay(hand_overlay)
+	H.overlays_standing[HANDS_LAYER] = kept_overlays
+	H.apply_overlay(HANDS_LAYER)
+
+/datum/component/walk_animation/proc/on_moved(mob/living/carbon/human/source, atom/old_loc, dir, forced)
+	SIGNAL_HANDLER
+
+	if(forced || !isturf(old_loc) || get_dist(old_loc, source) != 1)
+		return
+	if(source.buckled || source.lying || source.throwing || !(source.mobility_flags & MOBILITY_STAND))
+		return
+	if(source.movement_type & (FLYING|FLOATING|VENTCRAWLING) || !source.has_gravity())
+		return
+
+	// Czas jednego kroku w decysekundach, odtworzony z glide_size (odwrotność DELAY_TO_GLIDE_SIZE).
+	var/half_step = (world.icon_size / max(source.glide_size, 1)) * world.tick_lag / 2
+	phase = !phase
+	update_side_leg(source.dir)
+
+	if(source.dir & (EAST|WEST))
+		// Z boku: tylna noga cofa się, a pełna kopia nóg wysuwa się w przód.
+		// Ręka wisi przy samych plecach, więc wychyla się tylko w przód (co drugi krok), żeby nie wystawać za obrys.
+		// Dalsza dłoń jest ukryta za ciałem; przedmiot w niej cofa się o 1 px, gdy bliższa ręka idzie w przód.
+		var/forward = (source.dir & EAST) ? 1 : -1
+		swing("leg_a", -forward, 0, half_step)
+		var/obj/effect/overlay/walk_limb/front_leg = limbs["leg_b"]
+		animate(front_leg, alpha = 255, time = 0)
+		animate(pixel_w = forward, time = half_step, easing = SINE_EASING | EASE_OUT)
+		animate(pixel_w = 0, time = half_step, easing = SINE_EASING | EASE_IN)
+		animate(alpha = 0, time = 0)
+		if(phase)
+			swing_arm("arm_a", forward, 0, half_step)
+			swing(held_item_of("arm_b", source.dir), -forward, 0, half_step)
+	else
+		// Z przodu i z tyłu: unosi się jedna noga i ręka po przeciwnej stronie
+		swing(phase ? "leg_a" : "leg_b", 0, 1, half_step)
+		swing_arm(phase ? "arm_b" : "arm_a", 0, 1, half_step)
+
+/datum/component/walk_animation/proc/on_dir_change(mob/living/carbon/human/source, old_dir, new_dir)
+	SIGNAL_HANDLER
+
+	update_side_leg(new_dir)
+	update_held_dir(new_dir)
+
+/// Nakładki na fragmentach przedmiotów biorą kierunek z samego fragmentu, a VIS_INHERIT_DIR go nie zmienia,
+/// więc ustawiamy go wprost. Tyłem fragment z przedmiotem dostaje zwykłą (dodatnią) warstwę tuż pod
+/// warstwą moba, więc rysuje się pod wszystkimi fragmentami ciała.
+/datum/component/walk_animation/proc/update_held_dir(new_dir)
+	var/mob/living/carbon/human/H = parent
+	var/behind = (new_dir == NORTH)
+	for(var/index in 1 to 2)
+		var/obj/effect/overlay/walk_held/held = limbs["hand_[index]"]
+		held.dir = new_dir
+		if(behind || held_behind)
+			held.layer = behind ? H.layer - 0.001 : FLOAT_LAYER
+	held_behind = behind
+
+/// Z boku maska "leg_b" pokrywa się z "leg_a", więc w spoczynku ta noga jest ukryta; z przodu i z tyłu zawsze widoczna.
+/datum/component/walk_animation/proc/update_side_leg(new_dir)
+	var/obj/effect/overlay/walk_limb/leg = limbs["leg_b"]
+	var/target_alpha = (new_dir & (EAST|WEST)) ? 0 : 255
+	if(leg.alpha != target_alpha)
+		animate(leg, alpha = target_alpha, pixel_w = 0, pixel_z = 0, time = 0)
+
+/// Fragment z przedmiotem z dłoni, która w danym widoku należy do ręki "arm_a" lub "arm_b".
+/// Prawa dłoń to "arm_a" przy widoku z przodu (lewa strona ekranu) i na wschód (ręka bliżej patrzącego).
+/datum/component/walk_animation/proc/held_item_of(arm, facing)
+	var/right_is_a = (facing & (EAST|WEST)) ? (facing & EAST) : (facing & SOUTH)
+	return ((arm == "arm_a") == !!right_is_a) ? "hand_2" : "hand_1"
+
+/// Rusza ręką razem z trzymanym w niej przedmiotem.
+/datum/component/walk_animation/proc/swing_arm(arm, x, y, half_step)
+	var/mob/living/carbon/human/H = parent
+	swing(arm, x, y, half_step)
+	swing(held_item_of(arm, H.dir), x, y, half_step)
+
+/// Przesuwa fragment o (x, y) pikseli i wraca na miejsce w czasie jednego kroku.
+/datum/component/walk_animation/proc/swing(state, x, y, half_step)
+	var/obj/effect/overlay/limb = limbs[state]
+	animate(limb, pixel_w = x, pixel_z = y, time = half_step, easing = SINE_EASING | EASE_OUT)
+	animate(pixel_w = 0, pixel_z = 0, time = half_step, easing = SINE_EASING | EASE_IN)
+
+/// Czy ktoś widzi zamiast tego atomu obraz z override (przebranie za kwiatek, mały sprite).
+/// Taki obraz podmienia appearance, ale nie vis_contents, więc fragmenty animacji chodu rysowałyby się na nim.
+/atom/proc/has_override_alt_appearance()
+	for(var/key in alternate_appearances)
+		var/datum/atom_hud/alternate_appearance/basic/appearance = alternate_appearances[key]
+		if(istype(appearance) && appearance.theImage?.override)
+			return TRUE
+	return FALSE
+
+/datum/atom_hud/alternate_appearance/basic/add_to_hud(atom/A)
+	. = ..()
+	if(. && theImage?.override && ishuman(A))
+		var/mob/living/carbon/human/H = A
+		H.update_walk_animation()
+
+/datum/atom_hud/alternate_appearance/basic/remove_from_hud(atom/A)
+	var/had_override = theImage?.override
+	. = ..()
+	if(. && had_override && ishuman(A) && !QDELETED(A))
+		var/mob/living/carbon/human/H = A
+		H.update_walk_animation()
+
+/// Fragment ciała: obraz moba z bufora przycięty maską.
+/// Bufor zawiera już kolor, przezroczystość i obrót moba, więc nie dziedziczymy ich drugi raz.
+/obj/effect/overlay/walk_limb
+	name = ""
+	plane = FLOAT_PLANE
+	layer = FLOAT_LAYER
+	appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM | KEEP_APART | PIXEL_SCALE | TILE_BOUND
+	vis_flags = VIS_INHERIT_ID
+
+/// Przedmiot z jednej dłoni jako nakładka, bez przycinania maskami ciała.
+/// Dziedziczy kolor, przezroczystość i obrót moba, tak jak zwykła nakładka; kierunek z update_held_dir().
+/obj/effect/overlay/walk_held
+	name = ""
+	plane = FLOAT_PLANE
+	layer = FLOAT_LAYER
+	appearance_flags = KEEP_APART | PIXEL_SCALE | TILE_BOUND
+	vis_flags = VIS_INHERIT_ID
+
+/// Maska fragmentu ciała. Niewidoczna, rysuje się tylko do własnego bufora.
+/obj/effect/overlay/walk_mask
+	name = ""
+	icon = 'aquila/icons/mob/walk_masks.dmi'
+	plane = FLOAT_PLANE
+	layer = FLOAT_LAYER
+	appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM | KEEP_APART
+	vis_flags = VIS_INHERIT_DIR
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT

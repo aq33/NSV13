@@ -61,7 +61,7 @@
 			if (!ban)
 				to_chat(usr, "<span class='adminnotice'>Error: No sticky ban for [ckey] found!</span>")
 				return
-			if (alert("Are you sure you want to remove the sticky ban on [ckey]?","Are you sure","Yes","No") != "Yes")
+			if (alert("Are you sure you want to remove the sticky ban on [ckey]?","Na pewno","Yes","No") != "Yes")
 				return
 			if (!get_stickyban_from_ckey(ckey))
 				to_chat(usr, "<span class='adminnotice'>Error: The ban disappeared.</span>")
@@ -98,7 +98,7 @@
 				to_chat(usr, "<span class='adminnotice'>Error: [alt] is not linked to [ckey]'s sticky ban!</span>")
 				return
 
-			if (alert("Are you sure you want to disassociate [alt] from [ckey]'s sticky ban? \nNote: Nothing stops byond from re-linking them, Use \[E] to exempt them","Are you sure","Yes","No") != "Yes")
+			if (alert("Are you sure you want to disassociate [alt] from [ckey]'s sticky ban? \nNote: Nothing stops byond from re-linking them, Use \[E] to exempt them","Na pewno","Yes","No") != "Yes")
 				return
 
 			//we have to do this again incase something changes
@@ -180,7 +180,7 @@
 				to_chat(usr, "<span class='adminnotice'>Error: [alt] is not linked to [ckey]'s sticky ban!</span>")
 				return
 
-			if (alert("Are you sure you want to exempt [alt] from [ckey]'s sticky ban?","Are you sure","Yes","No") != "Yes")
+			if (alert("Are you sure you want to exempt [alt] from [ckey]'s sticky ban?","Na pewno","Yes","No") != "Yes")
 				return
 
 			//we have to do this again incase something changes
@@ -230,7 +230,7 @@
 				to_chat(usr, "<span class='adminnotice'>Error: [alt] is not exempt from [ckey]'s sticky ban!</span>")
 				return
 
-			if (alert("Are you sure you want to unexempt [alt] from [ckey]'s sticky ban?","Are you sure","Yes","No") != "Yes")
+			if (alert("Are you sure you want to unexempt [alt] from [ckey]'s sticky ban?","Na pewno","Yes","No") != "Yes")
 				return
 
 			//we have to do this again incase something changes
@@ -267,12 +267,12 @@
 			if (!data["ckey"])
 				return
 			if (!SSdbcore.Connect())
-				to_chat(usr, "<span class='adminnotice'>No database connection!</span>")
+				to_chat(usr, "<span class='adminnotice'>Brak połączenia z bazą danych!</span>")
 				return
 
 			var/ckey = data["ckey"]
 
-			if (alert("Are you sure you want to put [ckey]'s stickyban on timeout until next round (or removed)?","Are you sure","Yes","No") != "Yes")
+			if (alert("Are you sure you want to put [ckey]'s stickyban on timeout until next round (or removed)?","Na pewno","Yes","No") != "Yes")
 				return
 			var/ban = get_stickyban_from_ckey(ckey)
 			if (!ban)
@@ -294,11 +294,11 @@
 			if (!data["ckey"])
 				return
 			if (!SSdbcore.Connect())
-				to_chat(usr, "<span class='adminnotice'>No database connection!</span>")
+				to_chat(usr, "<span class='adminnotice'>Brak połączenia z bazą danych!</span>")
 				return
 			var/ckey = data["ckey"]
 
-			if (alert("Are you sure you want to lift the timeout on [ckey]'s stickyban?","Are you sure","Yes","No") != "Yes")
+			if (alert("Are you sure you want to lift the timeout on [ckey]'s stickyban?","Na pewno","Yes","No") != "Yes")
 				return
 
 			var/ban = get_stickyban_from_ckey(ckey)
@@ -323,7 +323,7 @@
 			if (!data["ckey"])
 				return
 			var/ckey = data["ckey"]
-			if (alert("Are you sure you want to revert the sticky ban on [ckey] to its state at round start (or last edit)?","Are you sure","Yes","No") != "Yes")
+			if (alert("Are you sure you want to revert the sticky ban on [ckey] to its state at round start (or last edit)?","Na pewno","Yes","No") != "Yes")
 				return
 			var/ban = get_stickyban_from_ckey(ckey)
 			if (!ban)
@@ -348,15 +348,15 @@
 		return
 	var/timeout
 	if (SSdbcore.Connect())
-		timeout = "<a href='?_src_=holder;[HrefToken()];stickyban=[(ban["timeout"] ? "untimeout" : "timeout")]&ckey=[ckey]'>\[[(ban["timeout"] ? "untimeout" : "timeout" )]\]</a>"
+		timeout = "<a href='byond://?_src_=holder;[HrefToken()];stickyban=[(ban["timeout"] ? "untimeout" : "timeout")]&ckey=[ckey]'>\[[(ban["timeout"] ? "untimeout" : "timeout" )]\]</a>"
 	else
-		timeout = "<a href='?_src_=holder;[HrefToken()];stickyban=revert&ckey=[ckey]'>\[revert\]</a>"
+		timeout = "<a href='byond://?_src_=holder;[HrefToken()];stickyban=revert&ckey=[ckey]'>\[revert\]</a>"
 	. = list({"
-		<a href='?_src_=holder;[HrefToken()];stickyban=remove&ckey=[ckey]'>\[-\]</a>
+		<a href='byond://?_src_=holder;[HrefToken()];stickyban=remove&ckey=[ckey]'>\[-\]</a>
 		[timeout]
 		<b>[ckey]</b>
 		<br />"
-		[ban["message"]] <b><a href='?_src_=holder;[HrefToken()];stickyban=edit&ckey=[ckey]'>\[Edit\]</a></b><br />
+		[ban["message"]] <b><a href='byond://?_src_=holder;[HrefToken()];stickyban=edit&ckey=[ckey]'>\[Edit\]</a></b><br />
 	"})
 	if (ban["admin"])
 		. += "[ban["admin"]]<br />"
@@ -366,12 +366,12 @@
 	for (var/key in ban["keys"])
 		if (ckey(key) == ckey)
 			continue
-		. += "<li><a href='?_src_=holder;[HrefToken()];stickyban=remove_alt&ckey=[ckey]&alt=[ckey(key)]'>\[-\]</a>[key]<a href='?_src_=holder;[HrefToken()];stickyban=exempt&ckey=[ckey]&alt=[ckey(key)]'>\[E\]</a></li>"
+		. += "<li><a href='byond://?_src_=holder;[HrefToken()];stickyban=remove_alt&ckey=[ckey]&alt=[ckey(key)]'>\[-\]</a>[key]<a href='byond://?_src_=holder;[HrefToken()];stickyban=exempt&ckey=[ckey]&alt=[ckey(key)]'>\[E\]</a></li>"
 
 	for (var/key in ban["whitelist"])
 		if (ckey(key) == ckey)
 			continue
-		. += "<li><a href='?_src_=holder;[HrefToken()];stickyban=remove_alt&ckey=[ckey]&alt=[ckey(key)]'>\[-\]</a>[key]<a href='?_src_=holder;[HrefToken()];stickyban=unexempt&ckey=[ckey]&alt=[ckey(key)]'>\[UE\]</a></li>"
+		. += "<li><a href='byond://?_src_=holder;[HrefToken()];stickyban=remove_alt&ckey=[ckey]&alt=[ckey(key)]'>\[-\]</a>[key]<a href='byond://?_src_=holder;[HrefToken()];stickyban=unexempt&ckey=[ckey]&alt=[ckey(key)]'>\[UE\]</a></li>"
 
 	. += "</ol>\n"
 
@@ -385,17 +385,8 @@
 		banhtml += "<br /><hr />\n"
 		banhtml += stickyban_gethtml(ckey)
 
-	var/html = {"
-	<head>
-		<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
-		<title>Sticky Bans</title>
-	</head>
-	<body>
-		<h2>All Sticky Bans:</h2> <a href='?_src_=holder;[HrefToken()];stickyban=add'>\[+\]</a><br>
-		[banhtml.Join("")]
-	</body>
-	"}
-	usr << browse(html,"window=stickybans;size=700x400")
+	var/html = "<h2>All Sticky Bans:</h2> <a href='byond://?_src_=holder;[HrefToken()];stickyban=add'>\[+\]</a><br>[banhtml.Join("")]"
+	usr << browse(HTML_SKELETON_TITLE("Sticky Bans", html),"window=stickybans;size=700x400")
 
 /proc/sticky_banned_ckeys()
 	if (SSdbcore.Connect() || length(SSstickyban.dbcache))

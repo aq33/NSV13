@@ -46,12 +46,12 @@
 		filtered_modules[AG.category][AG] = AG
 	return filtered_modules
 
-/obj/machinery/abductor/console/attack_hand(mob/user)
+/obj/machinery/abductor/console/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(.)
 		return
 	if(!HAS_TRAIT(user, TRAIT_ABDUCTOR_TRAINING) && !HAS_TRAIT(user.mind, TRAIT_ABDUCTOR_TRAINING))
-		to_chat(user, "<span class='warning'>You start mashing alien buttons at random!</span>")
+		to_chat(user, "<span class='warning'>Zaczynasz losowo wciskać obce przyciski!</span>")
 		if(do_after(user,100, target = src))
 			TeleporterSend()
 
@@ -175,12 +175,12 @@
 
 /obj/machinery/abductor/console/proc/SetDroppoint(turf/open/location,user)
 	if(!istype(location))
-		to_chat(user, "<span class='warning'>That place is not safe for the specimen.</span>")
+		to_chat(user, "<span class='warning'>To miejsce nie jest bezpieczne dla okazu.</span>")
 		return
 
 	if(pad)
 		pad.teleport_target = location
-		to_chat(user, "<span class='notice'>Location marked as test subject release point.</span>")
+		to_chat(user, "<span class='notice'>Oznaczono miejsce jako punkt wypuszczania obiektów testowych.</span>")
 
 /obj/machinery/abductor/console/Initialize(mapload)
 	..()
@@ -207,7 +207,7 @@
 
 /obj/machinery/abductor/console/proc/AddSnapshot(mob/living/carbon/human/target)
 	if(istype(target.get_item_by_slot(ITEM_SLOT_HEAD), /obj/item/clothing/head/foilhat))
-		say("Subject wearing specialized protective headgear, unable to get a proper scan!")
+		say("Obiekt nosi specjalne ochronne nakrycie głowy, nie można go poprawnie zeskanować!")
 		return
 	var/datum/icon_snapshot/entry = new
 	entry.name = target.name
@@ -245,16 +245,16 @@
 
 /obj/machinery/abductor/console/attackby(obj/O, mob/user, params)
 	if(istype(O, /obj/item/abductor/gizmo) && AddGizmo(O))
-		to_chat(user, "<span class='notice'>You link the tool to the console.</span>")
+		to_chat(user, "<span class='notice'>Łączysz narzędzie z konsolą.</span>")
 	else if(istype(O, /obj/item/clothing/suit/armor/abductor/vest) && AddVest(O))
-		to_chat(user, "<span class='notice'>You link the vest to the console.</span>")
+		to_chat(user, "<span class='notice'>Łączysz kamizelkę z konsolą.</span>")
 	else
 		return ..()
 
 /obj/machinery/abductor/console/proc/Dispense(item,cost=1)
 	if(experiment && experiment.credits >= cost)
 		experiment.credits -=cost
-		say("Incoming supply!")
+		say("Nadchodzi dostawa!")
 		var/drop_location = loc
 		if(pad)
 			flick("alien-pad", pad)
@@ -262,4 +262,4 @@
 		new item(drop_location)
 
 	else
-		say("Insufficent data!")
+		say("Za mało danych!")

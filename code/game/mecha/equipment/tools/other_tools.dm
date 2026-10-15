@@ -85,15 +85,15 @@
 		if(1)
 			if(!locked)
 				if(!istype(target) || target.anchored || target.move_resist >= MOVE_FORCE_EXTREMELY_STRONG)
-					occupant_message("Unable to lock on [target]")
+					occupant_message("Nie można namierzyć [target]")
 					return
 				if(ismob(target))
 					var/mob/M = target
 					if(M.mob_negates_gravity())
-						occupant_message("Unable to lock on [target]")
+						occupant_message("Nie można namierzyć [target]")
 						return
 				locked = target
-				occupant_message("Locked on [target]")
+				occupant_message("Namierzono [target]")
 				send_byjax(chassis.occupant,"exosuit.browser","[REF(src)]",src.get_equip_info())
 			else if(target!=locked)
 				if(locked in view(chassis))
@@ -106,7 +106,7 @@
 					return TRUE
 				else
 					locked = null
-					occupant_message("Lock on [locked] disengaged.")
+					occupant_message("Zwolniono namierzenie [locked]")
 					send_byjax(chassis.occupant,"exosuit.browser","[REF(src)]",src.get_equip_info())
 		if(2)
 			var/list/atoms = list()
@@ -130,7 +130,7 @@
 
 
 /obj/item/mecha_parts/mecha_equipment/gravcatapult/get_equip_info()
-	return "[..()] [mode==1?"([locked||"Nothing"])":null] \[<a href='?src=[REF(src)];mode=1'>S</a>|<a href='?src=[REF(src)];mode=2'>P</a>\]"
+	return "[..()] [mode==1?"([locked||"Nothing"])":null] \[<a href='byond://?src=[REF(src)];mode=1'>S</a>|<a href='byond://?src=[REF(src)];mode=2'>P</a>\]"
 
 /obj/item/mecha_parts/mecha_equipment/gravcatapult/Topic(href, href_list)
 	..()
@@ -213,7 +213,7 @@
 /obj/item/mecha_parts/mecha_equipment/repair_droid/get_equip_info()
 	if(!chassis)
 		return
-	return "<span style=\"color:[equip_ready?"#0f0":"#f00"];\">*</span>&nbsp; [src.name] - <a href='?src=[REF(src)];toggle_repairs=1'>[equip_ready?"A":"Dea"]ctivate</a>"
+	return "<span style=\"color:[equip_ready?"#0f0":"#f00"];\">*</span>&nbsp; [src.name] - <a href='byond://?src=[REF(src)];toggle_repairs=1'>[equip_ready?"Aktywuj":"Dezaktywuj"]</a>"
 
 
 /obj/item/mecha_parts/mecha_equipment/repair_droid/Topic(href, href_list)
@@ -320,7 +320,7 @@
 /obj/item/mecha_parts/mecha_equipment/tesla_energy_relay/get_equip_info()
 	if(!chassis)
 		return
-	return "<span style=\"color:[equip_ready?"#0f0":"#f00"];\">*</span>&nbsp; [src.name] - <a href='?src=[REF(src)];toggle_relay=1'>[equip_ready?"A":"Dea"]ctivate</a>"
+	return "<span style=\"color:[equip_ready?"#0f0":"#f00"];\">*</span>&nbsp; [src.name] - <a href='byond://?src=[REF(src)];toggle_relay=1'>[equip_ready?"Aktywuj":"Dezaktywuj"]</a>"
 
 
 /obj/item/mecha_parts/mecha_equipment/tesla_energy_relay/process()
@@ -332,7 +332,7 @@
 	if(isnull(cur_charge) || !chassis.cell)
 		STOP_PROCESSING(SSobj, src)
 		set_ready_state(1)
-		occupant_message("No power cell detected.")
+		occupant_message("Nie wykryto ogniwa zasilania.")
 		return
 	if(cur_charge < chassis.cell.maxcharge)
 		var/area/A = get_area(chassis)
@@ -395,7 +395,7 @@
 /obj/item/mecha_parts/mecha_equipment/generator/get_equip_info()
 	var/output = ..()
 	if(output)
-		return "[output] \[[fuel]: [round(fuel.amount*fuel.perunit,0.1)] cm<sup>3</sup>\] - <a href='?src=[REF(src)];toggle=1'>[equip_ready?"A":"Dea"]ctivate</a>"
+		return "[output] \[[fuel]: [round(fuel.amount*fuel.perunit,0.1)] cm<sup>3</sup>\] - <a href='byond://?src=[REF(src)];toggle=1'>[equip_ready?"A":"Dea"]ctivate</a>"
 
 /obj/item/mecha_parts/mecha_equipment/generator/action(target)
 	if(chassis)
@@ -410,13 +410,13 @@
 			var/units = min(max(round(to_load / P.perunit),1),P.amount)
 			fuel.amount += units
 			P.use(units)
-			occupant_message("[units] unit\s of [fuel] successfully loaded.")
+			occupant_message("Załadowano [fuel]: [units] j.")
 			return units
 		else
-			occupant_message("Unit is full.")
+			occupant_message("Jednostka jest pełna.")
 			return 0
 	else
-		occupant_message("<span class='warning'>[fuel] traces in target minimal! [P] cannot be used as fuel.</span>")
+		occupant_message("<span class='warning'>Śladowe ilości [fuel] w celu! [P] nie nadaje się na paliwo.</span>")
 		return
 
 /obj/item/mecha_parts/mecha_equipment/generator/attackby(weapon,mob/user, params)
@@ -435,7 +435,7 @@
 	var/cur_charge = chassis.get_charge()
 	if(isnull(cur_charge))
 		set_ready_state(1)
-		occupant_message("No power cell detected.")
+		occupant_message("Nie wykryto ogniwa zasilania.")
 		log_message("Deactivated.", LOG_MECHA)
 		STOP_PROCESSING(SSobj, src)
 		return
@@ -478,7 +478,7 @@
 /obj/item/mecha_parts/mecha_equipment/thrusters/try_attach_part(mob/user, obj/mecha/M)
 	for(var/obj/item/I in M.equipment)
 		if(istype(I, src))
-			to_chat(user, "<span class='warning'>[M] already has this thruster package!</span>")
+			to_chat(user, "<span class='warning'>[M] ma już ten pakiet dysz!</span>")
 			return FALSE
 	. = ..()
 
@@ -522,7 +522,7 @@
 	occupant_message("<span class='notice'>[src] disabled.</span>")
 
 /obj/item/mecha_parts/mecha_equipment/thrusters/get_equip_info()
-	return "[..()] \[<a href='?src=[REF(src)];mode=0'>Enable</a>|<a href='?src=[REF(src)];mode=1'>Disable</a>\]"
+	return "[..()] \[<a href='byond://?src=[REF(src)];mode=0'>Enable</a>|<a href='byond://?src=[REF(src)];mode=1'>Disable</a>\]"
 
 /obj/item/mecha_parts/mecha_equipment/thrusters/proc/thrust(var/movement_dir)
 	if(!chassis)
@@ -545,7 +545,7 @@
 
 /obj/item/mecha_parts/mecha_equipment/thrusters/gas/try_attach_part(mob/user, obj/mecha/M)
 	if(!M.internal_tank)
-		to_chat(user, "<span class='warning'>[M] does not have an internal tank and cannot support this upgrade!</span>")
+		to_chat(user, "<span class='warning'>[M] nie ma wewnętrznego zbiornika i nie obsłuży tego ulepszenia!</span>")
 		return FALSE
 	. = ..()
 

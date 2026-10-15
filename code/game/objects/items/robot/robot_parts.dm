@@ -94,9 +94,9 @@
 				head.flash2.forceMove(T)
 				head.flash2 = null
 				head = null
-			to_chat(user, "<span class='notice'>You disassemble the cyborg shell.</span>")
+			to_chat(user, "<span class='notice'>Rozbierasz obudowę cyborga.</span>")
 	else
-		to_chat(user, "<span class='notice'>There is nothing to remove from the endoskeleton.</span>")
+		to_chat(user, "<span class='notice'>Nie ma nic do wyjęcia z endoszkieletu.</span>")
 	update_icon()
 
 /obj/item/robot_suit/proc/put_in_hand_or_drop(mob/living/user, obj/item/I) //normal put_in_hands() drops the item ontop of the player, this drops it at the suit's loc
@@ -111,7 +111,7 @@
 		return TRUE
 
 	if(!chest) //can't remove a cell if there's no chest to remove it from.
-		to_chat(user, "<span class='notice'>[src] has no attached torso.</span>")
+		to_chat(user, "<span class='notice'>[src] nie ma przymocowanego tułowia.</span>")
 		return
 
 	var/obj/item/stock_parts/cell/temp_cell = user.is_holding_item_of_type(/obj/item/stock_parts/cell)
@@ -120,20 +120,20 @@
 		swap_failed = TRUE
 	else if(!user.transferItemToLoc(temp_cell, chest))
 		swap_failed = TRUE
-		to_chat(user, "<span class='warning'>[temp_cell] is stuck to your hand, you can't put it in [src]!</span>")
+		to_chat(user, "<span class='warning'>[temp_cell] przykleiło się do twojej ręki, nie możesz go włożyć do [src]!</span>")
 
 	if(chest.cell) //drop the chest's current cell no matter what.
 		put_in_hand_or_drop(user, chest.cell)
 
 	if(swap_failed) //we didn't transfer any new items.
 		if(chest.cell) //old cell ejected, nothing inserted.
-			to_chat(user, "<span class='notice'>You remove [chest.cell] from [src].</span>")
+			to_chat(user, "<span class='notice'>Wyjmujesz [chest.cell] z [src].</span>")
 			chest.cell = null
 		else
-			to_chat(user, "<span class='notice'>The power cell slot in [src]'s torso is empty.</span>")
+			to_chat(user, "<span class='notice'>Gniazdo ogniwa w tułowiu [src] jest puste.</span>")
 		return
 
-	to_chat(user, "<span class='notice'>You [chest.cell ? "replace [src]'s [chest.cell.name] with [temp_cell]" : "insert [temp_cell] into [src]"].</span>")
+	to_chat(user, "<span class='notice'>[chest.cell ? "Wymieniasz [chest.cell.name] w [src] na [temp_cell]" : "Wkładasz [temp_cell] do [src]"].</span>")
 	chest.cell = temp_cell
 	return TRUE
 
@@ -145,13 +145,13 @@
 			if (M.use(1))
 				var/obj/item/bot_assembly/ed209/B = new
 				B.forceMove(drop_location())
-				to_chat(user, "<span class='notice'>You arm the robot frame.</span>")
+				to_chat(user, "<span class='notice'>Montujesz ramiona do ramy robota.</span>")
 				var/holding_this = user.get_inactive_held_item()==src
 				qdel(src)
 				if (holding_this)
 					user.put_in_inactive_hand(B)
 			else
-				to_chat(user, "<span class='warning'>You need one sheet of iron to start building ED-209!</span>")
+				to_chat(user, "<span class='warning'>Do rozpoczęcia budowy ED-209 potrzebujesz arkusza żelaza!</span>")
 				return
 	else if(istype(W, /obj/item/bodypart/l_leg/robot))
 		if(l_leg)
@@ -205,15 +205,15 @@
 			chest = CH
 			update_icon()
 		else if(!CH.wired)
-			to_chat(user, "<span class='warning'>You need to attach wires to it first!</span>")
+			to_chat(user, "<span class='warning'>Najpierw musisz podłączyć do niego przewody!</span>")
 		else
-			to_chat(user, "<span class='warning'>You need to attach a cell to it first!</span>")
+			to_chat(user, "<span class='warning'>Najpierw musisz podłączyć do niego ogniwo!</span>")
 
 	else if(istype(W, /obj/item/bodypart/head/robot))
 		var/obj/item/bodypart/head/robot/HD = W
 		for(var/X in HD.contents)
 			if(istype(X, /obj/item/organ))
-				to_chat(user, "<span class='warning'>There are organs inside [HD]!</span>")
+				to_chat(user, "<span class='warning'>W [HD] są narządy!</span>")
 				return
 		if(head)
 			return
@@ -225,47 +225,47 @@
 			head = HD
 			update_icon()
 		else
-			to_chat(user, "<span class='warning'>You need to attach a flash to it first!</span>")
+			to_chat(user, "<span class='warning'>Najpierw musisz zamontować w nim flash!</span>")
 
 	else if (W.tool_behaviour == TOOL_MULTITOOL)
 		if(check_completion())
 			Interact(user)
 		else
-			to_chat(user, "<span class='warning'>The endoskeleton must be assembled before debugging can begin!</span>")
+			to_chat(user, "<span class='warning'>Endoszkielet musi zostać złożony, zanim zacznie się debugowanie!</span>")
 
 	else if(istype(W, /obj/item/mmi))
 		var/obj/item/mmi/M = W
 		if(check_completion())
 			if(!chest.cell)
-				to_chat(user, "<span class='warning'>The endoskeleton still needs a power cell!</span>")
+				to_chat(user, "<span class='warning'>Endoszkielet wciąż potrzebuje ogniwa zasilającego!</span>")
 				return
 			if(!isturf(loc))
-				to_chat(user, "<span class='warning'>You can't put [M] in, the frame has to be standing on the ground to be perfectly precise!</span>")
+				to_chat(user, "<span class='warning'>Nie możesz włożyć [M], rama musi stać na ziemi, by wszystko było idealnie precyzyjne!</span>")
 				return
 			if(!M.brainmob)
-				to_chat(user, "<span class='warning'>Sticking an empty [M.name] into the frame would sort of defeat the purpose!</span>")
+				to_chat(user, "<span class='warning'>Wkładanie pustego [M.name] do ramy mijałoby się z celem!</span>")
 				return
 
 			var/mob/living/brain/BM = M.brainmob
 			if(!BM.key || !BM.mind)
-				to_chat(user, "<span class='warning'>The MMI indicates that their mind is completely unresponsive; there's no point!</span>")
+				to_chat(user, "<span class='warning'>MMI wskazuje, że umysł zupełnie nie reaguje; nie ma sensu!</span>")
 				return
 
 			if(!BM.client) //braindead
-				to_chat(user, "<span class='warning'>The MMI indicates that their mind is currently inactive; it might change!</span>")
+				to_chat(user, "<span class='warning'>MMI wskazuje, że umysł jest obecnie nieaktywny; może się to zmienić!</span>")
 				return
 
 			if(BM.stat == DEAD || BM.suiciding || (M.brain && (M.brain.brain_death || M.brain.suicided)))
-				to_chat(user, "<span class='warning'>Sticking a dead brain into the frame would sort of defeat the purpose!</span>")
+				to_chat(user, "<span class='warning'>Wkładanie martwego mózgu do ramy mijałoby się z celem!</span>")
 				return
 
 			if(M.brain?.organ_flags & ORGAN_FAILING)
-				to_chat(user, "<span class='warning'>The MMI indicates that the brain is damaged!</span>")
+				to_chat(user, "<span class='warning'>MMI wskazuje, że mózg jest uszkodzony!</span>")
 				return
 
 			if(is_banned_from(BM.ckey, JOB_NAME_CYBORG) || QDELETED(src) || QDELETED(BM) || QDELETED(user) || QDELETED(M) || !Adjacent(user))
 				if(!QDELETED(M))
-					to_chat(user, "<span class='warning'>This [M.name] does not seem to fit!</span>")
+					to_chat(user, "<span class='warning'>To [M.name] chyba nie pasuje!</span>")
 				return
 
 			if(!user.temporarilyRemoveItemFromInventory(W))
@@ -314,9 +314,9 @@
 			BM.mind.transfer_to(O)
 
 			if(O.mind?.special_role)
-				O.mind.store_memory("As a cyborg, you must obey your silicon laws and master AI above all else. Your objectives will consider you to be dead.")
-				to_chat(O, "<span class='userdanger'>You have been robotized!</span>")
-				to_chat(O, "<span class='danger'>You must obey your silicon laws and master AI above all else. Your objectives will consider you to be dead.</span>")
+				O.mind.store_memory("Jako cyborg musisz przede wszystkim przestrzegać swoich praw i słuchać nadrzędnej SI. Twoje cele uznają cię za martwego.")
+				to_chat(O, "<span class='userdanger'>Zostajesz zrobotyzowany!</span>")
+				to_chat(O, "<span class='danger'>Musisz przede wszystkim przestrzegać swoich praw i słuchać nadrzędnej SI. Twoje cele uznają cię za martwego.</span>")
 
 			SSblackbox.record_feedback("amount", "cyborg_birth", 1)
 			forceMove(O)
@@ -325,22 +325,22 @@
 			if(!locomotion)
 				O.lockcharge = TRUE
 				O.update_mobility()
-				to_chat(O, "<span class='warning'>Error: Servo motors unresponsive.</span>")
+				to_chat(O, "<span class='warning'>Błąd: serwomotory nie reagują.</span>")
 
 		else
-			to_chat(user, "<span class='warning'>The MMI must go in after everything else!</span>")
+			to_chat(user, "<span class='warning'>MMI musi zostać włożone na samym końcu!</span>")
 
 	else if(istype(W, /obj/item/borg/upgrade/ai))
 		var/obj/item/borg/upgrade/ai/M = W
 		if(check_completion())
 			if(!chest.cell)
-				to_chat(user, "<span class='warning'>The endoskeleton still needs a power cell!</span>")
+				to_chat(user, "<span class='warning'>Endoszkielet wciąż potrzebuje ogniwa zasilającego!</span>")
 				return
 			if(!isturf(loc))
-				to_chat(user, "<span class='warning'>You cannot install[M], the frame has to be standing on the ground to be perfectly precise!</span>")
+				to_chat(user, "<span class='warning'>Nie możesz zainstalować [M], rama musi stać na ziemi, by wszystko było idealnie precyzyjne!</span>")
 				return
 			if(!user.temporarilyRemoveItemFromInventory(M))
-				to_chat(user, "<span class='warning'>[M] is stuck to your hand!</span>")
+				to_chat(user, "<span class='warning'>[M] przykleiło się do twojej ręki!</span>")
 				return
 			qdel(M)
 			var/mob/living/silicon/robot/O = new /mob/living/silicon/robot/shell(get_turf(src))
@@ -369,19 +369,19 @@
 				O.update_mobility()
 
 	else if(istype(W, /obj/item/pen))
-		to_chat(user, "<span class='warning'>You need to use a multitool to name [src]!</span>")
+		to_chat(user, "<span class='warning'>Do nadania nazwy [src] potrzebujesz multitoola!</span>")
 	else
 		return ..()
 
 /obj/item/robot_suit/proc/Interact(mob/user)
-			var/t1 = "Designation: <A href='?src=[REF(src)];Name=1'>[(created_name ? "[created_name]" : "Default Cyborg")]</a><br>\n"
-			t1 += "Master AI: <A href='?src=[REF(src)];Master=1'>[(forced_ai ? "[forced_ai.name]" : "Automatic")]</a><br><br>\n"
+			var/t1 = "Oznaczenie: <A href='byond://?src=[REF(src)];Name=1'>[(created_name ? "[created_name]" : "Default Cyborg")]</a><br>\n"
+			t1 += "Nadrzędna SI: <A href='byond://?src=[REF(src)];Master=1'>[(forced_ai ? "[forced_ai.name]" : "Automatycznie")]</a><br><br>\n"
 
-			t1 += "LawSync Port: <A href='?src=[REF(src)];Law=1'>[(lawsync ? "Open" : "Closed")]</a><br>\n"
-			t1 += "AI Connection Port: <A href='?src=[REF(src)];AI=1'>[(aisync ? "Open" : "Closed")]</a><br>\n"
-			t1 += "Servo Motor Functions: <A href='?src=[REF(src)];Loco=1'>[(locomotion ? "Unlocked" : "Locked")]</a><br>\n"
-			t1 += "Panel Lock: <A href='?src=[REF(src)];Panel=1'>[(panel_locked ? "Engaged" : "Disengaged")]</a><br>\n"
-			var/datum/browser/popup = new(user, "robotdebug", "Cyborg Boot Debug", 310, 220)
+			t1 += "Port synchronizacji praw: <A href='byond://?src=[REF(src)];Law=1'>[(lawsync ? "Otwarty" : "Zamknięty")]</a><br>\n"
+			t1 += "Port połączenia z SI: <A href='byond://?src=[REF(src)];AI=1'>[(aisync ? "Otwarty" : "Zamknięty")]</a><br>\n"
+			t1 += "Funkcje serwomotorów: <A href='byond://?src=[REF(src)];Loco=1'>[(locomotion ? "Odblokowane" : "Zablokowane")]</a><br>\n"
+			t1 += "Blokada panelu: <A href='byond://?src=[REF(src)];Panel=1'>[(panel_locked ? "Włączona" : "Wyłączona")]</a><br>\n"
+			var/datum/browser/popup = new(user, "robotdebug", "Debugowanie rozruchu cyborga", 310, 220)
 			popup.set_content(t1)
 			popup.open()
 
@@ -392,11 +392,11 @@
 	var/mob/living/living_user = usr
 	var/obj/item/item_in_hand = living_user.get_active_held_item()
 	if(!item_in_hand || item_in_hand.tool_behaviour != TOOL_MULTITOOL)
-		to_chat(living_user, "<span class='warning'>You need a multitool!</span>")
+		to_chat(living_user, "<span class='warning'>Potrzebujesz multitoola!</span>")
 		return
 
 	if(href_list["Name"])
-		var/new_name = reject_bad_name(input(usr, "Enter new designation. Set to blank to reset to default.", "Cyborg Debug", src.created_name),1)
+		var/new_name = reject_bad_name(input(usr, "Podaj nowe oznaczenie. Zostaw puste, by przywrócić domyślne.", "Debugowanie cyborga", src.created_name),1)
 		if(!in_range(src, usr) && src.loc != usr)
 			return
 		if(new_name)
@@ -408,7 +408,7 @@
 	else if(href_list["Master"])
 		forced_ai = select_active_ai(usr)
 		if(!forced_ai)
-			to_chat(usr, "<span class='error'>No active AIs detected.</span>")
+			to_chat(usr, "<span class='error'>Nie wykryto aktywnych SI.</span>")
 
 	else if(href_list["Law"])
 		lawsync = !lawsync

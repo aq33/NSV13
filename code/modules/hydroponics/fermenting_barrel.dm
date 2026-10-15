@@ -17,9 +17,9 @@
 
 /obj/structure/fermenting_barrel/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>It is currently [open?"open, letting you pour liquids in.":"closed, letting you draw liquids from the tap."]</span>"
+	. += "<span class='notice'>Jest obecnie [open?"otwarta, więc możesz wlewać do niej płyny.":"zamknięta, więc możesz pobierać płyny z kranika."]</span>"
 
-/obj/structure/fermenting_barrel/proc/makeWine(obj/item/reagent_containers/food/snacks/grown/fruit)
+/obj/structure/fermenting_barrel/proc/makeWine(obj/item/food/grown/fruit)
 	if(fruit.reagents)
 		fruit.reagents.trans_to(src, fruit.reagents.total_volume)
 	var/amount = fruit.seed.potency / 4
@@ -39,30 +39,30 @@
 	playsound(src, 'sound/effects/bubbles.ogg', 50, TRUE)
 
 /obj/structure/fermenting_barrel/attackby(obj/item/I, mob/user, params)
-	var/obj/item/reagent_containers/food/snacks/grown/fruit = I
+	var/obj/item/food/grown/fruit = I
 	if(istype(fruit))
 		if(!fruit.can_distill)
-			to_chat(user, "<span class='warning'>You can't distill this into anything...</span>")
+			to_chat(user, "<span class='warning'>Nie da się z tego niczego wydestylować...</span>")
 			return TRUE
 		else if(!user.transferItemToLoc(I,src))
-			to_chat(user, "<span class='warning'>[I] is stuck to your hand!</span>")
+			to_chat(user, "<span class='warning'>[I] przykleił ci się do ręki!</span>")
 			return TRUE
-		to_chat(user, "<span class='notice'>You place [I] into [src] to start the fermentation process.</span>")
+		to_chat(user, "<span class='notice'>Umieszczasz [I] w [src], rozpoczynając fermentację.</span>")
 		addtimer(CALLBACK(src, PROC_REF(makeWine), fruit), rand(80, 120) * speed_multiplier)
 		return TRUE
 	else
 		return ..()
 
-/obj/structure/fermenting_barrel/attack_hand(mob/user)
+/obj/structure/fermenting_barrel/attack_hand(mob/user, list/modifiers)
 	open = !open
 	if(open)
 		DISABLE_BITFIELD(reagents.flags, DRAINABLE)
 		ENABLE_BITFIELD(reagents.flags, REFILLABLE)
-		to_chat(user, "<span class='notice'>You open [src], letting you fill it.</span>")
+		to_chat(user, "<span class='notice'>Otwierasz [src], co pozwala ją napełnić.</span>")
 	else
 		ENABLE_BITFIELD(reagents.flags, DRAINABLE)
 		DISABLE_BITFIELD(reagents.flags, REFILLABLE)
-		to_chat(user, "<span class='notice'>You close [src], letting you draw from its tap.</span>")
+		to_chat(user, "<span class='notice'>Zamykasz [src], co pozwala pobierać płyn z kranika.</span>")
 	update_icon()
 
 /obj/structure/fermenting_barrel/update_icon()

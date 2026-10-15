@@ -38,7 +38,7 @@
 		if(5 to TANK_DISPENSER_CAPACITY)
 			add_overlay("plasma-5")
 
-/obj/structure/tank_dispenser/attackby(obj/item/I, mob/user, params)
+/obj/structure/tank_dispenser/attackby(obj/item/I, mob/living/user, params)
 	var/full
 	if(istype(I, /obj/item/tank/internals/plasma))
 		if(plasmatanks < TANK_DISPENSER_CAPACITY)
@@ -53,13 +53,13 @@
 	else if(I.tool_behaviour == TOOL_WRENCH)
 		default_unfasten_wrench(user, I, time = 20)
 		return
-	else if(user.a_intent != INTENT_HARM)
-		to_chat(user, "<span class='notice'>[I] does not fit into [src].</span>")
+	else if(!user.combat_mode)
+		to_chat(user, "<span class='notice'>[I] nie mieści się do [src].</span>")
 		return
 	else
 		return ..()
 	if(full)
-		to_chat(user, "<span class='notice'>[src] can't hold any more of [I].</span>")
+		to_chat(user, "<span class='notice'>[src] nie pomieści więcej [I].</span>")
 		return
 
 	if(!user.transferItemToLoc(I, src))
@@ -68,7 +68,7 @@
 		else if(istype(I, /obj/item/tank/internals/oxygen))
 			oxygentanks--
 		return
-	to_chat(user, "<span class='notice'>You put [I] in [src].</span>")
+	to_chat(user, "<span class='notice'>Wkładasz [I] do [src].</span>")
 	update_icon()
 	ui_update()
 

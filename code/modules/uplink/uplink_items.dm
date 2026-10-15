@@ -55,7 +55,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	for (var/i in 1 to num)
 		var/datum/uplink_item/I = pick_n_take(sale_items)
 		var/datum/uplink_item/A = new I.type
-		var/list/disclaimer = list("Void where prohibited.", "Not recommended for children.", "Contains small parts.", "Check local laws for legality in region.", "Do not taunt.", "Not responsible for direct, indirect, incidental or consequential damages resulting from any defect, error or failure to perform.", "Keep away from fire or flames.", "Product is provided \"as is\" without any implied or expressed warranties.", "As seen on TV.", "For recreational use only.", "Use only as directed.", "16% sales tax will be charged for orders originating within Space Nebraska.")
+		var/list/disclaimer = list("Nieważne tam, gdzie zabronione.", "Niezalecane dla dzieci.", "Zawiera drobne elementy.", "Sprawdź legalność w lokalnych przepisach.", "Nie drażnić.", "Nie odpowiadamy za bezpośrednie, pośrednie, przypadkowe ani wtórne szkody wynikające z jakiejkolwiek wady, błędu lub awarii.", "Trzymać z dala od ognia i płomieni.", "Produkt dostarczany „tak jak jest”, bez jakichkolwiek dorozumianych lub wyraźnych gwarancji.", "Znane z telewizji.", "Wyłącznie do użytku rekreacyjnego.", "Używać wyłącznie zgodnie z zaleceniami.", "Od zamówień z Kosmicznej Nebraski pobierany jest 16% podatek od sprzedaży.")
 		A.limited_stock = limited_stock
 		A.category = category_name
 		I.refundable = FALSE //THIS MAN USES ONE WEIRD TRICK TO GAIN FREE TC, CODERS HATES HIM!
@@ -66,9 +66,9 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 					//Bulk discount
 					var/count = rand(3,7)
 					var/discount = A.get_discount()
-					A.name += " (Bulk discount - [count] for [((1-discount)*100)]% off!)"
+					A.name += " (Rabat hurtowy – [count] za [((1-discount)*100)]% taniej!)"
 					A.cost = max(round(A.cost*count*discount), 1)
-					A.desc += " Normally costs [initial(A.cost)*count] TC. All sales final. [pick(disclaimer)]"
+					A.desc += " Normalnie kosztuje [initial(A.cost)*count] TC. Sprzedaż ostateczna. [pick(disclaimer)]"
 					A.spawn_amount = count
 				else
 					//X% off!
@@ -77,11 +77,11 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 						discount *= 0.5
 					A.cost = max(round(A.cost * discount), 1)
 					A.name += " ([round(((initial(A.cost)-A.cost)/initial(A.cost))*100)]% off!)"
-					A.desc += " Normally costs [initial(A.cost)] TC. All sales final. [pick(disclaimer)]"
+					A.desc += " Normalnie kosztuje [initial(A.cost)] TC. Sprzedaż ostateczna. [pick(disclaimer)]"
 			if(4)
 				//Buy 1 get 1 free!
 				A.name += " (Buy 1 get 1 free!)"
-				A.desc += " Obtain 2 for the price of 1. All sales final. [pick(disclaimer)]"
+				A.desc += " Dwa w cenie jednego. Sprzedaż ostateczna. [pick(disclaimer)]"
 				A.spawn_amount = 2
 			if(5)
 				//Get 2 items with their combined price reduced.
@@ -91,8 +91,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 				var/final_cost = max(round(total_cost * discount), 1)
 				//Setup the item
 				A.cost = final_cost
-				A.name += " + [second_I.name] (Discounted Bundle - [100-(round((final_cost / total_cost)*100))]% off!)"
-				A.desc += " Also contains [second_I.name]. Normally costs [total_cost] TC when bought together. All sales final. [pick(disclaimer)]"
+				A.name += " + [second_I.name] (pakiet promocyjny – [100-(round((final_cost / total_cost)*100))]% taniej!)"
+				A.desc += " Zawiera też [second_I.name]. Normalnie kosztuje [total_cost] TC przy zakupie razem. Sprzedaż ostateczna. [pick(disclaimer)]"
 				A.bonus_items = list(second_I.item)
 		A.discounted = TRUE
 		A.item = I.item
@@ -159,9 +159,9 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			if(H.put_in_hands(A))
-				to_chat(H, "[A] materializes into your hands!")
+				to_chat(H, "[A] materializuje się w twoich rękach!")
 				return A
-	to_chat(user, "[A] materializes onto the floor.")
+	to_chat(user, "[A] materializuje się na podłodze.")
 	return A
 
 //Discounts (dynamically filled above)
@@ -316,8 +316,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	var/index = rand(1, 20)
 	starting_crate_value = index * 5
 	if(index == 1)
-		to_chat(user, "<span class='warning'><b>Incomming transmission from the syndicate.</b></span>")
-		to_chat(user, "<span class='warning'>You feel an overwhelming sense of pride and accomplishment.</span>")
+		to_chat(user, "<span class='warning'><b>Transmisja przychodząca od Syndykatu.</b></span>")
+		to_chat(user, "<span class='warning'>Ogarnia cię przytłaczające poczucie dumy i spełnienia.</span>")
 		var/obj/item/clothing/mask/joy/funny_mask = new(get_turf(user))
 		ADD_TRAIT(funny_mask, TRAIT_NODROP, CURSED_ITEM_TRAIT)
 		var/obj/item/I = user.get_item_by_slot(ITEM_SLOT_MASK)
@@ -326,9 +326,8 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 		user.equip_to_slot_if_possible(funny_mask, ITEM_SLOT_MASK)
 	else if(index == 20)
 		starting_crate_value = 200
-		print_command_report("Congratulations to [user] for being the [rand(4, 9)]th lucky winner of the syndicate lottery! \
-		Dread Admiral Sabertooth has authorised the beaming of your special equipment immediately! Happy hunting operative.",
-		"Syndicate Gambling Division High Command", TRUE)
+		print_command_report("Gratulacje dla [user], [rand(4, 9)]. szczęśliwego zwycięzcy loterii Syndykatu! Straszliwy Admirał Szablozęby zezwolił na natychmiastowe przesłanie twojego specjalnego wyposażenia! Udanych łowów, agencie.",
+		"Naczelne Dowództwo Wydziału Hazardu Syndykatu", TRUE)
 	var/obj/item/implant/weapons_auth/W = new
 	W.implant(user)	//Gives them the ability to use restricted weapons
 	. = ..()
@@ -604,7 +603,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 /datum/uplink_item/dangerous/carbine
 	name = "M-90gl Carbine"
 	desc = "A fully-loaded, specialized three-round burst carbine that fires 5.56mm ammunition from a 30 round magazine \
-			with a toggleable 40mm underbarrel grenade launcher."
+			with a 40mm underbarrel grenade launcher. Use secondary-fire to fire the grenade launcher."
 	item = /obj/item/gun/ballistic/automatic/m90
 	cost = 14
 	surplus = 50
@@ -1085,7 +1084,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	name = "Bombanana"
 	desc = "A banana with an explosive taste! discard the peel quickly, as it will explode with the force of a Syndicate minibomb \
 		a few seconds after the banana is eaten."
-	item = /obj/item/reagent_containers/food/snacks/grown/banana/bombanana
+	item = /obj/item/food/grown/banana/bombanana
 	cost = 4 //it is a bit cheaper than a minibomb because you have to take off your helmet to eat it, which is how you arm it
 	surplus = 0
 	purchasable_from = UPLINK_CLOWN_OPS
@@ -1542,6 +1541,82 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	cost = 30
 	purchasable_from = (UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS)
 
+/datum/uplink_item/suits/infiltrator_bundle
+	name = "Infiltrator MODsuit"
+	desc = "Developed by the Roseus Galactic Actors Guild in conjunction with the Gorlex Marauders to produce a functional suit for urban operations, \
+			this suit proves to be cheaper than your standard issue MODsuit, with none of the movement restrictions of the space suits employed by the company. \
+			However, this greater mobility comes at a cost, and the suit is ineffective at protecting the wearer from the vacuum of space. \
+			The suit does come pre-equipped with a special psi-emitter stealth module that makes it impossible to recognize the wearer \
+			as well as causing significant demoralization amongst Nanotrasen crew."
+	item = /obj/item/mod/control/pre_equipped/infiltrator
+	cost = 6
+
+/datum/uplink_item/suits/modsuit
+	name = "Syndicate MODsuit"
+	desc = "The feared MODsuit of a Syndicate agent. Features armoring and a set of inbuilt modules."
+	item = /obj/item/mod/control/pre_equipped/traitor
+	cost = 7
+	purchasable_from = ~(UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS) //you can't buy it in nuke, because the elite modsuit costs the same while being better
+
+/datum/uplink_item/suits/modsuit/elite
+	name = "Elite Syndicate MODsuit"
+	desc = "An upgraded, elite version of the Syndicate MODsuit. It features fireproofing, and also \
+			provides the user with superior armor and mobility compared to the standard Syndicate MODsuit."
+	item = /obj/item/mod/control/pre_equipped/traitor_elite
+	cost = 8
+	purchasable_from = (UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS)
+
+/datum/uplink_item/suits/emp_shield
+	name = "MODsuit Advanced EMP Shield Module"
+	desc = "An advanced EMP shield module for a MODsuit. It protects your entire body from electromagnetic pulses."
+	item = /obj/item/mod/module/emp_shield/advanced
+	cost = 5
+	purchasable_from = UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS
+
+/datum/uplink_item/suits/injector
+	name = "MODsuit Injector Module"
+	desc = "An injector module for a MODsuit. It is an extendable piercing injector with 30u capacity."
+	item = /obj/item/mod/module/injector
+	cost = 2
+	purchasable_from = UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS
+
+/datum/uplink_item/suits/holster
+	name = "MODsuit Holster Module"
+	desc = "A holster module for a MODsuit. It can stealthily store any not too heavy gun inside it."
+	item = /obj/item/mod/module/holster
+	cost = 2
+	purchasable_from = UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS
+
+/datum/uplink_item/suits/thermal
+	name = "MODsuit Thermal Visor Module"
+	desc = "A visor for a MODsuit. Lets you see living beings through walls."
+	item = /obj/item/mod/module/visor/thermal
+	cost = 3
+
+/datum/uplink_item/suits/night
+	name = "MODsuit Night Visor Module"
+	desc = "A visor for a MODsuit. Lets you see clearer in the dark."
+	item = /obj/item/mod/module/visor/night
+	cost = 2
+
+/datum/uplink_item/suits/chameleon
+	name = "MODsuit Chameleon Module"
+	desc = "A MODsuit module that lets the suit disguise itself as other objects."
+	item = /obj/item/mod/module/chameleon
+	cost = 2
+
+/datum/uplink_item/suits/plate_compression
+	name = "MODsuit Plate Compression Module"
+	desc = "A MODsuit module that lets the suit compress into a smaller size. Not compatible with storage modules or the Infiltrator MODsuit."
+	item = /obj/item/mod/module/plate_compression
+	cost = 2
+
+/datum/uplink_item/suits/noslip
+	name = "MODsuit Anti-Slip Module"
+	desc = "A MODsuit module preventing the user from slipping on water."
+	item = /obj/item/mod/module/noslip
+	cost = 2
+
 // Devices and Tools
 /datum/uplink_item/device_tools
 	category = "Misc. Gadgets"
@@ -1686,9 +1761,9 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 		return
 	U.failsafe_code = U.generate_code()
 	var/code = "[islist(U.failsafe_code) ? english_list(U.failsafe_code) : U.failsafe_code]"
-	to_chat(user, "<span class='warning'>The new failsafe code for this uplink is now : [code].</span>")
+	to_chat(user, "<span class='warning'>Nowy kod awaryjny tego uplinka to: [code].</span>")
 	if(user.mind)
-		user.mind.store_memory("Failsafe code for [U.parent] : [code]")
+		user.mind.store_memory("Kod awaryjny dla [U.parent]: [code]")
 	return U.parent //For log icon
 
 /datum/uplink_item/device_tools/toolbox

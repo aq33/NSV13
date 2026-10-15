@@ -1181,6 +1181,20 @@
 	},
 /turf/closed/wall/r_wall/syndicate,
 /area/shuttle/syndicate/bridge)
+"MK" = (
+/obj/machinery/jukebox/nukie,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/syndicate/hallway)
 
 (1,1,1) = {"
 aa
@@ -1388,7 +1402,7 @@ aj
 aq
 at
 av
-az
+MK
 aD
 aD
 aD

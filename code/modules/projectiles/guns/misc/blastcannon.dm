@@ -39,7 +39,7 @@
 	if(bomb)
 		bomb.forceMove(user.loc)
 		user.put_in_hands(bomb)
-		user.visible_message("<span class='warning'>[user] detaches [bomb] from [src].</span>")
+		user.visible_message("<span class='warning'>[user] odłącza [bomb] od [src].</span>")
 		bomb = null
 	update_icon()
 	return ..()
@@ -58,12 +58,12 @@
 	if(istype(O, /obj/item/transfer_valve))
 		var/obj/item/transfer_valve/T = O
 		if(!T.tank_one || !T.tank_two)
-			to_chat(user, "<span class='warning'>What good would an incomplete bomb do?</span>")
+			to_chat(user, "<span class='warning'>Na co komu niekompletna bomba?</span>")
 			return FALSE
 		if(!user.transferItemToLoc(T, src))
-			to_chat(user, "<span class='warning'>[T] seems to be stuck to your hand!</span>")
+			to_chat(user, "<span class='warning'>Wygląda na to, że [T] przykleił ci się do ręki!</span>")
 			return FALSE
-		user.visible_message("<span class='warning'>[user] attaches [T] to [src]!</span>")
+		user.visible_message("<span class='warning'>[user] mocuje [T] do [src]!</span>")
 		bomb = T
 		update_icon()
 		return TRUE
@@ -98,7 +98,7 @@
 	var/heavy = power * 0.25
 	var/medium = power * 0.5
 	var/light = power
-	user.visible_message("<span class='danger'>[user] opens [bomb] on [user.p_their()] [name] and fires a blast wave at [target]!</span>","<span class='danger'>You open [bomb] on your [name] and fire a blast wave at [target]!</span>")
+	user.visible_message("<span class='danger'>[user] otwiera [bomb] w [name] i wystrzeliwuje falę uderzeniową w [target]!</span>","<span class='danger'>Otwierasz [bomb] w [name] i wystrzeliwujesz falę uderzeniową w [target]!</span>")
 	playsound(user, "explosion", 100, 1)
 	var/turf/starting = get_turf(user)
 	var/turf/targturf = get_turf(target)
@@ -106,7 +106,8 @@
 	log_game("Blast wave fired from [AREACOORD(starting)] at [AREACOORD(targturf)] ([target.name]) by [key_name(user)] with power [heavy]/[medium]/[light].")
 	var/obj/item/projectile/blastwave/BW = new(loc, heavy, medium, light)
 	BW.hugbox = hugbox
-	BW.preparePixelProjectile(target, get_turf(src), params, 0)
+	var/modifiers = params2list(params)
+	BW.preparePixelProjectile(target, get_turf(src), modifiers, 0)
 	BW.fire()
 
 /obj/item/projectile/blastwave

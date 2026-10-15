@@ -8,6 +8,7 @@
 	righthand_file = 'icons/mob/inhands/weapons/chainsaw_righthand.dmi'
 	flags_1 = CONDUCT_1
 	force = 13
+	bleed_force = BLEED_DEEP_WOUND
 	block_power = 20
 	block_flags = BLOCKING_ACTIVE | BLOCKING_NASTY
 	attack_weight = 2
@@ -17,7 +18,7 @@
 	throw_speed = 2
 	throw_range = 4
 	materials = list(/datum/material/iron=13000)
-	attack_verb = list("sawed", "tore", "cut", "chopped", "diced")
+	attack_verb = list("piłuje", "rozdziera", "tnie", "rąbie", "sieka")
 	hitsound = "swing_hit"
 	sharpness = IS_SHARP
 	actions_types = list(/datum/action/item_action/startchainsaw)
@@ -35,19 +36,19 @@
 
 /obj/item/chainsaw/suicide_act(mob/living/carbon/user)
 	if(on)
-		user.visible_message("<span class='suicide'>[user] begins to tear [user.p_their()] head off with [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+		user.visible_message("<span class='suicide'>[user] zaczyna odcinać sobie głowę [src]! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 		playsound(src, 'sound/weapons/chainsawhit.ogg', 100, TRUE)
 		var/obj/item/bodypart/head/myhead = user.get_bodypart(BODY_ZONE_HEAD)
 		if(myhead)
 			myhead.dismember()
 	else
-		user.visible_message("<span class='suicide'>[user] smashes [src] into [user.p_their()] neck, destroying [user.p_their()] esophagus! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+		user.visible_message("<span class='suicide'>[user] wbija [src] w swoją szyję, niszcząc przełyk! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 		playsound(src, 'sound/weapons/genhit1.ogg', 100, TRUE)
 	return(BRUTELOSS)
 
 /obj/item/chainsaw/attack_self(mob/user)
 	on = !on
-	to_chat(user, "As you pull the starting cord dangling from [src], [on ? "it begins to whirr." : "the chain stops moving."]")
+	to_chat(user, "Gdy pociągasz za linkę rozrusznika [src], [on ? "zaczyna warczeć." : "łańcuch się zatrzymuje."]")
 	force = on ? force_on : initial(force)
 	throwforce = on ? force_on : initial(force)
 	icon_state = "chainsaw_[on ? "on" : "off"]"
@@ -74,7 +75,7 @@
 
 /obj/item/chainsaw/doomslayer/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	if(attack_type == PROJECTILE_ATTACK)
-		owner.visible_message("<span class='danger'>Ranged attacks just make [owner] angrier!</span>")
+		owner.visible_message("<span class='danger'>Ataki z dystansu tylko bardziej rozwścieczają [owner]!</span>")
 		playsound(src, pick('sound/weapons/bulletflyby.ogg', 'sound/weapons/bulletflyby2.ogg', 'sound/weapons/bulletflyby3.ogg'), 75, TRUE)
 		return 1
 	return 0
@@ -89,7 +90,7 @@
 	righthand_file = 'icons/mob/inhands/weapons/chainsaw_righthand.dmi'
 	force_on = 40
 	w_class = WEIGHT_CLASS_HUGE
-	attack_verb = list("sawed", "shred", "rended", "gutted", "eviscerated")
+	attack_verb = list("piłuje", "szatkuje", "rozszarpuje", "patroszy", "wypatrosza")
 	actions_types = list(/datum/action/item_action/startchainsaw)
 	block_power = 50
 	armour_penetration = 50
@@ -106,7 +107,7 @@
 
 /obj/item/chainsaw/energy/attack_self(mob/user)
 	on = !on
-	to_chat(user, "As you pull the starting cord dangling from [src], [on ? "it begins to whirr intimidatingly." : "the plasma microblades stop moving."]")
+	to_chat(user, "Gdy pociągasz za linkę rozrusznika [src], [on ? "zaczyna groźnie warczeć." : "plazmowe mikroostrza się zatrzymują."]")
 	force = on ? force_on : initial(force)
 	playsound(user, on ? onsound : offsound , 50, 1)
 	if(on)

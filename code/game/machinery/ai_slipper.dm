@@ -6,7 +6,7 @@
 	layer = PROJECTILE_HIT_THRESHHOLD_LAYER
 	plane = FLOOR_PLANE
 	max_integrity = 200
-	armor = list("melee" = 50, "bullet" = 20, "laser" = 20, "energy" = 20, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 30, "stamina" = 0)
+	armor = list("melee" = 50, "bullet" = 20, "laser" = 20, "energy" = 20, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 30, "stamina" = 0, "bleed" = 0)
 
 	var/uses = 20
 	var/cooldown = 0
@@ -15,7 +15,7 @@
 
 /obj/machinery/ai_slipper/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>It has <b>[uses]</b> uses of foam remaining.</span>"
+	. += "<span class='notice'>Pozostało użyć piany: <b>[uses]</b>.</span>"
 
 /obj/machinery/ai_slipper/power_change()
 	if(machine_stat & BROKEN)
@@ -32,17 +32,17 @@
 
 /obj/machinery/ai_slipper/interact(mob/user)
 	if(!allowed(user))
-		to_chat(user, "<span class='danger'>Access denied.</span>")
+		to_chat(user, "<span class='danger'>Odmowa dostępu.</span>")
 		return
 	if(!uses)
-		to_chat(user, "<span class='danger'>[src] is out of foam and cannot be activated.</span>")
+		to_chat(user, "<span class='danger'>W [src] skończyła się piana i nie można go aktywować.</span>")
 		return
 	if(cooldown_time > world.time)
-		to_chat(user, "<span class='danger'>[src] cannot be activated for <b>[DisplayTimeText(world.time - cooldown_time)]</b>.</span>")
+		to_chat(user, "<span class='danger'>[src] nie może zostać aktywowany przez <b>[DisplayTimeText(world.time - cooldown_time)]</b>.</span>")
 		return
 	new /obj/effect/particle_effect/foam(loc)
 	uses--
-	to_chat(user, "<span class='notice'>You activate [src]. It now has <b>[uses]</b> uses of foam remaining.</span>")
+	to_chat(user, "<span class='notice'>Aktywujesz [src]. Pozostało użyć piany: <b>[uses]</b>.</span>")
 	cooldown = world.time + cooldown_time
 	power_change()
 	addtimer(CALLBACK(src, PROC_REF(power_change)), cooldown_time)

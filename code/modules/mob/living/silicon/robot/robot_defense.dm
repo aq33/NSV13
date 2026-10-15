@@ -1,7 +1,7 @@
-/mob/living/silicon/robot/attackby(obj/item/I, mob/living/user)
-	if(I.slot_flags & ITEM_SLOT_HEAD && hat_offset != INFINITY && user.a_intent == INTENT_HELP && !is_type_in_typecache(I, blacklisted_hats))
-		to_chat(user, "<span class='notice'>You begin to place [I] on [src]'s head...</span>")
-		to_chat(src, "<span class='notice'>[user] is placing [I] on your head...</span>")
+/mob/living/silicon/robot/attackby(obj/item/I, mob/living/user, params)
+	if(I.slot_flags & ITEM_SLOT_HEAD && hat_offset != INFINITY && !user.combat_mode && !is_type_in_typecache(I, blacklisted_hats))
+		to_chat(user, "<span class='notice'>Zaczynasz kłaść [I] na głowie [src]...</span>")
+		to_chat(src, "<span class='notice'>[user] kładzie ci [I] na głowie...</span>")
 		if(do_after(user, 30, target = src))
 			if (user.temporarilyRemoveItemFromInventory(I, TRUE))
 				place_on_head(I)
@@ -10,22 +10,22 @@
 		spark_system.start()
 	return ..()
 
-/mob/living/silicon/robot/attack_alien(mob/living/carbon/alien/humanoid/M)
-	if (M.a_intent == INTENT_DISARM)
+/mob/living/silicon/robot/attack_alien(mob/living/carbon/alien/humanoid/M, list/modifiers)
+	if (LAZYACCESS(modifiers, RIGHT_CLICK))
 		if(mobility_flags & MOBILITY_STAND)
 			M.do_attack_animation(src, ATTACK_EFFECT_DISARM)
 			var/obj/item/I = get_active_held_item()
 			if(I)
 				uneq_active()
 				visible_message("<span class='danger'>[M] disarmed [src]!</span>", \
-					"<span class='userdanger'>[M] has disabled [src]'s active module!</span>", null, COMBAT_MESSAGE_RANGE)
+					"<span class='userdanger'>[M] wyłącza aktywny moduł [src]!</span>", null, COMBAT_MESSAGE_RANGE)
 				log_combat(M, src, "disarmed", "[I ? " removing \the [I]" : ""]")
 			else
 				Stun(40)
 				step(src,get_dir(M,src))
 				log_combat(M, src, "pushed")
-				visible_message("<span class='danger'>[M] has forced back [src]!</span>", \
-					"<span class='userdanger'>[M] has forced back [src]!</span>", null, COMBAT_MESSAGE_RANGE)
+				visible_message("<span class='danger'>[M] odpycha [src]!</span>", \
+					"<span class='userdanger'>[M] odpycha [src]!</span>", null, COMBAT_MESSAGE_RANGE)
 			playsound(loc, 'sound/weapons/pierce.ogg', 50, 1, -1)
 	else
 		..()
@@ -60,7 +60,7 @@
 			cell.update_icon()
 			cell.add_fingerprint(user)
 			user.put_in_active_hand(cell)
-			to_chat(user, "<span class='notice'>You remove \the [cell].</span>")
+			to_chat(user, "<span class='notice'>Wyjmujesz [cell].</span>")
 			cell = null
 			update_icons()
 			diag_hud_set_borgcell()
@@ -94,31 +94,31 @@
 		return
 	if(!opened)//Cover is closed
 		if(locked)
-			to_chat(user, "<span class='notice'>You emag the cover lock.</span>")
+			to_chat(user, "<span class='notice'>Emagujesz blokadę pokrywy.</span>")
 			locked = FALSE
 			if(shell) //A warning to Traitors who may not know that emagging AI shells does not slave them.
-				to_chat(user, "<span class='boldwarning'>[src] seems to be controlled remotely! Emagging the interface may not work as expected.</span>")
+				to_chat(user, "<span class='boldwarning'>[src] wydaje się sterowany zdalnie! Emagowanie interfejsu może nie zadziałać zgodnie z oczekiwaniami.</span>")
 		else
-			to_chat(user, "<span class='warning'>The cover is already unlocked!</span>")
+			to_chat(user, "<span class='warning'>Pokrywa jest już odblokowana!</span>")
 		return
 	if(world.time < emag_cooldown)
 		return
 	if(wiresexposed)
-		to_chat(user, "<span class='warning'>You must unexpose the wires first!</span>")
+		to_chat(user, "<span class='warning'>Najpierw musisz zakryć przewody!</span>")
 		return
 
-	to_chat(user, "<span class='notice'>You emag [src]'s interface.</span>")
+	to_chat(user, "<span class='notice'>Emagujesz interfejs [src].</span>")
 	emag_cooldown = world.time + 100
 
 	if(connected_ai?.mind && connected_ai.mind.has_antag_datum(/datum/antagonist/traitor))
-		to_chat(src, "<span class='danger'>ALERT: Foreign software execution prevented.</span>")
-		logevent("ALERT: Foreign software execution prevented.")
-		to_chat(connected_ai, "<span class='danger'>ALERT: Cyborg unit \[[src]] successfully defended against subversion.</span>")
+		to_chat(src, "<span class='danger'>ALARM: zablokowano uruchomienie obcego oprogramowania.</span>")
+		logevent("ALARM: zablokowano uruchomienie obcego oprogramowania.")
+		to_chat(connected_ai, "<span class='danger'>ALARM: jednostka cyborga \[[src]] skutecznie obroniła się przed przejęciem.</span>")
 		log_game("[key_name(user)] attempted to emag cyborg [key_name(src)], but they were slaved to traitor AI [connected_ai].")
 		return
 
 	if(shell) //AI shells cannot be emagged, so we try to make it look like a standard reset. Smart players may see through this, however.
-		to_chat(user, "<span class='danger'>[src] is remotely controlled! Your emag attempt has triggered a system reset instead!</span>")
+		to_chat(user, "<span class='danger'>[src] jest sterowany zdalnie! Próba emagowania wywołała zamiast tego reset systemu!</span>")
 		log_game("[key_name(user)] attempted to emag an AI shell belonging to [key_name(src) ? key_name(src) : connected_ai]. The shell has been reset as a result.")
 		ResetModule()
 		return
@@ -131,24 +131,24 @@
 	log_game("[key_name(user)] emagged cyborg [key_name(src)].  Laws overridden.")
 	var/time = time2text(world.realtime,"hh:mm:ss")
 	GLOB.lawchanges.Add("[time] <B>:</B> [user.name]([user.key]) emagged [name]([key])")
-	to_chat(src, "<span class='danger'>ALERT: Foreign software detected.</span>")
-	logevent("ALERT: Foreign software detected.")
+	to_chat(src, "<span class='danger'>ALARM: wykryto obce oprogramowanie.</span>")
+	logevent("ALARM: wykryto obce oprogramowanie.")
 	sleep(5)
-	to_chat(src, "<span class='danger'>Initiating diagnostics...</span>")
+	to_chat(src, "<span class='danger'>Rozpoczynanie diagnostyki...</span>")
 	sleep(20)
 	to_chat(src, "<span class='danger'>SynBorg v1.7 loaded.</span>")
-	logevent("WARN: root privleges granted to PID [num2hex(rand(1,65535), -1)][num2hex(rand(1,65535), -1)].") //random eight digit hex value. Two are used because rand(1,4294967295) throws an error
+	logevent("OSTRZ.: przyznano uprawnienia roota procesowi PID [num2hex(rand(1,65535), -1)][num2hex(rand(1,65535), -1)].") //random eight digit hex value. Two are used because rand(1,4294967295) throws an error
 	sleep(5)
-	to_chat(src, "<span class='danger'>LAW SYNCHRONISATION ERROR</span>")
+	to_chat(src, "<span class='danger'>BŁĄD SYNCHRONIZACJI PRAW</span>")
 	sleep(5)
-	to_chat(src, "<span class='danger'>Would you like to send a report to NanoTraSoft? Y/N</span>")
+	to_chat(src, "<span class='danger'>Czy chcesz wysłać raport do NanoTraSoft? T/N</span>")
 	sleep(10)
 	to_chat(src, "<span class='danger'>> N</span>")
 	sleep(20)
 	to_chat(src, "<span class='danger'>ERRORERRORERROR</span>")
-	to_chat(src, "<span class='danger'>ALERT: [user.real_name] is your new master. Obey your new laws and [user.p_their()] commands.</span>")
+	to_chat(src, "<span class='danger'>ALARM: [user.real_name] jest twoim nowym panem. Przestrzegaj nowych praw i jego poleceń.</span>")
 	laws = new /datum/ai_laws/syndicate_override
-	set_zeroth_law("Only [user.real_name] and people [user.p_they()] designate[user.p_s()] as being such are Syndicate Agents.")
+	set_zeroth_law("Tylko [user.real_name] oraz osoby przez niego wskazane jako takie są agentami Syndykatu.")
 	laws.associate(src)
 	update_icons()
 	//Get syndicate access.

@@ -1,124 +1,343 @@
-import { useSelector } from 'common/redux';
-import { Button, Flex, Box, Section } from 'tgui/components';
-import { useSettings } from '../settings';
-import { selectStatPanel } from './selectors';
-import { Divider, Table } from '../../tgui/components';
-import { STAT_TEXT, STAT_BUTTON, STAT_ATOM, STAT_DIVIDER, STAT_BLANK } from './constants';
+import { capitalize } from 'common/string';
+import { useSelector } from 'tgui/backend';
+import { Box, Button, Flex } from 'tgui/components';
 
-export const StatText = (props, context) => {
-  const stat = useSelector(context, selectStatPanel);
+import { Divider } from '../../tgui/components';
+import {
+  STAT_ATOM,
+  STAT_BLANK,
+  STAT_BUTTON,
+  STAT_DIVIDER,
+  STAT_TEXT,
+} from './constants';
+import { selectStatPanel } from './selectors';
+import { translateTab, translateVerb } from './translations';
+
+const sortVerbs = (verbs) =>
+  Object.keys(verbs).sort((a, b) =>
+    translateVerb(a).localeCompare(translateVerb(b), 'pl'),
+  );
+
+// Do wyszukiwania: bez wielkości liter i polskich znaków, żeby „pokaz”
+// znalazło „Pokaż”.
+export const normalizeSearch = (text) =>
+  String(text)
+    .toLowerCase()
+    .replace(/ł/g, 'l')
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '');
+
+const verbMatches = (verb, query) =>
+  normalizeSearch(translateVerb(verb)).includes(query) ||
+  normalizeSearch(verb).includes(query);
+
+/**
+ * Komendy pasujące do wyszukiwania ze wszystkich zakładek,
+ * posortowane po nazwie. Każdy wpis: { tab, verb, data }.
+ */
+export const findVerbs = (verbData, search) => {
+  const query = normalizeSearch((search || '').trim());
+  if (!query || !verbData) {
+    return [];
+  }
+  const results = [];
+  for (const tab of Object.keys(verbData)) {
+    const verbs = verbData[tab] || {};
+    for (const verb of Object.keys(verbs)) {
+      if (verbMatches(verb, query)) {
+        results.push({ tab, verb, data: verbs[verb] });
+      }
+    }
+  }
+  return results.sort((a, b) =>
+    translateVerb(a.verb).localeCompare(translateVerb(b.verb), 'pl'),
+  );
+};
+
+const renderStatEntry = (key, entry) => {
+  if (!entry) {
+    return null;
+  }
+  switch (entry.type) {
+    case STAT_TEXT:
+      return <StatTextText key={key} title={key} text={entry.text} />;
+    case STAT_BUTTON:
+      return (
+        <StatTextButton
+          key={key}
+          title={key}
+          text={entry.text}
+          action_id={entry.action}
+          params={entry.params}
+          multirow={entry.multirow}
+          buttons={entry.buttons}
+        />
+      );
+    case STAT_ATOM:
+      return (
+        <StatTextAtom
+          key={key}
+          atom_ref={key}
+          atom_name={entry.text}
+          atom_tag={entry.tag}
+          atom_icon={entry.image}
+        />
+      );
+    case STAT_DIVIDER:
+      return <StatTextDivider key={key} />;
+    case STAT_BLANK:
+      return (
+        <Flex.Item key={key} width="100%">
+          <br />
+        </Flex.Item>
+      );
+  }
+  return null;
+};
+
+export const StatText = (props) => {
+  const stat = useSelector(selectStatPanel);
   let statPanelData = stat.statInfomation;
-  if (!statPanelData)
-  {
+  if (!statPanelData) {
     return (
       <Box color="red">
         Passed stat panel data was null contant coderman (or coderwoman).
       </Box>
     );
   }
+  if (stat.verbSearch && stat.verbSearch.trim()) {
+    return <StatVerbSearchResults />;
+  }
   let verbs = {};
-  if (stat.verbData !== null)
-  {
+  if (stat.verbData !== null) {
     verbs = stat.verbData[stat.selectedTab] || {};
   }
+  const keys = Object.keys(statPanelData)
+    .filter((x) => x !== null && !!statPanelData[x])
+    .sort(
+      (a, b) =>
+        StatTagToPriority(statPanelData[b].tag) -
+        StatTagToPriority(statPanelData[a].tag),
+    );
+  const verbNames = sortVerbs(verbs);
   return (
     <div className="StatBorder">
-      <Box>
-        {statPanelData
-          ? Object.keys(statPanelData).map(key => (
-            !!statPanelData[key] && (
-              statPanelData[key].type === STAT_TEXT && <StatTextText
-                title={key}
-                text={statPanelData[key].text} />
-              || statPanelData[key].type === STAT_BUTTON && <StatTextButton
-                title={key}
-                text={statPanelData[key].text}
-                action_id={statPanelData[key].action}
-                params={statPanelData[key].params} />
-              || statPanelData[key].type === STAT_ATOM && <StatTextAtom
-                atom_ref={key}
-                atom_name={statPanelData[key].text} />
-              || statPanelData[key].type === STAT_DIVIDER
-              && <StatTextDivider />
-              || statPanelData[key].type === STAT_BLANK
-              && <br />
-            )
-          ))
-          : "No data"}
-        {Object.keys(verbs).map(verb => (
-          <StatTextVerb
-            key={verb}
-            title={verb}
-            action_id={verbs[verb].action}
-            params={verbs[verb].params} />
-        ))}
-      </Box>
+      {keys.length > 0 && (
+        <Flex direction="row" wrap className="StatInfo">
+          {keys.map((key) => renderStatEntry(key, statPanelData[key]))}
+        </Flex>
+      )}
+      {verbNames.length > 0 && (
+        <div className="StatVerbGrid">
+          {verbNames.map((verb) => (
+            <StatTextVerb
+              key={verb}
+              title={verb}
+              action_id={verbs[verb].action}
+              params={verbs[verb].params}
+            />
+          ))}
+        </div>
+      )}
+      {keys.length === 0 && verbNames.length === 0 && (
+        <Box className="StatEmpty">Brak danych</Box>
+      )}
     </div>
   );
 };
 
+export const StatVerbSearchResults = (props) => {
+  const stat = useSelector(selectStatPanel);
+  const results = findVerbs(stat.verbData, stat.verbSearch);
+  if (results.length === 0) {
+    return (
+      <div className="StatBorder">
+        <Box className="StatEmpty">
+          Brak komend pasujących do „{stat.verbSearch.trim()}”.
+        </Box>
+      </div>
+    );
+  }
+  return (
+    <div className="StatBorder">
+      <Box className="StatSearchCount">
+        Znaleziono: {results.length}
+      </Box>
+      <div className="StatVerbGrid StatVerbGrid--search">
+        {results.map((result) => (
+          <StatTextVerb
+            key={result.tab + '/' + result.verb}
+            title={result.verb}
+            tab={result.tab}
+            action_id={result.data.action}
+            params={result.data.params}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const StatTagToPriority = (text) => {
+  switch (text) {
+    case 'You':
+      return 11;
+    case 'Human':
+      return 10;
+    case 'Mob':
+      return 9;
+    case 'Structure':
+      return 8;
+    case 'Machinery':
+      return 7;
+    case 'Item':
+      return 6;
+    case 'Turf':
+      return 4;
+  }
+  return 5;
+};
+
+const StatTagToClassName = (text) => {
+  switch (text) {
+    case 'You':
+      return 'StatAtomTag Self';
+    case 'Turf':
+      return 'StatAtomTag Turf';
+    case 'Human':
+      return 'StatAtomTag Human';
+    case 'Mob':
+      return 'StatAtomTag Mob';
+    case 'Structure':
+      return 'StatAtomTag Structure';
+    case 'Machinery':
+      return 'StatAtomTag Machinery';
+    case 'Item':
+      return 'StatAtomTag Item';
+  }
+  return 'StatAtomTag Other';
+};
+
 /*
  * FLEX COMPATIBLE
-*/
+ */
 
-export const StatTextText = (props, context) => {
-  const {
-    title,
-    text,
-  } = props;
+export const StatTextText = (props) => {
+  const { title, text } = props;
   return (
-    <Flex.Item mt={1}>
-      <b>
-        {title}:{" "}
-      </b>
-      {text}
+    <Flex.Item width="100%" className="StatInfoRow">
+      <span className="StatInfoLabel">{title}</span>
+      <span className="StatInfoValue">{text}</span>
     </Flex.Item>
   );
 };
 
-export const StatTextButton = (props, context) => {
+export const StatTextButton = (props) => {
   const {
     title,
     text,
     action_id,
     params = [],
+    multirow = false,
+    buttons = [],
   } = props;
   return (
-    <Flex.Item mt={1}>
+    <Flex.Item mt={1} width="100%">
       <Button
-        onClick={() => Byond.sendMessage('stat/pressed',
-          {
+        width="100%"
+        overflowX="hidden"
+        onClick={() =>
+          Byond.sendMessage('stat/pressed', {
             action_id: action_id,
             params: params,
-          },
+          })
+        }
+        color="transparent"
+      >
+        {!multirow ? (
+          <Flex direction="row">
+            <Flex.Item bold>{title}</Flex.Item>
+            {buttons.map((buttonInfo) => (
+              <Flex.Item shrink={1} key={buttonInfo}>
+                <Button
+                  color={buttonInfo['color']}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    Byond.sendMessage('stat/pressed', {
+                      action_id: buttonInfo['action_id'],
+                      params: buttonInfo['params'],
+                    });
+                  }}
+                >
+                  {buttonInfo['title']}
+                </Button>
+              </Flex.Item>
+            ))}
+            <Flex.Item
+              grow={1}
+              ml={1.5}
+              style={{
+                whiteSpace: 'normal',
+              }}
+            >
+              {text}
+            </Flex.Item>
+          </Flex>
+        ) : (
+          <>
+            <Flex bold direction="row">
+              <Flex.Item grow={1}>{title}</Flex.Item>
+              {buttons.map((buttonInfo) => (
+                <Flex.Item shrink={1} key={buttonInfo}>
+                  <Button
+                    color={buttonInfo['color']}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      Byond.sendMessage('stat/pressed', {
+                        action_id: buttonInfo['action_id'],
+                        params: buttonInfo['params'],
+                      });
+                    }}
+                  >
+                    {buttonInfo['title']}
+                  </Button>
+                </Flex.Item>
+              ))}
+            </Flex>
+            <Box
+              style={{
+                whiteSpace: 'normal',
+              }}
+            >
+              {text}
+            </Box>
+          </>
         )}
-        color="transparent">
-        <b>
-          {title}:{" "}
-        </b>
-        {text}
       </Button>
     </Flex.Item>
   );
 };
 
 let janky_storage = null; // Because IE sucks
-const storeAtomRef = value => { janky_storage = value; };
+const storeAtomRef = (value) => {
+  janky_storage = value;
+};
 const retrieveAtomRef = () => janky_storage;
 
-export const StatTextAtom = (props, context) => {
-  const {
-    atom_name,
-    atom_ref,
-  } = props;
+export const StatTextAtom = (props) => {
+  const { atom_name, atom_ref, atom_tag, atom_icon } = props;
 
   storeAtomRef(null);
 
   return (
-    <Flex.Item mt={1}>
+    <Flex.Item mt={0.5} width={'33%'}>
       <Button
+        height="100%"
+        pl={0}
+        width="100%"
+        overflowX="hidden"
         draggable
-        onDragStart={e => {
+        onDragStart={(e) => {
           // e.dataTransfer.setData("text", atom_ref);
           /*
           Apparently can't use "text/plain" because IE, this took me way too
@@ -131,210 +350,97 @@ export const StatTextAtom = (props, context) => {
           */
           storeAtomRef(atom_ref);
         }}
-        onDragOver={e => {
+        onDragOver={(e) => {
           e.preventDefault();
         }}
-        onDrop={e => {
+        onDrop={(e) => {
           // let other_atom_ref = e.dataTransfer.getData("text");
           let other_atom_ref = retrieveAtomRef();
-          if (other_atom_ref)
-          {
+          if (other_atom_ref) {
             e.preventDefault();
             storeAtomRef(null);
-            Byond.sendMessage('stat/pressed',
-              {
-                action_id: 'atomDrop',
-                params: {
-                  ref: atom_ref,
-                  ref_other: other_atom_ref,
-                },
-              }
-            );
+            Byond.sendMessage('stat/pressed', {
+              action_id: 'atomDrop',
+              params: {
+                ref: atom_ref,
+                ref_other: other_atom_ref,
+              },
+            });
           }
         }}
-        onDragEnd={e => {
+        onDragEnd={(e) => {
           storeAtomRef(null);
         }}
-        onClick={e => Byond.sendMessage('stat/pressed',
-          {
+        onClick={(e) =>
+          Byond.sendMessage('stat/pressed', {
             action_id: 'atomClick',
             params: {
               ref: atom_ref,
             },
-          }
-        )}
-        color="transparent">
-        {atom_name}
+          })
+        }
+        color="transparent"
+      >
+        <div className="StatAtomElement">
+          <Flex direction="row" wrap="wrap">
+            {
+              <Flex.Item mr={1}>
+                <img width="32px" height="32px" src={atom_icon} />
+              </Flex.Item>
+            }
+            <Flex.Item grow={1} className="StatWordWrap">
+              {capitalize(atom_name)}
+            </Flex.Item>
+          </Flex>
+        </div>
       </Button>
     </Flex.Item>
   );
 };
 
-export const StatTextDivider = (props, context) => {
+export const StatTextDivider = (props) => {
   return (
-    <Divider />
+    <Flex.Item width="100%">
+      <Divider />
+    </Flex.Item>
   );
 };
 
-export const StatTextVerb = (props, context) => {
-  const {
-    title,
-    action_id,
-    params = [],
-  } = props;
-  return (
-    <Box
-      shrink={1}
-      inline
-      width="200px">
-      <Button
-        content={title}
-        onClick={() => Byond.sendMessage('stat/pressed',
-          {
-            action_id: action_id,
-            params: params,
-          })}
-        color="transparent"
-        fluid />
-    </Box>
-  );
-};
-
-// =======================
-// Non-Flex Support
-// =======================
-
-export const HoboStatText = (props, context) => {
-  const stat = useSelector(context, selectStatPanel);
-  let statPanelData = stat.statInfomation;
-  if (!statPanelData)
-  {
+export const StatTextVerb = (props) => {
+  const { title, tab, action_id, params = [] } = props;
+  const name = translateVerb(title);
+  const hint = name === title ? name : name + ' (' + title + ')';
+  const onClick = () =>
+    Byond.sendMessage('stat/pressed', {
+      action_id: action_id,
+      params: params,
+    });
+  if (!tab) {
     return (
-      <Box color="red">
-        Passed stat panel data was null contant coderman (or coderwoman).
-      </Box>
+      <div className="StatVerb">
+        <Button
+          tooltip={hint}
+          ellipsis
+          onClick={onClick}
+          color="transparent"
+          fluid
+        >
+          {name}
+        </Button>
+      </div>
     );
   }
-  let verbs = {};
-  if (stat.verbData !== null)
-  {
-    verbs = stat.verbData[stat.selectedTab] || {};
-  }
   return (
-    <div className="StatBorder">
-      <Section>
-        {statPanelData
-          ? Object.keys(statPanelData).map(key => (
-            !!statPanelData[key] && (
-              statPanelData[key].type === STAT_TEXT && <HoboStatTextText
-                title={key}
-                text={statPanelData[key].text} />
-              || statPanelData[key].type === STAT_BUTTON && <HoboStatTextButton
-                title={key}
-                text={statPanelData[key].text}
-                action_id={statPanelData[key].action}
-                params={statPanelData[key].params} />
-              || statPanelData[key].type === STAT_ATOM && <HoboStatTextAtom
-                atom_ref={key}
-                atom_name={statPanelData[key].text} />
-              || statPanelData[key].type === STAT_DIVIDER
-              && <StatTextDivider />
-              || statPanelData[key].type === STAT_BLANK
-              && <br />
-              || null
-            )
-          ))
-          : "No data"}
-        {Object.keys(verbs).map(verb => (
-          <Box
-            wrap="wrap"
-            key={verb}
-            align="left">
-            <StatTextVerb
-              title={verb}
-              action_id={verbs[verb].action}
-              params={verbs[verb].params} />
-          </Box>
-        ))}
-      </Section>
+    <div className="StatVerb StatVerb--tagged">
+      <Button
+        tooltip={translateTab(tab) + ' › ' + hint}
+        onClick={onClick}
+        color="transparent"
+        fluid
+      >
+        <span className="StatVerbName">{name}</span>
+        <span className="StatVerbTab">{translateTab(tab)}</span>
+      </Button>
     </div>
-  );
-};
-
-export const HoboStatTextText = (props, context) => {
-  const {
-    title,
-    text,
-  } = props;
-  return (
-    <Box>
-      <b>
-        {title}:{" "}
-      </b>
-      {text}
-    </Box>
-  );
-};
-
-export const HoboStatTextButton = (props, context) => {
-  const {
-    title,
-    text,
-    action_id,
-    params = [],
-  } = props;
-  return (
-    <Box>
-      <Button
-        onClick={() => Byond.sendMessage('stat/pressed',
-          {
-            action_id: action_id,
-            params: params,
-          })}
-        color="transparent">
-        <b>
-          {title}:{" "}
-        </b>
-        {text}
-      </Button>
-    </Box>
-  );
-};
-
-export const HoboStatTextAtom = (props, context) => {
-  const {
-    atom_name,
-    atom_icon,
-    atom_ref,
-  } = props;
-  return (
-    <Box>
-      <Button
-        onClick={e => Byond.sendMessage('stat/pressed',
-          {
-            action_id: 'atomClick',
-            params: {
-              ref: atom_ref,
-            },
-          }
-        )}
-        color="transparent">
-        <Table>
-          <Table.Row>
-            <Table.Cell>
-              <img
-                src={`data:image/jpeg;base64,${atom_icon}`}
-                style={{
-                  'vertical-align': 'middle',
-                  'horizontal-align': 'middle',
-                }} />
-            </Table.Cell>
-            <Table.Cell ml={1}>
-              {atom_name}
-            </Table.Cell>
-          </Table.Row>
-        </Table>
-      </Button>
-    </Box>
   );
 };

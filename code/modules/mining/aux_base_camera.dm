@@ -23,7 +23,7 @@
 /obj/item/construction/rcd/internal //Base console's internal RCD. Roundstart consoles are filled, rebuilt cosoles start empty.
 	name = "internal RCD"
 	max_matter = 600 //Bigger container and faster speeds due to being specialized and stationary.
-	no_ammo_message = "<span class='warning'>Internal matter exhausted. Please add additional materials.</span>"
+	no_ammo_message = "<span class='warning'>Wewnętrzna materia wyczerpana. Dodaj więcej materiałów.</span>"
 	delay_mod = 0.5
 
 /obj/machinery/computer/camera_advanced/base_construction
@@ -148,11 +148,11 @@
 	var/area/build_area = get_area(build_target)
 
 	if(!istype(build_area, /area/shuttle/auxillary_base))
-		to_chat(owner, "<span class='warning'>You can only build within the mining base!</span>")
+		to_chat(owner, "<span class='warning'>Możesz budować tylko w obrębie bazy górniczej!</span>")
 		return FALSE
 
 	if(!is_station_level(build_target.z))
-		to_chat(owner, "<span class='warning'>The mining base has launched and can no longer be modified.</span>")
+		to_chat(owner, "<span class='warning'>Baza górnicza wystartowała i nie można jej już modyfikować.</span>")
 		return FALSE
 
 	return TRUE
@@ -194,9 +194,9 @@
 		return
 
 	var/list/buildlist = list("Walls and Floors" = 1,"Airlocks" = 2,"Deconstruction" = 3,"Windows and Grilles" = 4)
-	var/buildmode = input("Set construction mode.", "Base Console", null) in buildlist
+	var/buildmode = tgui_input_list("Ustaw tryb budowy.", "Konsola bazy", buildlist)
 	B.RCD.mode = buildlist[buildmode]
-	to_chat(owner, "Build mode is now [buildmode].")
+	to_chat(owner, "Tryb budowy: [buildmode].")
 
 /datum/action/innate/aux_base/airlock_type
 	name = "Select Airlock Type"
@@ -229,19 +229,19 @@
 	var/turf/fan_turf = get_turf(remote_eye)
 
 	if(!B.fans_remaining)
-		to_chat(owner, "<span class='warning'>[B] is out of fans!</span>")
+		to_chat(owner, "<span class='warning'>[B] nie ma już wentylatorów!</span>")
 		return
 
 	if(!check_spot())
 		return
 
 	if(fan_turf.density)
-		to_chat(owner, "<span class='warning'>Fans may only be placed on a floor.</span>")
+		to_chat(owner, "<span class='warning'>Wentylatory można stawiać tylko na podłodze.</span>")
 		return
 
 	new /obj/structure/fans/tiny(fan_turf)
 	B.fans_remaining--
-	to_chat(owner, "<span class='notice'>Tiny fan placed. [B.fans_remaining] remaining.</span>")
+	to_chat(owner, "<span class='notice'>Postawiono mały wentylator. Pozostało: [B.fans_remaining].</span>")
 	playsound(fan_turf, 'sound/machines/click.ogg', 50, 1)
 
 /datum/action/innate/aux_base/install_turret
@@ -256,13 +256,13 @@
 		return
 
 	if(!B.turret_stock)
-		to_chat(owner, "<span class='warning'>Unable to construct additional turrets.</span>")
+		to_chat(owner, "<span class='warning'>Nie można zbudować więcej wieżyczek.</span>")
 		return
 
 	var/turf/turret_turf = get_turf(remote_eye)
 
 	if(is_blocked_turf(turret_turf))
-		to_chat(owner, "<span class='warning'>Location is obstructed by something. Please clear the location and try again.</span>")
+		to_chat(owner, "<span class='warning'>Coś blokuje to miejsce. Oczyść je i spróbuj ponownie.</span>")
 		return
 
 	var/obj/machinery/porta_turret/aux_base/T = new /obj/machinery/porta_turret/aux_base(turret_turf)
@@ -270,5 +270,5 @@
 		B.found_aux_console.turrets += T //Add new turret to the console's control
 
 	B.turret_stock--
-	to_chat(owner, "<span class='notice'>Turret installation complete!</span>")
+	to_chat(owner, "<span class='notice'>Instalacja wieżyczki zakończona!</span>")
 	playsound(turret_turf, 'sound/items/drill_use.ogg', 65, 1)

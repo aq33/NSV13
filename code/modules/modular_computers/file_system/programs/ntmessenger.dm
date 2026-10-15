@@ -1,12 +1,12 @@
 #define PDA_SPAM_DELAY 1 MINUTES
 /datum/computer_file/program/messenger
 	filename = "nt_messenger"
-	filedesc = "Direct Messenger"
+	filedesc = "Komunikator"
 	category = PROGRAM_CATEGORY_MISC
 	program_icon_state = "command"
 	// This should be running when the tablet is created, so it's minimized by default
 	program_state = PROGRAM_STATE_BACKGROUND
-	extended_desc = "This program allows old-school communication with other modular devices."
+	extended_desc = "Ten program pozwala na staroświecką komunikację z innymi urządzeniami modułowymi."
 	size = 0
 	undeletable = TRUE // It comes by default in tablets, can't be downloaded, takes no space and should obviously not be able to be deleted.
 	available_on_ntnet = FALSE
@@ -112,7 +112,7 @@
 			var/mob/living/usr_mob = usr
 			if(!in_range(computer, usr_mob) || computer.loc != usr_mob)
 				return
-			var/new_ringtone = stripped_input(usr, "Enter a new ringtone", "Ringtone", ringtone, 20)
+			var/new_ringtone = stripped_input(usr, "Podaj nowy dzwonek", "Ringtone", ringtone, 20)
 			if(!new_ringtone)
 				return
 			if(SEND_SIGNAL(computer, COMSIG_TABLET_CHANGE_RINGTONE, usr_mob, new_ringtone) & COMPONENT_STOP_RINGTONE_CHANGE)
@@ -137,7 +137,7 @@
 			return TRUE
 		if("PDA_sendEveryone")
 			if(!sending_and_receiving)
-				to_chat(usr, "<span class='notice'>ERROR: Device has sending disabled.</span>")
+				to_chat(usr, "<span class='notice'>BŁĄD: urządzenie ma wyłączone wysyłanie.</span>")
 				return
 			var/obj/item/computer_hardware/hard_drive/role/disk = computer.all_components[MC_HDD_JOB]
 			if(!disk?.spam_delay)
@@ -153,27 +153,27 @@
 
 			if(targets.len > 0)
 				if(last_text_everyone && world.time < (last_text_everyone + PDA_SPAM_DELAY * disk.spam_delay))
-					to_chat(usr, "<span class='warning'>Send To All function is still on cooldown. Enabled in [(last_text_everyone + PDA_SPAM_DELAY * disk.spam_delay - world.time)/10] seconds.")
+					to_chat(usr, "<span class='warning'>Funkcja „Wyślij do wszystkich” wciąż się odnawia. Dostępna za [(last_text_everyone + PDA_SPAM_DELAY * disk.spam_delay - world.time)/10] s.")
 					return
 				send_message(usr, targets, TRUE, multi_delay = disk.spam_delay)
 
 			return TRUE
 		if("PDA_sendMessage")
 			if(!sending_and_receiving)
-				to_chat(usr, "<span class='notice'>ERROR: Device has sending disabled.</span>")
+				to_chat(usr, "<span class='notice'>BŁĄD: urządzenie ma wyłączone wysyłanie.</span>")
 				return
 			var/obj/item/modular_computer/target = locate(params["ref"])
 			if(!istype(target))
 				return // we don't want tommy sending his messages to nullspace
 			if(!(target.saved_identification == params["name"] && target.saved_job == params["job"]))
-				to_chat(usr, "<span class='notice'>ERROR: User no longer exists.</span>")
+				to_chat(usr, "<span class='notice'>BŁĄD: użytkownik już nie istnieje.</span>")
 				return
 
 			var/obj/item/computer_hardware/hard_drive/drive = target.all_components[MC_HDD]
 
 			for(var/datum/computer_file/program/messenger/app in drive.stored_files)
 				if(!app.sending_and_receiving && !sending_virus)
-					to_chat(usr, "<span class='notice'>ERROR: Device has receiving disabled.</span>")
+					to_chat(usr, "<span class='notice'>BŁĄD: urządzenie ma wyłączony odbiór.</span>")
 					return
 				if(sending_virus)
 					var/obj/item/computer_hardware/hard_drive/role/virus/disk = computer.all_components[MC_HDD_JOB]
@@ -193,11 +193,11 @@
 			if(!user.aicamera)
 				return
 			if(!length(user.aicamera.stored))
-				to_chat(user, "<span class='notice'>ERROR: No stored photos located.</span>")
+				to_chat(user, "<span class='notice'>BŁĄD: nie znaleziono zapisanych zdjęć.</span>")
 				if(ringer_status)
 					playsound(computer, 'sound/machines/terminal_error.ogg', 15, TRUE)
 				return
-			var/datum/picture/selected_photo = tgui_select_picture(user, user.aicamera.stored, "Select Message Attachment")
+			var/datum/picture/selected_photo = tgui_select_picture(user, user.aicamera.stored, "Wybierz załącznik do wiadomości")
 			if(!istype(selected_photo, /datum/picture))
 				return
 			computer.saved_image = selected_photo
@@ -276,11 +276,11 @@
 	if((last_text && world.time < last_text + 10) || (everyone && last_text_everyone && world.time < (last_text_everyone + PDA_SPAM_DELAY * multi_delay)))
 		return FALSE
 	if(prob(1))
-		message += "\nSent from my PDA"
+		message += "\nWysłano z mojego PDA"
 
 	// Filter
 	if(CHAT_FILTER_CHECK(message))
-		to_chat(user, "<span class='warning'>ERROR: Prohibited word(s) detected in message.</span>")
+		to_chat(user, "<span class='warning'>BŁĄD: w wiadomości wykryto zakazane słowa.</span>")
 		return
 
 	// Check for jammers
@@ -314,7 +314,7 @@
 
 	// If it didn't reach, note that fact
 	if (!signal.data["done"])
-		to_chat(user, "<span class='notice'>ERROR: Server isn't responding.</span>")
+		to_chat(user, "<span class='notice'>BŁĄD: serwer nie odpowiada.</span>")
 		if(ringer_status)
 			playsound(computer, 'sound/machines/terminal_error.ogg', 15, TRUE)
 		return FALSE
@@ -338,14 +338,14 @@
 		signal.data["message"] = emoji_parse(signal.data["message"])
 
 	// Show it to ghosts
-	var/ghost_message = "<span class='name'>[message_data["name"]] </span><span class='game say'>PDA Message</span> --> <span class='name'>[target_text]</span>: <span class='message'>[signal.format_message(include_photo = TRUE)]</span>"
+	var/ghost_message = "<span class='name'>[message_data["name"]] </span><span class='game say'>Wiadomość PDA</span> --> <span class='name'>[target_text]</span>: <span class='message'>[signal.format_message(include_photo = TRUE)]</span>"
 	for(var/mob/M in GLOB.player_list)
 		if(isobserver(M) && (M.client?.prefs.chat_toggles & CHAT_GHOSTPDA))
 			to_chat(M, "[FOLLOW_LINK(M, user)] [ghost_message]")
 
 	// Log in the talk log
 	user.log_talk(message, LOG_PDA, tag="PDA: [initial(message_data["name"])] to [target_text]")
-	to_chat(user, "<span class='info'>PDA message sent to [target_text]: [signal.format_message()]</span>")
+	to_chat(user, "<span class='info'>Wysłano wiadomość PDA do [target_text]: [signal.format_message()]</span>")
 
 	if (ringer_status)
 		computer.send_sound()
@@ -384,7 +384,7 @@
 		var/hrefstart
 		var/hrefend
 		if (isAI(L))
-			hrefstart = "<a href='?src=[REF(L)];track=[html_encode(signal.data["name"])]'>"
+			hrefstart = "<a href='byond://?src=[REF(L)];track=[html_encode(signal.data["name"])]'>"
 			hrefend = "</a>"
 
 		if(signal.data["automated"])

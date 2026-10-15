@@ -15,7 +15,7 @@
 	var/static/cookieoffset = rand(1, 9999) //to force cookies to reset after the round.
 
 	if(!usr.client || !usr.client.holder) //This is usr because admins can call the proc on other clients, even if they're not admins, to show them VVs.
-		to_chat(usr, "<span class='danger'>You need to be an administrator to access this.</span>")
+		to_chat(usr, "<span class='danger'>Musisz być administratorem, by mieć do tego dostęp.</span>")
 		return
 
 	if(!thing)
@@ -247,6 +247,7 @@
 	// ------------------------------------------------------
 	// Builds html text - finalization
 	var/html = {"
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
@@ -374,7 +375,7 @@
 					</td>
 					<td width='50%'>
 						<div align='center'>
-							<a id='refresh_link' href='?_src_=vars;[HrefToken()];[href_reference_string]'>Refresh</a>
+							<a id='refresh_link' href='byond://?_src_=vars;[HrefToken()];[href_reference_string]'>Refresh</a>
 							<form>
 								<select name="file" size="1"
 									onchange="handle_dropdown(this)"

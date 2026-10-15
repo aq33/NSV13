@@ -237,7 +237,7 @@
 /proc/log_tgui(user_or_client, text)
 	var/entry = ""
 	if(!user_or_client)
-		entry += "no user"
+		entry += "brak użytkownika"
 	else if(istype(user_or_client, /mob))
 		var/mob/user = user_or_client
 		entry += "[user.ckey] (as [user])"
@@ -313,11 +313,11 @@
 	if(key)
 		if(C?.holder?.fakekey && !include_name)
 			if(include_link)
-				. += "<a href='?priv_msg=[C.findStealthKey()]'>"
+				. += "<a href='byond://?priv_msg=[C.findStealthKey()]'>"
 			. += "Administrator"
 		else
 			if(include_link)
-				. += "<a href='?priv_msg=[ckey]'>"
+				. += "<a href='byond://?priv_msg=[ckey]'>"
 			. += key
 		if(!C)
 			. += "\[DC\]"
@@ -325,7 +325,7 @@
 		if(include_link)
 			. += "</a>"
 	else
-		. += "*no key*"
+		. += "*brak klucza*"
 
 	if(include_name)
 		if(M)

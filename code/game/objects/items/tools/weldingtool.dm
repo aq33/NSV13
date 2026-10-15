@@ -25,7 +25,7 @@
 	throw_speed = 3
 	throw_range = 5
 	w_class = WEIGHT_CLASS_SMALL
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 30, "stamina" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 30, "stamina" = 0, "bleed" = 0)
 	resistance_flags = FIRE_PROOF
 
 	materials = list(/datum/material/iron=70, /datum/material/glass=30)
@@ -90,7 +90,7 @@
 
 
 /obj/item/weldingtool/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] welds [user.p_their()] every orifice closed! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] zaspawuje sobie wszystkie otwory w ciele! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	return (FIRELOSS)
 
 
@@ -115,11 +115,11 @@
 
 	var/obj/item/bodypart/affecting = H.get_bodypart(check_zone(user.zone_selected))
 
-	if(affecting && (!IS_ORGANIC_LIMB(affecting)) && user.a_intent != INTENT_HARM)
+	if(affecting && (!IS_ORGANIC_LIMB(affecting)) && !user.combat_mode)
 		if(src.use_tool(H, user, 0, volume=50, amount=1))
 			if(user == H)
-				user.visible_message("<span class='notice'>[user] starts to fix some of the dents on [H]'s [parse_zone(affecting.body_zone)].</span>",
-					"<span class='notice'>You start fixing some of the dents on [H == user ? "your" : "[H]'s"] [parse_zone(affecting.body_zone)].</span>")
+				user.visible_message("<span class='notice'>[user] zaczyna naprawiać wgniecenia u [H] ([strefa_pl(affecting.body_zone)]).</span>",
+					"<span class='notice'>Zaczynasz naprawiać wgniecenia [H == user ? "u siebie" : "u [H]"] ([strefa_pl(affecting.body_zone)]).</span>")
 				if(!do_mob(user, H, 50))
 					return
 			item_heal_robotic(H, user, 15, 0)
@@ -131,36 +131,55 @@
 	. = ..()
 	target.cut_overlay(GLOB.welding_sparks)
 
-/obj/item/weldingtool/afterattack(atom/O, mob/user, proximity)
+/obj/item/weldingtool/afterattack(atom/attacked_atom, mob/user, proximity)
 	. = ..()
 	if(!proximity)
 		return
-	if(!status && O.is_refillable())
-		reagents.trans_to(O, reagents.total_volume, transfered_by = user)
-		balloon_alert(user, "You empty the fuel tank.")
-		update_icon()
-	if(isOn())
-		use(1)
-		var/turf/location = get_turf(user)
-		location.hotspot_expose(700, 50, 1)
-		if(get_fuel() <= 0)
-			set_light_on(0)
 
-		if(isliving(O))
-			var/mob/living/L = O
-			if(L.IgniteMob())
-				message_admins("[ADMIN_LOOKUPFLW(user)] set [key_name_admin(L)] on fire with [src] at [AREACOORD(user)]")
-				log_game("[key_name(user)] set [key_name(L)] on fire with [src] at [AREACOORD(user)]")
+	if(isOn())
+		handle_fuel_and_temps(1, user)
+
+		if (!QDELETED(attacked_atom) && isliving(attacked_atom)) // can't ignite something that doesn't exist
+			handle_fuel_and_temps(1, user)
+			var/mob/living/attacked_mob = attacked_atom
+			if(attacked_mob.IgniteMob())
+				message_admins("[ADMIN_LOOKUPFLW(user)] set [key_name_admin(attacked_mob)] on fire with [src] at [AREACOORD(user)]")
+				log_game("[key_name(user)] set [key_name(attacked_mob)] on fire with [src] at [AREACOORD(user)]")
+
+	if(!status && attacked_atom.is_refillable())
+		reagents.trans_to(attacked_atom, reagents.total_volume, transfered_by = user)
+		to_chat(user, span_notice("Opróżniasz zbiornik paliwa [src] do [attacked_atom]."))
+		update_appearance()
+
+/obj/item/weldingtool/attack_qdeleted(atom/attacked_atom, mob/user, proximity)
+	. = ..()
+	if(!proximity)
+		return
+
+	if(isOn())
+		handle_fuel_and_temps(1, user)
+
+		if(!QDELETED(attacked_atom) && isliving(attacked_atom)) // can't ignite something that doesn't exist
+			var/mob/living/attacked_mob = attacked_atom
+			if(attacked_mob.IgniteMob())
+				message_admins("[ADMIN_LOOKUPFLW(user)] set [key_name_admin(attacked_mob)] on fire with [src] at [AREACOORD(user)].")
+				log_game("set [key_name(attacked_mob)] on fire with [src]")
 
 
 /obj/item/weldingtool/attack_self(mob/user)
 	if(src.reagents.has_reagent(/datum/reagent/toxin/plasma))
 		message_admins("[ADMIN_LOOKUPFLW(user)] activated a rigged welder at [AREACOORD(user)].")
+		log_game("activated a rigged welder", LOG_ATTACK)
 		explode()
 	switched_on(user)
 
-	update_icon()
+	update_appearance()
 
+// Ah fuck, I can't believe you've done this
+/obj/item/weldingtool/proc/handle_fuel_and_temps(used = 0, mob/living/user)
+	use(used)
+	var/turf/location = get_turf(user)
+	location.hotspot_expose(700, 50, 1)
 
 // Returns the amount of fuel in the welder
 /obj/item/weldingtool/proc/get_fuel()
@@ -209,12 +228,12 @@
 //Switches the welder on
 /obj/item/weldingtool/proc/switched_on(mob/user)
 	if(!status)
-		balloon_alert(user, "You try to turn [src] on, but it's unsecured!")
+		balloon_alert(user, "Próbujesz włączyć [src], ale nie jest zabezpieczony!")
 		return
 	set_welding(!welding)
 	if(welding)
 		if(get_fuel() >= 1)
-			balloon_alert(user, "You turn [src] on.")
+			balloon_alert(user, "Włączasz [src].")
 			playsound(loc, acti_sound, 50, 1)
 			force = 15
 			damtype = "fire"
@@ -222,10 +241,10 @@
 			update_icon()
 			START_PROCESSING(SSobj, src)
 		else
-			balloon_alert(user, "The [src] is empty!")
+			balloon_alert(user, "[src] jest pusty!")
 			switched_off(user)
 	else
-		balloon_alert(user, "You turn [src] off.")
+		balloon_alert(user, "Wyłączasz [src].")
 		playsound(loc, deac_sound, 50, 1)
 		switched_off(user)
 
@@ -241,7 +260,7 @@
 
 /obj/item/weldingtool/examine(mob/user)
 	. = ..()
-	. += "It contains [get_fuel()] unit\s of fuel out of [max_fuel]."
+	. += "Zawiera [get_fuel()] z [max_fuel] j. paliwa."
 
 /obj/item/weldingtool/is_hot()
 	return welding * heat
@@ -269,26 +288,26 @@
 // If welding tool ran out of fuel during a construction task, construction fails.
 /obj/item/weldingtool/tool_use_check(mob/living/user, amount)
 	if(!isOn() || !check_fuel())
-		balloon_alert(user, "You need to turn [src] on to do that.")
+		balloon_alert(user, "Aby to zrobić, musisz włączyć [src].")
 		return FALSE
 
 	if(get_fuel() >= amount)
 		return TRUE
 	else
-		balloon_alert(user, "The [src] doesn't have enough fuel to complete this task.")
+		balloon_alert(user, "[src] nie ma dość paliwa, by wykonać to zadanie.")
 		return FALSE
 
 
 /obj/item/weldingtool/proc/flamethrower_screwdriver(obj/item/I, mob/user)
 	if(welding)
-		balloon_alert(user, "You should turn [src] off before doing this...")
+		balloon_alert(user, "Przed tym lepiej wyłącz [src]...")
 		return
 	status = !status
 	if(status)
-		balloon_alert(user, "You close the fuel tank.")
+		balloon_alert(user, "Zamykasz zbiornik paliwa.")
 		DISABLE_BITFIELD(reagents.flags, OPENCONTAINER)
 	else
-		balloon_alert(user, "You can now attach, modify and refuel [src].")
+		balloon_alert(user, "Możesz teraz mocować, modyfikować i tankować [src].")
 		ENABLE_BITFIELD(reagents.flags, OPENCONTAINER)
 	add_fingerprint(user)
 
@@ -301,14 +320,14 @@
 				user.transferItemToLoc(src, F, TRUE)
 			F.weldtool = src
 			add_fingerprint(user)
-			balloon_alert(user, "You start bulding a flamethrower...")
+			balloon_alert(user, "Zaczynasz budować miotacz ognia...")
 			user.put_in_hands(F)
 		else
-			balloon_alert(user, "You need one rod to build a flamethrower!")
+			balloon_alert(user, "Potrzebujesz jednego pręta, by zbudować miotacz ognia!")
 
 /obj/item/weldingtool/ignition_effect(atom/A, mob/user)
 	if(use_tool(A, user, 0, amount=1))
-		return "<span class='notice'>[user] casually lights [A] with [src], what a badass.</span>"
+		return "<span class='notice'>[user] od niechcenia zapala [A] za pomocą [src], co za twardziel.</span>"
 	else
 		return ""
 

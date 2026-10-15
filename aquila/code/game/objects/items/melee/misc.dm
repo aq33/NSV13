@@ -41,7 +41,7 @@
 		return
 	if(!isliving(target))
 		return
-	if (user.a_intent == INTENT_HARM)
+	if (user.combat_mode)
 		if(!..())
 			target.apply_damage(force, STAMINA, blocked = def_check)
 			return

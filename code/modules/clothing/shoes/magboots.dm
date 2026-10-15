@@ -30,7 +30,7 @@
 		slowdown = slowdown_active
 	magpulse = !magpulse
 	icon_state = "[magboot_state][magpulse]"
-	to_chat(user, "<span class='notice'>You [magpulse ? "enable" : "disable"] the mag-pulse traction system.</span>")
+	to_chat(user, "<span class='notice'>[magpulse ? "Włączasz" : "Wyłączasz"] magnetyczny system przyczepności.</span>")
 	user.update_inv_shoes()	//so our mob-overlays update
 	user.update_gravity(user.has_gravity())
 	for(var/X in actions)
@@ -42,7 +42,7 @@
 
 /obj/item/clothing/shoes/magboots/examine(mob/user)
 	. = ..()
-	. += "Its mag-pulse traction system appears to be [magpulse ? "enabled" : "disabled"]."
+	. += "Jego magnetyczny system przyczepności wydaje się [magpulse ? "włączony" : "wyłączony"]."
 
 
 /obj/item/clothing/shoes/magboots/advance
@@ -66,7 +66,7 @@
 	icon_state = "advmag0"
 	magboot_state = "advmag"
 	slowdown_active = SHOES_SLOWDOWN
-	armor = list("melee" = 40, "bullet" = 30, "laser" = 25, "energy" = 25, "bomb" = 50, "bio" = 30, "rad" = 30, "fire" = 90, "acid" = 50, "stamina" = 30)
+	armor = list("melee" = 40, "bullet" = 30, "laser" = 25, "energy" = 25, "bomb" = 50, "bio" = 30, "rad" = 30, "fire" = 90, "acid" = 50, "stamina" = 30, "bleed" = 40)
 	clothing_flags = NOSLIP
 
 /obj/item/clothing/shoes/magboots/commando/attack_self(mob/user) //Code for the passive no-slip of the commando magboots to always apply, kind of a shit code solution though.
@@ -76,7 +76,7 @@
 		slowdown = slowdown_active
 	magpulse = !magpulse
 	icon_state = "[magboot_state][magpulse]"
-	to_chat(user, "<span class='notice'>You [magpulse ? "enable" : "disable"] the mag-pulse traction system.</span>")
+	to_chat(user, "<span class='notice'>[magpulse ? "Włączasz" : "Wyłączasz"] magnetyczny system przyczepności.</span>")
 	user.update_inv_shoes()
 	user.update_gravity(user.has_gravity())
 	for(var/X in actions)
@@ -95,7 +95,7 @@
 	for (var/mob/living/A in T)
 		if (A != user && A.lying)
 			A.adjustBruteLoss(rand(10,13))
-			to_chat(A,"<span class='userdanger'>[user]'s magboots press down on you, crushing you!</span>")
+			to_chat(A,"<span class='userdanger'>Magnetyczne buty [user] przygniatają cię, miażdżąc!</span>")
 			INVOKE_ASYNC(A, TYPE_PROC_REF(/mob, emote), "scream")
 
 /obj/item/clothing/shoes/magboots/crushing/attack_self(mob/user)

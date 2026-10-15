@@ -31,9 +31,9 @@
 /obj/machinery/recharge_station/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += "<span class='notice'>The status display reads: Recharging <b>[recharge_speed]J</b> per cycle.</span>"
+		. += "<span class='notice'>Wyświetlacz stanu pokazuje: ładowanie <b>[recharge_speed]J</b> na cykl.</span>"
 		if(repairs)
-			. += "<span class='notice'>[src] has been upgraded to support automatic repairs.</span>"
+			. += "<span class='notice'>[src] został ulepszony o automatyczne naprawy.</span>"
 
 /obj/machinery/recharge_station/process(delta_time)
 	if(!is_operational)

@@ -5,7 +5,7 @@
 	icon_state = "lattice"
 	density = FALSE
 	anchored = TRUE
-	armor = list("melee" = 50, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 80, "acid" = 50, "stamina" = 0)
+	armor = list("melee" = 50, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 80, "acid" = 50, "stamina" = 0, "bleed" = 0)
 	max_integrity = 50
 	layer = LATTICE_LAYER //under pipes
 	plane = FLOOR_PLANE
@@ -23,7 +23,7 @@
 	. += deconstruction_hints(user)
 
 /obj/structure/lattice/proc/deconstruction_hints(mob/user)
-	return "<span class='notice'>The rods look like they could be <b>cut</b>. There's space for more <i>rods</i> or a <i>tile</i>.</span>"
+	return "<span class='notice'>Pręty wyglądają, jakby dało się je <b>przeciąć</b>. Jest miejsce na więcej <i>prętów</i> lub <i>płytkę</i>.</span>"
 
 /obj/structure/lattice/Initialize(mapload)
 	. = ..()
@@ -41,7 +41,7 @@
 	if(resistance_flags & INDESTRUCTIBLE)
 		return
 	if(C.tool_behaviour == TOOL_WIRECUTTER)
-		to_chat(user, "<span class='notice'>Slicing [name] joints ...</span>")
+		to_chat(user, "<span class='notice'>Przecinanie łączeń [name]...</span>")
 		deconstruct()
 	else
 		var/turf/T = get_turf(src)
@@ -58,7 +58,7 @@
 
 /obj/structure/lattice/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, passed_mode)
 	if(passed_mode == RCD_FLOORWALL)
-		to_chat(user, "<span class='notice'>You build a floor.</span>")
+		to_chat(user, "<span class='notice'>Budujesz podłogę.</span>")
 		var/turf/T = src.loc
 		if(isspaceturf(T) || istype(T, /turf/open/openspace)) //NSV13: Also accounts for openspace.
 			T.PlaceOnTop(/turf/open/floor/plating, flags = CHANGETURF_INHERIT_AIR)

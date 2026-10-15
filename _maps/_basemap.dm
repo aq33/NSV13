@@ -8,47 +8,16 @@
 		#include "map_files\Mining\Lavaland.dmm"
 		#include "map_files\debug\runtimestation.dmm"
 
-		//Atlas
+		//Akwilas AQ EDIT - Aquila versions live under the upstream paths, so the webmap renders them
 		#include "map_files\Atlas\atlas.dmm"
 		#include "map_files\Atlas\atlas2.dmm"
-		//Akwilas AQ EDIT
-		#include "map_files\Aquila_Atlas\Aquila_Atlas.dmm"
-		#include "map_files\Aquila_Atlas\Aquila_Atlas2.dmm"
 
 		//Padalec
-		#include "map_files\Aquila_Snake\Aquila_Snake_Lower.dmm"
-		#include "map_files\Aquila_Snake\Aquila_Snake_Upper.dmm"
-		//Trawnik
-		#include "map_files\Aquila_Serendipity\Aquila_Serendipity1.dmm"
-		#include "map_files\Aquila_Serendipity\Aquila_Serendipity2.dmm"
-		//Aetherwhisp
-		#include "map_files\Aetherwhisp\Aetherwhisp2.dmm"
-		#include "map_files\Aetherwhisp\Aetherwhisp1.dmm"
-
-		//Gladius
-		#include "map_files\Gladius\Gladius1.dmm"
-		#include "map_files\Gladius\Gladius2.dmm"
-
-		//Tycoon
-		#include "map_files\Tycoon\Tycoon1.dmm"
-		#include "map_files\Tycoon\Tycoon2.dmm"
-
-		//Eclipse
-		#include "map_files\Eclipse\Eclipse1.dmm"
-		#include "map_files\Eclipse\Eclipse2.dmm"
-
-		//Galactica
-		#include "map_files\Galactica\Galactica1.dmm"
-		#include "map_files\Galactica\Galactica2.dmm"
-
-		//Vago
-		#include "map_files\Vago\vagodeck1.dmm"
-		#include "map_files\Vago\vagodeck2.dmm"
-
-		//Snake
 		#include "map_files\Snake\snake_lower.dmm"
 		#include "map_files\Snake\snake_upper.dmm"
-
+		//Trawnik
+		#include "map_files\Serendipity\Serendipity1.dmm"
+		#include "map_files\Serendipity\Serendipity2.dmm"
 		#ifdef CIBUILDING
 			#include "templates.dm"
 		#endif

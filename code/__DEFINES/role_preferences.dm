@@ -7,6 +7,13 @@
 // Banning snowflake - global antag ban. Does not include ghost roles that aren't antagonists or forced antagonists
 #define BAN_ROLE_ALL_ANTAGONISTS			"All Antagonists"
 
+// AQ EDIT START - port BeeStation #13722; w core, bo używa ich pollCandidates() w code/__HELPERS/game.dm
+/// Do not auto-add anyone to the pull
+#define POLL_AUTO_ADD_NONE null
+/// Auto-add ghosts to the poll when created
+#define POLL_AUTO_ADD_GHOSTS "ghosts"
+// AQ EDIT END
+
 //These are synced with the Database, if you change the values of the defines
 //then you MUST update the database!
 #define ROLE_TRAITOR			"Traitor"
@@ -53,7 +60,12 @@
 #define ROLE_HIJACKED_AI		"Zkompromitowana SI" // AQ
 #define ROLE_SINFULDEMON 		"Demon of Sin"//AQ
 #define ROLE_PARADOX_CLONE		"Paradox Clone" //AQ - port of tgstation#71141
-#define ROLE_THIEF				"Thief" //AQ - port of tgstation#64144
+#define ROLE_CHRONO_LEGIONNAIRE	"Chrono Legionnaire" //AQ
+#define ROLE_HORROR				"Eldritch Horror" //AQ - port of Yogstation#13033
+#define ROLE_PULSE_DEMON		"Pulse Demon" //AQ - port z ParadiseSS13
+#define ROLE_VOIDWALKER			"Voidwalker" //AQ - port z tgstation
+#define ROLE_SHADOW_DEMON		"Shadow Demon" //AQ - port z ParadiseSS13
+#define ROLE_DARKSPAWN			"Darkspawn" //AQ - port z Yogstation
 
 /// Roles that are antagonists, roundstart or not, and have passes to do.. antagonistry
 GLOBAL_LIST_INIT(antagonist_bannable_roles, list(
@@ -98,7 +110,12 @@ GLOBAL_LIST_INIT(antagonist_bannable_roles, list(
 	ROLE_SINFULDEMON, // AQ
 	ROLE_HIJACKED_AI, //AQ
 	ROLE_PARADOX_CLONE, //AQ
-	ROLE_THIEF, //AQ
+	ROLE_CHRONO_LEGIONNAIRE, //AQ
+	ROLE_HORROR, //AQ
+	ROLE_PULSE_DEMON, //AQ
+	ROLE_VOIDWALKER, //AQ
+	ROLE_SHADOW_DEMON, //AQ
+	ROLE_DARKSPAWN, //AQ
 ))
 //nsv13 - pvp + bloodling modes added here
 
@@ -194,9 +211,10 @@ GLOBAL_LIST_INIT(other_bannable_roles, list(
 	if(initial(pref.per_character))
 		source = src.prefs.active_character.role_preferences_character
 	var/role_preference_value = source["[role_preference_key]"]
-	if(isnum(role_preference_value) && !role_preference_value) // explicitly disabled and not null
-		return FALSE
-	return TRUE
+	//AQ EDIT - antagonist roles are opt-in: only an explicit TRUE enables them
+	if(isnum(role_preference_value) && role_preference_value)
+		return TRUE
+	return FALSE
 
 /// If the client given is fit for a given role based on the arguments passed
 /// banning_key: ROLE_X used for this role - to check if the player is banned.
@@ -217,7 +235,7 @@ GLOBAL_LIST_INIT(other_bannable_roles, list(
 			if(feedback)
 				to_chat(src, "<span class='warning'>You are banned from this role!</span>")
 			return FALSE
-	if(req_hours) //minimum living hour count
+	if(req_hours && CONFIG_GET(flag/antag_living_playtime_requirements)) //minimum living hour count // AQUILA EDIT: limit godzin tylko z configu
 		if((src.get_exp_living(TRUE)/60) < req_hours)
 			if(feedback)
 				to_chat(src, "<span class='warning'>You do not have enough living hours to take this role ([req_hours]hrs required)!</span>")

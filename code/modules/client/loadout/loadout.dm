@@ -41,7 +41,7 @@ GLOBAL_LIST_EMPTY(gear_datums)
 			WARNING("Loadout - Donator item, Missing cost and no assigned ckey: [G]")
 			continue
 		// end NSV13
-		if(!initial(G.path) && use_category != "OOC") //OOC category does not contain actual items
+		if(!initial(G.path) && use_category != "OOC" && !ispath(G, /datum/gear/aquila_accessory)) //OOC category does not contain actual items // AQ EDIT - polska bielizna też nie
 			WARNING("Loadout - Missing path definition: [G]")
 			continue
 

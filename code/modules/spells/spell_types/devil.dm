@@ -24,7 +24,7 @@
 	item_type = /obj/item/instrument/violin/golden
 	desc = "A devil's instrument of choice.  Use this to summon/unsummon your golden violin."
 	invocation_type = "whisper"
-	invocation = "I ain't have this much fun since Georgia."
+	invocation = "Nie bawiłem się tak dobrze od czasów Georgii."
 	action_icon_state = "golden_violin"
 	name = "Summon golden violin"
 	action_icon = 'icons/mob/actions/actions_minor_antag.dmi'
@@ -34,7 +34,7 @@
 	name = "Summon infernal contract"
 	desc = "Skip making a contract by hand, just do it by magic."
 	invocation_type = "whisper"
-	invocation = "Just sign on the dotted line."
+	invocation = "Wystarczy podpisać w wykropkowanym miejscu."
 	include_user = FALSE
 	range = 5
 	clothes_req = FALSE
@@ -54,7 +54,7 @@
 					user.put_in_hands(contract)
 			else
 				var/obj/item/paper/contract/infernal/contract  // = new(user.loc, C.mind, contractType, user.mind)
-				var/contractTypeName = input(user, "What type of contract?") in sortList(list("Power", "Wealth", "Prestige", "Magic", "Knowledge", "Friendship", "Pleasure")) // AQ EDIT: added Pleasure
+				var/contractTypeName = input(user, "Jaki rodzaj kontraktu?") in sortList(list("Power", "Wealth", "Prestige", "Magic", "Knowledge", "Friendship", "Pleasure")) // AQ EDIT: added Pleasure
 				switch(contractTypeName)
 					if("Power")
 						contract = new /obj/item/paper/contract/infernal/power(C.loc, C.mind, user.mind)
@@ -72,7 +72,7 @@
 						contract = new /obj/item/paper/contract/infernal/pleasure(C.loc, C.mind, user.mind)
 				C.put_in_hands(contract)
 		else
-			to_chat(user, "<span class='notice'>[C] seems to not be sentient.  You cannot summon a contract for [C.p_them()].</span>")
+			to_chat(user, "<span class='notice'>Wygląda na to, że [C] nie jest świadomy. Nie możesz przywołać dla niego kontraktu.</span>")
 
 
 /obj/effect/proc_holder/spell/aimed/fireball/hellish
@@ -82,7 +82,7 @@
 	school = "evocation"
 	charge_max = 80
 	clothes_req = FALSE
-	invocation = "Your very soul will catch fire!"
+	invocation = "Sama twoja dusza stanie w płomieniach!"
 	invocation_type = "shout"
 	range = 2
 
@@ -108,25 +108,25 @@
 	if(istype(user))
 		if(istype(user.loc, /obj/effect/dummy/phased_mob/slaughter/))
 			if(valid_location(user))
-				to_chat(user, "<span class='warning'>You are now phasing in.</span>")
+				to_chat(user, "<span class='warning'>Zaczynasz się materializować.</span>")
 				if(do_mob(user,user,150))
 					if(valid_location(user))
 						user.infernalphasein()
 					else
-						to_chat(user, "<span class='warning'>You are no longer near a potential signer.</span>")
+						to_chat(user, "<span class='warning'>Nie jesteś już w pobliżu potencjalnego sygnatariusza.</span>")
 
 			else
-				to_chat(user, "<span class='warning'>You can only re-appear near a potential signer.</span>")
+				to_chat(user, "<span class='warning'>Możesz się pojawić tylko w pobliżu potencjalnego sygnatariusza.</span>")
 				revert_cast()
 				return ..()
 		else
 			user.notransform = TRUE
 			user.fakefire()
-			to_chat(src, "<span class='warning'>You begin to phase back into sinful flames.</span>")
+			to_chat(src, "<span class='warning'>Zaczynasz przechodzić z powrotem w grzeszne płomienie.</span>")
 			if(do_mob(user,user,150))
 				user.infernalphaseout()
 			else
-				to_chat(user, "<span class='warning'>You must remain still while exiting.</span>")
+				to_chat(user, "<span class='warning'>Podczas wychodzenia musisz pozostać w bezruchu.</span>")
 				user.notransform = FALSE
 				user.fakefireextinguish()
 		start_recharge()
@@ -145,7 +145,7 @@
 /mob/living/proc/infernalphaseout()
 	dust_animation()
 	spawn_dust()
-	visible_message("<span class='warning'>[src] disappears in a flashfire!</span>")
+	visible_message("<span class='warning'>[src] znika w nagłym błysku ognia!</span>")
 	playsound(get_turf(src), 'sound/magic/enter_blood.ogg', 100, 1, -1)
 	var/obj/effect/dummy/phased_mob/slaughter/holder = new /obj/effect/dummy/phased_mob/slaughter(loc)
 	ExtinguishMob()
@@ -156,12 +156,12 @@
 
 /mob/living/proc/infernalphasein()
 	if(notransform)
-		to_chat(src, "<span class='warning'>You're too busy to jaunt in.</span>")
+		to_chat(src, "<span class='warning'>Jesteś zbyt zajęty, by się przenieść.</span>")
 		return FALSE
 	fakefire()
 	forceMove(drop_location())
 	client.eye = src
-	visible_message("<span class='warning'><B>[src] appears in a fiery blaze!</B></span>")
+	visible_message("<span class='warning'><B>[src] pojawia się w ognistym blasku!</B></span>")
 	playsound(get_turf(src), 'sound/magic/exit_blood.ogg', 100, 1, -1)
 	addtimer(CALLBACK(src, PROC_REF(fakefireextinguish)), 15, TIMER_UNIQUE)
 
@@ -182,7 +182,7 @@
 	random_target = TRUE
 	random_target_priority = TARGET_RANDOM
 	max_targets = 3
-	invocation = "TASTE SIN AND INDULGE!!"
+	invocation = "SKOSZTUJ GRZECHU I ZATRAĆ SIĘ!!"
 	invocation_type = "shout"
 
 /obj/effect/proc_holder/spell/targeted/sintouch/ascended
@@ -240,7 +240,7 @@
 	else
 		var/list/funky_turfs = RANGE_TURFS(1, user)
 		if(locate(/turf/closed) in funky_turfs)
-			to_chat(user, "<span class='warning'>You're too close to a wall.</span>")
+			to_chat(user, "<span class='warning'>Jesteś za blisko ściany.</span>")
 			return
 		dancefloor_exists = TRUE
 		var/i = 1

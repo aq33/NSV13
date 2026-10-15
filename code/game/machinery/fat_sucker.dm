@@ -20,12 +20,12 @@
 
 	var/next_fact = 10 //in ticks, so about 20 seconds
 	var/static/list/fat_facts = list(\
-	"Fats are triglycerides made up of a combination of different building blocks; glycerol and fatty acids.", \
-	"Adults should get a recommended 20-35% of their energy intake from fat.", \
-	"Being overweight or obese puts you at an increased risk of chronic diseases, such as cardiovascular diseases, metabolic syndrome, type 2 diabetes and some types of cancers.", \
-	"Not all fats are bad. A certain amount of fat is an essential part of a healthy balanced diet. " , \
-	"Saturated fat should form no more than 11% of your daily calories.", \
-	"Unsaturated fat, that is monounsaturated fats, polyunsaturated fats and omega-3 fatty acids, is found in plant foods and fish." \
+	"Tłuszcze to triglicerydy zbudowane z różnych składników: glicerolu i kwasów tłuszczowych.", \
+	"Dorośli powinni czerpać z tłuszczu zalecane 20-35% energii.", \
+	"Nadwaga lub otyłość zwiększa ryzyko chorób przewlekłych, takich jak choroby sercowo-naczyniowe, zespół metaboliczny, cukrzyca typu 2 i niektóre nowotwory.", \
+	"Nie wszystkie tłuszcze są złe. Pewna ilość tłuszczu jest niezbędnym elementem zdrowej, zbilansowanej diety. " , \
+	"Tłuszcze nasycone nie powinny stanowić więcej niż 11% dziennych kalorii.", \
+	"Tłuszcze nienasycone, czyli jednonienasycone, wielonienasycone i kwasy tłuszczowe omega-3, występują w produktach roślinnych i rybach." \
 	)
 
 /obj/machinery/fat_sucker/Initialize(mapload)
@@ -50,13 +50,13 @@
 
 /obj/machinery/fat_sucker/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Alt-Click to toggle the safety hatch.</span>\n"+\
-			"<span class='notice'>Removing [bite_size] nutritional units per operation.</span>\n"+\
-			"<span class='notice'>Requires [nutrient_to_meat] nutritional units per meat slab.</span>"
+	. += "<span class='notice'>Alt-kliknij, by przełączyć właz bezpieczeństwa.</span>\n"+\
+			"<span class='notice'>Usuwa [bite_size] jednostek odżywczych na operację.</span>\n"+\
+			"<span class='notice'>Wymaga [nutrient_to_meat] jednostek odżywczych na płat mięsa.</span>"
 
 /obj/machinery/fat_sucker/close_machine(mob/user)
 	if(panel_open)
-		to_chat(user, "<span class='warning'>You need to close the maintenance hatch first!</span>")
+		to_chat(user, "<span class='warning'>Najpierw musisz zamknąć właz serwisowy!</span>")
 		return
 	..()
 	playsound(src, 'sound/machines/click.ogg', 50)
@@ -67,7 +67,7 @@
 			occupant = null
 			return
 
-		to_chat(occupant, "<span class='notice'>You enter [src]</span>")
+		to_chat(occupant, "<span class='notice'>Wchodzisz do [src]</span>")
 		addtimer(CALLBACK(src, PROC_REF(start_extracting)), 20, TIMER_OVERRIDE|TIMER_UNIQUE)
 		update_icon()
 
@@ -80,18 +80,18 @@
 
 /obj/machinery/fat_sucker/container_resist(mob/living/user)
 	if(!free_exit || state_open)
-		to_chat(user, "<span class='notice'>The emergency release is not responding! You start pushing against the hull!</span>")
+		to_chat(user, "<span class='notice'>Awaryjne zwolnienie nie reaguje! Zaczynasz napierać na kadłub!</span>")
 		user.changeNext_move(CLICK_CD_BREAKOUT)
 		user.last_special = world.time + CLICK_CD_BREAKOUT
-		user.visible_message("<span class='notice'>You see [user] kicking against the door of [src]!</span>", \
-			"<span class='notice'>You lean on the back of [src] and start pushing the door open... (this will take about [DisplayTimeText(breakout_time)].)</span>", \
-			"<span class='italics'>You hear a metallic creaking from [src].</span>")
+		user.visible_message("<span class='notice'>Widzisz, jak [user] kopie w drzwi [src]!</span>", \
+			"<span class='notice'>Opierasz się o tył [src] i zaczynasz pchać drzwi... (zajmie to około [DisplayTimeText(breakout_time)].)</span>", \
+			"<span class='italics'>Słyszysz metaliczne skrzypienie z [src].</span>")
 		if(do_after(user, breakout_time, target = src))
 			if(!user || user.stat != CONSCIOUS || user.loc != src || state_open)
 				return
 			free_exit = TRUE
-			user.visible_message("<span class='warning'>[user] successfully broke out of [src]!</span>", \
-				"<span class='notice'>You successfully break out of [src]!</span>")
+			user.visible_message("<span class='warning'>[user] wydostaje się z [src]!</span>", \
+				"<span class='notice'>Wydostajesz się z [src]!</span>")
 			open_machine()
 		return
 	open_machine()
@@ -102,19 +102,19 @@
 	else if(!processing || free_exit)
 		open_machine()
 	else
-		to_chat(user, "<span class='warning'>The safety hatch has been disabled!</span>")
+		to_chat(user, "<span class='warning'>Właz bezpieczeństwa został wyłączony!</span>")
 
 /obj/machinery/fat_sucker/AltClick(mob/living/user)
 	if(!user.canUseTopic(src, BE_CLOSE))
 		return
 	if(user == occupant)
-		to_chat(user, "<span class='warning'>You can't reach the controls from inside!</span>")
+		to_chat(user, "<span class='warning'>Ze środka nie sięgasz do sterowania!</span>")
 		return
 	if(!(obj_flags & EMAGGED) && !allowed(user))
-		to_chat(user, "<span class='warning'>You lack the required access.</span>")
+		to_chat(user, "<span class='warning'>Nie masz wymaganego dostępu.</span>")
 		return
 	free_exit = !free_exit
-	to_chat(user, "<span class='notice'>Safety hatch [free_exit ? "unlocked" : "locked"].</span>")
+	to_chat(user, "<span class='notice'>Właz bezpieczeństwa [free_exit ? "odblokowany" : "zablokowany"].</span>")
 
 /obj/machinery/fat_sucker/update_icon()
 	overlays.Cut()
@@ -171,7 +171,7 @@
 			update_icon()
 			set_light(2, 1, "#ff0000")
 		else
-			say("Subject not fat enough.")
+			say("Obiekt nie jest wystarczająco gruby.")
 			playsound(src, 'sound/machines/buzz-sigh.ogg', 40, FALSE)
 			overlays += "[icon_state]_red" //throw a red light icon over it, to show that it wont work
 
@@ -192,13 +192,13 @@
 				qdel(src)
 				return
 			if(nutrients >= nutrient_to_meat * 2)
-				C.put_in_hands(new /obj/item/reagent_containers/food/snacks/cookie (), TRUE)
+				C.put_in_hands(new /obj/item/food/cookie, del_on_fail = TRUE)
 			while(nutrients >= nutrient_to_meat)
 				nutrients -= nutrient_to_meat
 				new C.type_of_meat (drop_location())
 			while(nutrients >= nutrient_to_meat / 3)
 				nutrients -= nutrient_to_meat / 3
-				new /obj/item/reagent_containers/food/snacks/meat/rawcutlet/plain (drop_location())
+				new /obj/item/food/meat/rawcutlet/plain (drop_location())
 			nutrients = 0
 
 /obj/machinery/fat_sucker/screwdriver_act(mob/living/user, obj/item/I)
@@ -206,10 +206,10 @@
 	if(..())
 		return
 	if(occupant)
-		to_chat(user, "<span class='warning'>[src] is currently occupied!</span>")
+		to_chat(user, "<span class='warning'>[src] jest obecnie zajęty!</span>")
 		return
 	if(state_open)
-		to_chat(user, "<span class='warning'>[src] must be closed to [panel_open ? "close" : "open"] its maintenance hatch!</span>")
+		to_chat(user, "<span class='warning'>[src] musi być zamknięty, by [panel_open ? "zamknąć" : "otworzyć"] właz serwisowy!</span>")
 		return
 	if(default_deconstruction_screwdriver(user, icon_state, icon_state, I))
 		update_icon()
@@ -225,5 +225,5 @@
 		return
 	start_at = 100
 	stop_at = 0
-	to_chat(user, "<span class='notice'>You remove the access restrictions and lower the automatic ejection threshold!</span>")
+	to_chat(user, "<span class='notice'>Usuwasz ograniczenia dostępu i obniżasz próg automatycznego wyrzucenia!</span>")
 	obj_flags |= EMAGGED

@@ -8,15 +8,15 @@
 	mob_biotypes = list(MOB_ORGANIC, MOB_HUMANOID)
 	gender = MALE
 	turns_per_move = 5
-	response_help = "pokes"
-	response_disarm = "gently pushes aside"
-	response_harm = "punches"
-	a_intent = INTENT_HARM
+	response_help = "szturcha"
+	response_disarm = "delikatnie odsuwa na bok"
+	response_harm = "uderza"
+	combat_mode = TRUE
 	maxHealth = 100
 	health = 100
 	speed = 0
 	melee_damage = 10
-	attacktext = "hits"
+	attacktext = "uderza"
 	attack_sound = 'sound/weapons/punch1.ogg'
 	obj_damage = 0
 	environment_smash = ENVIRONMENT_SMASH_NONE
@@ -33,9 +33,9 @@
 	icon_dead = null
 	icon_gib = "syndicate_gib"
 	turns_per_move = 5
-	response_help = "pokes"
-	response_disarm = "shoves"
-	response_harm = "hits"
+	response_help = "szturcha"
+	response_disarm = "popycha"
+	response_harm = "uderza"
 	speed = 0
 	stat_attack = UNCONSCIOUS
 	robust_searching = 1
@@ -43,10 +43,10 @@
 	maxHealth = 100
 	health = 100
 	melee_damage = 12
-	attacktext = "punches"
+	attacktext = "uderza"
 	attack_sound = 'sound/weapons/punch1.ogg'
 	faction = list("nanotrasenprivate")
-	a_intent = INTENT_HARM
+	combat_mode = TRUE
 	loot = list(/obj/effect/mob_spawn/human/corpse/nanotrasensoldier)
 	atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 0, "max_n2" = 0)
 	unsuitable_atmos_damage = 15
@@ -56,7 +56,7 @@
 /mob/living/simple_animal/hostile/retaliate/nanotrasenpeace/Aggro()
 	..()
 	summon_backup(15)
-	say("411 in progress, requesting backup!")
+	say("Trwa 411, potrzebne wsparcie!")
 
 /mob/living/simple_animal/hostile/retaliate/nanotrasenpeace/ranged
 	icon_state = "nanotrasenrangedsmg"

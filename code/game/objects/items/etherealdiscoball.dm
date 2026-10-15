@@ -6,7 +6,7 @@
 
 /obj/item/etherealballdeployer/attack_self(mob/living/carbon/user)
 	.=..()
-	to_chat(user, "<span class='notice'>You deploy the Ethereal Disco Ball.</span>")
+	to_chat(user, "<span class='notice'>Rozstawiasz eteryczną kulę dyskotekową.</span>")
 	new /obj/structure/etherealball(user.loc)
 	qdel(src)
 
@@ -31,17 +31,17 @@
 	. = ..()
 	if(TurnedOn)
 		TurnOff()
-		to_chat(user, "<span class='notice'>You turn the disco ball off!</span>")
+		to_chat(user, "<span class='notice'>Wyłączasz kulę dyskotekową!</span>")
 	else
 		TurnOn()
-		to_chat(user, "<span class='notice'>You turn the disco ball on!</span>")
+		to_chat(user, "<span class='notice'>Włączasz kulę dyskotekową!</span>")
 
 /obj/structure/etherealball/AltClick(mob/living/carbon/human/user)
 	if(anchored)
-		to_chat(user, "<span class='notice'>You unlock the disco ball.</span>")
+		to_chat(user, "<span class='notice'>Odblokowujesz kulę dyskotekową.</span>")
 		anchored = FALSE
 	else
-		to_chat(user, "<span class='notice'>You lock the disco ball.</span>")
+		to_chat(user, "<span class='notice'>Blokujesz kulę dyskotekową.</span>")
 		anchored = TRUE
 
 /obj/structure/etherealball/proc/TurnOn()

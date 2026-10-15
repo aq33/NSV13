@@ -62,7 +62,7 @@
 		I.forceMove(src)
 
 	stored_card = I
-	to_chat(user, "<span class='notice'>You insert \the [I] into \the [expansion_hw ? "secondary":"primary"] [src].</span>")
+	to_chat(user, "<span class='notice'>Wkładasz [I] do [expansion_hw ? "dodatkowego":"głównego"] gniazda [src].</span>")
 	playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50, FALSE)
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
@@ -77,7 +77,7 @@
 
 /obj/item/computer_hardware/card_slot/try_eject(mob/living/user = null, forced = FALSE)
 	if(!stored_card)
-		to_chat(user, "<span class='warning'>There are no cards in \the [src].</span>")
+		to_chat(user, "<span class='warning'>W [src] nie ma kart.</span>")
 		return FALSE
 
 	if(user && !issilicon(user) && in_range(src, user))
@@ -97,7 +97,7 @@
 		var/mob/living/carbon/human/human_wearer = user
 		if(human_wearer.wear_id == holder)
 			human_wearer.sec_hud_set_ID()
-	to_chat(user, "<span class='notice'>You remove the card from \the [src].</span>")
+	to_chat(user, "<span class='notice'>Wyjmujesz kartę z [src].</span>")
 	playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50, FALSE)
 	stored_card = null
 	current_identification = null
@@ -110,11 +110,11 @@
 		return
 	if(I.tool_behaviour == TOOL_SCREWDRIVER)
 		if(stored_card)
-			to_chat(user, "<span class='notice'>You press down on the manual eject button with \the [I].</span>")
+			to_chat(user, "<span class='notice'>Wciskasz przycisk ręcznego wysuwania za pomocą [I].</span>")
 			try_eject(user)
 			return
 		swap_slot()
-		to_chat(user, "<span class='notice'>You adjust the connector to fit into [expansion_hw ? "an expansion bay" : "the primary ID bay"].</span>")
+		to_chat(user, "<span class='notice'>Dostosowujesz złącze do [expansion_hw ? "zatoki rozszerzeń" : "głównej zatoki ID"].</span>")
 
 /**
   *Swaps the card_slot hardware between using the dedicated card slot bay on a computer, and using an expansion bay.
@@ -130,9 +130,9 @@
 
 /obj/item/computer_hardware/card_slot/examine(mob/user)
 	. = ..()
-	. += "The connector is set to fit into [expansion_hw ? "an expansion bay" : "a computer's primary ID bay"], but can be adjusted with a screwdriver."
+	. += "Złącze jest dostosowane do [expansion_hw ? "zatoki rozszerzeń" : "głównej zatoki ID komputera"], ale można je zmienić śrubokrętem."
 	if(stored_card)
-		. += "There appears to be something loaded in the card slots."
+		. += "Wygląda na to, że w gniazdach kart coś jest."
 
 /obj/item/computer_hardware/card_slot/secondary
 	name = "secondary RFID card module"

@@ -40,7 +40,7 @@
 /obj/item/clothing/mask/cluwne/handle_speech(datum/source, list/speech_args)
     if(voicechange)
         if(prob(5)) //the brain isn't fully gone yet...
-            speech_args[SPEECH_MESSAGE] = pick("HELP ME!!","PLEASE KILL ME!!","I WANT TO DIE!!", "END MY SUFFERING", "I CANT TAKE THIS ANYMORE!!" ,"SOMEBODY STOP ME!!")
+            speech_args[SPEECH_MESSAGE] = pick("POMOCY!!","PROSZĘ, ZABIJCIE MNIE!!","CHCĘ UMRZEĆ!!", "SKOŃCZCIE MOJE CIERPIENIE", "NIE WYTRZYMAM TEGO DŁUŻEJ!!" ,"NIECH KTOŚ MNIE POWSTRZYMA!!")
             play_laugh2()
         if(prob(3))
             speech_args[SPEECH_MESSAGE] = pick("HOOOOINKKKKKKK!!", "HOINK HOINK HOINK HOINK!!","HOINK HOINK!!","HOOOOOOIIINKKKK!!") //but most of the time they cant speak,
@@ -78,7 +78,7 @@
 
 /obj/item/clothing/mask/cluwne/happy_cluwne/attack_self(mob/user)
     voicechange = !voicechange
-    to_chat(user, "<span class='notice'>You turn the voice box [voicechange ? "on" : "off"]!</span>")
+    to_chat(user, "<span class='notice'>[voicechange ? "Włączasz" : "Wyłączasz"] modulator głosu!</span>")
     if(voicechange)
         play_laugh1()
 
@@ -90,7 +90,7 @@
         if(is_cursed && can_cluwne) //logic predetermined
             log_admin("[key_name(H)] was made into a cluwne by [src]")
             message_admins("[key_name(H)] got cluwned by [src]")
-            to_chat(H, "<span class='userdanger'>The masks straps suddenly tighten to your face and your thoughts are erased by a horrible green light!</span>")
+            to_chat(H, "<span class='userdanger'>Paski maski nagle zaciskają się na twojej twarzy, a straszne zielone światło wymazuje twoje myśli!</span>")
             H.dropItemToGround(src)
             H.cluwneify()
             qdel(src)
@@ -100,5 +100,5 @@
             S.Acquire_Victim(user)
             log_admin("[key_name(user)] summoned a floor cluwne using the [src]")
             message_admins("[key_name(user)] summoned a floor cluwne using the [src]")
-            to_chat(H, "<span class='warning'>The mask suddenly slips off your face and... slides under the floor?</span>")
-    to_chat(H, "<i>...dneirf uoy ot gnoleb ton seod tahT</i>")
+            to_chat(H, "<span class='warning'>Maska nagle zsuwa się z twojej twarzy i... wślizguje pod podłogę?</span>")
+    to_chat(H, "<i>...ulecaijyzrp ,eibeic od yżelan ein oT</i>")

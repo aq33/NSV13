@@ -29,8 +29,8 @@
 	desc = "Opens up the path of void to you. \
 		Allows you to transmute a knife in sub-zero temperatures into a Void Blade. \
 		You can only create two at a time."
-	gain_text = "I feel a shimmer in the air, the air around me gets colder. \
-		I start to realize the emptiness of existence. Something's watching me."
+	gain_text = "Czuję migotanie w powietrzu, robi się wokół mnie coraz zimniej. \
+		Zaczynam dostrzegać pustkę istnienia. Coś mnie obserwuje."
 	next_knowledge = list(/datum/heretic_knowledge/void_grasp)
 	banned_knowledge = list(
 		/datum/heretic_knowledge/limited_amount/base_ash,
@@ -47,19 +47,14 @@
 	priority = MAX_KNOWLEDGE_PRIORITY - 5
 	route = HERETIC_PATH_VOID
 
-/datum/heretic_knowledge/limited_amount/base_void/on_research(mob/user)
-	. = ..()
-	var/datum/antagonist/heretic/our_heretic = IS_HERETIC(user)
-	our_heretic.heretic_path = route
-
 /datum/heretic_knowledge/limited_amount/base_void/recipe_snowflake_check(mob/living/user, list/atoms, list/selected_atoms, turf/loc)
 	if(!isopenturf(loc))
-		loc.balloon_alert(user, "ritual failed, invalid location!")
+		loc.balloon_alert(user, "rytuał nieudany, złe miejsce!")
 		return FALSE
 
 	var/turf/open/our_turf = loc
 	if(our_turf.GetTemperature() > T0C)
-		loc.balloon_alert(user, "ritual failed, not cold enough!")
+		loc.balloon_alert(user, "rytuał nieudany, za ciepło!")
 		return FALSE
 
 	return ..()
@@ -67,16 +62,16 @@
 /datum/heretic_knowledge/void_grasp
 	name = "Grasp of Void"
 	desc = "Your Mansus Grasp will temporarily mute and chill the victim."
-	gain_text = "I saw the cold watcher who observes me. The chill mounts within me. \
-		They are quiet. This isn't the end of the mystery."
+	gain_text = "Ujrzałem zimnego obserwatora, który mnie śledzi. Chłód we mnie narasta. \
+		Milczy. To nie koniec tajemnicy."
 	next_knowledge = list(/datum/heretic_knowledge/cold_snap)
 	cost = 1
 	route = HERETIC_PATH_VOID
 
-/datum/heretic_knowledge/void_grasp/on_gain(mob/user)
+/datum/heretic_knowledge/void_grasp/on_gain(mob/user, datum/antagonist/heretic/our_heretic)
 	RegisterSignal(user, COMSIG_HERETIC_MANSUS_GRASP_ATTACK, PROC_REF(on_mansus_grasp))
 
-/datum/heretic_knowledge/void_grasp/on_lose(mob/user)
+/datum/heretic_knowledge/void_grasp/on_lose(mob/user, datum/antagonist/heretic/our_heretic)
 	UnregisterSignal(user, COMSIG_HERETIC_MANSUS_GRASP_ATTACK)
 
 /datum/heretic_knowledge/void_grasp/proc/on_mansus_grasp(mob/living/source, mob/living/target)
@@ -95,8 +90,8 @@
 	name = "Aristocrat's Way"
 	desc = "Grants you immunity to cold temperatures, and removes your need to breathe. \
 		You can still take damage due to lack of pressure."
-	gain_text = "I found a thread of cold breath. It lead me to a strange shrine, all made of crystals. \
-		Translucent and white, a depiction of a nobleman stood before me."
+	gain_text = "Znalazłem nić zimnego oddechu. Zaprowadziła mnie do dziwnej świątyni, całej z kryształów. \
+		Przede mną stał półprzezroczysty, biały wizerunek szlachcica."
 	next_knowledge = list(
 		/datum/heretic_knowledge/void_mark,
 		/datum/heretic_knowledge/codex_cicatrix,
@@ -106,11 +101,11 @@
 	cost = 1
 	route = HERETIC_PATH_VOID
 
-/datum/heretic_knowledge/cold_snap/on_gain(mob/user)
+/datum/heretic_knowledge/cold_snap/on_gain(mob/user, datum/antagonist/heretic/our_heretic)
 	ADD_TRAIT(user, TRAIT_RESISTCOLD, type)
 	ADD_TRAIT(user, TRAIT_NOBREATH, type)
 
-/datum/heretic_knowledge/cold_snap/on_lose(mob/user)
+/datum/heretic_knowledge/cold_snap/on_lose(mob/user, datum/antagonist/heretic/our_heretic)
 	REMOVE_TRAIT(user, TRAIT_RESISTCOLD, type)
 	REMOVE_TRAIT(user, TRAIT_NOBREATH, type)
 
@@ -118,8 +113,8 @@
 	name = "Mark of Void"
 	desc = "Your Mansus Grasp now applies the Mark of Void. The mark is triggered from an attack with your Void Blade. \
 		When triggered, silences the victim and lowers their body temperature significantly."
-	gain_text = "A gust of wind? A shimmer in the air? The presence is overwhelming, \
-		my senses begin to betray me. My mind is my own enemy."
+	gain_text = "Podmuch wiatru? Migotanie w powietrzu? Obecność jest przytłaczająca, \
+		zmysły zaczynają mnie zdradzać. Mój umysł jest moim wrogiem."
 	next_knowledge = list(/datum/heretic_knowledge/knowledge_ritual/void)
 	banned_knowledge = list(
 		/datum/heretic_knowledge/rust_mark,
@@ -129,11 +124,11 @@
 	cost = 2
 	route = HERETIC_PATH_VOID
 
-/datum/heretic_knowledge/void_mark/on_gain(mob/user)
+/datum/heretic_knowledge/void_mark/on_gain(mob/user, datum/antagonist/heretic/our_heretic)
 	RegisterSignal(user, COMSIG_HERETIC_MANSUS_GRASP_ATTACK, PROC_REF(on_mansus_grasp))
 	RegisterSignal(user, COMSIG_HERETIC_BLADE_ATTACK, PROC_REF(on_eldritch_blade))
 
-/datum/heretic_knowledge/void_mark/on_lose(mob/user)
+/datum/heretic_knowledge/void_mark/on_lose(mob/user, datum/antagonist/heretic/our_heretic)
 	UnregisterSignal(user, list(COMSIG_HERETIC_MANSUS_GRASP_ATTACK, COMSIG_HERETIC_BLADE_ATTACK))
 
 /datum/heretic_knowledge/void_mark/proc/on_mansus_grasp(mob/living/source, mob/living/target)
@@ -164,8 +159,8 @@
 	name = "Void Phase"
 	desc = "Grants you Void Phase, a long range targeted teleport spell. \
 		Additionally causes damage to heathens around your original location and target destination."
-	gain_text = "The entity calls themself the Aristocrat. They effortlessly walk through air like nothing leaving a harsh, \
-	cold breeze in their wake. They disappear, and I am left in the snow."
+	gain_text = "Istota nazywa siebie Arystokratą. Bez wysiłku kroczy przez powietrze, zostawiając za sobą ostry, \
+	zimny powiew. Znika, a ja zostaję w śniegu."
 	next_knowledge = list(
 		/datum/heretic_knowledge/void_blade_upgrade,
 		/datum/heretic_knowledge/reroll_targets,
@@ -179,7 +174,7 @@
 /datum/heretic_knowledge/void_blade_upgrade
 	name = "Seeking blade"
 	desc = "You can now attack distant marked targets with your Void Blade, teleporting directly next to them."
-	gain_text = "Fleeting memories, fleeting feet. I mark my way with frozen blood upon the snow. Covered and forgotten."
+	gain_text = "Ulotne wspomnienia, ulotne kroki. Znaczę drogę zamarzniętą krwią na śniegu. Zasypaną i zapomnianą."
 	next_knowledge = list(/datum/heretic_knowledge/spell/voidpull)
 	banned_knowledge = list(
 		/datum/heretic_knowledge/ash_blade_upgrade,
@@ -190,10 +185,10 @@
 	route = HERETIC_PATH_VOID
 
 
-/datum/heretic_knowledge/void_blade_upgrade/on_gain(mob/user)
+/datum/heretic_knowledge/void_blade_upgrade/on_gain(mob/user, datum/antagonist/heretic/our_heretic)
 	RegisterSignal(user, COMSIG_HERETIC_RANGED_BLADE_ATTACK, PROC_REF(on_ranged_eldritch_blade))
 
-/datum/heretic_knowledge/void_blade_upgrade/on_lose(mob/user)
+/datum/heretic_knowledge/void_blade_upgrade/on_lose(mob/user, datum/antagonist/heretic/our_heretic)
 	UnregisterSignal(user, COMSIG_HERETIC_RANGED_BLADE_ATTACK)
 
 /datum/heretic_knowledge/void_blade_upgrade/proc/on_ranged_eldritch_blade(mob/living/user, mob/living/target)
@@ -214,8 +209,8 @@
 /datum/heretic_knowledge/spell/voidpull
 	name = "Void Pull"
 	desc = "Grants you Void Pull, a spell that pulls all nearby heathens towards you, stunning them briefly."
-	gain_text = "All is fleeting, but what else stays? I'm close to ending what was started. \
-		The Aristocrat reveals themself to me again. They tell me I am late. Their pull is immense, I cannot turn back."
+	gain_text = "Wszystko przemija, ale co jeszcze zostaje? Jestem blisko końca tego, co się zaczęło. \
+		Arystokrata znów mi się ukazuje. Mówi, że się spóźniłem. Jego przyciąganie jest ogromne, nie mogę zawrócić."
 	next_knowledge = list(
 		/datum/heretic_knowledge/final/void_final,
 		/datum/heretic_knowledge/spell/blood_siphon,
@@ -232,9 +227,9 @@
 		When completed, causes a violent storm of void snow \
 		to assault the station, freezing and damaging heathens. Those nearby will be silenced and frozen even quicker. \
 		Additionally, you will become immune to the effects of space."
-	gain_text = "The world falls into darkness. I stand in an empty plane, small flakes of ice fall from the sky. \
-		The Aristocrat stands before me, beckoning. We will play a waltz to the whispers of dying reality, \
-		as the world is destroyed before our eyes. The void will return all to nothing, WITNESS MY ASCENSION!"
+	gain_text = "Świat pogrąża się w ciemności. Stoję na pustym planie, z nieba spadają drobne płatki lodu. \
+		Arystokrata stoi przede mną i przyzywa. Zatańczymy walca przy szeptach umierającej rzeczywistości, \
+		gdy świat zginie na naszych oczach. Pustka obróci wszystko w nicość, UJRZYJCIE MOJE WNIEBOWSTĄPIENIE!"
 	route = HERETIC_PATH_VOID
 	///soundloop for the void theme
 	var/datum/looping_sound/void_loop/sound_loop
@@ -243,19 +238,19 @@
 
 /datum/heretic_knowledge/final/void_final/recipe_snowflake_check(mob/living/user, list/atoms, list/selected_atoms, turf/loc)
 	if(!isopenturf(loc))
-		loc.balloon_alert(user, "ritual failed, invalid location!")
+		loc.balloon_alert(user, "rytuał nieudany, złe miejsce!")
 		return FALSE
 
 	var/turf/open/our_turf = loc
 	if(our_turf.GetTemperature() > T0C)
-		loc.balloon_alert(user, "ritual failed, not cold enough!")
+		loc.balloon_alert(user, "rytuał nieudany, za ciepło!")
 		return FALSE
 
 	return ..()
 
 /datum/heretic_knowledge/final/void_final/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
 	. = ..()
-	priority_announce("[generate_heretic_text()] The nobleman of void [user.real_name] has arrived, step along to the Waltz that ends worlds! [generate_heretic_text()]","[generate_heretic_text()]", ANNOUNCER_SPANOMALIES)
+	priority_announce("[generate_heretic_text()] Przybył szlachcic pustki, [user.real_name] - dołączcie do Walca, który kończy światy! [generate_heretic_text()]","[generate_heretic_text()]", ANNOUNCER_SPANOMALIES)
 	ADD_TRAIT(user, TRAIT_RESISTLOWPRESSURE, MAGIC_TRAIT)
 
 	// Let's get this show on the road!
@@ -263,7 +258,7 @@
 	RegisterSignal(user, COMSIG_LIVING_LIFE, PROC_REF(on_life))
 	RegisterSignal(user, COMSIG_MOB_DEATH, PROC_REF(on_death))
 
-/datum/heretic_knowledge/final/void_final/on_lose(mob/user)
+/datum/heretic_knowledge/final/void_final/on_lose(mob/user, datum/antagonist/heretic/our_heretic)
 	on_death() // Losing is pretty much dying. I think
 	RegisterSignal(user, list(COMSIG_LIVING_LIFE, COMSIG_MOB_DEATH))
 
@@ -304,7 +299,7 @@
  *
  * Stop the storm when the heretic passes away.
  */
-/datum/heretic_knowledge/final/void_final/proc/on_death()
+/datum/heretic_knowledge/final/void_final/proc/on_death(datum/source)
 	SIGNAL_HANDLER
 
 	if(sound_loop)

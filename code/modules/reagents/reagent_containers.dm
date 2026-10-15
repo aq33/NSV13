@@ -50,22 +50,32 @@
 /obj/item/reagent_containers/attack_self(mob/user)
 	change_transfer_amount(user)
 
-/obj/item/reagent_containers/proc/change_transfer_amount(mob/user)
-	if(length(possible_transfer_amounts))
-		var/i = 0
-		for(var/A in possible_transfer_amounts)
-			i++
-			if(A == amount_per_transfer_from_this)
-				if(i < length(possible_transfer_amounts))
-					amount_per_transfer_from_this = possible_transfer_amounts[i + 1]
-				else
-					amount_per_transfer_from_this = possible_transfer_amounts[1]
-				balloon_alert(user, "Transferring [amount_per_transfer_from_this]u.")
-				return
+/// Port Bee #11899: right click in hand goes back through the transfer amounts
+/obj/item/reagent_containers/attack_self_secondary(mob/user)
+	change_transfer_amount(user, BACKWARD)
+
+/obj/item/reagent_containers/proc/mode_change_message(mob/user)
+	return
+
+/obj/item/reagent_containers/proc/change_transfer_amount(mob/user, direction = FORWARD)
+	var/list_len = length(possible_transfer_amounts)
+	if(!list_len)
+		return
+	var/index = possible_transfer_amounts.Find(amount_per_transfer_from_this) || 1
+	switch(direction)
+		if(FORWARD)
+			index = (index % list_len) + 1
+		if(BACKWARD)
+			index = (index - 1) || list_len
+		else
+			CRASH("change_transfer_amount() called with invalid direction value")
+	amount_per_transfer_from_this = possible_transfer_amounts[index]
+	balloon_alert(user, "Porcja: [amount_per_transfer_from_this] j.")
+	mode_change_message(user)
 ///NSV13 - Borg Hypospray Update - Stop
 
 /obj/item/reagent_containers/attack(mob/M, mob/user, def_zone)
-	if(user.a_intent == INTENT_HARM)
+	if(user.combat_mode)
 		return ..()
 
 /obj/item/reagent_containers/proc/canconsume(mob/eater, mob/user)
@@ -78,14 +88,14 @@
 	else if(C.is_mouth_covered(mask_only = 1))
 		covered = "mask"
 	if(covered)
-		var/who = (isnull(user) || eater == user) ? "your" : "[eater.p_their()]"
-		balloon_alert(user, "Remove [who] [covered] first!")
+		var/who = (isnull(user) || eater == user) ? "twój" : "[eater.p_their()]"
+		balloon_alert(user, "Najpierw zdejmij: [who] [covered]!")
 		return FALSE
 	if(!eater.has_mouth())
 		if(eater == user)
-			balloon_alert(eater, "You have no mouth!")
+			balloon_alert(eater, "Nie masz ust!")
 		else
-			balloon_alert(user, "[eater] has no mouth!")
+			balloon_alert(user, "[eater] nie ma ust!")
 		return FALSE
 	return TRUE
 
@@ -120,8 +130,8 @@
 			reagents.total_volume *= rand(5,10) * 0.1 //Not all of it makes contact with the target
 		var/mob/M = target
 		var/R
-		target.visible_message("<span class='danger'>[M] has been splashed with something!</span>", \
-						"<span class='userdanger'>[M] has been splashed with something!</span>")
+		target.visible_message("<span class='danger'>Coś opryskało [M]!</span>", \
+						"<span class='userdanger'>Coś opryskało [M]!</span>")
 		for(var/datum/reagent/A in reagents.reagent_list)
 			R += "[A.type]  ([num2text(A.volume)]),"
 
@@ -130,7 +140,8 @@
 		reagents.reaction(target, TOUCH)
 
 	else if(bartender_check(target) && thrown)
-		visible_message("<span class='notice'>[src] lands onto the [target.name] without spilling a single drop.</span>")
+		visible_message("<span class='notice'>[src] ląduje na [target.name], nie rozlewając ani kropli.</span>")
+		skip_next_scatter = TRUE // AQUILA EDIT - Yogstation#12789: ląduje prosto
 		return
 
 	else
@@ -138,7 +149,7 @@
 			log_combat(thrown_by, target, "splashed (thrown) [english_list(reagents.reagent_list)]", "in [AREACOORD(target)]")
 			log_game("[key_name(thrown_by)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] in [AREACOORD(target)].")
 			message_admins("[ADMIN_LOOKUPFLW(thrown_by)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] in [ADMIN_VERBOSEJMP(target)].")
-		visible_message("<span class='notice'>[src] spills its contents all over [target].</span>")
+		visible_message("<span class='notice'>[src] rozlewa swoją zawartość na [target].</span>")
 		reagents.reaction(target, TOUCH)
 		if(QDELETED(src))
 			return

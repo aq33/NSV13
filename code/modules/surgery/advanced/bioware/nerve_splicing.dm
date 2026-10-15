@@ -17,14 +17,14 @@
 	time = 155
 
 /datum/surgery_step/splice_nerves/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You start splicing together [target]'s nerves.</span>",
-		"[user] starts splicing together [target]'s nerves.",
-		"[user] starts manipulating [target]'s nervous system.")
+	display_results(user, target, "<span class='notice'>Zaczynasz łączyć nerwy [target].</span>",
+		"[user] zaczyna łączyć nerwy [target].",
+		"[user] zaczyna manipulować układem nerwowym [target].")
 
 /datum/surgery_step/splice_nerves/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You successfully splice [target]'s nervous system!</span>",
-		"[user] successfully splices [target]'s nervous system!",
-		"[user] finishes manipulating [target]'s nervous system.")
+	display_results(user, target, "<span class='notice'>Pomyślnie łączysz układ nerwowy [target]!</span>",
+		"[user] pomyślnie łączy układ nerwowy [target]!",
+		"[user] kończy manipulować układem nerwowym [target].")
 	new /datum/bioware/spliced_nerves(target)
 	return TRUE
 

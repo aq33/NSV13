@@ -29,21 +29,21 @@
 
 	for(var/line in testmerge)
 		var/datum/tgs_revision_information/test_merge/tm = line
-		msg += "Test merge active of PR #[tm.number] commit [tm.head_commit]"
+		msg += "Aktywny test merge PR nr [tm.number], commit [tm.head_commit]"
 		//If you want to support this field for feedback, uncomment this.
 		//SSblackbox.record_feedback("associative", "testmerged_prs", 1, list("number" = "[tm.number]", "commit" = "[tm.head_commit]", "title" = "[tm.title]", "author" = "[tm.author]"))
 
 	if(commit && commit != originmastercommit)
 		msg += "HEAD: [commit]"
 	else if(!originmastercommit)
-		msg += "No commit information"
+		msg += "Brak informacji o commicie"
 
 	return msg.Join("\n")
 
 /datum/getrev/proc/GetTestMergeInfo(header = TRUE)
 	if(!testmerge.len)
 		return ""
-	. = header ? "The following pull requests are currently test merged:<br>" : ""
+	. = header ? "Obecnie przetestowane i scalone są następujące pull requesty:<br>" : ""
 	for(var/line in testmerge)
 		var/datum/tgs_revision_information/test_merge/tm = line
 		var/cm = tm.head_commit
@@ -64,11 +64,11 @@
 
 	msg += "<b>BYOND Version:</b> [world.byond_version].[world.byond_build]"
 	if(DM_VERSION != world.byond_version || DM_BUILD != world.byond_build)
-		msg += "<b>Compiled with BYOND Version:</b> [DM_VERSION].[DM_BUILD]"
+		msg += "<b>Skompilowano wersją BYOND:</b> [DM_VERSION].[DM_BUILD]"
 
 	// Revision information
 	var/datum/getrev/revdata = GLOB.revdata
-	msg += "<b>Server revision compiled on:</b> [revdata.date]"
+	msg += "<b>Data kompilacji rewizji serwera:</b> [revdata.date]"
 	var/pc = revdata.originmastercommit
 	if(pc)
 		msg += "Master commit: <a href=\"[CONFIG_GET(string/githuburl)]/commit/[pc]\">[pc]</a>"
@@ -77,7 +77,7 @@
 	if(revdata.commit && revdata.commit != revdata.originmastercommit)
 		msg += "Local commit: [revdata.commit]"
 	else if(!pc)
-		msg += "No commit information"
+		msg += "Brak informacji o commicie"
 	if(world.TgsAvailable())
 		var/datum/tgs_version/version = world.TgsVersion()
 		msg += "TGS version: [version.raw_parameter]"
@@ -86,13 +86,13 @@
 
 	// Game mode odds
 	msg += "<br><b>Current Informational Settings:</b>"
-	msg += "Protect Authority Roles From Traitor: [CONFIG_GET(flag/protect_roles_from_antagonist)]"
-	msg += "Protect Assistant Role From Traitor: [CONFIG_GET(flag/protect_assistant_from_antagonist)]"
-	msg += "Protect Command Roles From Traitor: [CONFIG_GET(flag/protect_heads_from_antagonist)]"
+	msg += "Chroń role władzy przed zdrajcami: [CONFIG_GET(flag/protect_roles_from_antagonist)]"
+	msg += "Chroń rolę majtka przed zdrajcami: [CONFIG_GET(flag/protect_assistant_from_antagonist)]"
+	msg += "Chroń role dowództwa przed zdrajcami: [CONFIG_GET(flag/protect_heads_from_antagonist)]"
 	msg += "Enforce Human Authority: [CONFIG_GET(flag/enforce_human_authority)]"
 	msg += "Allow Latejoin Antagonists: [CONFIG_GET(flag/allow_latejoin_antagonists)]"
-	msg += "Enforce Continuous Rounds: [length(CONFIG_GET(keyed_list/continuous))] of [config.modes.len] roundtypes"
-	msg += "Allow Midround Antagonists: [length(CONFIG_GET(keyed_list/midround_antag))] of [config.modes.len] roundtypes"
+	msg += "Wymuszaj ciągłe rundy: [length(CONFIG_GET(keyed_list/continuous))] z [config.modes.len] typów rund"
+	msg += "Pozwól na antagonistów w trakcie rundy: [length(CONFIG_GET(keyed_list/midround_antag))] z [config.modes.len] typów rund"
 	if(CONFIG_GET(flag/show_game_type_odds))
 		var/list/probabilities = CONFIG_GET(keyed_list/probability)
 		if(SSticker.IsRoundInProgress())
@@ -113,13 +113,13 @@
 				probs[ctag] = 1
 				prob_sum += probabilities[ctag]
 			if(current_odds_differ)
-				msg += "<b>Game Mode Odds for current round:</b>"
+				msg += "<b>Szanse trybów gry w tej rundzie:</b>"
 				for(var/ctag in probs)
 					if(probabilities[ctag] > 0)
 						var/percentage = round(probabilities[ctag] / prob_sum * 100, 0.1)
 						msg += "[ctag] [percentage]%"
 
-		msg += "<b>All Game Mode Odds:</b>"
+		msg += "<b>Wszystkie szanse trybów gry:</b>"
 		var/sum = 0
 		for(var/ctag in probabilities)
 			sum += probabilities[ctag]

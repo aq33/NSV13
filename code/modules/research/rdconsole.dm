@@ -107,34 +107,34 @@ Nothing else in the console has ID requirements.
 	if(istype(D, /obj/item/disk))
 		if(istype(D, /obj/item/disk/tech_disk))
 			if(t_disk)
-				to_chat(user, "<span class='danger'>A technology disk is already loaded!</span>")
+				to_chat(user, "<span class='danger'>Dysk technologii jest już załadowany!</span>")
 				return
 			if(!user.transferItemToLoc(D, src))
-				to_chat(user, "<span class='danger'>[D] is stuck to your hand!</span>")
+				to_chat(user, "<span class='danger'>[D] przykleił ci się do ręki!</span>")
 				return
 			t_disk = D
 		else if (istype(D, /obj/item/disk/design_disk))
 			if(d_disk)
-				to_chat(user, "<span class='danger'>A design disk is already loaded!</span>")
+				to_chat(user, "<span class='danger'>Dysk projektów jest już załadowany!</span>")
 				return
 			if(!user.transferItemToLoc(D, src))
-				to_chat(user, "<span class='danger'>[D] is stuck to your hand!</span>")
+				to_chat(user, "<span class='danger'>[D] przykleił ci się do ręki!</span>")
 				return
 			d_disk = D
 		else
-			to_chat(user, "<span class='danger'>Machine cannot accept disks in that format.</span>")
+			to_chat(user, "<span class='danger'>Maszyna nie przyjmuje dysków w tym formacie.</span>")
 			return
-		to_chat(user, "<span class='notice'>You insert [D] into \the [src]!</span>")
+		to_chat(user, "<span class='notice'>Wkładasz [D] do [src]!</span>")
 	else if(!(linked_destroy && linked_destroy.busy) && !(linked_lathe && linked_lathe.busy) && !(linked_imprinter && linked_imprinter.busy))
 		. = ..()
 
 /obj/machinery/computer/rdconsole/proc/research_node(id, mob/user)
 	if(!stored_research.available_nodes[id] || stored_research.researched_nodes[id])
-		say("Node unlock failed: Either already researched or not available!")
+		say("Odblokowanie węzła nieudane: już zbadany albo niedostępny!")
 		return FALSE
 	var/datum/techweb_node/TN = SSresearch.techweb_node_by_id(id)
 	if(!istype(TN))
-		say("Node unlock failed: Unknown error.")
+		say("Odblokowanie węzła nieudane: nieznany błąd.")
 		return FALSE
 	var/list/price = TN.get_price(stored_research)
 	if(stored_research.can_afford(price))
@@ -142,7 +142,7 @@ Nothing else in the console has ID requirements.
 		if(stored_research == SSresearch.science_tech)
 			SSblackbox.record_feedback("associative", "science_techweb_unlock", 1, list("id" = "[id]", "name" = TN.display_name, "price" = "[json_encode(price)]", "time" = SQLtime()))
 		if(stored_research.research_node_id(id))
-			say("Successfully researched [TN.display_name].")
+			say("Zbadano: [TN.display_name].")
 			var/logname = "Unknown"
 			if(isAI(user))
 				logname = "AI: [user.name]"
@@ -163,9 +163,9 @@ Nothing else in the console has ID requirements.
 			SEND_GLOBAL_SIGNAL(COMSIG_GLOB_NEW_RESEARCH, id)
 			return TRUE
 		else
-			say("Failed to research node: Internal database error!")
+			say("Nie udało się zbadać węzła: wewnętrzny błąd bazy danych!")
 			return FALSE
-	say("Not enough research points...")
+	say("Za mało punktów badań...")
 	return FALSE
 
 /obj/machinery/computer/rdconsole/on_deconstruction()
@@ -182,7 +182,7 @@ Nothing else in the console has ID requirements.
 
 /obj/machinery/computer/rdconsole/emag_act(mob/user)
 	if(!(obj_flags & EMAGGED))
-		to_chat(user, "<span class='notice'>You disable the security protocols[locked? " and unlock the console":""].</span>")
+		to_chat(user, "<span class='notice'>Wyłączasz protokoły bezpieczeństwa[locked? " i odblokowujesz konsolę":""].</span>")
 		playsound(src, "sparks", 75, 1)
 		obj_flags |= EMAGGED
 		locked = FALSE
@@ -362,24 +362,24 @@ Nothing else in the console has ID requirements.
 
 	// Check if the console is locked to block any actions occuring
 	if (locked && action != "toggleLock")
-		say("Console is locked, cannot perform further actions.")
+		say("Konsola jest zablokowana, nie można wykonywać dalszych działań.")
 		return TRUE
 
 	switch (action)
 		if ("toggleLock")
 			if(obj_flags & EMAGGED)
-				to_chat(usr, "<span class='boldwarning'>Security protocol error: Unable to access locking protocols.</span>")
+				to_chat(usr, "<span class='boldwarning'>Błąd protokołu bezpieczeństwa: brak dostępu do protokołów blokady.</span>")
 				return TRUE
 			if(allowed(usr))
 				locked = !locked
 			else
-				to_chat(usr, "<span class='boldwarning'>Unauthorized Access.</span>")
+				to_chat(usr, "<span class='boldwarning'>Brak autoryzacji.</span>")
 			return TRUE
 		if ("compactify")
 			compact = !compact
 			return TRUE
 		if ("linkmachines")
-			say("Linked nearby machines!")
+			say("Połączono pobliskie maszyny!")
 			SyncRDevices()
 			return TRUE
 		if ("researchNode")
@@ -394,7 +394,7 @@ Nothing else in the console has ID requirements.
 			return TRUE
 		if ("writeDesign")
 			if(QDELETED(d_disk))
-				say("No Design Disk Inserted!")
+				say("Nie włożono dysku projektów!")
 				return TRUE
 			var/slot = text2num(params["slot"])
 			var/datum/design/design = SSresearch.techweb_design_by_id(params["selectedDesign"])
@@ -416,75 +416,75 @@ Nothing else in the console has ID requirements.
 			return TRUE
 		if ("uploadDesignSlot")
 			if(QDELETED(d_disk))
-				say("No design disk found.")
+				say("Nie znaleziono dysku projektów.")
 				return TRUE
 			var/n = text2num(params["slot"])
 			stored_research.add_design(d_disk.blueprints[n], TRUE)
 			return TRUE
 		if ("clearDesignSlot")
 			if(QDELETED(d_disk))
-				say("No design disk inserted!")
+				say("Nie włożono dysku projektów!")
 				return TRUE
 			var/n = text2num(params["slot"])
 			var/datum/design/D = d_disk.blueprints[n]
-			say("Wiping design [D.name] from design disk.")
+			say("Usuwanie projektu [D.name] z dysku projektów.")
 			d_disk.blueprints[n] = null
 			return TRUE
 		if ("eraseDisk")
 			if (params["type"] == RND_DESIGN_DISK)
 				if(QDELETED(d_disk))
-					say("No design disk inserted!")
+					say("Nie włożono dysku projektów!")
 					return TRUE
-				say("Wiping design disk.")
+				say("Czyszczenie dysku projektów.")
 				for(var/i in 1 to d_disk.max_blueprints)
 					d_disk.blueprints[i] = null
 			if (params["type"] == RND_TECH_DISK)
 				if(QDELETED(t_disk))
-					say("No tech disk inserted!")
+					say("Nie włożono dysku technologii!")
 					return TRUE
 				qdel(t_disk.stored_research)
 				t_disk.stored_research = new
-				say("Wiping technology disk.")
+				say("Czyszczenie dysku technologii.")
 			return TRUE
 		if ("uploadDisk")
 			if (params["type"] == RND_DESIGN_DISK)
 				if(QDELETED(d_disk))
-					say("No design disk inserted!")
+					say("Nie włożono dysku projektów!")
 					return TRUE
 				for(var/D in d_disk.blueprints)
 					if(D)
 						stored_research.add_design(D, TRUE)
 			if (params["type"] == RND_TECH_DISK)
 				if (QDELETED(t_disk))
-					say("No tech disk inserted!")
+					say("Nie włożono dysku technologii!")
 					return TRUE
-				say("Uploading technology disk.")
+				say("Wgrywanie dysku technologii.")
 				t_disk.stored_research.copy_research_to(stored_research)
 			return TRUE
 		if ("loadTech")
 			if(QDELETED(t_disk))
-				say("No tech disk inserted!")
+				say("Nie włożono dysku technologii!")
 				return
 			stored_research.copy_research_to(t_disk.stored_research)
-			say("Downloading to technology disk.")
+			say("Pobieranie na dysk technologii.")
 			return TRUE
 
 		if ("destroyfortech")
 			if(!linked_destroy || QDELETED(linked_destroy))
-				say("No linked destructive analyzer!")
+				say("Brak połączonego analizatora destrukcyjnego!")
 				return
 			if(params["node_id"])
 				linked_destroy.user_try_decon_id(params["node_id"], usr)
 			return TRUE
 		if ("destroyitem")
 			if(!linked_destroy || QDELETED(linked_destroy))
-				say("No linked destructive analyzer!")
+				say("Brak połączonego analizatora destrukcyjnego!")
 				return
 			linked_destroy.user_try_decon_id(null, usr)
 			return TRUE
 		if ("ejectitem")
 			if(!linked_destroy || QDELETED(linked_destroy))
-				say("No linked destructive analyzer!")
+				say("Brak połączonego analizatora destrukcyjnego!")
 				return
 			linked_destroy.unload_item()
 			return TRUE

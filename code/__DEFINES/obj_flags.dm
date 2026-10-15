@@ -35,6 +35,7 @@
 #define ILLEGAL					(1<<12)	//! this item unlocks illegal tech
 #define NO_PIXEL_RANDOM_DROP 	(1<<13) //if dropped, it wont have a randomized pixel_x/pixel_y
 #define WAS_THROWN				(1<<14) //if the item was thrown and shouldn't have the drop_item animation applied
+#define IGNORE_DIGITIGRADE		(1<<15) //! Shoes that digitigrade legs can wear without a digitigrade sprite
 #define EXAMINE_SKIP			(1<<16) //! Examine will not read out this item
 
 
@@ -55,6 +56,8 @@
 #define SCAN_BOOZEPOWER         (1<<12) //! Allows helmets and glasses to scan reagents.
 #define MASKEXTENDRANGE			(1<<13) //! For masks, allows you to breathe from internals on adjecent tiles
 #define NOTCONSUMABLE			(1<<14) //! Moths cannot eat clothing with that flag
+#define HEADINTERNALS			(1<<15) //! Headgear that lets you breathe from internals without a mask (sealed MODsuit helmets)
+#define CASTING_CLOTHES			(1<<16) //! Clothing that counts as wizard garb for spells that need robes
 
 /// Flags for the organ_flags var on /obj/item/organ
 
@@ -64,6 +67,7 @@
 #define ORGAN_EXTERNAL			(1<<3)	//Was this organ implanted/inserted/etc, if true will not be removed during species change.
 #define ORGAN_VITAL				(1<<4)	//Currently only the brain
 #define ORGAN_UNREMOVABLE 		(1<<5)	//Can't be removed using surgery
+#define ORGAN_EDIBLE			(1<<6)	//is a snack? :D
 
 /// Flags for the pod_flags var on /obj/structure/closet/supplypod
 

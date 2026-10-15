@@ -8,18 +8,18 @@
 	icon_gib = "clown_gib"
 	mob_biotypes = list(MOB_ORGANIC, MOB_HUMANOID)
 	turns_per_move = 5
-	response_help = "pokes"
-	response_disarm = "gently pushes aside"
-	response_harm = "robusts"
-	speak = list("HONK", "Honk!", "Welcome to clown planet!")
-	emote_see = list("honks", "squeaks")
+	response_help = "szturcha"
+	response_disarm = "delikatnie odsuwa na bok"
+	response_harm = "robustuje"
+	speak = list("HONK", "Honk!", "Witaj na planecie klaunów!")
+	emote_see = list("trąbi", "piszczy")
 	speak_chance = 1
-	a_intent = INTENT_HARM
+	combat_mode = TRUE
 	maxHealth = 75
 	health = 75
 	speed = 1
 	melee_damage = 10
-	attacktext = "attacks"
+	attacktext = "atakuje"
 	attack_sound = 'sound/items/bikehorn.ogg'
 	obj_damage = 0
 	environment_smash = ENVIRONMENT_SMASH_NONE
@@ -73,9 +73,9 @@
 	icon_state = "lube"
 	icon_living = "lube"
 	turns_per_move = 1
-	response_help = "dips a finger into"
-	response_disarm = "gently scoops and pours aside"
-	emote_see = list("bubbles", "oozes")
+	response_help = "zanurza palec w"
+	response_disarm = "delikatnie zgarnia i odlewa na bok"
+	emote_see = list("bąbelkuje", "sączy się")
 	loot = list(/obj/item/clothing/mask/gas/clown_hat, /obj/effect/particle_effect/foam)
 
 /mob/living/simple_animal/hostile/retaliate/clown/lube/Life()
@@ -89,12 +89,12 @@
 	desc = "A fusion of clown and banana DNA birthed from a botany experiment gone wrong."
 	icon_state = "banana tree"
 	icon_living = "banana tree"
-	response_help = "pokes"
-	response_disarm = "peels"
-	response_harm = "peels"
+	response_help = "szturcha"
+	response_disarm = "obiera"
+	response_harm = "obiera"
 	turns_per_move = 1
-	speak = list("HONK", "Honk!", "YA-HONK!!!")
-	emote_see = list("honks", "bites into the banana", "plucks a banana off its head", "photosynthesizes")
+	speak = list("HONK", "Honk!", "JA-HONK!!!")
+	emote_see = list("trąbi", "wgryza się w banana", "zrywa banana ze swojej głowy", "fotosyntetyzuje")
 	maxHealth = 120
 	health = 120
 	speed = -10
@@ -109,7 +109,7 @@
 	turns_per_move = 1
 	speed = -10
 	melee_damage = 1
-	attacktext = "cheers up"
+	attacktext = "pociesza"
 	loot = list(/obj/item/clothing/mask/gas/clown_hat, /obj/effect/gibspawner/human, /obj/item/soap, /obj/item/seeds/banana/bluespace)
 	banana_type = /obj/item/grown/bananapeel
 	attack_reagent = /datum/reagent/consumable/laughter
@@ -119,11 +119,11 @@
 	desc = "A being forged out of the pure essence of pranking, cursed into existence by a cruel maker."
 	icon_state = "fleshclown"
 	icon_living = "fleshclown"
-	response_help = "reluctantly pokes"
-	response_disarm = "sinks his hands into the spongy flesh of"
-	response_harm = "cleanses the world of"
-	speak = list("HONK", "Honk!", "I didn't ask for this", "I feel constant and horrible pain", "YA-HONK!!!", "this body is a merciless and unforgiving prison", "I was born out of mirthful pranking but I live in suffering")
-	emote_see = list("honks", "sweats", "jiggles", "contemplates its existence")
+	response_help = "niechętnie szturcha"
+	response_disarm = "zanurza dłonie w gąbczastym ciele"
+	response_harm = "oczyszcza świat z"
+	speak = list("HONK", "Honk!", "Nie prosiłem się o to", "Czuję ciągły, straszny ból", "JA-HONK!!!", "to ciało to bezlitosne i nieprzebaczające więzienie", "zrodziłem się z radosnych psot, ale żyję w cierpieniu")
+	emote_see = list("trąbi", "poci się", "trzęsie się", "rozmyśla nad swoim istnieniem")
 	speak_chance = 5
 	dextrous = TRUE
 	ventcrawler = VENTCRAWLER_ALWAYS
@@ -131,7 +131,7 @@
 	health = 140
 	speed = -5
 	melee_damage = 15
-	attacktext = "limply slaps"
+	attacktext = "bezwładnie klepie"
 	obj_damage = 5
 	loot = list(/obj/item/clothing/suit/hooded/bloated_human, /obj/item/clothing/mask/gas/clown_hat, /obj/effect/gibspawner/human, /obj/item/soap)
 
@@ -142,11 +142,11 @@
 	icon_living = "long face"
 	move_resist = INFINITY
 	turns_per_move = 10
-	response_help = "tries awkwardly to hug"
-	response_disarm = "pushes the unwieldy frame of"
-	response_harm = "tries to shut up"
-	speak = list("YA-HONK!!!")
-	emote_see = list("honks", "squeaks")
+	response_help = "niezgrabnie próbuje przytulić"
+	response_disarm = "popycha nieporęczną konstrukcję"
+	response_harm = "próbuje uciszyć"
+	speak = list("JA-HONK!!!")
+	emote_see = list("trąbi", "piszczy")
 	speak_chance = 60
 	maxHealth = 150
 	health = 150
@@ -154,7 +154,7 @@
 	base_pixel_x = -16
 	speed = 10
 	melee_damage = 5
-	attacktext = "YA-HONKs"
+	attacktext = "JA-HONKUJE na"
 	loot = list(/obj/item/clothing/mask/gas/clown_hat, /obj/effect/gibspawner/human, /obj/item/soap)
 
 /mob/living/simple_animal/hostile/retaliate/clown/clownhulk
@@ -163,11 +163,11 @@
 	icon_state = "honkhulk"
 	icon_living = "honkhulk"
 	move_resist = INFINITY
-	response_help = "tries desperately to appease"
-	response_disarm = "foolishly pushes"
-	response_harm = "angers"
+	response_help = "desperacko próbuje udobruchać"
+	response_disarm = "głupio popycha"
+	response_harm = "rozwściecza"
 	speak = list("HONK", "Honk!", "HAUAUANK!!!", "GUUURRRRAAAHHH!!!")
-	emote_see = list("honks", "sweats", "grunts")
+	emote_see = list("trąbi", "poci się", "chrząka")
 	speak_chance = 5
 	maxHealth = 400
 	health = 400
@@ -175,7 +175,7 @@
 	base_pixel_x = -16
 	speed = 2
 	melee_damage = 17
-	attacktext = "pummels"
+	attacktext = "okłada pięściami"
 	obj_damage = 30
 	environment_smash = ENVIRONMENT_SMASH_WALLS
 	loot = list(/obj/item/clothing/mask/gas/clown_hat, /obj/effect/gibspawner/human, /obj/item/soap)
@@ -185,16 +185,16 @@
 	desc = "A real lunkhead who somehow gets all the girls."
 	icon_state = "chlown"
 	icon_living = "chlown"
-	response_help = "submits to"
-	response_disarm = "tries to assert dominance over"
-	response_harm = "makes a weak beta attack at"
+	response_help = "poddaje się"
+	response_disarm = "próbuje zdominować"
+	response_harm = "wykonuje słaby, betowy atak na"
 	speak = list("HONK", "Honk!", "Bruh", "cheeaaaahhh?")
-	emote_see = list("asserts his dominance", "emasculates everyone implicitly")
+	emote_see = list("pokazuje, kto tu rządzi", "po cichu odbiera wszystkim męskość")
 	maxHealth = 500
 	health = 500
 	speed = -2
 	armour_penetration = 20
-	attacktext = "steals the girlfriend of"
+	attacktext = "kradnie dziewczynę"
 	attack_sound = 'sound/items/airhorn2.ogg'
 	loot = list(/obj/item/clothing/mask/gas/clown_hat, /obj/effect/gibspawner/human, /obj/effect/particle_effect/foam, /obj/item/soap)
 
@@ -203,16 +203,16 @@
 	desc = "A slender wiry figure of alchemical origin."
 	icon_state = "honkmunculus"
 	icon_living = "honkmunculus"
-	response_help = "skeptically pokes"
-	response_disarm = "pushes the unwieldy frame of"
+	response_help = "sceptycznie szturcha"
+	response_disarm = "popycha nieporęczną konstrukcję"
 	speak = list("honk")
-	emote_see = list("squirms", "writhes")
+	emote_see = list("wije się", "skręca się")
 	speak_chance = 1
 	maxHealth = 200
 	health = 200
 	speed = -5
 	melee_damage = 10
-	attacktext = "ferociously mauls"
+	attacktext = "zajadle szarpie"
 	environment_smash = ENVIRONMENT_SMASH_NONE
 	loot = list(/obj/item/clothing/mask/gas/clown_hat, /obj/effect/gibspawner/xeno/bodypartless, /obj/effect/particle_effect/foam, /obj/item/soap)
 	attack_reagent = /datum/reagent/peaceborg/confuse
@@ -222,16 +222,16 @@
 	desc = "An ancient being born of arcane honking."
 	icon_state = "destroyer"
 	icon_living = "destroyer"
-	response_disarm = "bounces off of"
-	response_harm = "bounces off of"
-	speak = list("HONK!!!", "The Honkmother is merciful, so I must act out her wrath.", "parce mihi ad beatus honkmother placet mihi ut peccata committere,", "DIE!!!")
+	response_disarm = "odbija się od"
+	response_harm = "odbija się od"
+	speak = list("HONK!!!", "Honkmatka jest miłosierna, więc to ja muszę wymierzyć jej gniew.", "parce mihi ad beatus honkmother placet mihi ut peccata committere,", "DIE!!!")
 	maxHealth = 400
 	health = 400
 	speed = 5
 	melee_damage = 30
 	armour_penetration = 30
 	stat_attack = UNCONSCIOUS
-	attacktext = "acts out divine vengeance on"
+	attacktext = "wymierza boską zemstę"
 	obj_damage = 50
 	environment_smash = ENVIRONMENT_SMASH_RWALLS
 	loot = list(/obj/item/clothing/mask/gas/clown_hat, /obj/effect/gibspawner/human, /obj/effect/particle_effect/foam, /obj/item/soap)
@@ -243,11 +243,11 @@
 	icon_living = "mutant"
 	move_resist = INFINITY
 	turns_per_move = 10
-	response_help = "reluctantly sinks a finger into"
-	response_disarm = "squishes into"
-	response_harm = "squishes into"
+	response_help = "niechętnie wbija palec w"
+	response_disarm = "wciska się w"
+	response_harm = "wciska się w"
 	speak = list("aaaaaahhhhuuhhhuhhhaaaaa", "AAAaaauuuaaAAAaauuhhh", "huuuuuh... hhhhuuuooooonnnnkk", "HuaUAAAnKKKK")
-	emote_see = list("squirms", "writhes", "pulsates", "froths", "oozes")
+	emote_see = list("wije się", "skręca się", "pulsuje", "pieni się", "sączy się")
 	speak_chance = 10
 	maxHealth = 130
 	health = 130
@@ -255,7 +255,7 @@
 	base_pixel_x = -16
 	speed = -5
 	melee_damage = 15
-	attacktext = "awkwardly flails at"
+	attacktext = "niezgrabnie macha na"
 	loot = list(/obj/item/clothing/mask/gas/clown_hat, /obj/effect/gibspawner/xeno/bodypartless, /obj/item/soap, /obj/effect/gibspawner/generic, /obj/effect/gibspawner/generic/animal, /obj/effect/gibspawner/human/bodypartless, /obj/effect/gibspawner/human)
 
 /mob/living/simple_animal/hostile/retaliate/clown/mutant/blob
@@ -263,11 +263,11 @@
 	desc = "A grotesque bulging figure far mutated from it's original state."
 	icon_state = "blob"
 	icon_living = "blob"
-	speak = list("hey, buddy", "HONK!!!", "H-h-h-H-HOOOOONK!!!!", "HONKHONKHONK!!!", "HEY, BUCKO, GET BACK HERE!!!", "HOOOOOOOONK!!!")
-	emote_see = list("jiggles", "wobbles")
+	speak = list("hej, kolego", "HONK!!!", "H-h-h-H-HOOOOONK!!!!", "HONKHONKHONK!!!", "HEJ, KOLEŻKO, WRACAJ TU!!!", "HOOOOOOOONK!!!")
+	emote_see = list("trzęsie się", "chybocze się")
 	health = 130
 	mob_size = MOB_SIZE_LARGE
 	speed = 20
-	attacktext = "bounces off of"
+	attacktext = "odbija się od"
 	loot = list(/obj/item/clothing/mask/gas/clown_hat, /obj/effect/gibspawner/xeno/bodypartless, /obj/effect/particle_effect/foam, /obj/item/soap, /obj/effect/gibspawner/generic, /obj/effect/gibspawner/generic/animal, /obj/effect/gibspawner/human/bodypartless, /obj/effect/gibspawner/human)
 	attack_reagent = /datum/reagent/toxin/mindbreaker

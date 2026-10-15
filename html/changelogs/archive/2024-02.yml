@@ -1,0 +1,248 @@
+'2024-02-01':
+  MACIEKBAKI:
+  - rscadd: filtr rp
+  - rscadd: skiny borguf
+  - rscadd: Zasyganie krfi
+  - rscadd: małpi hełm
+  - rscadd: borgi do wyboru
+  srawek:
+  - rscadd: moduł cyborga "borgi" dostępny do wytworzenia w mechfabie
+'2024-02-02':
+  patpol4:
+  - rscadd: gulag
+  - tweak: wieksze xeno, brig, gulag
+  - bugfix: naprawione
+'2024-02-03':
+  Dejaku51:
+  - admin: Dodano przycisk do zakładki server który pozwala przeładować whiteliste
+      z pliku
+  MACIEKBAKI:
+  - rscadd: Dodano seks na guzik, dostępny w zhackowanym wendorze kuratora.
+  - rscadd: Diabeł może też oferować kontrakt który daje seks na guzik.
+  - bugfix: naprawia gateway bo te borowiki z bee i z nsv nie umią kodować
+  patpol4:
+  - bugfix: poprawki mapowe
+'2024-02-04':
+  d-sandmann:
+  - bugfix: Naprawiono kombinowanie mutacji
+  patpol4:
+  - bugfix: poprawia rzeczy haha
+'2024-02-05':
+  Dejaku51:
+  - rscadd: można wynaleźć autodoca i go stworzyć
+  Dejaku51, Ivniinvi, EdgeLordExe, Melbert, Imaginos, SpaceManiac, ChungusGamer666, AnturK, ZephyrTFA, coiax, Krysonism:
+  - rscadd: New heretic path - Path of Void- it specializes in being extremely stealthy.
+  - rscadd: Large scale heretic revamp!
+  - rscadd: The Codex Cicatrix is no longer a roundstart heretic item. Research is
+      handled through an action button. Rune drawing is done by using a writing tool
+      with Mansus Grasp active in your offhand. The actual Codex is an unlockable
+      ritual item now.
+  - rscadd: The Living Heart is no longer a roundstart heretic item - their actual
+      heart now becomes their Living Heart, and it makes a sound when triggered. Losing
+      your heart (being disemboweled) will require you to do a ritual to regain it.
+  - rscadd: The Hereic Antag UI has been overhauled, and now hosts much of their mechanics
+      as well as providing some helpful tips for newer players.
+  - rscadd: Most heretic spells now require a focus to cast. All heretics can make
+      a basic focus necklace, and some heretic equipment also functions as a focus.
+      (Credit to Imaginos for the focus sprite!)
+  - rscadd: Heretics now passively gain +1 influence every 20 minutes.
+  - rscadd: Heretic sacrificing has been reworked. You can now sacrifice people who
+      are in soft crit or weaker. Sacrificing someone heals them, cuffs them, and
+      teleports them to the SHADOW REALM, where they must dodge a barrage of hands
+      to survive. Survive long enough and you return without memory - die, and your
+      body will be thrown back.
+  - rscadd: Heretics now have a few new rituals, including the Ritual of Knowledge,
+      a randomly generated ritual that awards knowledge points.
+  - rscadd: Heretic ascension now has a few requirements - you must complete your
+      objectives assigned to you prior to learning the final ritual, and all the final
+      rituals have been changed a bit!
+  - tweak: Used heretic influences can now be removed with a Anomaly Neutralizers.
+  - balance: Some heretic rituals are now limited in the amount they can make. You
+      can only have up to 2 heretic blades crafted at once (3 if you are Path of Flesh).
+  - balance: The Lord of the Night has been buffed to be a little scarier. Did you
+      know the Lord of the Night can eat arms to regain body parts and heal?
+  - balance: Buffed some heretic summons - mostly their health pools.
+  - balance: Nerfed the heretic's Mask of Madness. It can no longer infinite stam-crit
+      you.
+  - balance: Nerfed the heretic's ash mark.
+  - balance: 'Nerfed a bunch of on-hit-heretic-blade effects. Many effects only apply
+      on mark detonation now: Void blade silence, flesh blade wounds, ash blade gasp
+      cooldown refund.'
+  - bugfix: Fixed quite a few bugs and unintended behaviors with heretic code.
+  - refactor: Refactored and improved much of Heretic code. Improved the file structure
+      dramatically.
+  - admin: The heretic's traitor panel has been beefed up a bit.
+  - refactor: Refactored cult rune inscribing into a component
+  - refactor: Refactored null rod rune clearing into a component
+  - code_imp: Rust is now a component
+  - refactor: refactor almost all of the rust heretic atom procs
+  - rscadd: Wirebrush for advanced rust removal
+  - rscadd: 'A new heretic node to replace rust wave: entropic plume.'
+  - rscadd: A small rune visual effects appears 70% of the time when a tile is rusted.
+  - rscdel: Removed the rust wave node.
+  - bugfix: The ash man and rust walker nodes now link to the correct nodes.
+  - rscadd: IPCs who roll heretic now become human with the user's Backup Human Name.
+  - rscadd: Raw Prophets can now toggle their sight range with the Change Sight Range
+      action
+  - tweak: Heretics can no longer hijack the Emergency Shuttle
+  - bugfix: Heretic Smugglers (latejoin heretics) actually spawn influences
+  - bugfix: Fixes a few potential issues with heretic rituals.
+  - code_imp: Adds proper stack support to heretic rituals. Also allows for more specific
+      "ritual failure" feedback.
+  - code_imp: Added an isstack helper
+  - tweak: heretic sacrifices will drop their legcuffs before entering the minigame
+      (bolas, bear traps)
+  - balance: 'Heretic: The Amber Focus is now fireproof.'
+  - balance: 'Heretic: The Eldritch Medallion (thermal vision necklace) is now fireproof,
+      acid proof, and works as a focus.'
+  - balance: 'Heretic: The Void Cloak can carry more things in its pocket, including
+      various ritual components (organs, bodyparts, flowers), small heretic items,
+      and a singular sickly blade. It also functions as a focus while the hood is
+      down.'
+  - balance: 'Heretic: Mawed Crucible potions are now small sized (down from normal).'
+  - tweak: Heretic rituals overhauled slightly. You now pick from a list of all your
+      rituals when invoking a rune to select what ritual you want to do.
+  - bugfix: Minor fixes for the Heretic's Living Heart ritual. Cybernetic organs are
+      now properly detected.
+  - bugfix: Similarly, you cannot feed the mawed crucible cybernetic organs.
+  MACIEKBAKI:
+  - balance: Tazer tazuje bardziej. Tak ok. 1.5 sekundy bardziej.
+  - tweak: Jak uciekniesz na promie, twój hajs z konta sie zmienia w aquilosy.
+  - tweak: Konfig opcja - czy można wyjmować $$$ z budżetówki.
+  - tweak: Nie potrzeba admina by akceptować prośbe o kody nuklearne. Admin nadal
+      może ją odrzucić jak zdąrzy.
+  greatwizardman:
+  - rscadd: dodano tłumaczenia broni oraz magazynków
+  - imageadd: dodano nowe ikony Beryla, Glauberytu oraz Walthera
+'2024-02-06':
+  d-sandmann:
+  - tweak: Zmieniono sybkostrzelność laserów na wolniejszy ze względu na wiązki
+  - balance: Spowolniono samoładowanie lasera zabytkowego
+'2024-02-07':
+  patpol4:
+  - bugfix: '[atlantis] poprawia bledy'
+'2024-02-08':
+  Dejaku51:
+  - code_imp: Zmieniono nazwy prac w random maint landmarkach na define
+  - tweak: BSA teraz nie jest bezużyteczne
+  d-sandmann:
+  - rscadd: dodaje krzyż
+  - imageadd: dodaje krzyż
+  patpol4:
+  - tweak: '[atlas] shield gen'
+'2024-02-09':
+  d-sandmann:
+  - rscadd: Przywrócono operacje zmiany płci
+  patpol4:
+  - tweak: '[atlas] zmiany mapowe'
+  - bugfix: '[atlas] poprawka'
+'2024-02-10':
+  MACIEKBAKI:
+  - rscadd: Strange seeds w biogeneratorze
+  - rscadd: pod Y masz teraz shortcut do radia
+  - rscadd: morph sie może spawnować jako borowik w spawnerze w xenobio w sci
+  - rscadd: duch może morphem sterować jak nie ma jeszcze umysłu
+  - tweak: laserki na start są głębiej w techwebie
+  - tweak: jesteś głodny dwa razy szybciej
+  patpol4:
+  - rscadd: jakies ghost role na gulag
+  - code_imp: dodaje guzik dla duchow do wyboru ghost role
+'2024-02-11':
+  Dejaku51:
+  - rscadd: heretycy teraz mogą odkrywać swoje moce
+'2024-02-12':
+  d-sandmann:
+  - rscadd: Dodano baterie eksportowe
+  - imageadd: Dodano ikony baterii eksportowe
+'2024-02-14':
+  MACIEKBAKI:
+  - soundadd: dźwięk przelewania też jak przelewasz beakerem
+  - tweak: światła nie gasną same z siebie podczas general quarters i code zebra
+  d-sandmann:
+  - rscadd: szczury
+  patpol4:
+  - tweak: dodaje bar i male zmiany
+'2024-02-16':
+  PowerfulBacon:
+  - bugfix: Fixes the round not rebooting properly.
+  - code_imp: Adds in a task library for asynchronous behaviour handling.
+  d-sandmann:
+  - rscadd: Zamieniono blob core oraz blob node na słodkie grzybki.
+  - rscadd: przetłumaczono wszystkie elementy oraz teksty bloba na polski (poza guziczkami
+      na HUD)
+  - rscadd: Zamieniono szczepy bloba na odmiany grzybów
+  - rscadd: Zamieniono Blobbernautów, blob spore oraz blob zombie na grzybowe wersje
+  - rscadd: Dodano wskazywanie kosmiczną strzałką na obiekty w ręku
+  - imageadd: Dodano ikone chmurki wskazywania kosmiczną strzałką
+'2024-02-17':
+  d-sandmann:
+  - bugfix: Dodano kategorie dla baterii eksportowej
+  patpol4:
+  - bugfix: '[atlas] poprawia pierdoły'
+'2024-02-18':
+  MACIEKBAKI:
+  - tweak: Można zostać losowo przydzielonym jako command role.
+'2024-02-19':
+  PestoVerde322, XeonMations:
+  - rscadd: Added the ability to choose the direction of any office chair you are
+      sitting in by moving
+  - bugfix: Shuttle chairs and Corporate chairs are now impossible to pick up and
+      transformed into normal Fancy chairs.
+'2024-02-23':
+  Bokkiewokkie:
+  - bugfix: Replaced Tycoon's redundant torpedo tubes
+  MACIEKBAKI:
+  - rscadd: Dodaje replaye 2.0 z yoga
+'2024-02-24':
+  patpol4:
+  - rscadd: rozwija sery, dodaje owce
+'2024-02-25':
+  MACIEKBAKI:
+  - tweak: Teraz każdy item który można kupić w uplinku daje illegal tech, zamiast
+      tylko itemów które zostały kupione w uplinku.
+  - bugfix: Replaye sie teraz powinny zapisywać
+  Szyszkrzyneczka:
+  - rscadd: Dodano turbinę do atmosu
+  - rscdel: Usunięto kanał konserwacyjny atmosu
+  - tweak: Zmieniono pomieszczenie atmosferyków
+'2024-02-27':
+  patpol4:
+  - config: Uruchamia tryb admina dla hosta
+'2024-02-28':
+  Joker66613:
+  - tweak: Space Dragon now has its own role preference. Be sure to enable it!
+  - refactor: The Space Dragon has totally new objectives where it can spawn rifts
+      that summon sentient space carp, and must defend the rifts until three are created,
+      flooding the station with sentient carp.
+  - rscadd: Space Dragon is now a ruleset in dynamic as well as a station event.
+  - tweak: Space Dragons can now set their color.
+  - rscadd: Space Dragon now has its own death sound.
+  - tweak: Space Dragon roar is now quieter.
+  - rscadd: można kupić RTG w cargo
+  - rscadd: leczenie brzuchola
+  - rscadd: cyber brzuchole
+  - rscadd: operacja leczenia traum
+  - soundadd: krzyki etherealów
+  - rscadd: gatunek mush
+  - rscadd: gatunek corporate agent
+  Szyszkrzyneczka:
+  - rscadd: Demon Grzechu ale bez spustu
+  UnibelUnibel:
+  - rscadd: nowy zestaw praw dla AI - Benjamin Netanyahu
+  - tweak: '[atlas] rework medbaya'
+  - tweak: '[atlas] ustalenie limitu job slotów dla wirologa (1)'
+  Useroth:
+  - rscadd: Stara strzelba jako opcja z null roda, strzela chujowo ale w miarę upojenia
+      celność rośnie. Strzelba zachowuje funkcjonalność null roda odnośnie antymagii
+      i usuwania run kultystów.
+  - rscadd: Zestaw egzorcysty ze złotym krucyfiksem
+  huusk & Reprimann:
+  - rscadd: Dodano potrzebe napojenia
+  - imageadd: ikony do hud indykatora napojenia autorstwa Reprimann
+  - balance: Nie wiem czy system jest zbytnio zbalansowany, więc no
+'2024-02-29':
+  MACIEKBAKI:
+  - tweak: Floorpillsy można teraz wrzucić do grindera
+  - tweak: Floorpills można teraz również rozpuszczać.
+  Reprimann & Ala & inni:
+  - rscadd: Implementacja spriteów z Aquilii i Discorda

@@ -50,7 +50,7 @@
 	// Cyborgs buckle people by dragging them onto them, unless in combat mode.
 	if(iscyborg(user))
 		var/mob/living/silicon/robot/cyborg_user = user
-		if(cyborg_user.a_intent != INTENT_HARM)
+		if(!cyborg_user.combat_mode)
 			return
 
 	if(!isnull(should_strip_proc_path) && !call(source, should_strip_proc_path)(user))
@@ -87,7 +87,7 @@
 	if(isliving(user))
 		var/mob/living/L = user
 		if(L.incorporeal_move) // Mobs that can walk through walls cannot grasp items to strip
-			to_chat(user, "<span class='warning'>You can't interact with the physical plane while you are incorporeal!</span>")
+			to_chat(user, "<span class='warning'>Nie możesz wchodzić w interakcje z planem fizycznym, będąc bezcielesnym!</span>")
 			return FALSE
 		return TRUE
 	else
@@ -106,7 +106,7 @@
 	if(!equipping)
 		return
 	if(HAS_TRAIT(equipping, TRAIT_NODROP))
-		to_chat(user, "<span class='warning'>You can't put [equipping] on [source], it's stuck to your hand!</span>")
+		to_chat(user, "<span class='warning'>Nie możesz założyć [equipping] na [source], przykleiło się do twojej ręki!</span>")
 		return FALSE
 	return TRUE
 
@@ -115,12 +115,12 @@
 /datum/strippable_item/proc/start_equip(atom/source, obj/item/equipping, mob/user)
 	if(isclothing(source))
 		source.visible_message(
-			"<span class='notice'>[user] tries to put [equipping] on [source].</span>",
-			"<span class='notice'>[user] tries to put [equipping] on you.</span>",
+			"<span class='notice'>[user] próbuje założyć [equipping] na [source].</span>",
+			"<span class='notice'>[user] próbuje założyć ci [equipping].</span>",
 			ignored_mobs = user
 		)
 
-	to_chat(user, "<span class='notice'>You try to put [equipping] on [source]...</span>")
+	to_chat(user, "<span class='notice'>Próbujesz założyć [equipping] na [source]...</span>")
 
 	var/log = "[key_name(source)] is having [equipping] put on them by [key_name(user)]"
 	source.log_message(log, LOG_ATTACK, color="red")
@@ -164,12 +164,12 @@
 		return FALSE
 
 	source.visible_message(
-		"<span class='warning'>[user] tries to remove [source]'s [item.name].</span>",
-		"<span class='userdanger'>[user] tries to remove your [item.name].</span>",
+		"<span class='warning'>[user] próbuje zdjąć [item.name] z [source].</span>",
+		"<span class='userdanger'>[user] próbuje zdjąć z ciebie [item.name].</span>",
 		ignored_mobs = user,
 	)
 
-	to_chat(user, "<span class='danger'>You try to remove [source]'s [item.name]...</span>")
+	to_chat(user, "<span class='danger'>Próbujesz zdjąć [item.name] z [source]...</span>")
 	source.log_message("[key_name(source)] is being stripped of [item.name] by [key_name(user)]", LOG_ATTACK, color="red")
 	user.log_message("[key_name(source)] is being stripped of [item.name] by [key_name(user)]", LOG_ATTACK, color="red", log_globally=FALSE)
 	item.add_fingerprint(src)
@@ -229,7 +229,7 @@
 		disable_warning = TRUE,
 		bypass_equip_delay_self = TRUE,
 	))
-		to_chat(user, "<span class='warning'>\The [equipping] doesn't fit in that place!</span>")
+		to_chat(user, "<span class='warning'>[equipping] nie pasuje w to miejsce!</span>")
 		return FALSE
 
 	return TRUE

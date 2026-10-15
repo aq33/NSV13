@@ -11,8 +11,8 @@
 
 /obj/item/assembly/health/examine(mob/user)
 	. = ..()
-	. += "Use it in hand to turn it off/on and Alt-click to swap between \"detect death\" mode and \"detect critical state\" mode."
-	. += "[src.scanning ? "The sensor is on and you can see [health_scan] displayed on the screen" : "The sensor is off"]."
+	. += "Użyj w dłoni, by go włączyć/wyłączyć; Alt-klik, by przełączać między trybem „wykrywaj śmierć” a „wykrywaj stan krytyczny”."
+	. += "[src.scanning ? "Czujnik jest włączony, a na ekranie widać [health_scan]" : "Czujnik jest wyłączony"]."
 
 /obj/item/assembly/health/activate()
 	if(!..())
@@ -33,10 +33,10 @@
 /obj/item/assembly/health/AltClick(mob/living/user)
 	if(alarm_health == HEALTH_THRESHOLD_CRIT)
 		alarm_health = HEALTH_THRESHOLD_DEAD
-		to_chat(user, "<span class='notice'>You toggle [src] to \"detect death\" mode.</span>")
+		to_chat(user, "<span class='notice'>Przełączasz [src] w tryb „wykrywaj śmierć”.</span>")
 	else
 		alarm_health = HEALTH_THRESHOLD_CRIT
-		to_chat(user, "<span class='notice'>You toggle [src] to \"detect critical state\" mode.</span>")
+		to_chat(user, "<span class='notice'>Przełączasz [src] w tryb „wykrywaj stan krytyczny”.</span>")
 
 /obj/item/assembly/health/process()
 	if(!scanning || !secured)
@@ -53,7 +53,7 @@
 		health_scan = M.health
 		if(health_scan <= alarm_health)
 			pulse()
-			audible_message("[icon2html(src, hearers(src))] *beep* *beep* *beep*")
+			audible_message("[icon2html(src, hearers(src))] *bip* *bip* *bip*")
 			playsound(src, 'sound/machines/triple_beep.ogg', ASSEMBLY_BEEP_VOLUME, TRUE)
 			toggle_scan()
 		return
@@ -71,5 +71,5 @@
 
 /obj/item/assembly/health/attack_self(mob/user)
 	. = ..()
-	to_chat(user, "<span class='notice'>You toggle [src] [src.scanning ? "off" : "on"].</span>")
+	to_chat(user, "<span class='notice'>[src.scanning ? "Wyłączasz" : "Włączasz"] [src].</span>")
 	toggle_scan()

@@ -13,7 +13,7 @@
 	if(CHECK_BITFIELD(clothing_flags, VOICEBOX_TOGGLABLE))
 		TOGGLE_BITFIELD(clothing_flags, VOICEBOX_DISABLED)
 		var/status = !CHECK_BITFIELD(clothing_flags, VOICEBOX_DISABLED)
-		to_chat(user, "<span class='notice'>You turn the voice box in [src] [status ? "on" : "off"].</span>")
+		to_chat(user, "<span class='notice'>[status ? "Włączasz" : "Wyłączasz"] modulator głosu w [src].</span>")
 
 /obj/item/clothing/mask/equipped(mob/M, slot)
 	. = ..()
@@ -35,7 +35,9 @@
 			if(damaged_clothes)
 				. += mutable_appearance('icons/effects/item_damage.dmi', "damagedmask")
 			if(HAS_BLOOD_DNA(src))
-				. += mutable_appearance('icons/effects/blood.dmi', "maskblood")
+				var/mutable_appearance/bloody_mask = mutable_appearance('icons/effects/blood.dmi', "maskblood")
+				bloody_mask.color = get_blood_dna_color(return_blood_DNA())
+				. += bloody_mask
 
 /obj/item/clothing/mask/update_clothes_damaged_state(damaging = TRUE)
 	..()
@@ -55,11 +57,11 @@
 		clothing_flags |= visor_flags
 		flags_inv |= visor_flags_inv
 		flags_cover |= visor_flags_cover
-		to_chat(user, "<span class='notice'>You push \the [src] back into place.</span>")
+		to_chat(user, "<span class='notice'>Przesuwasz [src] z powrotem na miejsce.</span>")
 		slot_flags = initial(slot_flags)
 	else
 		icon_state += "_up"
-		to_chat(user, "<span class='notice'>You push \the [src] out of the way.</span>")
+		to_chat(user, "<span class='notice'>Odsuwasz [src] na bok.</span>")
 		gas_transfer_coefficient = null
 		permeability_coefficient = null
 		clothing_flags &= ~visor_flags
@@ -104,7 +106,8 @@
 	main.Insert(sub, dir = WEST)
 
 	//Mix in GAG color
-	main.Blend(greyscale_colors, ICON_MULTIPLY)
+	if(greyscale_colors) // AQ EDIT - Blend(null) is a runtime on 516
+		main.Blend(greyscale_colors, ICON_MULTIPLY)
 
 	//Finished
 	monkey_icon = main

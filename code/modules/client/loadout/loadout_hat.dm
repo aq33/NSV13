@@ -61,13 +61,13 @@
 /datum/gear/hat/wig
 	display_name = "wig"
 	path = /obj/item/clothing/head/wig
-	description = "Something to cover up your shining dome with. Can change its hair style and hair color."
+	description = "Coś, czym zakryjesz lśniącą łysinę. Można zmieniać fryzurę i kolor włosów."
 	cost = 4000
 
 /datum/gear/hat/wig/natural
 	display_name = "natural wig"
 	path = /obj/item/clothing/head/wig/natural
-	description = "Something to cover up your shining dome with. Can change its hair style but adapts to your natural hair color."
+	description = "Coś, czym zakryjesz lśniącą łysinę. Można zmieniać fryzurę, a kolor dopasowuje się do twoich naturalnych włosów."
 	cost = 2000
 
 //SOFT CAPS
@@ -197,7 +197,7 @@
 
 /datum/gear/hat/piratehat
 	display_name = "pirate hat"
-	description = "Yarr. Comes with one free pirate speak manual."
+	description = "Arr. W zestawie darmowy podręcznik pirackiej mowy."
 	path = /obj/item/clothing/head/pirate
 	cost = 5000
 

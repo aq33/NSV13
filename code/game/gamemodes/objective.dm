@@ -664,6 +664,8 @@ GLOBAL_LIST_EMPTY(possible_items)
 		for(var/datum/objective_item/possible_item in GLOB.possible_items)
 			if(!is_unique_objective(possible_item.targetitem,dupe_search_range))
 				continue
+			if(!possible_item.owner_present()) // AQ EDIT - departmental items need their owner on the ship
+				continue
 			for(var/datum/mind/M as() in get_owners())
 				if(M.current.mind.assigned_role in possible_item.excludefromjob)
 					continue check_items
@@ -688,7 +690,7 @@ GLOBAL_LIST_EMPTY(possible_items)
 		return
 
 	if (new_target == "custom") //Can set custom items.
-		var/custom_path = input(admin,"Search for target item type:","Type") as null|text
+		var/custom_path = input(admin,"Wyszukaj typ przedmiotu docelowego:","Type") as null|text
 		if (!custom_path)
 			return
 		var/obj/item/custom_target = pick_closest_path(custom_path, make_types_fancy(subtypesof(/obj/item)))
@@ -773,38 +775,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 	steal_target = targetinfo.targetitem
 
 
-/datum/objective/download
-	name = "pobierz"
-
-/datum/objective/download/proc/gen_amount_goal()
-	target_amount = rand(20,40)
-	update_explanation_text()
-	return target_amount
-
-/datum/objective/download/update_explanation_text()
-	..()
-	explanation_text = "Pobierz [target_amount] klastrów badań\s."
-
-/datum/objective/download/check_completion()
-	var/datum/techweb/checking = new
-	for(var/datum/mind/owner as() in get_owners())
-		if(ismob(owner.current))
-			var/mob/M = owner.current			//Yeah if you get morphed and you eat a quantum tech disk with the RD's latest backup good on you soldier.
-			if(ishuman(M))
-				var/mob/living/carbon/human/H = M
-				if(H && (H.stat != DEAD) && istype(H.wear_suit, /obj/item/clothing/suit/space/space_ninja))
-					var/obj/item/clothing/suit/space/space_ninja/S = H.wear_suit
-					S.stored_research.copy_research_to(checking)
-			var/list/otherwise = M.GetAllContents()
-			for(var/obj/item/disk/tech_disk/TD in otherwise)
-				TD.stored_research.copy_research_to(checking)
-	return (checking.researched_nodes.len >= target_amount) || ..()
-
-/datum/objective/download/admin_edit(mob/admin)
-	var/count = input(admin,"How many nodes ?","Nodes",target_amount) as num|null
-	if(count)
-		target_amount = count
-	update_explanation_text()
+// AQ EDIT - /datum/objective/download removed, replaced by stealing the master R&D server HDD (yogstation13/Yogstation#20268)
 
 /datum/objective/capture
 	name = "uprowadzenie"
@@ -847,7 +818,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 	return (captured_amount >= target_amount) || ..()
 
 /datum/objective/capture/admin_edit(mob/admin)
-	var/count = input(admin,"How many mobs to capture ?","capture",target_amount) as num|null
+	var/count = input(admin,"Ile mobów schwytać?","capture",target_amount) as num|null
 	if(count)
 		target_amount = count
 	update_explanation_text()
@@ -897,7 +868,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 	explanation_text = "Pochłoń [target_amount] kompatybilnych genów."
 
 /datum/objective/absorb/admin_edit(mob/admin)
-	var/count = input(admin,"How many people to absorb?","absorb",target_amount) as num|null
+	var/count = input(admin,"Ile osób wchłonąć?","absorb",target_amount) as num|null
 	if(count)
 		target_amount = count
 	update_explanation_text()
@@ -979,7 +950,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 		var/mob/new_target = input(admin,"Select target:", "Objective target") as null|anything in sortNames(possible_targets)
 		set_target(new_target.mind)
 	else
-		to_chat(admin, "No active AIs with minds")
+		to_chat(admin, "Brak aktywnych SI z umysłami")
 	update_explanation_text()
 
 /datum/objective/destroy/internal
@@ -1065,12 +1036,38 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 		/datum/objective/survive,
 		/datum/objective/martyr,
 		/datum/objective/steal,
-		/datum/objective/download,
 		/datum/objective/nuclear,
 		/datum/objective/capture,
 		/datum/objective/absorb,
 		/datum/objective/custom,
-		/datum/objective/custom/plus_murderbone
+		/datum/objective/custom/plus_murderbone,
+		// AQ EDIT START - new traitor objectives (aquila/code/modules/antagonists/traitor/objectives)
+		/datum/objective/assassinate/once,
+		/datum/objective/assassinate/behead,
+		/datum/objective/assassinate/calling_card,
+		/datum/objective/assassinate/photo,
+		/datum/objective/assassinate/captain_replacement,
+		/datum/objective/breakout,
+		/datum/objective/blackmail_implant,
+		/datum/objective/steal/hdd,
+		/datum/objective/steal/heirloom,
+		/datum/objective/hoarder,
+		/datum/objective/steal_five_of_type/organs,
+		/datum/objective/steal_five_of_type/summon_guns/thief,
+		/datum/objective/tcomms_data,
+		/datum/objective/forged_manifest,
+		/datum/objective/plant_device/bomb,
+		/datum/objective/plant_device/bug,
+		/datum/objective/plant_device/tide,
+		/datum/objective/hack_comms,
+		/datum/objective/sabotage/power_sink,
+		/datum/objective/sabotage/integrity,
+		/datum/objective/sabotage/ai_law,
+		/datum/objective/air_sabotage,
+		/datum/objective/iff_subvert,
+		/datum/objective/poison_items,
+		/datum/objective/brother_beacon,
+		// AQ EDIT END
 	),GLOBAL_PROC_REF(cmp_typepaths_asc))
 
 	for(var/datum/objective/X as() in allowed_types)

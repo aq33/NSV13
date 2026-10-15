@@ -6,7 +6,7 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the " + JOB_NAME_HEADOFPERSONNEL //NSV13
+	supervisors = JOB_NAME_HEADOFPERSONNEL //NSV13
 	selection_color = "#dddddd"
 
 
@@ -36,7 +36,7 @@
 		B.name = GLOB.bible_name
 		B.icon_state = GLOB.bible_icon_state
 		B.item_state = GLOB.bible_item_state
-		to_chat(H, "There is already an established religion onboard the station. You are an acolyte of [GLOB.deity]. Defer to the Chaplain.")
+		to_chat(H, "Na stacji istnieje już ustanowiona religia. Jesteś akolitą [GLOB.deity]. Podporządkuj się kapelanowi.")
 		H.equip_to_slot_or_del(B, ITEM_SLOT_BACKPACK)
 		GLOB.religious_sect?.on_conversion(H)
 		return

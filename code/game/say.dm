@@ -159,7 +159,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 		raw_message = D.scramble(raw_message)
 		return no_quote ? raw_message : source.say_quote(raw_message, spans, message_mods)
 	else
-		return "makes a strange sound."
+		return "wydaje dziwny dźwięk."
 //NSV13 - RADIO EMOTES - END
 
 /proc/get_radio_span(freq)

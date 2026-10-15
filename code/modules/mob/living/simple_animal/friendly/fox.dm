@@ -7,16 +7,16 @@
 	icon_living = "fox"
 	icon_dead = "fox_dead"
 	speak = list("Ack-Ack","Ack-Ack-Ack-Ackawoooo","Geckers","Awoo","Tchoff")
-	speak_emote = list("geckers", "barks")
-	emote_hear = list("howls.","barks.")
-	emote_see = list("shakes its head.", "shivers.")
+	speak_emote = list("skrzeczy", "szczeka")
+	emote_hear = list("wyje.","szczeka.")
+	emote_see = list("potrząsa głową.", "drży.")
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 6
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab = 3)
-	response_help = "pets"
-	response_disarm = "gently pushes aside"
-	response_harm = "kicks"
+	butcher_results = list(/obj/item/food/meat/slab = 3)
+	response_help = "głaszcze"
+	response_disarm = "delikatnie odsuwa na bok"
+	response_harm = "kopie"
 	gold_core_spawnable = FRIENDLY_SPAWN
 	chat_color = "#FFAE64"
 	mobchatspan = "fox"

@@ -6,7 +6,7 @@
 	icon_state = "eightball"
 	w_class = WEIGHT_CLASS_TINY
 
-	verb_say = "rattles"
+	verb_say = "grzechocze"
 
 	var/shaking = FALSE
 	var/on_cooldown = FALSE
@@ -15,26 +15,26 @@
 	var/cooldown_time = 100
 
 	var/static/list/possible_answers = list(
-		"It is certain",
-		"It is decidedly so",
+		"To pewne",
+		"Zdecydowanie tak",
 		"Without a doubt",
-		"Yes definitely",
-		"You may rely on it",
-		"As I see it, yes",
-		"Most likely",
-		"Outlook good",
+		"Tak, zdecydowanie",
+		"Możesz na tym polegać",
+		"Jak ja to widzę, tak",
+		"Najprawdopodobniej",
+		"Perspektywy są dobre",
 		"Yes",
-		"Signs point to yes",
-		"Reply hazy try again",
-		"Ask again later",
-		"Better not tell you now",
-		"Cannot predict now",
-		"Concentrate and ask again",
-		"Don't count on it",
-		"My reply is no",
-		"My sources say no",
-		"Outlook not so good",
-		"Very doubtful")
+		"Znaki wskazują, że tak",
+		"Odpowiedź niejasna, spróbuj ponownie",
+		"Zapytaj później",
+		"Lepiej, żebym teraz nie mówiła",
+		"Nie mogę teraz przewidzieć",
+		"Skup się i zapytaj ponownie",
+		"Nie licz na to",
+		"Moja odpowiedź brzmi: nie",
+		"Moje źródła mówią, że nie",
+		"Perspektywy nie są zbyt dobre",
+		"Bardzo wątpliwe")
 
 /obj/item/toy/eightball/Initialize(mapload)
 	. = ..()
@@ -51,10 +51,10 @@
 		return
 
 	if(on_cooldown)
-		to_chat(user, "<span class='warning'>[src] was shaken recently, it needs time to settle.</span>")
+		to_chat(user, "<span class='warning'>[src] był niedawno wstrząśnięty, musi się uspokoić.</span>")
 		return
 
-	user.visible_message("<span class='notice'>[user] starts shaking [src].</span>", "<span class='notice'>You start shaking [src].</span>", "<span class='italics'>You hear shaking and sloshing.</span>")
+	user.visible_message("<span class='notice'>[user] zaczyna potrząsać [src].</span>", "<span class='notice'>Zaczynasz potrząsać [src].</span>", "<span class='italics'>Słyszysz potrząsanie i chlupotanie.</span>")
 
 	shaking = TRUE
 
@@ -117,7 +117,7 @@
 //ATTACK GHOST IGNORING PARENT RETURN VALUE
 /obj/item/toy/eightball/haunted/attack_ghost(mob/user)
 	if(!shaking)
-		to_chat(user, "<span class='warning'>[src] is not currently being shaken.</span>")
+		to_chat(user, "<span class='warning'>[src] nie jest obecnie potrząsany.</span>")
 		return
 	interact(user)
 	return ..()
@@ -131,7 +131,7 @@
 	// and inform them of the message, (hopefully a yes/no question)
 	votes = list()	//need to reset the votes everytime someone shakes it
 	selected_message = last_message
-	notify_ghosts("[user] is shaking [src], hoping to get an answer to \"[selected_message]\"", source=src, enter_link="<a href=?src=[REF(src)];interact=1>(Click to help)</a>", action=NOTIFY_ATTACK, header = "Magic eightball")
+	notify_ghosts("[user] potrząsa [src] w nadziei na odpowiedź na pytanie \"[selected_message]\"", source=src, enter_link="<a href=byond://?src=[REF(src)];interact=1>(Kliknij, by pomóc)</a>", action=NOTIFY_ATTACK, header = "Magiczna kula")
 
 /obj/item/toy/eightball/haunted/Topic(href, href_list)
 	if(href_list["interact"])

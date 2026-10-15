@@ -116,7 +116,7 @@
 	backpack_contents = list(
 		/obj/item/stamp/clown = 1,
 		/obj/item/reagent_containers/spray/waterflower = 1,
-		/obj/item/reagent_containers/food/snacks/grown/banana = 1,
+		/obj/item/food/grown/banana = 1,
 		/obj/item/instrument/bikehorn = 1,
 		/obj/item/storage/box/hug/clown_uniform = 1,
 		)
@@ -225,12 +225,12 @@ For when the marines are being irritating.
 	icon_state = "general"
 	worn_icon_state = "general"
 	item_state = "bl_suit"
-	armor = list("melee" = 20, "bullet" = 20, "laser" = 10,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 30, "acid" = 30)
+	armor = list("melee" = 20, "bullet" = 20, "laser" = 10,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 30, "acid" = 30, "bleed" = 50)
 
 /obj/item/clothing/suit/ship/squad/military_police/general
 	name = "blue phalanx general armour"
 	desc = "A suit of armour worn by generals in the blue phalanx PMC corps. Count yourself lucky to have seen one..."
-	armor = list("melee" = 50, "bullet" = 60, "laser" = 25, "energy" = 10, "bomb" = 30, "bio" = 20, "rad" = 25, "fire" = 35, "acid" = 50)
+	armor = list("melee" = 50, "bullet" = 60, "laser" = 25, "energy" = 10, "bomb" = 30, "bio" = 20, "rad" = 25, "fire" = 35, "acid" = 50, "bleed" = 50)
 
 /obj/item/clothing/suit/ship/squad/military_police/general/Initialize(mapload, datum/squad/squad)
 	. = ..()

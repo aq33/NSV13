@@ -1,20 +1,20 @@
 //Penguins
 
 /mob/living/simple_animal/pet/penguin
-	response_help  = "pets"
-	response_disarm = "bops"
-	response_harm   = "kicks"
+	response_help  = "głaszcze"
+	response_disarm = "pstryka"
+	response_harm   = "kopie"
 	speak = list("Gah Gah!", "NOOT NOOT!", "NOOT!", "Noot", "noot", "Prah!", "Grah!")
-	speak_emote = list("squawks", "gakkers")
-	emote_hear = list("squawk!", "gakkers!", "noots.","NOOTS!")
-	emote_see = list("shakes its beak.", "flaps it's wings.","preens itself.")
+	speak_emote = list("skrzeczy", "gęga")
+	emote_hear = list("skrzeczy!", "gęga!", "nootuje.","NOOTUJE!")
+	emote_see = list("potrząsa dziobem.", "trzepocze skrzydłami.","czyści pióra.")
 	faction = list("penguin")
 	minbodytemp = 0
 	see_in_dark = 5
 	speak_chance = 1
 	turns_per_move = 10
 	icon = 'icons/mob/penguins.dmi'
-	butcher_results = list(/obj/item/organ/ears/penguin = 1, /obj/item/reagent_containers/food/snacks/meat/slab/penguin = 3)
+	butcher_results = list(/obj/item/organ/ears/penguin = 1, /obj/item/food/meat/slab/penguin = 3)
 	chat_color = "#81D9FF"
 
 	do_footstep = TRUE
@@ -32,7 +32,7 @@
 	icon_dead = "penguin_dead"
 	butcher_results = list()
 	gold_core_spawnable = FRIENDLY_SPAWN
-	butcher_results = list(/obj/item/organ/ears/penguin = 1, /obj/item/reagent_containers/food/snacks/meat/slab/penguin = 3)
+	butcher_results = list(/obj/item/organ/ears/penguin = 1, /obj/item/food/meat/slab/penguin = 3)
 
 /mob/living/simple_animal/pet/penguin/emperor/shamebrero
 	name = "Shamebrero penguin"
@@ -53,4 +53,4 @@
 	density = FALSE
 	pass_flags = PASSMOB
 	mob_size = MOB_SIZE_SMALL
-	butcher_results = list(/obj/item/organ/ears/penguin = 1, /obj/item/reagent_containers/food/snacks/meat/slab/penguin = 1)
+	butcher_results = list(/obj/item/organ/ears/penguin = 1, /obj/item/food/meat/slab/penguin = 1)

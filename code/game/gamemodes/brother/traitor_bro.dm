@@ -8,10 +8,7 @@
 	restricted_jobs = list(JOB_NAME_AI, JOB_NAME_CYBORG)
 
 	announce_span = "danger"
-	announce_text = "There are Syndicate agents and Blood Brothers on the station!\n\
-	<span class='danger'>Traitors</span>: Accomplish your objectives.\n\
-	<span class='danger'>Blood Brothers</span>: Accomplish your objectives.\n\
-	<span class='notice'>Crew</span>: Do not let the traitors or brothers succeed!"
+	announce_text = "Na stacji są agenci Syndykatu i Bracia Krwi!\n<span class='danger'>Zdrajcy</span>: wykonajcie swoje cele.\n<span class='danger'>Bracia Krwi</span>: wykonajcie swoje cele.\n<span class='notice'>Załoga</span>: nie pozwólcie zdrajcom ani braciom odnieść sukcesu!"
 
 	var/list/datum/team/brother_team/pre_brother_teams = list()
 	var/const/team_amount = 2 //hard limit on brother teams if scaling is turned off
@@ -33,12 +30,26 @@
 	var/bsc = CONFIG_GET(number/brother_scaling_coeff)
 	if(bsc)
 		num_teams = max(1, round(num_players() / bsc))
+	// AQUILA EDIT START - weighted rotation antagonist limit, brothers and traitors together
+	var/brothers_picked = 0
+	if(!isnull(weighted_antag_cap))
+		num_teams = min(num_teams, max(1, round(weighted_antag_cap / min_team_size)))
+	// AQUILA EDIT END
 
 	for(var/j = 1 to num_teams)
 		if(possible_brothers.len < min_team_size || antag_candidates.len <= required_enemies)
 			break
+		// AQUILA EDIT START - no team that would go over the weighted rotation limit
+		if(!isnull(weighted_antag_cap) && weighted_antag_cap - brothers_picked < min_team_size)
+			break
+		// AQUILA EDIT END
 		var/datum/team/brother_team/team = new
 		var/team_size = prob(10) ? min(3, possible_brothers.len) : 2
+		// AQUILA EDIT START
+		if(!isnull(weighted_antag_cap))
+			team_size = min(team_size, weighted_antag_cap - brothers_picked)
+		brothers_picked += team_size
+		// AQUILA EDIT END
 		for(var/k = 1 to team_size)
 			var/datum/mind/bro = antag_pick(possible_brothers, /datum/role_preference/antagonist/blood_brother)
 			possible_brothers -= bro
@@ -48,6 +59,8 @@
 			bro.restricted_roles = restricted_jobs
 			log_game("[key_name(bro)] has been selected as a Brother")
 		pre_brother_teams += team
+	if(!isnull(weighted_antag_cap)) // AQUILA EDIT - traitors only get what the brothers left of the limit
+		weighted_antag_cap = max(0, weighted_antag_cap - brothers_picked)
 	return ..()
 
 /datum/game_mode/traitor/bros/post_setup()

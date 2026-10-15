@@ -1,5 +1,0 @@
-author: sh4dow321
-delete-after: true
-changes:
-  - bugfix: Naprawiono opcję „Hard Restart + New Campaign”, która nie restartowała
-      serwera.

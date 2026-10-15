@@ -18,54 +18,32 @@
 		ui = new(user, src, "LanguageMenu")
 		ui.open()
 
+// AQ EDIT START - port BeeStation #13895: data for the LanguageMenu window from Bee.
+// Every language is sent, the window hides the unknown ones unless in admin mode.
 /datum/language_menu/ui_data(mob/user)
 	var/list/data = list()
-
-	var/atom/movable/AM = language_holder.get_atom()
-	if(isliving(AM))
-		data["is_living"] = TRUE
-	else
-		data["is_living"] = FALSE
+	var/atom/movable/speaker = language_holder.get_atom()
 
 	data["languages"] = list()
-	for(var/lang in GLOB.all_languages)
-		var/result = language_holder.has_language(lang) || language_holder.has_language(lang, TRUE)
-		if(!result)
-			continue
-		var/datum/language/language = lang
-		var/list/L = list()
+	for(var/datum/language/language as anything in GLOB.all_languages)
+		var/list/lang_data = list()
+		lang_data["name"] = initial(language.name)
+		lang_data["desc"] = initial(language.desc)
+		lang_data["key"] = initial(language.key)
+		lang_data["is_default"] = (language == language_holder.selected_language)
+		lang_data["icon"] = initial(language.icon)
+		lang_data["icon_state"] = initial(language.icon_state)
+		if(speaker)
+			lang_data["can_speak"] = !!speaker.has_language(language, TRUE)
+			lang_data["could_speak"] = !!(language_holder.omnitongue || speaker.could_speak_language(language))
+			lang_data["can_understand"] = !!speaker.has_language(language)
+		data["languages"] += list(lang_data)
 
-		L["name"] = initial(language.name)
-		L["desc"] = initial(language.desc)
-		L["key"] = initial(language.key)
-		L["is_default"] = (language == language_holder.selected_language)
-		if(AM)
-			L["can_speak"] = AM.can_speak_language(language)
-			L["can_understand"] = AM.has_language(language)
-
-		data["languages"] += list(L)
-
-	if(check_rights_for(user.client, R_ADMIN) || isobserver(AM))
-		data["admin_mode"] = TRUE
-		data["omnitongue"] = language_holder.omnitongue
-
-		data["unknown_languages"] = list()
-		for(var/lang in GLOB.all_languages)
-			if(language_holder.has_language(lang) || language_holder.has_language(lang, TRUE))
-				continue
-			var/datum/language/language = lang
-			var/list/L = list()
-
-			L["name"] = initial(language.name)
-			L["desc"] = initial(language.desc)
-			L["key"] = initial(language.key)
-
-			data["unknown_languages"] += list(L)
-	else
-		data["admin_mode"] = null
-		data["omnitongue"] = null
-		data["unknown_languages"] = null
+	data["is_living"] = isliving(speaker)
+	data["admin_mode"] = check_rights_for(user.client, R_ADMIN) || isobserver(speaker)
+	data["omnitongue"] = language_holder.omnitongue
 	return data
+// AQ EDIT END
 
 /datum/language_menu/ui_act(action, params)
 	if(..())
@@ -89,7 +67,7 @@
 		if("grant_language")
 			if((is_admin || isobserver(AM)) && language_datum)
 				var/list/choices = list("Only Spoken", "Only Understood", "Both")
-				var/choice = input(user,"How do you want to add this language?","[language_datum]",null) as null|anything in choices
+				var/choice = input(user,"Jak chcesz dodać ten język?","[language_datum]",null) as null|anything in choices
 				var/spoken = FALSE
 				var/understood = FALSE
 				switch(choice)
@@ -108,7 +86,7 @@
 		if("remove_language")
 			if((is_admin || isobserver(AM)) && language_datum)
 				var/list/choices = list("Only Spoken", "Only Understood", "Both")
-				var/choice = input(user,"Which part do you wish to remove?","[language_datum]",null) as null|anything in choices
+				var/choice = input(user,"Którą część chcesz usunąć?","[language_datum]",null) as null|anything in choices
 				var/spoken = FALSE
 				var/understood = FALSE
 				switch(choice)

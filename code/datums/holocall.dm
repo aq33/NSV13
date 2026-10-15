@@ -30,26 +30,40 @@
 	var/mob/camera/ai_eye/remote/holo/eye	//user's eye, once connected
 	var/obj/effect/overlay/holo_pad_hologram/hologram	//user's hologram, once connected
 	var/datum/action/innate/end_holocall/hangup	//hangup action
+	/// AQ EDIT - port BeeStation #14515: calls from a head of staff auto-connect, if the receiving pad is not secure
+	var/head_call = FALSE
 
 	var/call_start_time
 
 //creates a holocall made by `caller` from `calling_pad` to `callees`
-/datum/holocall/New(mob/living/caller, obj/machinery/holopad/calling_pad, list/callees)
+/datum/holocall/New(mob/living/caller, obj/machinery/holopad/calling_pad, list/callees, elevated_access = FALSE) // AQ EDIT - elevated_access, port BeeStation #14515
 	call_start_time = world.time
 	user = caller
 	calling_pad.outgoing_call = src
 	calling_holopad = calling_pad
 	dialed_holopads = list()
+	head_call = elevated_access // AQ EDIT
 
+	var/auto_connect_failed = FALSE // AQ EDIT
 	for(var/I in callees)
 		var/obj/machinery/holopad/H = I
 		if(!QDELETED(H) && H.is_operational)
 			dialed_holopads += H
-			H.say("Incoming call.")
+			// AQ EDIT START - port BeeStation #14515
+			if(head_call && !H.secure)
+				H.say("Nawiązano połączenie.")
+			else
+				if(head_call)
+					auto_connect_failed = TRUE
+				H.say("Połączenie przychodzące.")
+			// AQ EDIT END
 			LAZYADD(H.holo_calls, src)
 
+	if(auto_connect_failed) // AQ EDIT
+		calling_pad.say("Auto-connection refused, falling back to call mode.")
+
 	if(!dialed_holopads.len)
-		calling_pad.say("Connection failure.")
+		calling_pad.say("Błąd połączenia.")
 		qdel(src)
 		return
 
@@ -96,7 +110,7 @@
 	testing("Holocall disconnect")
 	if(H == connected_holopad)
 		var/area/A = get_area(connected_holopad)
-		calling_holopad.say("[A] holopad disconnected.")
+		calling_holopad.say("Holopad [A] rozłączony.")
 	else if(H == calling_holopad && connected_holopad)
 		connected_holopad.say("[user] disconnected.")
 
@@ -107,7 +121,7 @@
 	testing("Holocall connection failure: graceful [graceful]")
 	if(H == connected_holopad || H == calling_holopad)
 		if(!graceful && H != calling_holopad)
-			calling_holopad.say("Connection failure.")
+			calling_holopad.say("Błąd połączenia.")
 		qdel(src)
 		return
 
@@ -115,7 +129,7 @@
 	dialed_holopads -= H
 	if(!dialed_holopads.len)
 		if(graceful)
-			calling_holopad.say("Call rejected.")
+			calling_holopad.say("Połączenie odrzucone.")
 		testing("No recipients, terminating")
 		qdel(src)
 
@@ -178,7 +192,7 @@
 		if(!connected_holopad)
 			. = world.time < (call_start_time + HOLOPAD_MAX_DIAL_TIME)
 			if(!.)
-				calling_holopad.say("No answer received.")
+				calling_holopad.say("Brak odpowiedzi.")
 				calling_holopad.temp = ""
 
 	if(!.)
@@ -242,10 +256,10 @@
 			record.caller_image = holodiskOriginal.record.caller_image
 			record.entries = holodiskOriginal.record.entries.Copy()
 			record.language = holodiskOriginal.record.language
-			to_chat(user, "You copy the record from [holodiskOriginal] to [src] by connecting the ports!")
+			to_chat(user, "Łącząc porty, kopiujesz nagranie z [holodiskOriginal] na [src]!")
 			name = holodiskOriginal.name
 		else
-			to_chat(user, "[holodiskOriginal] has no record on it!")
+			to_chat(user, "Na [holodiskOriginal] nie ma żadnego nagrania!")
 	..()
 
 /obj/item/disk/holodisk/proc/build_record()
@@ -315,20 +329,20 @@
 	preset_record_text = {"
 	NAME Clown
 	DELAY 10
-	SAY Why did the chaplain cross the maint ?
+	SAY Czemu kapelan przeszedł przez techniczne?
 	DELAY 20
-	SAY He wanted to get to the other side!
+	SAY Chciał się dostać na drugą stronę!
 	SOUND clownstep
 	DELAY 30
 	LANGUAGE /datum/language/narsie
-	SAY Helped him get there!
+	SAY Pomogłem mu tam dotrzeć!
 	DELAY 10
-	SAY ALSO IM SECRETLY A GORILLA
+	SAY A POZA TYM JESTEM POTAJEMNIE GORYLEM
 	DELAY 10
 	PRESET /datum/preset_holoimage/gorilla
 	NAME Gorilla
 	LANGUAGE /datum/language/common
-	SAY OOGA
+	SAY UGA
 	DELAY 20"}
 
 /datum/preset_holoimage/engineer
@@ -358,20 +372,20 @@
 	preset_record_text = {"
 	NAME Rigsuit Engineer #1
 	DELAY 10
-	SAY The blueprints say we're installing a.. singularity engine?
+	SAY Według planów instalujemy... silnik osobliwości?
 	DELAY 45
 	NAME Rigsuit Engineer #2
 	DELAY 10
-	SAY Yep, apparently part of the classic design.
+	SAY No, podobno to część klasycznego projektu.
 	DELAY 45
 	NAME Rigsuit Engineer #1
 	DELAY 10
-	SAY Hasn't the singularity engine been out of standard use for awhile now?
+	SAY Czy silnika osobliwości już od dawna nie wycofano ze standardowego użytku?
 	DELAY 45
 	NAME Rigsuit Engineer #2
 	DELAY 10
-	SAY Yeah, but apparently the architects bribed one of the higher ups to bypass standard regulations.
+	SAY No, ale podobno architekci przekupili kogoś z góry, żeby obejść standardowe przepisy.
 	DELAY 55
 	NAME Rigsuit Engineery #1
 	DELAY 10
-	SAY It's gonna be a pain in the ass rebuilding this place when it inevitably gets loose.."}
+	SAY Odbudowywanie tego miejsca, kiedy to coś nieuchronnie się uwolni, to będzie ból dupy..."}

@@ -1875,7 +1875,7 @@
 /area/ruin/powered/nsv13/boarding_interior)
 "Px" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/soup/hotchili,
+/obj/item/food/soup/hotchili,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -1936,22 +1936,22 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/powered/nsv13/boarding_interior)
 "QD" = (
-/obj/item/reagent_containers/food/snacks/bun,
-/obj/item/reagent_containers/food/snacks/bun,
-/obj/item/reagent_containers/food/snacks/bun,
-/obj/item/reagent_containers/food/snacks/bun,
-/obj/item/reagent_containers/food/snacks/bun,
+/obj/item/food/bun,
+/obj/item/food/bun,
+/obj/item/food/bun,
+/obj/item/food/bun,
+/obj/item/food/bun,
 /obj/structure/closet/crate/freezer{
 	anchored = 1
 	},
-/obj/item/reagent_containers/food/snacks/donkpocket/pizza,
-/obj/item/reagent_containers/food/snacks/donkpocket/pizza,
-/obj/item/reagent_containers/food/snacks/donkpocket/pizza,
-/obj/item/reagent_containers/food/snacks/donkpocket/pizza,
-/obj/item/reagent_containers/food/snacks/meat/rawbacon,
-/obj/item/reagent_containers/food/snacks/meat/rawcutlet,
-/obj/item/reagent_containers/food/snacks/meat/rawcutlet,
-/obj/item/reagent_containers/food/snacks/meat/rawcutlet,
+/obj/item/food/donkpocket/pizza,
+/obj/item/food/donkpocket/pizza,
+/obj/item/food/donkpocket/pizza,
+/obj/item/food/donkpocket/pizza,
+/obj/item/food/meat/rawbacon,
+/obj/item/food/meat/rawcutlet,
+/obj/item/food/meat/rawcutlet,
+/obj/item/food/meat/rawcutlet,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/powered/nsv13/boarding_interior)
 "Rb" = (
@@ -2125,7 +2125,7 @@
 /area/ruin/powered/nsv13/boarding_interior)
 "Vq" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/snacks/burger/corgi,
+/obj/item/food/burger/corgi,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/powered/nsv13/boarding_interior)
 "Vw" = (

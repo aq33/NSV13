@@ -53,7 +53,7 @@
 	req_access = list(ACCESS_ATMOSPHERICS)
 	max_integrity = 250
 	integrity_failure = 80
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 100, "bomb" = 0, "bio" = 100, "rad" = 100, "fire" = 90, "acid" = 30, "stamina" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 100, "bomb" = 0, "bio" = 100, "rad" = 100, "fire" = 90, "acid" = 30, "stamina" = 0, "bleed" = 0)
 	resistance_flags = FIRE_PROOF
 	layer = ABOVE_WINDOW_LAYER
 
@@ -65,7 +65,7 @@
 	var/aidisabled = 0
 	var/shorted = 0
 	var/buildstage = 2 // 2 = complete, 1 = no wires,  0 = circuit gone
-	var/config_error_str = "Needs Scan"
+	var/config_error_str = "Wymaga skanowania"
 	var/scan_on_late_init = FALSE
 	var/depressurization_margin = 10 // use a lower value to reduce cross-contamination
 	var/overlays_hash = null
@@ -258,9 +258,9 @@
 			has_interior = TRUE
 	if(!has_interior || !has_exterior)
 		if(!has_interior)
-			config_error_str = "No interior door"
+			config_error_str = "Brak drzwi wewnętrznych"
 		else if(!has_exterior)
-			config_error_str = "No exterior door"
+			config_error_str = "Brak drzwi zewnętrznych"
 		cyclestate = AIRLOCK_CYCLESTATE_ERROR
 		return
 	if(cyclestate == AIRLOCK_CYCLESTATE_ERROR)
@@ -437,7 +437,7 @@
 		if(2)
 			if(W.tool_behaviour == TOOL_WIRECUTTER && panel_open && wires.is_all_cut())
 				W.play_tool_sound(src)
-				to_chat(user, "<span class='notice'>You cut the final wires.</span>")
+				to_chat(user, "<span class='notice'>Przecinasz ostatnie przewody.</span>")
 				new /obj/item/stack/cable_coil(loc, 5)
 				buildstage = 1
 				update_icon()
@@ -445,7 +445,7 @@
 			else if(W.tool_behaviour == TOOL_SCREWDRIVER)  // Opening that up.
 				W.play_tool_sound(src)
 				panel_open = !panel_open
-				to_chat(user, "<span class='notice'>The wires have been [panel_open ? "exposed" : "unexposed"].</span>")
+				to_chat(user, "<span class='notice'>Przewody zostały [panel_open ? "odsłonięte" : "zakryte"].</span>")
 				update_icon()
 				return
 			else if(istype(W, /obj/item/card/id) || istype(W, /obj/item/modular_computer/tablet/pda))// trying to unlock the interface with an ID card
@@ -456,12 +456,12 @@
 				return
 		if(1)
 			if(W.tool_behaviour == TOOL_CROWBAR)
-				user.visible_message("[user.name] removes the electronics from [src.name].",\
-									"<span class='notice'>You start prying out the circuit...</span>")
+				user.visible_message("[user.name] wyjmuje elektronikę z [src.name].",\
+									"<span class='notice'>Zaczynasz wyważać płytkę...</span>")
 				W.play_tool_sound(src)
 				if (W.use_tool(src, user, 20))
 					if (buildstage == 1)
-						to_chat(user, "<span class='notice'>You remove the airlock controller electronics.</span>")
+						to_chat(user, "<span class='notice'>Wyjmujesz elektronikę kontrolera śluzy.</span>")
 						new /obj/item/electronics/advanced_airlock_controller( src.loc )
 						playsound(src.loc, 'sound/items/deconstruct.ogg', 50, 1)
 						buildstage = 0
@@ -471,14 +471,14 @@
 			if(istype(W, /obj/item/stack/cable_coil))
 				var/obj/item/stack/cable_coil/cable = W
 				if(cable.get_amount() < 5)
-					to_chat(user, "<span class='warning'>You need five lengths of cable to wire the airlock controller!</span>")
+					to_chat(user, "<span class='warning'>Do okablowania kontrolera śluzy potrzebujesz pięciu odcinków kabla!</span>")
 					return
-				user.visible_message("[user.name] wires the airlock controller.", \
-									"<span class='notice'>You start wiring the airlock controller...</span>")
+				user.visible_message("[user.name] okablowuje kontroler śluzy.", \
+									"<span class='notice'>Zaczynasz okablowywać kontroler śluzy...</span>")
 				if (do_after(user, 20, target = src))
 					if (cable.get_amount() >= 5 && buildstage == 1)
 						cable.use(5)
-						to_chat(user, "<span class='notice'>You wire the airlock controller.</span>")
+						to_chat(user, "<span class='notice'>Okablowujesz kontroler śluzy.</span>")
 						wires.repair()
 						aidisabled = 0
 						locked = FALSE
@@ -491,7 +491,7 @@
 		if(0)
 			if(istype(W, /obj/item/electronics/advanced_airlock_controller))
 				if(user.temporarilyRemoveItemFromInventory(W))
-					to_chat(user, "<span class='notice'>You insert the circuit.</span>")
+					to_chat(user, "<span class='notice'>Wkładasz płytkę.</span>")
 					buildstage = 1
 					update_icon()
 					qdel(W)
@@ -501,14 +501,14 @@
 				var/obj/item/electroadaptive_pseudocircuit/P = W
 				if(!P.adapt_circuit(user, 25))
 					return
-				user.visible_message("<span class='notice'>[user] fabricates a circuit and places it into [src].</span>", \
-				"<span class='notice'>You adapt an airlock controller circuit and slot it into the assembly.</span>")
+				user.visible_message("<span class='notice'>[user] wytwarza płytkę i umieszcza ją w [src].</span>", \
+				"<span class='notice'>Dostosowujesz płytkę kontrolera śluzy i wsuwasz ją do zespołu.</span>")
 				buildstage = 1
 				update_icon()
 				return
 
 			if(W.tool_behaviour == TOOL_WRENCH)
-				to_chat(user, "<span class='notice'>You detach \the [src] from the wall.</span>")
+				to_chat(user, "<span class='notice'>Zdejmujesz [src] ze ściany.</span>")
 				W.play_tool_sound(src)
 				new /obj/item/wallframe/advanced_airlock_controller( user.loc )
 				qdel(src)
@@ -529,11 +529,11 @@
 
 /obj/machinery/advanced_airlock_controller/proc/scan(assume_roles = FALSE)
 	cut_links()
-	config_error_str = "Unknown error (bug coders)"
+	config_error_str = "Nieznany błąd (zgłoś koderom)"
 
 	var/turf/open/initial_turf = get_turf(src)
 	if(!istype(initial_turf))
-		config_error_str = "Scan blocked by wall"
+		config_error_str = "Skan zablokowany przez ścianę"
 		return
 	var/list/turfs = list()
 	turfs[initial_turf] = 1
@@ -543,13 +543,13 @@
 			T.ImmediateCalculateAdjacentTurfs()
 		for(var/turf/open/T2 in T.atmos_adjacent_turfs)
 			if(get_dist(initial_turf, T2) > 5)
-				config_error_str = "Airlock too big"
+				config_error_str = "Śluza za duża"
 				return
 			if(locate(/obj/machinery/door/airlock) in T2)
 				continue
 			turfs[T2] = 1
 		if(turfs.len > 16)  // I will allow a 4x4 airlock for a shitty poor-man's spacepod bay.
-			config_error_str = "Airlock too big"
+			config_error_str = "Śluza za duża"
 		for(var/cdir in GLOB.cardinals)
 			var/turf/T2 = get_step(T, cdir)
 			for(var/obj/machinery/door/airlock/A in T2)
@@ -578,13 +578,13 @@
 				if(assume_roles)
 					vents[vent] = AIRLOCK_CYCLEROLE_INT_DEPRESSURIZE | AIRLOCK_CYCLEROLE_EXT_DEPRESSURIZE | AIRLOCK_CYCLEROLE_INT_PRESSURIZE
 	if(!airlocks.len)
-		config_error_str = "No airlocks"
+		config_error_str = "Brak śluz"
 		return
 	config_error_str = null
 
 /obj/machinery/advanced_airlock_controller/ui_status(mob/user)
 	if(user.has_unlimited_silicon_privilege && aidisabled)
-		to_chat(user, "AI control has been disabled.")
+		to_chat(user, "Sterowanie przez SI zostało wyłączone.")
 	else if(!shorted)
 		return ..()
 	return UI_CLOSE
@@ -642,13 +642,13 @@
 		var/access_str = "None"
 		airlock.gen_access()
 		if(islist(airlock.req_access) && airlock.req_access.len)
-			access_str = airlock.req_access.len > 1 ? "All of " : ""
+			access_str = airlock.req_access.len > 1 ? "Wszystkie z " : ""
 			for(var/I in 1 to airlock.req_access.len)
 				if(I != 1)
 					access_str += ", "
 				access_str += get_access_desc(airlock.req_access[I])
 		if(islist(airlock.req_one_access) && airlock.req_one_access.len)
-			access_str = airlock.req_one_access.len > 1 ? "One of " : ""
+			access_str = airlock.req_one_access.len > 1 ? "Jedna z " : ""
 			for(var/I in 1 to airlock.req_one_access.len)
 				if(I != 1)
 					access_str += ", "
@@ -677,7 +677,7 @@
 				if(!A.allowed(usr))
 					if(is_allowed)
 						is_allowed = FALSE
-						to_chat(usr, "<span class='danger'>Access denied.</span>")
+						to_chat(usr, "<span class='danger'>Odmowa dostępu.</span>")
 					if(A.density)
 						spawn()
 							A.do_animate("deny")
@@ -783,14 +783,14 @@
 
 /obj/machinery/advanced_airlock_controller/proc/togglelock(mob/living/user)
 	if(machine_stat & (NOPOWER|BROKEN))
-		to_chat(user, "<span class='warning'>It does nothing!</span>")
+		to_chat(user, "<span class='warning'>Nic to nie daje!</span>")
 	else
 		if(src.allowed(usr) && !wires.is_cut(WIRE_IDSCAN))
 			locked = !locked
 			update_icon()
-			to_chat(user, "<span class='notice'>You [ locked ? "lock" : "unlock"] the airlock controller interface.</span>")
+			to_chat(user, "<span class='notice'>[ locked ? "Blokujesz" : "Odblokowujesz"] interfejs kontrolera śluzy.</span>")
 		else
-			to_chat(user, "<span class='danger'>Access denied.</span>")
+			to_chat(user, "<span class='danger'>Odmowa dostępu.</span>")
 	return
 
 /obj/machinery/advanced_airlock_controller/power_change()
@@ -801,7 +801,7 @@
 	if(obj_flags & EMAGGED)
 		return
 	obj_flags |= EMAGGED
-	visible_message("<span class='warning'>Sparks fly out of [src]!</span>", "<span class='notice'>You emag [src], disabling its safeties.</span>")
+	visible_message("<span class='warning'>Z [src] lecą iskry!</span>", "<span class='notice'>Emagujesz [src], wyłączając zabezpieczenia.</span>")
 	playsound(src, "sparks", 50, 1)
 
 /obj/machinery/advanced_airlock_controller/obj_break(damage_flag)

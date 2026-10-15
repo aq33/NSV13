@@ -44,7 +44,7 @@
 	item_state = "holdingpack"
 	resistance_flags = FIRE_PROOF
 	item_flags = NO_MAT_REDEMPTION
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 60, "acid" = 50, "stamina" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 60, "acid" = 50, "stamina" = 0, "bleed" = 0)
 	component_type = /datum/component/storage/concrete/bluespace/bag_of_holding
 
 /obj/item/storage/backpack/holding/clown
@@ -61,7 +61,7 @@
 	STR.max_combined_w_class = 35
 
 /obj/item/storage/backpack/holding/suicide_act(mob/living/user)
-	user.visible_message("<span class='suicide'>[user] is jumping into [src]! It looks like [user.p_theyre()] trying to commit suicide.</span>")
+	user.visible_message("<span class='suicide'>[user] wskakuje do [src]! Wygląda na to, że próbuje popełnić samobójstwo.</span>")
 	user.dropItemToGround(src, TRUE)
 	user.Stun(100, ignore_canstun = TRUE)
 	sleep(20)
@@ -78,7 +78,7 @@
 	icon_state = "hammerspace"
 	resistance_flags = FIRE_PROOF
 	item_flags = NO_MAT_REDEMPTION
-	armor = list("melee" = 100, "bullet" = 100, "laser" = 100, "energy" = 100, "bomb" = 100, "bio" = 100, "rad" = 100, "fire" = 100, "acid" = 100, "stamina" = 0)
+	armor = list("melee" = 100, "bullet" = 100, "laser" = 100, "energy" = 100, "bomb" = 100, "bio" = 100, "rad" = 100, "fire" = 100, "acid" = 100, "stamina" = 0, "bleed" = 0)
 	component_type = /datum/component/storage/concrete/bluespace/bag_of_holding
 
 /obj/item/storage/backpack/hammerspace/ComponentInitialize()
@@ -111,7 +111,7 @@
 	STR.max_combined_w_class = 60
 
 /obj/item/storage/backpack/santabag/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] places [src] over [user.p_their()] head and pulls it tight! It looks like [user.p_they()] [user.p_are()]n't in the Christmas spirit...</span>")
+	user.visible_message("<span class='suicide'>[user] zakłada [src] na głowę i mocno zaciąga! Chyba nie czuje świątecznej atmosfery...</span>")
 	return (OXYLOSS)
 
 /obj/item/storage/backpack/santabag/proc/regenerate_presents()
@@ -237,31 +237,31 @@
 
 /obj/item/storage/backpack/cak
 	name = "cak backpack"
-	desc = "A cute backpack resembling Cak."
+	desc = "Słodki plecak przypominający Cak."
 	icon_state = "cakpack"
 	item_state = "cakpack"
 
 /obj/item/storage/backpack/ian
 	name = "ian backpack"
-	desc = "A cute backpack resembling Ian."
+	desc = "Słodki plecak przypominający Iana."
 	icon_state = "ianpack"
 	item_state = "ianpack"
 
 /obj/item/storage/backpack/lisa
 	name = "lisa backpack"
-	desc = "A cute backpack resembling Lisa."
+	desc = "Słodki plecak przypominający Lisę."
 	icon_state = "lisapack"
 	item_state = "lisapack"
 
 /obj/item/storage/backpack/renault
 	name = "renault backpack"
-	desc = "A cute backpack resembling Renault."
+	desc = "Słodki plecak przypominający Renault."
 	icon_state = "renaultpack"
 	item_state = "renaultpack"
 
 /obj/item/storage/backpack/runtime
 	name = "runtime backpack"
-	desc = "A cute backpack resembling Runtime."
+	desc = "Słodki plecak przypominający Runtime."
 	icon_state = "runtimepack"
 	item_state = "runtimepack"
 
@@ -500,7 +500,7 @@
 
 /obj/item/storage/backpack/duffelbag/clown/cream_pie/PopulateContents()
 	for(var/i in 1 to 10)
-		new /obj/item/reagent_containers/food/snacks/pie/cream(src)
+		new /obj/item/food/pie/cream(src)
 
 /obj/item/storage/backpack/fireproof
 	resistance_flags = FIRE_PROOF
@@ -627,7 +627,7 @@
 	new /obj/item/ammo_box/foambox/riot(src)
 	new /obj/item/grenade/chem_grenade/bioterrorfoam(src)
 	if(prob(5))
-		new /obj/item/reagent_containers/food/snacks/pizza/pineapple(src)
+		new /obj/item/food/pizza/pineapple(src)
 
 /obj/item/storage/backpack/duffelbag/syndie/c4/PopulateContents()
 	for(var/i in 1 to 10)

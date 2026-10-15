@@ -48,6 +48,30 @@
 	max_combined_w_class = 12
 	max_w_class = WEIGHT_CLASS_NORMAL
 	storage_slots = 4
+	actions_types = list(/datum/action/item_action/organ_action/use)
+	COOLDOWN_DECLARE(bluespace_dump_cooldown)
+
+/// Wypróżnienie na zawołanie: zawartość jelit leci prosto w bluespace, bez bałaganu
+/obj/item/organ/butt/bluebutt/ui_action_click(mob/user, actiontype)
+	var/mob/living/carbon/C = owner
+	if(!C || C.stat != CONSCIOUS)
+		return
+	if(!CONFIG_GET(flag/shitting_enabled))
+		to_chat(C, "<span class='warning'>Wypróżnianie się zostało wyłączone w konfiguracji serwera.</span>")
+		return
+	if(!COOLDOWN_FINISHED(src, bluespace_dump_cooldown))
+		to_chat(C, "<span class='warning'>Kieszeń bluespace jeszcze się nie ustabilizowała.</span>")
+		return
+	if(C.defecation <= DEFECATION_NONE)
+		to_chat(C, "<span class='notice'>Nie masz czego wysyłać w bluespace.</span>")
+		return
+	COOLDOWN_START(src, bluespace_dump_cooldown, 30 SECONDS)
+	C.set_defecation(DEFECATION_NONE)
+	var/datum/reagent/consumable/castor_oil/oil = C.reagents?.get_reagent(/datum/reagent/consumable/castor_oil)
+	oil?.purge(C)
+	playsound(get_turf(C), 'sound/magic/blink.ogg', 30, TRUE)
+	C.visible_message("<span class='notice'>Coś cicho pyka w okolicach pośladków [C].</span>", \
+		"<span class='notice'><i>Ale ulga...</i> Zawartość jelit znika w bluespace.</span>")
 
 /obj/item/organ/butt/Initialize(mapload)
 	. = ..()
@@ -108,7 +132,7 @@
 		if(I.is_sharp())
 			owner.bleed(4)
 		// Pills and food slowly get absorbed
-		if(istype(I, /obj/item/reagent_containers/pill) || istype(I, /obj/item/reagent_containers/food))
+		if(istype(I, /obj/item/reagent_containers/pill) || istype(I, /obj/item/reagent_containers/food) || istype(I, /obj/item/food))
 			if(I.reagents?.total_volume)
 				I.reagents.trans_to(owner, 1, transfered_by = owner, method = INGEST)
 			else
@@ -122,7 +146,7 @@
 		var/mob/living/simple_animal/bot/buttbot/B = new(get_turf(src))
 		if(istype(src, /obj/item/organ/butt/xeno))
 			B.make_xeno()
-		to_chat(user, "<span class='notice'>You add the robot arm to the butt and... What?</span>")
+		to_chat(user, "<span class='notice'>Dodajesz ramię robota do tyłka i... Co?</span>")
 		qdel(src)
 		return
 	return ..()
@@ -135,7 +159,7 @@
 		M.apply_damage(5, STAMINA)
 		if(prob(5))
 			M.Paralyze(6 SECONDS)
-			visible_message("<span class='danger'>[src] smacks [M] right in the face!</span>")
+			visible_message("<span class='danger'>[src] trzaska [M] prosto w twarz!</span>")
 
 /// Tear the butt off its owner, dumping the pocket contents on the floor
 /obj/item/organ/butt/proc/blow_off(mob/living/carbon/user)
@@ -160,6 +184,8 @@
 	icon = 'aquila/icons/obj/butt.dmi'
 	icon_state = "butt"
 	item_flags = ABSTRACT
+	// The pocket sits in its owner's contents, and view() lists those, so AI (monkeys) would click and grab it
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	w_class = WEIGHT_CLASS_BULKY
 	component_type = /datum/component/storage/concrete/pockets/butt
 	var/obj/item/organ/butt/butt
@@ -179,7 +205,7 @@
 	var/mob/living/carbon/human/H = pocket.butt?.owner
 	if(istype(H) && H.w_uniform)
 		if(M && !stop_messages)
-			to_chat(M, "<span class='danger'>Remove the jumpsuit first!</span>")
+			to_chat(M, "<span class='danger'>Najpierw zdejmij kombinezon!</span>")
 		return FALSE
 	return ..()
 
@@ -218,7 +244,7 @@
 		B = new /obj/item/organ/butt()
 	B?.Insert(src)
 
-// Using the pocket: grab intent on the groin
+// Using the pocket: grab (Ctrl-click, or grab intent in the legacy mode) on the groin
 
 /mob/living/carbon/human/grabbedby(mob/living/carbon/user, supress_message = FALSE)
 	if(user.zone_selected != BODY_ZONE_PRECISE_GROIN)
@@ -226,37 +252,49 @@
 	var/obj/item/organ/butt/B = getorganslot(ORGAN_SLOT_BUTT)
 	if(w_uniform)
 		if(user == src)
-			user.visible_message("<span class='warning'>[user] grabs [user.p_their()] own butt!</span>", "<span class='warning'>You grab your own butt!</span>")
-			to_chat(user, "<span class='warning'>You'll need to remove your jumpsuit first!</span>")
+			user.visible_message("<span class='warning'>[user] łapie się za własny tyłek!</span>", "<span class='warning'>Łapiesz się za własny tyłek!</span>")
+			to_chat(user, "<span class='warning'>Najpierw musisz zdjąć kombinezon!</span>")
 		else
-			user.visible_message("<span class='warning'>[user] grabs [src]'s butt!</span>", "<span class='warning'>You grab [src]'s butt!</span>")
-			to_chat(user, "<span class='warning'>You'll need to remove [src]'s jumpsuit first!</span>")
-			to_chat(src, "<span class='warning'>You feel your butt being grabbed!</span>")
+			user.visible_message("<span class='warning'>[user] grabs [src]'s butt!</span>", "<span class='warning'>Łapiesz [src] za tyłek!</span>")
+			to_chat(user, "<span class='warning'>Najpierw musisz zdjąć kombinezon [src]!</span>")
+			to_chat(src, "<span class='warning'>Czujesz, że ktoś łapie cię za tyłek!</span>")
 		return FALSE
 	if(!B?.inv)
-		to_chat(user, "<span class='warning'>There's nothing to inspect!</span>")
+		to_chat(user, "<span class='warning'>Nie ma czego oglądać!</span>")
 		return FALSE
-	user.visible_message("<span class='warning'>[user] starts inspecting [user == src ? "[user.p_their()] own" : "[src]'s"] ass!</span>", "<span class='warning'>You start inspecting [user == src ? "your" : "[src]'s"] ass!</span>")
+	user.visible_message("<span class='warning'>[user] zaczyna oglądać [user == src ? "własny tyłek" : "tyłek [src]"]!</span>", "<span class='warning'>Zaczynasz oglądać [user == src ? "swój tyłek" : "tyłek [src]"]!</span>")
 	if(!do_mob(user, src, 4 SECONDS))
-		user.visible_message("<span class='warning'>[user] fails to inspect [user == src ? "[user.p_their()] own" : "[src]'s"] ass!</span>", "<span class='warning'>You fail to inspect [user == src ? "your" : "[src]'s"] ass!</span>")
+		user.visible_message("<span class='warning'>[user] nie udaje się obejrzeć [user == src ? "własnego tyłka" : "tyłka [src]"]!</span>", "<span class='warning'>Nie udaje ci się obejrzeć [user == src ? "swojego tyłka" : "tyłka [src]"]!</span>")
 		return FALSE
-	user.visible_message("<span class='warning'>[user] inspects [user == src ? "[user.p_their()] own" : "[src]'s"] ass!</span>", "<span class='warning'>You inspect [user == src ? "your" : "[src]'s"] ass!</span>")
+	user.visible_message("<span class='warning'>[user] ogląda [user == src ? "własny tyłek" : "tyłek [src]"]!</span>", "<span class='warning'>Oglądasz [user == src ? "swój tyłek" : "tyłek [src]"]!</span>")
 	SEND_SIGNAL(B.inv, COMSIG_TRY_STORAGE_SHOW, user)
 	return FALSE
 
-/datum/species/spec_attacked_by(obj/item/I, mob/living/user, obj/item/bodypart/affecting, intent, mob/living/carbon/human/H)
-	if(user.zone_selected != BODY_ZONE_PRECISE_GROIN || user.a_intent != INTENT_GRAB)
+// Port Bee #11899: w combat mode chowanie przedmiotu to prawy klik w krocze, w starym trybie intencji zostaje grab
+/mob/living/carbon/human/attackby_secondary(obj/item/I, mob/living/user, params)
+	if(user.zone_selected == BODY_ZONE_PRECISE_GROIN && dna?.species?.try_butt_hide(I, user, src))
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	return ..()
+
+/datum/species/spec_attacked_by(obj/item/I, mob/living/user, obj/item/bodypart/affecting, mob/living/carbon/human/H)
+	if(user.zone_selected != BODY_ZONE_PRECISE_GROIN || !user.uses_legacy_intents() || user.a_intent != INTENT_GRAB)
 		return ..()
-	if(H.w_uniform)
-		H.visible_message("<span class='danger'>[user] pokes [H == user ? "[user.p_their()] own" : "[H]'s"] butt with [I].</span>", "<span class='danger'>[user] pokes your butt with [I].</span>")
+	if(try_butt_hide(I, user, H))
 		return FALSE
+	return ..()
+
+/// Tries to hide I in H's butt. Returns TRUE if the attack was handled.
+/datum/species/proc/try_butt_hide(obj/item/I, mob/living/user, mob/living/carbon/human/H)
+	if(H.w_uniform)
+		H.visible_message("<span class='danger'>[user] szturcha [H == user ? "własny tyłek" : "tyłek [H]"] za pomocą [I].</span>", "<span class='danger'>[user] szturcha cię w tyłek za pomocą [I].</span>")
+		return TRUE
 	var/obj/item/organ/butt/B = H.getorganslot(ORGAN_SLOT_BUTT)
 	if(!B?.inv)
-		return ..()
-	user.visible_message("<span class='warning'>[user] starts hiding [I] inside [H == user ? "[user.p_their()] own" : "[H]'s"] butt.</span>", "<span class='warning'>You start hiding [I] inside [H == user ? "your" : "[H]'s"] butt.</span>")
+		return FALSE
+	user.visible_message("<span class='warning'>[user] zaczyna chować [I] w [H == user ? "własnym tyłku" : "tyłku [H]"].</span>", "<span class='warning'>Zaczynasz chować [I] w [H == user ? "swoim tyłku" : "tyłku [H]"].</span>")
 	if(do_mob(user, H, 4 SECONDS) && SEND_SIGNAL(B.inv, COMSIG_TRY_STORAGE_INSERT, I, user, TRUE))
-		user.visible_message("<span class='warning'>[user] hides [I] inside [H == user ? "[user.p_their()] own" : "[H]'s"] butt.</span>", "<span class='warning'>You hide [I] inside [H == user ? "your" : "[H]'s"] butt.</span>")
-	return FALSE
+		user.visible_message("<span class='warning'>[user] chowa [I] w [H == user ? "własnym tyłku" : "tyłku [H]"].</span>", "<span class='warning'>Chowasz [I] w [H == user ? "swoim tyłku" : "tyłku [H]"].</span>")
+	return TRUE
 
 /obj/item/clothing/equipped(mob/user, slot)
 	. = ..()

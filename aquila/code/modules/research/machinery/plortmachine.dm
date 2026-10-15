@@ -16,7 +16,7 @@
 /obj/machinery/plortrefinery/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += "<span class='notice'>The status display reads: Selling cores at <b>[research_point_multiplier*100]%</b> their value.<span>"
+		. += "<span class='notice'>Wyświetlacz stanu pokazuje: sprzedaż rdzeni za <b>[research_point_multiplier*100]%</b> ich wartości.<span>"
 
 /obj/machinery/plortrefinery/RefreshParts()
 	var/research_point_multiplier_temp = 1
@@ -41,6 +41,20 @@
 	if(istype(W, /obj/item/slime_extract))
 		refine_plort(W)
 		qdel(W)
+		return
+
+	if(istype(W, /obj/item/storage/bag/bio))
+		var/sold = 0
+		for(var/obj/item/slime_extract/extract in W)
+			if(!SEND_SIGNAL(W, COMSIG_TRY_STORAGE_TAKE, extract, src))
+				continue
+			refine_plort(extract)
+			qdel(extract)
+			sold++
+		if(sold)
+			to_chat(user, "<span class='notice'>Wysypujesz rdzenie szlamu ([sold]) z [W] do [src].</span>")
+		else
+			to_chat(user, "<span class='warning'>W [W] nie ma żadnych rdzeni szlamu!</span>")
 		return
 
 /obj/machinery/plortrefinery/proc/refine_plort(var/obj/item/slime_extract/W)

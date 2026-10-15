@@ -34,6 +34,7 @@ GLOBAL_LIST_INIT(available_ui_styles, sortList(list(
 	var/atom/movable/screen/alien_queen_finder
 
 	var/atom/movable/screen/devil/soul_counter/devilsouldisplay
+	var/atom/movable/screen/combo/combo_display
 
 	var/atom/movable/screen/action_intent
 	var/atom/movable/screen/zone_select
@@ -116,6 +117,7 @@ GLOBAL_LIST_INIT(available_ui_styles, sortList(list(
 	blobpwrdisplay = null
 	alien_plasma_display = null
 	alien_queen_finder = null
+	combo_display = null
 
 	QDEL_LIST_ASSOC_VAL(plane_masters)
 	QDEL_LIST_ASSOC_VAL(plane_master_controllers)
@@ -269,9 +271,9 @@ GLOBAL_LIST_INIT(available_ui_styles, sortList(list(
 
 	if(hud_used && client)
 		hud_used.show_hud() //Shows the next hud preset
-		to_chat(usr, "<span class ='info'>Switched HUD mode. Press F12 to toggle.</span>")
+		to_chat(usr, "<span class ='info'>Zmieniono tryb HUD-u. Naciśnij F12, by przełączyć.</span>")
 	else
-		to_chat(usr, "<span class ='warning'>This mob type does not use a HUD.</span>")
+		to_chat(usr, "<span class ='warning'>Ten typ moba nie używa HUD-u.</span>")
 
 
 //(re)builds the hand ui slots, throwing away old ones

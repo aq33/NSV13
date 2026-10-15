@@ -16,15 +16,16 @@
 
 /obj/item/clothing/head/hardhat
 	name = "hard hat"
-	desc = "A piece of headgear used in dangerous working conditions to protect the head. Comes with a built-in flashlight."
+	desc = "Nakrycie głowy chroniące ją w niebezpiecznych warunkach pracy. Ma wbudowaną latarkę."
 	icon_state = "hardhat0_yellow"
 	item_state = "hardhat0_yellow"
-	armor = list("melee" = 15, "bullet" = 5, "laser" = 20, "energy" = 10, "bomb" = 20, "bio" = 10, "rad" = 20, "fire" = 100, "acid" = 50, "stamina" = 20)
+	armor = list("melee" = 15, "bullet" = 5, "laser" = 20, "energy" = 10, "bomb" = 20, "bio" = 10, "rad" = 20, "fire" = 100, "acid" = 50, "stamina" = 20, "bleed" = 60)
 	flags_inv = NONE
 	actions_types = list(/datum/action/item_action/toggle_helmet_light)
 	resistance_flags = FIRE_PROOF
 	clothing_flags = SNUG_FIT
-	light_system = MOVABLE_LIGHT
+
+	light_system = MOVABLE_LIGHT_DIRECTIONAL
 	light_range = 4
 	light_power = 0.8
 	light_on = FALSE

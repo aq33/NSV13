@@ -1,13 +1,15 @@
 /obj/item/melee/transforming
 	sharpness = IS_SHARP
+	bleed_force = 0
 	var/active = FALSE
 	var/force_on = 30 //force when active
 	var/faction_bonus_force = 0 //Bonus force dealt against certain factions
 	var/throwforce_on = 20
+	var/bleed_force_on = BLEED_CUT
 	var/icon_state_on = "axe1"
 	var/hitsound_on = 'sound/weapons/blade1.ogg'
-	var/list/attack_verb_on = list("attacked", "slashed", "stabbed", "sliced", "tore", "ripped", "diced", "cut")
-	var/list/attack_verb_off = list("attacked", "slashed", "stabbed", "sliced", "tore", "ripped", "diced", "cut")
+	var/list/attack_verb_on = list("atakuje", "ciacha", "dźga", "kroi", "rozdziera", "rozrywa", "sieka", "tnie")
+	var/list/attack_verb_off = list("atakuje", "ciacha", "dźga", "kroi", "rozdziera", "rozrywa", "sieka", "tnie")
 	w_class = WEIGHT_CLASS_SMALL
 	var/bonus_active = FALSE //If the faction damage bonus is active
 	var/list/nemesis_factions //Any mob with a faction that exists in this list will take bonus damage/effects
@@ -30,8 +32,8 @@
 			attack_verb = attack_verb_off
 		if(embedding)
 			updateEmbedding()
-	if(is_sharp())
-		AddComponent(/datum/component/butchering, 50, 100, 0, hitsound, !active)
+	if(sharpness)
+		AddComponent(/datum/component/butchering, 50, 100, 0, hitsound)
 
 /obj/item/melee/transforming/attack_self(mob/living/carbon/user)
 	if(transform_weapon(user))
@@ -61,6 +63,7 @@
 			attack_verb = attack_verb_on
 		icon_state = icon_state_on
 		w_class = w_class_on
+		bleed_force = bleed_force_on
 		if(embedding)
 			updateEmbedding()
 	else
@@ -72,15 +75,9 @@
 			attack_verb = attack_verb_off
 		icon_state = initial(icon_state)
 		w_class = initial(w_class)
+		bleed_force = initial(bleed_force)
 		if(embedding)
 			disableEmbedding()
-	if(is_sharp())
-		var/datum/component/butchering/BT = LoadComponent(/datum/component/butchering)
-		BT.butchering_enabled = TRUE
-	else
-		var/datum/component/butchering/BT = GetComponent(/datum/component/butchering)
-		if(BT)
-			BT.butchering_enabled = FALSE
 	transform_messages(user, supress_message_text)
 	add_fingerprint(user)
 	return TRUE
@@ -95,5 +92,5 @@
 
 /obj/item/melee/transforming/proc/clumsy_transform_effect(mob/living/user)
 	if(clumsy_check && HAS_TRAIT(user, TRAIT_CLUMSY) && prob(50))
-		to_chat(user, "<span class='warning'>You accidentally cut yourself with [src], like a doofus!</span>")
+		to_chat(user, "<span class='warning'>Przypadkiem kaleczysz się [src], jak ostatnia oferma!</span>")
 		user.take_bodypart_damage(5,5)

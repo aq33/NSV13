@@ -130,15 +130,15 @@
 
 /datum/action/vehicle/sealed/horn/Trigger()
 	if(world.time - last_honk_time > 20)
-		vehicle_entered_target.visible_message("<span class='danger'>[vehicle_entered_target] loudly honks!</span>")
-		to_chat(owner, "<span class='notice'>You press the vehicle's horn.</span>")
+		vehicle_entered_target.visible_message("<span class='danger'>[vehicle_entered_target] głośno trąbi!</span>")
+		to_chat(owner, "<span class='notice'>Naciskasz klakson pojazdu.</span>")
 		playsound(vehicle_entered_target, hornsound, 75)
 		last_honk_time = world.time
 
 /datum/action/vehicle/sealed/horn/clowncar/Trigger()
 	if(world.time - last_honk_time > 20)
-		vehicle_entered_target.visible_message("<span class='danger'>[vehicle_entered_target] loudly honks!</span>")
-		to_chat(owner, "<span class='notice'>You press the vehicle's horn.</span>")
+		vehicle_entered_target.visible_message("<span class='danger'>[vehicle_entered_target] głośno trąbi!</span>")
+		to_chat(owner, "<span class='notice'>Naciskasz klakson pojazdu.</span>")
 		last_honk_time = world.time
 		if(vehicle_target.inserted_key)
 			vehicle_target.inserted_key.attack_self(owner) //The key plays a sound
@@ -151,7 +151,7 @@
 	button_icon_state = "car_dump"
 
 /datum/action/vehicle/sealed/DumpKidnappedMobs/Trigger()
-	vehicle_entered_target.visible_message("<span class='danger'>[vehicle_entered_target] starts dumping the people inside of it.</span>")
+	vehicle_entered_target.visible_message("<span class='danger'>[vehicle_entered_target] zaczyna wysypywać ludzi ze środka.</span>")
 	vehicle_entered_target.DumpSpecificMobs(VEHICLE_CONTROL_KIDNAPPED)
 
 
@@ -174,7 +174,7 @@
 	if(istype(vehicle_entered_target, /obj/vehicle/sealed/car/clowncar))
 		var/obj/vehicle/sealed/car/clowncar/C = vehicle_entered_target
 		if(C.cannonbusy)
-			to_chat(owner, "<span class='notice'>Please wait for the vehicle to finish its current action first.</span>")
+			to_chat(owner, "<span class='notice'>Poczekaj, aż pojazd zakończy obecną czynność.</span>")
 		C.ToggleCannon()
 
 /datum/action/vehicle/sealed/Thank
@@ -188,7 +188,7 @@
 		var/obj/vehicle/sealed/car/clowncar/C = vehicle_entered_target
 		if(world.time >= last_thank_time + 60)
 			var/mob/living/carbon/human/clown = pick(C.return_drivers())
-			owner.say("Thank you for the fun ride, [clown.name]!")
+			owner.say("Dzięki za fajną przejażdżkę, [clown.name]!")
 			last_thank_time = world.time
 			C.ThanksCounter()
 
@@ -212,7 +212,7 @@
 			V.unbuckle_mob(L)
 			L.throw_at(landing_turf, 2, 2)
 			L.Paralyze(40)
-			V.visible_message("<span class='danger'>[L] misses the landing and falls on [L.p_their()] face!</span>")
+			V.visible_message("<span class='danger'>[L] nie trafia w lądowanie i pada na twarz!</span>")
 		else
 			L.spin(4, 1)
 			animate(L, pixel_y = -6, time = 4)
@@ -244,13 +244,13 @@
 		V.unbuckle_mob(L)
 		L.Paralyze(50)
 		if(prob(15))
-			V.visible_message("<span class='userdanger'>You smack against the board, hard.</span>", "<span class='danger'>[L] misses the landing and falls on [L.p_their()] face!</span>")
+			V.visible_message("<span class='userdanger'>Mocno uderzasz o deskę.</span>", "<span class='danger'>[L] nie trafia w lądowanie i pada na twarz!</span>")
 			L.emote("scream")
 			L.adjustBruteLoss(10)  // thats gonna leave a mark
 			return
-		V.visible_message("<span class='userdanger'>You fall flat onto the board!</span>", "<span class='danger'>[L] misses the landing and falls on [L.p_their()] face!</span>")
+		V.visible_message("<span class='userdanger'>Padasz płasko na deskę!</span>", "<span class='danger'>[L] nie trafia w lądowanie i pada na twarz!</span>")
 	else
-		L.visible_message("<span class='notice'>[L] does a sick kickflip and catches [L.p_their()] board in midair.</span>", "<span class='notice'>You do a sick kickflip, catching the board in midair! Stylish.</span>")
+		L.visible_message("<span class='notice'>[L] robi odjazdowy kickflip i łapie deskę w powietrzu.</span>", "<span class='notice'>Robisz odjazdowy kickflip, łapiąc deskę w powietrzu! Stylowo.</span>")
 		playsound(V, 'sound/vehicles/skateboard_ollie.ogg', 50, TRUE)
 		L.spin(4, 1)
 		animate(L, pixel_y = -6, time = 4)

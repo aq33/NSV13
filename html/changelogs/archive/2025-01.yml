@@ -1,0 +1,29 @@
+'2025-01-03':
+  SerynEngi:
+  - tweak: Hammerhead hangar munitions trolleys now visible.
+  - tweak: Hammerhead Capt. Office now has Command and Communications Consoles
+  someone543:
+  - tweak: Midshipmen that are not assigned to important departments get put in squads
+'2025-01-10':
+  DeltaFire15:
+  - code_imp: Reworked the overmap vs overmap ramming damage code.
+  - balance: Hammerheads now have a frontal "guard angle" which supports head-on collisions.
+  - bugfix: Fighters shouldn't runtime anymore if nobody is in them when they try
+      to shake occupants.
+  Karmic-Skink:
+  - bugfix: Fixed mapping filter/mixer icons
+  NotRanged, Azarak, DeltaFire15:
+  - rscadd: Tails should now be visible in hardsuits that support them.
+  - imageadd: Tails in hardsuits.
+'2025-01-30':
+  Bokkiewokkie:
+  - rscadd: Added elite Syndicate sub-spacemarines.
+  - rscadd: Added the possibility for elite fleets to spawn at high enough difficulties.
+  - balance: Buffed Syndicate border defense fleets.
+  - spellcheck: Fixed the fist of sol not having a proper name.
+  DeltaFire15:
+  - rscadd: Munitions pinpointers, specialized to track critical munitions items (mostly
+      circuits)
+  - code_imp: Destroy preservation got moved from ALL /parts of munitions to ONLY
+      firing electronics (for that subset of types), as a lot of /parts are meant
+      to be destroyed, a lot.

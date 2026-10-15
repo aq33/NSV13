@@ -126,7 +126,7 @@
 			biogen.points -= amount
 
 /obj/machinery/replicator/attackby(obj/item/O, mob/user, params)
-	if(user.a_intent == INTENT_HARM)
+	if(user.combat_mode)
 		return ..()
 
 	if(default_deconstruction_screwdriver(user, "replicator-o", "replicator-on", O))
@@ -137,9 +137,9 @@
 
 	if(istype(O, /obj/item/disk/design_disk/replicator))
 		user.visible_message(
-			"<span class='notice'>[user] begins to load \the [O] in \the [src]...</span>",
-			"<span class='notice'>You begin to load designs from \the [O]...</span>",
-			"<span class='hear'>You hear the clatter of a floppy drive.</span>"
+			"<span class='notice'>[user] zaczyna wczytywać [O] do [src]...</span>",
+			"<span class='notice'>Zaczynasz wczytywać wzory z [O]...</span>",
+			"<span class='hear'>Słyszysz terkot stacji dyskietek.</span>"
 		)
 		var/obj/item/disk/design_disk/replicator/replicator_design_disk = O
 		if(do_after(user, 2 SECONDS, target = src))
@@ -150,25 +150,25 @@
 
 	var/success = FALSE
 	if(istype(O, /obj/item/reagent_containers/food/drinks/drinkingglass) || istype(O, /obj/item/trash))
-		visible_message("<span class='warning'>[O] is vaporized by [src]</span>")
+		visible_message("<span class='warning'>[src] odparowuje [O]</span>")
 		playsound(src, 'nsv13/sound/effects/replicator-vaporize.ogg', 100, 1)
 		qdel(O)
 		return FALSE
 
-	if(istype(O, /obj/item/reagent_containers/food/snacks))
+	if(istype(O, /obj/item/food) || istype(O, /obj/item/food))
 		convert_to_biomass(O)
 		success = TRUE
 	else if(istype(O, /obj/item/storage/bag/plants))
 		var/obj/item/storage/bag/plants/P = O
-		for(var/obj/item/reagent_containers/food/snacks/grown/G in P.contents)
+		for(var/obj/item/food/grown/G in P.contents)
 			convert_to_biomass(G)
 			success = TRUE
 
 	if(success)
 		if(istype(O, /obj/item/storage/bag/plants))
-			visible_message("<span class='warning'>The contents of [O] is vaporized by [src]</span>")
+			visible_message("<span class='warning'>[src] odparowuje zawartość [O]</span>")
 		else
-			visible_message("<span class='warning'>[O] is vaporized by [src]</span>")
+			visible_message("<span class='warning'>[src] odparowuje [O]</span>")
 		playsound(src, 'nsv13/sound/effects/replicator-vaporize.ogg', 100, 1)
 		use_power(50)
 		return
@@ -177,7 +177,7 @@
 	if(istype(M))
 		if(istype(M.buffer, /obj/machinery/biogenerator))
 			biogen = M.buffer
-			to_chat(user, "<span class='notice'>You link [src] to the biogenerator in [M]'s buffer.</span>")
+			to_chat(user, "<span class='notice'>Łączysz [src] z biogeneratorem z bufora [M].</span>")
 			return TRUE
 
 /obj/machinery/replicator/ui_status(mob/user)
@@ -232,7 +232,7 @@
 			var/costs = 0
 			if(D.build_path)
 				var/obj/item/temporary = new D.build_path
-				if(istype(temporary, /obj/item/reagent_containers/food))
+				if(istype(temporary, /obj/item/reagent_containers/food) || istype(temporary, /obj/item/food))
 					costs = temporary.reagents.get_reagent_amount(/datum/reagent/consumable/nutriment)
 				else
 					costs = D.cost ? D.cost : 5
@@ -253,7 +253,7 @@
 	switch(action)
 		if("replicate")
 			if(!ready)
-				say("I'm not ready to replicate yet!")
+				say("Nie jestem jeszcze gotowy do replikacji!")
 				return
 
 			var/repli = params["id"]
@@ -280,7 +280,7 @@
 
 /obj/machinery/replicator/emag_act(mob/user)
 	if(!emagged)
-		to_chat(user, "<span class='warning'>You corrupt the chemical processors.</span>")
+		to_chat(user, "<span class='warning'>Psujesz procesory chemiczne.</span>")
 		emagged = TRUE
 
 /obj/machinery/replicator/RefreshParts()
@@ -294,7 +294,7 @@
 /obj/machinery/replicator/examine(mob/user)
 	. = ..()
 	ui_interact(user)
-	to_chat(user, "<span class='notice'>Fuel reserves: <b>[return_store()]</b>. Click it with any biomatter to recharge.</span>")
+	to_chat(user, "<span class='notice'>Zapas paliwa: <b>[return_store()]</b>. Kliknij go dowolną biomasą, by uzupełnić.</span>")
 
 /obj/machinery/replicator/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, message_mode)
 	. = ..()
@@ -350,7 +350,7 @@
 	menutype = READY
 	ready = TRUE
 
-/obj/machinery/replicator/proc/convert_to_biomass(obj/item/reagent_containers/food/snacks/S)
+/obj/machinery/replicator/proc/convert_to_biomass(obj/item/S)
 	var/nutrimentgain = S.reagents.get_reagent_amount(/datum/reagent/consumable/nutriment)
 	if(nutrimentgain < 0.1)
 		nutrimentgain = 5 * matter_energy_efficiency
@@ -390,7 +390,7 @@
 					if(5)
 						new /mob/living/simple_animal/hostile/carp(get_turf(src))
 					if(6)
-						food = new /obj/item/reagent_containers/food/snacks/soup/mystery(get_turf(src))
+						food = new /obj/item/food/soup/mystery(get_turf(src))
 				playsound(src.loc, 'sound/effects/explosion3.ogg', 50, 1)
 				var/datum/effect_system/smoke_spread/bad/smoke = new
 				smoke.set_up(2, src.loc)
@@ -398,7 +398,7 @@
 				del(src)
 				return
 			else
-				food = new /obj/item/reagent_containers/food/snacks/soup/mystery(get_turf(src))
+				food = new /obj/item/food/soup/mystery(get_turf(src))
 		if("coffee")
 			food = new /obj/item/reagent_containers/food/drinks/coffee(get_turf(src))
 			food.name = "coffee"
@@ -409,7 +409,7 @@
 				food.reagents.remove_reagent(/datum/reagent/consumable/coffee, coffee)
 		if("activate iguana")
 			if(length(iguanas) > 9)
-				say("You have reached the iguana limit!")
+				say("Osiągnięto limit legwanów!")
 				return
 			iguanas += new /mob/living/simple_animal/kalo/leonard(get_turf(src))
 		if("deactivate iguana")
@@ -424,7 +424,7 @@
 	if(check_store(nutriment) && check_store(5))
 		//time to check laser power.
 		if(prob(6-failure_grade)) //Chance to make a burned mess so the chef is still useful.
-			var/obj/item/reagent_containers/food/snacks/badrecipe/neelixcooking = new /obj/item/reagent_containers/food/snacks/badrecipe(get_turf(src))
+			var/obj/item/food/badrecipe/neelixcooking = new /obj/item/food/badrecipe(get_turf(src))
 			neelixcooking.name = "replicator mess"
 			neelixcooking.desc = "perhaps you should invest in some higher quality parts."
 			connection_use(5, decrease = TRUE)
@@ -453,7 +453,7 @@
 			var/currentHandIndex = user.get_held_index_of_item(food)
 			user.put_in_hand(food, currentHandIndex)
 	else
-		visible_message("<span_class='warning'>Insufficient fuel to create [food.name]. [src] requires [nutriment] U of biomatter.</span>")
+		visible_message("<span_class='warning'>Za mało paliwa, by stworzyć [food.name]. [src] wymaga [nutriment] j. biomasy.</span>")
 		qdel(food) //NO FOOD FOR YOU!
 		return
 
@@ -475,7 +475,7 @@
 //Tasteless alternative to lipolicide, less powerful. This has the reverse of the intended effect of a replicator and makes you hungrier.
 /datum/reagent/toxin/munchyserum
 	name = "Metabolism Override Toxin"
-	description = "A strong toxin that increases the appetite of their victim while dampening their ability to absorb nutrients for as long as it is in their system."
+	description = "Silna toksyna, która zwiększa apetyt ofiary, jednocześnie osłabiając zdolność przyswajania składników odżywczych, dopóki pozostaje w organizmie."
 	silent_toxin = TRUE
 	reagent_state = LIQUID
 	taste_mult = 0 //no flavor

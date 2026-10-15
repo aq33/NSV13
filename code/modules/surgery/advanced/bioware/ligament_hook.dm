@@ -18,14 +18,14 @@
 	time = 125
 
 /datum/surgery_step/reshape_ligaments/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You start reshaping [target]'s ligaments into a hook-like shape.</span>",
-		"[user] starts reshaping [target]'s ligaments into a hook-like shape.",
-		"[user] starts manipulating [target]'s ligaments.")
+	display_results(user, target, "<span class='notice'>Zaczynasz przekształcać więzadła [target] w kształt haka.</span>",
+		"[user] zaczyna przekształcać więzadła [target] w kształt haka.",
+		"[user] zaczyna manipulować więzadłami [target].")
 
 /datum/surgery_step/reshape_ligaments/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You reshape [target]'s ligaments into a connective hook!</span>",
-		"[user] reshapes [target]'s ligaments into a connective hook!",
-		"[user] finishes manipulating [target]'s ligaments.")
+	display_results(user, target, "<span class='notice'>Przekształcasz więzadła [target] w łączący hak!</span>",
+		"[user] przekształca więzadła [target] w łączący hak!",
+		"[user] kończy manipulować więzadłami [target].")
 	new /datum/bioware/hooked_ligaments(target)
 	return TRUE
 

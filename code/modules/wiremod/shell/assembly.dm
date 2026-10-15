@@ -35,7 +35,7 @@
 
 /obj/item/circuit_component/assembly
 	display_name = "Moddable Assembly"
-	display_desc = "Connects to an attached assembly"
+	display_desc = "Łączy się z podłączonym zespołem"
 	var/datum/port/input/pulse_in
 	var/datum/port/output/pulse_out
 

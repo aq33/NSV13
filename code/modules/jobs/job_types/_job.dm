@@ -125,11 +125,11 @@
 				else if(!G.allowed_roles)
 					permitted = TRUE
 				else
-					to_chat(M, "<span class='warning'>Your current role does not permit you to spawn with [gear]!</span>")
+					to_chat(M, "<span class='warning'>Twoja obecna rola nie pozwala ci pojawić się z: [gear]!</span>")
 					permitted = FALSE
 
 				if(G.species_blacklist && (human.dna.species.id in G.species_blacklist))
-					to_chat(M, "<span class='warning'>Your current species does not permit you to spawn with [gear]!</span>")
+					to_chat(M, "<span class='warning'>Twój obecny gatunek nie pozwala ci pojawić się z: [gear]!</span>")
 					permitted = FALSE
 
 				if(G.species_whitelist && !(human.dna.species.id in G.species_whitelist))
@@ -137,25 +137,25 @@
 
 				if(G.unlocktype == GEAR_DONATOR) //Strip out donation items if the patreon has expired or they somehow have someone else's gear datum.
 					if(M.client.ckey != G.ckey)
-						to_chat(M, "<span class='warning'>You somehow have someone else's donator item! Call a coder. Item: [gear]</span>")
+						to_chat(M, "<span class='warning'>Jakimś cudem masz cudzy przedmiot donatora! Wezwij programistę. Przedmiot: [gear]</span>")
 						message_admins("[ADMIN_LOOKUPFLW(M)] Somehow equipped the donator gear of [G.ckey]. It has been removed.")
 						M.client.prefs.active_character.equipped_gear -= gear
 						M.client.prefs.purchased_gear -= gear
 						permitted = FALSE
 					if(!(M.client.ckey in config.active_donators))
-						to_chat(M, "<span class='warning'>Your patreon has expired! Your donator item has been removed. Item: [gear]</span>")
+						to_chat(M, "<span class='warning'>Twój patronat na Patreonie wygasł! Usunięto twój przedmiot donatora. Przedmiot: [gear]</span>")
 						M.client.prefs.active_character.equipped_gear -= gear
 						M.client.prefs.purchased_gear -= gear
 						permitted = FALSE
 
 				if(!permitted)
-					to_chat(M, "<span class='warning'>Your current species or role does not permit you to spawn with [G.display_name]!</span>")
+					to_chat(M, "<span class='warning'>Twój obecny gatunek lub rola nie pozwala ci pojawić się z: [G.display_name]!</span>")
 					continue
 
 
 				if(G.slot)
 					if(H.equip_to_slot_or_del(G.spawn_item(H), G.slot))
-						to_chat(M, "<span class='notice'>Equipping you with [G.display_name]!</span>")
+						to_chat(M, "<span class='notice'>Zakładanie: [G.display_name]!</span>")
 					else
 						gear_leftovers += G
 				else
@@ -172,25 +172,25 @@
 
 			if(istype(placed_in))
 				if(isturf(placed_in))
-					to_chat(M, "<span class='notice'>Placing [G.display_name] on [placed_in]!</span>")
+					to_chat(M, "<span class='notice'>Umieszczanie [G.display_name] na [placed_in]!</span>")
 				else
-					to_chat(M, "<span class='noticed'>Placing [G.display_name] in [placed_in.name]]")
+					to_chat(M, "<span class='noticed'>Umieszczanie [G.display_name] w [placed_in.name]]")
 				continue
 
 			if(H.equip_to_appropriate_slot(item))
-				to_chat(M, "<span class='notice'>Placing [G.display_name] in your inventory!</span>")
+				to_chat(M, "<span class='notice'>Umieszczanie [G.display_name] w twoim ekwipunku!</span>")
 				continue
 			if(H.put_in_hands(item))
-				to_chat(M, "<span class='notice'>Placing [G.display_name] in your hands!</span>")
+				to_chat(M, "<span class='notice'>Umieszczanie [G.display_name] w twoich rękach!</span>")
 				continue
 
 			var/obj/item/storage/B = (locate() in H)
 			if(B)
 				G.spawn_item(B, metadata)
-				to_chat(M, "<span class='notice'>Placing [G.display_name] in [B.name]!</span>")
+				to_chat(M, "<span class='notice'>Umieszczanie [G.display_name] w [B.name]!</span>")
 				continue
 
-			to_chat(M, "<span class='danger'>Failed to locate a storage object on your mob, either you spawned with no hands free and no backpack or this is a bug.</span>")
+			to_chat(M, "<span class='danger'>Nie znaleziono pojemnika na twojej postaci; albo pojawiłeś się bez wolnych rąk i plecaka, albo to błąd.</span>")
 			qdel(item)
 
 /datum/job/proc/announce(mob/living/carbon/human/H)
@@ -289,7 +289,7 @@
 	return TRUE
 
 /datum/job/proc/radio_help_message(mob/M)
-	to_chat(M, "<b>Prefix your message with :h to speak on your department's radio. To see other prefixes, look closely at your headset.</b>")
+	to_chat(M, "<b>Poprzedź wiadomość :h, by mówić na radiu swojego działu. Inne prefiksy zobaczysz, przyglądając się swojemu zestawowi słuchawkowemu.</b>")
 
 /datum/outfit/job
 	name = "Standard Gear"
@@ -311,21 +311,22 @@
 	var/pda_slot = ITEM_SLOT_BELT
 
 /datum/outfit/job/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
-	switch(H.backbag)
-		if(GBACKPACK)
-			back = /obj/item/storage/backpack //Grey backpack
-		if(GSATCHEL)
-			back = /obj/item/storage/backpack/satchel //Grey satchel
-		if(GDUFFELBAG)
-			back = /obj/item/storage/backpack/duffelbag //Grey Duffel bag
-		if(LSATCHEL)
-			back = /obj/item/storage/backpack/satchel/leather //Leather Satchel
-		if(DSATCHEL)
-			back = satchel //Department satchel
-		if(DDUFFELBAG)
-			back = duffelbag //Department duffel bag
-		else
-			back = backpack //Department backpack
+	if(ispath(back, /obj/item/storage/backpack)) //don't replace MODsuits and other back items with the preferred bag
+		switch(H.backbag)
+			if(GBACKPACK)
+				back = /obj/item/storage/backpack //Grey backpack
+			if(GSATCHEL)
+				back = /obj/item/storage/backpack/satchel //Grey satchel
+			if(GDUFFELBAG)
+				back = /obj/item/storage/backpack/duffelbag //Grey Duffel bag
+			if(LSATCHEL)
+				back = /obj/item/storage/backpack/satchel/leather //Leather Satchel
+			if(DSATCHEL)
+				back = satchel //Department satchel
+			if(DDUFFELBAG)
+				back = duffelbag //Department duffel bag
+			else
+				back = backpack //Department backpack
 
 	//converts the uniform string into the path we'll wear, whether it's the skirt or regular variant
 	var/holder = "[uniform]" //NSV13 - no skirts

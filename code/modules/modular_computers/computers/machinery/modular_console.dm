@@ -49,7 +49,7 @@
 	else if(console_department)
 		network_card.identification_string = replacetext(replacetext(replacetext("[console_department] Console", " ", "_"), "-", ""), "__", "_")
 	else
-		network_card.identification_string = "Unknown Console"
+		network_card.identification_string = "Nieznana konsola"
 	if(cpu)
 		cpu.screen_on = 1
 	update_icon()

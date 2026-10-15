@@ -8,13 +8,13 @@
 	environment_smash = ENVIRONMENT_SMASH_WALLS
 	minbodytemp = 0
 	maxbodytemp = INFINITY
-	response_help = "pokes"
-	response_disarm = "shoves"
-	response_harm = "strikes"
+	response_help = "szturcha"
+	response_disarm = "popycha"
+	response_harm = "uderza"
 	status_flags = 0
-	a_intent = INTENT_HARM
+	combat_mode = TRUE
 	var/crusher_loot
-	var/throw_message = "bounces off of"
+	var/throw_message = "odbija się od"
 	var/fromtendril = FALSE
 	see_in_dark = 8
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
@@ -40,7 +40,7 @@
 		Aggro()
 	if(P.damage < 30 && P.damage_type != BRUTE)
 		P.damage = (P.damage / 3)
-		visible_message("<span class='danger'>[P] has a reduced effect on [src]!</span>")
+		visible_message("<span class='danger'>[P] ma osłabione działanie na [src]!</span>")
 	..()
 
 /mob/living/simple_animal/hostile/asteroid/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum) //No floor tiling them to death, wiseguy

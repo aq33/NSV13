@@ -272,7 +272,7 @@
 	var/exterior_status = "----"
 	var/interior_status = "----"
 	var/pump_status = "----"
-	var/current_status = "Inactive<BR>&nbsp;"
+	var/current_status = "Nieaktywny<BR>&nbsp;"
 	if(program)
 		state = program.state
 		sensor_pressure = program.memory["sensor_pressure"] ? program.memory["sensor_pressure"] : "----"
@@ -282,22 +282,22 @@
 
 	switch(state)
 		if(AIRLOCK_STATE_INOPEN)
-			state_options = {"<A href='?src=[REF(src)];command=cycle_closed'>Close Interior Airlock</A><BR>
-<A href='?src=[REF(src)];command=cycle_exterior'>Cycle to Exterior Airlock</A><BR>"}
-			current_status = "Interior Airlock Open<BR><span class='good'>Chamber Pressurized</span>"
+			state_options = {"<A href='byond://?src=[REF(src)];command=cycle_closed'>Close Interior Airlock</A><BR>
+<A href='byond://?src=[REF(src)];command=cycle_exterior'>Cycle to Exterior Airlock</A><BR>"}
+			current_status = "Wewnętrzna śluza otwarta<BR><span class='good'>Komora pod ciśnieniem</span>"
 		if(AIRLOCK_STATE_PRESSURIZE)
-			state_options = "<A href='?src=[REF(src)];command=abort'>Abort Cycling</A><BR>"
-			current_status = "Cycling to Interior Airlock<BR><span class='average'>Chamber Pressurizing</span>"
+			state_options = "<A href='byond://?src=[REF(src)];command=abort'>Przerwij cykl</A><BR>"
+			current_status = "Cykl do wewnętrznej śluzy<BR><span class='average'>Napełnianie komory</span>"
 		if(AIRLOCK_STATE_CLOSED)
-			state_options = {"<A href='?src=[REF(src)];command=cycle_interior'>Open Interior Airlock</A><BR>
-<A href='?src=[REF(src)];command=cycle_exterior'>Open Exterior Airlock</A><BR>"}
+			state_options = {"<A href='byond://?src=[REF(src)];command=cycle_interior'>Open Interior Airlock</A><BR>
+<A href='byond://?src=[REF(src)];command=cycle_exterior'>Open Exterior Airlock</A><BR>"}
 		if(AIRLOCK_STATE_DEPRESSURIZE)
-			state_options = "<A href='?src=[REF(src)];command=abort'>Abort Cycling</A><BR>"
-			current_status = "Cycling to Exterior Airlock<BR><span class='average'>Chamber Depressurizing</span>"
+			state_options = "<A href='byond://?src=[REF(src)];command=abort'>Przerwij cykl</A><BR>"
+			current_status = "Cykl do zewnętrznej śluzy<BR><span class='average'>Opróżnianie komory</span>"
 		if(AIRLOCK_STATE_OUTOPEN)
-			state_options = {"<A href='?src=[REF(src)];command=cycle_interior'>Cycle to Interior Airlock</A><BR>
-<A href='?src=[REF(src)];command=cycle_closed'>Close Exterior Airlock</A><BR>"}
-			current_status = "Exterior Airlock Open<BR><span class='bad'>Chamber Depressurized</span>"
+			state_options = {"<A href='byond://?src=[REF(src)];command=cycle_interior'>Cycle to Interior Airlock</A><BR>
+<A href='byond://?src=[REF(src)];command=cycle_closed'>Close Exterior Airlock</A><BR>"}
+			current_status = "Zewnętrzna śluza otwarta<BR><span class='bad'>Komora bez ciśnienia</span>"
 
 	var/output = {"<h3>Airlock Status</h3>
 <div class='statusDisplay'>

@@ -39,7 +39,7 @@
 		user.changeNext_move(CLICK_CD_MELEE)
 		user.do_attack_animation(src)
 		structureclimber.Paralyze(40)
-		structureclimber.visible_message("<span class='warning'>[structureclimber] has been knocked off [src].", "You're knocked off [src]!", "You see [structureclimber] get knocked off [src].</span>")
+		structureclimber.visible_message("<span class='warning'>[structureclimber] zostaje zrzucony z [src].", "Zostajesz zrzucony z [src]!", "Widzisz, jak [structureclimber] zostaje zrzucony z [src].</span>")
 
 /obj/structure/ui_act(action, params)
 	. = ..()
@@ -72,7 +72,7 @@
 /obj/structure/proc/climb_structure(mob/living/user)
 	add_fingerprint(user)
 	user.visible_message("<span class='warning'>[user] starts climbing onto [src].</span>", \
-								"<span class='notice'>You start climbing onto [src]...</span>")
+								"<span class='notice'>Zaczynasz wspinać się na [src]...</span>")
 	var/adjusted_climb_time = climb_time
 	if(user.restrained()) //climbing takes twice as long when restrained.
 		adjusted_climb_time *= 2
@@ -85,22 +85,22 @@
 		if(src.loc) //Checking if structure has been destroyed
 			if(do_climb(user))
 				user.visible_message("<span class='warning'>[user] climbs onto [src].</span>", \
-									"<span class='notice'>You climb onto [src].</span>")
+									"<span class='notice'>Wspinasz się na [src].</span>")
 				log_combat(user, src, "climbed onto")
 				if(climb_stun)
 					user.Stun(climb_stun)
 				. = 1
 			else
-				to_chat(user, "<span class='warning'>You fail to climb onto [src].</span>")
+				to_chat(user, "<span class='warning'>Nie udaje ci się wspiąć na [src].</span>")
 	structureclimber = null
 
 /obj/structure/examine(mob/user)
 	. = ..()
 	if(!(resistance_flags & INDESTRUCTIBLE))
 		if(resistance_flags & ON_FIRE)
-			. += "<span class='warning'>It's on fire!</span>"
+			. += "<span class='warning'>Płonie!</span>"
 		if(broken)
-			. += "<span class='notice'>It appears to be broken.</span>"
+			. += "<span class='notice'>Wygląda na zepsuty.</span>"
 		var/examine_status = examine_status(user)
 		if(examine_status)
 			. += examine_status
@@ -109,12 +109,12 @@
 	var/healthpercent = (obj_integrity/max_integrity) * 100
 	switch(healthpercent)
 		if(50 to 99)
-			return  "It looks slightly damaged."
+			return  "Wygląda na lekko uszkodzony."
 		if(25 to 50)
-			return  "It appears heavily damaged."
+			return  "Wygląda na mocno uszkodzony."
 		if(0 to 25)
 			if(!broken)
-				return  "<span class='warning'>It's falling apart!</span>"
+				return  "<span class='warning'>Rozpada się!</span>"
 
 /obj/structure/rust_heretic_act()
 	take_damage(500, BRUTE, "melee", 1)

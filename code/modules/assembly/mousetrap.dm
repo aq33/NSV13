@@ -22,7 +22,7 @@
 
 /obj/item/assembly/mousetrap/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>The pressure plate is [armed?"primed":"safe"].</span>"
+	. += "<span class='notice'>Płytka naciskowa jest [armed?"uzbrojona":"zabezpieczona"].</span>"
 
 /obj/item/assembly/mousetrap/activate()
 	if(..())
@@ -31,7 +31,7 @@
 			if(ishuman(usr))
 				var/mob/living/carbon/human/user = usr
 				if((HAS_TRAIT(user, TRAIT_DUMB) || HAS_TRAIT(user, TRAIT_CLUMSY)) && prob(50))
-					to_chat(user, "<span class='warning'>Your hand slips, setting off the trigger!</span>")
+					to_chat(user, "<span class='warning'>Ręka ci się ześlizguje, uruchamiając spust!</span>")
 					pulse(FALSE)
 		update_icon()
 		playsound(src, 'sound/weapons/handcuffs.ogg', 30, TRUE, -3)
@@ -80,6 +80,13 @@
 		var/mob/living/simple_animal/mouse/M = target
 		visible_message("<span class='boldannounce'>SPLAT!</span>")
 		M.splat()
+	else if(israt(target)) // AQUILA EDIT - szczury z tg
+		var/mob/living/simple_animal/hostile/rat/rat = target
+		visible_message("<span class='boldannounce'>Klik!</span>")
+		rat.apply_damage(5) // nie zabija, ale zostawia ślad
+		rat.Stun(1 SECONDS)
+	else if(isregalrat(target)) // za duży na małą pułapkę
+		visible_message("<span class='boldannounce'>Skriiii!</span>")
 	playsound(src, 'sound/effects/snap.ogg', 50, TRUE)
 	armed = FALSE
 	update_icon()
@@ -88,17 +95,17 @@
 
 /obj/item/assembly/mousetrap/attack_self(mob/living/carbon/human/user)
 	if(!armed)
-		to_chat(user, "<span class='notice'>You arm [src].</span>")
+		to_chat(user, "<span class='notice'>Uzbrajasz [src].</span>")
 	else
 		if((HAS_TRAIT(user, TRAIT_DUMB) || HAS_TRAIT(user, TRAIT_CLUMSY)) && prob(50))
 			var/which_hand = BODY_ZONE_PRECISE_L_HAND
 			if(!(user.active_hand_index % 2))
 				which_hand = BODY_ZONE_PRECISE_R_HAND
 			triggered(user, which_hand)
-			user.visible_message("<span class='warning'>[user] accidentally sets off [src], breaking their fingers.</span>", \
-								 "<span class='warning'>You accidentally trigger [src]!</span>")
+			user.visible_message("<span class='warning'>[user] przypadkowo uruchamia [src], łamiąc sobie palce.</span>", \
+								 "<span class='warning'>Przypadkowo uruchamiasz [src]!</span>")
 			return
-		to_chat(user, "<span class='notice'>You disarm [src].</span>")
+		to_chat(user, "<span class='notice'>Rozbrajasz [src].</span>")
 	armed = !armed
 	update_icon()
 	playsound(src, 'sound/weapons/handcuffs.ogg', 30, TRUE, -3)
@@ -112,8 +119,8 @@
 			if(!(user.active_hand_index % 2))
 				which_hand = BODY_ZONE_PRECISE_R_HAND
 			triggered(user, which_hand)
-			user.visible_message("<span class='warning'>[user] accidentally sets off [src], breaking their fingers.</span>", \
-								 "<span class='warning'>You accidentally trigger [src]!</span>")
+			user.visible_message("<span class='warning'>[user] przypadkowo uruchamia [src], łamiąc sobie palce.</span>", \
+								 "<span class='warning'>Przypadkowo uruchamiasz [src]!</span>")
 			return
 	return ..()
 
@@ -128,9 +135,9 @@
 					var/mob/living/carbon/H = AM
 					if(H.m_intent == MOVE_INTENT_RUN)
 						INVOKE_ASYNC(src, PROC_REF(triggered), H)
-						H.visible_message("<span class='warning'>[H] accidentally steps on [src].</span>", \
-										  "<span class='warning'>You accidentally step on [src]</span>")
-				else if(ismouse(MM))
+						H.visible_message("<span class='warning'>[H] przypadkowo nadeptuje na [src].</span>", \
+										  "<span class='warning'>Przypadkowo nadeptujesz na [src]</span>")
+				else if(ismouse(MM) || israt(MM) || isregalrat(MM)) // AQUILA EDIT - szczury z tg
 					INVOKE_ASYNC(src, PROC_REF(triggered), MM)
 		else if(AM.density) // For mousetrap grenades, set off by anything heavy
 			INVOKE_ASYNC(src, PROC_REF(triggered), AM)
@@ -138,12 +145,12 @@
 /obj/item/assembly/mousetrap/on_found(mob/finder)
 	if(armed)
 		if(finder)
-			finder.visible_message("<span class='warning'>[finder] accidentally sets off [src], breaking their fingers.</span>", \
-							   "<span class='warning'>You accidentally trigger [src]!</span>")
+			finder.visible_message("<span class='warning'>[finder] przypadkowo uruchamia [src], łamiąc sobie palce.</span>", \
+							   "<span class='warning'>Przypadkowo uruchamiasz [src]!</span>")
 			triggered(finder, (finder.active_hand_index % 2 == 0) ? BODY_ZONE_PRECISE_R_HAND : BODY_ZONE_PRECISE_L_HAND)
 			return TRUE	//end the search!
 		else
-			visible_message("<span class='warning'>[src] snaps shut!</span>")
+			visible_message("<span class='warning'>[src] się zatrzaskuje!</span>")
 			triggered(loc)
 			return FALSE
 	return FALSE
@@ -152,7 +159,7 @@
 /obj/item/assembly/mousetrap/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum)
 	if(!armed)
 		return ..()
-	visible_message("<span class='warning'>[src] is triggered by [AM].</span>")
+	visible_message("<span class='warning'>[AM] uruchamia [src].</span>")
 	triggered(null)
 
 

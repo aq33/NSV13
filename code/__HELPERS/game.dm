@@ -397,35 +397,21 @@
 			active_players++
 	return active_players
 
-/proc/showCandidatePollWindow(mob/M, poll_time, Question, list/candidates, ignore_category, time_passed, flashwindow = TRUE)
-	set waitfor = 0
+// AQ EDIT START - port BeeStation #12738 i #13722: ankiety idą przez SSpolling i pokazują się jako alert,
+// a nie jako okno askuser. Sygnatury zostają, żeby stare wywołania działały bez zmian.
+// Podsystem i alert: aquila/code/controllers/subsystem/polling.dm, aquila/code/_onclick/hud/poll_alert.dm.
 
-	SEND_SOUND(M, 'sound/misc/notice2.ogg') //Alerting them to their consideration
-	if(flashwindow)
-		window_flash(M.client)
-	switch(ignore_category ? askuser(M,Question,"Please answer in [DisplayTimeText(poll_time)]!","Yes","No","Never for this round", StealFocus=0, Timeout=poll_time) : askuser(M,Question,"Please answer in [DisplayTimeText(poll_time)]!","Yes","No", StealFocus=0, Timeout=poll_time))
-		if(1)
-			to_chat(M, "<span class='notice'>Choice registered: Yes.</span>")
-			if(time_passed + poll_time <= world.time)
-				to_chat(M, "<span class='danger'>Sorry, you answered too late to be considered!</span>")
-				SEND_SOUND(M, 'sound/machines/buzz-sigh.ogg')
-				candidates -= M
-			else
-				candidates += M
-		if(2)
-			to_chat(M, "<span class='danger'>Choice registered: No.</span>")
-			candidates -= M
-		if(3)
-			var/list/L = GLOB.poll_ignore[ignore_category]
-			if(!L)
-				GLOB.poll_ignore[ignore_category] = list()
-			GLOB.poll_ignore[ignore_category] += M.ckey
-			to_chat(M, "<span class='danger'>Choice registered: Never for this round.</span>")
-			candidates -= M
-		else
-			candidates -= M
+/// Nazwa roli pokazywana na alercie ankiety: z preferencji roli, a jeśli jej nie ma, z klucza bana (ROLE_*)
+/proc/poll_role_name(banning_key, role_preference_key)
+	if(ispath(role_preference_key, /datum/role_preference))
+		var/datum/role_preference/role_preference = role_preference_key
+		if(initial(role_preference.name))
+			return initial(role_preference.name)
+	if(istext(banning_key) && banning_key != BAN_ROLE_ALL_ANTAGONISTS)
+		return banning_key
+	return null
 
-/proc/pollGhostCandidates(Question, jobbanType, role_preference_key, poll_time = 300, ignore_category = null, flashwindow = TRUE, req_hours = 0)
+/proc/pollGhostCandidates(Question, jobbanType, role_preference_key, poll_time = 300, ignore_category = null, flashwindow = TRUE, req_hours = 0, atom/alert_pic = null)
 	var/list/candidates = list()
 	if(!(GLOB.ghost_role_flags & GHOSTROLE_STATION_SENTIENCE))
 		return candidates
@@ -433,43 +419,36 @@
 	for(var/mob/dead/observer/G in GLOB.player_list)
 		candidates += G
 
-	return pollCandidates(Question, jobbanType, role_preference_key, poll_time, ignore_category, flashwindow, candidates, req_hours)
+	return pollCandidates(Question, jobbanType, role_preference_key, poll_time, ignore_category, flashwindow, candidates, req_hours, alert_pic, POLL_AUTO_ADD_GHOSTS)
 
-/proc/pollCandidates(Question, banning_key, role_preference_key = null, poll_time = 300, poll_ignore_key = null, flashwindow = TRUE, list/group = null, req_hours = 0)
-	var/time_passed = world.time
+/proc/pollCandidates(Question, banning_key, role_preference_key = null, poll_time = 300, poll_ignore_key = null, flashwindow = TRUE, list/group = null, req_hours = 0, atom/alert_pic = null, auto_add_type = POLL_AUTO_ADD_NONE)
 	if (!Question)
-		Question = "Would you like to be a special role?"
+		Question = "Czy chcesz zagrać w specjalnej roli?"
 	if(isnull(poll_ignore_key)) // FALSE will not put one, no matter what
 		if(role_preference_key)
 			poll_ignore_key = "role_[role_preference_key]"
 		else if(banning_key)
 			poll_ignore_key = "ban_[role_preference_key]"
-	var/list/result = list()
-	for(var/m in group)
-		var/mob/M = m
-		if(QDELETED(M) || !M.key || !M.client)
-			continue
-		if(!M.client.should_include_for_role(
-			banning_key = banning_key,
-			role_preference_key = role_preference_key,
-			poll_ignore_key = poll_ignore_key,
-			req_hours = req_hours
-		))
-			continue
-		showCandidatePollWindow(M, poll_time, Question, result, poll_ignore_key, time_passed, flashwindow)
-	sleep(poll_time)
-
-	//Check all our candidates, to make sure they didn't log off or get deleted during the wait period.
-	for(var/mob/M in result)
-		if(!M.key || !M.client)
-			result -= M
-
-	listclearnulls(result)
-
-	return result
+	// Kilka wywołań ma przesunięte argumenty (np. FALSE albo ROLE_* jako czas), stare sleep() kończyło je od razu
+	if(!isnum(poll_time) || poll_time <= 0)
+		poll_time = 30 SECONDS
+	var/datum/poll_config/config = new(
+		question = Question,
+		role = role_preference_key,
+		check_jobban = banning_key,
+		poll_time = poll_time,
+		ignore_category = poll_ignore_key,
+		flash_window = flashwindow,
+		alert_pic = alert_pic,
+		role_name_text = poll_role_name(banning_key, role_preference_key),
+		auto_add_type = auto_add_type,
+		req_hours = req_hours,
+	)
+	var/list/result = SSpolling.poll_candidates(config, group)
+	return islist(result) ? result : list()
 
 /proc/pollCandidatesForMob(Question, jobbanType, role_preference_key, poll_time = 300, mob/M, ignore_category = null)
-	var/list/L = pollGhostCandidates(Question, jobbanType, role_preference_key, poll_time, ignore_category)
+	var/list/L = pollGhostCandidates(Question, jobbanType, role_preference_key, poll_time, ignore_category, alert_pic = M)
 	if(QDELETED(M) || !M.loc)
 		return list()
 	return L
@@ -484,6 +463,7 @@
 		else
 			++i
 	return L
+// AQ EDIT END
 
 /proc/poll_helper(var/mob/living/M)
 
@@ -533,8 +513,7 @@
 		return
 	var/area/A = get_area(character)
 	var/message = "<span class='game deadsay'><span class='name'>\
-		[character.real_name]</span> ([rank]) has arrived at the station at \
-		<span class='name'>[A.name]</span>.</span>"
+		[character.real_name]</span> ([rank]) przybywa na pokład, do: <span class='name'>[A.name]</span>.</span>"
 	deadchat_broadcast(message, follow_target = character, message_type=DEADCHAT_ARRIVALRATTLE)
 	if((!GLOB.announcement_systems.len) || (!character.mind))
 		return

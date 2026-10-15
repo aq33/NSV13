@@ -22,7 +22,7 @@
 
 
 /datum/round_event/beer_clog/announce()
-	priority_announce("The scrubbers network is experiencing an unexpected surge of pressurized beer. Some ejection of contents may occur.", "Atmospherics alert", SSstation.announcer.get_rand_alert_sound())
+	priority_announce("W sieci filtrów powietrza wystąpił niespodziewany przypływ sprężonego piwa. Możliwe wyrzuty zawartości.", "Alarm atmosferyczny", SSstation.announcer.get_rand_alert_sound())
 
 
 /datum/round_event/beer_clog/start()

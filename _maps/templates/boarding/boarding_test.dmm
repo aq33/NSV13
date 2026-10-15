@@ -413,8 +413,8 @@
 /area/ruin/powered/nsv13/boarding_interior)
 "YA" = (
 /obj/structure/closet/crate/freezer,
-/obj/item/reagent_containers/food/snacks/meat/slab,
-/obj/item/reagent_containers/food/snacks/meat/slab,
+/obj/item/food/meat/slab,
+/obj/item/food/meat/slab,
 /turf/open/floor/plasteel/white,
 /area/ruin/powered/nsv13/boarding_interior)
 "YZ" = (

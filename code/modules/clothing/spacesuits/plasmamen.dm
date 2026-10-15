@@ -5,7 +5,7 @@
 	name = "EVA plasma envirosuit"
 	desc = "A special plasma containment suit designed to be space-worthy, as well as worn over other clothing. Like its smaller counterpart, it can automatically extinguish the wearer in a crisis, and holds twice as many charges."
 	allowed = list(/obj/item/gun, /obj/item/ammo_casing, /obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/melee/transforming/energy/sword, /obj/item/restraints/handcuffs, /obj/item/tank)
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 100, "rad" = 0, "fire" = 100, "acid" = 75, "stamina" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 100, "rad" = 0, "fire" = 100, "acid" = 75, "stamina" = 0, "bleed" = 10)
 	resistance_flags = FIRE_PROOF
 	icon_state = "plasmaman_suit"
 	item_state = "plasmaman_suit"
@@ -16,7 +16,7 @@
 
 /obj/item/clothing/suit/space/eva/plasmaman/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>There [extinguishes_left == 1 ? "is" : "are"] [extinguishes_left] extinguisher charge\s left in this suit.</span>"
+	. += "<span class='notice'>W tym kombinezonie pozostało ładunków gaśnicy: [extinguishes_left].</span>"
 
 
 /obj/item/clothing/suit/space/eva/plasmaman/proc/Extinguish(mob/living/carbon/human/H)
@@ -29,7 +29,7 @@
 				return
 			next_extinguish = world.time + extinguish_cooldown
 			extinguishes_left--
-			H.visible_message("<span class='warning'>[H]'s suit automatically extinguishes [H.p_them()]!</span>","<span class='warning'>Your suit automatically extinguishes you.</span>")
+			H.visible_message("<span class='warning'>Kombinezon [H] automatycznie go gasi!</span>","<span class='warning'>Twój kombinezon automatycznie cię gasi.</span>")
 			H.ExtinguishMob()
 			new /obj/effect/particle_effect/water(get_turf(H))
 
@@ -48,9 +48,9 @@
 	strip_delay = 80
 	flash_protect = 2
 	tint = 2
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 100, "rad" = 0, "fire" = 100, "acid" = 75, "stamina" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 100, "rad" = 0, "fire" = 100, "acid" = 75, "stamina" = 0, "bleed" = 10)
 	resistance_flags = FIRE_PROOF
-	light_system = MOVABLE_LIGHT
+	light_system = MOVABLE_LIGHT_DIRECTIONAL
 	light_range = 4
 	light_on = FALSE
 	var/helmet_on = FALSE
@@ -86,15 +86,15 @@
 /obj/item/clothing/head/helmet/space/plasmaman/examine(mob/user)
 	. = ..()
 	if(attached_hat)
-		. += "<span class='notice'>There's \a [attached_hat.name] on the helmet which can be removed through the context menu.</span>"
+		. += "<span class='notice'>Na hełmie jest [attached_hat.name], który można zdjąć z menu kontekstowego.</span>"
 	else
-		. += "<span class='notice'>A hat can be placed on the helmet.</span>"
+		. += "<span class='notice'>Na hełmie można umieścić kapelusz.</span>"
 
 /obj/item/clothing/head/helmet/space/plasmaman/proc/toggle_welding_screen(mob/living/user)
 	if(!weldingvisortoggle(user))
 		return
 	if(helmet_on)
-		to_chat(user, "<span class='notice'>Your helmet's torch can't pass through your welding visor!</span>")
+		to_chat(user, "<span class='notice'>Latarka twojego hełmu nie przebije się przez przyłbicę spawalniczą!</span>")
 		helmet_on = FALSE
 	playsound(src, 'sound/mecha/mechmove03.ogg', 50, 1) //Visors don't just come from nothing
 	update_icon()
@@ -111,17 +111,17 @@
 	if(istype(item, /obj/item/light/bulb) && !lamp_functional)
 		lamp_functional = TRUE
 		qdel(item)
-		to_chat(user, "<span class='notice'>You repair the broken headlamp!</span>")
+		to_chat(user, "<span class='notice'>Naprawiasz zepsutą latarkę czołową!</span>")
 	if(istype(item, /obj/item/toy/crayon))
 		if(smile)
-			to_chat(user, "<span class='notice'>Seems like someone already drew something on the helmet's visor.</span>")
+			to_chat(user, "<span class='notice'>Wygląda na to, że ktoś już coś narysował na przyłbicy hełmu.</span>")
 		else
 			var/obj/item/toy/crayon/CR = item
-			to_chat(user, "<span class='notice'>You start drawing a smiley face on the helmet's visor..</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz rysować uśmiechniętą buźkę na przyłbicy hełmu..</span>")
 			if(do_after(user, 25, target = src))
 				smile = TRUE
 				smile_color = CR.paint_color
-				to_chat(user, "You draw a smiley on the helmet visor.")
+				to_chat(user, "Rysujesz uśmiech na przyłbicy hełmu.")
 				update_icon()
 				update_button_icons(user)
 		return
@@ -132,7 +132,7 @@
 		&& !istype(item, /obj/item/clothing/head/foilhat))
 		var/obj/item/clothing/head/hat = item
 		if(attached_hat)
-			to_chat(user, "<span class='notice'>There's already a hat on the helmet!</span>")
+			to_chat(user, "<span class='notice'>Na hełmie jest już kapelusz!</span>")
 			return
 		attached_hat = hat
 		hat.forceMove(src)
@@ -201,13 +201,13 @@
 /obj/item/clothing/head/helmet/space/plasmaman/attack_self(mob/user)
 	helmet_on = !helmet_on
 	if(!lamp_functional)
-		to_chat(user, "<span class='notice'>Your helmet's torch is broken! You'll have to repair it with a lightbulb!</span>")
+		to_chat(user, "<span class='notice'>Latarka twojego hełmu jest zepsuta! Musisz ją naprawić żarówką!</span>")
 		set_light_on(FALSE)
 		helmet_on = FALSE
 		return
 	if(helmet_on)
 		if(!up)
-			to_chat(user, "<span class='notice'>Your helmet's torch can't pass through your welding visor!</span>")
+			to_chat(user, "<span class='notice'>Latarka twojego hełmu nie przebije się przez przyłbicę spawalniczą!</span>")
 			helmet_on = FALSE
 			return
 		else
@@ -227,7 +227,7 @@
 	set_light_on(FALSE)
 	helmet_on = FALSE
 	playsound(src, 'sound/effects/glass_step.ogg', 100)
-	to_chat(usr, "<span class='danger'>The [src]'s headlamp is smashed to pieces!</span>")
+	to_chat(usr, "<span class='danger'>Latarka czołowa [src] jest roztrzaskana na kawałki!</span>")
 	lamp_functional = FALSE
 	update_icon()
 	usr.update_inv_head() //So the mob overlay updates
@@ -247,7 +247,7 @@
 	name = "security envirosuit helmet"
 	desc = "A plasmaman containment helmet designed for security officers, protecting them from burning alive, along-side other undesirables."
 	greyscale_colors = "#9F2A2E#2D2D2D#7D282D"
-	armor = list("melee" = 10, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 100, "rad" = 0, "fire" = 100, "acid" = 75, "stamina" = 10)
+	armor = list("melee" = 10, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 100, "rad" = 0, "fire" = 100, "acid" = 75, "stamina" = 10, "bleed" = 10)
 
 /obj/item/clothing/head/helmet/space/plasmaman/security/warden
 	name = "warden's envirosuit helmet"
@@ -298,7 +298,7 @@
 	name = "engineering envirosuit helmet"
 	desc = "A space-worthy helmet specially designed for engineer plasmamen, the usual purple stripes being replaced by engineering's orange."
 	greyscale_colors = "#F0DE00#D75600#F0DE00"
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 100, "rad" = 10, "fire" = 100, "acid" = 75, "stamina" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 100, "rad" = 10, "fire" = 100, "acid" = 75, "stamina" = 0, "bleed" = 10)
 
 /obj/item/clothing/head/helmet/space/plasmaman/engineering/atmospherics
 	name = "atmospherics envirosuit helmet"
@@ -463,7 +463,7 @@
 	name = "security Mk.II envirosuit helmet"
 	desc = "A stylish new iteration upon the original plasmaman containment helmet design for security officers, retaining all the old protections for a new era of fragile law enforcement."
 	greyscale_colors = "#9F2A2E#2D2D2D"
-	armor = list("melee" = 10, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 100, "rad" = 0, "fire" = 100, "acid" = 75, "stamina" = 10)
+	armor = list("melee" = 10, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 100, "rad" = 0, "fire" = 100, "acid" = 75, "stamina" = 10, "bleed" = 10)
 
 /obj/item/clothing/head/helmet/space/plasmaman/mark2/security/warden
 	name = "warden's Mk.II envirosuit helmet"
@@ -514,7 +514,7 @@
 	name = "engineering Mk.II envirosuit helmet"
 	desc = "A new iteration upon the classic space-worthy design, painted in classic engineering pigments."
 	greyscale_colors = "#E8D700#D75600"
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 100, "rad" = 10, "fire" = 100, "acid" = 75, "stamina" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 100, "rad" = 10, "fire" = 100, "acid" = 75, "stamina" = 0, "bleed" = 10)
 
 /obj/item/clothing/head/helmet/space/plasmaman/mark2/engineering/atmospherics
 	name = "atmospherics Mk.II envirosuit helmet"
@@ -714,7 +714,7 @@
 	name = "engineering protective envirosuit helmet"
 	desc = "A safer looking re-imagining of the classic space-worthy design, painted in classic engineering pigments."
 	greyscale_colors = "#E8D700#D75600"
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 100, "rad" = 10, "fire" = 100, "acid" = 75, "stamina" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 100, "rad" = 10, "fire" = 100, "acid" = 75, "stamina" = 0, "bleed" = 10)
 
 /obj/item/clothing/head/helmet/space/plasmaman/protective/engineering/atmospherics
 	name = "atmospherics protective envirosuit helmet"

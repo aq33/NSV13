@@ -38,42 +38,42 @@
 	return ..()
 
 /datum/component/mood/proc/print_mood(mob/user)
-	var/msg = "<span class='info'><EM>Your current mood</EM>\n"
-	msg += "<span class='notice'>My mental status: </span>" //Long term
+	var/msg = "<span class='info'><EM>Twój obecny nastrój</EM>\n"
+	msg += "<span class='notice'>Mój stan psychiczny: </span>" //Long term
 	switch(sanity)
 		if(SANITY_GREAT to INFINITY)
-			msg += "<span class='nicegreen'>My mind feels like a temple!<span>\n"
+			msg += "<span class='nicegreen'>Mój umysł jest jak świątynia!<span>\n"
 		if(SANITY_NEUTRAL to SANITY_GREAT)
-			msg += "<span class='nicegreen'>I have been feeling great lately!<span>\n"
+			msg += "<span class='nicegreen'>Ostatnio czuję się świetnie!<span>\n"
 		if(SANITY_DISTURBED to SANITY_NEUTRAL)
-			msg += "<span class='nicegreen'>I have felt quite decent lately.<span>\n"
+			msg += "<span class='nicegreen'>Ostatnio czuję się całkiem nieźle.<span>\n"
 		if(SANITY_UNSTABLE to SANITY_DISTURBED)
-			msg += "<span class='warning'>I'm feeling a little bit unhinged...</span>\n"
+			msg += "<span class='warning'>Czuję się trochę rozchwiany...</span>\n"
 		if(SANITY_CRAZY to SANITY_UNSTABLE)
-			msg += "<span class='boldwarning'>I'm freaking out!!</span>\n"
+			msg += "<span class='boldwarning'>Odchodzę od zmysłów!!</span>\n"
 		if(SANITY_INSANE to SANITY_CRAZY)
 			msg += "<span class='boldwarning'>AHAHAHAHAHAHAHAHAHAH!!</span>\n"
 
-	msg += "<span class='notice'>My current mood: </span>" //Short term
+	msg += "<span class='notice'>Mój obecny nastrój: </span>" //Short term
 	switch(mood_level)
 		if(1)
-			msg += "<span class='boldwarning'>I wish I was dead!<span>\n"
+			msg += "<span class='boldwarning'>Chciałbym nie żyć!<span>\n"
 		if(2)
-			msg += "<span class='boldwarning'>I feel terrible...<span>\n"
+			msg += "<span class='boldwarning'>Czuję się okropnie...<span>\n"
 		if(3)
-			msg += "<span class='boldwarning'>I feel very upset.<span>\n"
+			msg += "<span class='boldwarning'>Jestem bardzo zdenerwowany.<span>\n"
 		if(4)
-			msg += "<span class='boldwarning'>I'm a bit sad.<span>\n"
+			msg += "<span class='boldwarning'>Jest mi trochę smutno.<span>\n"
 		if(5)
 			msg += "<span class='nicegreen'>I'm alright.<span>\n"
 		if(6)
-			msg += "<span class='nicegreen'>I feel pretty okay.<span>\n"
+			msg += "<span class='nicegreen'>Czuję się całkiem w porządku.<span>\n"
 		if(7)
-			msg += "<span class='nicegreen'>I feel pretty good.<span>\n"
+			msg += "<span class='nicegreen'>Czuję się całkiem dobrze.<span>\n"
 		if(8)
-			msg += "<span class='nicegreen'>I feel amazing!<span>\n"
+			msg += "<span class='nicegreen'>Czuję się niesamowicie!<span>\n"
 		if(9)
-			msg += "<span class='nicegreen'>I love life!<span>\n"
+			msg += "<span class='nicegreen'>Kocham życie!<span>\n"
 	if(isliving(parent) && !HAS_TRAIT(parent, TRAIT_NOSHITTING) &&CONFIG_GET(flag/shitting_enabled))
 		var/mob/living/owner = parent
 		switch(owner.defecation)
@@ -90,7 +90,7 @@
 			var/datum/mood_event/event = mood_events[i]
 			msg += event.description
 	else
-		msg += "<span class='nicegreen'>I don't have much of a reaction to anything right now.<span>\n"
+		msg += "<span class='nicegreen'>Na nic teraz specjalnie nie reaguję.<span>\n"
 	to_chat(user || parent, EXAMINE_BLOCK(msg))
 
 /datum/component/mood/proc/update_mood() //Called whenever a mood event is added or removed
@@ -287,6 +287,20 @@
 
 	if(the_event.timeout)
 		addtimer(CALLBACK(src, PROC_REF(clear_event), null, category), the_event.timeout, TIMER_UNIQUE|TIMER_OVERRIDE)
+
+/**
+ * Returns true if you already have a mood from a provided category.
+ *
+ * Arguments
+ * * category - Mood category to validate against.
+ */
+/datum/component/mood/proc/has_mood_of_category(category)
+	for(var/i in mood_events)
+		var/datum/mood_event/moodlet = mood_events[i]
+		if (moodlet.category == category)
+			return TRUE
+
+	return FALSE
 
 /datum/component/mood/proc/clear_event(datum/source, category)
 	SIGNAL_HANDLER

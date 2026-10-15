@@ -56,7 +56,7 @@
 	var/never_random = FALSE // used for the 'random' subclasses.
 
 	var/poster_item_name = "hypothetical poster"
-	var/poster_item_desc = "This hypothetical poster item should not exist, let's be honest here."
+	var/poster_item_desc = "Ten hipotetyczny plakat nie powinien istnieć, bądźmy szczerzy."
 	var/poster_item_icon_state = "rolled_poster"
 
 /obj/structure/sign/poster/Initialize(mapload)
@@ -97,13 +97,13 @@
 			to_chat(user, "<span class='notice'>Ostrożnie zdejmujesz plakat ze ściany.</span>")
 			roll_and_drop(user.loc)
 
-/obj/structure/sign/poster/attack_hand(mob/user)
+/obj/structure/sign/poster/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(.)
 		return
 	if(ruined)
 		return
-	visible_message("[user] rips [src] in a single, decisive motion!" )
+	visible_message("[user] zrywa [src] jednym, zdecydowanym ruchem!" )
 	playsound(src.loc, 'sound/items/poster_ripped.ogg', 100, 1)
 
 	var/obj/structure/sign/poster/ripped/R = new(loc)
@@ -122,7 +122,7 @@
 //separated to reduce code duplication. Moved here for ease of reference and to unclutter r_wall/attackby()
 /turf/closed/wall/proc/place_poster(obj/item/poster/P, mob/user)
 	if(!P.poster_structure)
-		to_chat(user, "<span class='warning'>[P] has no poster... inside it? Inform a coder!</span>")
+		to_chat(user, "<span class='warning'>W [P] nie ma plakatu... w środku? Powiadom kodera!</span>")
 		return
 
 	// Deny placing posters on currently-diagonal walls, although the wall may change in the future.
@@ -157,7 +157,7 @@
 			return
 
 		if(iswallturf(src) && user && user.loc == temp_loc)	//Let's check if everything is still there
-			to_chat(user, "<span class='notice'>You place the poster!</span>")
+			to_chat(user, "<span class='notice'>Wieszasz plakat!</span>")
 			return
 
 	to_chat(user, "<span class='notice'>Plakat spadł!</span>")
@@ -179,7 +179,7 @@
 
 /obj/structure/sign/poster/contraband
 	poster_item_name = "contraband poster"
-	poster_item_desc = "This poster comes with its own automatic adhesive mechanism, for easy pinning to any vertical surface. Its vulgar themes have marked it as contraband aboard Nanotrasen space facilities."
+	poster_item_desc = "Ten plakat ma własny automatyczny mechanizm klejący, by łatwo przypiąć go do dowolnej pionowej powierzchni. Jego wulgarna tematyka sprawiła, że na obiektach kosmicznych Nanotrasen uznano go za kontrabandę."
 	poster_item_icon_state = "rolled_poster"
 
 /obj/structure/sign/poster/contraband/random
@@ -423,7 +423,7 @@
 */
 /obj/structure/sign/poster/official
 	poster_item_name = "motivational poster"
-	poster_item_desc = "An official Nanotrasen-issued poster to foster a compliant and obedient workforce. It comes with state-of-the-art adhesive backing, for easy pinning to any vertical surface."
+	poster_item_desc = "Oficjalny plakat Nanotrasen, który ma wspierać uległą i posłuszną siłę roboczą. Ma najnowocześniejszy klej na odwrocie, by łatwo przypiąć go do dowolnej pionowej powierzchni."
 	poster_item_icon_state = "rolled_legit"
 
 /obj/structure/sign/poster/official/random

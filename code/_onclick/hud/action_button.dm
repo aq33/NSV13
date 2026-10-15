@@ -28,7 +28,7 @@
 		return
 	if((istype(over_object, /atom/movable/screen/movable/action_button) && !istype(over_object, /atom/movable/screen/movable/action_button/hide_toggle)))
 		if(locked)
-			to_chat(usr, "<span class='warning'>Action button \"[name]\" is locked, unlock it first.</span>")
+			to_chat(usr, "<span class='warning'>Przycisk akcji \"[name]\" jest zablokowany, najpierw go odblokuj.</span>")
 			return
 		var/atom/movable/screen/movable/action_button/B = over_object
 		var/list/actions = usr.actions
@@ -48,21 +48,21 @@
 	var/list/modifiers = params2list(params)
 	if(modifiers["shift"])
 		if(locked)
-			to_chat(usr, "<span class='warning'>Action button \"[name]\" is locked, unlock it first.</span>")
+			to_chat(usr, "<span class='warning'>Przycisk akcji \"[name]\" jest zablokowany, najpierw go odblokuj.</span>")
 			return TRUE
 		moved = 0
 		usr.update_action_buttons() //redraw buttons that are no longer considered "moved"
 		return TRUE
 	if(modifiers["ctrl"])
 		locked = !locked
-		to_chat(usr, "<span class='notice'>Action button \"[name]\" [locked ? "" : "un"]locked.</span>")
+		to_chat(usr, "<span class='notice'>Przycisk akcji \"[name]\" [locked ? "zablokowany" : "odblokowany"].</span>")
 		if(id && usr.client) //try to (un)remember position
 			usr.client.prefs.action_buttons_screen_locs["[name]_[id]"] = locked ? moved : null
 		return TRUE
 	if(usr.next_click > world.time)
 		return
 	usr.next_click = world.time + 1
-	linked_action.Trigger()
+	linked_action.Trigger((modifiers["right"] || modifiers["alt"]) ? TRIGGER_SECONDARY_ACTION : NONE)
 	SEND_SOUND(usr, 'sound/effects/pop.ogg')
 	transform = turn(matrix() * 0.9, pick(-8, 8))
 	alpha = 200
@@ -87,14 +87,14 @@
 	var/list/modifiers = params2list(params)
 	if(modifiers["shift"])
 		if(locked)
-			to_chat(usr, "<span class='warning'>Action button \"[name]\" is locked, unlock it first.</span>")
+			to_chat(usr, "<span class='warning'>Przycisk akcji \"[name]\" jest zablokowany, najpierw go odblokuj.</span>")
 			return TRUE
 		moved = FALSE
 		usr.update_action_buttons(TRUE)
 		return TRUE
 	if(modifiers["ctrl"])
 		locked = !locked
-		to_chat(usr, "<span class='notice'>Action button \"[name]\" [locked ? "" : "un"]locked.</span>")
+		to_chat(usr, "<span class='notice'>Przycisk akcji \"[name]\" [locked ? "zablokowany" : "odblokowany"].</span>")
 		if(id && usr.client) //try to (un)remember position
 			usr.client.prefs.action_buttons_screen_locs["[name]_[id]"] = locked ? moved : null
 		return TRUE
@@ -111,7 +111,7 @@
 		if(id && usr.client)
 			usr.client.prefs.action_buttons_screen_locs["[name]_[id]"] = null
 		usr.update_action_buttons(TRUE)
-		to_chat(usr, "<span class='notice'>Action button positions have been reset.</span>")
+		to_chat(usr, "<span class='notice'>Pozycje przycisków akcji zostały zresetowane.</span>")
 		return TRUE
 	usr.hud_used.action_buttons_hidden = !usr.hud_used.action_buttons_hidden
 
@@ -131,7 +131,7 @@
 	if(moved)
 		moved = FALSE
 	user.update_action_buttons(TRUE)
-	to_chat(user, "<span class='notice'>Action button positions have been reset.</span>")
+	to_chat(user, "<span class='notice'>Pozycje przycisków akcji zostały zresetowane.</span>")
 
 
 /atom/movable/screen/movable/action_button/hide_toggle/proc/InitialiseIcon(datum/hud/owner_hud)
@@ -149,6 +149,7 @@
 
 
 /atom/movable/screen/movable/action_button/MouseEntered(location,control,params)
+	..() // AQ EDIT - screentips potrzebują /atom/MouseEntered() (port BeeStation #11938)
 	if(!QDELETED(src))
 		openToolTip(usr,src,params,title = name,content = desc,theme = actiontooltipstyle)
 

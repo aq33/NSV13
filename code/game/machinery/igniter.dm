@@ -9,7 +9,7 @@
 	active_power_usage = 4
 	max_integrity = 300
 	circuit = /obj/item/circuitboard/machine/igniter
-	armor = list("melee" = 50, "bullet" = 30, "laser" = 70, "energy" = 50, "bomb" = 20, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 70, "stamina" = 0)
+	armor = list("melee" = 50, "bullet" = 30, "laser" = 70, "energy" = 50, "bomb" = 20, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 70, "stamina" = 0, "bleed" = 0)
 	resistance_flags = FIRE_PROOF
 	var/id = null
 	var/on = FALSE
@@ -27,7 +27,7 @@
 	on = TRUE
 	icon_state = "igniter1"
 
-/obj/machinery/igniter/attack_hand(mob/user)
+/obj/machinery/igniter/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(. || panel_open)
 		return
@@ -107,10 +107,10 @@
 		add_fingerprint(user)
 		src.disable = !src.disable
 		if (src.disable)
-			user.visible_message("[user] has disabled \the [src]!", "<span class='notice'>You disable the connection to \the [src].</span>")
+			user.visible_message("[user] wyłącza [src]!", "<span class='notice'>Wyłączasz połączenie z [src].</span>")
 			icon_state = "[base_state]-d"
 		if (!src.disable)
-			user.visible_message("[user] has reconnected \the [src]!", "<span class='notice'>You fix the connection to \the [src].</span>")
+			user.visible_message("[user] ponownie podłącza [src]!", "<span class='notice'>Naprawiasz połączenie z [src].</span>")
 			if(src.powered())
 				icon_state = "[base_state]"
 			else

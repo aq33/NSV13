@@ -15,7 +15,7 @@ BONUS
 */
 /datum/symptom/viraladaptation
 	name = "Viral Self-Adaptation"
-	desc = "The virus mimics the function of normal body cells, becoming harder to spot and to eradicate, but reducing its speed. This symptom discourages disease mutation"
+	desc = "Wirus naśladuje działanie normalnych komórek ciała, przez co trudniej go wykryć i zwalczyć, ale wolniej się rozwija. Ten objaw zniechęca do mutacji choroby"
 	stealth = 3
 	resistance = 5
 	stage_speed = -3
@@ -46,8 +46,7 @@ BONUS
 */
 /datum/symptom/viralevolution
 	name = "Viral Evolutionary Acceleration"
-	desc = "The virus quickly adapts to spread as fast as possible both outside and inside a host. \
-	This, however, makes the virus easier to spot, and less able to fight off a cure. This symptom encourages disease mutation"
+	desc = "Wirus szybko przystosowuje się do jak najszybszego rozprzestrzeniania się zarówno na zewnątrz, jak i wewnątrz nosiciela. Przez to jednak łatwiej go wykryć i gorzej broni się przed lekarstwem. Ten objaw sprzyja mutacji choroby"
 	stealth = -2
 	resistance = -3
 	stage_speed = 5
@@ -82,8 +81,7 @@ Bonus
 /datum/symptom/viralreverse
 
 	name = "Viral Aggressive Metabolism"
-	desc = "The virus sacrifices its long term survivability to nearly instantly fully spread inside a host. \
-	The virus will start at the last stage, but will eventually decay and die off by itself."
+	desc = "Wirus poświęca długoterminową przeżywalność, by niemal natychmiast w pełni rozprzestrzenić się w nosicielu. Zaczyna od ostatniego stadium, ale w końcu sam zanika i obumiera."
 	stealth = 1
 	resistance = 1
 	stage_speed = 3
@@ -93,8 +91,7 @@ Bonus
 	symptom_delay_max = 1
 	prefixes = list("Spontaneous ")
 	var/time_to_cure
-	threshold_desc = "<b>Resistance/Stage Speed:</b> Highest between these determines the amount of time before self-curing.<br>\
-					  <b>Stealth 4</b> Doubles the time before the virus self-cures"
+	threshold_desc = "<b>Odporność/Szybkość stadiów:</b> wyższa z tych wartości określa czas do samowyleczenia.<br><b>Ukrycie 4</b> podwaja czas do samowyleczenia wirusa"
 
 
 /datum/symptom/viralreverse/Activate(datum/disease/advance/A)
@@ -109,7 +106,7 @@ Bonus
 /datum/symptom/viralreverse/proc/Heal(mob/living/M, datum/disease/advance/A)
 	A.stage -= 1
 	if(A.stage < 2)
-		to_chat(M, "<span class='notice'>You suddenly feel healthy.</span>")
+		to_chat(M, "<span class='notice'>Nagle czujesz się zdrowy.</span>")
 		A.cure(FALSE) //Doesn't Add Resistance. Virology can now make potions for stuff, be it healing the senses or making people explode
 
 /datum/symptom/viralreverse/Start(datum/disease/advance/A)
@@ -139,7 +136,7 @@ Bonus
 
 /datum/symptom/viralincubate
 	name = "Viral Suspended Animation"
-	desc = "The virus has very little effect until it reaches its final stage"
+	desc = "Wirus ma bardzo słabe działanie, dopóki nie osiągnie ostatniego stadium"
 	stealth = 4
 	resistance = -2
 	stage_speed = -2
@@ -186,7 +183,7 @@ Bonus
 */
 /datum/symptom/viralpower
 	name = "Viral power multiplier"
-	desc = "The virus has more powerful symptoms. May have unpredictable effects"
+	desc = "Wirus ma silniejsze objawy. Może mieć nieprzewidywalne skutki"
 	stealth = 2
 	resistance = 2
 	stage_speed = 2
@@ -197,8 +194,7 @@ Bonus
 	var/powerbudget
 	var/scramble = FALSE 
 	var/used = FALSE
-	threshold_desc = "<b>Transmission 8:</b> Constantly scrambles the power of all unneutered symptoms.<br>\
-					  <b>Stage Speed 8</b> Doubles the power boost"
+	threshold_desc = "<b>Transmisja 8:</b> nieustannie miesza moc wszystkich niezneutralizowanych objawów.<br><b>Szybkość stadiów 8</b> podwaja wzmocnienie mocy"
 
 
 /datum/symptom/viralpower/Start(datum/disease/advance/A)

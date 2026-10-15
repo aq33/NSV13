@@ -4,15 +4,7 @@
 	activated = 0
 
 /obj/item/implant/mindshield/get_data()
-	var/dat = {"<b>Implant Specifications:</b><BR>
-				<b>Name:</b> Nanotrasen Employee Management Implant<BR>
-				<b>Life:</b> Ten years.<BR>
-				<b>Important Notes:</b> Personnel injected with this device are much more resistant to brainwashing.<BR>
-				<HR>
-				<b>Implant Details:</b><BR>
-				<b>Function:</b> Contains a small pod of nanobots that protects the host's mental functions from manipulation.<BR>
-				<b>Special Features:</b> Will prevent and cure most forms of brainwashing.<BR>
-				<b>Integrity:</b> Implant will last so long as the nanobots are inside the bloodstream."}
+	var/dat = {"<b>Specyfikacja implantu:</b><BR><b>Nazwa:</b> Implant zarządzania pracownikami Nanotrasen<BR><b>Żywotność:</b> dziesięć lat.<BR><b>Ważne uwagi:</b> osoby z tym urządzeniem są znacznie bardziej odporne na pranie mózgu.<BR><HR><b>Szczegóły implantu:</b><BR><b>Działanie:</b> zawiera małą kapsułę nanobotów chroniących funkcje umysłowe nosiciela przed manipulacją.<BR><b>Cechy specjalne:</b> zapobiega większości form prania mózgu i je leczy.<BR><b>Trwałość:</b> implant działa, dopóki nanoboty są w krwiobiegu."}
 	return dat
 
 
@@ -28,7 +20,7 @@
 
 		if(target.mind.has_antag_datum(/datum/antagonist/rev/head) || target.mind.unconvertable)
 			if(!silent)
-				target.visible_message("<span class='warning'>[target] seems to resist the implant!</span>", "<span class='warning'>You feel something interfering with your mental conditioning, but you resist it!</span>")
+				target.visible_message("<span class='warning'>[target] wydaje się opierać implantowi!</span>", "<span class='warning'>Czujesz, że coś zakłóca twoje warunkowanie umysłowe, ale się opierasz!</span>")
 			removed(target, 1)
 			qdel(src)
 			return FALSE
@@ -44,12 +36,12 @@
 				if(hive.hivemembers.Find(target.mind))
 					var/mob/living/carbon/C = hive.owner.current
 					if(C?.mind)
-						to_chat(C, "<span class='assimilator'>We detect a surge of psionic energy from a far away vessel before they disappear from the hive. Whatever happened, there's a good chance they're after us now.</span>")
+						to_chat(C, "<span class='assimilator'>Wykrywamy skok energii psionicznej z odległego naczynia, zanim zniknęło z roju. Cokolwiek się stało, jest duża szansa, że teraz na nas polują.</span>")
 			if(IS_WOKEVESSEL(target))
 				target.mind.remove_antag_datum(/datum/antagonist/hivevessel)
-				target.visible_message("<span class='deconversion_message'>[target]'s thoughts seem to clear!</span>", null, null, null, target)
+				target.visible_message("<span class='deconversion_message'>Myśli [target] wydają się rozjaśniać!</span>", null, null, null, target)
 				ADD_TRAIT(target, TRAIT_HIVE_BURNT, HIVEMIND_TRAIT)
-			to_chat(target, "<span class='assimilator'>You hear supernatural wailing echo throughout your mind as you are finally set free. Deep down, you can feel the lingering presence of those who enslaved you... as can they!</span>")
+			to_chat(target, "<span class='assimilator'>W twoim umyśle rozbrzmiewa nadprzyrodzone zawodzenie, gdy w końcu zostajesz uwolniony. W głębi duszy czujesz pozostałą obecność tych, którzy cię zniewolili... a oni czują twoją!</span>")
 			remove_hivemember(target)
 
 		var/datum/antagonist/rev/rev = target.mind.has_antag_datum(/datum/antagonist/rev)
@@ -57,9 +49,9 @@
 			rev.remove_revolutionary(FALSE, user)
 		if(!silent)
 			if(target.mind in SSticker.mode.cult)
-				to_chat(target, "<span class='warning'>You feel something interfering with your mental conditioning, but you resist it!</span>")
+				to_chat(target, "<span class='warning'>Czujesz, że coś zakłóca twoje warunkowanie umysłowe, ale się opierasz!</span>")
 			else
-				to_chat(target, "<span class='notice'>You feel a sense of peace and security. You are now protected from brainwashing.</span>")
+				to_chat(target, "<span class='notice'>Czujesz spokój i bezpieczeństwo. Jesteś teraz chroniony przed praniem mózgu.</span>")
 		ADD_TRAIT(target, TRAIT_MINDSHIELD, "implant")
 		target.sec_hud_set_implants()
 		return TRUE
@@ -72,7 +64,7 @@
 			REMOVE_TRAIT(L, TRAIT_MINDSHIELD, "implant")
 			L.sec_hud_set_implants()
 		if(target.stat != DEAD && !silent)
-			to_chat(target, "<span class='boldnotice'>Your mind suddenly feels terribly vulnerable. You are no longer safe from brainwashing.</span>")
+			to_chat(target, "<span class='boldnotice'>Twój umysł nagle wydaje się strasznie bezbronny. Nie jesteś już chroniony przed praniem mózgu.</span>")
 		return 1
 	return 0
 

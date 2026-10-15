@@ -1,7 +1,7 @@
 /datum/overmap_objective/board_ship
 	name = "Board Ship"
 	desc = "Find and board a ship"
-	brief = "Capture the syndicate vessel CALLANADMIN by boarding it, defeating the enemies therein, and modifying its IFF codes."
+	brief = "Przejmijcie jednostkę Syndykatu CALLANADMIN: wejdźcie na pokład, pokonajcie wrogów i zmieńcie jej kody IFF."
 	var/datum/star_system/target_system = null
 	var/obj/structure/overmap/target_ship = null
 
@@ -12,7 +12,7 @@
 	target_ship = instance_overmap(ship_type)
 	target_ship.block_deletion = TRUE
 	target_ship.essential = TRUE
-	RegisterSignal(target_ship, COMSIG_SHIP_BOARDED, PROC_REF(check_completion), target_ship)
+	RegisterSignal(target_ship, COMSIG_SHIP_IFF_CHANGE, PROC_REF(check_completion), target_ship)
 	RegisterSignal(target_ship, COMSIG_SHIP_RELEASE_BOARDING, PROC_REF(release_boarding), target_ship)
 	target_ship.ai_load_interior(SSstar_system.find_main_overmap())
 	// give it a name
@@ -22,7 +22,7 @@
 	var/list/candidates = list()
 	for(var/datum/star_system/S in SSstar_system.systems)
 		// Is this even in a reasonable location?
-		if(S.hidden || (S.sector != 2) || S.get_info()?["Black hole"])
+		if(S.hidden || (S.sector != 2) || S.has_anomaly_type(/obj/effect/overmap_anomaly/singularity))
 			continue
 		// Don't put it where it will immediately get shot
 		if((S.alignment != target_ship.faction) && (S.alignment != "unaligned") && (S.alignment != "uncharted"))
@@ -32,7 +32,7 @@
 			continue
 		candidates += S
 	target_system = pick(candidates)
-	brief = "Capture the syndicate vessel [target_ship] in [target_system] by boarding it, defeating the enemies therein, and modifying its IFF codes."
+	brief = "Przejmijcie jednostkę Syndykatu [target_ship] w systemie [target_system]: wejdźcie na pokład, pokonajcie wrogów i zmieńcie jej kody IFF."
 	target_system.add_ship(target_ship)
 	target_system.enemies_in_system += target_ship
 	target_system.objective_sector = TRUE
@@ -44,9 +44,9 @@
 	F.add_ship(target_ship, "battleships")
 
 	// How long should this take?
-	var/list/fastest_route = find_route(SSstar_system.find_system(SSovermap_mode.mode.starting_system), target_system)
+	var/list/fastest_route = find_route(SSstar_system.find_system(SSovermap_mode.mode.starting_system), target_system, wormholes_allowed = FALSE)
 	var/distance = 0
-	for(var/i = 2; i < length(fastest_route); i++)
+	for(var/i = 2; i <= length(fastest_route); i++)
 		var/datum/star_system/start = fastest_route[i-1]
 		var/datum/star_system/finish = fastest_route[i]
 		distance += start.dist(finish)
@@ -62,10 +62,11 @@
 		status = 1
 		target_ship.block_deletion = FALSE
 		target_ship.essential = FALSE
-		UnregisterSignal(target_ship, COMSIG_SHIP_BOARDED)
+		UnregisterSignal(target_ship, COMSIG_SHIP_IFF_CHANGE)
 		UnregisterSignal(target_ship, COMSIG_SHIP_RELEASE_BOARDING)
 
 /datum/overmap_objective/board_ship/proc/release_boarding()
+	SIGNAL_HANDLER
 	// Don't let them kill the ship if they haven't won yet
 	if(status != 1 && status != 3) // complete or admin override
 		return COMSIG_SHIP_BLOCKS_RELEASE_BOARDING

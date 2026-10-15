@@ -40,7 +40,7 @@ Buildable meters
 
 /obj/item/pipe/ComponentInitialize()
 	//Flipping handled manually due to custom handling for trinary pipes
-	AddComponent(/datum/component/simple_rotation, ROTATION_ALTCLICK | ROTATION_CLOCKWISE)
+	AddComponent(/datum/component/simple_rotation, ROTATION_NO_FLIPPING)
 
 /obj/item/pipe/Initialize(mapload, _pipe_type, _dir, obj/machinery/atmospherics/make_from)
 	if(make_from)
@@ -139,12 +139,12 @@ Buildable meters
 	var/flags = initial(fakeA.pipe_flags)
 	for(var/obj/machinery/atmospherics/M in loc)
 		if((M.pipe_flags & flags & PIPING_ONE_PER_TURF))	//Only one dense/requires density object per tile, eg connectors/cryo/heater/coolers.
-			to_chat(user, "<span class='warning'>Something is hogging the tile!</span>")
+			to_chat(user, "<span class='warning'>Coś zajmuje to pole!</span>")
 			return TRUE
 		if((M.piping_layer != piping_layer) && !((M.pipe_flags | flags) & PIPING_ALL_LAYER)) //don't continue if either pipe goes across all layers
 			continue
 		if(M.get_init_directions() & SSair.get_init_dirs(pipe_type, fixed_dir()))	// matches at least one direction on either type of pipe
-			to_chat(user, "<span class='warning'>There is already a pipe at that location!</span>")
+			to_chat(user, "<span class='warning'>W tym miejscu jest już rura!</span>")
 			return TRUE
 	// no conflicts found
 
@@ -155,9 +155,9 @@ Buildable meters
 
 	W.play_tool_sound(src)
 	user.visible_message( \
-		"[user] fastens \the [src].", \
-		"<span class='notice'>You fasten \the [src].</span>", \
-		"<span class='italics'>You hear ratcheting.</span>")
+		"[user] mocuje [src].", \
+		"<span class='notice'>Mocujesz [src].</span>", \
+		"<span class='italics'>Słyszysz grzechotkę.</span>")
 
 	qdel(src)
 
@@ -178,7 +178,7 @@ Buildable meters
 	T.flipped = flipped
 
 /obj/item/pipe/directional/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] shoves [src] in [user.p_their()] mouth and turns it on! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] wkłada sobie [src] do ust i go włącza! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		for(var/i=1 to 20)
@@ -189,6 +189,31 @@ Buildable meters
 		C.blood_volume = 0
 	return(OXYLOSS|BRUTELOSS)
 
+/obj/item/pipe/examine(mob/user)
+	. = ..()
+	. += "<span class='notice'>Warstwa rur: [piping_layer].</span>"
+	. += "<span class='notice'>Warstwę rur zmienisz prawym przyciskiem myszy.</span>"
+
+/obj/item/pipe/attack_hand_secondary(mob/user, list/modifiers)
+	. = ..()
+	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
+		return
+	var/layer_to_set = (piping_layer >= PIPING_LAYER_MAX) ? PIPING_LAYER_MIN : (piping_layer + 1)
+	set_piping_layer(layer_to_set)
+	balloon_alert(user, "warstwa rur: [piping_layer]")
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+/obj/item/pipe/trinary/flippable/examine(mob/user)
+	. = ..()
+	. += "<span class='notice'>Prawym przyciskiem myszy odwrócisz urządzenie.</span>"
+
+/obj/item/pipe/trinary/flippable/attack_hand_secondary(mob/user, list/modifiers)
+	. = ..()
+	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
+		return
+	do_a_flip()
+	balloon_alert(user, "odwrócono rurę")
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 /obj/item/pipe_meter
 	name = "meter"
 	desc = "A meter that can be laid on pipes."
@@ -206,11 +231,11 @@ Buildable meters
 			pipe = P
 			break
 	if(!pipe)
-		to_chat(user, "<span class='warning'>You need to fasten it to a pipe!</span>")
+		to_chat(user, "<span class='warning'>Musisz przymocować go do rury!</span>")
 		return TRUE
 	new /obj/machinery/meter(loc, piping_layer)
 	W.play_tool_sound(src)
-	to_chat(user, "<span class='notice'>You fasten the meter to the pipe.</span>")
+	to_chat(user, "<span class='notice'>Mocujesz miernik do rury.</span>")
 	qdel(src)
 
 /obj/item/pipe_meter/screwdriver_act(mob/living/user, obj/item/S)
@@ -219,12 +244,12 @@ Buildable meters
 		return TRUE
 
 	if(!isturf(loc))
-		to_chat(user, "<span class='warning'>You need to fasten it to the floor!</span>")
+		to_chat(user, "<span class='warning'>Musisz przymocować go do podłogi!</span>")
 		return TRUE
 
 	new /obj/machinery/meter/turf(loc, piping_layer)
 	S.play_tool_sound(src)
-	to_chat(user, "<span class='notice'>You fasten the meter to the [loc.name].</span>")
+	to_chat(user, "<span class='notice'>Mocujesz miernik do [loc.name].</span>")
 	qdel(src)
 
 /obj/item/pipe_meter/dropped()

@@ -2,7 +2,7 @@
 
 /datum/symptom/heal
 	name = "Basic Healing (does nothing)" //warning for adminspawn viruses
-	desc = "You should not be seeing this."
+	desc = "Nie powinieneś tego widzieć."
 	stealth = 0
 	resistance = 0
 	stage_speed = 0
@@ -12,7 +12,7 @@
 	symptom_delay_min = 1
 	symptom_delay_max = 1
 	var/passive_message = "" //random message to infected but not actively healing people
-	threshold_desc = "<b>Stealth 4:</b> Healing will no longer be visible to onlookers."
+	threshold_desc = "<b>Ukrycie 4:</b> leczenie nie będzie już widoczne dla obserwatorów."
 
 /datum/symptom/heal/Start(datum/disease/advance/A)
 	if(!..())
@@ -53,9 +53,8 @@
 	power = 2
 	prefixes = list("Toxo")
 	var/food_conversion = FALSE
-	desc = "The virus rapidly breaks down any foreign chemicals in the bloodstream."
-	threshold_desc = "<b>Resistance 7:</b> Increases chem removal speed.<br>\
-					  <b>Stage Speed 6:</b> Consumed chemicals nourish the host."
+	desc = "Wirus szybko rozkłada wszelkie obce substancje w krwiobiegu."
+	threshold_desc = "<b>Odporność 7:</b> zwiększa szybkość usuwania substancji.<br><b>Szybkość stadiów 6:</b> zużyte substancje odżywiają nosiciela."
 
 /datum/symptom/heal/chem/Start(datum/disease/advance/A)
 	if(!..())
@@ -71,27 +70,25 @@
 		if(food_conversion)
 			M.adjust_nutrition(0.3)
 		if(prob(2))
-			to_chat(M, "<span class='notice'>You feel a mild warmth as your blood purifies itself.</span>")
+			to_chat(M, "<span class='notice'>Czujesz łagodne ciepło, gdy twoja krew sama się oczyszcza.</span>")
 	return 1
 
 /datum/symptom/heal/coma
 	name = "Regenerative Coma"
-	desc = "The virus causes the host to fall into a death-like coma when severely damaged, then rapidly fixes the damage. Only fixes burn and brute damage."
+	desc = "Wirus sprawia, że przy ciężkich obrażeniach nosiciel zapada w śpiączkę przypominającą śmierć, a potem szybko naprawia obrażenia. Leczy tylko oparzenia i obrażenia fizyczne."
 	stealth = 0
 	resistance = 2
 	stage_speed = -3
 	transmission = -3
 	level = 8
 	severity = -2
-	passive_message = "<span class='notice'>The pain from your wounds makes you feel oddly sleepy.</span>"
+	passive_message = "<span class='notice'>Ból ran sprawia, że robi ci się dziwnie sennie.</span>"
 	prefixes = list("Sleeping ", "Regenerative ")
 	suffixes = list(" Coma")
 	var/deathgasp = FALSE
 	var/stabilize = FALSE
 	var/active_coma = FALSE //to prevent multiple coma procs
-	threshold_desc = "<b>Stealth 2:</b> Host appears to die when falling into a coma, triggering symptoms that activate on death.<br>\
-					  <b>Resistance 4:</b> The virus also stabilizes the host while they are in critical condition.<br>\
-					  <b>Stage Speed 7:</b> Increases healing speed."
+	threshold_desc = "<b>Ukrycie 2:</b> zapadając w śpiączkę, nosiciel wygląda na martwego, co uruchamia objawy aktywowane śmiercią.<br><b>Odporność 4:</b> wirus stabilizuje też nosiciela w stanie krytycznym.<br><b>Szybkość stadiów 7:</b> zwiększa szybkość leczenia."
 
 /datum/symptom/heal/coma/Start(datum/disease/advance/A)
 	if(!..())
@@ -128,7 +125,7 @@
 	else if(M.IsSleeping())
 		return power * 0.25
 	else if(M.getBruteLoss() + M.getFireLoss() >= 70 && !active_coma)
-		to_chat(M, "<span class='warning'>You feel yourself slip into a deep, regenerative slumber.</span>")
+		to_chat(M, "<span class='warning'>Czujesz, jak zapadasz w głęboki, regenerujący sen.</span>")
 		active_coma = TRUE
 		addtimer(CALLBACK(src, PROC_REF(coma), M), 60)
 
@@ -176,20 +173,19 @@
 
 /datum/symptom/heal/surface
 	name = "Superficial Healing"
-	desc = "The virus accelerates the body's natural healing, causing the body to heal minor wounds quickly. Causes heavy scarring."
+	desc = "Wirus przyspiesza naturalne gojenie, przez co drobne rany szybko się goją. Powoduje mocne bliznowacenie."
 	stealth = -1
 	resistance = -2
 	stage_speed = -2
 	transmission = 0
 	severity = -1
 	level = 8
-	passive_message = "<span class='notice'>Your skin tingles.</span>"
+	passive_message = "<span class='notice'>Mrowi cię skóra.</span>"
 	prefixes = list("Healing ", "Minor ")
 	var/threshhold = 15
 	var/scarcounter = 0
 
-	threshold_desc = "<b>Stage Speed 8:</b> Doubles healing speed.<br>\
-					  <b>Resistance 10:</b> Improves healing threshhold."
+	threshold_desc = "<b>Szybkość stadiów 8:</b> podwaja szybkość leczenia.<br><b>Odporność 10:</b> poprawia próg leczenia."
 
 /datum/symptom/heal/surface/Start(datum/disease/advance/A)
 	if(!..())
@@ -217,10 +213,10 @@
 
 	if(healed)
 		if(prob(10))
-			to_chat(M, "<span class='notice'>Your wounds heal, granting you a new scar.</span>")
+			to_chat(M, "<span class='notice'>Twoje rany się goją, zostawiając ci nową bliznę.</span>")
 		if(scarcounter >= 200 && !HAS_TRAIT(M, TRAIT_DISFIGURED))
 			ADD_TRAIT(M, TRAIT_DISFIGURED, DISEASE_TRAIT)
-			M.visible_message("<span class='warning'>[M]'s face becomes unrecognizeable.</span>", "<span class='userdanger'>Your scars have made your face unrecognizeable.</span>")
+			M.visible_message("<span class='warning'>Twarz [M] staje się nie do poznania.</span>", "<span class='userdanger'>Przez blizny twoja twarz jest nie do poznania.</span>")
 	return healed
 
 
@@ -238,10 +234,8 @@
 	bodies = list("Hunger")
 	var/triple_metabolism = FALSE
 	var/reduced_hunger = FALSE
-	desc = "The virus causes the host's metabolism to accelerate rapidly, making them process chemicals twice as fast,\
-	 but also causing increased hunger."
-	threshold_desc = "<b>Stealth 3:</b> Reduces hunger rate.<br>\
-					  <b>Stage Speed 10:</b> Chemical metabolization is tripled instead of doubled."
+	desc = "Wirus gwałtownie przyspiesza metabolizm nosiciela, przez co przetwarza on substancje dwa razy szybciej, ale też jest bardziej głodny."
+	threshold_desc = "<b>Ukrycie 3:</b> zmniejsza tempo głodnienia.<br><b>Szybkość stadiów 10:</b> metabolizm substancji jest potrojony zamiast podwojony."
 
 /datum/symptom/heal/metabolism/Start(datum/disease/advance/A)
 	if(!..())
@@ -261,7 +255,7 @@
 	var/lost_nutrition = 9 - (reduced_hunger * 5)
 	C.adjust_nutrition(-lost_nutrition * HUNGER_FACTOR) //Hunger depletes at 10x the normal speed
 	if(prob(2))
-		to_chat(C, "<span class='notice'>You feel an odd gurgle in your stomach, as if it was working much faster than normal.</span>")
+		to_chat(C, "<span class='notice'>Czujesz dziwne bulgotanie w żołądku, jakby pracował o wiele szybciej niż zwykle.</span>")
 	return 1
 
 /*
@@ -273,7 +267,7 @@ im not even gonna bother with these for the following symptoms. typed em out, co
 
 /datum/symptom/EMP
 	name = "Organic Flux Induction"
-	desc = "Causes electromagnetic interference around the subject"
+	desc = "Wywołuje zakłócenia elektromagnetyczne wokół nosiciela"
 	stealth = 0
 	resistance = -1
 	stage_speed = -1
@@ -286,8 +280,7 @@ im not even gonna bother with these for the following symptoms. typed em out, co
 	bodies = list("Magnet")
 	var/bigemp = FALSE
 	var/cellheal = FALSE
-	threshold_desc = "<b>Stealth 2:</b> The disease resets cell DNA, quickly curing cell damage and mutations.<br>\
-					<b>Transmission 8:</b> The EMP affects electronics adjacent to the subject as well."
+	threshold_desc = "<b>Ukrycie 2:</b> choroba resetuje DNA komórek, szybko lecząc uszkodzenia komórkowe i mutacje.<br><b>Transmisja 8:</b> EMP działa też na elektronikę obok nosiciela."
 
 /datum/symptom/EMP/severityset(datum/disease/advance/A)
 	. = ..()
@@ -323,7 +316,7 @@ im not even gonna bother with these for the following symptoms. typed em out, co
 
 /datum/symptom/sweat
 	name = "Hyperperspiration"
-	desc = "Causes the host to sweat profusely, leaving small water puddles and extinguishing small fires"
+	desc = "Sprawia, że nosiciel obficie się poci, zostawiając małe kałuże wody i gasząc małe pożary"
 	stealth = 1
 	resistance = -1
 	stage_speed = 0
@@ -337,9 +330,7 @@ im not even gonna bother with these for the following symptoms. typed em out, co
 	var/bigsweat = FALSE
 	var/toxheal = FALSE
 	var/ammonia = FALSE
-	threshold_desc = "<b>Transmission 4:</b> The sweat production ramps up to the point that it puts out fires in the general vicinity.<br>\
-					<b>Transmission 6:</b> The symptom heals toxin damage and purges chemicals.<br>\
-					<b>Stage speed 6:</b> The host's sweat contains traces of ammonia."
+	threshold_desc = "<b>Transmisja 4:</b> produkcja potu rośnie do tego stopnia, że gasi pożary w okolicy.<br><b>Transmisja 6:</b> objaw leczy obrażenia od toksyn i usuwa substancje.<br><b>Szybkość stadiów 6:</b> pot nosiciela zawiera ślady amoniaku."
 
 /datum/symptom/sweat/severityset(datum/disease/advance/A)
 	. = ..()
@@ -366,7 +357,7 @@ im not even gonna bother with these for the following symptoms. typed em out, co
 			if(!ammonia && prob(30))
 				var/turf/open/OT = get_turf(M)
 				if(istype(OT))
-					to_chat(M, "<span class='danger'>The sweat pools into a puddle!</span>")
+					to_chat(M, "<span class='danger'>Pot zbiera się w kałużę!</span>")
 					OT.MakeSlippery(TURF_WET_WATER, min_wet_time = 10 SECONDS, wet_time_to_add = 5 SECONDS)
 			if(bigsweat)
 				var/obj/effect/sweatsplash/S = new(M.loc)
@@ -378,7 +369,7 @@ im not even gonna bother with these for the following symptoms. typed em out, co
 				if(ammonia)
 					S.reagents.add_reagent(/datum/reagent/space_cleaner, 5)
 				S.splash()
-				to_chat(M, "<span class='userdanger'>You sweat out nearly everything in your body!</span>")
+				to_chat(M, "<span class='userdanger'>Wypacasz z siebie prawie wszystko!</span>")
 		else
 			to_chat(M, "<span class='notice'>[pick("You feel moist.", "Your clothes are soaked.", "You're sweating buckets!")]</span>")
 	return
@@ -396,7 +387,7 @@ im not even gonna bother with these for the following symptoms. typed em out, co
 
 /datum/symptom/teleport
 	name = "Thermal Retrostable Displacement"
-	desc = "When too hot or cold, the subject will return to a recent location at which they experienced safe homeostasis."
+	desc = "Gdy jest za gorąco lub za zimno, nosiciel wraca do niedawnego miejsca, w którym doświadczył bezpiecznej homeostazy."
 	stealth = 1
 	resistance = 2
 	stage_speed = -2
@@ -411,8 +402,7 @@ im not even gonna bother with these for the following symptoms. typed em out, co
 	var/burnheal = FALSE
 	var/turf/open/location_return = null
 	COOLDOWN_DECLARE(teleport_cooldown)
-	threshold_desc = "<b>Resistance 6:</b> The disease acts on a smaller scale, resetting burnt tissue back to a state of health.<br>\
-					<b>Transmission 8:</b> The disease becomes more active, activating in a smaller temperature range."
+	threshold_desc = "<b>Odporność 6:</b> choroba działa na mniejszą skalę, przywracając spaloną tkankę do zdrowia.<br><b>Transmisja 8:</b> choroba staje się aktywniejsza, aktywując się w węższym zakresie temperatur."
 
 /datum/symptom/teleport/severityset(datum/disease/advance/A)
 	. = ..()
@@ -441,7 +431,7 @@ im not even gonna bother with these for the following symptoms. typed em out, co
 
 			if(COOLDOWN_FINISHED(src, teleport_cooldown) && (M.bodytemperature < BODYTEMP_HEAT_DAMAGE_LIMIT || M.bodytemperature > BODYTEMP_COLD_DAMAGE_LIMIT))
 				location_return = get_turf(M)	//sets up return point
-				to_chat(M, "<span class='warning'>The lukewarm temperature makes you feel strange!</span>")
+				to_chat(M, "<span class='warning'>Letnia temperatura sprawia, że czujesz się dziwnie!</span>")
 				COOLDOWN_START(src, teleport_cooldown, (TELEPORT_COOLDOWN * 5) + (rand(1, 300) * 10))
 			if(location_return)
 				if(location_return.z != M.loc.z)
@@ -449,7 +439,7 @@ im not even gonna bother with these for the following symptoms. typed em out, co
 					COOLDOWN_RESET(src, teleport_cooldown)
 				else if(((M.bodytemperature > BODYTEMP_HEAT_DAMAGE_LIMIT + telethreshold  && !HAS_TRAIT(M, TRAIT_RESISTHEAT)) || (M.bodytemperature < BODYTEMP_COLD_DAMAGE_LIMIT - telethreshold  && !HAS_TRAIT(M, TRAIT_RESISTCOLD)) || (burnheal && M.getFireLoss() > 60 + telethreshold)))
 					do_sparks(5, FALSE, M)
-					to_chat(M, "<span class='userdanger'>The change in temperature shocks you back to a previous spatial state!</span>")
+					to_chat(M, "<span class='userdanger'>Zmiana temperatury przywraca cię do poprzedniego stanu przestrzennego!</span>")
 					do_teleport(M, location_return, 0, asoundin = 'sound/effects/phasein.ogg') //Teleports home
 					do_sparks(5, FALSE, M)
 					if(burnheal)
@@ -465,7 +455,7 @@ im not even gonna bother with these for the following symptoms. typed em out, co
 
 /datum/symptom/growth
 	name = "Pituitary Disruption"
-	desc = "Causes uncontrolled growth in the subject."
+	desc = "Powoduje niekontrolowany wzrost nosiciela."
 	stealth = -3
 	resistance = -2
 	stage_speed = 1
@@ -481,8 +471,7 @@ im not even gonna bother with these for the following symptoms. typed em out, co
 	var/bruteheal = FALSE
 	var/sizemult = 1
 	var/datum/mind/ownermind
-	threshold_desc = "<b>Stage Speed 6:</b> The disease heals brute damage at a fast rate, but causes expulsion of benign tumors.<br>\
-					<b>Stage Speed 12:</b> The disease heals brute damage incredibly fast, but deteriorates cell health and causes tumors to become more advanced. The disease will also regenerate lost limbs."
+	threshold_desc = "<b>Szybkość stadiów 6:</b> choroba szybko leczy obrażenia fizyczne, ale powoduje wydalanie łagodnych guzów.<br><b>Szybkość stadiów 12:</b> choroba niewiarygodnie szybko leczy obrażenia fizyczne, ale pogarsza zdrowie komórek i sprawia, że guzy stają się bardziej zaawansowane. Choroba odtwarza też utracone kończyny."
 
 /datum/symptom/growth/severityset(datum/disease/advance/A)
 	. = ..()
@@ -513,7 +502,7 @@ im not even gonna bother with these for the following symptoms. typed em out, co
 	switch(A.stage)
 		if(4, 5)
 			if(prob(5) && bruteheal)
-				to_chat(M, "<span class='userdanger'>You retch, and a splatter of gore escapes your gullet!</span>")
+				to_chat(M, "<span class='userdanger'>Wymiotujesz, a z twojego gardła tryska krwawa breja!</span>")
 				M.Immobilize(5)
 				M.add_splatter_floor()
 				playsound(get_turf(M), 'sound/effects/splat.ogg', 50, 1)
@@ -534,12 +523,9 @@ im not even gonna bother with these for the following symptoms. typed em out, co
 						for(var/Z in missing) //uses the same text and sound a ling's regen does. This can false-flag the host as a changeling.
 							if(M.regenerate_limb(Z, TRUE))
 								playsound(M, 'sound/magic/demon_consume.ogg', 50, 1)
-								M.visible_message("<span class='warning'>[M]'s missing limbs \
-									reform, making a loud, grotesque sound!</span>",
-									"<span class='userdanger'>Your limbs regrow, making a \
-									loud, crunchy sound and giving you great pain!</span>",
-									"<span class='italics'>You hear organic matter ripping \
-									and tearing!</span>")
+								M.visible_message("<span class='warning'>Brakujące kończyny [M] odrastają z głośnym, groteskowym dźwiękiem!</span>",
+									"<span class='userdanger'>Twoje kończyny odrastają z głośnym chrzęstem, sprawiając ci ogromny ból!</span>",
+									"<span class='italics'>Słyszysz rozrywanie i szarpanie organicznej materii!</span>")
 								M.emote("scream")
 								if(Z == BODY_ZONE_HEAD) //if we regenerate the head, make sure the mob still owns us
 									if(isliving(ownermind.current))
@@ -567,7 +553,7 @@ im not even gonna bother with these for the following symptoms. typed em out, co
 /datum/symptom/growth/End(datum/disease/advance/A)
 	. = ..()
 	var/mob/living/carbon/M = A.affected_mob
-	to_chat(M, "<span class='notice'>You lose your balance and stumble as you shrink, and your legs come out from underneath you!</span>")
+	to_chat(M, "<span class='notice'>Kurcząc się, tracisz równowagę i potykasz się, a nogi się pod tobą uginają!</span>")
 	M.resize = 1/sizemult
 	M.update_transform()
 
@@ -575,7 +561,7 @@ im not even gonna bother with these for the following symptoms. typed em out, co
 
 /datum/symptom/vampirism
 	name = "Hemetophagy"
-	desc = "The host absorbs blood from external sources, and seemlessly reintegrates it into their own bloodstream, regardless of its bloodtype or how it was ingested. However, the virus also slowly consumes the host's blood"
+	desc = "Nosiciel wchłania krew z zewnętrznych źródeł i bezproblemowo włącza ją do własnego krwiobiegu, bez względu na grupę krwi i sposób przyjęcia. Wirus jednak powoli pochłania krew nosiciela"
 	stealth = 1
 	resistance = -2
 	stage_speed = 1
@@ -593,9 +579,7 @@ im not even gonna bother with these for the following symptoms. typed em out, co
 	var/aggression = FALSE
 	var/vampire = FALSE
 	var/mob/living/carbon/human/bloodbag
-	threshold_desc = "<b>Transmission 4:</b> The virus recycles excess absorbed blood into restorative biomass, healing brute damage.<br>\
-					<b>Stage Speed 7:</b> The virus grows more aggressive, assimilating blood and healing at a faster rate, but also draining the host's blood quicker<br>\
-					<b>Transmission 6:</b> The virus aggressively assimilates blood, resulting in contiguous blood pools being absorbed by the virus, as well as sucking blood out of open wounds of subjects in physical contact with the host."
+	threshold_desc = "<b>Transmisja 4:</b> wirus przetwarza nadmiar wchłoniętej krwi na regenerującą biomasę, lecząc obrażenia fizyczne.<br><b>Szybkość stadiów 7:</b> wirus staje się agresywniejszy, przyswajając krew i lecząc szybciej, ale też szybciej wysysając krew nosiciela<br><b>Transmisja 6:</b> wirus agresywnie przyswaja krew, wchłaniając przylegające kałuże krwi oraz wysysając krew z otwartych ran osób w fizycznym kontakcie z nosicielem."
 
 /datum/symptom/vampirism/severityset(datum/disease/advance/A)
 	. = ..()
@@ -649,9 +633,9 @@ im not even gonna bother with these for the following symptoms. typed em out, co
 				if(bloodpoints > 0)
 					if(ishuman(M))
 						var/mob/living/carbon/human/H = M
-						if(H.bleed_rate >= 2 && bruteheal && bloodpoints)
+						if(bruteheal && bloodpoints)
 							bloodpoints -= 1
-							H.bleed_rate = max(0, (H.bleed_rate - 2))
+							H.cauterise_wounds(0.1)
 					if(M.blood_volume < BLOOD_VOLUME_NORMAL && M.get_blood_id() == /datum/reagent/blood) //bloodloss is prioritized over healing brute
 						bloodpoints -= 1
 						M.blood_volume = max((M.blood_volume + 3 * power), BLOOD_VOLUME_NORMAL) //bloodpoints are valued at 4 units of blood volume per point, so this is diminished
@@ -682,14 +666,14 @@ im not even gonna bother with these for the following symptoms. typed em out, co
 		var/possibledist = power + 1
 		if(M.get_blood_id() != /datum/reagent/blood)
 			possibledist = 1
-		if(!(NOBLOOD in H.dna.species.species_traits)) //if you dont have blood, well... sucks to be you
+		if(!((NOBLOOD in H.dna.species.species_traits) || HAS_TRAIT(H, TRAIT_NO_BLOOD))) //if you dont have blood, well... sucks to be you
 			H.setOxyLoss(0,0) //this is so a crit person still revives if suffocated
 			if(bloodpoints >= 200 && H.health > 0 && H.blood_volume >= BLOOD_VOLUME_NORMAL) //note that you need to actually need to heal, so a maxed out virus won't be bringing you back instantly in most cases. *even so*, if this needs to be nerfed ill do it in a heartbeat
 				H.revive(0)
-				H.visible_message("<span class='warning'>[H.name]'s skin takes on a rosy hue as they begin moving. They live again!</span>", "<span class='userdanger'>As your body fills with fresh blood, you feel your limbs once more, accompanied by an insatiable thirst for blood.</span>")
+				H.visible_message("<span class='warning'>Skóra [H.name] nabiera różowego odcienia i zaczyna się poruszać. Znów żyje!</span>", "<span class='userdanger'>Gdy twoje ciało wypełnia się świeżą krwią, znów czujesz kończyny, a wraz z nimi nienasycone pragnienie krwi.</span>")
 				bloodpoints = 0
 				return 0
-			else if(bloodbag && bloodbag.blood_volume && (bloodbag.stat || bloodbag.bleed_rate))
+			else if(bloodbag && bloodbag.blood_volume && (bloodbag.stat || bloodbag.is_bleeding()))
 				if(get_dist(bloodbag, H) <= 1 && bloodbag.z == H.z)
 					var/amt = ((bloodbag.stat * 2) + 2) * power
 					var/excess = max(((min(amt, bloodbag.blood_volume) - (BLOOD_VOLUME_NORMAL - H.blood_volume)) / 2), 0)
@@ -697,7 +681,7 @@ im not even gonna bother with these for the following symptoms. typed em out, co
 					bloodbag.blood_volume = max(bloodbag.blood_volume - amt, 0)
 					bloodpoints += max(excess, 0)
 					playsound(bloodbag.loc, 'sound/magic/exit_blood.ogg', 10, 1)
-					bloodbag.visible_message("<span class='warning'>Blood flows from [bloodbag.name]'s wounds into [H.name]'s corpse!</span>", "<span class='userdanger'>Blood flows from your wounds into [H.name]'s corpse!</span>")
+					bloodbag.visible_message("<span class='warning'>Krew wypływa z ran [bloodbag.name] do zwłok [H.name]!</span>", "<span class='userdanger'>Krew wypływa z twoich ran do zwłok [H.name]!</span>")
 				else if(get_dist(bloodbag, H) >= possibledist) //they've been taken out of range.
 					bloodbag = null
 					return
@@ -725,13 +709,13 @@ im not even gonna bother with these for the following symptoms. typed em out, co
 							else if(T == targetloc && bloodpoints >= 2)
 								bloodbag.throw_at(H, 1, 1)
 								bloodpoints -= 2
-								bloodbag.visible_message("<span class='warning'>A current of blood pushes [bloodbag.name] towards [H.name]'s corpse!</span>")
+								bloodbag.visible_message("<span class='warning'>Strumień krwi popycha [bloodbag.name] w stronę zwłok [H.name]!</span>")
 								playsound(bloodbag.loc, 'sound/magic/exit_blood.ogg', 25, 1)
 								return 0
 			else
 				var/list/candidates = list()
 				for(var/mob/living/carbon/human/C in ohearers(min(bloodpoints/4, possibledist), H))
-					if(NOBLOOD in C.dna.species.species_traits)
+					if((NOBLOOD in C.dna.species.species_traits) || HAS_TRAIT(C, TRAIT_NO_BLOOD))
 						continue
 					if(C.stat && C.blood_volume && C.get_blood_id() == H.get_blood_id())
 						candidates += C
@@ -750,17 +734,17 @@ im not even gonna bother with these for the following symptoms. typed em out, co
 		var/mob/living/carbon/human/H = M
 		if(H.pulling && ishuman(H.pulling)) //grabbing is handled with the disease instead of the component, so the component doesn't have to be processed
 			var/mob/living/carbon/human/C = H.pulling
-			if(!C.bleed_rate && vampire && C.can_inject() && H.grab_state && C.get_blood_id() == H.get_blood_id() && !(NOBLOOD in C.dna.species.species_traits))//aggressive grab as a "vampire" starts the target bleeding
-				C.bleed_rate += 1
-				C.visible_message("<span class='warning'>Wounds open on [C.name]'s skin as [H.name] grips them tightly!</span>", "<span class='userdanger'>You begin bleeding at [H.name]'s touch!</span>")
-			if(C.blood_volume && C.can_inject() &&(C.bleed_rate && (!C.bleedsuppress || vampire )) && C.get_blood_id() == H.get_blood_id() && !(NOBLOOD in C.dna.species.species_traits))
+			if(!C.is_bleeding() && vampire && C.can_inject() && H.grab_state && C.get_blood_id() == H.get_blood_id() && !((NOBLOOD in C.dna.species.species_traits)|| HAS_TRAIT(C, TRAIT_NO_BLOOD)))//aggressive grab as a "vampire" starts the target bleeding
+				C.add_bleeding(BLEED_SURFACE)
+				C.visible_message("<span class='warning'>Na skórze [C.name] otwierają się rany, gdy [H.name] mocno go ściska!</span>", "<span class='userdanger'>Pod dotykiem [H.name] zaczynasz krwawić!</span>")
+			if(C.blood_volume && C.can_inject() && (C.is_bleeding() && vampire) && C.get_blood_id() == H.get_blood_id() && !((NOBLOOD in C.dna.species.species_traits)|| HAS_TRAIT(C, TRAIT_NO_BLOOD)))
 				var/amt = (H.grab_state + C.stat + 2) * power
 				if(C.blood_volume)
 					var/excess = max(((min(amt, C.blood_volume) - (BLOOD_VOLUME_NORMAL - H.blood_volume)) / 4), 0)
 					H.blood_volume = min(H.blood_volume + min(amt, C.blood_volume), BLOOD_VOLUME_NORMAL)
 					C.blood_volume = max(C.blood_volume - amt, 0)
 					gainedpoints = CLAMP(excess, 0, maxbloodpoints - bloodpoints)
-					C.visible_message("<span class='warning'>Blood flows from [C.name]'s wounds into [H.name]!</span>", "<span class='userdanger'>Blood flows from your wounds into [H.name]!</span>")
+					C.visible_message("<span class='warning'>Krew wypływa z ran [C.name] do [H.name]!</span>", "<span class='userdanger'>Krew wypływa z twoich ran do [H.name]!</span>")
 					playsound(C.loc, 'sound/magic/exit_blood.ogg', 25, 1)
 					return gainedpoints
 	if(locate(/obj/effect/decal/cleanable/blood) in M.loc)
@@ -792,27 +776,27 @@ im not even gonna bother with these for the following symptoms. typed em out, co
 				qdel(stain)
 		if(gainedpoints)
 			playsound(M.loc, 'sound/magic/exit_blood.ogg', 50, 1)
-			M.visible_message("<span class='warning'>Blood flows from the floor into [M.name]!</span>", "<span class='warning'>You consume the errant blood</span>")
+			M.visible_message("<span class='warning'>Krew z podłogi wpływa do [M.name]!</span>", "<span class='warning'>Pochłaniasz rozlaną krew</span>")
 		return CLAMP(gainedpoints, 0, maxbloodpoints - bloodpoints)
 	if(ishuman(M) && aggression)//finally, attack mobs touching the host.
 		var/mob/living/carbon/human/H = M
 		for(var/mob/living/carbon/human/C in ohearers(1, H))
-			if(NOBLOOD in C.dna.species.species_traits)
+			if((NOBLOOD in C.dna.species.species_traits) || HAS_TRAIT(C, TRAIT_NO_BLOOD))
 				continue
-			if((C.pulling && C.pulling == H) || (C.loc == H.loc) && C.bleed_rate && C.get_blood_id() == H.get_blood_id())
+			if((C.pulling && C.pulling == H) || (C.loc == H.loc) && C.is_bleeding() && C.get_blood_id() == H.get_blood_id())
 				var/amt = (2 * power)
 				if(C.blood_volume)
 					var/excess = max(((min(amt, C.blood_volume) - (BLOOD_VOLUME_NORMAL - H.blood_volume)) / 4 * power), 0)
 					H.blood_volume = min(H.blood_volume + min(amt, C.blood_volume), BLOOD_VOLUME_NORMAL)
 					C.blood_volume = max(C.blood_volume - amt, 0)
 					gainedpoints += CLAMP(excess, 0, maxbloodpoints - bloodpoints)
-					C.visible_message("<span class='warning'>Blood flows from [C.name]'s wounds into [H.name]!</span>", "<span class='userdanger'>Blood flows from your wounds into [H.name]!</span>")
+					C.visible_message("<span class='warning'>Krew wypływa z ran [C.name] do [H.name]!</span>", "<span class='userdanger'>Krew wypływa z twoich ran do [H.name]!</span>")
 		return CLAMP(gainedpoints, 0, maxbloodpoints - bloodpoints)
 
 
 /datum/symptom/parasite
 	name = "Xenobiological Symbiosis"
-	desc = "The virus contains latent DNA blueprints to create a toxin-devouring grub egg, which parasitizes slimes and slime people. Its normally toxic, infectious flesh becomes safe and delicious when cooked."
+	desc = "Wirus zawiera utajone plany DNA do stworzenia jaja robaka pożerającego toksyny, który pasożytuje na szlamach i ludziach-szlamach. Jego normalnie toksyczne, zakaźne mięso po ugotowaniu staje się bezpieczne i pyszne."
 	stealth = 1
 	resistance = 2
 	stage_speed = 2
@@ -825,8 +809,7 @@ im not even gonna bother with these for the following symptoms. typed em out, co
 	bodies = list("Cytoplasm", "Slime")
 	var/list/grubs = list()
 	var/toxheal = FALSE
-	threshold_desc = "<b>Stealth 2:</b>The gestating larvae can consume toxins in the host's bloodstream.<br>\
-					<b>Stage Speed 6:</b> More larvae are born, and they leave the host faster."
+	threshold_desc = "<b>Ukrycie 2:</b> rozwijające się larwy mogą pochłaniać toksyny z krwiobiegu nosiciela.<br><b>Szybkość stadiów 6:</b> rodzi się więcej larw i szybciej opuszczają nosiciela."
 
 /datum/symptom/parasite/severityset(datum/disease/advance/A)
 	. = ..()
@@ -862,8 +845,8 @@ im not even gonna bother with these for the following symptoms. typed em out, co
 			for(var/mob/living/simple_animal/hostile/redgrub/grub in grubs)//check if grubs need to be born, then feed existing grubs, or get them closer to hatching
 				var/efficacy = grub.growthstage / 2
 				if(grub.growthstage >= 3 || grub.patience <= 0 || grub.stat)
-					M.visible_message("<span class='warning'>[M] vomits up a disgusting grub!</span>", \
-							"<span class='userdanger'>You vomit a large, slithering grub!</span>")
+					M.visible_message("<span class='warning'>[M] wymiotuje obrzydliwym robakiem!</span>", \
+							"<span class='userdanger'>Wymiotujesz dużym, wijącym się robakiem!</span>")
 					M.Stun((grub.growthstage * 10))
 					playsound(M.loc, 'sound/effects/splat.ogg', 50, 1)
 					grub.forceMove(M.loc)
@@ -885,7 +868,7 @@ im not even gonna bother with these for the following symptoms. typed em out, co
 				grub.togglehibernation()
 				grub.grubdisease = list(A)
 			if(prob(LAZYLEN(grubs) * (6/power)))// so you know its working. power lowers this so it doesnt spam you at high grub counts
-				to_chat(M, "<span class='warning'>You feel something squirming inside of you!</span>")
+				to_chat(M, "<span class='warning'>Czujesz, jak coś wije się w twoim wnętrzu!</span>")
 			M.add_movespeed_modifier(MOVESPEED_ID_GRUB_VIRUS_SLOWDOWN, override = TRUE, multiplicative_slowdown = max(slowdown - 0.5, 0))
 
 /datum/symptom/parasite/End(datum/disease/advance/A)
@@ -893,8 +876,8 @@ im not even gonna bother with these for the following symptoms. typed em out, co
 	var/mob/living/carbon/M = A.affected_mob
 	M.remove_movespeed_modifier(MOVESPEED_ID_GRUB_VIRUS_SLOWDOWN, TRUE)
 	for(var/mob/living/simple_animal/hostile/redgrub/grub in grubs)
-		M.visible_message("<span class='warning'>[M] vomits up a disgusting grub!</span>", \
-				"<span class='userdanger'>You vomit a large, slithering grub!</span>")
+		M.visible_message("<span class='warning'>[M] wymiotuje obrzydliwym robakiem!</span>", \
+				"<span class='userdanger'>Wymiotujesz dużym, wijącym się robakiem!</span>")
 		M.Stun((grub.growthstage * 10))
 		grub.forceMove(M.loc)
 		grub.togglehibernation()
@@ -913,11 +896,11 @@ im not even gonna bother with these for the following symptoms. typed em out, co
 			var/mob/living/simple_animal/hostile/redgrub/grub = new(M.loc)
 			grub.grubdisease = list(A)
 		M.gib()
-		M.visible_message("<span class='warning'>[M] is eaten alive by a swarm of red grubs!</span>")
+		M.visible_message("<span class='warning'>Rój czerwonych robaków zjada [M] żywcem!</span>")
 
 /datum/symptom/jitters
 	name = "Hyperactivity"
-	desc = "The virus causes restlessness, nervousness and hyperactivity, increasing the rate at which the host needs to eat,but making them harder to tire out"
+	desc = "Wirus powoduje niepokój, nerwowość i nadpobudliwość, zwiększając tempo, w jakim nosiciel musi jeść, ale sprawiając, że trudniej go zmęczyć"
 	stealth = -4
 	resistance = 0
 	stage_speed = 2
@@ -928,8 +911,7 @@ im not even gonna bother with these for the following symptoms. typed em out, co
 	symptom_delay_max = 1
 	prefixes = list("Gray ", "Amped ", "Nervous ")
 	var/clearcc = FALSE
-	threshold_desc = "<b>Resistance 8:</b>The virus causes an even greater rate of nutriment loss, able to cause starvation, but its energy gain greatly increases<br>\
-					<b>Stage Speed 8:</b>The virus causes extreme nervousness and paranoia, resulting in occasional hallucinations, and extreme restlessness, but greater overall energy and the ability to shake off stuns faster."
+	threshold_desc = "<b>Odporność 8:</b> wirus powoduje jeszcze szybszą utratę składników odżywczych, mogąc doprowadzić do zagłodzenia, ale znacznie zwiększa zysk energii<br><b>Szybkość stadiów 8:</b> wirus powoduje skrajną nerwowość i paranoję, a w efekcie okazjonalne halucynacje i skrajny niepokój, ale ogólnie więcej energii i szybsze otrząsanie się z ogłuszenia."
 
 /datum/symptom/jitters/severityset(datum/disease/advance/A)
 	. = ..()

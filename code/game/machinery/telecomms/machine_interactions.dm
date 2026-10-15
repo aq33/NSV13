@@ -96,7 +96,7 @@
 		if("id")
 			if(params["value"])
 				if(length(params["value"]) > 32)
-					to_chat(usr, "<span class='warning'>Error: Machine ID too long!</span>")
+					to_chat(usr, "<span class='warning'>Błąd: ID maszyny za długie!</span>")
 					playsound(src, 'sound/machines/buzz-sigh.ogg', 50, TRUE)
 					return
 				else
@@ -106,7 +106,7 @@
 		if("network")
 			if(params["value"])
 				if(length(params["value"]) > 15)
-					to_chat(usr, "<span class='warning'>Error: Network name too long!</span>")
+					to_chat(usr, "<span class='warning'>Błąd: nazwa sieci za długa!</span>")
 					playsound(src, 'sound/machines/buzz-sigh.ogg', 50, TRUE)
 					return
 				else

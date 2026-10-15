@@ -25,7 +25,7 @@
 	var/A = null
 
 	if(!randomise_selection)
-		A = input("Area to teleport to", "Teleport", A) as null|anything in GLOB.teleportlocs
+		A = input("Obszar, do którego chcesz się teleportować", "Teleport", A) as null|anything in GLOB.teleportlocs
 	else
 		A = pick(GLOB.teleportlocs)
 	if(!A)
@@ -49,7 +49,7 @@
 					L+=T
 
 		if(!L.len)
-			to_chat(usr, "The spell matrix was unable to locate a suitable teleport destination for an unknown reason. Sorry.")
+			to_chat(usr, "Matryca zaklęcia z nieznanego powodu nie zdołała znaleźć odpowiedniego celu teleportacji. Przepraszamy.")
 			return
 
 		if(target?.buckled)

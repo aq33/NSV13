@@ -140,11 +140,18 @@ GLOBAL_LIST_INIT(turfs_without_ground, typecacheof(list(
 
 #define isrevenant(A) (istype(A, /mob/living/simple_animal/revenant))
 
+#define ishorror(A) (istype(A, /mob/living/simple_animal/horror)) // AQ EDIT - Yogstation#13033
+
 #define isbot(A) (istype(A, /mob/living/simple_animal/bot))
 
 #define isshade(A) (istype(A, /mob/living/simple_animal/shade))
 
 #define ismouse(A) (istype(A, /mob/living/simple_animal/mouse))
+
+// AQUILA EDIT - szczury z tg
+#define israt(A) (istype(A, /mob/living/simple_animal/hostile/rat))
+
+#define isregalrat(A) (istype(A, /mob/living/simple_animal/hostile/regalrat))
 
 #define isslime(A) (istype(A, /mob/living/simple_animal/slime))
 
@@ -153,6 +160,8 @@ GLOBAL_LIST_INIT(turfs_without_ground, typecacheof(list(
 #define iscat(A) (istype(A, /mob/living/simple_animal/pet/cat))
 
 #define iscorgi(A) (istype(A, /mob/living/simple_animal/pet/dog/corgi))
+
+#define isdog(A) (istype(A, /mob/living/simple_animal/pet/dog))
 
 #define ishostile(A) (istype(A, /mob/living/simple_animal/hostile))
 

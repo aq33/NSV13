@@ -76,8 +76,8 @@
 	var/turf/target = get_turf(user)
 	if(get_dir(loc, target) & dir) //Don't let people who aren't behind the barricade through, as we plan to have PVP where humans are involved. If the barricade is flipped down, then theyre fine to flip it back up.
 		if(!closed)
-			user.visible_message("<span class='notice'>[user] leans on [src], trying to force it down!.</span>",
-			"<span class='notice'>You lean on [src] to try and force it down!.</span>")
+			user.visible_message("<span class='notice'>[user] napiera na [src], próbując go przewrócić!</span>",
+			"<span class='notice'>Napierasz na [src], próbując go przewrócić!</span>")
 			playsound(src.loc, 'sound/items/jaws_pry.ogg', 25, 1)
 			if(!do_after(user, 100, target = src))
 				return FALSE
@@ -86,11 +86,11 @@
 	density = !density
 
 	if(closed)
-		user.visible_message("<span class='notice'>[user] flips [src] open.</span>",
-		"<span class='notice'>You flip [src] open.</span>")
+		user.visible_message("<span class='notice'>[user] rozkłada [src].</span>",
+		"<span class='notice'>Rozkładasz [src].</span>")
 	else
-		user.visible_message("<span class='notice'>[user] flips [src] closed.</span>",
-		"<span class='notice'>You flip [src] closed.</span>")
+		user.visible_message("<span class='notice'>[user] składa [src].</span>",
+		"<span class='notice'>Składasz [src].</span>")
 
 	update_icon()
 	update_overlay()
@@ -107,19 +107,19 @@
 	. = ..()
 
 	if(is_wired)
-		. += "<span class='info'>There is a length of wire strewn across the top of this barricade.</span>"
+		. += "<span class='info'>Na szczycie tej barykady rozciągnięto drut.</span>"
 	switch(damage_state)
-		if(0) . += "<span class='info'>It appears to be in good shape.</span>"
-		if(1) . += "<span class='warning'>It's slightly damaged, but still very functional.</span>"
-		if(2) . += "<span class='warning'>It's quite beat up, but it's holding together.</span>"
-		if(3) . += "<span class='warning'>It's crumbling apart, just a few more blows will tear it apart.</span>"
+		if(0) . += "<span class='info'>Wydaje się w dobrym stanie.</span>"
+		if(1) . += "<span class='warning'>Jest lekko uszkodzona, ale wciąż w pełni sprawna.</span>"
+		if(2) . += "<span class='warning'>Jest dość poobijana, ale się trzyma.</span>"
+		if(3) . += "<span class='warning'>Rozpada się, jeszcze kilka ciosów i się rozleci.</span>"
 
 /obj/structure/peacekeeper_barricade/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum)
 	if(AM.throwing && is_wired)
 		if(iscarbon(AM))
 			var/mob/living/carbon/C = AM
-			C.visible_message("<span class='danger'>The barbed wire slices into [C]!</span>",
-			"<span class='danger'>The barbed wire slices into you!</span>")
+			C.visible_message("<span class='danger'>Drut kolczasty wcina się w [C]!</span>",
+			"<span class='danger'>Drut kolczasty wcina się w ciebie!</span>")
 			C.apply_damage(10)
 			C.Stun(20) //Leaping into barbed wire is VERY bad
 	..()
@@ -154,7 +154,7 @@
 		return TRUE
 
 	if(istype(mover, /obj/vehicle))
-		visible_message("<span class='danger'>[mover] drives over and destroys [src]!</span>")
+		visible_message("<span class='danger'>[mover] przejeżdża po [src], niszcząc go!</span>")
 		destroy_structure(0)
 		return FALSE
 
@@ -172,14 +172,14 @@
 	if(barricade_hitsound)
 		playsound(src, barricade_hitsound, 25, 1)
 	if(obj_integrity <= 0)
-		M.visible_message("<span class='danger'>[M] slices [src] apart!</span>", \
-		"<span class='danger'>You slice [src] apart!</span>", null, 5)
+		M.visible_message("<span class='danger'>[M] rozcina [src]!</span>", \
+		"<span class='danger'>Rozcinasz [src]!</span>", null, 5)
 	else
 		M.visible_message("<span class='danger'>[M] slashes [src]!</span>", \
-		"<span class='danger'>You slash [src]!</span>", null, 5)
+		"<span class='danger'>Tniesz [src]!</span>", null, 5)
 	if(is_wired)
-		M.visible_message("<span class='danger'>The barbed wire slices into [M]!</span>",
-		"<span class='danger'>The barbed wire slices into you!</span>", null, 5)
+		M.visible_message("<span class='danger'>Drut kolczasty wcina się w [M]!</span>",
+		"<span class='danger'>Drut kolczasty wcina się w ciebie!</span>", null, 5)
 		M.apply_damage(10)
 	update_health(TRUE)
 
@@ -188,7 +188,7 @@
 
 	for(var/obj/effect/acid/A in get_turf(src))
 		if(A.target == get_turf(src))
-			to_chat(user, "You can't get near that, it's melting!")
+			to_chat(user, "Nie możesz się do tego zbliżyć, topi się!")
 			return
 
 	if(istype(I, /obj/item/stack/barbed_wire))
@@ -196,14 +196,14 @@
 		if(!can_wire)
 			return
 
-		user.visible_message("<span class='notice'>[user] starts setting up [I] on [src].</span>",
-		"<span class='notice'>You start setting up [I] on [src].</span>")
+		user.visible_message("<span class='notice'>[user] zaczyna rozkładać [I] na [src].</span>",
+		"<span class='notice'>Zaczynasz rozkładać [I] na [src].</span>")
 		if(!do_after(user, 20, target=src) || !can_wire)
 			return
 
 		playsound(loc, 'nsv13/sound/effects/barbed_wire_movement.ogg', 25, 1)
-		user.visible_message("<span class='notice'>[user] sets up [I] on [src].</span>",
-		"<span class='notice'>You set up [I] on [src].</span>")
+		user.visible_message("<span class='notice'>[user] rozkłada [I] na [src].</span>",
+		"<span class='notice'>Rozkładasz [I] na [src].</span>")
 
 		if(!closed)
 			wired_overlay = image('nsv13/icons/obj/barricades.dmi', icon_state = "[barricade_type]_wire")
@@ -223,13 +223,13 @@
 		if(!is_wired)
 			return
 
-		user.visible_message("<span class='notice'>[user] starts to remove the barbed wire on [src].</span>",
-		"<span class='notice'>You begin removing the barbed wire on [src].</span>")
+		user.visible_message("<span class='notice'>[user] zaczyna usuwać drut kolczasty z [src].</span>",
+		"<span class='notice'>Zaczynasz usuwać drut kolczasty z [src].</span>")
 		if(!I.use_tool(src, user, 20, volume=25))
 			return
 
-		user.visible_message("<span class='notice'>[user] removes the barbed wire on [src].</span>",
-		"<span class='notice'>You remove the barbed wire on [src].</span>")
+		user.visible_message("<span class='notice'>[user] usuwa drut kolczasty z [src].</span>",
+		"<span class='notice'>Usuwasz drut kolczasty z [src].</span>")
 		overlays -= wired_overlay
 		max_integrity -= 50
 		obj_integrity -= 50
@@ -241,24 +241,24 @@
 
 	if(I.tool_behaviour == TOOL_WELDER)
 		if(obj_integrity <= max_integrity * 0.3)
-			to_chat(user, "<span class='warning'>[src] has sustained too much structural damage to be repaired.</span>")
+			to_chat(user, "<span class='warning'>[src] jest zbyt uszkodzona strukturalnie, by ją naprawić.</span>")
 			return
 
 		if(obj_integrity == max_integrity)
-			to_chat(user, "<span class='warning'>[src] doesn't need repairs.</span>")
+			to_chat(user, "<span class='warning'>[src] nie wymaga naprawy.</span>")
 			return
 
 		if(!I.tool_start_check(user, 1))
 			return
 
-		user.visible_message("<span class='notice'>[user] begins repairing damage to [src].</span>",
-		"<span class='notice'>You begin repairing the damage to [src].</span>")
+		user.visible_message("<span class='notice'>[user] zaczyna naprawiać [src].</span>",
+		"<span class='notice'>Zaczynasz naprawiać uszkodzenia [src].</span>")
 
 		if(!I.use_tool(src, user, 50, 1, volume=25))
 			return
 
-		user.visible_message("<span class='notice'>[user] repairs some damage on [src].</span>",
-		"<span class='notice'>You repair [src].</span>")
+		user.visible_message("<span class='notice'>[user] naprawia część uszkodzeń [src].</span>",
+		"<span class='notice'>Naprawiasz [src].</span>")
 		obj_integrity += 150
 		update_health()
 
@@ -268,8 +268,8 @@
 				if(!I.use_tool(src, user, 10, volume=25))
 					return
 
-				user.visible_message("<span class='notice'>[user] removes [src]'s protection panel.</span>",
-				"<span class='notice'>You remove [src]'s protection panels, exposing the anchor bolts.</span>")
+				user.visible_message("<span class='notice'>[user] zdejmuje panel ochronny [src].</span>",
+				"<span class='notice'>Zdejmujesz panele ochronne [src], odsłaniając śruby kotwiczące.</span>")
 				build_state = 1
 				return FALSE
 		if(1) //Protection panel removed step. Screwdriver to put the panel back, wrench to unsecure the anchor bolts
@@ -277,8 +277,8 @@
 				if(!I.use_tool(src, user, 10, volume=25))
 					return
 
-				user.visible_message("<span class='notice'>[user] set [src]'s protection panel back.</span>",
-				"<span class='notice'>You set [src]'s protection panel back.</span>")
+				user.visible_message("<span class='notice'>[user] zakłada z powrotem panel ochronny [src].</span>",
+				"<span class='notice'>Zakładasz z powrotem panel ochronny [src].</span>")
 				build_state = 2
 				return FALSE
 
@@ -286,8 +286,8 @@
 				if(!I.use_tool(src, user, 10, volume=25))
 					return
 
-				user.visible_message("<span class='notice'>[user] loosens [src]'s anchor bolts.</span>",
-				"<span class='notice'>You loosen [src]'s anchor bolts.</span>")
+				user.visible_message("<span class='notice'>[user] luzuje śruby kotwiczące [src].</span>",
+				"<span class='notice'>Luzujesz śruby kotwiczące [src].</span>")
 				anchored = FALSE
 				build_state = 0
 				update_icon() //unanchored changes layer
@@ -296,14 +296,14 @@
 			if(I.tool_behaviour == TOOL_WRENCH)
 				for(var/obj/structure/peacekeeper_barricade/B in loc)
 					if(B != src && B.dir == dir)
-						to_chat(user, "<span class='warning'>There's already a barricade here.</span>")
+						to_chat(user, "<span class='warning'>Tu już jest barykada.</span>")
 						return
 
 				if(!I.use_tool(src, user, 10, volume=25))
 					return
 
-				user.visible_message("<span class='notice'>[user] secures [src]'s anchor bolts.</span>",
-				"<span class='notice'>You secure [src]'s anchor bolts.</span>")
+				user.visible_message("<span class='notice'>[user] dokręca śruby kotwiczące [src].</span>",
+				"<span class='notice'>Dokręcasz śruby kotwiczące [src].</span>")
 				build_state = 1
 				anchored = TRUE
 				update_icon() //unanchored changes layer
@@ -311,14 +311,14 @@
 
 			else if(I.tool_behaviour == TOOL_CROWBAR)
 
-				user.visible_message("<span class='notice'>[user] starts unseating [src]'s panels.</span>",
-				"<span class='notice'>You start unseating [src]'s panels.</span>")
+				user.visible_message("<span class='notice'>[user] zaczyna zdejmować panele [src].</span>",
+				"<span class='notice'>Zaczynasz zdejmować panele [src].</span>")
 
 				if(!I.use_tool(src, user, 50, volume=25))
 					return
 
-				user.visible_message("<span class='notice'>[user] takes [src]'s panels apart.</span>",
-				"<span class='notice'>You take [src]'s panels apart.</span>")
+				user.visible_message("<span class='notice'>[user] rozbiera panele [src].</span>",
+				"<span class='notice'>Rozbierasz panele [src].</span>")
 				destroy_structure(TRUE) //Note : Handles deconstruction too !
 				return FALSE
 	. = ..()
@@ -340,7 +340,7 @@
 /obj/structure/peacekeeper_barricade/ex_act(severity)
 	switch(severity)
 		if(1.0)
-			visible_message("<span class='danger'>[src] is blown apart!</span>")
+			visible_message("<span class='danger'>[src] zostaje rozerwana na kawałki!</span>")
 			qdel(src)
 			return
 		if(2.0)
@@ -396,7 +396,7 @@
 
 	if(!obj_integrity)
 		if(!nomessage)
-			visible_message("<span class='danger'>[src] falls apart!</span>")
+			visible_message("<span class='danger'>[src] się rozpada!</span>")
 		destroy_structure()
 		return
 
@@ -426,7 +426,7 @@
 	if(!Adjacent(living_user) || living_user.incapacitated())
 		return FALSE
 	if(anchored)
-		to_chat(usr, "<span class='warning'>It is fastened to the floor, you can't rotate it!</span>")
+		to_chat(usr, "<span class='warning'>Jest przymocowana do podłogi, nie możesz jej obrócić!</span>")
 		return FALSE
 
 	setDir(turn(dir, 90))
@@ -443,7 +443,7 @@
 	if(!Adjacent(living_user) || living_user.incapacitated())
 		return FALSE
 	if(anchored)
-		to_chat(usr, "<span class='warning'>It is fastened to the floor, you can't rotate it!</span>")
+		to_chat(usr, "<span class='warning'>Jest przymocowana do podłogi, nie możesz jej obrócić!</span>")
 		return FALSE
 
 	setDir(turn(dir, 270))
@@ -470,7 +470,7 @@
 	throwforce = 5
 	throw_speed = 5
 	throw_range = 20
-	attack_verb = list("hit", "whacked", "sliced")
+	attack_verb = list("uderza", "wali", "kroi")
 	max_amount = 20
 	merge_type = /obj/item/stack/barbed_wire
 

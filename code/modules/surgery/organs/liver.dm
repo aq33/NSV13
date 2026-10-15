@@ -13,6 +13,8 @@
 	healing_factor = STANDARD_ORGAN_HEALING
 	decay_factor = STANDARD_ORGAN_DECAY
 
+	food_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/iron = 5)
+
 	var/alcohol_tolerance = ALCOHOL_RATE//affects how much damage the liver takes from alcohol
 	var/toxTolerance = LIVER_DEFAULT_TOX_TOLERANCE//maximum amount of toxins the liver can just shrug off
 	var/toxLethality = LIVER_DEFAULT_TOX_LETHALITY//affects how much damage toxins do to the liver
@@ -47,7 +49,7 @@
 			C.reagents.metabolize(C, can_overdose=TRUE)
 
 			if(provide_pain_message && damage > 10 && prob(damage/3))//the higher the damage the higher the probability
-				to_chat(C, "<span class='warning'>You feel a dull pain in your abdomen.</span>")
+				to_chat(C, "<span class='warning'>Czujesz tępy ból w brzuchu.</span>")
 
 		else	//for when our liver's failing
 			C.reagents.end_metabolization(C, keep_liverless = TRUE) //Stops trait-based effects on reagents, to prevent permanent buffs
@@ -56,7 +58,7 @@
 				return
 			C.adjustToxLoss(4, TRUE,  TRUE)
 			if(prob(30))
-				to_chat(C, "<span class='warning'>You feel a stabbing pain in your abdomen!</span>")
+				to_chat(C, "<span class='warning'>Czujesz kłujący ból w brzuchu!</span>")
 
 	if(damage > maxHealth)//cap liver damage
 		damage = maxHealth
@@ -64,11 +66,6 @@
 #undef HAS_SILENT_TOXIN
 #undef HAS_NO_TOXIN
 #undef HAS_PAINFUL_TOXIN
-
-/obj/item/organ/liver/prepare_eat()
-	var/obj/S = ..()
-	S.reagents.add_reagent(/datum/reagent/iron, 5)
-	return S
 
 /obj/item/organ/liver/fly
 	name = "insectoid liver"
@@ -120,7 +117,7 @@
 /obj/item/organ/liver/cybernetic/upgraded/ipc
 	name = "substance processor"
 	icon_state = "substance_processor"
-	attack_verb = list("processed")
+	attack_verb = list("przetwarza")
 	desc = "A machine component, installed in the chest. This grants the Machine the ability to process chemicals that enter its systems."
 	alcohol_tolerance = 0
 	toxTolerance = -1
@@ -128,7 +125,7 @@
 	status = ORGAN_ROBOTIC
 
 /obj/item/organ/liver/cybernetic/upgraded/ipc/emp_act(severity)
-	to_chat(owner, "<span class='warning'>Alert: Your Substance Processor has been damaged. An internal chemical leak is affecting performance.</span>")
+	to_chat(owner, "<span class='warning'>Alarm: twój procesor substancji został uszkodzony. Wewnętrzny wyciek chemiczny wpływa na wydajność.</span>")
 	switch(severity)
 		if(1)
 			owner.toxloss += 15

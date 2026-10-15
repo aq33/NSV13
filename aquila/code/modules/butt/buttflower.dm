@@ -8,7 +8,7 @@
 	icon_state = "seed-butt"
 	species = "butt"
 	plantname = "Replica Butt Flower"
-	product = /obj/item/reagent_containers/food/snacks/grown/buttflower
+	product = /obj/item/food/grown/buttflower
 	lifespan = 25
 	endurance = 10
 	maturation = 8
@@ -22,13 +22,13 @@
 	icon_harvest = "butt-harvest"
 	reagents_add = list(/datum/reagent/drug/fartium = 1)
 
-/obj/item/reagent_containers/food/snacks/grown/buttflower
+/obj/item/food/grown/buttflower
 	seed = /obj/item/seeds/buttseed
 	name = "buttflower"
 	desc = "Gives off a pungent aroma once it blooms."
 	icon = 'aquila/icons/obj/buttflower.dmi'
 	icon_state = "buttflower" //coder spriting ftw
-	trash = /obj/item/organ/butt
+	trash_type = /obj/item/organ/butt
 
 /obj/machinery/vending/hydroseeds/Initialize(mapload)
 	products[/obj/item/seeds/buttseed] = 2
@@ -36,9 +36,9 @@
 
 /datum/reagent/drug/fartium
 	name = "Fartium"
-	description = "A chemical compound that promotes concentrated production of gas in your groin area."
+	description = "Związek chemiczny pobudzający skoncentrowaną produkcję gazów w okolicy krocza."
 	color = "#8A4B08" // rgb: 138, 75, 8
-	taste_description = "farts"
+	taste_description = "bąki"
 	chem_flags = CHEMICAL_RNG_GENERAL | CHEMICAL_RNG_FUN | CHEMICAL_RNG_BOTANY
 	overdose_threshold = 30
 	addiction_threshold = 50
@@ -55,13 +55,13 @@
 		H.adjustToxLoss(toxdamage * REAGENTS_EFFECT_MULTIPLIER)
 
 /datum/reagent/drug/fartium/on_mob_life(mob/living/carbon/M)
-	gas_up(M, 7, 1, "Your stomach rumbles as pressure builds up inside of you.")
+	gas_up(M, 7, 1, "Burczy ci w brzuchu, gdy narasta w tobie ciśnienie.")
 	return ..()
 
 /datum/reagent/drug/fartium/overdose_process(mob/living/M)
-	gas_up(M, 9, 2, "Your stomach hurts a bit as pressure builds up inside of you.")
+	gas_up(M, 9, 2, "Trochę boli cię brzuch, gdy narasta w tobie ciśnienie.")
 	return ..()
 
 /datum/reagent/drug/fartium/addiction_act_stage1(mob/living/M)
-	gas_up(M, 11, 3, "Your stomach hurts as pressure builds up inside of you.")
+	gas_up(M, 11, 3, "Boli cię brzuch, gdy narasta w tobie ciśnienie.")
 	return ..()

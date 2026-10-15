@@ -20,19 +20,19 @@
 
 /obj/item/discovery_scanner/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Left-Click on any mob or researchable specimin to scan and gain discovery research points.</span>"
-	. += "<span class='notice'>[src] has unlimited range.</span>"
+	. += "<span class='notice'>Kliknij lewym przyciskiem dowolnego moba lub okaz do zbadania, by go zeskanować i zdobyć punkty badań odkryć.</span>"
+	. += "<span class='notice'>[src] ma nieograniczony zasięg.</span>"
 	. += "<span class='notice'>Science goggles can help detect researchable items.</span>"
 
 /obj/item/discovery_scanner/attack_obj(obj/O, mob/living/user)
 	if(istype(O, /obj/machinery/computer/rdconsole))
-		to_chat(user, "<span class='notice'>You link [src] to [O].</span>")
+		to_chat(user, "<span class='notice'>Łączysz [src] z [O].</span>")
 		var/obj/machinery/computer/rdconsole/rdconsole = O
 		linked_techweb = rdconsole.stored_research
 		return
 	. = ..()
 
 /obj/item/discovery_scanner/proc/begin_scanning(mob/user, datum/component/discoverable/discoverable)
-	to_chat(user, "<span class='notice'>You begin scanning [discoverable.parent]...</span>")
+	to_chat(user, "<span class='notice'>Zaczynasz skanować [discoverable.parent]...</span>")
 	if(do_after(user, 50, target=get_turf(user)))
 		discoverable.discovery_scan(linked_techweb, user)

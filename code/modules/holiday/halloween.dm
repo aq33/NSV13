@@ -8,16 +8,16 @@
 /datum/recipe/sugarcookie/spookyskull
 	reagents = list(/datum/reagent/consumable/flour = 5, /datum/reagent/consumable/sugar = 5, /datum/reagent/consumable/milk = 5)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/egg,
+		/obj/item/food/egg,
 	)
-	result = /obj/item/reagent_containers/food/snacks/sugarcookie/spookyskull
+	result = /obj/item/food/cookie/sugar/spookyskull
 
 /datum/recipe/sugarcookie/spookycoffin
 	reagents = list(/datum/reagent/consumable/flour = 5, /datum/reagent/consumable/sugar = 5, /datum/reagent/consumable/coffee = 5)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/egg,
+		/obj/item/food/egg,
 	)
-	result = /obj/item/reagent_containers/food/snacks/sugarcookie/spookycoffin
+	result = /obj/item/food/cookie/sugar/spookycoffin
 
 //////////////////////////////
 //Spookoween trapped closets//
@@ -82,7 +82,7 @@
 		trapped = 0
 
 	else if(trapped == SCARY_BATS)
-		visible_message("<span class='userdanger'><font size='5'>Protect your hair!</font></span>")
+		visible_message("<span class='userdanger'><font size='5'>Chroń swoje włosy!</font></span>")
 		playsound(loc, 'sound/spookoween/bats.ogg', 300, 1)
 		var/number = rand(1,3)
 		for(var/i=0,i < number,i++)
@@ -90,8 +90,8 @@
 		trapped = 0
 
 	else if(trapped == ANGRY_FAITHLESS)
-		visible_message("<span class='userdanger'>The closet bursts open!</span>")
-		visible_message("<span class='userdanger'><font size='5'>THIS BEING RADIATES PURE EVIL! YOU BETTER RUN!!!</font></span>")
+		visible_message("<span class='userdanger'>Szafa się otwiera!</span>")
+		visible_message("<span class='userdanger'><font size='5'>TA ISTOTA PROMIENIUJE CZYSTYM ZŁEM! LEPIEJ UCIEKAJ!!!</font></span>")
 		playsound(loc, 'sound/hallucinations/wail.ogg', 300, 1)
 		var/mob/living/simple_animal/hostile/faithless/F = new(loc)
 		trapped = 0
@@ -121,8 +121,8 @@
 	icon = 'icons/mob/mob.dmi'
 	maxHealth = 1e6
 	health = 1e6
-	speak_emote = list("howls")
-	emote_hear = list("wails","screeches")
+	speak_emote = list("wyje")
+	emote_hear = list("zawodzi","skrzeczy")
 	density = FALSE
 	anchored = TRUE
 	incorporeal_move = 1
@@ -185,7 +185,7 @@
 	speak = list("...", ". . .")
 	maxHealth = 1e6
 	health = 1e6
-	emote_see = list("silently stares")
+	emote_see = list("patrzy w milczeniu")
 	unsuitable_atmos_damage = 0
 	var/timer
 
@@ -232,11 +232,11 @@
 /mob/living/simple_animal/hostile/retaliate/clown/insane/attackby(obj/item/O, mob/user)
 	if(istype(O, /obj/item/nullrod))
 		if(prob(5))
-			visible_message("[src] finally found the peace it deserves. <i>You hear honks echoing off into the distance.</i>")
+			visible_message("[src] w końcu znalazł zasłużony spokój. <i>Słyszysz honki niosące się w oddali.</i>")
 			playsound(loc, 'sound/spookoween/insane_low_laugh.ogg', 300, 1)
 			qdel(src)
 		else
-			visible_message("<span class='danger'>[src] seems to be resisting the effect!</span>")
+			visible_message("<span class='danger'>[src] zdaje się opierać działaniu!</span>")
 	else
 		..()
 

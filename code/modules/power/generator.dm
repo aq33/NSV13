@@ -21,10 +21,6 @@
 	update_icon()
 	component_parts = list(new /obj/item/circuitboard/machine/generator)
 
-/obj/machinery/power/generator/ComponentInitialize()
-	. = ..()
-	AddComponent(/datum/component/simple_rotation,ROTATION_ALTCLICK | ROTATION_CLOCKWISE | ROTATION_COUNTERCLOCKWISE | ROTATION_VERBS )
-
 /obj/machinery/power/generator/Destroy()
 	kill_circs()
 	SSair.stop_processing_machine(src) //NSV13 - Citadel auxmos
@@ -108,7 +104,7 @@
 /obj/machinery/power/generator/proc/get_menu(include_link = TRUE)
 	var/t = ""
 	if(!powernet)
-		t += "<span class='bad'>Unable to connect to the power network!</span>"
+		t += "<span class='bad'>Nie można połączyć się z siecią energetyczną!</span>"
 	else if(cold_circ && hot_circ)
 		var/datum/gas_mixture/cold_circ_air1 = cold_circ.airs[1]
 		var/datum/gas_mixture/cold_circ_air2 = cold_circ.airs[2]
@@ -121,29 +117,29 @@
 
 		t += "<BR>"
 
-		t += "<B><font color='blue'>Cold loop</font></B><BR>"
-		t += "Temperature Inlet: [round(cold_circ_air2.return_temperature(), 0.1)] K / Outlet: [round(cold_circ_air1.return_temperature(), 0.1)] K<BR>"
-		t += "Pressure Inlet: [round(cold_circ_air2.return_pressure(), 0.1)] kPa /  Outlet: [round(cold_circ_air1.return_pressure(), 0.1)] kPa<BR>"
+		t += "<B><font color='blue'>Obieg zimny</font></B><BR>"
+		t += "Temperatura wlotu: [round(cold_circ_air2.return_temperature(), 0.1)] K / wylotu: [round(cold_circ_air1.return_temperature(), 0.1)] K<BR>"
+		t += "Ciśnienie wlotu: [round(cold_circ_air2.return_pressure(), 0.1)] kPa /  wylotu: [round(cold_circ_air1.return_pressure(), 0.1)] kPa<BR>"
 
-		t += "<B><font color='red'>Hot loop</font></B><BR>"
-		t += "Temperature Inlet: [round(hot_circ_air2.return_temperature(), 0.1)] K / Outlet: [round(hot_circ_air1.return_temperature(), 0.1)] K<BR>"
-		t += "Pressure Inlet: [round(hot_circ_air2.return_pressure(), 0.1)] kPa / Outlet: [round(hot_circ_air1.return_pressure(), 0.1)] kPa<BR>"
+		t += "<B><font color='red'>Obieg gorący</font></B><BR>"
+		t += "Temperatura wlotu: [round(hot_circ_air2.return_temperature(), 0.1)] K / wylotu: [round(hot_circ_air1.return_temperature(), 0.1)] K<BR>"
+		t += "Ciśnienie wlotu: [round(hot_circ_air2.return_pressure(), 0.1)] kPa / wylotu: [round(hot_circ_air1.return_pressure(), 0.1)] kPa<BR>"
 
 		t += "</div>"
 	else if(!hot_circ && cold_circ)
-		t += "<span class='bad'>Unable to locate hot circulator!</span>"
+		t += "<span class='bad'>Nie można znaleźć gorącego cyrkulatora!</span>"
 	else if(hot_circ && !cold_circ)
-		t += "<span class='bad'>Unable to locate cold circulator!</span>"
+		t += "<span class='bad'>Nie można znaleźć zimnego cyrkulatora!</span>"
 	else
-		t += "<span class='bad'>Unable to locate any parts!</span>"
+		t += "<span class='bad'>Nie można znaleźć żadnych części!</span>"
 	if(include_link)
-		t += "<BR><A href='?src=[REF(src)];close=1'>Close</A>"
+		t += "<BR><A href='byond://?src=[REF(src)];close=1'>Close</A>"
 
 	return t
 
 /obj/machinery/power/generator/ui_interact(mob/user)
 	. = ..()
-	var/datum/browser/popup = new(user, "teg", "Thermo-Electric Generator", 460, 300)
+	var/datum/browser/popup = new(user, "teg", "Generator termoelektryczny", 460, 300)
 	popup.set_content(get_menu())
 	popup.open()
 
@@ -208,7 +204,7 @@
 	if(!anchored)
 		return
 	find_circs()
-	to_chat(user, "<span class='notice'>You update [src]'s circulator links.</span>")
+	to_chat(user, "<span class='notice'>Aktualizujesz połączenia cyrkulatorów [src].</span>")
 	return TRUE
 
 /obj/machinery/power/generator/screwdriver_act(mob/user, obj/item/I)
@@ -216,12 +212,15 @@
 		return TRUE
 	panel_open = !panel_open
 	I.play_tool_sound(src)
-	to_chat(user, "<span class='notice'>You [panel_open?"open":"close"] the panel on [src].</span>")
+	to_chat(user, "<span class='notice'>[panel_open?"Otwierasz":"Zamykasz"] panel [src].</span>")
 	return TRUE
 
 /obj/machinery/power/generator/crowbar_act(mob/user, obj/item/I)
 	default_deconstruction_crowbar(I)
 	return TRUE
+
+/obj/machinery/power/generator/AltClick(mob/user)
+	return ..() // This hotkey is BLACKLISTED since it's used by /datum/component/simple_rotation
 
 /obj/machinery/power/generator/on_deconstruction()
 	kill_circs()

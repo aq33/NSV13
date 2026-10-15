@@ -9,7 +9,7 @@
 /datum/keybinding/human/quick_equip
 	key = "E"
 	name = "quick_equip"
-	full_name = "Quick equip"
+	full_name = "Szybkie założenie"
 	description = ""
 	keybind_signal = COMSIG_KB_HUMAN_QUICKEQUIP_DOWN
 
@@ -25,7 +25,7 @@
 /datum/keybinding/human/quick_equip_belt
 	key = "Shift-E"
 	name = "quick_equip_belt"
-	full_name = "Put Item In Belt"
+	full_name = "Włóż przedmiot do pasa"
 	description = ""
 	keybind_signal = COMSIG_KB_HUMAN_QUICKEQUIPBELT_DOWN
 
@@ -38,7 +38,7 @@
 	var/obj/item/equipped_belt = H.get_item_by_slot(ITEM_SLOT_BELT)
 	if(!equipped_belt) // We also let you equip a belt like this
 		if(!thing)
-			to_chat(user, "<span class='notice'>You have no belt to take something out of.</span>")
+			to_chat(user, "<span class='notice'>Nie masz pasa, z którego można coś wyjąć.</span>")
 			return TRUE
 		if(H.equip_to_slot_if_possible(thing, ITEM_SLOT_BELT))
 			H.update_inv_hands()
@@ -47,14 +47,14 @@
 		if(!thing)
 			equipped_belt.attack_hand(H)
 		else
-			to_chat(user, "<span class='notice'>You can't fit anything in.</span>")
+			to_chat(user, "<span class='notice'>Nic się nie zmieści.</span>")
 		return TRUE
 	if(thing) // put thing in belt
 		if(!SEND_SIGNAL(equipped_belt, COMSIG_TRY_STORAGE_INSERT, thing, user.mob))
-			to_chat(user, "<span class='notice'>You can't fit anything in.</span>")
+			to_chat(user, "<span class='notice'>Nic się nie zmieści.</span>")
 		return TRUE
 	if(!equipped_belt.contents.len) // nothing to take out
-		to_chat(user, "<span class='notice'>There's nothing in your belt to take out.</span>")
+		to_chat(user, "<span class='notice'>W twoim pasie nie ma nic do wyjęcia.</span>")
 		return TRUE
 	var/obj/item/stored = equipped_belt.contents[equipped_belt.contents.len]
 	if(!stored || stored.on_found(H))
@@ -66,7 +66,7 @@
 /datum/keybinding/human/quick_equip_backpack
 	key = "Shift-B"
 	name = "quick_equip_backpack"
-	full_name = "Put Item In Backpack"
+	full_name = "Włóż przedmiot do plecaka"
 	description = ""
 	keybind_signal = COMSIG_KB_HUMAN_BAGEQUIP_DOWN
 
@@ -79,7 +79,7 @@
 	var/obj/item/equipped_back = H.get_item_by_slot(ITEM_SLOT_BACK)
 	if(!equipped_back) // We also let you equip a backpack like this
 		if(!thing)
-			to_chat(user, "<span class='notice'>You have no backpack to take something out of.</span>")
+			to_chat(user, "<span class='notice'>Nie masz plecaka, z którego można coś wyjąć.</span>")
 			return TRUE
 		if(H.equip_to_slot_if_possible(thing, ITEM_SLOT_BACK))
 			H.update_inv_hands()
@@ -88,14 +88,14 @@
 		if(!thing)
 			equipped_back.attack_hand(H)
 		else
-			to_chat(user, "<span class='notice'>You can't fit anything in.</span>")
+			to_chat(user, "<span class='notice'>Nic się nie zmieści.</span>")
 		return TRUE
 	if(thing) // put thing in backpack
 		if(!SEND_SIGNAL(equipped_back, COMSIG_TRY_STORAGE_INSERT, thing, user.mob))
-			to_chat(user, "<span class='notice'>You can't fit anything in.</span>")
+			to_chat(user, "<span class='notice'>Nic się nie zmieści.</span>")
 		return TRUE
 	if(!equipped_back.contents.len) // nothing to take out
-		to_chat(user, "<span class='notice'>There's nothing in your backpack to take out.</span>")
+		to_chat(user, "<span class='notice'>W twoim plecaku nie ma nic do wyjęcia.</span>")
 		return TRUE
 	var/obj/item/stored = equipped_back.contents[equipped_back.contents.len]
 	if(!stored || stored.on_found(H))
@@ -107,7 +107,7 @@
 /datum/keybinding/human/quick_equip_suit_storage
 	key = "Shift-Q"
 	name = "quick_equip_suit_storage"
-	full_name = "Put Item In Suit Storage"
+	full_name = "Włóż przedmiot do schowka skafandra"
 	description = ""
 	keybind_signal = COMSIG_KB_HUMAN_SUITEQUIP_DOWN
 
@@ -120,13 +120,13 @@
 	var/obj/item/stored = H.get_item_by_slot(ITEM_SLOT_SUITSTORE)
 	if(!stored)
 		if(!thing)
-			to_chat(user, "<span class='notice'>There's nothing in your suit storage to take out.")
+			to_chat(user, "<span class='notice'>W schowku skafandra nie ma nic do wyjęcia.")
 			return TRUE
 		if(H.equip_to_slot_if_possible(thing, ITEM_SLOT_SUITSTORE))
 			H.update_inv_hands()
 			return TRUE
 	if(thing && stored)
-		to_chat(user, "<span class='notice'>There's already something in your suit storage!")
+		to_chat(user, "<span class='notice'>W schowku skafandra już coś jest!")
 		return TRUE
 	if(!stored || stored.on_found(H))
 		return TRUE

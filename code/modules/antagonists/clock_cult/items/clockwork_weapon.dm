@@ -1,4 +1,5 @@
 /obj/item/clockwork/weapon
+	bleed_force = BLEED_CUT
 	name = "Clockwork Weapon"
 	desc = "Something"
 	icon = 'icons/obj/clockwork_objects.dmi'
@@ -14,7 +15,7 @@
 	armour_penetration = 10
 	materials = list(/datum/material/iron=1150, /datum/material/gold=2750)
 	hitsound = 'sound/weapons/bladeslice.ogg'
-	attack_verb = list("attacked", "poked", "jabbed", "torn", "gored")
+	attack_verb = list("atakuje", "szturcha", "dźga", "rozdziera", "bodzie")
 	sharpness = IS_SHARP_ACCURATE
 	max_integrity = 200
 	var/clockwork_hint = ""
@@ -75,24 +76,24 @@
 /obj/item/clockwork/weapon/brass_spear
 	name = "brass spear"
 	desc = "A razor-sharp spear made of brass. It thrums with barely-contained energy."
-	clockwork_desc = "A razor-sharp spear made of a magnetic brass allow. It accelerates towards targets while on Reebe dealing increased damage."
+	clockwork_desc = "Ostra jak brzytwa włócznia z magnetycznego stopu mosiądzu. Na Reebe przyspiesza w stronę celów, zadając większe obrażenia."
 	icon_state = "ratvarian_spear"
 	embedding = list("max_damage_mult" = 15, "armour_block" = 80)
 	throwforce = 36
 	force = 25
 	armour_penetration = 24
-	clockwork_hint = "Throwing the spear will deal bonus damage while on Reebe."
+	clockwork_hint = "Na Reebe rzut włócznią zadaje dodatkowe obrażenia."
 
 /obj/item/clockwork/weapon/brass_battlehammer
 	name = "brass battle-hammer"
 	desc = "A brass hammer glowing with energy."
-	clockwork_desc = "A brass hammer enfused with an ancient power allowing it to strike foes with incredible force."
+	clockwork_desc = "Mosiężny młot nasycony pradawną mocą, pozwalającą uderzać wrogów z niewiarygodną siłą."
 	icon_state = "ratvarian_hammer"
 	throwforce = 25
 	armour_penetration = 6
 	sharpness = IS_BLUNT
-	attack_verb = list("bashed", "smitted", "hammered", "attacked")
-	clockwork_hint = "Enemies hit by this will be flung back while on Reebe."
+	attack_verb = list("grzmoci", "razi", "wali młotem", "atakuje")
+	clockwork_hint = "Na Reebe trafieni wrogowie zostają odrzuceni."
 
 /obj/item/clockwork/weapon/brass_battlehammer/ComponentInitialize()
 	. = ..()
@@ -107,13 +108,13 @@
 /obj/item/clockwork/weapon/brass_sword
 	name = "brass longsword"
 	desc = "A large sword made of brass."
-	clockwork_desc = "A large sword made of brass. It contains an aurora of energetic power designed to disrupt electronics."
+	clockwork_desc = "Duży mosiężny miecz. Zawiera zorzę energii przeznaczoną do zakłócania elektroniki."
 	icon_state = "ratvarian_sword"
 	force = 26
 	throwforce = 20
 	armour_penetration = 12
-	attack_verb = list("attacked", "slashed", "cut", "torn", "gored")
-	clockwork_hint = "Targets will be struck with a powerful electromagnetic pulse while on Reebe."
+	attack_verb = list("atakuje", "ciacha", "tnie", "rozdziera", "bodzie")
+	clockwork_hint = "Na Reebe trafione cele dostają potężnym impulsem elektromagnetycznym."
 	COOLDOWN_DECLARE(emp_cooldown)
 
 /obj/item/clockwork/weapon/brass_sword/hit_effect(mob/living/target, mob/living/user, thrown)
@@ -124,7 +125,7 @@
 	target.emp_act(EMP_LIGHT)
 	new /obj/effect/temp_visual/emp/pulse(target.loc)
 	addtimer(CALLBACK(src, PROC_REF(send_message), user), 30 SECONDS)
-	to_chat(user, "<span class='brass'>You strike [target] with an electromagnetic pulse!</span>")
+	to_chat(user, "<span class='brass'>Uderzasz [target] impulsem elektromagnetycznym!</span>")
 	playsound(user, 'sound/magic/lightningshock.ogg', 40)
 
 /obj/item/clockwork/weapon/brass_sword/attack_obj(obj/O, mob/living/user)
@@ -139,11 +140,11 @@
 	target.emp_act(EMP_HEAVY)
 	new /obj/effect/temp_visual/emp/pulse(target.loc)
 	addtimer(CALLBACK(src, PROC_REF(send_message), user), 20 SECONDS)
-	to_chat(user, "<span class='brass'>You strike [target] with an electromagnetic pulse!</span>")
+	to_chat(user, "<span class='brass'>Uderzasz [target] impulsem elektromagnetycznym!</span>")
 	playsound(user, 'sound/magic/lightningshock.ogg', 40)
 
 /obj/item/clockwork/weapon/brass_sword/proc/send_message(mob/living/target)
-	to_chat(target, "<span class='brass'>[src] glows, indicating the next attack will disrupt electronics of the target.</span>")
+	to_chat(target, "<span class='brass'>[src] świeci - następny atak zakłóci elektronikę celu.</span>")
 
 /obj/item/gun/ballistic/bow/clockwork
 	name = "Brass Bow"
@@ -160,11 +161,11 @@
 /obj/item/gun/ballistic/bow/clockwork/attack_self(mob/living/user)
 	if (chambered)
 		chambered = null
-		to_chat(user, "<span class='notice'>You dispell the arrow.</span>")
+		to_chat(user, "<span class='notice'>Rozpraszasz strzałę.</span>")
 	else if (get_ammo())
 		var/obj/item/I = user.get_active_held_item()
 		if (do_mob(user,I,5))
-			to_chat(user, "<span class='notice'>You draw back the bowstring.</span>")
+			to_chat(user, "<span class='notice'>Napinasz cięciwę.</span>")
 			playsound(src, 'sound/weapons/bowdraw.ogg', 75, 0) //gets way too high pitched if the freq varies
 			chamber_round()
 	update_icon()

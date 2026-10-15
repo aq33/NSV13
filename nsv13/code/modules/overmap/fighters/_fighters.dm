@@ -69,7 +69,7 @@ Been a mess since 2018, we'll fix it someday (probably)
 		if(!escapepod && deletion_teleports_occupants)
 			var/list/copy_of_mobs_in_ship = mobs_in_ship.Copy() //Sometimes you really need to iterate on a list while it's getting modified
 			for(var/mob/living/M in copy_of_mobs_in_ship)
-				to_chat(M, "<span class='warning'>This ship is not equipped with an escape pod! Unable to eject.</span>")
+				to_chat(M, "<span class='warning'>Ten okręt nie ma kapsuły ratunkowej! Nie można się katapultować.</span>")
 				stop_piloting(M, TRUE, TRUE)
 				M.apply_damage(200)
 
@@ -85,7 +85,7 @@ Been a mess since 2018, we'll fix it someday (probably)
 /obj/structure/overmap/small_craft/fire_weapon(atom/target, mob/user, datum/overmap_ship_weapon/firing_weapon, ai_aim=FALSE)
 	if(weapon_safety) //If you get in here with safeties active.
 		if(user)
-			to_chat(user, "<span class='warning'>Weapon safety interlocks are active! Use the ship verbs tab to disable them!</span>")
+			to_chat(user, "<span class='warning'>Blokady zabezpieczające broni są aktywne! Wyłącz je w zakładce czasowników okrętu!</span>")
 		return
 	return ..()
 
@@ -98,7 +98,7 @@ Been a mess since 2018, we'll fix it someday (probably)
 /obj/structure/overmap/small_craft/key_down(key, client/user)
 	if(disruption && prob(min(95, disruption)))
 		if(user)
-			to_chat(user, "<span class='warning'>The controls buzz angrily!</span>")
+			to_chat(user, "<span class='warning'>Stery gniewnie brzęczą!</span>")
 		playsound(helm, 'sound/machines/buzz-sigh.ogg', 75, 1)
 		return
 	. = ..()
@@ -224,7 +224,7 @@ Been a mess since 2018, we'll fix it someday (probably)
 	if(. || ((usr != pilot) && (!IsAdminGhost(usr))))
 		return
 	if(disruption && prob(min(95, disruption)))
-		to_chat(usr, "<span class='warning'>The controls buzz angrily!</span>")
+		to_chat(usr, "<span class='warning'>Stery gniewnie brzęczą!</span>")
 		relay('sound/machines/buzz-sigh.ogg')
 		return TRUE
 	var/atom/movable/target = locate(params["id"])
@@ -240,10 +240,10 @@ Been a mess since 2018, we'll fix it someday (probably)
 			var/obj/item/fighter_component/FC = target
 			if(!istype(FC))
 				return
-			to_chat(usr, "<span class='notice'>You start uninstalling [target.name] from [src].</span>")
+			to_chat(usr, "<span class='notice'>Zaczynasz odinstalowywać [target.name] z [src].</span>")
 			if(!do_after(usr, 5 SECONDS, target=src))
 				return
-			to_chat(usr, "<span class='notice>You uninstall [target.name] from [src].</span>")
+			to_chat(usr, "<span class='notice>Odinstalowujesz [target.name] z [src].</span>")
 			loadout.remove_hardpoint(FC, FALSE)
 			. = TRUE
 		if("dump_hardpoint")
@@ -252,10 +252,10 @@ Been a mess since 2018, we'll fix it someday (probably)
 			var/obj/item/fighter_component/FC = target
 			if(!istype(FC) || !FC.contents?.len)
 				return
-			to_chat(usr, "<span class='notice'>You start to unload [target.name]'s stored contents...</span>")
+			to_chat(usr, "<span class='notice'>Zaczynasz wyładowywać zawartość [target.name]...</span>")
 			if(!do_after(usr, 5 SECONDS, target=src))
 				return
-			to_chat(usr, "<span class='notice>You dump [target.name]'s contents.</span>")
+			to_chat(usr, "<span class='notice>Wysypujesz zawartość [target.name].</span>")
 			loadout.dump_contents(FC)
 			. = TRUE
 		if("kick")
@@ -264,7 +264,7 @@ Been a mess since 2018, we'll fix it someday (probably)
 			if(!allowed(usr) || usr != pilot)
 				return
 			var/mob/living/L = target
-			to_chat(L, "<span class='warning'>You have been kicked out of [src] by the pilot.</span>")
+			to_chat(L, "<span class='warning'>Pilot wyrzuca cię z [src].</span>")
 			canopy_open = FALSE
 			toggle_canopy()
 			stop_piloting(L)
@@ -272,11 +272,11 @@ Been a mess since 2018, we'll fix it someday (probably)
 		if("fuel_pump")
 			var/obj/item/fighter_component/apu/APU = loadout.get_slot(HARDPOINT_SLOT_APU)
 			if(!APU)
-				to_chat(usr, "<span class='warning'>You can't send fuel to an APU that isn't installed.</span>")
+				to_chat(usr, "<span class='warning'>Nie możesz przesyłać paliwa do niezainstalowanego APU.</span>")
 				return
 			var/obj/item/fighter_component/engine/engine = loadout.get_slot(HARDPOINT_SLOT_ENGINE)
 			if(!engine)
-				to_chat(usr, "<span class='warning'>[src] does not have an engine installed!</span>")
+				to_chat(usr, "<span class='warning'>[src] nie ma zainstalowanego silnika!</span>")
 				return
 			APU.toggle_fuel_line()
 			playsound(src, 'nsv13/sound/effects/fighters/warmup.ogg', 100, FALSE)
@@ -284,15 +284,15 @@ Been a mess since 2018, we'll fix it someday (probably)
 		if("battery")
 			var/obj/item/fighter_component/battery/battery = loadout.get_slot(HARDPOINT_SLOT_BATTERY)
 			if(!battery)
-				to_chat(usr, "<span class='warning'>[src] does not have a battery installed!</span>")
+				to_chat(usr, "<span class='warning'>[src] nie ma zainstalowanej baterii!</span>")
 				return
 			battery.toggle()
-			to_chat(usr, "You flip the battery switch.</span>")
+			to_chat(usr, "Przestawiasz przełącznik baterii.</span>")
 			. = TRUE
 		if("apu")
 			var/obj/item/fighter_component/apu/APU = loadout.get_slot(HARDPOINT_SLOT_APU)
 			if(!APU)
-				to_chat(usr, "<span class='warning'>[src] does not have an APU installed!</span>")
+				to_chat(usr, "<span class='warning'>[src] nie ma zainstalowanego APU!</span>")
 				return
 			APU.toggle()
 			playsound(src, 'nsv13/sound/effects/fighters/warmup.ogg', 100, FALSE)
@@ -300,7 +300,7 @@ Been a mess since 2018, we'll fix it someday (probably)
 		if("ignition")
 			var/obj/item/fighter_component/engine/engine = loadout.get_slot(HARDPOINT_SLOT_ENGINE)
 			if(!engine)
-				to_chat(usr, "<span class='warning'>[src] does not have an engine installed!</span>")
+				to_chat(usr, "<span class='warning'>[src] nie ma zainstalowanego silnika!</span>")
 				return
 			engine.try_start()
 			. = TRUE
@@ -313,9 +313,9 @@ Been a mess since 2018, we'll fix it someday (probably)
 		if("docking_mode")
 			var/obj/item/fighter_component/docking_computer/DC = loadout.get_slot(HARDPOINT_SLOT_DOCKING)
 			if(!DC || !istype(DC))
-				to_chat(usr, "<span class='warning'>[src] does not have a docking computer installed!</span>")
+				to_chat(usr, "<span class='warning'>[src] nie ma zainstalowanego komputera dokowania!</span>")
 				return
-			to_chat(usr, "<span class='notice'>You [DC.docking_mode ? "disengage" : "engage"] [src]'s docking computer.</span>")
+			to_chat(usr, "<span class='notice'>[DC.docking_mode ? "Wyłączasz" : "Włączasz"] komputer dokowania [src].</span>")
 			DC.docking_mode = !DC.docking_mode
 			relay('nsv13/sound/effects/fighters/switch.ogg')
 			return TRUE
@@ -349,7 +349,7 @@ Been a mess since 2018, we'll fix it someday (probably)
 		if("toggle_ftl")
 			var/obj/item/fighter_component/ftl/ftl = loadout.get_slot(HARDPOINT_SLOT_FTL)
 			if(!ftl)
-				to_chat(usr, "<span class='warning'>FTL unit not properly installed.</span>")
+				to_chat(usr, "<span class='warning'>Moduł FTL nie jest prawidłowo zainstalowany.</span>")
 				return
 			ftl.toggle()
 			relay('nsv13/sound/effects/fighters/switch.ogg')
@@ -357,13 +357,13 @@ Been a mess since 2018, we'll fix it someday (probably)
 		if("anchor_ftl")
 			var/obj/item/fighter_component/ftl/ftl = loadout.get_slot(HARDPOINT_SLOT_FTL)
 			if(!ftl)
-				to_chat(usr, "<span class='warning'>FTL unit not properly installed.</span>")
+				to_chat(usr, "<span class='warning'>Moduł FTL nie jest prawidłowo zainstalowany.</span>")
 				return
 			var/obj/structure/overmap/new_target = get_overmap()
 			if(new_target)
 				ftl.anchored_to = new_target
 			else
-				to_chat(usr, "<span class='warning'>Unable to update telemetry. Ensure you are in proximity to a Seegson FTL drive.</span>")
+				to_chat(usr, "<span class='warning'>Nie można zaktualizować telemetrii. Upewnij się, że jesteś w pobliżu napędu FTL Seegson.</span>")
 			relay('nsv13/sound/effects/fighters/switch.ogg')
 			. = TRUE
 		if("return_jump")
@@ -371,21 +371,19 @@ Been a mess since 2018, we'll fix it someday (probably)
 			if(!ftl)
 				return
 			if(ftl.ftl_state != FTL_STATE_READY)
-				to_chat(usr, "<span class='warning'>Unable to comply. FTL vector calculation still in progress.</span>")
+				to_chat(usr, "<span class='warning'>Nie można wykonać. Obliczanie wektora FTL wciąż trwa.</span>")
 				return
 			if(!ftl.anchored_to)
-				to_chat(usr, "<span class='warning'>Unable to comply. FTL tether lost.</span>")
+				to_chat(usr, "<span class='warning'>Nie można wykonać. Utracono uwiąz FTL.</span>")
 				return
 			var/datum/star_system/dest = ftl.anchored_to.current_system
 			if(!dest)
-				to_chat(usr, "<span class='warning'>Unable to comply. Target beacon is currently in FTL transit.</span>")
+				to_chat(usr, "<span class='warning'>Nie można wykonać. Docelowy nadajnik jest obecnie w tranzycie FTL.</span>")
 				return
 			ftl.jump(dest)
 			return TRUE
 		if("set_name")
-			var/new_name = stripped_input(usr, message="What do you want to name \
-				your fighter? Keep in mind that particularly terrible names may be \
-				rejected by your employers.", max_length=MAX_CHARTER_LEN)
+			var/new_name = stripped_input(usr, message="Jak chcesz nazwać swój myśliwiec? Pamiętaj, że szczególnie okropne nazwy mogą zostać odrzucone przez pracodawców.", max_length=MAX_CHARTER_LEN)
 			if(!new_name || length(new_name) <= 0)
 				return
 			message_admins("[key_name_admin(usr)] renamed a fighter to [new_name] [ADMIN_LOOKUPFLW(src)].")
@@ -562,13 +560,13 @@ Been a mess since 2018, we'll fix it someday (probably)
 
 /obj/structure/overmap/small_craft/tool_act(mob/living/user, obj/item/I, tool_type)
 	if(operators && LAZYFIND(operators, user))
-		to_chat(user, "<span class='warning'>You can't reach [src]'s exterior from in here.</span>")
+		to_chat(user, "<span class='warning'>Stąd nie sięgasz do zewnętrznej strony [src].</span>")
 		return TRUE
 	return ..()
 
 /obj/structure/overmap/small_craft/attackby(obj/item/W, mob/user, params)
 	if(operators && LAZYFIND(operators, user))
-		to_chat(user, "<span class='warning'>You can't reach [src]'s exterior from in here.</span>")
+		to_chat(user, "<span class='warning'>Stąd nie sięgasz do zewnętrznej strony [src].</span>")
 		return TRUE
 
 	add_fingerprint(user)
@@ -576,17 +574,17 @@ Been a mess since 2018, we'll fix it someday (probably)
 		if(!allowed(user))
 			var/ersound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 			playsound(src, ersound, 100, 1)
-			to_chat(user, "<span class='warning'>Access denied</span>")
+			to_chat(user, "<span class='warning'>Odmowa dostępu</span>")
 			return TRUE
-		if(alert("What do you want to do?",name,"Eject Occupants","Maintenance Mode") == "Eject Occupants")
+		if(alert("Co chcesz zrobić?",name,"Eject Occupants","Tryb serwisowy") == "Eject Occupants")
 			if(!Adjacent(user))
 				return TRUE
-			to_chat(user, "<span class='warning'>Ejecting all current occupants from [src] and activating inertial dampeners...</span>")
+			to_chat(user, "<span class='warning'>Wyrzucanie wszystkich obecnych osób z [src] i włączanie tłumików bezwładności...</span>")
 			force_eject()
 		else
 			if(!Adjacent(user))
 				return TRUE
-			to_chat(user, "<span class='warning'>You swipe your card and [maintenance_mode ? "disable" : "enable"] maintenance protocols.</span>")
+			to_chat(user, "<span class='warning'>Przeciągasz kartę i [maintenance_mode ? "wyłączasz" : "włączasz"] protokoły serwisowe.</span>")
 			maintenance_mode = !maintenance_mode
 		return TRUE
 
@@ -595,18 +593,18 @@ Been a mess since 2018, we'll fix it someday (probably)
 		var/obj/item/fighter_component/countermeasure_dispenser/CD = loadout.get_slot(HARDPOINT_SLOT_COUNTERMEASURE)
 		if(CD)
 			if(CD.charges == CD.max_charges)
-				to_chat("<span class='warning'>You try to insert the countermeasure charge, but there's no space for more charges in the countermeasure dispenser!</span>")
+				to_chat("<span class='warning'>Próbujesz włożyć ładunek przeciwdziałania, ale w dozowniku nie ma miejsca na kolejne ładunki!</span>")
 				return TRUE
 			else
 				var/ChargeChange = clamp(CC.restock_amount + CD.charges, CD.max_charges, 0) - CD.charges
-				to_chat("<span>You successfully reload the countermeasure dispenser in [src]</span>")
+				to_chat("<span>Pomyślnie uzupełniasz dozownik środków przeciwdziałania w [src]</span>")
 				CC.restock_amount -= ChargeChange
 				CD.charges += ChargeChange
 				if(CC.restock_amount == 0)
 					qdel(W)
 				return TRUE
 		else
-			to_chat("<span class='warning'>You try to insert the countermeasure charge, but there's nothing to put it in!</span>")
+			to_chat("<span class='warning'>Próbujesz włożyć ładunek przeciwdziałania, ale nie ma go do czego włożyć!</span>")
 			return TRUE
 
 	for(var/slot in loadout.equippable_slots)
@@ -626,7 +624,7 @@ Been a mess since 2018, we'll fix it someday (probably)
 		return FALSE
 	if(isobj(target))
 		if(operators && LAZYFIND(operators, user))
-			to_chat(user, "<span class='warning'>You can't reach [src]'s exterior from in here..</span>")
+			to_chat(user, "<span class='warning'>Stąd nie sięgasz do zewnętrznej strony [src]..</span>")
 			return FALSE
 		for(var/slot in loadout.equippable_slots)
 			var/obj/item/fighter_component/FC = loadout.get_slot(slot)
@@ -636,21 +634,21 @@ Been a mess since 2018, we'll fix it someday (probably)
 		if(allowed(user))
 			if(!canopy_open)
 				playsound(src, 'sound/effects/glasshit.ogg', 75, 1)
-				user.visible_message("<span class='warning'>You bang on the canopy.</span>", "<span class='warning'>[user] bangs on [src]'s canopy.</span>")
+				user.visible_message("<span class='warning'>Walisz w osłonę kokpitu.</span>", "<span class='warning'>[user] wali w osłonę kokpitu [src].</span>")
 				return FALSE
 			if(length(operators) >= max_passengers)
-				to_chat(user, "<span class='warning'>[src]'s passenger compartment is full!")
+				to_chat(user, "<span class='warning'>Przedział pasażerski [src] jest pełny!")
 				return FALSE
-			to_chat(target, "[(user == target) ? "You start to climb into [src]'s passenger compartment" : "[user] starts to lift you into [src]'s passenger compartment"]")
+			to_chat(target, "[(user == target) ? "Zaczynasz wspinać się do przedziału pasażerskiego [src]" : "[user] zaczyna wnosić cię do przedziału pasażerskiego [src]"]")
 			if(do_after(user, 2 SECONDS, target=src))
 				start_piloting(user, OVERMAP_USER_ROLE_OBSERVER)
 				enter(user)
 		else
-			to_chat(user, "<span class='warning'>Access denied.</span>")
+			to_chat(user, "<span class='warning'>Odmowa dostępu.</span>")
 
 /obj/structure/overmap/small_craft/finish_lockon(obj/structure/overmap/target, data_link)
 	if(disruption)
-		to_chat(pilot, "<span class='warning'>ERROR: TGP NOT READY.</span>")
+		to_chat(pilot, "<span class='warning'>BŁĄD: TGP NIEGOTOWY.</span>")
 		return FALSE
 	. = ..()
 
@@ -676,15 +674,15 @@ Been a mess since 2018, we'll fix it someday (probably)
 /obj/structure/overmap/small_craft/proc/eject(mob/living/M, force=FALSE)
 	var/obj/item/fighter_component/canopy/C = loadout.get_slot(HARDPOINT_SLOT_CANOPY)
 	if(!canopy_open && C && !force)
-		to_chat(M, "<span class='warning'>[src]'s canopy isn't open.</span>")
+		to_chat(M, "<span class='warning'>Osłona kokpitu [src] nie jest otwarta.</span>")
 		if(prob(50))
 			playsound(src, 'sound/effects/glasshit.ogg', 75, 1)
-			to_chat(M, "<span class='warning'>You bump your head on [src]'s canopy.</span>")
-			visible_message("<span class='warning'>You hear a muffled thud.</span>")
+			to_chat(M, "<span class='warning'>Uderzasz głową o osłonę kokpitu [src].</span>")
+			visible_message("<span class='warning'>Słyszysz stłumione łupnięcie.</span>")
 		return FALSE
 
 	if(!force && !SSmapping.level_trait(z, ZTRAIT_BOARDABLE) && !SSmapping.level_trait(z, ZTRAIT_RESERVED))
-		to_chat(M, "<span class='warning'>[src] won't let you jump out of it mid flight.</span>")
+		to_chat(M, "<span class='warning'>[src] nie pozwoli ci wyskoczyć w trakcie lotu.</span>")
 		return FALSE
 
 	SEND_SOUND(M, sound(null))
@@ -730,7 +728,7 @@ Been a mess since 2018, we'll fix it someday (probably)
 	// Transfer occupants
 	if(length(mobs_in_ship))
 		relay('nsv13/sound/effects/computer/alarm_3.ogg', "<span class=userdanger>EJECT! EJECT! EJECT!</span>")
-		visible_message("<span class=userdanger>Auto-Ejection Sequence Enabled! Escape Pod Launched!</span>")
+		visible_message("<span class=userdanger>Włączono sekwencję automatycznego katapultowania! Wystrzelono kapsułę ratunkową!</span>")
 
 		if(last_pilot && !last_pilot.incapacitated())
 			last_pilot.doMove(escape_pod)
@@ -757,22 +755,17 @@ Been a mess since 2018, we'll fix it someday (probably)
 	. = ..()
 	if(allowed(user))
 		if(pilot)
-			to_chat(user, "<span class='notice'>[src] already has a pilot.</span>")
+			to_chat(user, "<span class='notice'>[src] ma już pilota.</span>")
 			return FALSE
 		if(do_after(user, 2 SECONDS, target=src))
 			enter(user)
 			start_piloting(user, (OVERMAP_USER_ROLE_PILOT | OVERMAP_USER_ROLE_GUNNER))
-			to_chat(user, "<span class='notice'>You climb into [src]'s cockpit.</span>")
+			to_chat(user, "<span class='notice'>Wspinasz się do kokpitu [src].</span>")
 			ui_interact(user)
-			to_chat(user, "<span class='notice'>Small craft use directional keys (WASD in hotkey mode) to accelerate/decelerate in a given direction and the mouse to change the direction of craft.\
-						Mouse 1 will fire the selected weapon (if applicable).</span>")
+			to_chat(user, "<span class='notice'>Małymi jednostkami steruje się klawiszami kierunkowymi (WASD w trybie skrótów), przyspieszając lub zwalniając w danym kierunku, a myszą zmienia się kierunek lotu. Lewy przycisk myszy strzela z wybranej broni (jeśli dotyczy).</span>")
 			to_chat(user, "<span class='warning'>=Hotkeys=</span>")
-			to_chat(user, "<span class='notice'>Use <b>tab</b> to activate hotkey mode, then:</span>")
-			to_chat(user, "<span class='notice'>Use the <b> Ctrl + Scroll Wheel</b> to zoom in / out. \
-						Press <b>Space</b> to cycle fire modes. \
-						Press <b>X</b> to cycle inertial dampners. \
-						Press <b>Alt</b> to cycle the handbrake. \
-						Press <b>C</b> to cycle mouse free movement.</span>")
+			to_chat(user, "<span class='notice'>Naciśnij <b>tab</b>, by włączyć tryb skrótów, a następnie:</span>")
+			to_chat(user, "<span class='notice'>Użyj <b>Ctrl + kółka myszy</b>, by przybliżyć/oddalić. Naciśnij <b>spację</b>, by przełączać tryby ognia. Naciśnij <b>X</b>, by przełączać tłumiki bezwładności. Naciśnij <b>Alt</b>, by przełączać hamulec ręczny. Naciśnij <b>C</b>, by przełączać swobodny ruch myszą.</span>")
 			return TRUE
 
 /obj/structure/overmap/small_craft/proc/force_eject(force = FALSE)
@@ -784,7 +777,7 @@ Been a mess since 2018, we'll fix it someday (probably)
 	for(var/mob/M in mobs_in_ship)
 		stop_piloting(M, TRUE, force)
 		M.forceMove(get_turf(src))
-		to_chat(M, "<span class='warning'>You have been remotely ejected from [src]!.</span>")
+		to_chat(M, "<span class='warning'>Zostajesz zdalnie wyrzucony z [src]!</span>")
 		. += M
 
 //Iconic proc.
@@ -827,7 +820,7 @@ Been a mess since 2018, we'll fix it someday (probably)
 	if(!C) //Riding without a canopy is not without consequences
 		if(prob(30)) //Ouch!
 			for(var/mob/living/M in contents)
-				to_chat(M , "<span class='warning'>You feel something hit you!</span>")
+				to_chat(M , "<span class='warning'>Czujesz, że coś cię trafia!</span>")
 				M.take_overall_damage(damage_amount/2)
 		return
 	if(prob(50))
@@ -846,16 +839,16 @@ Been a mess since 2018, we'll fix it someday (probably)
 	relay('nsv13/sound/effects/ship/reactor/gasmask.ogg', "<span class='warning'>The air around you rushes out of the breached canopy!</span>", loop = FALSE, channel = CHANNEL_SHIP_ALERT)
 
 /obj/structure/overmap/small_craft/welder_act(mob/living/user, obj/item/I)
-	if(user.a_intent == INTENT_HARM)
+	if(user.combat_mode)
 		return FALSE
 	if(obj_integrity >= max_integrity)
-		to_chat(user, "<span class='notice'>[src] isn't in need of repairs.</span>")
+		to_chat(user, "<span class='notice'>[src] nie wymaga naprawy.</span>")
 		return TRUE
 	if(busy)
-		to_chat(user, "<span class='warning'>Someone's already repairing [src]!</span>")
+		to_chat(user, "<span class='warning'>Ktoś już naprawia [src]!</span>")
 		return TRUE
 	busy = TRUE
-	to_chat(user, "<span class='notice'>You start welding some dents out of [src]'s hull...</span>")
+	to_chat(user, "<span class='notice'>Zaczynasz wyspawywać wgniecenia z kadłuba [src]...</span>")
 	while(obj_integrity < max_integrity)
 		if(!I.use_tool(src, user, 1 SECONDS, volume=100))
 			busy = FALSE
@@ -864,7 +857,7 @@ Been a mess since 2018, we'll fix it someday (probably)
 		if(obj_integrity >= max_integrity)
 			obj_integrity = max_integrity
 			break
-	to_chat(user, "<span class='notice'>You finish welding[obj_integrity == max_integrity ? "" : " some of"] the dents out of [src]'s hull.</span>")
+	to_chat(user, "<span class='notice'>Kończysz wyspawywać[obj_integrity == max_integrity ? "" : " część"] wgnieceń z kadłuba [src].</span>")
 	busy = FALSE
 	return TRUE
 
@@ -934,7 +927,7 @@ Been a mess since 2018, we'll fix it someday (probably)
 /datum/component/ship_loadout/proc/install_hardpoint(obj/item/fighter_component/replacement)
 	var/slot = replacement.slot
 	if(slot && !(slot in equippable_slots))
-		replacement.visible_message("<span class='warning'>[replacement] can't fit onto [parent]")
+		replacement.visible_message("<span class='warning'>[replacement] nie pasuje do [parent]")
 		return FALSE
 	remove_hardpoint(slot, FALSE)
 	replacement.on_install(holder)
@@ -990,7 +983,7 @@ due_to_damage: Was this called voluntarily (FALSE) or due to damage / external c
 
 /obj/item/fighter_component/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Alt-click it to unload its contents.</span>"
+	. += "<span class='notice'>Alt-kliknij, by wyładować zawartość.</span>"
 
 /obj/item/fighter_component/proc/toggle()
 	active = !active
@@ -1002,12 +995,12 @@ due_to_damage: Was this called voluntarily (FALSE) or due to damage / external c
 	if(!isliving(user))
 		return
 	if(!length(contents))
-		to_chat(user, "<span class='warning'>There is nothing to unload from [src]!</span>")
+		to_chat(user, "<span class='warning'>W [src] nie ma niczego do wyładowania!</span>")
 		return
-	to_chat(user, "<span class='notice'>You start to unload [src]'s stored contents...</span>")
+	to_chat(user, "<span class='notice'>Zaczynasz wyładowywać zawartość [src]...</span>")
 	if(!do_after(user, 5 SECONDS, target=src))
 		return
-	to_chat(user, "<span class='notice>You dump [src]'s contents.</span>")
+	to_chat(user, "<span class='notice>Wysypujesz zawartość [src].</span>")
 	dump_contents()
 
 /obj/item/fighter_component/proc/dump_contents()
@@ -1033,7 +1026,7 @@ due_to_damage: Was this called voluntarily (FALSE) or due to damage / external c
 	forceMove(target)
 	apply_drag(target)
 	playsound(target, 'nsv13/sound/effects/ship/mac_load.ogg', 100, 1)
-	target.visible_message("<span class='notice'>[src] mounts onto [target]")
+	target.visible_message("<span class='notice'>[src] montuje się na [target]")
 	return TRUE
 
 //Allows you to jumpstart a fighter with an inducer.
@@ -1107,16 +1100,16 @@ due_to_damage: If the removal was caused voluntarily (FALSE), or if it was cause
 
 //Sometimes you need to repair your physical armour plates.
 /obj/item/fighter_component/armour_plating/welder_act(mob/living/user, obj/item/I)
-	if(user.a_intent == INTENT_HARM)
+	if(user.combat_mode)
 		return FALSE
 	if(obj_integrity >= max_integrity)
-		to_chat(user, "<span class='notice'>[src] isn't in need of repairs.</span>")
+		to_chat(user, "<span class='notice'>[src] nie wymaga naprawy.</span>")
 		return TRUE
 	if(busy)
-		to_chat(user, "<span class='warning'>Someone's already repairing [src]!</span>")
+		to_chat(user, "<span class='warning'>Ktoś już naprawia [src]!</span>")
 		return TRUE
 	busy = TRUE
-	to_chat(user, "<span class='notice'>You start welding some dents out of [src]...</span>")
+	to_chat(user, "<span class='notice'>Zaczynasz wyspawywać wgniecenia z [src]...</span>")
 	while(obj_integrity < max_integrity)
 		if(!I.use_tool(src, user, 1 SECONDS, volume=100))
 			busy = FALSE
@@ -1125,7 +1118,7 @@ due_to_damage: If the removal was caused voluntarily (FALSE), or if it was cause
 		if(obj_integrity >= max_integrity)
 			obj_integrity = max_integrity
 			break
-	to_chat(user, "<span class='notice'>You finish welding[obj_integrity == max_integrity ? "" : " some of"] the dents out of [src].</span>")
+	to_chat(user, "<span class='notice'>Kończysz wyspawywać[obj_integrity == max_integrity ? "" : " część"] wgnieceń z [src].</span>")
 	busy = FALSE
 
 /obj/item/fighter_component/armour_plating/tier2
@@ -1163,16 +1156,16 @@ due_to_damage: If the removal was caused voluntarily (FALSE), or if it was cause
 		overmap_shields = target.AddComponent(/datum/component/overmap_shields, 125, 125, 15) //inital integrity, max integrity, and recharge rate. bound to change most likely
 	else
 		target.GetComponent(/datum/component/overmap_shields).set_stats(125, 125, 0)
-	target.audible_message("<span class='notice'>\The [src] starts up, humming loudly.</span>")
+	target.audible_message("<span class='notice'>[src] uruchamia się z głośnym buczeniem.</span>")
 
 /obj/item/fighter_component/armour_plating/tier6/remove_from(obj/structure/overmap/target, due_to_damage)
 	.=..()
 	if(overmap_shields)
 		overmap_shields.set_stats(0, 0, 0)
 		if(due_to_damage)
-			target.visible_message("<span class='warning'>\The [src] shuts down, melting into slag.</span>")
+			target.visible_message("<span class='warning'>[src] wyłącza się, roztapiając w żużel.</span>")
 			return //We don't reset our health if the plating was destroyed due to hits, or the increase would be useless. It DOES get reset once we install new armor, though.
-		target.visible_message("<span class='notice'>\The [src] shuts down.</span>")
+		target.visible_message("<span class='notice'>[src] się wyłącza.</span>")
 
 
 /obj/item/fighter_component/canopy
@@ -1373,8 +1366,8 @@ due_to_damage: If the removal was caused voluntarily (FALSE), or if it was cause
 /obj/item/fighter_component/engine/examine(mob/user)
 	. = ..()
 	if(flooded)
-		. += "<span class='notice'>You can hear liquid sloshing around inside.</span>"
-		. += "<span class='notice'>The combustion chamber is <b>screwed<b> closed.</span>"
+		. += "<span class='notice'>Słyszysz w środku chlupot płynu.</span>"
+		. += "<span class='notice'>Komora spalania jest <b>zakręcona<b>.</span>"
 
 /obj/item/fighter_component/engine/flooded //made just so I can put it in pilot-specific mail
 	desc = "A mighty engine capable of propelling small spacecraft to high speeds. Something doesn't seem right, though..."
@@ -1384,9 +1377,9 @@ due_to_damage: If the removal was caused voluntarily (FALSE), or if it was cause
 	. = ..()
 	if(!flooded)
 		return
-	balloon_alert(user, "You start to purge [src] of its flooded fuel.")
+	balloon_alert(user, "Zaczynasz usuwać zalane paliwo z [src].")
 	if(do_after(user, 10 SECONDS, target=src))
-		balloon_alert(user, "You finish clearing the fuel out of [src].")
+		balloon_alert(user, "Kończysz usuwać paliwo z [src].")
 		flooded = FALSE
 		shake_animation()
 
@@ -1402,7 +1395,7 @@ due_to_damage: If the removal was caused voluntarily (FALSE), or if it was cause
 		rpm -= 1000 //Spool down the engine.
 		if(rpm <= 0)
 			playsound(loc, 'nsv13/sound/effects/ship/rcs.ogg', 100, TRUE)
-			loc.visible_message("<span class='userdanger'>[src] fizzles out!</span>")
+			loc.visible_message("<span class='userdanger'>[src] gaśnie z sykiem!</span>")
 			rpm = 0
 			F.stop_relay(CHANNEL_SHIP_ALERT)
 			active = FALSE
@@ -1415,7 +1408,7 @@ due_to_damage: If the removal was caused voluntarily (FALSE), or if it was cause
 
 /obj/item/fighter_component/engine/proc/apu_spin(amount)
 	if(flooded)
-		loc.visible_message("<span class='warning'>[src] sputters uselessly.</span>")
+		loc.visible_message("<span class='warning'>[src] bezużytecznie się krztusi.</span>")
 		return
 	rpm += amount
 	rpm = CLAMP(rpm, 0, ENGINE_RPM_SPUN)
@@ -1432,10 +1425,10 @@ due_to_damage: If the removal was caused voluntarily (FALSE), or if it was cause
 		return
 	else
 		playsound(loc, 'sound/machines/clockcult/steam_whoosh.ogg', 100, TRUE)
-		loc.visible_message("<span class='warning'>[src] sputters slightly.</span>")
+		loc.visible_message("<span class='warning'>[src] lekko się krztusi.</span>")
 		if(prob(20)) //Don't try and start a not spun engine, flyboys.
 			playsound(loc, 'nsv13/sound/effects/ship/rcs.ogg', 100, TRUE)
-			loc.visible_message("<span class='userdanger'>[src] violently fizzles out!.</span>")
+			loc.visible_message("<span class='userdanger'>[src] gwałtownie gaśnie z sykiem!</span>")
 			F.set_master_caution(TRUE)
 			rpm = 0
 			flooded = TRUE

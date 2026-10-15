@@ -1,18 +1,16 @@
+// Jukebox gra wyłącznie playlisty z YouTube (jukebox_youtube.dm). Tutaj: maszyna, UI i zasięg słyszenia.
+
 /obj/machinery/jukebox
 	name = "Jukebox"
 	desc = "Tradycyjny odtwarzacz muzyczny."
 	icon = 'aquila/icons/obj/jukebox.dmi'
 	icon_state = "jukebox"
-	verb_say = "states"
+	verb_say = "stwierdza"
 	density = TRUE
 	req_access = list(ACCESS_BAR)
 	interaction_flags_machine = INTERACT_MACHINE_SET_MACHINE | INTERACT_MACHINE_OPEN | INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OPEN_SILICON
 	max_integrity = 500
 	integrity_failure = 250
-	var/active = FALSE
-	var/stop = 0
-	var/selection = 1
-	var/channel = null
 	var/state_base = "jukebox"
 	var/seconds_electrified = MACHINE_NOT_ELECTRIFIED
 	var/speed_servo_regulator_cut = FALSE //vaporwave
@@ -20,9 +18,28 @@
 	var/mains = TRUE
 	var/verify = TRUE
 	var/speed_potentiometer = 1.0
+	/// Przecięty kabel: nie da się wybrać utworu z listy
 	var/selection_blocked = FALSE
+	/// Przecięty kabel: nie da się zatrzymać muzyki
 	var/stop_blocked = FALSE
-	var/list_source = list()
+	/// Gałka głośności w procentach
+	var/volume = 50
+	/// Promień (w kratkach) okręgu, w którym słychać muzykę
+	var/music_range = 20
+	/// Do tej odległości muzyka gra pełną głośnością, dalej cichnie
+	var/music_full_range = 3
+	/// O ile kratek "dalej" jest pokład nad/pod jukeboxem
+	var/music_deck_penalty = 4
+	/// Liczy, jak głośno i jak przytłumioną muzykę słyszy gracz (jukebox_emitter.dm)
+	var/datum/music_emitter/emitter
+	/// Nadaje na cały statek (włączane programem nagłośnienia u kapitana)
+	var/shipwide = FALSE
+	/// Podłączone multitoolem amp stacki
+	var/list/obj/machinery/jukebox_speaker/speakers = list()
+	/// Gra tylko przykręcony; FALSE = gra też odkręcony, np. ciągnięty za sobą (głośnik Syndykatu)
+	var/needs_anchoring = TRUE
+	/// Może nadawać na cały statek z programu nagłośnienia (radio i głośnik Syndykatu nie)
+	var/can_broadcast = TRUE
 
 /obj/machinery/jukebox/disco
 	name = "Disco Jukebox"
@@ -38,26 +55,36 @@
 /obj/machinery/jukebox/Initialize()
 	. = ..()
 	wires = new /datum/wires/jukebox(src)
-	list_source = SSjukeboxes.song_lib
+	emitter = new(src, music_range, music_full_range, music_deck_penalty)
 	update_icon()
 
 /obj/machinery/jukebox/Destroy()
-	if(!isnull(channel))
-		SSjukeboxes.remove_jukebox(channel)
-		channel = null
+	yt_stop()
+	for(var/obj/machinery/jukebox_speaker/speaker as anything in speakers)
+		speaker.unlink()
+	QDEL_NULL(emitter)
 	QDEL_NULL(wires)
 	return ..()
+
+/// Zapisuje jukebox w multitoolu, żeby podłączyć do niego amp stack. Przy otwartym panelu multitool służy do kabli.
+/obj/machinery/jukebox/multitool_act(mob/living/user, obj/item/I)
+	if(panel_open || !multitool_check_buffer(user, I))
+		return FALSE
+	var/obj/item/multitool/M = I
+	M.buffer = src
+	to_chat(user, "<span class='notice'>Zapisujesz [src] w pamięci [I]. Kliknij nim amp stack, aby go podłączyć.</span>")
+	return TRUE
 
 /obj/machinery/jukebox/power_change()
 	..()
 	update_icon()
-	if((machine_stat & NOPOWER) || !mains)
-		stop = 0
+	if(((machine_stat & NOPOWER) || !mains) && yt_active)
+		yt_stop()
 
 /obj/machinery/jukebox/obj_break()
 	. = ..()
 	if(.)
-		stop = 0
+		yt_stop()
 		playsound(loc, 'sound/effects/glassbr3.ogg', 100, 1)
 
 /obj/machinery/jukebox/attackby(obj/item/I, mob/user, params)
@@ -69,23 +96,24 @@
 	if(panel_open && is_wire_tool(I))
 		wires.interact(user)
 		return TRUE
-	if(I.tool_behaviour == TOOL_WELDER && user.a_intent == INTENT_HELP)
+	if(I.tool_behaviour == TOOL_WELDER && !user.combat_mode)
 		if(obj_integrity < max_integrity)
 			if(!I.tool_start_check(user, amount=5))
 				return
-			to_chat(user, "<span class='notice'>You begin repairing [src].</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz naprawiać [src].</span>")
 			if(I.use_tool(src, user, 40, amount=5, volume=50))
 				obj_integrity = max_integrity
 				machine_stat &= ~BROKEN
 				update_icon()
-				to_chat(user, "<span class='notice'>You repair [src].</span>")
+				to_chat(user, "<span class='notice'>Naprawiasz [src].</span>")
 				return
 	return ..()
 
 /obj/machinery/jukebox/default_unfasten_wrench(mob/user, obj/item/I, time = 20)
 	. = ..()
 	if(. == SUCCESSFUL_UNFASTEN)
-		stop = 0
+		if(!is_secured())
+			yt_stop()
 		update_icon()
 
 /obj/machinery/jukebox/_try_interact(mob/user)
@@ -111,13 +139,15 @@
 	icon_state = "[state_base]"
 	if((machine_stat & MAINT) || panel_open)
 		overlays += image(icon = icon, icon_state = "[state_base]-panel")
-	if(!(machine_stat & NOPOWER) && anchored && mains)
+	if(!(machine_stat & NOPOWER) && is_secured() && mains)
 		if(machine_stat & BROKEN)
 			overlays += image(icon = icon, icon_state = "[state_base]-broken")
 		else
 			overlays += image(icon = icon, icon_state = "[state_base]-powered")
-			if(active)
+			if(yt_active)
 				overlays += image(icon = icon, icon_state = "[state_base]-playing")
+	for(var/obj/machinery/jukebox_speaker/speaker as anything in speakers) // grają razem z jukeboxem
+		speaker.update_icon()
 
 /obj/machinery/jukebox/ui_interact(mob/user)
 	. = ..()
@@ -125,22 +155,11 @@
 		return
 	if(!user.canUseTopic(src, !issilicon(user)))
 		return
-	if (!anchored)
+	if (!is_secured())
 		to_chat(user,"<span class='warning'>To urządzenie musi wpierw był przykręcone do podłoża!</span>")
 		return
-	if(!SSjukeboxes.songs.len)
-		to_chat(user,"<span class='warning'>Błąd: nie znaleziono żadnych utworów. Skonsultuj się z Centralą.</span>")
-		playsound(src,'sound/machines/deniedbeep.ogg', 50, 1)
-		return
-	var/list/dat = list()
-	dat += "<div class='statusDisplay' style='text-align:center'>"
-	dat += "<b><a href='?src=[REF(src)];action=toggle'>[!active ? "BREAK IT DOWN" : "SHUT IT DOWN"]</a><b><br>"
-	dat += "</div><br>"
-	dat += "<A href='?src=[REF(src)];action=select'> Select Track</A><br>"
-	dat += "Track Selected: [SSjukeboxes.songs[selection].name]<br>"
-	dat += "Track Length: [DisplayTimeText(SSjukeboxes.songs[selection].length)]<br><br>"
-	var/datum/browser/popup = new(user, "vending", "[name]", 400, 350)
-	popup.set_content(dat.Join())
+	var/datum/browser/popup = new(user, "vending", "[name]", 500, 680)
+	popup.set_content(yt_ui(user))
 	popup.open()
 
 /obj/machinery/jukebox/Topic(href, href_list)
@@ -148,7 +167,7 @@
 		return
 	if(machine_stat & (BROKEN|NOPOWER) || !mains)
 		return
-	if(!anchored)
+	if(!is_secured())
 		to_chat(usr, "<span class='warning'>To urządzenie musi najpierw być przykręcone do podłoża!</span>")
 		return
 	if(!allowed(usr) && verify)
@@ -159,56 +178,32 @@
 	if(seconds_electrified)
 		if(shock(usr, 100))
 			return
+	if(findtext(href_list["action"], "yt_") == 1)
+		yt_topic(href_list["action"], href_list, usr)
+		return
 	switch(href_list["action"])
-		if("toggle")
-			if(!active)
-				attempt_playback()
+		if("stop")
+			if(stop_blocked)
+				to_chat(usr, "<span class='warning'>Wciskasz przycisk zatrzymania odtwarzania, ale nic się nie dzieje. Dziwne.</span>")
 			else
-				if (stop_blocked)
-					to_chat(usr, "<span class='warning'>Wciskasz przycisk zatrzymania odtwarzania, ale nic się nie dzieje. Dziwne.</span>")
-				else
-					stop = 0
-		if("select")
-			if(active)
-				to_chat(usr, "<span class='warning'>Nie można wybrać innego utworu gdy trwa odtwarzanie.</span>")
-				playsound(src, 'sound/machines/deniedbeep.ogg', 50, 1)
-				return
-			if(selection_blocked)
-				to_chat(usr, "<span class='warning'>Wciskasz przycisk wyboru utworu, ale nic się nie dzieje. Smutne!</span>")
-				return
-			var/selected = input(usr, "Choose your song", "Track:") as null|anything in list_source
-			if(QDELETED(src) || !selected)
-				return
-			selection = list_source[selected]
-			updateUsrDialog()
-
-/obj/machinery/jukebox/proc/activate_music()
-	if(machine_stat & (BROKEN|NOPOWER) || !mains)
-		return FALSE
-	var/speed_factor = get_speed_factor()
-	channel = SSjukeboxes.add_jukebox(src, selection, speed_factor)
-	if(isnull(channel))
-		return null
-	active = TRUE
-	playsound(src,'sound/machines/terminal_on.ogg',50,TRUE)
-	update_icon()
-	stop = world.time + (SSjukeboxes.songs[selection].length * (1/speed_factor))
-	START_PROCESSING(SSobj, src)
-	return TRUE
+				yt_stop()
+		if("volume")
+			volume = clamp(volume + text2num(href_list["delta"]), 10, 100)
+			if(yt_active)
+				SSjukeboxes.update_listeners()
+	updateUsrDialog()
 
 /obj/machinery/jukebox/process()
 	if(seconds_electrified > MACHINE_NOT_ELECTRIFIED)
 		seconds_electrified--
-	if(world.time >= stop && active)
-		active = FALSE
-		STOP_PROCESSING(SSobj, src)
-		playsound(src,'sound/machines/terminal_off.ogg',50,TRUE)
-		updateUsrDialog()
-		update_icon()
-		SSjukeboxes.remove_jukebox(channel)
-		channel = null
-		stop = world.time + 25
+	if(yt_active)
+		yt_process()
 
+/// Czy może grać pod względem przykręcenia
+/obj/machinery/jukebox/proc/is_secured()
+	return anchored || !needs_anchoring
+
+/// Tempo odtwarzania ustawiane kablami (vaporwave / nightcore)
 /obj/machinery/jukebox/proc/get_speed_factor()
 	var/speed_factor = 1.0
 	if (speed_servo_regulator_cut)
@@ -217,23 +212,3 @@
 		speed_factor *= 1.25
 	speed_factor *= speed_potentiometer
 	return speed_factor
-
-/obj/machinery/jukebox/proc/pick_random(specific_list = list_source)
-	var/selected = pick(specific_list)
-	if(QDELETED(src) || !selected)
-		return
-	selection = specific_list[selected]
-	updateUsrDialog()
-
-/obj/machinery/jukebox/proc/attempt_playback()
-	if (QDELETED(src))
-		return
-	if(stop > world.time)
-		to_chat(usr, "<span class='warning'>Urządzenie wciąż parkuje płytę, spróbuj ponownie za [DisplayTimeText(stop-world.time)].</span>")
-		playsound(src, 'sound/machines/deniedbeep.ogg', 50, TRUE)
-		return
-	if(!activate_music())
-		to_chat(usr, "<span class='warning'>Błąd sprzętowy, spróbuj ponownie.</span>")
-		playsound(src, 'sound/machines/deniedbeep.ogg', 50, TRUE)
-		return
-	updateUsrDialog()

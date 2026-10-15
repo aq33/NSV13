@@ -1,6 +1,6 @@
 /datum/ntnet_conversation
 	var/id = null
-	var/title = "Untitled Conversation"
+	var/title = "Rozmowa bez tytułu"
 	var/datum/computer_file/program/chatclient/operator // "Administrator" of this channel. Creator starts as channel's operator,
 	var/list/messages = list()
 	///chat clients who are active or minimized
@@ -47,7 +47,7 @@
 	new_user.conversations |= src
 	active_clients.Add(new_user)
 	if(!silent)
-		add_status_message("[new_user.username] has joined the channel.")
+		add_status_message("[new_user.username] dołącza do kanału.")
 	// No operator, so we assume the channel was empty. Assign this user as operator.
 	if(!operator)
 		changeop(new_user)
@@ -63,7 +63,7 @@
 	if(!istype(leaving) || !(leaving in active_clients))
 		return
 	active_clients.Remove(leaving)
-	add_status_message("[leaving.username] has left the channel.")
+	add_status_message("[leaving.username] opuszcza kanał.")
 
 	// Channel operator left, pick new operator
 	if(leaving == operator)
@@ -86,7 +86,7 @@
 		muted.computer.alert_call(muted, "You have been unmuted from [title]!", 'sound/machines/ping.ogg')
 	else
 		muted_clients.Add(muted)
-		muted.computer.alert_call(muted, "You have been muted from [title]!")
+		muted.computer.alert_call(muted, "Wyciszono cię na kanale [title]!")
 
 /datum/ntnet_conversation/proc/ping_user(datum/computer_file/program/chatclient/pinger, datum/computer_file/program/chatclient/pinged)
 	if(pinger in muted_clients)
@@ -97,11 +97,11 @@
 /datum/ntnet_conversation/proc/changeop(datum/computer_file/program/chatclient/newop)
 	if(istype(newop))
 		operator = newop
-		add_status_message("Channel operator status transferred to [newop.username].")
+		add_status_message("Status operatora kanału przekazano użytkownikowi [newop.username].")
 
 /datum/ntnet_conversation/proc/change_title(newtitle, datum/computer_file/program/chatclient/renamer)
 	if(operator != renamer || strong)
 		return FALSE // Not Authorised or channel cannot be editted
 
-	add_status_message("[renamer.username] has changed channel title from [title] to [newtitle]")
+	add_status_message("[renamer.username] zmienia nazwę kanału z [title] na [newtitle]")
 	title = newtitle

@@ -60,10 +60,10 @@
 
 /obj/machinery/power/solar/crowbar_act(mob/user, obj/item/I)
 	playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
-	user.visible_message("[user] begins to take the glass off [src].", "<span class='notice'>You begin to take the glass off [src]...</span>")
+	user.visible_message("[user] zaczyna zdejmować szkło z [src].", "<span class='notice'>Zaczynasz zdejmować szkło z [src]...</span>")
 	if(I.use_tool(src, user, 50))
 		playsound(src.loc, 'sound/items/deconstruct.ogg', 50, 1)
-		user.visible_message("[user] takes the glass off [src].", "<span class='notice'>You take the glass off [src].</span>")
+		user.visible_message("[user] zdejmuje szkło z [src].", "<span class='notice'>Zdejmujesz szkło z [src].</span>")
 		deconstruct(TRUE)
 	return TRUE
 
@@ -204,32 +204,32 @@
 /obj/item/solar_assembly/attackby(obj/item/W, mob/user, params)
 	if(W.tool_behaviour == TOOL_WRENCH && isturf(loc))
 		if(isinspace())
-			to_chat(user, "<span class='warning'>You can't secure [src] here.</span>")
+			to_chat(user, "<span class='warning'>Nie możesz tu zamocować [src].</span>")
 			return
 		anchored = !anchored
 		if(anchored)
-			user.visible_message("[user] wrenches the solar assembly into place.", "<span class='notice'>You wrench the solar assembly into place.</span>")
+			user.visible_message("[user] przykręca zespół panelu słonecznego.", "<span class='notice'>Przykręcasz zespół panelu słonecznego.</span>")
 			W.play_tool_sound(src, 75)
 		else
-			user.visible_message("[user] unwrenches the solar assembly from its place.", "<span class='notice'>You unwrench the solar assembly from its place.</span>")
+			user.visible_message("[user] odkręca zespół panelu słonecznego.", "<span class='notice'>Odkręcasz zespół panelu słonecznego.</span>")
 			W.play_tool_sound(src, 75)
 		return 1
 
 	if(istype(W, /obj/item/stack/sheet/glass) || istype(W, /obj/item/stack/sheet/rglass))
 		if(!anchored)
-			to_chat(user, "<span class='warning'>You need to secure the assembly before you can add glass.</span>")
+			to_chat(user, "<span class='warning'>Zanim dodasz szkło, musisz zamocować zespół.</span>")
 			return
 		var/obj/item/stack/sheet/S = W
 		if(S.use(2))
 			glass_type = W.type
 			playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
-			user.visible_message("[user] places the glass on the solar assembly.", "<span class='notice'>You place the glass on the solar assembly.</span>")
+			user.visible_message("[user] kładzie szkło na zespole panelu słonecznego.", "<span class='notice'>Kładziesz szkło na zespole panelu słonecznego.</span>")
 			if(tracker)
 				new /obj/machinery/power/tracker(get_turf(src), src)
 			else
 				new /obj/machinery/power/solar(get_turf(src), src)
 		else
-			to_chat(user, "<span class='warning'>You need two sheets of glass to put them into a solar panel!</span>")
+			to_chat(user, "<span class='warning'>Do panelu słonecznego potrzebujesz dwóch arkuszy szkła!</span>")
 			return
 		return 1
 
@@ -239,13 +239,13 @@
 				return
 			tracker = 1
 			qdel(W)
-			user.visible_message("[user] inserts the electronics into the solar assembly.", "<span class='notice'>You insert the electronics into the solar assembly.</span>")
+			user.visible_message("[user] wkłada elektronikę do zespołu panelu słonecznego.", "<span class='notice'>Wkładasz elektronikę do zespołu panelu słonecznego.</span>")
 			return 1
 	else
 		if(W.tool_behaviour == TOOL_CROWBAR)
 			new /obj/item/electronics/tracker(src.loc)
 			tracker = 0
-			user.visible_message("[user] takes out the electronics from the solar assembly.", "<span class='notice'>You take out the electronics from the solar assembly.</span>")
+			user.visible_message("[user] wyjmuje elektronikę z zespołu panelu słonecznego.", "<span class='notice'>Wyjmujesz elektronikę z zespołu panelu słonecznego.</span>")
 			return 1
 	return ..()
 
@@ -411,11 +411,11 @@
 			set_panels(currentdir)
 			. = TRUE
 
-/obj/machinery/power/solar_control/attackby(obj/item/I, mob/user, params)
+/obj/machinery/power/solar_control/attackby(obj/item/I, mob/living/user, params)
 	if(I.tool_behaviour == TOOL_SCREWDRIVER)
 		if(I.use_tool(src, user, 20, volume=50))
 			if (src.machine_stat & BROKEN)
-				to_chat(user, "<span class='notice'>The broken glass falls out.</span>")
+				to_chat(user, "<span class='notice'>Rozbite szkło wypada.</span>")
 				var/obj/structure/frame/computer/A = new /obj/structure/frame/computer( src.loc )
 				new /obj/item/shard( src.loc )
 				var/obj/item/circuitboard/computer/solar_control/M = new /obj/item/circuitboard/computer/solar_control( A )
@@ -427,7 +427,7 @@
 				A.anchored = TRUE
 				qdel(src)
 			else
-				to_chat(user, "<span class='notice'>You disconnect the monitor.</span>")
+				to_chat(user, "<span class='notice'>Odłączasz monitor.</span>")
 				var/obj/structure/frame/computer/A = new /obj/structure/frame/computer( src.loc )
 				var/obj/item/circuitboard/computer/solar_control/M = new /obj/item/circuitboard/computer/solar_control( A )
 				for (var/obj/C in src)
@@ -437,7 +437,7 @@
 				A.icon_state = "4"
 				A.anchored = TRUE
 				qdel(src)
-	else if(user.a_intent != INTENT_HARM && !(I.item_flags & NOBLUDGEON))
+	else if(!user.combat_mode && !(I.item_flags & NOBLUDGEON))
 		attack_hand(user)
 	else
 		return ..()
@@ -497,4 +497,4 @@
 
 /obj/item/paper/guides/jobs/engi/solars
 	name = "paper- 'Going green! Setup your own solar array instructions.'"
-	default_raw_text = "<h1>Welcome</h1><p>At greencorps we love the environment, and space. With this package you are able to help mother nature and produce energy without any usage of fossil fuel or plasma! Singularity energy is dangerous while solar energy is safe, which is why it's better. Now here is how you setup your own solar array.</p><p>You can make a solar panel by wrenching the solar assembly onto a cable node. Adding a glass panel, reinforced or regular glass will do, will finish the construction of your solar panel. It is that easy!</p><p>Now after setting up 19 more of these solar panels you will want to create a solar tracker to keep track of our mother nature's gift, the sun. These are the same steps as before except you insert the tracker equipment circuit into the assembly before performing the final step of adding the glass. You now have a tracker! Now the last step is to add a computer to calculate the sun's movements and to send commands to the solar panels to change direction with the sun. Setting up the solar computer is the same as setting up any computer, so you should have no trouble in doing that. You do need to put a wire node under the computer, and the wire needs to be connected to the tracker.</p><p>Congratulations, you should have a working solar array. If you are having trouble, here are some tips. Make sure all solar equipment are on a cable node, even the computer. You can always deconstruct your creations if you make a mistake.</p><p>That's all to it, be safe, be green!</p>"
+	default_raw_text = "<h1>Witamy</h1><p>W greencorps kochamy środowisko i kosmos. Dzięki temu zestawowi możesz pomóc matce naturze i wytwarzać energię bez paliw kopalnych ani plazmy! Energia z osobliwości jest niebezpieczna, a słoneczna bezpieczna, dlatego jest lepsza. Oto jak zbudować własne pole paneli słonecznych.</p><p>Panel słoneczny zrobisz, przykręcając zespół panelu do węzła kabla. Dodanie tafli szkła, zbrojonego lub zwykłego, zakończy budowę panelu. To takie proste!</p><p>Po zbudowaniu kolejnych 19 paneli zbuduj tracker słoneczny, by śledzić dar matki natury – słońce. Kroki są takie same jak wcześniej, tylko przed ostatnim etapem, czyli dodaniem szkła, wkładasz do zespołu obwód trackera. Masz tracker! Ostatni krok to dodanie komputera, który oblicza ruch słońca i wysyła panelom polecenia, by obracały się za nim. Budowa komputera słonecznego wygląda jak budowa każdego innego komputera, więc nie powinieneś mieć z tym problemu. Pod komputerem musi jednak być węzeł przewodu, a przewód musi być podłączony do trackera.</p><p>Gratulacje, powinieneś mieć działające pole paneli słonecznych. Jeśli masz problemy, oto kilka wskazówek. Upewnij się, że cały sprzęt słoneczny stoi na węzłach kabla, nawet komputer. Jeśli się pomylisz, zawsze możesz rozebrać swoje konstrukcje.</p><p>To wszystko, bądź bezpieczny, bądź eko!</p>"

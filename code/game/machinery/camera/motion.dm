@@ -67,7 +67,7 @@
 	for (var/mob/living/silicon/aiPlayer in GLOB.player_list)
 		if (status)
 			aiPlayer.triggerAlarm("Motion", get_area(src), list(src), src)
-			visible_message("<span class='warning'>A red light flashes on the [src]!</span>")
+			visible_message("<span class='warning'>Na [src] miga czerwone światło!</span>")
 	detectTime = -1
 	return TRUE
 
@@ -86,7 +86,7 @@
 
 /obj/machinery/camera/motion/thunderdome/Initialize(mapload)
 	. = ..()
-	proximity_monitor.SetRange(7)
+	proximity_monitor.set_range(7)
 
 /obj/machinery/camera/motion/thunderdome/HasProximity(atom/movable/AM as mob|obj)
 	if (!isliving(AM) || get_area(AM) != get_area(src))

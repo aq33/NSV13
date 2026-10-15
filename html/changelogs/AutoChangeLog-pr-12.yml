@@ -1,5 +1,0 @@
-author: sh4dow321
-delete-after: true
-changes:
-  - code_imp: Naprawiono test campaign_reset na CI oraz brakujący znak nowej linii
-      w aquila.dm.

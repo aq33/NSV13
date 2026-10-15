@@ -27,8 +27,7 @@
 
 /obj/item/assembly_holder/ComponentInitialize()
 	. = ..()
-	var/static/rotation_flags = ROTATION_ALTCLICK | ROTATION_CLOCKWISE | ROTATION_COUNTERCLOCKWISE | ROTATION_FLIP | ROTATION_VERBS
-	AddComponent(/datum/component/simple_rotation, rotation_flags)
+	AddComponent(/datum/component/simple_rotation)
 
 /obj/item/assembly_holder/IsAssemblyHolder()
 	return TRUE
@@ -110,7 +109,7 @@
 /obj/item/assembly_holder/screwdriver_act(mob/user, obj/item/tool)
 	if(..())
 		return TRUE
-	to_chat(user, "<span class='notice'>You disassemble [src]!</span>")
+	to_chat(user, "<span class='notice'>Rozbierasz [src]!</span>")
 	if(a_left)
 		a_left.on_detach()
 		a_left = null
@@ -123,10 +122,10 @@
 /obj/item/assembly_holder/attack_self(mob/user)
 	add_fingerprint(user)
 	if(!a_left || !a_right)
-		to_chat(user, "<span class='danger'>Assembly part missing!</span>")
+		to_chat(user, "<span class='danger'>Brakuje części zespołu!</span>")
 		return
 	if(istype(a_left,a_right.type))//If they are the same type it causes issues due to window code
-		switch(alert("Which side would you like to use?",,"Left","Right"))
+		switch(alert("Której strony chcesz użyć?",,"Left","Right"))
 			if("Left")
 				a_left.attack_self(user)
 			if("Right")

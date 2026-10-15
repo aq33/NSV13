@@ -5,7 +5,7 @@
 	secure = TRUE
 	locked = TRUE
 	max_integrity = 500
-	armor = list("melee" = 30, "bullet" = 50, "laser" = 50, "energy" = 100, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 80, "acid" = 80, "stamina" = 0)
+	armor = list("melee" = 30, "bullet" = 50, "laser" = 50, "energy" = 100, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 80, "acid" = 80, "stamina" = 0, "bleed" = 0)
 	var/tamperproof = 0
 	icon_door = "crate"
 	icon_door_override = TRUE
@@ -33,10 +33,10 @@
 
 /obj/structure/closet/crate/secure/proc/boom(mob/user)
 	if(user)
-		to_chat(user, "<span class='danger'>The crate's anti-tamper system activates!</span>")
+		to_chat(user, "<span class='danger'>Aktywuje się system antymanipulacyjny skrzyni!</span>")
 		log_bomber(user, "has detonated a", src)
-	for(var/atom/movable/AM in src)
-		qdel(AM)
+	for(var/obj/loot in src)
+		SSexplosions.high_mov_atom += loot
 	explosion(get_turf(src), 0, 1, 5, 5)
 	qdel(src)
 
@@ -68,6 +68,21 @@
 	icon_door = null
 	icon_door_override = FALSE
 
+/obj/structure/closet/crate/secure/freezer //for consistency with other "freezer" closets/crates
+	desc = "An insulated crate with a lock on it, used to secure perishables."
+	name = "secure kitchen crate"
+	icon_state = "kitchen_secure_crate"
+
+/obj/structure/closet/crate/secure/freezer/pizza
+	name = "secure pizza crate"
+	desc = "An insulated crate with a lock on it, used to secure pizza."
+	req_access = list(28)
+	tamperproof = 10
+
+/obj/structure/closet/crate/secure/freezer/pizza/PopulateContents()
+	. = ..()
+	new /obj/effect/spawner/lootdrop/pizzaparty(src)
+
 /obj/structure/closet/crate/secure/engineering
 	desc = "A crate with a lock on it, painted in the scheme of the station's engineers."
 	name = "secure engineering crate"
@@ -97,7 +112,7 @@
 
 /obj/structure/closet/crate/secure/owned/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>It's locked with a privacy lock, and can only be unlocked by the buyer's ID with required access.</span>"
+	. += "<span class='notice'>Jest zamknięta na zamek prywatności i można ją otworzyć tylko kartą ID kupującego z wymaganym dostępem.</span>"
 
 /obj/structure/closet/crate/secure/owned/Initialize(mapload, datum/bank_account/_buyer_account)
 	. = ..()
@@ -117,18 +132,18 @@
 							if(iscarbon(user))
 								add_fingerprint(user)
 							locked = !locked
-							user.visible_message("<span class='notice'>[user] unlocks [src]'s privacy lock.</span>",
-											"<span class='notice'>You unlock [src]'s privacy lock.</span>")
+							user.visible_message("<span class='notice'>[user] otwiera zamek prywatności [src].</span>",
+											"<span class='notice'>Otwierasz zamek prywatności [src].</span>")
 							privacy_lock = FALSE
 							update_icon()
 						else if(!silent)
-							to_chat(user, "<span class='notice'>Access Denied, insufficient access on ID card.</span>")
+							to_chat(user, "<span class='notice'>Odmowa dostępu, karta ID ma niewystarczający dostęp.</span>")
 					else if(!silent)
-						to_chat(user, "<span class='notice'>Bank account does not match with buyer!</span>")
+						to_chat(user, "<span class='notice'>Konto bankowe nie zgadza się z kupującym!</span>")
 				else if(!silent)
-					to_chat(user, "<span class='notice'>No linked bank account detected!</span>")
+					to_chat(user, "<span class='notice'>Nie wykryto połączonego konta bankowego!</span>")
 			else if(!silent)
-				to_chat(user, "<span class='notice'>No ID detected!</span>")
+				to_chat(user, "<span class='notice'>Nie wykryto karty ID!</span>")
 		else if(!silent)
-			to_chat(user, "<span class='warning'>[src] is broken!</span>")
+			to_chat(user, "<span class='warning'>[src] jest zepsuta!</span>")
 	else ..()

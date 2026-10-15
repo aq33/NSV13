@@ -1,0 +1,5 @@
+/// AQUILA EDIT - slicing food with a knife plays our slice sound (moved from oldfood slice())
+/obj/item/food/UsedforProcessing(mob/living/user, obj/item/used_item, list/chosen_option)
+	if(used_item?.tool_behaviour == TOOL_KNIFE)
+		playsound(loc, 'aquila/sound/effects/slice.ogg', 50, 1)
+	return ..()

@@ -37,9 +37,9 @@
 		/obj/item/stack/spacecash/c10										= 22, //the lamest chance to get item, what do you expect really?
 		/obj/item/reagent_containers/food/drinks/soda_cans/pwr_game			= 10,
 		/obj/item/reagent_containers/food/drinks/soda_cans/monkey_energy	= 10,
-		/obj/item/reagent_containers/food/snacks/cheesiehonkers 			= 10,
-		/obj/item/reagent_containers/food/snacks/candy						= 10,
-		/obj/item/reagent_containers/food/snacks/chips						= 10,
+		/obj/item/food/cheesiehonkers 			= 10,
+		/obj/item/food/candy						= 10,
+		/obj/item/food/chips						= 10,
 		/obj/item/stack/spacecash/c50 										= 10,
 		/obj/item/stack/spacecash/c100 										= 25,
 		/obj/item/stack/spacecash/c200 										= 15,
@@ -106,11 +106,11 @@
 	var/datum/mind/recipient
 	if(recipient_ref)
 		recipient = recipient_ref.resolve()
-	var/msg = "<span class='notice'><i>You notice the postmarking on the front of the mail...</i></span>"
+	var/msg = "<span class='notice'><i>Zauważasz stempel pocztowy z przodu przesyłki...</i></span>"
 	if(recipient)
-		msg += "\n<span class='info'>Certified NT mail for [recipient].</span>"
+		msg += "\n<span class='info'>Certyfikowana przesyłka NT dla: [recipient].</span>"
 	else
-		msg += "\n<span class='info'>Certified mail for [GLOB.station_name].</span>"
+		msg += "\n<span class='info'>Certyfikowana przesyłka dla: [GLOB.station_name].</span>"
 	. += "\n[msg]"
 
 
@@ -180,15 +180,15 @@
 		// whether a mind can actually be qdel'd is an exercise for the reader
 		if(recipient && recipient != user?.mind)
 			if(!is_changeling(user))
-				to_chat(user, "<span class='notice'>You can't open somebody else's mail! That's <em>immoral</em>!</span>")
+				to_chat(user, "<span class='notice'>Nie możesz otwierać cudzej poczty! To <em>niemoralne</em>!</span>")
 				return
 			if(user.real_name != recipient.name)
-				to_chat(user, "<span class='warning'>We must keep our disguise intact.</span>")  // cuz your disguise cant open the mail so you shouldnt either
+				to_chat(user, "<span class='warning'>Musimy zachować przebranie.</span>")  // cuz your disguise cant open the mail so you shouldnt either
 				return
 
-	user.visible_message("[user] start to unwrap a package...", \
-			"<span class='notice'>You start to unwrap the package...</span>", \
-			"<span class='italics'>You hear paper ripping.</span>")
+	user.visible_message("[user] zaczyna rozpakowywać paczkę...", \
+			"<span class='notice'>Zaczynasz rozpakowywać paczkę...</span>", \
+			"<span class='italics'>Słyszysz darcie papieru.</span>")
 	if(!do_after(user, 1.5 SECONDS, target = user))
 		return
 	user.temporarilyRemoveItemFromInventory(src, TRUE)
@@ -248,7 +248,7 @@
 		/obj/item/paper/pamphlet/gateway = "[initial(name)] for [pick(GLOB.adjectives)] adventurers",
 		/obj/item/paper/pamphlet/violent_video_games = "[initial(name)] for the truth about the arcade centcom doesn't want to hear",
 		/obj/item/paper/fluff/junkmail_redpill = "[initial(name)] for those feeling [pick(GLOB.adjectives)] working at Nanotrasen",
-		/obj/item/paper/fluff/nice_argument = "[initial(name)] with INCREDIBLY IMPORTANT ARTIFACT- DELIVER TO SCIENCE DIVISION. HANDLE WITH CARE.",
+		/obj/item/paper/fluff/nice_argument = "[initial(name)] z NIEZWYKLE WAŻNYM ARTEFAKTEM - DOSTARCZYĆ DO DZIAŁU NAUKOWEGO. OSTROŻNIE.",
 	)
 
 	//better spam mail names instead of being "IMPORTANT MAIL", courtesy of Monkestation
@@ -357,12 +357,12 @@
 /obj/item/paper/fluff/nice_argument/Initialize()
 	. = ..()
 	var/station_name = station_name()
-	add_raw_text("Nice argument, however there's a <i>small detail</i>...<br>IP: '[rand(0,10)].[rand(0,255)].[rand(0,255)].[rand(0,255)]'<br> Station name: '[station_name]'<br>")
+	add_raw_text("Niezły argument, ale jest jeden <i>drobny szczegół</i>...<br>IP: '[rand(0,10)].[rand(0,255)].[rand(0,255)].[rand(0,255)]'<br> Nazwa stacji: '[station_name]'<br>")
 
 /obj/item/paper/fluff/junkmail_redpill/Initialize()
 	// 1 in 1000 chance of getting 2 random nuke code characters.
 	if(!prob(nuclear_option_odds))
-		add_raw_text("<i>You need to escape the simulation. Don't forget the numbers, they help you remember:</i> '[random_code(4)]...'")
+		add_raw_text("<i>Musisz uciec z symulacji. Nie zapomnij liczb, pomogą ci pamiętać:</i> '[random_code(4)]...'")
 		return ..()
 	var/code = random_code(5)
 	for(var/obj/machinery/nuclearbomb/selfdestruct/nuke in GLOB.nuke_list)
@@ -375,7 +375,7 @@
 		else
 			stack_trace("Station self-destruct not found during lone op team creation.")
 			code = null
-	add_raw_text("<i>You need to escape the simulation. Don't forget the numbers, they help you remember:</i> '[code[rand(1,5)]][code[rand(1,5)]][code[rand(1,5)]][code[rand(1,5)]]...'")
+	add_raw_text("<i>Musisz uciec z symulacji. Nie zapomnij liczb, pomogą ci pamiętać:</i> '[code[rand(1,5)]][code[rand(1,5)]][code[rand(1,5)]][code[rand(1,5)]]...'")
 	return ..()
 
 //admin letter enabling players to brute force their way through the nuke code if they're so inclined.

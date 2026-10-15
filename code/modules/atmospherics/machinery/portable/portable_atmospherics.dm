@@ -3,7 +3,7 @@
 	icon = 'icons/obj/atmos.dmi'
 	use_power = NO_POWER_USE
 	max_integrity = 250
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 100, "bomb" = 0, "bio" = 100, "rad" = 100, "fire" = 60, "acid" = 30, "stamina" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 100, "bomb" = 0, "bio" = 100, "rad" = 100, "fire" = 60, "acid" = 30, "stamina" = 0, "bleed" = 0)
 	anchored = FALSE
 
 	var/datum/gas_mixture/air_contents
@@ -88,14 +88,14 @@
 	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, !ismonkey(user)))
 		return
 	if(holding)
-		to_chat(user, "<span class='notice'>You remove [holding] from [src].</span>")
+		to_chat(user, "<span class='notice'>Wyjmujesz [holding] z [src].</span>")
 		replace_tank(user, TRUE)
 
 /obj/machinery/portable_atmospherics/examine(mob/user)
 	. = ..()
 	if(holding)
-		. += "<span class='notice'>\The [src] contains [holding]. Alt-click [src] to remove it.</span>\n"+\
-			"<span class='notice'>Click [src] with another gas tank to hot swap [holding].</span>"
+		. += "<span class='notice'>[src] zawiera [holding]. Alt-klik na [src], by wyjąć.</span>\n"+\
+			"<span class='notice'>Kliknij [src] inną butlą z gazem, by szybko wymienić [holding].</span>"
 
 /obj/machinery/portable_atmospherics/proc/replace_tank(mob/living/user, close_valve, obj/item/tank/new_tank)
 	if(holding)
@@ -115,7 +115,7 @@
 			var/obj/item/tank/T = W
 			if(!user.transferItemToLoc(T, src))
 				return
-			to_chat(user, "<span class='notice'>[holding ? "In one smooth motion you pop [holding] out of [src]'s connector and replace it with [T]" : "You insert [T] into [src]"].</span>")
+			to_chat(user, "<span class='notice'>[holding ? "Jednym płynnym ruchem wyjmujesz [holding] ze złącza [src] i zastępujesz go przez [T]" : "Wkładasz [T] do [src]"].</span>")
 			investigate_log("had its internal [holding] swapped with [T] by [key_name(user)].", INVESTIGATE_ATMOS)
 			replace_tank(user, FALSE, T)
 			update_icon()
@@ -127,23 +127,23 @@
 				W.play_tool_sound(src)
 				user.visible_message( \
 					"[user] disconnects [src].", \
-					"<span class='notice'>You unfasten [src] from the port.</span>", \
-					"<span class='italics'>You hear a ratchet.</span>")
+					"<span class='notice'>Odłączasz [src] od portu.</span>", \
+					"<span class='italics'>Słyszysz grzechotkę.</span>")
 				update_icon()
 				return
 			else
 				var/obj/machinery/atmospherics/components/unary/portables_connector/possible_port = locate(/obj/machinery/atmospherics/components/unary/portables_connector) in loc
 				if(!possible_port)
-					to_chat(user, "<span class='notice'>Nothing happens.</span>")
+					to_chat(user, "<span class='notice'>Nic się nie dzieje.</span>")
 					return
 				if(!connect(possible_port))
-					to_chat(user, "<span class='notice'>[name] failed to connect to the port.</span>")
+					to_chat(user, "<span class='notice'>Nie udało się podłączyć [name] do portu.</span>")
 					return
 				W.play_tool_sound(src)
 				user.visible_message( \
 					"[user] connects [src].", \
-					"<span class='notice'>You fasten [src] to the port.</span>", \
-					"<span class='italics'>You hear a ratchet.</span>")
+					"<span class='notice'>Podłączasz [src] do portu.</span>", \
+					"<span class='italics'>Słyszysz grzechotkę.</span>")
 				update_icon()
 				investigate_log("was connected to [possible_port] by [key_name(user)].", INVESTIGATE_ATMOS)
 	else

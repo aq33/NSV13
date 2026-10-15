@@ -14,7 +14,7 @@
 	minbodytemp = 0
 	maxbodytemp = 360
 	unique_name = 1
-	a_intent = INTENT_HARM
+	combat_mode = TRUE
 	see_in_dark = 8
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	initial_language_holder = /datum/language_holder/empty
@@ -73,7 +73,7 @@
 	if(!overmind)
 		return ..()
 	if(CHAT_FILTER_CHECK(message))
-		to_chat(usr, "<span class='warning'>Your message contains forbidden words.</span>")
+		to_chat(usr, "<span class='warning'>Twoja wiadomość zawiera zakazane słowa.</span>")
 		return
 	message = treat_message_min(message)
 	log_talk(message, LOG_SAY, tag="blob")
@@ -97,10 +97,10 @@
 	icon_living = "blobpod"
 	health = 30
 	maxHealth = 30
-	verb_say = "psychically pulses"
-	verb_ask = "psychically probes"
-	verb_exclaim = "psychically yells"
-	verb_yell = "psychically screams"
+	verb_say = "pulsuje psychicznie"
+	verb_ask = "sonduje psychicznie"
+	verb_exclaim = "krzyczy psychicznie"
+	verb_yell = "wrzeszczy psychicznie"
 	melee_damage = 4
 	obj_damage = 20
 	environment_smash = ENVIRONMENT_SMASH_STRUCTURES
@@ -130,8 +130,8 @@
 	else
 		if(E.create_culture(disease, user))
 			dust()
-			user.visible_message("<span class='danger'>[user] stabs [src] with [E], sucking it up!</span>", \
-	 				 "<span class='danger'>You stab [src] with [E]'s probe, destroying it!</span>")
+			user.visible_message("<span class='danger'>[user] dźga [src] za pomocą [E], wysysając go!</span>", \
+	 				 "<span class='danger'>Dźgasz [src] sondą [E], niszcząc go!</span>")
 	return TRUE
 
 /mob/living/simple_animal/hostile/blob/blobspore/Life()
@@ -164,7 +164,7 @@
 	H.forceMove(src)
 	oldguy = H
 	update_icons()
-	visible_message("<span class='warning'>The corpse of [H.name] suddenly rises!</span>")
+	visible_message("<span class='warning'>Zwłoki [H.name] nagle powstają!</span>")
 	if(!key)
 		set_playable(ROLE_BLOB)
 
@@ -245,10 +245,10 @@
 	obj_damage = 60
 	attacktext = "miażdży"
 	attack_sound = 'sound/effects/blobattack.ogg'
-	verb_say = "gurgles"
-	verb_ask = "demands"
-	verb_exclaim = "roars"
-	verb_yell = "bellows"
+	verb_say = "bulgocze"
+	verb_ask = "żąda"
+	verb_exclaim = "ryczy"
+	verb_yell = "ryczy gromko"
 	force_threshold = 10
 	pressure_resistance = 50
 	mob_size = MOB_SIZE_LARGE

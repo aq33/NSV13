@@ -15,5 +15,14 @@
 /turf/open/floor/engine
 	flammability = 0 // nope
 
+/turf/open/floor/grass/snow
+	flammability = -5 // negative flammability, makes fires deplete much faster
+
+/turf/open/floor/plating/asteroid/snow
+	flammability = -5
+
+/turf/open/floor/plating/ice
+	flammability = -5
+
 /turf/open/floor/engine/temperature_expose()
 	return //still unburnable

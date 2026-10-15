@@ -25,14 +25,14 @@
 		if(PTURRET_UNSECURED)	//first step
 			if(I.tool_behaviour == TOOL_WRENCH && !anchored)
 				I.play_tool_sound(src, 100)
-				to_chat(user, "<span class='notice'>You secure the external bolts.</span>")
+				to_chat(user, "<span class='notice'>Dokręcasz zewnętrzne śruby.</span>")
 				setAnchored(TRUE)
 				build_step = PTURRET_BOLTED
 				return
 
 			else if(I.tool_behaviour == TOOL_CROWBAR && !anchored)
 				I.play_tool_sound(src, 75)
-				to_chat(user, "<span class='notice'>You dismantle the turret construction.</span>")
+				to_chat(user, "<span class='notice'>Rozbierasz konstrukcję wieżyczki.</span>")
 				new /obj/item/stack/sheet/iron( loc, 5)
 				qdel(src)
 				return
@@ -41,16 +41,16 @@
 			if(istype(I, /obj/item/stack/sheet/iron))
 				var/obj/item/stack/sheet/iron/M = I
 				if(M.use(2))
-					to_chat(user, "<span class='notice'>You add some metal armor to the interior frame.</span>")
+					to_chat(user, "<span class='notice'>Dodajesz metalowy pancerz do wewnętrznej ramy.</span>")
 					build_step = PTURRET_START_INTERNAL_ARMOUR
 					icon_state = "turret_frame2"
 				else
-					to_chat(user, "<span class='warning'>You need two sheets of iron to continue construction!</span>")
+					to_chat(user, "<span class='warning'>Do kontynuowania budowy potrzebujesz dwóch arkuszy żelaza!</span>")
 				return
 
 			else if(I.tool_behaviour == TOOL_WRENCH)
 				I.play_tool_sound(src, 75)
-				to_chat(user, "<span class='notice'>You unfasten the external bolts.</span>")
+				to_chat(user, "<span class='notice'>Odkręcasz zewnętrzne śruby.</span>")
 				setAnchored(FALSE)
 				build_step = PTURRET_UNSECURED
 				return
@@ -59,7 +59,7 @@
 		if(PTURRET_START_INTERNAL_ARMOUR)
 			if(I.tool_behaviour == TOOL_WRENCH)
 				I.play_tool_sound(src, 100)
-				to_chat(user, "<span class='notice'>You bolt the metal armor into place.</span>")
+				to_chat(user, "<span class='notice'>Przykręcasz metalowy pancerz.</span>")
 				build_step = PTURRET_INTERNAL_ARMOUR_ON
 				return
 
@@ -67,11 +67,11 @@
 				if(!I.tool_start_check(user, amount=5)) //uses up 5 fuel
 					return
 
-				to_chat(user, "<span class='notice'>You start to remove the turret's interior metal armor...</span>")
+				to_chat(user, "<span class='notice'>Zaczynasz zdejmować wewnętrzny metalowy pancerz wieżyczki...</span>")
 
 				if(I.use_tool(src, user, 20, volume=50, amount=5)) //uses up 5 fuel
 					build_step = PTURRET_BOLTED
-					to_chat(user, "<span class='notice'>You remove the turret's interior metal armor.</span>")
+					to_chat(user, "<span class='notice'>Zdejmujesz wewnętrzny metalowy pancerz wieżyczki.</span>")
 					new /obj/item/stack/sheet/iron(drop_location(), 2)
 					return
 
@@ -82,13 +82,13 @@
 				if(!user.transferItemToLoc(E, src))
 					return
 				installed_gun = E
-				to_chat(user, "<span class='notice'>You add [I] to the turret.</span>")
+				to_chat(user, "<span class='notice'>Dodajesz [I] do wieżyczki.</span>")
 				build_step = PTURRET_GUN_EQUIPPED
 				return
 
 			else if(I.tool_behaviour == TOOL_WRENCH)
 				I.play_tool_sound(src, 100)
-				to_chat(user, "<span class='notice'>You remove the turret's metal armor bolts.</span>")
+				to_chat(user, "<span class='notice'>Odkręcasz śruby metalowego pancerza wieżyczki.</span>")
 				build_step = PTURRET_START_INTERNAL_ARMOUR
 				return
 
@@ -97,7 +97,7 @@
 				build_step = PTURRET_SENSORS_ON
 				if(!user.temporarilyRemoveItemFromInventory(I))
 					return
-				to_chat(user, "<span class='notice'>You add the proximity sensor to the turret.</span>")
+				to_chat(user, "<span class='notice'>Dodajesz czujnik zbliżeniowy do wieżyczki.</span>")
 				qdel(I)
 				return
 
@@ -106,7 +106,7 @@
 			if(I.tool_behaviour == TOOL_SCREWDRIVER)
 				I.play_tool_sound(src, 100)
 				build_step = PTURRET_CLOSED
-				to_chat(user, "<span class='notice'>You close the internal access hatch.</span>")
+				to_chat(user, "<span class='notice'>Zamykasz wewnętrzny właz dostępowy.</span>")
 				return
 
 
@@ -114,16 +114,16 @@
 			if(istype(I, /obj/item/stack/sheet/iron))
 				var/obj/item/stack/sheet/iron/M = I
 				if(M.use(2))
-					to_chat(user, "<span class='notice'>You add some metal armor to the exterior frame.</span>")
+					to_chat(user, "<span class='notice'>Dodajesz metalowy pancerz do zewnętrznej ramy.</span>")
 					build_step = PTURRET_START_EXTERNAL_ARMOUR
 				else
-					to_chat(user, "<span class='warning'>You need two sheets of iron to continue construction!</span>")
+					to_chat(user, "<span class='warning'>Do kontynuowania budowy potrzebujesz dwóch arkuszy żelaza!</span>")
 				return
 
 			else if(I.tool_behaviour == TOOL_SCREWDRIVER)
 				I.play_tool_sound(src, 100)
 				build_step = PTURRET_SENSORS_ON
-				to_chat(user, "<span class='notice'>You open the internal access hatch.</span>")
+				to_chat(user, "<span class='notice'>Otwierasz wewnętrzny właz dostępowy.</span>")
 				return
 
 		if(PTURRET_START_EXTERNAL_ARMOUR)
@@ -131,10 +131,10 @@
 				if(!I.tool_start_check(user, amount=5))
 					return
 
-				to_chat(user, "<span class='notice'>You begin to weld the turret's armor down...</span>")
+				to_chat(user, "<span class='notice'>Zaczynasz przyspawywać pancerz wieżyczki...</span>")
 				if(I.use_tool(src, user, 30, volume=50, amount=5))
 					build_step = PTURRET_EXTERNAL_ARMOUR_ON
-					to_chat(user, "<span class='notice'>You weld the turret's armor down.</span>")
+					to_chat(user, "<span class='notice'>Przyspawujesz pancerz wieżyczki.</span>")
 
 					//The final step: create a full turret
 
@@ -151,13 +151,13 @@
 
 			else if(I.tool_behaviour == TOOL_CROWBAR)
 				I.play_tool_sound(src, 75)
-				to_chat(user, "<span class='notice'>You pry off the turret's exterior armor.</span>")
+				to_chat(user, "<span class='notice'>Zdejmujesz łomem zewnętrzny pancerz wieżyczki.</span>")
 				new /obj/item/stack/sheet/iron(loc, 2)
 				build_step = PTURRET_CLOSED
 				return
 
 	if(istype(I, /obj/item/pen))	//you can rename turrets like bots!
-		var/t = stripped_input(user, "Enter new turret name", name, finish_name)
+		var/t = stripped_input(user, "Podaj nową nazwę wieżyczki", name, finish_name)
 		if(!t)
 			return
 		if(!Adjacent(user))
@@ -168,7 +168,7 @@
 	return ..()
 
 
-/obj/machinery/porta_turret_construct/attack_hand(mob/user)
+/obj/machinery/porta_turret_construct/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(.)
 		return
@@ -177,11 +177,11 @@
 			build_step = PTURRET_INTERNAL_ARMOUR_ON
 
 			installed_gun.forceMove(loc)
-			to_chat(user, "<span class='notice'>You remove [installed_gun] from the turret frame.</span>")
+			to_chat(user, "<span class='notice'>Wyjmujesz [installed_gun] z ramy wieżyczki.</span>")
 			installed_gun = null
 
 		if(PTURRET_SENSORS_ON)
-			to_chat(user, "<span class='notice'>You remove the prox sensor from the turret frame.</span>")
+			to_chat(user, "<span class='notice'>Wyjmujesz czujnik zbliżeniowy z ramy wieżyczki.</span>")
 			new /obj/item/assembly/prox_sensor(loc)
 			build_step = PTURRET_GUN_EQUIPPED
 

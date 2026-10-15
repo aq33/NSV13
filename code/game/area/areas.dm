@@ -17,7 +17,7 @@
 	var/area_flags = VALID_TERRITORY | BLOBS_ALLOWED | UNIQUE_AREA
 
 	var/clockwork_warp_allowed = TRUE // Can servants warp into this area from Reebe?
-	var/clockwork_warp_fail = "The structure there is too dense for warping to pierce. (This is normal in high-security areas.)"
+	var/clockwork_warp_fail = "Konstrukcja jest tam zbyt gęsta, by przeniesienie mogło ją przebić. (To normalne w obszarach o wysokim stopniu zabezpieczenia.)"
 
 	var/fire = null
 	///Whether there is an atmos alarm in this area
@@ -32,7 +32,7 @@
 	var/areasize = 0 //Size of the area in open turfs, only calculated for indoors areas.
 
 	var/mood_bonus = 0 //Mood for being here
-	var/mood_message = "<span class='nicegreen'>This area is pretty nice!\n</span>" //Mood message for being here, only shows up if mood_bonus != 0
+	var/mood_message = "<span class='nicegreen'>Całkiem ładne miejsce!\n</span>" //Mood message for being here, only shows up if mood_bonus != 0
 	/// if defined, restricts what jobs get this buff using JOB_NAME defines (-candycane/etherware)
 	var/list/mood_job_allowed = null
 	/// if true, mood_job_allowed will represent jobs exempt from getting the mood.

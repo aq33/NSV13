@@ -2,7 +2,7 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 		/mob/living,
 		/obj/structure/blob,
 		/obj/effect/rune,
-		/obj/structure/spider/spiderling,
+		/mob/living/simple_animal/hostile/spider/growing/spiderling,
 		/obj/item/disk/nuclear,
 		/obj/machinery/nuclearbomb,
 		/obj/item/beacon,
@@ -116,11 +116,11 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 		if(D)
 			if(!D.adjust_money(-price))
 				if(SO.paying_account)
-					D.bank_card_talk("Cargo order #[SO.id] rejected due to lack of funds. Credits required: [price]")
+					D.bank_card_talk("Zamówienie zaopatrzenia nr [SO.id] odrzucone z powodu braku środków. Wymagane kredyty: [price]")
 				continue
 
 		if(SO.paying_account)
-			D.bank_card_talk("Cargo order #[SO.id] has shipped. [price] credits have been charged to your bank account.")
+			D.bank_card_talk("Zamówienie zaopatrzenia nr [SO.id] zostało wysłane. Z twojego konta bankowego pobrano [price] kr.")
 			var/datum/bank_account/department/cargo = SSeconomy.get_dep_account(ACCOUNT_CAR)
 			cargo.adjust_money(price - SO.pack.get_cost()) //Cargo gets the handling fee
 		value += SO.pack.get_cost()
@@ -198,7 +198,7 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 		ex.exported_atoms += "." //ugh
 
 	if(matched_bounty)
-		msg += "Bounty items received. An update has been sent to all bounty consoles. "
+		msg += "Odebrano przedmioty ze zleceń. Do wszystkich konsol zleceń wysłano aktualizację. "
 
 	for(var/datum/export/E in ex.total_amount)
 		var/export_text = E.total_printout(ex)

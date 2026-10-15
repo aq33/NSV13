@@ -59,7 +59,7 @@ If someone hacks it, you can always rebuild it.
 		return
 	if(faction != OM.faction)
 		faction = OM.faction
-	. += "<span class='sciradio'>-----------------\n Ship information: \n Currently registered to: [OM.name]. \n IFF Signature: [OM.faction] \n -----------------</span>"
+	. += "<span class='sciradio'>-----------------\n Informacje o okręcie: \n Obecnie zarejestrowany na: [OM.name]. \n Sygnatura IFF: [OM.faction] \n -----------------</span>"
 
 //Subtype for boarding. Starts emagged so the marines can get straight underway.
 /obj/machinery/computer/iff_console/boarding
@@ -70,7 +70,7 @@ If someone hacks it, you can always rebuild it.
 	. = ..()
 	if(hacking && COOLDOWN_FINISHED(src, next_warning) && prob(15))
 		var/area/A = get_area(loc)
-		var/message = "Unauthorized IFF transponder access detected in [A]!!"
+		var/message = "Wykryto nieautoryzowany dostęp do transpondera IFF w [A]!!"
 		radio.talk_into(src, message, radio_channel)
 		COOLDOWN_START(src, next_warning, minimum_time_between_warnings)
 	if(!hacking && next_warning)
@@ -80,7 +80,7 @@ If someone hacks it, you can always rebuild it.
 	if(!(obj_flags & EMAGGED))
 		return TRUE
 	if(hacking)
-		to_chat(user, "<span class='warning'>Someone is already hacking [src]!</span>")
+		to_chat(user, "<span class='warning'>Ktoś już hakuje [src]!</span>")
 		return TRUE
 	hacking = TRUE
 	var/hack_start_time = world.time
@@ -88,7 +88,7 @@ If someone hacks it, you can always rebuild it.
 		hacking = FALSE
 		hack_goal = max(hack_goal -= (world.time - hack_start_time), 1 SECONDS)
 		return TRUE
-	hack()
+	hack(user)
 	var/obj/structure/overmap/OM = get_overmap()
 	log_game("[user] changed the IFF of [OM] to [OM?.faction]")
 	hacking = FALSE
@@ -100,8 +100,8 @@ If someone hacks it, you can always rebuild it.
 		return
 	obj_flags |= EMAGGED
 	playsound(loc, 'nsv13/sound/effects/computer/alarm_3.ogg', 80)
-	say("ERR@$#@$. Rebooting...")
-	say("System reboot complete. iff_bustr.exe uploaded successfully.")
+	say("BŁ@$#@$. Ponowne uruchamianie...")
+	say("Ponowne uruchomienie zakończone. Pomyślnie wgrano iff_bustr.exe.")
 
 /obj/machinery/computer/iff_console/ui_state(mob/user)
 	return GLOB.default_state
@@ -121,42 +121,67 @@ If someone hacks it, you can always rebuild it.
 		ui.set_autoupdate(TRUE) // hackerman
 
 //Uh oh...
-/obj/machinery/computer/iff_console/proc/hack()
+/obj/machinery/computer/iff_console/proc/hack(mob/user)
 	hack_goal = initial(hack_goal)
 	var/obj/structure/overmap/OM = get_overmap()
 	if(!OM)
 		return FALSE
-	SEND_SIGNAL(OM, COMSIG_SHIP_BOARDED)
 	OM.relay(pick('sound/ambience/ambitech.ogg', 'sound/ambience/ambitech3.ogg'))
 	say(pick("981d5d2ef58bae5aec45eb7030e56d29","0d4b1c990a4d84aba5aa0560c55a3f4e", "e935f4417ad97a36e540bc67a807d5c4"))
 	playsound(loc, 'nsv13/sound/effects/computer/alarm_3.ogg', 80)
+	var/new_faction
 	switch(OM.faction)
 		if("syndicate")
-			OM.faction = "nanotrasen"
-			faction = OM.faction
-			return
+			new_faction = "nanotrasen"
 		if("nanotrasen")
-			OM.faction = "syndicate"
-			faction = OM.faction
-			if(OM.role == MAIN_OVERMAP)	// Make Solgov come get them
-				var/datum/star_system/player_system = OM.current_system
-				if(!player_system)
-					player_system = SSstar_system.ships[OM]["target_system"]
-				var/datum/star_system/starting_point = SSstar_system.system_by_id(pick(player_system.adjacency_list))
-
-				var/datum/fleet/F = new /datum/fleet/solgov/interdiction
-				starting_point.fleets += F
-				F.current_system = starting_point
-				F.assemble(starting_point)
-				for(var/obj/structure/overmap/ship in starting_point.system_contents)
-					if(length(ship.mobs_in_ship) && ship.reserved_z)
-						F.encounter(ship)
-				message_admins("Solgov interdictor fleet created at [starting_point].")
-				priority_announce("Contact with [GLOB.station_name] lost. Code Charlie Foxtrot One Niner Eight Four.", "White Rapids Fleet Command")
-			return
+			new_faction = "syndicate"
+			if(user && faction_check(user.faction, list("pirate")))
+				new_faction = "pirate"
 		if("pirate")
-			OM.faction = "nanotrasen"
-			faction = OM.faction
-			return
-	//Fallback. Maybe we tried to IFF hack an IFF scrambled ship...?
-	OM.faction = initial(OM.faction)
+			new_faction = "nanotrasen"
+			if(user && faction_check(user.faction, list(FACTION_SYNDICATE))) //If the Syndicate somehow manage it
+				new_faction = "syndicate"
+		else //Fallback. Maybe we tried to IFF hack an IFF scrambled ship...?
+			new_faction = initial(OM.faction)
+	OM.swap_faction(new_faction)
+	faction = OM.faction
+
+/// Changes the ship's IFF, calls Solgov on a rogue main ship and retargets its turrets
+/obj/structure/overmap/proc/swap_faction(new_faction)
+	var/reverted = (new_faction == initial(faction)) //If you've just reversed your swap, no need for the hassle
+	faction = new_faction
+	if(!reverted && role == MAIN_OVERMAP && faction != "nanotrasen") // Make Solgov come get them
+		var/datum/star_system/player_system = current_system
+		if(!player_system)
+			player_system = SSstar_system.ships[src]["target_system"]
+		var/list/valid_systems = list()
+		for(var/systemtext in player_system?.adjacency_list)
+			var/datum/star_system/S = SSstar_system.system_by_id(systemtext)
+			if(!S || S.alignment == "syndicate" || S.alignment == "pirate") //We can't spawn a solgov fleet in enemy territory.
+				continue
+			valid_systems += S
+		if(!length(valid_systems))
+			valid_systems += SSstar_system.system_by_id("Feliciana") //If there's no valid systems just send them to the sector entrance.
+		var/datum/star_system/starting_point = pick(valid_systems)
+		var/datum/fleet/F = new /datum/fleet/solgov/interdiction
+		starting_point.fleets += F
+		F.current_system = starting_point
+		F.assemble(starting_point)
+		for(var/obj/structure/overmap/ship in starting_point.system_contents)
+			if(length(ship.mobs_in_ship) && ship.reserved_z)
+				F.encounter(ship)
+		message_admins("Solgov interdictor fleet created at [starting_point].")
+		priority_announce("Utracono kontakt z [GLOB.station_name]. Kod Charlie Foxtrot Jeden Dziewięć Osiem Cztery.", "Dowództwo Floty White Rapids")
+	for(var/obj/machinery/porta_turret/T as anything in turrets_in_ship) //Update the turrets too, those will be a pain otherwise
+		if(QDELETED(T))
+			turrets_in_ship -= T
+			continue
+		T.faction = list("turret")
+		switch(new_faction)
+			if("syndicate")
+				T.faction += FACTION_SYNDICATE
+			if("nanotrasen")
+				T.faction += list("neutral", "silicon", "Station")
+			else
+				T.faction += new_faction
+	SEND_SIGNAL(src, COMSIG_SHIP_IFF_CHANGE)

@@ -9,7 +9,7 @@
 	id = /datum/reagent/drug/crank
 	results = list(/datum/reagent/drug/crank = 5)
 	required_reagents = list(/datum/reagent/medicine/diphenhydramine = 1, /datum/reagent/ammonia = 1, /datum/reagent/lithium = 1, /datum/reagent/toxin/acid = 1, /datum/reagent/fuel = 1)
-	mix_message = "The mixture violently reacts, leaving behind a few crystalline shards."
+	mix_message = "Mieszanina gwałtownie reaguje, zostawiając kilka krystalicznych odłamków."
 	required_temp = 390
 
 
@@ -18,7 +18,7 @@
 	id = /datum/reagent/drug/krokodil
 	results = list(/datum/reagent/drug/krokodil = 6)
 	required_reagents = list(/datum/reagent/medicine/diphenhydramine = 1, /datum/reagent/medicine/morphine = 1, /datum/reagent/space_cleaner = 1, /datum/reagent/potassium = 1, /datum/reagent/phosphorus = 1, /datum/reagent/fuel = 1)
-	mix_message = "The mixture dries into a pale blue powder."
+	mix_message = "Mieszanina zasycha w bladoniebieski proszek."
 	required_temp = 380
 
 /datum/chemical_reaction/methamphetamine

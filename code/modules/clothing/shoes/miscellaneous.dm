@@ -12,7 +12,7 @@
 	item_state = "jackboots"
 	lefthand_file = 'icons/mob/inhands/equipment/security_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/security_righthand.dmi'
-	armor = list("melee" = 25, "bullet" = 25, "laser" = 25, "energy" = 25, "bomb" = 50, "bio" = 10, "rad" = 0, "fire" = 70, "acid" = 50, "stamina" = 30)
+	armor = list("melee" = 25, "bullet" = 25, "laser" = 25, "energy" = 25, "bomb" = 50, "bio" = 10, "rad" = 0, "fire" = 70, "acid" = 50, "stamina" = 30, "bleed" = 20)
 	strip_delay = 40
 	resistance_flags = NONE
 	permeability_coefficient = 0.05 //Thick soles, and covers the ankle
@@ -23,10 +23,10 @@
 	desc = "High speed, no drag combat boots."
 	permeability_coefficient = 0.01
 	clothing_flags = NOSLIP
-	armor = list("melee" = 40, "bullet" = 30, "laser" = 25, "energy" = 25, "bomb" = 50, "bio" = 30, "rad" = 30, "fire" = 90, "acid" = 50, "stamina" = 30)
+	armor = list("melee" = 40, "bullet" = 30, "laser" = 25, "energy" = 25, "bomb" = 50, "bio" = 30, "rad" = 30, "fire" = 90, "acid" = 50, "stamina" = 30, "bleed" = 20)
 
 /obj/item/clothing/shoes/sandal
-	desc = "A pair of rather plain wooden sandals."
+	desc = "Para dość zwyczajnych drewnianych sandałów."
 	name = "sandals"
 	icon_state = "wizard"
 	strip_delay = 50
@@ -61,7 +61,7 @@
 	strip_delay = 30
 	equip_delay_other = 50
 	resistance_flags = NONE
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 40, "acid" = 75, "stamina" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 40, "acid" = 75, "stamina" = 0, "bleed" = 0)
 	can_be_bloody = FALSE
 	custom_price = 100
 
@@ -106,13 +106,13 @@
 	if(!isliving(user))
 		return
 	if(user.get_active_held_item() != src)
-		to_chat(user, "You must hold the [src] in your hand to do this.")
+		to_chat(user, "Musisz trzymać [src] w dłoni, by to zrobić.")
 		return
 	if (!enabled_waddle)
-		to_chat(user, "<span class='notice'>You switch off the waddle dampeners!</span>")
+		to_chat(user, "<span class='notice'>Wyłączasz tłumiki kaczego chodu!</span>")
 		enabled_waddle = TRUE
 	else
-		to_chat(user, "<span class='notice'>You switch on the waddle dampeners!</span>")
+		to_chat(user, "<span class='notice'>Włączasz tłumiki kaczego chodu!</span>")
 		enabled_waddle = FALSE
 
 /obj/item/clothing/shoes/clown_shoes/jester
@@ -138,7 +138,7 @@
 
 /obj/item/clothing/shoes/winterboots
 	name = "winter boots"
-	desc = "Boots lined with 'synthetic' animal fur."
+	desc = "Buty podszyte „syntetycznym” zwierzęcym futrem."
 	icon_state = "winterboots"
 	item_state = "winterboots"
 	permeability_coefficient = 0.15
@@ -207,7 +207,7 @@
 
 /obj/item/clothing/shoes/laceup
 	name = "laceup shoes"
-	desc = "The height of fashion, and they're pre-polished!"
+	desc = "Szczyt mody, i to już wypastowane!"
 	icon_state = "laceups"
 	equip_delay_other = 50
 
@@ -247,17 +247,17 @@
 		return
 
 	if(recharging_time > world.time)
-		to_chat(user, "<span class='warning'>The boot's internal propulsion needs to recharge still!</span>")
+		to_chat(user, "<span class='warning'>Wewnętrzny napęd butów wciąż musi się naładować!</span>")
 		return
 
 	var/atom/target = get_edge_target_turf(user, user.dir) //gets the user's direction
 
 	if (user.throw_at(target, jumpdistance, jumpspeed, spin = FALSE, diagonals_first = TRUE))
 		playsound(src, 'sound/effects/stealthoff.ogg', 50, 1, 1)
-		user.visible_message("<span class='warning'>[usr] dashes forward into the air!</span>")
+		user.visible_message("<span class='warning'>[usr] wyskakuje do przodu w powietrze!</span>")
 		recharging_time = world.time + recharging_rate
 	else
-		to_chat(user, "<span class='warning'>Something prevents you from dashing forward!</span>")
+		to_chat(user, "<span class='warning'>Coś nie pozwala ci skoczyć do przodu!</span>")
 
 /obj/item/clothing/shoes/singery
 	name = "yellow performer's boots"
@@ -301,7 +301,7 @@
 	if(!isliving(user))
 		return
 	if(!istype(user.get_item_by_slot(ITEM_SLOT_FEET), /obj/item/clothing/shoes/wheelys))
-		to_chat(user, "<span class='warning'>You must be wearing the wheely-heels to use them!</span>")
+		to_chat(user, "<span class='warning'>Musisz mieć na nogach buty na kółkach, by ich użyć!</span>")
 		return
 	if(!(W.is_occupant(user)))
 		wheelToggle = FALSE
@@ -363,6 +363,6 @@
 
 /obj/item/clothing/shoes/swagshoes
 	name = "swag shoes"
-	desc = "They got me for my foams!"
+	desc = "Zgarnęli mnie za moje piankowce!"
 	icon_state = "SwagShoes"
 	item_state = "SwagShoes"

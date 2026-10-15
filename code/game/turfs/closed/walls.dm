@@ -5,6 +5,7 @@
 	desc = "A huge chunk of metal used to separate rooms."
 	icon = 'icons/turf/walls/wall.dmi'
 	icon_state = "wall"
+	rcd_memory = RCD_MEMORY_WALL
 	explosion_block = 1
 
 	thermal_conductivity = WALL_HEAT_TRANSFER_COEFFICIENT
@@ -57,7 +58,7 @@
 	. += deconstruction_hints(user)
 
 /turf/closed/wall/proc/deconstruction_hints(mob/user)
-	return "<span class='notice'>The outer plating is <b>welded</b> firmly in place.</span>"
+	return "<span class='notice'>Zewnętrzne poszycie jest mocno <b>przyspawane</b> na miejscu.</span>"
 
 /turf/closed/wall/attack_tk()
 	return
@@ -121,7 +122,7 @@
 		if(BRUTE)
 			playsound(src, 'sound/weapons/punch4.ogg', 50, 1)
 			M.visible_message("<span class='danger'>[M.name] hits [src]!</span>", \
-							"<span class='danger'>You hit [src]!</span>", null, COMBAT_MESSAGE_RANGE)
+							"<span class='danger'>Uderzasz w [src]!</span>", null, COMBAT_MESSAGE_RANGE)
 			if(prob(hardness + M.force) && M.force > 20)
 				dismantle_wall(1)
 				playsound(src, 'sound/effects/meteorimpact.ogg', 100, 1)
@@ -155,9 +156,9 @@
 	else
 		playsound(src, 'sound/effects/bang.ogg', 50, 1)
 		add_dent(WALL_DENT_HIT)
-		user.visible_message("<span class='danger'>[user] smashes \the [src]!</span>", \
-					"<span class='danger'>You smash \the [src]!</span>", \
-					"<span class='italics'>You hear a booming smash!</span>")
+		user.visible_message("<span class='danger'>[user] rozbija [src]!</span>", \
+					"<span class='danger'>Rozbijasz [src]!</span>", \
+					"<span class='italics'>Słyszysz potężny huk rozbijania!</span>")
 
 	return TRUE
 
@@ -166,14 +167,14 @@
 	if(.)
 		return
 	user.changeNext_move(CLICK_CD_MELEE)
-	to_chat(user, "<span class='notice'>You push the wall but nothing happens!</span>")
+	to_chat(user, "<span class='notice'>Napierasz na ścianę, ale nic się nie dzieje!</span>")
 	playsound(src, 'sound/weapons/genhit.ogg', 25, 1)
 	add_fingerprint(user)
 
 /turf/closed/wall/attackby(obj/item/W, mob/user, params)
 	user.changeNext_move(CLICK_CD_MELEE)
 	if (!user.IsAdvancedToolUser())
-		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
+		to_chat(user, "<span class='warning'>Nie masz dość zręczności, by to zrobić!</span>")
 		return
 
 	//get the user's location
@@ -204,17 +205,17 @@
 	return ..()
 
 /turf/closed/wall/proc/try_clean(obj/item/W, mob/user, turf/T)
-	if((user.a_intent != INTENT_HELP) || !LAZYLEN(dent_decals))
+	if((user.combat_mode) || !LAZYLEN(dent_decals))
 		return FALSE
 
 	if(W.tool_behaviour == TOOL_WELDER)
 		if(!W.tool_start_check(user, amount=0))
 			return FALSE
 
-		balloon_alert(user, "You begin fixing the dents on the wall...")
+		balloon_alert(user, "Zaczynasz naprawiać wgniecenia w ścianie...")
 		if(W.use_tool(src, user, 0, volume=100))
 			if(iswallturf(src) && LAZYLEN(dent_decals))
-				balloon_alert(user, "You fix some dents on the wall.")
+				balloon_alert(user, "Naprawiasz trochę wgnieceń w ścianie.")
 				cut_overlay(dent_decals)
 				dent_decals.Cut()
 			return TRUE
@@ -240,10 +241,10 @@
 		if(!I.tool_start_check(user, amount=0))
 			return FALSE
 
-		balloon_alert(user, "You start slicing through the outer plating.")
+		balloon_alert(user, "Zaczynasz przecinać zewnętrzne poszycie.")
 		if(I.use_tool(src, user, slicing_duration, volume=100))
 			if(iswallturf(src))
-				balloon_alert(user, "You remove the outer plating.")
+				balloon_alert(user, "Zdejmujesz zewnętrzne poszycie.")
 				dismantle_wall()
 			return TRUE
 
@@ -257,9 +258,9 @@
 		if(user.loc == T)
 			I.play_tool_sound(src)
 			dismantle_wall()
-			user.visible_message("<span class='warning'>[user] smashes through [src] with [I]!</span>", \
-								"<span class='warning'>You smash through [src] with [I]!</span>", \
-								"<span class='italics'>You hear the grinding of metal.</span>")
+			user.visible_message("<span class='warning'>[user] przebija się przez [src] za pomocą [I]!</span>", \
+								"<span class='warning'>Przebijasz się przez [src] za pomocą [I]!</span>", \
+								"<span class='italics'>Słyszysz zgrzyt metalu.</span>")
 			return TRUE
 	return FALSE
 
@@ -306,7 +307,7 @@
 /turf/closed/wall/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, passed_mode)
 	switch(passed_mode)
 		if(RCD_DECONSTRUCT)
-			to_chat(user, "<span class='notice'>You deconstruct the wall.</span>")
+			to_chat(user, "<span class='notice'>Rozbierasz ścianę.</span>")
 			ScrapeAway()
 			return TRUE
 	return FALSE

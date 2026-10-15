@@ -15,8 +15,8 @@
 
 /obj/item/holochip/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>It's loaded with [credits] credit[( credits > 1 ) ? "s" : ""]</span>\n"+\
-	"<span class='notice'>Alt-Click to split.</span>"
+	. += "<span class='notice'>Zawiera kredytów: [credits]</span>\n"+\
+	"<span class='notice'>Alt-kliknij, by podzielić.</span>"
 
 /obj/item/holochip/get_item_credit_value()
 	return credits
@@ -77,15 +77,15 @@
 	if(istype(I, /obj/item/holochip))
 		var/obj/item/holochip/H = I
 		credits += H.credits
-		to_chat(user, "<span class='notice'>You insert the credits into [src].</span>")
+		to_chat(user, "<span class='notice'>Wkładasz kredyty do [src].</span>")
 		update_icon()
 		qdel(H)
 
 /obj/item/holochip/AltClick(mob/user)
-	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
+	if(!user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, !iscyborg(user)))
 		return
-	var/split_amount = round(input(user,"How many credits do you want to extract from the holochip?") as null|num)
-	if(split_amount == null || split_amount <= 0 || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
+	var/split_amount = round(input(user,"Ile kredytów chcesz wyjąć z holożetonu?") as null|num)
+	if(split_amount == null || split_amount <= 0 || !user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, !iscyborg(user)))
 		return
 	else
 		var/new_credits = spend(split_amount, TRUE)
@@ -95,7 +95,7 @@
 				H.forceMove(user.drop_location())
 			add_fingerprint(user)
 		H.add_fingerprint(user)
-		to_chat(user, "<span class='notice'>You extract [split_amount] credits into a new holochip.</span>")
+		to_chat(user, "<span class='notice'>Wyjmujesz [split_amount] kredytów na nowy holożeton.</span>")
 
 /obj/item/holochip/emp_act(severity)
 	. = ..()
@@ -103,5 +103,5 @@
 		return
 	var/wipe_chance = 60 / severity
 	if(prob(wipe_chance))
-		visible_message("<span class='warning'>[src] fizzles and disappears!</span>")
+		visible_message("<span class='warning'>[src] syczy i znika!</span>")
 		qdel(src) //rip cash

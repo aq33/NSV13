@@ -48,7 +48,7 @@
 		return
 	switch(action)
 		if("select")
-			var/list/tab2key = list(TAB_LIBRARY = "library", TAB_SECURE = "library_secure", TAB_PRIVATE = "library_private")
+			var/list/tab2key = list(/*TAB_LIBRARY = */"library", /*TAB_SECURE = */"library_secure", /*TAB_PRIVATE = */"library_private")
 			var/folder = tab2key[params["tab"]]
 			var/list/current_list = SSpersistence.paintings[folder]
 			var/list/chosen_portrait = current_list[params["selected"]]
@@ -59,15 +59,15 @@
 			var/h = portrait_icon.Height()
 			var/mutable_appearance/MA = mutable_appearance(portrait_icon)
 			if(w == 23 || h == 23)
-				to_chat(ai, "<span class='notice'>Small note: 23x23 Portraits are accepted, but they do not fit perfectly inside the display frame.</span>")
+				to_chat(ai, "<span class='notice'>Uwaga: portrety 23x23 są akceptowane, ale nie pasują idealnie do ramki wyświetlacza.</span>")
 				MA.pixel_x = 5
 				MA.pixel_y = 5
 			else if(w == 24 || h == 24)
-				to_chat(ai, "<span class='notice'>Portrait Accepted. Enjoy!</span>")
+				to_chat(ai, "<span class='notice'>Portret zaakceptowany. Miłego oglądania!</span>")
 				MA.pixel_x = 4
 				MA.pixel_y = 4
 			else
-				to_chat(ai, "<span class='warning'>Sorry, only 23x23 and 24x24 Portraits are accepted.</span>")
+				to_chat(ai, "<span class='warning'>Niestety, akceptowane są tylko portrety 23x23 i 24x24.</span>")
 				return
 			ai.cut_overlays() //so people can't keep repeatedly select portraits to add stacking overlays
 			ai.icon_state = "ai-portrait-active"//background

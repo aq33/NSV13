@@ -25,9 +25,9 @@ GLOBAL_LIST(valentine_mobs)
 	for(var/mob/living/carbon/human/H in GLOB.alive_mob_list)
 		H.put_in_hands(new /obj/item/valentine(get_turf(H)))
 		var/obj/item/storage/backpack/b = locate() in H.contents
-		new /obj/item/reagent_containers/food/snacks/candyheart(b)
+		new /obj/item/food/candyheart(b)
 		new /obj/item/storage/fancy/heart_box(b)
-		to_chat(H, "<span class='clown'>A message appears in your hand, it looks like it has space to write somebody's name on it!</span>")
+		to_chat(H, "<span class='clown'>W twojej dłoni pojawia się liścik, wygląda na to, że jest na nim miejsce na czyjeś imię!</span>")
 
 /datum/round_event/valentines/end()
 
@@ -57,14 +57,14 @@ GLOBAL_LIST(valentine_mobs)
 	lover.mind.add_antag_datum(V) //These really should be teams but i can't be assed to incorporate third wheels right now
 
 /datum/round_event/valentines/announce(fake)
-	priority_announce("It's Valentine's Day! Give a valentine to that special someone!", sound = SSstation.announcer.get_rand_alert_sound())
+	priority_announce("Walentynki! Daj walentynkę tej wyjątkowej osobie!", sound = SSstation.announcer.get_rand_alert_sound())
 
 /obj/item/valentine
 	name = "valentine"
 	desc = "A Valentine's card! Wonder what it says..."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "sc_Ace of Hearts_syndicate" // shut up
-	var/message = "A generic message of love or whatever."
+	var/message = "Zwykłe wyznanie miłości czy coś."
 	resistance_flags = FLAMMABLE
 	w_class = WEIGHT_CLASS_TINY
 	var/mob/target = null
@@ -78,23 +78,23 @@ GLOBAL_LIST(valentine_mobs)
 /obj/item/valentine/attackby(obj/item/W, mob/user, params)
 	..()
 	if(!islist(GLOB.valentine_mobs))
-		to_chat(user, "<span class='warning'>You feel regret... It's too late now.</span>")
+		to_chat(user, "<span class='warning'>Czujesz żal... Teraz już za późno.</span>")
 		return
 	if(used)
 		return
 	if(istype(W, /obj/item/pen) || istype(W, /obj/item/toy/crayon))
 		if(!user.is_literate())
-			to_chat(user, "<span class='notice'>You scribble illegibly on [src]!</span>")
+			to_chat(user, "<span class='notice'>Bazgrzesz nieczytelnie po [src]!</span>")
 			return
 		//Alright lets see who we are sending this bad boy too.
 		//Gets all the people on the z-level, don't want people meta dating nukies *too* hard.
 		//Also they only get one chance.
-		if(alert(user, "Are you sure you are ready to write your message? You only have one shot!", "Valentines message", "Yes!", "No...") == "No...")
-			to_chat(user, "<span class='notice'>You put down the pen thinking about who you want to send the message to.</span>")
+		if(alert(user, "Na pewno chcesz już napisać wiadomość? Masz tylko jedną szansę!", "Walentynka", "Yes!", "No...") == "No...")
+			to_chat(user, "<span class='notice'>Odkładasz długopis, zastanawiając się, do kogo wysłać wiadomość.</span>")
 			return
 		var/turf/user_turf = get_turf(user)
 		if(!SSmobs.clients_by_zlevel[user_turf.z])
-			to_chat(user, "<span class='warning'>You stop and look around for a moment. Where the hell are you?</span>")
+			to_chat(user, "<span class='warning'>Zatrzymujesz się i przez chwilę rozglądasz. Gdzie ty, do cholery, jesteś?</span>")
 			return
 		//No going back now
 		var/list/clients_on_level = SSmobs.clients_by_zlevel[user_turf.z]
@@ -105,26 +105,26 @@ GLOBAL_LIST(valentine_mobs)
 				continue
 			mob_names["[H.real_name]"] = H
 		if(!LAZYLEN(mob_names))
-			to_chat(user, "<span class='warning'>You feel empty and alone.</span>")
+			to_chat(user, "<span class='warning'>Czujesz pustkę i samotność.</span>")
 			return
 		//Pick names
 		//At this point the user is shown the names of people on the z-level
 		//To prevent metastrats, you can only use this one time.
-		var/picked_name = input(user, "Who are you sending it to?", "Valentines Card", null) as null|anything in mob_names
+		var/picked_name = input(user, "Do kogo ją wysyłasz?", "Walentynka", null) as null|anything in mob_names
 		var/mob/living/carbon/human/picked_human = mob_names[picked_name]
 		if(!picked_human || !istype(picked_human))
-			to_chat(user, "<span class='notice'>The card vanishes out of your hand! Lets hope they got it...</span>")
+			to_chat(user, "<span class='notice'>Kartka znika z twojej dłoni! Miejmy nadzieję, że dotarła...</span>")
 			//rip
 			qdel(src)
 			return
 		if(!islist(GLOB.valentine_mobs))
-			to_chat(user, "<span class='warning'>You feel regret... It's too late now.</span>")
+			to_chat(user, "<span class='warning'>Czujesz żal... Teraz już za późno.</span>")
 			used = TRUE
 			return
 		if(used)
-			to_chat(user, "<span class='warning'>The card has already been used!</span>")
+			to_chat(user, "<span class='warning'>Ta kartka została już użyta!</span>")
 			return
-		to_chat(user, "<span class='notice'>The card vanishes out of your hand! Lets hope they got it...</span>")
+		to_chat(user, "<span class='notice'>Kartka znika z twojej dłoni! Miejmy nadzieję, że dotarła...</span>")
 		//List checking
 		GLOB.valentine_mobs[user] = picked_human
 		if(GLOB.valentine_mobs[picked_human] == user)
@@ -141,33 +141,33 @@ GLOBAL_LIST(valentine_mobs)
 		new_card.desc = "A Valentine's card! It is addressed to [new_card.target]."
 		new_card.used = TRUE
 		picked_human.equip_to_appropriate_slot(new_card)
-		to_chat(picked_human, "<span class='clown'>A magical card suddenly appears!</span>")
+		to_chat(picked_human, "<span class='clown'>Nagle pojawia się magiczna kartka!</span>")
 		qdel(src)
 
 /obj/item/valentine/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
 		if( !(ishuman(user) || isobserver(user) || issilicon(user)) )
-			user << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[stars(message)]</BODY></HTML>", "window=[name]")
+			user << browse(HTML_SKELETON_TITLE(name, stars(message)), "window=[name]")
 			onclose(user, "[name]")
 		else
-			user << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[message]</BODY></HTML>", "window=[name]")
+			user << browse(HTML_SKELETON_TITLE(name, message), "window=[name]")
 			onclose(user, "[name]")
 	else
-		. += "<span class='notice'>It is too far away.</span>"
+		. += "<span class='notice'>Jest za daleko.</span>"
 
 /obj/item/valentine/attack_self(mob/user)
 	user.examinate(src)
 
-/obj/item/reagent_containers/food/snacks/candyheart
+/obj/item/food/candyheart
 	name = "candy heart"
 	icon = 'icons/obj/holiday_misc.dmi'
 	icon_state = "candyheart"
 	desc = "A heart-shaped candy that reads: "
-	list_reagents = list(/datum/reagent/consumable/sugar = 2)
+	food_reagents = list(/datum/reagent/consumable/sugar = 2)
 	junkiness = 5
 
-/obj/item/reagent_containers/food/snacks/candyheart/Initialize(mapload)
+/obj/item/food/candyheart/Initialize(mapload)
 	. = ..()
 	desc = pick(strings(VALENTINE_FILE, "candyhearts"))
 	icon_state = pick("candyheart", "candyheart2", "candyheart3", "candyheart4")

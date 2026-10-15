@@ -3,15 +3,15 @@
   *
   */
 /mob/dead/new_player/proc/handle_player_polling()
-	var/list/output = list("<div align='center'><B>Player polls</B><hr><table>")
+	var/list/output = list("<div align='center'><B>Ankiety graczy</B><hr><table>")
 	var/rs = REF(src)
 	for(var/p in GLOB.polls)
 		var/datum/poll_question/poll = p
 		if((poll.admin_only && !client.holder) || poll.future_poll)
 			continue
-		output += "<tr bgcolor='#e2e2e2'><td><a href='?src=[rs];viewpoll=[REF(poll)]'><b>[poll.question]</b></a></td></tr>"
+		output += "<tr bgcolor='#e2e2e2'><td><a href='byond://?src=[rs];viewpoll=[REF(poll)]'><b>[poll.question]</b></a></td></tr>"
 	output += "</table>"
-	src << browse(jointext(output, ""),"window=playerpolllist;size=500x300")
+	src << browse(HTML_SKELETON(jointext(output, "")),"window=playerpolllist;size=500x300")
 
 /**
   * Redirects a player to the correct poll window based on poll type.
@@ -21,7 +21,7 @@
 	if(!poll)
 		return
 	if(!SSdbcore.Connect())
-		to_chat(src, "<span class='danger'>Failed to establish database connection.</span>")
+		to_chat(src, "<span class='danger'>Nie udało się połączyć z bazą danych.</span>")
 		return
 	switch(poll.poll_type)
 		if(POLLTYPE_OPTION)
@@ -53,14 +53,14 @@
 	if(query_option_get_voted.NextRow())
 		voted_option_id = text2num(query_option_get_voted.item[1])
 	qdel(query_option_get_voted)
-	var/list/output = list("<div align='center'><B>Player poll</B><hr><b>Question: [poll.question]</b><br>")
+	var/list/output = list("<div align='center'><B>Ankieta</B><hr><b>Pytanie: [poll.question]</b><br>")
 	if(poll.subtitle)
 		output += "[poll.subtitle]<br>"
-	output += "<font size='2'>Poll runs from <b>[poll.start_datetime]</b> until <b>[poll.end_datetime]</b></font><br>"
+	output += "<font size='2'>Ankieta trwa od <b>[poll.start_datetime]</b> do <b>[poll.end_datetime]</b></font><br>"
 	if(poll.allow_revoting)
-		output += "<font size='2'>Revoting is enabled.</font>"
+		output += "<font size='2'>Można zmienić głos.</font>"
 	if(!voted_option_id || poll.allow_revoting)
-		output += {"<form action='?src=[REF(src)]' method='get'>
+		output += {"<form action='byond://?src=[REF(src)]' method='get'>
 		<input type='hidden' name='src' value='[REF(src)]'>
 		<input type='hidden' name='votepollref' value='[REF(poll)]'>
 		"}
@@ -77,7 +77,7 @@
 	if(!voted_option_id || poll.allow_revoting)
 		output += "<p><input type='submit' value='Vote'></form>"
 	output += "</div>"
-	src << browse(jointext(output, ""),"window=playerpoll;size=500x250")
+	src << browse(HTML_SKELETON(jointext(output, "")),"window=playerpoll;size=500x250")
 
 /**
   * Shows voting window for a text response type poll, listing its relevant details.
@@ -97,24 +97,23 @@
 	if(query_text_get_replytext.NextRow())
 		reply_text = query_text_get_replytext.item[1]
 	qdel(query_text_get_replytext)
-	var/list/output = list("<div align='center'><B>Player poll</B><hr><b>Question: [poll.question]</b><br>")
+	var/list/output = list("<div align='center'><B>Ankieta</B><hr><b>Pytanie: [poll.question]</b><br>")
 	if(poll.subtitle)
 		output += "[poll.subtitle]<br>"
-	output += "<font size='2'>Feedback gathering runs from <b>[poll.start_datetime]</b> until <b>[poll.end_datetime]</b></font><br>"
+	output += "<font size='2'>Zbieranie opinii trwa od <b>[poll.start_datetime]</b> do <b>[poll.end_datetime]</b></font><br>"
 	if(poll.allow_revoting)
-		output += "<font size='2'>Revoting is enabled.</font>"
+		output += "<font size='2'>Można zmienić głos.</font>"
 	if(!reply_text || poll.allow_revoting)
-		output += {"<form action='?src=[REF(src)]' method='get'>
+		output += {"<form action='byond://?src=[REF(src)]' method='get'>
 		<input type='hidden' name='src' value='[REF(src)]'>
 		<input type='hidden' name='votepollref' value='[REF(poll)]'>
-		<font size='2'>Please provide feedback below. You can use any letters of the English alphabet, numbers and the symbols: . , ! ? : ; -</font><br>
-		<textarea name='replytext' cols='50' rows='14'>[reply_text]</textarea>
+		<font size='2'>Przekaż poniżej swoją opinię. Możesz używać dowolnych liter alfabetu angielskiego, cyfr i symboli: . , ! ? : ; -</font><br><textarea name='replytext' cols='50' rows='14'>[reply_text]</textarea>
 		<p><input type='submit' value='Submit'></form>
 		"}
 	else
 		output += "[reply_text]"
 	output += "</div>"
-	src << browse(jointext(output, ""),"window=playerpoll;size=500x500")
+	src << browse(HTML_SKELETON(jointext(output, "")),"window=playerpoll;size=500x500")
 
 /**
   * Shows voting window for a rating type poll, listing its options and relevant details.
@@ -134,14 +133,14 @@
 	while(query_rating_get_votes.NextRow())
 		voted_ratings += list("[query_rating_get_votes.item[1]]" = query_rating_get_votes.item[2])
 	qdel(query_rating_get_votes)
-	var/list/output = list("<div align='center'><B>Player poll</B><hr><b>Question: [poll.question]</b><br>")
+	var/list/output = list("<div align='center'><B>Ankieta</B><hr><b>Pytanie: [poll.question]</b><br>")
 	if(poll.subtitle)
 		output += "[poll.subtitle]<br>"
-	output += "<font size='2'>Poll runs from <b>[poll.start_datetime]</b> until <b>[poll.end_datetime]</b></font><br>"
+	output += "<font size='2'>Ankieta trwa od <b>[poll.start_datetime]</b> do <b>[poll.end_datetime]</b></font><br>"
 	if(poll.allow_revoting)
-		output += "<font size='2'>Revoting is enabled.</font>"
+		output += "<font size='2'>Można zmienić głos.</font>"
 	if(!length(voted_ratings) || poll.allow_revoting)
-		output += {"<form action='?src=[REF(src)]' method='get'>
+		output += {"<form action='byond://?src=[REF(src)]' method='get'>
 		<input type='hidden' name='src' value='[REF(src)]'>
 		<input type='hidden' name='votepollref' value='[REF(poll)]'>
 		"}
@@ -169,7 +168,7 @@
 	if(!length(voted_ratings) || poll.allow_revoting)
 		output += "<p><input type='submit' value='Submit'></form>"
 	output += "</div>"
-	src << browse(jointext(output, ""),"window=playerpoll;size=500x500")
+	src << browse(HTML_SKELETON(jointext(output, "")),"window=playerpoll;size=500x500")
 
 /**
   * Shows voting window for a multiple choice type poll, listing its options and relevant details.
@@ -189,14 +188,14 @@
 	while(query_multi_get_votes.NextRow())
 		voted_for += text2num(query_multi_get_votes.item[1])
 	qdel(query_multi_get_votes)
-	var/list/output = list("<div align='center'><B>Player poll</B><hr><b>Question: [poll.question]</b><br>")
+	var/list/output = list("<div align='center'><B>Ankieta</B><hr><b>Pytanie: [poll.question]</b><br>")
 	if(poll.subtitle)
 		output += "[poll.subtitle]<br>"
-	output += "You can select up to [poll.options_allowed] options. If you select more, the first [poll.options_allowed] will be saved.<br><font size='2'>Poll runs from <b>[poll.start_datetime]</b> until <b>[poll.end_datetime]</b></font><br>"
+	output += "Możesz wybrać do [poll.options_allowed] opcji. Jeśli wybierzesz więcej, zapisane zostanie pierwsze [poll.options_allowed].<br><font size='2'>Ankieta trwa od <b>[poll.start_datetime]</b> do <b>[poll.end_datetime]</b></font><br>"
 	if(poll.allow_revoting)
-		output += "<font size='2'>Revoting is enabled.</font>"
+		output += "<font size='2'>Można zmienić głos.</font>"
 	if(!length(voted_for) || poll.allow_revoting)
-		output += {"<form action='?src=[REF(src)]' method='get'>
+		output += {"<form action='byond://?src=[REF(src)]' method='get'>
 		<input type='hidden' name='src' value='[REF(src)]'>
 		<input type='hidden' name='votepollref' value='[REF(poll)]'>
 		"}
@@ -213,7 +212,7 @@
 	if(!length(voted_for) || poll.allow_revoting)
 		output += "<p><input type='submit' value='Vote'></form>"
 	output += "</div>"
-	src << browse(jointext(output, ""),"window=playerpoll;size=500x300")
+	src << browse(HTML_SKELETON(jointext(output, "")),"window=playerpoll;size=500x300")
 
 /**
   * Shows voting window for an IRV type poll, listing its options and relevant details.
@@ -251,7 +250,7 @@
 	//otherwise just shuffle the options
 	else
 		prepared_options = shuffle(poll.options)
-	var/list/output = list({"<html><head><meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	var/list/output = list({"<!DOCTYPE html><html><head><meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
 	<script src="[SSassets.transport.get_asset_url("jquery.min.js")]"></script>
 	<script src="[SSassets.transport.get_asset_url("jquery-ui.custom-core-widgit-mouse-sortable-min.js")]"></script>
@@ -283,12 +282,12 @@
 	<div align='center'><B>Player poll</B><hr><b>Question: [poll.question]</b><br>"})
 	if(poll.subtitle)
 		output += "[poll.subtitle]<br>"
-	output += "<font size='2'>Poll runs from <b>[poll.start_datetime]</b> until <b>[poll.end_datetime]</b></font><br>"
+	output += "<font size='2'>Ankieta trwa od <b>[poll.start_datetime]</b> do <b>[poll.end_datetime]</b></font><br>"
 	if(poll.allow_revoting)
-		output += "<font size='2'>Revoting is enabled.</font>"
-	output += "Please sort the options in the order of <b>most preferred</b> to <b>least preferred</b><br></div>"
+		output += "<font size='2'>Można zmienić głos.</font>"
+	output += "Ułóż opcje od <b>najbardziej preferowanej</b> do <b>najmniej preferowanej</b><br></div>"
 	if(!length(voted_for) || poll.allow_revoting)
-		output += {"<form action='?src=[REF(src)]' method='POST'>
+		output += {"<form action='byond://?src=[REF(src)]' method='POST'>
 		<input type='hidden' name='src' value='[REF(src)]'>
 		<input type='hidden' name='votepollref' value='[REF(poll)]'>
 		<input type='hidden' name='IRVdata' id='IRVdata'>
@@ -297,11 +296,11 @@
 	for(var/o in prepared_options)
 		var/datum/poll_option/option = o
 		output += "<li optionref='[REF(option)]' class='ranking'><span class='grippy'></span> [option.text]</li>\n"
-	output += "</ol><b><center>Least Preferred</center></b><br>"
+	output += "</ol><b><center>Najmniej preferowane</center></b><br>"
 	if(!length(voted_for) || poll.allow_revoting)
 		output += "<p><input type='submit' value='Vote'></form>"
 	output += "</div>"
-	src << browse(jointext(output, ""),"window=playerpoll;size=500x500")
+	src << browse(HTML_SKELETON(jointext(output, "")),"window=playerpoll;size=500x500")
 
 /**
   * Runs some poll validation before a vote is processed.
@@ -313,15 +312,15 @@
   */
 /mob/dead/new_player/proc/vote_on_poll_handler(datum/poll_question/poll, href_list)
 	if(!SSdbcore.Connect())
-		to_chat(src, "<span class='danger'>Failed to establish database connection.</span>")
+		to_chat(src, "<span class='danger'>Nie udało się połączyć z bazą danych.</span>")
 		return
 	if(!poll || !href_list)
 		return
 	if(IsAdminAdvancedProcCall())
 		log_game("[key_name(usr)] attempted to rig the vote by voting as [key]")
 		message_admins("[key_name_admin(usr)] attempted to rig the vote by voting as [key]")
-		to_chat(usr, "<span class='danger'>You don't seem to be [key].</span>")
-		to_chat(src, "<span class='danger'>Something went horribly wrong processing your vote. Please contact an administrator, they should have gotten a message about this</span>")
+		to_chat(usr, "<span class='danger'>Wygląda na to, że nie jesteś [key].</span>")
+		to_chat(src, "<span class='danger'>Coś poszło bardzo nie tak przy przetwarzaniu twojego głosu. Skontaktuj się z administratorem - powinien był dostać o tym wiadomość</span>")
 		return
 	var/admin_rank
 	if(client.holder)
@@ -333,7 +332,7 @@
 			admin_rank = "Player"
 	var/player_playtime = round(client?.get_exp_living(TRUE) / 60)
 	if(!isnull(player_playtime) && (player_playtime < poll.minimumplaytime))
-		to_chat(usr, "<span class='warning'>You do not have sufficient playtime to vote in this poll. Minimum: [poll.minimumplaytime] hour(s). Your playtime: [player_playtime] hour(s).</span>")
+		to_chat(usr, "<span class='warning'>Masz za mało przegranego czasu, by głosować w tej ankiecie. Minimum: [poll.minimumplaytime] godz. Twój czas: [player_playtime] godz.</span>")
 		return
 	var/table = "poll_vote"
 	if(poll.poll_type == POLLTYPE_TEXT)
@@ -353,11 +352,11 @@
 	if(query_validate_poll_vote.NextRow())
 		vote_id = text2num(query_validate_poll_vote.item[1])
 		if(vote_id && !poll.allow_revoting)
-			to_chat(usr, "<span class='danger'>Poll revoting is disabled and you've already replied to this poll.</span>")
+			to_chat(usr, "<span class='danger'>Zmiana głosu jest wyłączona, a ty już odpowiedziałeś na tę ankietę.</span>")
 			qdel(query_validate_poll_vote)
 			return
 	else
-		to_chat(usr, "<span class='danger'>Selected poll is not open.</span>")
+		to_chat(usr, "<span class='danger'>Wybrana ankieta nie jest otwarta.</span>")
 		qdel(query_validate_poll_vote)
 		return
 	qdel(query_validate_poll_vote)
@@ -376,7 +375,7 @@
 	if(vote_success)
 		if(!vote_id)
 			poll.poll_votes++
-		to_chat(usr, "<span class='notice'>Vote successful.</span>")
+		to_chat(usr, "<span class='notice'>Głos oddany.</span>")
 
 /**
   * Processes vote form data and saves results to the database for an option type poll.
@@ -384,13 +383,13 @@
   */
 /mob/dead/new_player/proc/vote_on_poll_option(datum/poll_question/poll, href_list, admin_rank, sql_poll_id, vote_id)
 	if(!SSdbcore.Connect())
-		to_chat(src, "<span class='danger'>Failed to establish database connection.</span>")
+		to_chat(src, "<span class='danger'>Nie udało się połączyć z bazą danych.</span>")
 		return
 	if(IsAdminAdvancedProcCall())
 		return
 	var/datum/poll_option/option = locate(href_list["voteoptionref"]) in poll.options
 	if(!option)
-		to_chat(src, "<span class='danger'>No option was selected.</span>")
+		to_chat(src, "<span class='danger'>Nie wybrano żadnej opcji.</span>")
 		return
 	var/datum/DBQuery/query_vote_option = SSdbcore.NewQuery({"
 		INSERT INTO [format_table_name("poll_vote")] (id, datetime, pollid, optionid, ckey, ip, adminrank)
@@ -416,13 +415,13 @@
   */
 /mob/dead/new_player/proc/vote_on_poll_text(href_list, admin_rank, sql_poll_id, vote_id)
 	if(!SSdbcore.Connect())
-		to_chat(src, "<span class='danger'>Failed to establish database connection.</span>")
+		to_chat(src, "<span class='danger'>Nie udało się połączyć z bazą danych.</span>")
 		return
 	if(IsAdminAdvancedProcCall())
 		return
 	var/reply_text = href_list["replytext"]
 	if(!reply_text || (length(reply_text) > 2048))
-		to_chat(src, "<span class='danger'>The text you entered was blank or too long. Please correct the text and submit again.</span>")
+		to_chat(src, "<span class='danger'>Wpisany tekst jest pusty lub za długi. Popraw go i wyślij ponownie.</span>")
 		return
 	var/datum/DBQuery/query_vote_text = SSdbcore.NewQuery({"
 		INSERT INTO [format_table_name("poll_textreply")] (id, datetime, pollid, ckey, ip, replytext, adminrank)
@@ -448,7 +447,7 @@
   */
 /mob/dead/new_player/proc/vote_on_poll_rating(datum/poll_question/poll, list/href_list, admin_rank, sql_poll_id)
 	if(!SSdbcore.Connect())
-		to_chat(src, "<span class='danger'>Failed to establish database connection.</span>")
+		to_chat(src, "<span class='danger'>Nie udało się połączyć z bazą danych.</span>")
 		return
 	if(IsAdminAdvancedProcCall())
 		return
@@ -491,14 +490,14 @@
   */
 /mob/dead/new_player/proc/vote_on_poll_multi(datum/poll_question/poll, list/href_list, admin_rank, sql_poll_id)
 	if(!SSdbcore.Connect())
-		to_chat(src, "<span class='danger'>Failed to establish database connection.</span>")
+		to_chat(src, "<span class='danger'>Nie udało się połączyć z bazą danych.</span>")
 		return
 	if(IsAdminAdvancedProcCall())
 		return
 	if(length(href_list) > 2)
 		href_list.Cut(1,3) //first two values aren't options
 	else
-		to_chat(src, "<span class='danger'>No options were selected.</span>")
+		to_chat(src, "<span class='danger'>Nie wybrano żadnych opcji.</span>")
 
 	var/special_columns = list(
 		"datetime" = "NOW()",
@@ -509,7 +508,7 @@
 	var/vote_count = 0
 	for(var/h in href_list)
 		if(vote_count == poll.options_allowed)
-			to_chat(src, "<span class='danger'>Allowed option count exceeded, only the first [poll.options_allowed] selected options have been saved.</span>")
+			to_chat(src, "<span class='danger'>Przekroczono dozwoloną liczbę opcji, zapisano tylko pierwsze [poll.options_allowed].</span>")
 			break
 		vote_count++
 		var/datum/poll_option/option = locate(h) in poll.options
@@ -538,13 +537,13 @@
   */
 /mob/dead/new_player/proc/vote_on_poll_irv(datum/poll_question/poll, list/href_list, admin_rank, sql_poll_id)
 	if(!SSdbcore.Connect())
-		to_chat(src, "<span class='danger'>Failed to establish database connection.</span>")
+		to_chat(src, "<span class='danger'>Nie udało się połączyć z bazą danych.</span>")
 		return
 	if(IsAdminAdvancedProcCall())
 		return
 	var/list/votelist = splittext(href_list["IRVdata"], ",")
 	if(!length(votelist))
-		to_chat(src, "<span class='danger'>No ordering data found. Please try again or contact an administrator.</span>")
+		to_chat(src, "<span class='danger'>Nie znaleziono danych o kolejności. Spróbuj ponownie albo skontaktuj się z administratorem.</span>")
 
 	var/list/special_columns = list(
 		"datetime" = "NOW()",

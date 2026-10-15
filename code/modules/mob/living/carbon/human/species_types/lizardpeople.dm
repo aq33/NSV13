@@ -16,7 +16,7 @@
 	attack_verb = "slash"
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
-	meat = /obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/lizard
+	meat = /obj/item/food/meat/slab/human/mutant/lizard
 	skinned_type = /obj/item/stack/sheet/animalhide/lizard
 	exotic_bloodtype = "L"
 	inert_mutation = FIREBREATH
@@ -76,3 +76,8 @@
 /datum/species/lizard/ashwalker/on_species_loss(mob/living/carbon/human/C, datum/species/new_species, pref_load)
 	C.mind?.forget_crafting_recipe(/datum/crafting_recipe/primal_lasso)
 	return ..()
+/datum/species/lizard/ashwalker/spec_life(mob/living/carbon/human/H)
+	. = ..()
+	H.cauterise_wounds(0.1)
+	if (H.blood_volume < BLOOD_VOLUME_NORMAL && !H.is_bleeding())
+		H.blood_volume += 0.5

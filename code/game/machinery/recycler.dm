@@ -43,10 +43,10 @@
 
 /obj/machinery/recycler/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Reclaiming <b>[amount_produced]%</b> of materials salvaged.</span>"
-	. += "The power light is [(machine_stat & NOPOWER) ? "off" : "on"].\n"+\
-	"The safety-mode light is [safety_mode ? "on" : "off"].\n"+\
-	"The safety-sensors status light is [obj_flags & EMAGGED ? "off" : "on"]."
+	. += "<span class='notice'>Odzyskuje <b>[amount_produced]%</b> materiałów.</span>"
+	. += "Lampka zasilania jest [(machine_stat & NOPOWER) ? "zgaszona" : "zapalona"].\n"+\
+	"Lampka trybu bezpieczeństwa jest [safety_mode ? "zapalona" : "zgaszona"].\n"+\
+	"Lampka czujników bezpieczeństwa jest [obj_flags & EMAGGED ? "zgaszona" : "zapalona"]."
 
 /obj/machinery/recycler/power_change()
 	..()
@@ -75,7 +75,7 @@
 		safety_mode = FALSE
 		update_icon()
 	playsound(src, "sparks", 75, 1, -1)
-	to_chat(user, "<span class='notice'>You use the cryptographic sequencer on [src].</span>")
+	to_chat(user, "<span class='notice'>Używasz sekwencera kryptograficznego na [src].</span>")
 
 /obj/machinery/recycler/update_icon()
 	..()
@@ -204,6 +204,6 @@
 
 /obj/item/paper/guides/recycler
 	name = "paper - 'garbage duty instructions'"
-	default_raw_text = "<h2>New Assignment</h2> You have been assigned to collect garbage from trash bins, located around the station. The crewmembers will put their trash into it and you will collect the said trash.<br><br>There is a recycling machine near your closet, inside maintenance; use it to recycle the trash for a small chance to get useful minerals. Then deliver these minerals to cargo or engineering. You are our last hope for a clean station, do not screw this up!"
+	default_raw_text = "<h2>Nowy przydział</h2> Przydzielono cię do zbierania śmieci z koszy rozmieszczonych na stacji. Załoga wrzuca do nich śmieci, a ty je zbierasz.<br><br>W tunelach technicznych, w pobliżu twojej szafki, jest maszyna recyklingowa; użyj jej, by przetworzyć śmieci z niewielką szansą na odzyskanie przydatnych minerałów. Potem dostarcz te minerały do zaopatrzenia lub inżynierii. Jesteś naszą ostatnią nadzieją na czystą stację, nie spieprz tego!"
 
 #undef SAFETY_COOLDOWN

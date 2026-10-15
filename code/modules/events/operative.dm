@@ -5,6 +5,9 @@
 	max_occurrences = 1
 	cannot_spawn_after_shuttlecall = TRUE
 
+/datum/round_event_control/operative/get_random_weight()
+	return weight // AQ EDIT - grows while the nuke disk is left alone, against 10 for every other event
+
 /datum/round_event/ghost_role/operative
 	minimum_required = 1
 	role_name = "lone operative"

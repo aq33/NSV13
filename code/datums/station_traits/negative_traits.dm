@@ -3,7 +3,7 @@
 	trait_type = STATION_TRAIT_NEGATIVE
 	weight = 3
 	show_in_report = TRUE
-	report_message = "Please be nice to him."
+	report_message = "Prosimy, bądźcie dla niego mili."
 	blacklist = list(/datum/station_trait/announcement_medbot,
 	/datum/station_trait/announcement_baystation
 	)
@@ -17,7 +17,7 @@
 	trait_type = STATION_TRAIT_NEGATIVE
 	weight = 5
 	show_in_report = TRUE
-	report_message = "Dangerous fauna is present in the area of this station."
+	report_message = "W okolicy tej stacji występuje niebezpieczna fauna."
 	trait_to_give = STATION_TRAIT_CARP_INFESTATION
 
 /datum/station_trait/distant_supply_lines
@@ -25,7 +25,7 @@
 	trait_type = STATION_TRAIT_NEGATIVE
 	weight = 3
 	show_in_report = TRUE
-	report_message = "Due to the distance to our normal supply lines, cargo orders are more expensive."
+	report_message = "Ze względu na odległość od naszych zwykłych linii zaopatrzenia zamówienia zaopatrzenia są droższe."
 	blacklist = list(/datum/station_trait/strong_supply_lines)
 	trait_to_give = STATION_TRAIT_DISTANT_SUPPLY_LINES
 
@@ -34,33 +34,33 @@
 	trait_type = STATION_TRAIT_NEGATIVE
 	weight = 2
 	show_in_report = TRUE
-	report_message = "Sorry for that, we didn't expect to fly into that vomiting goose while bringing you to your new station."
+	report_message = "Przepraszamy, nie spodziewaliśmy się, że w drodze na waszą nową stację wlecimy w wymiotującą gęś."
 	trait_to_give = STATION_TRAIT_LATE_ARRIVALS
 	blacklist = list(/datum/station_trait/random_spawns, /datum/station_trait/hangover)
-	possible_announcements = list("You are getting late, again. Get your stuff together or you are all fired.",
-								"Our calculations were off by a bit. Shuttle will be there in a few seconds.")
+	possible_announcements = list("Znowu się spóźniacie. Ogarnijcie się, albo wszyscy jesteście zwolnieni.",
+								"Nasze obliczenia trochę się nie zgadzały. Prom będzie za kilka sekund.")
 
 /datum/station_trait/random_spawns
 	name = "Drive-by landing"
 	trait_type = STATION_TRAIT_NEGATIVE
 	weight = 2
 	show_in_report = TRUE
-	report_message = "Sorry for that, we missed your station by a few miles, so we just launched you towards your station in pods. Hope you don't mind!"
+	report_message = "Przepraszamy, minęliśmy waszą stację o kilka mil, więc po prostu wystrzeliliśmy was w jej stronę w kapsułach. Mamy nadzieję, że nie macie nic przeciwko!"
 	trait_to_give = STATION_TRAIT_RANDOM_ARRIVALS
 	blacklist = list(/datum/station_trait/late_arrivals, /datum/station_trait/hangover)
-	possible_announcements = list("We overshot your station by a few miles. Prepare to be pod launched onto it.",
-								"We've missed your station, sorry for that. You will be launched onto it shortly.")
+	possible_announcements = list("Przelecieliśmy waszą stację o kilka mil. Przygotujcie się na zrzut kapsułami.",
+								"Minęliśmy waszą stację, przepraszamy. Wkrótce zostaniecie na nią wystrzeleni.")
 
 /datum/station_trait/hangover
 	name = "Hangover"
 	trait_type = STATION_TRAIT_NEGATIVE
 	weight = 2
 	show_in_report = TRUE
-	report_message = "Ohh.... Man.... That mandatory office party from last shift... God that was awesome... I woke up in some random toilet 3 sectors away..."
+	report_message = "Ooo... Stary... Ta obowiązkowa impreza firmowa z ostatniej zmiany... Boże, ale było super... Obudziłem się w jakiejś przypadkowej toalecie 3 sektory stąd..."
 	trait_to_give = STATION_TRAIT_HANGOVER
 	blacklist = list(/datum/station_trait/late_arrivals, /datum/station_trait/random_spawns)
-	possible_announcements = list("That was one hell of a night. Now, get back to work.",
-								"Party's over. Get back to work.")
+	possible_announcements = list("Ale to była noc. A teraz wracajcie do pracy.",
+								"Impreza skończona. Wracajcie do pracy.")
 
 /datum/station_trait/hangover/New()
 	. = ..()
@@ -102,7 +102,7 @@
 	trait_type = STATION_TRAIT_NEGATIVE
 	weight = 5
 	show_in_report = TRUE
-	report_message = "Station lights seem to be damaged, be safe when starting your shift today."
+	report_message = "Oświetlenie stacji wydaje się uszkodzone, uważajcie, zaczynając dzisiejszą zmianę."
 
 /datum/station_trait/blackout/on_round_start()
 	. = ..()
@@ -116,7 +116,7 @@
 	trait_type = STATION_TRAIT_NEGATIVE
 	weight = 5
 	show_in_report = TRUE
-	report_message = "Our workers cleaned out most of the junk in the maintenace areas."
+	report_message = "Nasi pracownicy usunęli większość śmieci z tuneli technicznych."
 	blacklist = list(/datum/station_trait/filled_maint)
 	trait_to_give = STATION_TRAIT_EMPTY_MAINT
 
@@ -135,7 +135,7 @@
 	RegisterSignal(SSjob, COMSIG_SUBSYSTEM_POST_INITIALIZE, PROC_REF(set_overflow_job_override))
 
 /datum/station_trait/overflow_job_bureacracy/get_report()
-	return "[name] - It seems for some reason we put out the wrong job-listing for the overflow role this shift...I hope you like [chosen_job]s."
+	return "[name] - Z jakiegoś powodu na tę zmianę opublikowaliśmy złe ogłoszenie o pracę dla roli nadmiarowej... Mamy nadzieję, że lubicie: [chosen_job]."
 
 /datum/station_trait/overflow_job_bureacracy/proc/set_overflow_job_override(datum/source, new_overflow_role)
 	SIGNAL_HANDLER
@@ -147,7 +147,7 @@
 	trait_type = STATION_TRAIT_NEGATIVE
 	weight = 5
 	show_in_report = TRUE
-	report_message = "Due to distance to our supply station, the cargo shuttle will have a slower flight time to your cargo department."
+	report_message = "Ze względu na odległość od naszej stacji zaopatrzeniowej prom zaopatrzenia będzie dłużej leciał do waszego działu zaopatrzenia."
 	blacklist = list(/datum/station_trait/quick_shuttle)
 
 /datum/station_trait/slow_shuttle/on_round_start()
@@ -159,13 +159,13 @@
 	trait_type = STATION_TRAIT_NEGATIVE
 	weight = 3
 	show_in_report = TRUE
-	report_message = "Your station's friendly bots have had their language matrix fried due to an event, resulting in some strange and unfamiliar speech patterns."
+	report_message = "Z powodu pewnego zdarzenia matryce językowe przyjaznych botów waszej stacji się przepaliły, przez co mówią w dziwny i nieznany sposób."
 
 /datum/station_trait/bot_languages/New()
 	. = ..()
 	/// What "caused" our robots to go haywire (fluff)
-	var/event_source = pick(list("an ion storm", "a syndicate hacking attempt", "a malfunction", "issues with your onboard AI", "an intern's mistakes", "budget cuts"))
-	report_message = "Your station's friendly bots have had their language matrix fried due to [event_source], resulting in some strange and unfamiliar speech patterns."
+	var/event_source = pick(list("burzy jonowej", "próby włamania Syndykatu", "a malfunction", "problemów z pokładową SI", "błędów stażysty", "cięć budżetowych"))
+	report_message = "Z powodu [event_source] matryce językowe przyjaznych botów waszej stacji się przepaliły, przez co mówią w dziwny i nieznany sposób."
 
 /datum/station_trait/bot_languages/on_round_start()
 	. = ..()

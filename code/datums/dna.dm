@@ -247,17 +247,17 @@
 		if(alert)
 			switch(stability)
 				if(70 to 90)
-					message = "<span class='warning'>You shiver.</span>"
+					message = "<span class='warning'>Drżysz.</span>"
 				if(60 to 69)
-					message = "<span class='warning'>You feel cold.</span>"
+					message = "<span class='warning'>Jest ci zimno.</span>"
 				if(40 to 59)
-					message = "<span class='warning'>You feel sick.</span>"
+					message = "<span class='warning'>Czujesz się chory.</span>"
 				if(20 to 39)
-					message = "<span class='warning'>It feels like your skin is moving.</span>"
+					message = "<span class='warning'>Masz wrażenie, że twoja skóra się porusza.</span>"
 				if(1 to 19)
-					message = "<span class='warning'>You can feel your cells burning.</span>"
+					message = "<span class='warning'>Czujesz, jak płoną ci komórki.</span>"
 				if(-INFINITY to 0)
-					message = "<span class='boldwarning'>You can feel your DNA exploding, we need to do something fast!</span>"
+					message = "<span class='boldwarning'>Czujesz, jak eksploduje ci DNA, trzeba szybko coś zrobić!</span>"
 		if(stability <= 0)
 			holder.apply_status_effect(STATUS_EFFECT_DNA_MELT)
 		if(message)
@@ -618,23 +618,23 @@
 			if(1)
 				gain_trauma(/datum/brain_trauma/severe/paralysis/paraplegic)
 				new/obj/vehicle/ridden/wheelchair(get_turf(src)) //don't buckle, because I can't imagine to plethora of things to go through that could otherwise break
-				to_chat(src, "<span class='warning'>My flesh turned into a wheelchair and I can't feel my legs.</span>")
+				to_chat(src, "<span class='warning'>Moje ciało zamieniło się w wózek inwalidzki i nie czuję nóg.</span>")
 			if(2)
 				corgize()
 			if(3)
-				to_chat(src, "<span class='notice'>Oh, I actually feel quite alright!</span>")
+				to_chat(src, "<span class='notice'>Och, właściwie czuję się całkiem dobrze!</span>")
 			if(4)
-				to_chat(src, "<span class='notice'>Oh, I actually feel quite alright!</span>") //you thought
+				to_chat(src, "<span class='notice'>Och, właściwie czuję się całkiem dobrze!</span>") //you thought
 				if(ishuman(src))
 					var/mob/living/carbon/human/H = src
 					H.physiology.damage_resistance = -20000
 			if(5)
-				to_chat(src, "<span class='notice'>Oh, I actually feel quite alright!</span>")
+				to_chat(src, "<span class='notice'>Och, właściwie czuję się całkiem dobrze!</span>")
 				reagents.add_reagent(/datum/reagent/aslimetoxin, 10)
 			if(6)
 				apply_status_effect(STATUS_EFFECT_GO_AWAY)
 			if(7)
-				to_chat(src, "<span class='notice'>Oh, I actually feel quite alright!</span>")
+				to_chat(src, "<span class='notice'>Och, właściwie czuję się całkiem dobrze!</span>")
 				ForceContractDisease(new/datum/disease/decloning()) //slow acting, non-viral clone damage based GBS
 			if(8)
 				var/list/elligible_organs = list()
@@ -644,13 +644,13 @@
 				if(length(elligible_organs))
 					var/obj/item/organ/O = pick(elligible_organs)
 					O.Remove(src)
-					visible_message("<span class='danger'>[src] vomits up their [O.name]!</span>", "<span class='danger'>You vomit up your [O.name]!</span>") //no "vomit up your the heart"
+					visible_message("<span class='danger'>[src] wymiotuje swoim narządem ([O.name])!</span>", "<span class='danger'>Wymiotujesz swoim narządem ([O.name])!</span>") //no "vomit up your the heart"
 					O.forceMove(drop_location())
 					if(prob(20))
 						O.animate_atom_living()
 			if(9 to 10)
 				ForceContractDisease(new/datum/disease/gastrolosis())
-				to_chat(src, "<span class='notice'>Oh, I actually feel quite alright!</span>")
+				to_chat(src, "<span class='notice'>Och, właściwie czuję się całkiem dobrze!</span>")
 	else
 		switch(rand(0,5))
 			if(0)
@@ -672,7 +672,7 @@
 				else
 					set_species(/datum/species/dullahan)
 			if(4)
-				visible_message("<span class='warning'>[src]'s skin melts off!</span>", "<span class='boldwarning'>Your skin melts off!</span>")
+				visible_message("<span class='warning'>Skóra [src] się roztapia!</span>", "<span class='boldwarning'>Twoja skóra się roztapia!</span>")
 				spawn_gibs()
 				set_species(/datum/species/skeleton)
 				if(prob(90) && !QDELETED(src))
@@ -680,7 +680,7 @@
 					if(mind)
 						mind.hasSoul = FALSE
 			if(5)
-				to_chat(src, "<span class='phobia'>LOOK UP!</span>")
+				to_chat(src, "<span class='phobia'>SPÓJRZ W GÓRĘ!</span>")
 				addtimer(CALLBACK(src, PROC_REF(something_horrible_mindmelt)), 30)
 
 
@@ -691,5 +691,5 @@
 			return
 		eyes.Remove(src)
 		qdel(eyes)
-		visible_message("<span class='notice'>[src] looks up and their eyes melt away!</span>", "<span class='userdanger'>I understand now.</span>")
+		visible_message("<span class='notice'>[src] spogląda w górę, a jego oczy się roztapiają!</span>", "<span class='userdanger'>Teraz rozumiem.</span>")
 		addtimer(CALLBACK(src, PROC_REF(adjustOrganLoss), ORGAN_SLOT_BRAIN, 200), 20)

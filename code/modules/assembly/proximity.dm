@@ -11,6 +11,8 @@
 	var/time = 20
 	var/sensitivity = 1
 	var/hearing_range = 3
+	///Proximity monitor associated with this atom, needed for it to work.
+	var/datum/proximity_monitor/proximity_monitor
 
 /obj/item/assembly/prox_sensor/Initialize(mapload)
 	. = ..()
@@ -23,7 +25,7 @@
 
 /obj/item/assembly/prox_sensor/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>The proximity sensor is [timing ? "arming" : (scanning ? "armed" : "disarmed")].</span>"
+	. += "<span class='notice'>Czujnik zbliżeniowy jest [timing ? "uzbrajany" : (scanning ? "uzbrojony" : "rozbrojony")].</span>"
 
 /obj/item/assembly/prox_sensor/activate()
 	if(!..())
@@ -40,19 +42,19 @@
 	if(!.)
 		return
 	else
-		proximity_monitor.SetHost(src,src)
+		proximity_monitor.set_host(src,src)
 
 /obj/item/assembly/prox_sensor/toggle_secure()
 	secured = !secured
 	if(!secured)
 		if(scanning)
 			toggle_scan()
-			proximity_monitor.SetHost(src,src)
+			proximity_monitor.set_host(src,src)
 		timing = FALSE
 		STOP_PROCESSING(SSobj, src)
 	else
 		START_PROCESSING(SSobj, src)
-		proximity_monitor.SetHost(loc,src)
+		proximity_monitor.set_host(loc,src)
 	update_icon()
 	return secured
 
@@ -65,7 +67,7 @@
 	if(!scanning || !secured || next_activate > world.time)
 		return FALSE
 	pulse(FALSE)
-	audible_message("[icon2html(src, hearers(src))] *beep* *beep* *beep*", null, hearing_range)
+	audible_message("[icon2html(src, hearers(src))] *bip* *bip* *bip*", null, hearing_range)
 	playsound(get_turf(src), 'sound/machines/triple_beep.ogg', ASSEMBLY_BEEP_VOLUME, TRUE)
 	next_activate = world.time + 30
 	return TRUE
@@ -84,13 +86,13 @@
 	if(!secured)
 		return FALSE
 	scanning = scan
-	proximity_monitor.SetRange(scanning ? sensitivity : 0)
+	proximity_monitor.set_range(scanning ? sensitivity : 0)
 	update_icon()
 
 /obj/item/assembly/prox_sensor/proc/sensitivity_change(value)
 	var/sense = min(max(sensitivity + value, 0), 5)
 	sensitivity = sense
-	if(scanning && proximity_monitor.SetRange(sense))
+	if(scanning && proximity_monitor.set_range(sense))
 		sense()
 
 /obj/item/assembly/prox_sensor/update_icon()

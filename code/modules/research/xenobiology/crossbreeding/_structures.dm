@@ -217,10 +217,10 @@ GLOBAL_LIST_EMPTY(bluespace_slime_crystals)
 		var/obj/item/stock_parts/cell/cell = I
 		//Punishment for greed
 		if(cell.charge == cell.maxcharge)
-			to_chat("<span class = 'danger'> You try to charge the cell, but it is already fully energized. You are not sure if this was a good idea...")
+			to_chat("<span class = 'danger'> Próbujesz naładować ogniwo, ale jest już w pełni naładowane. Nie wiesz, czy to był dobry pomysł...")
 			cell.explode()
 			return
-		to_chat("<span class = 'notice'> You charged the [I.name] on [name]!")
+		to_chat("<span class = 'notice'> Ładujesz [I.name] na [name]!")
 		cell.give(cell.maxcharge)
 		return
 	return ..()
@@ -280,7 +280,7 @@ GLOBAL_LIST_EMPTY(bluespace_slime_crystals)
 	GLOB.bluespace_slime_crystals -= src
 	return ..()
 
-/obj/structure/slime_crystal/bluespace/attack_hand(mob/user)
+/obj/structure/slime_crystal/bluespace/attack_hand(mob/user, list/modifiers)
 
 	if(in_use)
 		return
@@ -311,7 +311,7 @@ GLOBAL_LIST_EMPTY(bluespace_slime_crystals)
 
 		assoc_list[name] = BSC
 
-	var/chosen_input = input(user,"What destination do you want to choose",null) as null|anything in assoc_list
+	var/chosen_input = input(user,"Jaki cel chcesz wybrać",null) as null|anything in assoc_list
 	in_use = FALSE
 
 	if(!chosen_input || !assoc_list[chosen_input])
@@ -455,7 +455,7 @@ GLOBAL_LIST_EMPTY(bluespace_slime_crystals)
 
 /obj/structure/slime_crystal/red/examine(mob/user)
 	. = ..()
-	. += "It has [blood_amt] u of blood."
+	. += "Zawiera [blood_amt] j. krwi."
 
 /obj/structure/slime_crystal/red/process()
 
@@ -478,12 +478,12 @@ GLOBAL_LIST_EMPTY(bluespace_slime_crystals)
 		if(blood_amt == max_blood_amt)
 			return
 
-/obj/structure/slime_crystal/red/attack_hand(mob/user)
+/obj/structure/slime_crystal/red/attack_hand(mob/user, list/modifiers)
 	if(blood_amt < 100)
 		return ..()
 
 	blood_amt -= 100
-	var/type = pick(/obj/item/reagent_containers/food/snacks/meat/slab,/obj/item/organ/heart,/obj/item/organ/lungs,/obj/item/organ/liver,/obj/item/organ/eyes,/obj/item/organ/tongue,/obj/item/organ/stomach,/obj/item/organ/ears)
+	var/type = pick(/obj/item/food/meat/slab,/obj/item/organ/heart,/obj/item/organ/lungs,/obj/item/organ/liver,/obj/item/organ/eyes,/obj/item/organ/tongue,/obj/item/organ/stomach,/obj/item/organ/ears)
 	new type(get_turf(src))
 
 /obj/structure/slime_crystal/red/attacked_by(obj/item/I, mob/living/user)
@@ -507,11 +507,11 @@ GLOBAL_LIST_EMPTY(bluespace_slime_crystals)
 /obj/structure/slime_crystal/green/examine(mob/user)
 	. = ..()
 	if(stored_mutation)
-		. += "It currently stores [stored_mutation.name]"
+		. += "Obecnie przechowuje [stored_mutation.name]"
 	else
-		. += "It doesn't hold any mutations"
+		. += "Nie zawiera żadnych mutacji"
 
-/obj/structure/slime_crystal/green/attack_hand(mob/user)
+/obj/structure/slime_crystal/green/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(!iscarbon(user) || !user.has_dna())
 		return
@@ -559,7 +559,7 @@ GLOBAL_LIST_EMPTY(bluespace_slime_crystals)
 /obj/structure/slime_crystal/gold
 	colour = "gold"
 
-/obj/structure/slime_crystal/gold/attack_hand(mob/user)
+/obj/structure/slime_crystal/gold/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(!ishuman(user))
 		return
@@ -665,7 +665,7 @@ GLOBAL_LIST_EMPTY(bluespace_slime_crystals)
 			SC.master_crystal_destruction()
 	return ..()
 
-/obj/structure/slime_crystal/rainbow/attack_hand(mob/user)
+/obj/structure/slime_crystal/rainbow/attack_hand(mob/user, list/modifiers)
 	for(var/X in inserted_cores)
 		if(inserted_cores[X])
 			var/obj/structure/slime_crystal/SC = inserted_cores[X]

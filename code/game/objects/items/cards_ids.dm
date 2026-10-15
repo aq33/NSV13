@@ -20,7 +20,7 @@
 	var/list/files = list()
 
 /obj/item/card/suicide_act(mob/living/carbon/user)
-	user.visible_message("<span class='suicide'>[user] begins to swipe [user.p_their()] neck with \the [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] zaczyna przeciągać [src] po swojej szyi! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	return BRUTELOSS
 
 /obj/item/card/data
@@ -107,7 +107,7 @@
 	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
 	slot_flags = ITEM_SLOT_ID
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 100, "stamina" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 100, "stamina" = 0, "bleed" = 0)
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	var/mining_points = 0 //For redeeming at mining equipment vendors
 	var/list/access = list()
@@ -139,7 +139,7 @@
 
 /obj/item/card/id/attack_self(mob/user)
 	if(Adjacent(user))
-		user.visible_message("<span class='notice'>[user] shows you: [icon2html(src, viewers(user))] [src.name].</span>", "<span class='notice'>You show \the [src.name].</span>")
+		user.visible_message("<span class='notice'>[user] pokazuje ci: [icon2html(src, viewers(user))] [src.name].</span>", "<span class='notice'>Pokazujesz [src.name].</span>")
 	add_fingerprint(user)
 
 /obj/item/card/id/vv_edit_var(var_name, var_value)
@@ -158,7 +158,7 @@
 	. = ..()
 	if(href_list[VV_ID_PAYDAY])
 		if(!registered_account)
-			to_chat(usr, "There's no account registered!")
+			to_chat(usr, "Nie zarejestrowano konta!")
 			return
 		registered_account.payday(1)
 
@@ -173,32 +173,32 @@
 		var/money_added = mass_insert_money(money_contained, user)
 
 		if (money_added)
-			to_chat(user, "<span class='notice'>You stuff the contents into the card! They disappear in a puff of bluespace smoke, adding [money_added] worth of credits to the linked account.</span>")
+			to_chat(user, "<span class='notice'>Wpychasz zawartość do karty! Znika w obłoczku dymu bluespace, a na połączone konto trafia [money_added] kredytów.</span>")
 		return
 	else
 		return ..()
 
 /obj/item/card/id/proc/insert_money(obj/item/I, mob/user)
 	if(!registered_account)
-		to_chat(user, "<span class='warning'>[src] doesn't have a linked account to deposit [I] into!</span>")
+		to_chat(user, "<span class='warning'>[src] nie ma połączonego konta, na które można wpłacić [I]!</span>")
 		return
 	var/cash_money = I.get_item_credit_value()
 	if(!cash_money)
-		to_chat(user, "<span class='warning'>[I] doesn't seem to be worth anything!</span>")
+		to_chat(user, "<span class='warning'>[I] wydaje się nic nie być wart!</span>")
 		return
 
 	registered_account.adjust_money(cash_money)
 	if(istype(I, /obj/item/stack/spacecash) || istype(I, /obj/item/coin))
-		to_chat(user, "<span class='notice'>You stuff [I] into [src]. It disappears in a small puff of bluespace smoke, adding [cash_money] credits to the linked account.</span>")
+		to_chat(user, "<span class='notice'>Wpychasz [I] do [src]. Znika w małym obłoczku dymu bluespace, a na połączone konto trafia [cash_money] kredytów.</span>")
 	else
-		to_chat(user, "<span class='notice'>You insert [I] into [src], adding [cash_money] credits to the linked account.</span>")
+		to_chat(user, "<span class='notice'>Wkładasz [I] do [src], wpłacając [cash_money] kredytów na połączone konto.</span>")
 
-	to_chat(user, "<span class='notice'>The linked account now reports a balance of $[registered_account.account_balance].</span>")
+	to_chat(user, "<span class='notice'>Saldo połączonego konta wynosi teraz $[registered_account.account_balance].</span>")
 	qdel(I)
 
 /obj/item/card/id/proc/mass_insert_money(list/money, mob/user)
 	if(!registered_account)
-		to_chat(user, "<span class='warning'>[src] doesn't have a linked account to deposit into!</span>")
+		to_chat(user, "<span class='warning'>[src] nie ma połączonego konta do wpłaty!</span>")
 		return FALSE
 
 	if (!money || !money.len)
@@ -229,15 +229,15 @@
 	. = FALSE
 	var/datum/bank_account/old_account = registered_account
 
-	var/new_bank_id = input(user, "Enter your account ID number.", "Account Reclamation", 111111) as num
+	var/new_bank_id = input(user, "Podaj numer ID swojego konta.", "Odzyskiwanie konta", 111111) as num
 
 	if(!alt_click_can_use_id(user))
 		return
 	if(!new_bank_id || new_bank_id < 111111 || new_bank_id > 999999)
-		to_chat(user, "<span class='warning'>The account ID number needs to be between 111111 and 999999.</span>")
+		to_chat(user, "<span class='warning'>Numer ID konta musi mieścić się w przedziale od 111111 do 999999.</span>")
 		return
 	if (registered_account && registered_account.account_id == new_bank_id)
-		to_chat(user, "<span class='warning'>The account ID was already assigned to this card.</span>")
+		to_chat(user, "<span class='warning'>To ID konta zostało już przypisane do tej karty.</span>")
 		return
 
 	for(var/A in SSeconomy.bank_accounts)
@@ -248,11 +248,11 @@
 
 			B.bank_cards += src
 			registered_account = B
-			to_chat(user, "<span class='notice'>The provided account has been linked to this ID card.</span>")
+			to_chat(user, "<span class='notice'>Podane konto zostało połączone z tą kartą ID.</span>")
 
 			return TRUE
 
-	to_chat(user, "<span class='warning'>The account ID number provided is invalid.</span>")
+	to_chat(user, "<span class='warning'>Podany numer ID konta jest nieprawidłowy.</span>")
 	return
 
 /obj/item/card/id/AltClick(mob/living/user)
@@ -264,42 +264,42 @@
 		return
 
 	if (world.time < registered_account.withdrawDelay)
-		registered_account.bank_card_talk("<span class='warning'>ERROR: UNABLE TO LOGIN DUE TO SCHEDULED MAINTENANCE. MAINTENANCE IS SCHEDULED TO COMPLETE IN [(registered_account.withdrawDelay - world.time)/10] SECONDS.</span>", TRUE)
+		registered_account.bank_card_talk("<span class='warning'>BŁĄD: NIE MOŻNA SIĘ ZALOGOWAĆ Z POWODU PLANOWANEJ KONSERWACJI. KONSERWACJA ZAKOŃCZY SIĘ ZA [(registered_account.withdrawDelay - world.time)/10] S.</span>", TRUE)
 		return
 
-	var/amount_to_remove =  FLOOR(input(user, "How much do you want to withdraw? Current Balance: [registered_account.account_balance]", "Withdraw Funds", 5) as num, 1)
+	var/amount_to_remove =  FLOOR(input(user, "Ile chcesz wypłacić? Obecne saldo: [registered_account.account_balance]", "Wypłata środków", 5) as num, 1)
 
 	if(!amount_to_remove || amount_to_remove < 0)
-		to_chat(user, "<span class='warning'>You're pretty sure that's not how money works.</span>")
+		to_chat(user, "<span class='warning'>Jesteś prawie pewien, że pieniądze tak nie działają.</span>")
 		return
 	if(!alt_click_can_use_id(user))
 		return
 	if(registered_account.adjust_money(-amount_to_remove))
 		var/obj/item/holochip/holochip = new (user.drop_location(), amount_to_remove)
 		user.put_in_hands(holochip)
-		to_chat(user, "<span class='notice'>You withdraw [amount_to_remove] credits into a holochip.</span>")
+		to_chat(user, "<span class='notice'>Wypłacasz [amount_to_remove] kredytów na holożeton.</span>")
 		return
 	else
 		var/difference = amount_to_remove - registered_account.account_balance
-		registered_account.bank_card_talk("<span class='warning'>ERROR: The linked account requires [difference] more credit\s to perform that withdrawal.</span>", TRUE)
+		registered_account.bank_card_talk("<span class='warning'>BŁĄD: do tej wypłaty na połączonym koncie brakuje [difference] kredytów.</span>", TRUE)
 
 /obj/item/card/id/examine(mob/user)
 	..()
 	if(mining_points)
-		. += "There's [mining_points] mining equipment redemption point\s loaded onto this card."
+		. += "Na tej karcie są punkty wymiany sprzętu górniczego: [mining_points]."
 	. = ..()
 	if(registered_account)
-		. += "The account linked to the ID belongs to '[registered_account.account_holder]' and reports a balance of $[registered_account.account_balance]."
+		. += "Konto połączone z tą kartą należy do: '[registered_account.account_holder]', saldo: $[registered_account.account_balance]."
 		if(registered_account.account_job)
 			var/datum/bank_account/D = SSeconomy.get_dep_account(registered_account.account_department)
 			if(D)
-				. += "The [D.account_holder] reports a balance of $[D.account_balance]."
-		. += "<span class='info'>Alt-Click the ID to pull money from the linked account in the form of holochips.</span>"
-		. += "<span class='info'>You can insert credits into the linked account by pressing holochips, cash, or coins against the ID.</span>"
+				. += "[D.account_holder]: saldo $[D.account_balance]."
+		. += "<span class='info'>Alt-kliknij kartę, by wypłacić pieniądze z połączonego konta w postaci holożetonów.</span>"
+		. += "<span class='info'>Możesz wpłacać kredyty na połączone konto, przykładając do karty holożetony, gotówkę lub monety.</span>"
 		if(registered_account.account_holder == user.real_name)
-			. += "<span class='boldnotice'>If you lose this ID card, you can reclaim your account by Alt-Clicking a blank ID card while holding it and entering your account ID number.</span>"
+			. += "<span class='boldnotice'>Jeśli zgubisz tę kartę, możesz odzyskać konto, alt-klikając pustą kartę ID, trzymając ją w ręce, i podając numer ID konta.</span>"
 	else
-		. += "<span class='info'>There is no registered account linked to this card. Alt-Click to add one.</span>"
+		. += "<span class='info'>Do tej karty nie jest połączone żadne konto. Alt-kliknij, by je dodać.</span>"
 
 /obj/item/card/id/GetAccess()
 	return access
@@ -384,7 +384,7 @@ update_label("John Doe", "Clowny")
 	. = ..()
 	chameleon_action = new(src)
 	chameleon_action.chameleon_type = /obj/item/card/id
-	chameleon_action.chameleon_name = "ID Card"
+	chameleon_action.chameleon_name = "Karta ID"
 	chameleon_action.chameleon_blacklist = typecacheof(list(
 		/obj/item/card,
 		/obj/item/card/data,
@@ -426,7 +426,7 @@ update_label("John Doe", "Clowny")
 		log_id("[key_name(user)] copied all avaliable access from [I] to agent ID [src] at [AREACOORD(user)].")
 		if(isliving(user) && user.mind)
 			if(user.mind.special_role || anyone)
-				to_chat(usr, "<span class='notice'>The card's microscanners activate as you pass it over the ID, copying its access.</span>")
+				to_chat(usr, "<span class='notice'>Mikroskanery karty aktywują się, gdy przesuwasz ją nad kartą ID, kopiując jej dostępy.</span>")
 
 /obj/item/card/id/syndicate/attack_self(mob/user)
 	var/valid_jobs = list( // copy-paste from hop card paint machine, but this has more options, and valid to be static.
@@ -452,11 +452,11 @@ update_label("John Doe", "Clowny")
 			else
 				return ..()
 
-		var/popup_input = alert(user, "Choose Action", "Agent ID", "Show", "Forge/Reset", "Change Account ID")
+		var/popup_input = alert(user, "Wybierz akcję", "Karta agenta", "Show", "Forge/Reset", "Change Account ID")
 		if(user.incapacitated())
 			return
 		if(popup_input == "Forge/Reset" && !forged)
-			var/input_name = stripped_input(user, "What name would you like to put on this card? Leave blank to randomise.", "Agent card name", registered_name ? registered_name : (ishuman(user) ? user.real_name : user.name), MAX_NAME_LEN)
+			var/input_name = stripped_input(user, "Jakie imię chcesz umieścić na tej karcie? Zostaw puste, by wylosować.", "Imię na karcie agenta", registered_name ? registered_name : (ishuman(user) ? user.real_name : user.name), MAX_NAME_LEN)
 			input_name = reject_bad_name(input_name)
 			if(!input_name)
 				// Invalid/blank names give a randomly generated one.
@@ -470,14 +470,14 @@ update_label("John Doe", "Clowny")
 					input_name = "[pick(GLOB.first_names)] [pick(GLOB.last_names)]"
 				*/ // AQ EDIT END
 
-			var/target_occupation = stripped_input(user, "What occupation would you like to put on this card?\nNote: This will not grant any access levels other than Maintenance.", "Agent card job assignment", assignment ? assignment : JOB_NAME_ASSISTANT, MAX_MESSAGE_LEN)
+			var/target_occupation = stripped_input(user, "Jaki zawód chcesz umieścić na tej karcie?\nUwaga: nie da to żadnych dostępów poza tunelami technicznymi.", "Stanowisko na karcie agenta", assignment ? assignment : JOB_NAME_ASSISTANT, MAX_MESSAGE_LEN)
 			if(!target_occupation)
 				return
 
 			// copy paste from HoP card painting machine
 			var/target_id_style = "-"
 			while(target_id_style[1] == "-") // trick. "-" is only non-valid option here.
-				target_id_style = input(user, "Select an ID skin (Cancel to change nothing)\nCard HUD icon will follow the job you choose.", "Chameleon card shape") as null|anything in valid_jobs
+				target_id_style = input(user, "Wybierz wygląd karty (Anuluj, by niczego nie zmieniać)\nIkona karty na HUD-zie będzie odpowiadać wybranemu stanowisku.", "Kształt karty kameleona") as null|anything in valid_jobs
 				if(!target_id_style)
 					break
 
@@ -491,7 +491,7 @@ update_label("John Doe", "Clowny")
 				H.sec_hud_set_ID()
 			update_label()
 			forged = TRUE
-			to_chat(user, "<span class='notice'>You successfully forge the ID card.</span>")
+			to_chat(user, "<span class='notice'>Pomyślnie fałszujesz kartę ID.</span>")
 			log_game("[key_name(user)] has forged \the [initial(name)] with name \"[registered_name]\" and occupation \"[assignment]\"[target_id_style ? " with [target_id_style] card style" : " with non changed [icon_state] shape, [hud_state] hud style"].")
 
 			// First time use automatically sets the account id to the user.
@@ -504,7 +504,7 @@ update_label("John Doe", "Clowny")
 						if(account.account_id == accountowner.account_id)
 							account.bank_cards += src
 							registered_account = account
-							to_chat(user, "<span class='notice'>Your account number has been automatically assigned.</span>")
+							to_chat(user, "<span class='notice'>Numer twojego konta został przypisany automatycznie.</span>")
 			return
 		else if (popup_input == "Forge/Reset" && forged)
 			registered_name = initial(registered_name)
@@ -513,7 +513,7 @@ update_label("John Doe", "Clowny")
 			log_game("[key_name(user)] has reset \the [initial(name)] named \"[src]\" to default.")
 			update_label()
 			forged = FALSE
-			to_chat(user, "<span class='notice'>You successfully reset the ID card.</span>")
+			to_chat(user, "<span class='notice'>Pomyślnie resetujesz kartę ID.</span>")
 			return
 		else if (popup_input == "Change Account ID")
 			set_new_account(user)
@@ -685,10 +685,10 @@ update_label("John Doe", "Clowny")
 	. = ..()
 
 	if(!permanent)
-		. += "<span class='notice'>A little display on the card reads: You have accumulated [points] out of the [goal] points you need for freedom.</span>"
+		. += "<span class='notice'>Mały wyświetlacz na karcie pokazuje: zgromadzono [points] z [goal] punktów potrzebnych do wolności.</span>"
 
 	else
-		. += "<span class='notice'>The mark on the ID indicates the sentence is permanent.</span>"
+		. += "<span class='notice'>Znak na karcie wskazuje, że wyrok jest dożywotni.</span>"
 
 /obj/item/card/id/gulag/one
 	name = "Prisoner #13-001"
@@ -1197,6 +1197,6 @@ update_label("John Doe", "Clowny")
 			idcard.assignment = assignment
 		if(name!=initial(name))
 			idcard.name = name
-		to_chat(user, "You upgrade your [idcard] with the [name].")
+		to_chat(user, "Ulepszasz [idcard] za pomocą [name].")
 		log_id("[key_name(user)] added access to '[idcard]' using [src] at [AREACOORD(user)].")
 		qdel(src)

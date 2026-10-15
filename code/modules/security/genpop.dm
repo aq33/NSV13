@@ -40,13 +40,13 @@
 /obj/machinery/turnstile/examine(mob/user)
 	. = ..()
 	if(state == TURNSTILE_SECURED)
-		. += "<span class='notice'>The turnstile panel is tightly <b>screwed</b> to the frame.</span>"
+		. += "<span class='notice'>Panel bramki jest mocno <b>przykręcony</b> do ramy.</span>"
 	if(state == TURNSTILE_CIRCUIT_EXPOSED)
-		. += "<span class='notice'>The turnstile circuitboard is exposed, you could <b>pry it</b> from the frame.</span>"
+		. += "<span class='notice'>Płytka bramki jest odsłonięta, możesz ją <b>wyważyć</b> z ramy.</span>"
 	if(state == TURNSTILE_SHELL && anchored)
-		. += "<span class='notice'>The turnstile frame is empty but firmly <b>wrenched</b> to the floor.</span>"
+		. += "<span class='notice'>Rama bramki jest pusta, ale solidnie <b>przykręcona</b> do podłogi.</span>"
 	if(state == TURNSTILE_SHELL && !anchored)
-		. += "<span class='notice'>The turnstile frame is empty and unsecured, ready to be sliced through <b>welding</b>.</span>"
+		. += "<span class='notice'>Rama bramki jest pusta i niezabezpieczona, gotowa do rozcięcia <b>spawarką</b>.</span>"
 
 //Executive officer's line variant. For rule of cool. NSV13 We use this
 /obj/machinery/turnstile/xo
@@ -66,7 +66,7 @@
 	if(istype(W, /obj/item/card/id))
 		var/obj/item/card/id/I = W
 		if(broken)
-			to_chat(user, "<span class='danger'>It appears to be broken.</span>")
+			to_chat(user, "<span class='danger'>Wygląda na zepsuty.</span>")
 			return
 		if(!I || !I.registered_name)
 			return
@@ -74,10 +74,10 @@
 		//Buuut, if they're holding a prisoner ID, that takes priority.
 		if(allowed(user) && !istype(I, /obj/item/card/id/prisoner))
 			if(!registered_name)
-				say("Invalid, please assign this locker to prisoners first before handling it!") // Prevents officers from "forgetting" to assign lockers to the prisoners they are handling.
+				say("Nieprawidłowe; najpierw przypisz tę szafkę więźniom, zanim jej użyjesz!") // Prevents officers from "forgetting" to assign lockers to the prisoners they are handling.
 				return
 			else
-				var/unassign = alert(user, "Do you want to unassign this locker?", "Prisoner locker", "Yes", "No")
+				var/unassign = alert(user, "Czy chcesz cofnąć przypisanie tej szafki?", "Szafka więźnia", "Yes", "No")
 				switch(unassign)
 					if("Yes")
 						var/obj/item/card/id/prisoner/P = assigned_id
@@ -96,18 +96,18 @@
 			if(istype(I, /obj/item/card/id/prisoner)) //Don't claim the locker for a sec officer mind you...
 				var/obj/item/card/id/prisoner/P = I
 				if(P.assigned_locker)
-					to_chat(user, "<span class='notice'>This ID card is already registered to a locker.</span>")
+					to_chat(user, "<span class='notice'>Ta karta ID jest już przypisana do szafki.</span>")
 					return
 				P.assigned_locker = src
 				assigned_id = I
 				registered_name = I.registered_name
 				desc = "A locker used to store a prisoner's valuables, that they can collect at a later date.\nCurrently assigned to: [I.registered_name]. Swipe a security officer ID to unassign it."
-				say("Locker sealed. Assignee: [I.registered_name]")
+				say("Szafka zaplombowana. Przypisano do: [I.registered_name]")
 				playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50, 0)
 				locked = TRUE
 				update_icon()
 			else
-				to_chat(user, "<span class='danger'>Invalid ID. Only prisoners and officers may use these lockers.</span>")
+				to_chat(user, "<span class='danger'>Nieprawidłowy identyfikator. Tych szafek mogą używać tylko więźniowie i funkcjonariusze.</span>")
 			return
 		//It's an ID, and is the correct registered name.
 		if(istype(I) && (registered_name == I.registered_name))
@@ -117,9 +117,9 @@
 				return
 			if(ID.served_time < ID.sentence)
 				playsound(loc, 'sound/machines/buzz-sigh.ogg', 80) //find another sound
-				say("DANGER: PRISONER HAS NOT COMPLETED SENTENCE. AWAIT SENTENCE COMPLETION. COMPLIANCE IS IN YOUR BEST INTEREST.")
+				say("NIEBEZPIECZEŃSTWO: WIĘZIEŃ NIE ODBYŁ KARY. POCZEKAJ NA JEJ ZAKOŃCZENIE. WSPÓŁPRACA LEŻY W TWOIM INTERESIE.")
 				return
-			visible_message("<span class='warning'>[user] slots [I] into [src]'s ID slot, freeing its contents!</span>")
+			visible_message("<span class='warning'>[user] wkłada [I] do gniazda ID [src], uwalniając jego zawartość!</span>")
 			registered_name = null
 			desc = initial(desc)
 			locked = FALSE
@@ -127,7 +127,7 @@
 			qdel(I)
 			playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50, 0)
 		else
-			say("Access Denied. If you are a released prisoner, please insert your prisoner ID.")
+			say("Odmowa dostępu. Jeśli jesteś zwolnionym więźniem, włóż swoją kartę ID więźnia.")
 			return
 	else
 		return ..()
@@ -137,7 +137,7 @@
 	var/obj/item/card/id/I = H.get_idcard()
 	if(!registered_name)
 		if(allowed(user) && !istype(I, /obj/item/card/id/prisoner))
-			say("Invalid, please assign this locker to prisoners first before handling it!") // Prevents officers from "forgetting" to assign lockers to the prisoners they are handling.
+			say("Nieprawidłowe; najpierw przypisz tę szafkę więźniom, zanim jej użyjesz!") // Prevents officers from "forgetting" to assign lockers to the prisoners they are handling.
 			return
 	..()
 
@@ -151,12 +151,12 @@
 		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
 	)
 	AddElement(/datum/element/connect_loc, loc_connections)
-	AddComponent(/datum/component/simple_rotation, ROTATION_ALTCLICK | ROTATION_CLOCKWISE | ROTATION_COUNTERCLOCKWISE | ROTATION_VERBS, null, CALLBACK(src, PROC_REF(can_be_rotated)))
+	AddComponent(/datum/component/simple_rotation)
 
 /obj/machinery/turnstile/proc/can_be_rotated(mob/user, rotation_type)
 	if(!anchored && state == TURNSTILE_SHELL)
 		return TRUE
-	to_chat(user, "<span class='warning'>It is fastened to the floor!</span>")
+	to_chat(user, "<span class='warning'>Jest przymocowany do podłogi!</span>")
 	return FALSE
 
 /obj/machinery/turnstile/proc/on_entered(datum/source, atom/movable/arrived, atom/old_loc, list/atom/old_locs)
@@ -173,14 +173,14 @@
 	var/obj/item/card/id/id_card = H.get_idcard(hand_first = TRUE)
 	if(ACCESS_PRISONER in id_card?.GetAccess())
 		id_card.access -= list(ACCESS_PRISONER) //Prisoner IDs can only be used once to exit the turnstile
-		to_chat(H, "<span class='warning'>Your prisoner ID access has been purged, you won't be able to exit the prison through the turnstile again!</span>")
+		to_chat(H, "<span class='warning'>Dostęp z twojej karty więźnia został usunięty, nie będziesz mógł ponownie opuścić więzienia przez bramkę!</span>")
 		addtimer(CALLBACK(src, PROC_REF(exit_push), H), 2)
 
 /obj/machinery/turnstile/proc/exit_push(atom/movable/pushed) //Just "pushes" prisoners that are being released out of the turnstile so that they don't trap themselves.
 	var/our_turf = get_turf(src)
 	var/pushed_turf = get_turf(pushed)
 	if(our_turf == pushed_turf)
-		var/movedir = turn(dir, 180) //Set to be the opposite of the turnstile dir, as that would always be the exit, unless the turnstile has been built incorrectly.
+		var/movedir = pushed.dir //AQ EDIT - keep going the way they walked in; on our maps the free direction (dir) points out of the brig
 		pushed.Move(get_step(pushed, movedir), movedir)
 
 ///Handle movables (especially mobs) bumping into us.
@@ -207,7 +207,7 @@
 		state = TURNSTILE_CIRCUIT_EXPOSED
 		return
 	if(I.tool_behaviour == TOOL_CROWBAR && panel_open && circuit != null)
-		to_chat(user, "<span class='notice'>You start tearing out the circuitry...</span>")
+		to_chat(user, "<span class='notice'>Zaczynasz wyrywać obwody...</span>")
 		if(do_after(user, 3 SECONDS))
 			I.play_tool_sound(src, 50)
 			circuit.forceMove(loc)
@@ -215,20 +215,20 @@
 			state = TURNSTILE_SHELL
 		return
 	if(istype(I, /obj/item/circuitboard/machine/turnstile) && state == TURNSTILE_SHELL && anchored)
-		to_chat(user, "<span class='notice'>You add the circuitboard to the frame.</span>")
+		to_chat(user, "<span class='notice'>Dodajesz płytkę do ramy.</span>")
 		circuit = new/obj/item/circuitboard/machine/turnstile(src)
 		qdel(I)
 		state = TURNSTILE_CIRCUIT_EXPOSED
 		return
 	if(I.tool_behaviour == TOOL_WRENCH && state == TURNSTILE_SHELL)
 		if(anchored)
-			to_chat(user, "<span class='notice'>You unanchor the turnstile frame...</span>")
+			to_chat(user, "<span class='notice'>Odkręcasz ramę bramki...</span>")
 			if(do_after(user, 3 SECONDS))
 				I.play_tool_sound(src, 50)
 				anchored = FALSE
 			return
 		if(!anchored)
-			to_chat(user, "<span class='notice'>You start anchoring the turnstile frame...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz przykręcać ramę bramki...</span>")
 			if(do_after(user, 3 SECONDS))
 				I.play_tool_sound(src, 50)
 				anchored = TRUE
@@ -252,25 +252,25 @@
 	. = TRUE
 	if(!I.tool_start_check(user, amount=0))
 		return
-	if(circuit == null && user.a_intent == INTENT_HARM)
+	if(circuit == null && user.combat_mode)
 		var/obj/item/weldingtool/W = I
 		if(W.use_tool(src, user, 40, volume=50))
-			to_chat(user, "<span class='notice'>You start slicing off the bars of the [src]")
+			to_chat(user, "<span class='notice'>Zaczynasz odcinać pręty [src]")
 			new /obj/item/stack/rods/ten(get_turf(src))
 			qdel(src)
 			return
 
 	if(obj_integrity >= max_integrity)
-		to_chat(user, "<span class='notice'>The turnstile doesn't need repairing.</span>")
+		to_chat(user, "<span class='notice'>Bramka nie wymaga naprawy.</span>")
 		return
-	user.visible_message("[user] is welding the turnstile.", \
-				"<span class='notice'>You begin repairing the turnstile...</span>", \
-				"<span class='italics'>You hear welding.</span>")
+	user.visible_message("[user] spawa bramkę.", \
+				"<span class='notice'>Zaczynasz naprawiać bramkę...</span>", \
+				"<span class='italics'>Słyszysz spawanie.</span>")
 	if(I.use_tool(src, user, 40, volume=50))
 		obj_integrity = max_integrity
 		set_machine_stat(machine_stat & ~BROKEN)
-		user.visible_message("[user.name] has repaired [src].", \
-							"<span class='notice'>You finish repairing the turnstile.</span>")
+		user.visible_message("[user.name] naprawia [src].", \
+							"<span class='notice'>Kończysz naprawiać bramkę.</span>")
 		update_icon()
 		return
 
@@ -353,8 +353,10 @@
 	var/config_file = file("config/space_law.json")
 	/// A list of all of the available crimes in a formated served to the user interface.
 	var/static/list/crime_list
-	var/crime_names = list()
-	var/static/regex/valid_crime_name_regex = null
+	// AQ EDIT - kilka zarzutów naraz, wyrok liczony po stronie serwera
+	/// Nazwa przestępstwa => wyrok (w decysekundach), do liczenia i sprawdzania zarzutów.
+	var/static/list/crime_sentences
+	// AQ EDIT END
 
 //Prisoner interface wallframe
 /obj/item/wallframe/genpop_interface
@@ -379,7 +381,7 @@
 		buildstage = 0
 		panel_open = TRUE
 
-	if (!crime_list || !valid_crime_name_regex)
+	if (!crime_list || !crime_sentences) // AQ EDIT
 		build_static_information()
 
 	Radio = new/obj/item/radio(src)
@@ -393,19 +395,7 @@
 		message_admins("<span class='boldannounce'>[e] caught on [e.file]:[e.line].</span>")
 		load_default_crimelist()
 		return
-	//we need to get the names of each crime for the regex
-	for(var/key in crime_list)
-		var/value = crime_list[key]
-		for(var/second_key in value)
-			var/second_value = second_key["name"]
-			LAZYADD(crime_names, second_value)
-
-	if (valid_crime_name_regex)
-		return
-
-	// Form the valid crime regex
-	var/regex_string = "^(Attempted )?([jointext(crime_names, "|")])( \\(Repeat offender\\))?$"
-	valid_crime_name_regex = regex(regex_string, "gm")
+	build_crime_sentences() // AQ EDIT
 
 /obj/machinery/genpop_interface/proc/load_default_crimelist()
 	crime_list = list()
@@ -415,8 +405,6 @@
 		// Ignore this crime, it is abstract
 		if (isnull(initial(crime_path.name)))
 			continue
-		// We need to know about this crime for the regex
-		crime_names += initial(crime_path.name)
 		// Create the category if it is needed
 		if (!islist(crime_list[initial(crime_path.category)]))
 			crime_list[initial(crime_path.category)] = list()
@@ -428,8 +416,34 @@
 			"icon" = initial(crime_path.icon),
 			"sentence" = initial(crime_path.sentence),
 			))
-	var/regex_string = "^(Attempted )?([jointext(crime_names, "|")])( \\(Repeat offender\\))?$"
-	valid_crime_name_regex = regex(regex_string, "gm")
+	build_crime_sentences() // AQ EDIT
+
+// AQ EDIT - kilka zarzutów naraz
+/obj/machinery/genpop_interface/proc/build_crime_sentences()
+	crime_sentences = list()
+	for(var/category in crime_list)
+		for(var/list/crime as anything in crime_list[category])
+			crime_sentences[crime["name"]] = crime["sentence"]
+
+/**
+ * Liczy wyrok (w decysekundach) dla listy zarzutów. Tę samą regułę ma podgląd w GenPop.tsx.
+ * Czasy zarzutów się sumują, zbrodnia (MAX_TIMER) od razu daje dożywocie.
+ * Usiłowanie: -5 min, dożywocie spada do 15 min. Recydywa: od 15 min w górę dożywocie, poniżej +5 min.
+ * Opór przy zatrzymaniu: +20% na końcu.
+ */
+/obj/machinery/genpop_interface/proc/calculate_sentence(list/crimes, adjust = 0, attempted = FALSE, elevated = FALSE, resisted = FALSE)
+	var/time = 0
+	for(var/crime in crimes)
+		time += crime_sentences[crime]
+	time = clamp(time + adjust, 0, MAX_TIMER)
+	if(attempted)
+		time = time >= MAX_TIMER ? PRESET_LONG : time - PRESET_SHORT
+	if(elevated)
+		time = time >= PRESET_LONG ? MAX_TIMER : time + PRESET_SHORT
+	if(resisted)
+		time *= 1.2
+	return clamp(round(time, 10), 0, MAX_TIMER)
+// AQ EDIT END
 
 /obj/machinery/genpop_interface/update_icon()
 	if(buildstage< 2)
@@ -454,26 +468,26 @@
 /obj/machinery/genpop_interface/examine()
 	. = ..()
 	if(!panel_open)
-		. += "<span class='notice'>The prisoner interface panel is <b>screwed</b> in safely.</span>"
+		. += "<span class='notice'>Panel interfejsu więziennego jest bezpiecznie <b>przykręcony</b>.</span>"
 	if(panel_open && buildstage == 2)
-		. += "<span class='notice'>The prisoner interface panel is open, the <b>wires</b> are exposed.\nThe interface cannot function with its panel <b>screwed open</b>.</span>"
+		. += "<span class='notice'>Panel interfejsu więziennego jest otwarty, <b>przewody</b> są odsłonięte.\nInterfejs nie może działać z <b>odkręconym</b> panelem.</span>"
 	if(buildstage == 1)
-		. += "<span class='notice'>The circuits are visible and ready to be <b>pried</b> off.\nIt is lacking proper <b>wiring</b></span>"
+		. += "<span class='notice'>Obwody są widoczne i gotowe do <b>wyważenia</b>.\nBrakuje właściwego <b>okablowania</b></span>"
 	if(buildstage == 0)
-		.+= "<span class='notice'>The empty frame is ready to be <b>wrenched</b> off the wall.\nIt is lacking a <b>circuitboard</b>.</span>"
+		.+= "<span class='notice'>Pusta rama jest gotowa do <b>odkręcenia</b> od ściany.\nBrakuje w niej <b>płytki</b>.</span>"
 
 /obj/machinery/genpop_interface/attackby(obj/item/C, mob/user)
 	switch(buildstage)
 		if(0)
 			if(istype(C, /obj/item/electronics/genpop_interface))
 				if(user.temporarilyRemoveItemFromInventory(C))
-					to_chat(user, "<span class='notice'>You insert the processing unit in the frame.</span>")
+					to_chat(user, "<span class='notice'>Wkładasz jednostkę przetwarzającą do ramy.</span>")
 					qdel(C)
 					buildstage = 1
 					return
 
 			if(C.tool_behaviour == TOOL_WRENCH)
-				to_chat(user, "<span class='notice'>You wrench the frame off the wall.</span>")
+				to_chat(user, "<span class='notice'>Odkręcasz ramę od ściany.</span>")
 				C.play_tool_sound(src)
 				new /obj/item/wallframe/genpop_interface( user.loc )
 				qdel(src)
@@ -482,23 +496,23 @@
 			if(istype(C, /obj/item/stack/cable_coil))
 				var/obj/item/stack/cable_coil/cable = C
 				if(cable.get_amount() < 5)
-					to_chat(user, "<span class='warning'>You need five lengths of cable to wire the prisoner interface!</span>")
+					to_chat(user, "<span class='warning'>Potrzebujesz pięciu odcinków kabla, by okablować interfejs więzienny!</span>")
 					return
-				user.visible_message("[user.name] wires theprisoner interface.</span>", \
-									"<span class='notice'>You start wiring the prisoner interface.</span>")
+				user.visible_message("[user.name] okablowuje interfejs więzienny.</span>", \
+									"<span class='notice'>Zaczynasz okablowywać interfejs więzienny.</span>")
 				if (do_after(user, 20, target = src))
 					if (cable.get_amount() >= 5 && buildstage == 1)
 						cable.use(5)
-						to_chat(user, "<span class='notice'>You wire the prisoner interface.</span>")
+						to_chat(user, "<span class='notice'>Okablowujesz interfejs więzienny.</span>")
 						buildstage = 2
 						update_icon()
 				return
 
 			if(C.tool_behaviour == TOOL_CROWBAR)
-				to_chat(user, "<span class='notice'>You start prying out the electronics off the frame.</span>")
+				to_chat(user, "<span class='notice'>Zaczynasz wyważać elektronikę z ramy.</span>")
 				if (C.use_tool(src, user, 20))
 					if (buildstage == 1)
-						to_chat(user, "<span class='notice'>You remove the prisoner interface electronics.</span>")
+						to_chat(user, "<span class='notice'>Wyjmujesz elektronikę interfejsu więziennego.</span>")
 						new /obj/item/electronics/genpop_interface( src.loc )
 						playsound(src.loc, 'sound/items/deconstruct.ogg', 50, 1)
 						buildstage = 0
@@ -507,13 +521,13 @@
 		if(2)
 			if(C.tool_behaviour == TOOL_SCREWDRIVER)
 				if(panel_open)
-					to_chat(user, "<span class='notice'>You close the panel of the [src].</span>")
+					to_chat(user, "<span class='notice'>Zamykasz panel [src].</span>")
 					C.play_tool_sound(src)
 					panel_open = FALSE
 					update_icon()
 					return
 				else
-					to_chat(user, "<span class='notice'>You open the panel of the [src].</span>")
+					to_chat(user, "<span class='notice'>Otwierasz panel [src].</span>")
 					C.play_tool_sound(src)
 					panel_open = TRUE
 					update_icon()
@@ -521,7 +535,7 @@
 
 			if(C.tool_behaviour == TOOL_WIRECUTTER && panel_open)
 				C.play_tool_sound(src)
-				to_chat(user, "<span class='notice'>You cut the wires.</span>")
+				to_chat(user, "<span class='notice'>Przecinasz przewody.</span>")
 				new /obj/item/stack/cable_coil(loc, 5)
 				buildstage = 1
 				update_icon()
@@ -577,7 +591,7 @@
 /obj/machinery/genpop_interface/proc/print_id(mob/user, desired_crime, desired_sentence)
 
 	if(world.time < next_print)
-		to_chat(user, "<span class='warning'>[src]'s ID printer is on cooldown.</span>")
+		to_chat(user, "<span class='warning'>Drukarka ID [src] się odnawia.</span>")
 		return FALSE
 	investigate_log("[key_name(user)] created a prisoner ID with sentence: [desired_sentence / 600] for [desired_sentence / 600] min", INVESTIGATE_RECORDS)
 	user.log_message("[key_name(user)] created a prisoner ID with sentence: [desired_sentence / 600] for [desired_sentence / 600] min", LOG_ATTACK)
@@ -589,13 +603,17 @@
 			var/crime = GLOB.data_core.createCrimeEntry(desired_crime, null, user.real_name, station_time_timestamp())
 			GLOB.data_core.addCrime(R.fields["id"], crime)
 			investigate_log("New Crime: <strong>[desired_crime]</strong> | Added to [R.fields["name"]] by [key_name(user)]", INVESTIGATE_RECORDS)
-			say("Criminal record for [R.fields["name"]] successfully updated.")
+			say("Kartoteka kryminalna [R.fields["name"]] została zaktualizowana.")
 			playsound(loc, 'sound/machines/ping.ogg', 50, 1)
 
 	var/obj/item/card/id/id = new /obj/item/card/id/prisoner(get_turf(src), desired_sentence * 0.1, desired_crime, desired_name)
-	Radio.talk_into(src, "Prisoner [id.registered_name] has been incarcerated for [desired_sentence / 600 ] minutes.")
+	// AQ EDIT - tłumaczenie, dożywocie zamiast 600 min
+	var/sentence_text = desired_sentence >= MAX_TIMER ? "dożywocie" : "[desired_sentence / 600] min"
+	Radio.talk_into(src, "Więzień [id.registered_name] został osadzony za: [desired_crime]. Wyrok: [sentence_text].")
 	var/obj/item/paper/paperwork = new /obj/item/paper(get_turf(src))
-	paperwork.add_raw_text("<h1 id='record-of-incarceration'>Record Of Incarceration:</h1> <hr> <h2 id='name'>Name: </h2> <p>[desired_name]</p> <h2 id='crime'>Crime: </h2> <p>[desired_crime]</p> <h2 id='sentence-min'>Sentence (Min)</h2> <p>[desired_sentence/600]</p> <h2 id='description'>Description </h2> <p>[desired_details]</p> <p>WhiteRapids Military Council, disciplinary authority.</p>") //NSV13 Nanotrasen replaced with WhiteRapids
+	paperwork.name = "protokół osadzenia ([desired_name])"
+	paperwork.add_raw_text("<h1 id='record-of-incarceration'>Protokół osadzenia</h1> <hr> <h2 id='name'>Imię i nazwisko:</h2> <p>[desired_name]</p> <h2 id='crime'>Zarzuty:</h2> <p>[desired_crime]</p> <h2 id='sentence-min'>Wyrok:</h2> <p>[sentence_text]</p> <h2 id='description'>Opis zdarzenia:</h2> <p>[desired_details]</p> <p>Rada Wojskowa WhiteRapids, organ dyscyplinarny.</p>") //NSV13 Nanotrasen replaced with WhiteRapids
+	// AQ EDIT END
 	paperwork.update_appearance()
 	desired_name = null
 	desired_details = null
@@ -613,23 +631,23 @@
 	if(..())
 		return
 	if(!allowed(usr))
-		to_chat(usr, "<span class='warning'>Access denied.</span>")
+		to_chat(usr, "<span class='warning'>Odmowa dostępu.</span>")
 		return
 	switch(action)
 		if("prisoner_name")
 			// Encode the name and ensure it is saniticed for IC input
-			var/prisoner_name = stripped_input(usr, "Input prisoner's name...", "Crimes", desired_name)
+			var/prisoner_name = stripped_input(usr, "Podaj imię więźnia...", "Crimes", desired_name)
 			prisoner_name = sanitize_name(prisoner_name)
 			if(!prisoner_name || (!Adjacent(usr) && !IsAdminGhost(usr)))
 				return FALSE
 			desired_name = prisoner_name
-			var/prisoner_details = stripped_input(usr, "Input details of the offense...", "Crimes", desired_details)
+			var/prisoner_details = stripped_input(usr, "Podaj szczegóły wykroczenia...", "Crimes", desired_details)
 			if (!prisoner_details || CHAT_FILTER_CHECK(prisoner_details) || (!Adjacent(usr) && !IsAdminGhost(usr)))
 				return TRUE
 			desired_details = prisoner_details
 			// Ask them for the details of the crime
 		if("edit_details")
-			var/prisoner_details = stripped_input(usr, "Input details of the offense...", "Crimes", desired_details)
+			var/prisoner_details = stripped_input(usr, "Podaj szczegóły wykroczenia...", "Crimes", desired_details)
 			if (!prisoner_details || CHAT_FILTER_CHECK(prisoner_details) || (!Adjacent(usr) && !IsAdminGhost(usr)))
 				return FALSE
 			desired_details = prisoner_details
@@ -638,19 +656,37 @@
 			if (!desired_name)
 				return
 			if (!desired_details)
-				var/prisoner_details = stripped_input(usr, "Input details of the offense...", "Crimes", desired_details)
+				var/prisoner_details = stripped_input(usr, "Podaj szczegóły wykroczenia...", "Crimes", desired_details)
 				if (!prisoner_details || CHAT_FILTER_CHECK(prisoner_details) || (!Adjacent(usr) && !IsAdminGhost(usr)))
-					say("Please provide a correct description of the incident that led to their charge.")
+					say("Podaj prawidłowy opis zdarzenia, które doprowadziło do zarzutu.")
 					return
 				desired_details = prisoner_details
-			var/desired_sentence = text2num(params["desired_sentence"])
+			// AQ EDIT - kilka zarzutów, wyrok liczy serwer
+			var/list/crimes = params["crimes"]
+			if (!islist(crimes) || !length(crimes))
+				return
+			crimes = uniqueList(crimes)
+			for(var/crime in crimes)
+				if(!istext(crime) || isnull(crime_sentences[crime]))
+					log_href_exploit(usr, "Entered a crime which is not in the space law list.")
+					return
+			var/attempted = !!params["attempted"]
+			var/elevated = !!params["elevated"]
+			var/resisted = !!params["resisted"]
+			var/adjust = text2num(params["adjust"]) || 0
+			var/base_time = 0
+			for(var/crime in crimes)
+				base_time += crime_sentences[crime]
+			if (attempted && base_time <= PRESET_SHORT)
+				say("Usiłowanie wykroczenia karze się grzywną, nie odsiadką.")
+				return
+			var/desired_sentence = calculate_sentence(crimes, adjust, attempted, elevated, resisted)
 			if (!desired_sentence)
+				say("Wyrok wynosi zero minut. Zmień korektę czasu albo zarzuty.")
 				return
-			var/desired_crime = params["desired_crime"]
-			if (!valid_crime_name_regex.Find(desired_crime))
-				log_href_exploit(usr, "Entered a desired crime which was not permitted by the desired crime regex.")
-				return
+			var/desired_crime = (attempted ? "Usiłowanie: " : "") + jointext(crimes, ", ") + (elevated ? " (recydywa)" : "") + (resisted ? " (opór przy zatrzymaniu)" : "")
 			print_id(usr, desired_crime, desired_sentence)
+			// AQ EDIT END
 
 		// For adjusting the time of pre-existing prisoners
 		if("adjust_time")
@@ -659,7 +695,7 @@
 			if(!istype(id))
 				return
 			if(id.served_time >= id.sentence)
-				say("Prisoner has already served their time! Please apply another charge to sentence them with!")
+				say("Więzień odbył już karę! Zastosuj inny zarzut, by go skazać!")
 				return
 			if(value && isnum(value))
 				id.sentence = clamp(id.sentence + value , 0 , MAX_TIMER)
@@ -668,9 +704,9 @@
 			var/obj/item/card/id/prisoner/id = locate(params["id"]) in GLOB.prisoner_ids
 			if(!istype(id))
 				return
-			if(alert("Are you sure you want to release [id.registered_name]", "Prisoner Release", "Yes", "No") != "Yes")
+			if(alert("Czy na pewno chcesz zwolnić [id.registered_name]? Karta więźnia od razu zaliczy cały wyrok i otworzy mu bramki wyjścia.", "Zwolnienie więźnia", "Tak", "Nie") != "Tak") // AQ EDIT
 				return
-			Radio.talk_into(src, "Prisoner [id.registered_name] has been discharged.")
+			Radio.talk_into(src, "Więzień [id.registered_name] został zwolniony.")
 			investigate_log("[key_name(usr)] has early-released [id] ([id.loc])", INVESTIGATE_RECORDS)
 			usr.log_message("[key_name(usr)] has early-released [id] ([id.loc])", LOG_ATTACK)
 			id.served_time = id.sentence
@@ -678,9 +714,19 @@
 			var/obj/item/card/id/prisoner/id = locate(params["id"]) in GLOB.prisoner_ids
 			if(!istype(id))
 				return
-			if(alert("Do you want to reset the sentence of [id.registered_name]?", "Confirmation", "Yes", "No") != "Yes")
+			if(alert("Czy chcesz zresetować wyrok [id.registered_name]? Odsiedziany czas spadnie do zera.", "Ucieczka więźnia", "Tak", "Nie") != "Tak") // AQ EDIT
 				return
-			Radio.talk_into(src, "Prisoner [id.registered_name] has had their serving time reset.")
+			// AQ EDIT - zwolniony już więzień (Ex-Convict) wraca za kratki: karta traci dostęp i znowu liczy czas
+			if(id.served_time >= id.sentence)
+				id.assignment = "Convict"
+				id.access = list()
+				id.update_label(id.registered_name, id.assignment)
+				START_PROCESSING(SSobj, id)
+				var/datum/data/record/R = find_record("name", id.registered_name, GLOB.data_core.general)
+				if(R)
+					R.fields["criminal"] = "Incarcerated"
+			// AQ EDIT END
+			Radio.talk_into(src, "Czas odbywania kary więźnia [id.registered_name] został zresetowany.")
 			investigate_log("[key_name(usr)] has reset the timer of [id] ([id.loc])", INVESTIGATE_RECORDS)
 			usr.log_message("[key_name(usr)] has reset the timer of [id] ([id.loc])", LOG_ATTACK)
 			id.served_time = 0
@@ -718,9 +764,12 @@ GLOBAL_LIST_EMPTY(prisoner_ids)
 /obj/item/card/id/prisoner/examine(mob/user)
 	. = ..()
 	if(sentence)
-		. += "<span class='notice'>You have served [DisplayTimeText(served_time*10, 1)] out of [DisplayTimeText(sentence*10, 1)].</span>"
+		if(sentence * 10 >= MAX_TIMER) // AQ EDIT
+			. += "<span class='notice'>Wyrok: dożywocie. Odsiedziano [DisplayTimeText(served_time*10, 1)].</span>"
+		else
+			. += "<span class='notice'>Odbyłeś [DisplayTimeText(served_time*10, 1)] z [DisplayTimeText(sentence*10, 1)].</span>"
 	if(crime)
-		. += "<span class='warning'>It appears its holder was convicted of: <b>[crime]</b></span>"
+		. += "<span class='warning'>Wygląda na to, że właściciel został skazany za: <b>[crime]</b></span>"
 
 /obj/item/card/id/prisoner/process(delta_time)
 	served_time += delta_time
@@ -735,7 +784,10 @@ GLOBAL_LIST_EMPTY(prisoner_ids)
 			R.fields["criminal"] = "Discharged"
 
 		if(isliving(loc))
-			to_chat(loc, "<span class='boldnotice'>You have served your sentence! You may now exit prison through the turnstiles and collect your belongings.</span>")
+			to_chat(loc, "<span class='boldnotice'>Odbyłeś karę! Możesz teraz wyjść z więzienia przez bramki i odebrać swoje rzeczy.</span>")
 		return PROCESS_KILL
 
 #undef MAX_TIMER
+#undef PRESET_SHORT // AQ EDIT
+#undef PRESET_MEDIUM
+#undef PRESET_LONG

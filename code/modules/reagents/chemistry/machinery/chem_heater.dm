@@ -59,7 +59,7 @@
 /obj/machinery/chem_heater/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += "<span class='notice'>The status display reads: Heating reagents at <b>[heater_coefficient*1000]%</b> speed.</span>"
+		. += "<span class='notice'>Wyświetlacz stanu pokazuje: podgrzewanie odczynników z szybkością <b>[heater_coefficient*1000]%</b>.</span>"
 
 /obj/machinery/chem_heater/process(delta_time)
 	..()
@@ -84,7 +84,7 @@
 		if(!user.transferItemToLoc(B, src))
 			return
 		replace_beaker(user, B)
-		to_chat(user, "<span class='notice'>You add [B] to [src].</span>")
+		to_chat(user, "<span class='notice'>Dodajesz [B] do [src].</span>")
 		ui_update()
 		update_icon()
 		return
@@ -141,3 +141,17 @@
 		if("eject")
 			replace_beaker(usr)
 			. = TRUE
+
+/// Port Bee #11899: right click ejects the beaker (Alt-click still works)
+/obj/machinery/chem_heater/attack_hand_secondary(mob/user, list/modifiers)
+	. = ..()
+	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
+		return
+	AltClick(user)
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+/obj/machinery/chem_heater/attack_robot_secondary(mob/user, list/modifiers)
+	return attack_hand_secondary(user, modifiers)
+
+/obj/machinery/chem_heater/attack_ai_secondary(mob/user, list/modifiers)
+	return attack_hand_secondary(user, modifiers)

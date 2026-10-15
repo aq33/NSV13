@@ -21,22 +21,21 @@
 /datum/element/decal/blood/generate_appearance(_icon, _icon_state, _dir, _layer, _color, _alpha, source)
 	var/obj/item/I = source
 	ADD_KEEP_TOGETHER(I, "item_blood_overlay")
-	if(!_icon)
-		_icon = 'icons/effects/blood.dmi'
-	if(!_icon_state)
-		_icon_state = "itemblood"
+	if(!_color)
+		_color = COLOR_BLOOD
 	var/icon = I.icon
 	var/icon_state = I.icon_state
 	var/static/list/blood_splatter_appearances = list()
 	//try to find a pre-processed blood-splatter. otherwise, make a new one
-	var/index = "[REF(icon)]-[icon_state]"
+	var/index = "[REF(icon)]-[icon_state]-[_color]"
 	pic = blood_splatter_appearances[index]
 
 	if(!pic)
 		var/icon/blood_splatter_icon = icon(I.icon, I.icon_state, null, 1)
 		blood_splatter_icon.Blend("#fff", ICON_ADD) 			//fills the icon_state with white (except where it's transparent)
-		blood_splatter_icon.Blend(icon(_icon, _icon_state), ICON_MULTIPLY) //adds blood and the remaining white areas become transparant
+		blood_splatter_icon.Blend(icon('icons/effects/blood.dmi', "itemblood"), ICON_MULTIPLY) //adds blood and the remaining white areas become transparant
 		pic = mutable_appearance(blood_splatter_icon, I.icon_state)
+		pic.color = _color
 		blood_splatter_appearances[index] = pic
 	return TRUE
 
@@ -45,5 +44,5 @@
 
 	var/atom/A = source
 	override[EXAMINE_POSITION_ARTICLE] = A.gender == PLURAL? "some" : "a"
-	override[EXAMINE_POSITION_BEFORE] = " <span class='warning'>blood-stained</span> "
+	override[EXAMINE_POSITION_BEFORE] = " <span class='warning'>zakrwawiony</span> "
 	return COMPONENT_EXNAME_CHANGED

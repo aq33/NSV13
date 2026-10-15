@@ -29,7 +29,7 @@
 	allowed = list(/obj/item/melee/sickly_blade)
 	hoodtype = /obj/item/clothing/head/hooded/cult_hoodie/eldritch
 	// Slightly better than normal cult robes
-	armor = list("melee" = 50, "bullet" = 50, "laser" = 50,"energy" = 50, "bomb" = 35, "bio" = 20, "rad" = 20, "fire" = 20, "acid" = 20, "stamina" = 50)
+	armor = list("melee" = 50, "bullet" = 50, "laser" = 50,"energy" = 50, "bomb" = 35, "bio" = 20, "rad" = 20, "fire" = 20, "acid" = 20, "stamina" = 50, "bleed" = 40)
 
 /obj/item/clothing/suit/hooded/cultrobes/eldritch/examine(mob/user)
 	. = ..()
@@ -37,7 +37,7 @@
 		return
 
 	// Our hood gains the heretic_focus element.
-	. += "<span class='notice'>Allows you to cast heretic spells while the hood is up.</span>"
+	. += "<span class='notice'>Z założonym kapturem możesz rzucać zaklęcia heretyka.</span>"
 
 // Void cloak. Turns invisible with the hood up, lets you hide stuff.
 /obj/item/clothing/head/hooded/cult_hoodie/void
@@ -47,7 +47,7 @@
 	flags_cover = NONE
 	desc = "Black like tar and doesn't reflect any light. Runic symbols line the outside, with each flash you lose comprehension of what you are seeing."
 	item_flags = EXAMINE_SKIP
-	armor = list("melee" = 30, "bullet" = 30, "laser" = 30,"energy" = 30, "bomb" = 15, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0, "stamina" = 30)
+	armor = list("melee" = 30, "bullet" = 30, "laser" = 30,"energy" = 30, "bomb" = 15, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0, "stamina" = 30, "bleed" = 40)
 
 /obj/item/clothing/suit/hooded/cultrobes/void
 	name = "void cloak"
@@ -58,7 +58,7 @@
 	hoodtype = /obj/item/clothing/head/hooded/cult_hoodie/void
 	flags_inv = NONE
 	// slightly worse than normal cult robes
-	armor = list("melee" = 30, "bullet" = 30, "laser" = 30,"energy" = 30, "bomb" = 15, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0, "stamina" = 30)
+	armor = list("melee" = 30, "bullet" = 30, "laser" = 30,"energy" = 30, "bomb" = 15, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0, "stamina" = 30, "bleed" = 40)
 	body_parts_covered = CHEST|GROIN|ARMS
 	pocket_storage_component_path = /datum/component/storage/concrete/pockets/void_cloak
 	qdel_hood = TRUE
@@ -80,7 +80,7 @@
 
 	var/mob/living/wearer = loc
 	if(!IS_HERETIC_OR_MONSTER(wearer))
-		loc.balloon_alert(loc, "you can't get the hood up!")
+		loc.balloon_alert(loc, "nie możesz założyć kaptura!")
 		return
 
 	// When we make the hood, that means we're going invisible
@@ -94,8 +94,8 @@
 	RemoveElement(/datum/element/heretic_focus)
 
 	if(isliving(loc))
-		loc.balloon_alert(loc, "cloak hidden")
-		loc.visible_message("<span class='notice'>Light shifts around [loc], making the cloak around them invisible!</span>")
+		loc.balloon_alert(loc, "płaszcz ukryty")
+		loc.visible_message("<span class='notice'>Światło wokół [loc] się zakrzywia i płaszcz staje się niewidzialny!</span>")
 
 /// Makes our cloak "visible" again.
 /obj/item/clothing/suit/hooded/cultrobes/void/proc/make_visible()
@@ -104,5 +104,5 @@
 	AddElement(/datum/element/heretic_focus)
 
 	if(isliving(loc))
-		loc.balloon_alert(loc, "cloak revealed")
-		loc.visible_message("<span class=notice>A kaleidoscope of colours collapses around [loc], a cloak appearing suddenly around their person!</span>")
+		loc.balloon_alert(loc, "płaszcz odsłonięty")
+		loc.visible_message("<span class='notice'>Wokół [loc] zapada się kalejdoskop barw i nagle pojawia się płaszcz!</span>")

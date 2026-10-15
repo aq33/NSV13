@@ -8,12 +8,12 @@
 	analyzerdesceffect = "Wytwarza zarodniki podczas śmierci i rozrastania."
 	color = "#E88D5D"
 	complementary_color = "#823ABB"
-	message_living = ", and you feel tired"
+	message_living = ", a ty czujesz się zmęczony"
 	reagent = /datum/reagent/blob/zombifying_pods
 
 /datum/blobstrain/reagent/zombifying_pods/damage_reaction(obj/structure/blob/B, damage, damage_type, damage_flag)
 	if((damage_flag == "melee" || damage_flag == "bullet" || damage_flag == "laser") && damage <= 20 && B.obj_integrity - damage <= 0 && prob(30)) //if the cause isn't fire or a bomb, the damage is less than 21, we're going to die from that damage, 20% chance of a shitty spore.
-		B.visible_message("<span class='warning'><b>A spore floats free of the blob!</b></span>")
+		B.visible_message("<span class='warning'><b>Z grzyba odrywa się zarodnik!</b></span>")
 		var/mob/living/simple_animal/hostile/blob/blobspore/weak/BS = new/mob/living/simple_animal/hostile/blob/blobspore/weak(B.loc)
 		BS.overmind = B.overmind
 		BS.update_icons()
@@ -44,4 +44,4 @@
 		O.blob_mobs.Add(BS)
 		BS.Zombify(M)
 		O.add_points(points)
-		to_chat(O, "<span class='notice'>Gained [points] resources from the zombification of [M].</span>")
+		to_chat(O, "<span class='notice'>Zyskujesz [points] zasobów z zombifikacji [M].</span>")

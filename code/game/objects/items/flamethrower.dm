@@ -107,7 +107,7 @@
 
 	else if(W.tool_behaviour == TOOL_SCREWDRIVER && igniter && !lit)
 		status = !status
-		to_chat(user, "<span class='notice'>[igniter] is now [status ? "secured" : "unsecured"]!</span>")
+		to_chat(user, "<span class='notice'>[igniter] jest teraz [status ? "zabezpieczony" : "niezabezpieczony"]!</span>")
 		update_icon()
 		return
 
@@ -128,7 +128,7 @@
 			if(user.transferItemToLoc(W,src))
 				user.put_in_hands(ptank) // FLAMETHROWER TACTICAL RELOAD
 				ptank = W
-				to_chat(user, "<span class='notice'>You swap the plasma tank in [src]!</span>")
+				to_chat(user, "<span class='notice'>Wymieniasz butlę z plazmą w [src]!</span>")
 			return
 		if(!user.transferItemToLoc(W, src))
 			return
@@ -149,23 +149,23 @@
 	toggle_igniter(user)
 
 /obj/item/flamethrower/AltClick(mob/user)
-	if(ptank && isliving(user) && user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
+	if(ptank && isliving(user) && user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, TRUE))
 		user.put_in_hands(ptank)
 		ptank = null
-		to_chat(user, "<span class='notice'>You remove the plasma tank from [src]!</span>")
+		to_chat(user, "<span class='notice'>Wyjmujesz butlę z plazmą z [src]!</span>")
 		update_icon()
 
 /obj/item/flamethrower/examine(mob/user)
 	. = ..()
 	if(ptank)
-		. += "<span class='notice'>\The [src] has \a [ptank] attached. Alt-click to remove it.</span>"
+		. += "<span class='notice'>Do [src] jest podłączona [ptank]. Alt-kliknij, by ją wyjąć.</span>"
 
 /obj/item/flamethrower/proc/toggle_igniter(mob/user)
 	if(!ptank)
-		to_chat(user, "<span class='notice'>Attach a plasma tank first!</span>")
+		to_chat(user, "<span class='notice'>Najpierw podłącz butlę z plazmą!</span>")
 		return
 	if(!status)
-		to_chat(user, "<span class='notice'>Secure the igniter first!</span>")
+		to_chat(user, "<span class='notice'>Najpierw zabezpiecz zapalnik!</span>")
 		return
 	to_chat(user, "<span class='notice'>You [lit ? "extinguish" : "ignite"] [src]!</span>")
 	lit = !lit
@@ -222,7 +222,7 @@
 	return damage
 
 /obj/item/flamethrower/proc/kill_flame()
-	visible_message("<span class='danger'>\The [src] breathes a sighed hiss as its flame dies out.</span>")
+	visible_message("<span class='danger'>[src] wydaje z siebie syk przypominający westchnienie, gdy płomień gaśnie.</span>")
 	lit = FALSE
 	set_light_on(FALSE)
 	playsound(loc, 'aquila/sound/weapons/flamethrower_empty.ogg', 50, TRUE)
@@ -273,7 +273,7 @@
 	for(var/mob/living/L in target.contents)
 		var/hit_percent = (100 - L.getarmor(null, "fire")) / 100
 		L.apply_damage_type(damage * hit_percent, BURN)
-		to_chat(L, "<span class='userdanger'>A waft of flames overtakes you!</span>")
+		to_chat(L, "<span class='userdanger'>Ogarnia cię fala płomieni!</span>")
 	return TRUE
 
 
@@ -300,7 +300,7 @@
 /obj/item/flamethrower/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	var/obj/item/projectile/P = hitby
 	if(ptank && damage && attack_type == PROJECTILE_ATTACK && P.damage_type != STAMINA && prob(15))
-		owner.visible_message("<span class='danger'>\The [attack_text] hits the fuel tank on [owner]'s [name], rupturing it! What a shot!</span>")
+		owner.visible_message("<span class='danger'>[attack_text] trafia w zbiornik paliwa [name] na [owner], rozrywając go! Co za strzał!</span>")
 		var/turf/target_turf = get_turf(owner)
 		log_game("A projectile ([hitby]) detonated a flamethrower tank held by [key_name(owner)] at [COORD(target_turf)]")
 		if(igniter)

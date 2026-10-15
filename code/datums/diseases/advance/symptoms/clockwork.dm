@@ -1,6 +1,6 @@
 /datum/symptom/robotic_adaptation
 	name = "Biometallic Replication"
-	desc = "The virus can manipulate metal and silicate compounds, becoming able to infect robotic beings. The virus also provides a suitable substrate for nanites in otherwise inhospitable hosts"
+	desc = "Wirus potrafi manipulować metalem i związkami krzemianowymi, zyskując zdolność zarażania istot robotycznych. Zapewnia też odpowiednie podłoże dla nanitów w nosicielach, którzy w innym razie byliby dla nich nieprzyjaźni"
 	stealth = 0
 	resistance = 1
 	stage_speed = 4 //while the reference material has low speed, this virus will take a good while to completely convert someone
@@ -15,9 +15,7 @@
 	var/replaceorgans = FALSE
 	var/replacebody = FALSE
 	var/robustbits = FALSE
-	threshold_desc = "<b>Stage Speed 4:</b>The virus will replace the host's organic organs with mundane, biometallic versions. +1 severity.<br>\
-                      <b>Resistance 4:</b>The virus will eventually convert the host's entire body to biometallic materials, and maintain its cellular integrity. +1 severity.<br>\
-                      <b>Stage Speed 12:</b>Biometallic mass created by the virus will be superior to typical organic mass. -3 severity."
+	threshold_desc = "<b>Szybkość stadiów 4:</b> wirus zastępuje organiczne narządy nosiciela zwykłymi, biometalicznymi wersjami. +1 do ciężkości.<br><b>Odporność 4:</b> wirus w końcu przemienia całe ciało nosiciela w materiały biometaliczne i utrzymuje jego integralność komórkową. +1 do ciężkości.<br><b>Szybkość stadiów 12:</b> biometaliczna masa wytwarzana przez wirusa będzie lepsza od typowej masy organicznej. -3 do ciężkości."
 
 /datum/symptom/robotic_adaptation/OnAdd(datum/disease/advance/A)
 	A.infectable_biotypes |= MOB_ROBOTIC
@@ -79,7 +77,7 @@
 						var/obj/item/organ/stomach/clockwork/organ = new()
 						organ.Insert(H, TRUE, FALSE)
 					if(prob(40))
-						to_chat(H, "<span class='userdanger'>You feel a stabbing pain in your abdomen!</span>")
+						to_chat(H, "<span class='userdanger'>Czujesz kłujący ból w brzuchu!</span>")
 						H.emote("scream")
 					return TRUE
 				if(ORGAN_SLOT_EARS)
@@ -87,7 +85,7 @@
 					if(robustbits)
 						organ.damage_multiplier = 0.5
 					organ.Insert(H, TRUE, FALSE)
-					to_chat(H, "<span class='warning'>Your ears pop.</span>")
+					to_chat(H, "<span class='warning'>Strzela ci w uszach.</span>")
 					return TRUE
 				if(ORGAN_SLOT_EYES)
 					var/obj/item/organ/eyes/robotic/clockwork/organ = new()
@@ -95,7 +93,7 @@
 						organ.flash_protect = 1
 					organ.Insert(H, TRUE, FALSE)
 					if(prob(40))
-						to_chat(H, "<span class='userdanger'>You feel a stabbing pain in your eyeballs!</span>")
+						to_chat(H, "<span class='userdanger'>Czujesz kłujący ból w gałkach ocznych!</span>")
 						H.emote("scream")
 					return TRUE
 				if(ORGAN_SLOT_LUNGS)
@@ -112,13 +110,13 @@
 						organ.gas_stimulation_min = 15
 					organ.Insert(H, TRUE, FALSE)
 					if(prob(40))
-						to_chat(H, "<span class='userdanger'>You feel a stabbing pain in your chest!</span>")
+						to_chat(H, "<span class='userdanger'>Czujesz kłujący ból w klatce piersiowej!</span>")
 						H.emote("scream")
 					return TRUE
 				if(ORGAN_SLOT_HEART)
 					var/obj/item/organ/heart/clockwork/organ = new()
 					organ.Insert(H, TRUE, FALSE)
-					to_chat(H, "<span class='userdanger'>You feel a stabbing pain in your chest!</span>")
+					to_chat(H, "<span class='userdanger'>Czujesz kłujący ból w klatce piersiowej!</span>")
 					H.emote("scream")
 					return TRUE
 				if(ORGAN_SLOT_LIVER)
@@ -127,7 +125,7 @@
 						organ.toxTolerance = 7
 					organ.Insert(H, TRUE, FALSE)
 					if(prob(40))
-						to_chat(H, "<span class='userdanger'>You feel a stabbing pain in your abdomen!</span>")
+						to_chat(H, "<span class='userdanger'>Czujesz kłujący ból w brzuchu!</span>")
 						H.emote("scream")
 					return TRUE
 				if(ORGAN_SLOT_TONGUE)
@@ -148,7 +146,7 @@
 					if(robustbits)
 						organ.flight_level = WINGS_FLYING
 					organ.Insert(H, TRUE, FALSE)
-					to_chat(H, "<span class='warning'>Your wings feel stiff.</span>")
+					to_chat(H, "<span class='warning'>Twoje skrzydła sztywnieją.</span>")
 					return TRUE
 	if(replacebody)
 		for(var/obj/item/bodypart/O in H.bodyparts)
@@ -164,7 +162,7 @@
 						B.brute_reduction = 3 //this is just below the amount that lets augs ignore space damage.
 						B.burn_reduction = 2
 					B.replace_limb(H, TRUE)
-					H.visible_message("<span class='notice'>[H]'s head shifts, and becomes metal before your very eyes", "<span_class='userdanger'>Your head feels numb, and cold.</span>")
+					H.visible_message("<span class='notice'>Głowa [H] się przesuwa i na twoich oczach zamienia się w metal", "<span_class='userdanger'>Twoja głowa drętwieje i robi się zimna.</span>")
 					qdel(O)
 					return TRUE
 				if(BODY_ZONE_CHEST)
@@ -173,7 +171,7 @@
 						B.brute_reduction = 3
 						B.burn_reduction = 2
 					B.replace_limb(H, TRUE)
-					H.visible_message("<span class='notice'>[H]'s [O] shifts, and becomes metal before your very eyes", "<span_class='userdanger'>Your [O] feels numb, and cold.</span>")
+					H.visible_message("<span class='notice'>[O] [H] się przesuwa i na twoich oczach zamienia się w metal", "<span_class='userdanger'>Twój narząd ([O]) drętwieje i robi się zimny.</span>")
 					qdel(O)
 					return TRUE
 				if(BODY_ZONE_L_ARM)
@@ -182,7 +180,7 @@
 						B.brute_reduction = 3
 						B.burn_reduction = 2
 					B.replace_limb(H, TRUE)
-					H.visible_message("<span class='notice'>[H]'s [O] shifts, and becomes metal before your very eyes", "<span_class='userdanger'>Your [O] feels numb, and cold.</span>")
+					H.visible_message("<span class='notice'>[O] [H] się przesuwa i na twoich oczach zamienia się w metal", "<span_class='userdanger'>Twój narząd ([O]) drętwieje i robi się zimny.</span>")
 					qdel(O)
 					return TRUE
 				if(BODY_ZONE_R_ARM)
@@ -191,7 +189,7 @@
 						B.brute_reduction = 3
 						B.burn_reduction = 2
 					B.replace_limb(H, TRUE)
-					H.visible_message("<span class='notice'>[H]'s [O] shifts, and becomes metal before your very eyes", "<span_class='userdanger'>Your [O] feels numb, and cold.</span>")
+					H.visible_message("<span class='notice'>[O] [H] się przesuwa i na twoich oczach zamienia się w metal", "<span_class='userdanger'>Twój narząd ([O]) drętwieje i robi się zimny.</span>")
 					qdel(O)
 					return TRUE
 				if(BODY_ZONE_L_LEG)
@@ -200,7 +198,7 @@
 						B.brute_reduction = 3
 						B.burn_reduction = 2
 					B.replace_limb(H, TRUE)
-					H.visible_message("<span class='notice'>[H]'s [O] shifts, and becomes metal before your very eyes", "<span_class='userdanger'>Your [O] feels numb, and cold.</span>")
+					H.visible_message("<span class='notice'>[O] [H] się przesuwa i na twoich oczach zamienia się w metal", "<span_class='userdanger'>Twój narząd ([O]) drętwieje i robi się zimny.</span>")
 					qdel(O)
 					return TRUE
 				if(BODY_ZONE_R_LEG)
@@ -209,7 +207,7 @@
 						B.brute_reduction = 3
 						B.burn_reduction = 2
 					B.replace_limb(H, TRUE)
-					H.visible_message("<span class='notice'>[H]'s [O] shifts, and becomes metal before your very eyes", "<span_class='userdanger'>Your [O] feels numb, and cold.</span>")
+					H.visible_message("<span class='notice'>[O] [H] się przesuwa i na twoich oczach zamienia się w metal", "<span_class='userdanger'>Twój narząd ([O]) drętwieje i robi się zimny.</span>")
 					qdel(O)
 					return TRUE
 	return FALSE
@@ -220,7 +218,7 @@
 	var/mob/living/carbon/human/H = A.affected_mob
 	REMOVE_TRAIT(H, TRAIT_NANITECOMPATIBLE, DISEASE_TRAIT)
 	if(A.stage >= 5 && (replaceorgans || replacebody)) //sorry. no disease quartets allowed
-		to_chat(H, "<span class='userdanger'>You feel lighter and springier as your innards lose their clockwork facade.</span>")
+		to_chat(H, "<span class='userdanger'>Czujesz się lżejszy i sprężystszy, gdy twoje wnętrzności tracą swoją mechaniczną fasadę.</span>")
 		H.dna.species.regenerate_organs(H, replace_current = TRUE)
 		for(var/obj/item/bodypart/O in H.bodyparts)
 			if(!IS_ORGANIC_LIMB(O))
@@ -233,24 +231,24 @@
 //below this point lies all clockwork bits that make this symptom tick. no pun intended.
 /obj/item/organ/ears/robot/clockwork
 	name = "biometallic recorder"
-	desc = "An odd sort of microphone that looks grown, rather than built."
+	desc = "Dziwny mikrofon, który wygląda raczej na wyhodowany niż zbudowany."
 	icon_state = "ears-clock"
 
 /obj/item/organ/eyes/robotic/clockwork
 	name = "biometallic receptors"
-	desc = "A fragile set of small, mechanical cameras."
+	desc = "Delikatny zestaw małych, mechanicznych kamer."
 	icon_state = "clockwork_eyeballs"
 
 /obj/item/organ/heart/clockwork //this heart doesnt have the fancy bits normal cyberhearts do. However, it also doesnt fucking kill you when EMPd
 	name = "biomechanical pump"
-	desc = "A complex, multi-valved hydraulic pump, which fits perfectly where a heart normally would."
+	desc = "Złożona, wielozaworowa pompa hydrauliczna, która idealnie pasuje tam, gdzie normalnie jest serce."
 	icon_state = "heart-clock"
 	organ_flags = ORGAN_SYNTHETIC
 	status = ORGAN_ROBOTIC
 
 /obj/item/organ/stomach/clockwork
 	name = "nutriment refinery"
-	desc = "A biomechanical furnace, which turns calories into mechanical energy."
+	desc = "Biomechaniczny piec, który zamienia kalorie w energię mechaniczną."
 	icon_state = "stomach-clock"
 	status = ORGAN_ROBOTIC
 	organ_flags = ORGAN_SYNTHETIC
@@ -260,7 +258,7 @@
 
 /obj/item/organ/stomach/battery/clockwork
 	name = "biometallic flywheel"
-	desc = "A biomechanical battery which stores mechanical energy."
+	desc = "Biomechaniczna bateria, która magazynuje energię mechaniczną."
 	icon_state = "stomach-clock"
 	status = ORGAN_ROBOTIC
 	organ_flags = ORGAN_SYNTHETIC
@@ -269,7 +267,7 @@
 
 /obj/item/organ/tongue/robot/clockwork
 	name = "dynamic micro-phonograph"
-	desc = "An old-timey looking device connected to an odd, shifting cylinder."
+	desc = "Staroświecko wyglądające urządzenie połączone z dziwnym, zmieniającym się cylindrem."
 	icon_state = "tongueclock"
 
 /obj/item/organ/tongue/robot/clockwork/better
@@ -281,7 +279,7 @@
 
 /obj/item/organ/brain/clockwork
 	name = "enigmatic gearbox"
-	desc ="An engineer would call this inconcievable wonder of gears and metal a 'black box'"
+	desc ="Inżynier nazwałby ten niewyobrażalny cud z trybików i metalu „czarną skrzynką”"
 	icon_state = "brain-clock"
 	status = ORGAN_ROBOTIC
 	organ_flags = ORGAN_SYNTHETIC
@@ -301,7 +299,7 @@
 
 /obj/item/organ/liver/clockwork
 	name = "biometallic alembic"
-	desc = "A series of small pumps and boilers, designed to facilitate proper metabolism."
+	desc = "Zestaw małych pomp i kotłów, zaprojektowany do wspierania prawidłowego metabolizmu."
 	icon_state = "liver-clock"
 	organ_flags = ORGAN_SYNTHETIC
 	status = ORGAN_ROBOTIC
@@ -311,7 +309,7 @@
 
 /obj/item/organ/lungs/clockwork
 	name = "clockwork diaphragm"
-	desc = "A utilitarian bellows which serves to pump oxygen into an automaton's body."
+	desc = "Użytkowy miech, który pompuje tlen do ciała automatonu."
 	icon_state = "lungs-clock"
 	organ_flags = ORGAN_SYNTHETIC
 	status = ORGAN_ROBOTIC
@@ -319,7 +317,7 @@
 
 /obj/item/organ/wings/cybernetic/clockwork
 	name = "biometallic wings"
-	desc = "A pair of thin metallic membranes."
+	desc = "Para cienkich metalowych membran."
 	flight_level = WINGS_FLIGHTLESS
 	wing_type = "Clockwork"
 	icon_state = "clockwork"
@@ -328,7 +326,7 @@
 
 /obj/item/organ/tail/clockwork
 	name = "biomechanical tail"
-	desc = "A stiff tail composed of a strange alloy."
+	desc = "Sztywny ogon z dziwnego stopu."
 	color = null
 	tail_type = "Clockwork"
 	icon_state = "clocktail"
@@ -351,42 +349,42 @@
 
 /obj/item/bodypart/l_arm/robot/clockwork
 	name = "clockwork left arm"
-	desc = "An odd metal arm with fingers driven by blood-based hydraulics."
+	desc = "Dziwne metalowe ramię z palcami napędzanymi hydrauliką na krew."
 	static_icon = 'icons/mob/augmentation/augments_clockwork.dmi'
 	brute_reduction = 0
 	burn_reduction = 0
 
 /obj/item/bodypart/r_arm/robot/clockwork
 	name = "clockwork right arm"
-	desc = "An odd metal arm with fingers driven by blood-based hydraulics."
+	desc = "Dziwne metalowe ramię z palcami napędzanymi hydrauliką na krew."
 	static_icon = 'icons/mob/augmentation/augments_clockwork.dmi'
 	brute_reduction = 0
 	burn_reduction = 0
 
 /obj/item/bodypart/l_leg/robot/clockwork
 	name = "clockwork left leg"
-	desc = "An odd metal leg full of intricate mechanisms."
+	desc = "Dziwna metalowa noga pełna misternych mechanizmów."
 	static_icon = 'icons/mob/augmentation/augments_clockwork.dmi'
 	brute_reduction = 0
 	burn_reduction = 0
 
 /obj/item/bodypart/r_leg/robot/clockwork
 	name = "clockwork right leg"
-	desc = "An odd metal leg full of intricate mechanisms."
+	desc = "Dziwna metalowa noga pełna misternych mechanizmów."
 	static_icon = 'icons/mob/augmentation/augments_clockwork.dmi'
 	brute_reduction = 0
 	burn_reduction = 0
 
 /obj/item/bodypart/head/robot/clockwork
 	name = "clockwork head"
-	desc = "An odd metal head that still feels warm to the touch."
+	desc = "Dziwna metalowa głowa, wciąż ciepła w dotyku."
 	static_icon = 'icons/mob/augmentation/augments_clockwork.dmi'
 	brute_reduction = 0
 	burn_reduction = 0
 
 /obj/item/bodypart/chest/robot/clockwork
 	name = "clockwork torso"
-	desc = "An odd metal body full of gears and pipes. It still seems alive."
+	desc = "Dziwny metalowy tułów pełen trybików i rur. Wciąż wydaje się żywy."
 	static_icon = 'icons/mob/augmentation/augments_clockwork.dmi'
 	brute_reduction = 0
 	burn_reduction = 0

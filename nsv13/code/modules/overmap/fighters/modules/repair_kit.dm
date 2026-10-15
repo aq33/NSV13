@@ -67,16 +67,16 @@
 		return
 	// We're out of range
 	if(overmap_dist(us, them) > repair_range)
-		cancel_action(us, them, "<span class='warning'>Target out of range.</span>")
+		cancel_action(us, them, "<span class='warning'>Cel poza zasięgiem.</span>")
 		return
 	// We don't have a hull foam tank
 	var/obj/structure/reagent_dispensers/foamtank/hull_repair_juice/tank = magazine
 	if(!tank || !istype(tank))
-		cancel_action(us, them, "<span class='warning'>No tank loaded.</span>")
+		cancel_action(us, them, "<span class='warning'>Nie załadowano zbiornika.</span>")
 		return
 	// We're out of juice
 	if(tank.reagents.get_reagent_amount(/datum/reagent/hull_repair_juice) <= 0)
-		cancel_action(us, them, "<span class='warning'>Repair foam reserves depleted.</span>")
+		cancel_action(us, them, "<span class='warning'>Zapas piany naprawczej wyczerpany.</span>")
 		return
 	// They're fixed
 	if(them.obj_integrity >= them.max_integrity)
@@ -84,10 +84,10 @@
 			var/obj/structure/overmap/small_craft/fighter_them = them
 			var/obj/item/fighter_component/armour_plating/theirArmour = fighter_them.loadout.get_slot(HARDPOINT_SLOT_ARMOUR)
 			if((!theirArmour || theirArmour.obj_integrity >= theirArmour.max_integrity))
-				cancel_action(us, them, "<span class='notice'>Target fully repaired.</span>")
+				cancel_action(us, them, "<span class='notice'>Cel w pełni naprawiony.</span>")
 				return
 		else
-			cancel_action(us, them, "<span class='notice'>Target fully repaired.</span>")
+			cancel_action(us, them, "<span class='notice'>Cel w pełni naprawiony.</span>")
 			return
 
 	// Getting here means we should actually try repairing them

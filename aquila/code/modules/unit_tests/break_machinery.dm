@@ -15,7 +15,7 @@
 	TEST_ASSERT(length(free.target_areas) && length(free.target_areas) <= free.max_target_areas, "Wrong number of target areas: [length(free.target_areas)]")
 	for(var/area/A as anything in free.target_areas)
 		TEST_ASSERT(locate(free.target_obj_type) in A, "[A] holds no [free.target_obj_type]")
-	TEST_ASSERT(findtext(free.explanation_text, initial(free.target_obj_type.name)), "Explanation text does not name the machine: [free.explanation_text]")
+	TEST_ASSERT(findtext(free.explanation_text, format_text(initial(free.target_obj_type.name))), "Explanation text does not name the machine: [free.explanation_text]")
 	TEST_ASSERT(!free.check_completion(), "Objective complete before anything was broken")
 	qdel(free)
 
@@ -81,6 +81,8 @@
 	T.owner = H.mind
 	for(var/i in 1 to 40)
 		T.forge_single_human_objective()
+	// break_machinery is one of many sabotage objectives now (aq33/AquilaStation#420), so roll it straight from the pool
+	T.add_rolled_objective(list(/datum/objective/break_machinery = 1))
 	var/breaks = 0
 	for(var/datum/objective/O as anything in T.objectives)
 		TEST_ASSERT(O.explanation_text && O.explanation_text != "Nothing", "Objective [O.type] has no text")
@@ -88,7 +90,7 @@
 		if(istype(B))
 			breaks++
 			TEST_ASSERT(B.target_obj_type && length(B.target_areas), "A break_machinery objective with no target was handed out")
-	TEST_ASSERT(breaks, "40 forged objectives and not one break_machinery")
+	TEST_ASSERT(breaks, "Rolling break_machinery from the pool handed out no break_machinery")
 	QDEL_LIST(T.objectives)
 	T.owner = null
 	qdel(T)

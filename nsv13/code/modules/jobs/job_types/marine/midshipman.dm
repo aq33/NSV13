@@ -9,7 +9,7 @@ Marine & all their unique stuff!
 	faction = "Station"
 	total_positions = 100
 	spawn_positions = 100
-	supervisors = "your squad leader and all other military crew during peacetime"
+	supervisors = "dowódca twojego oddziału oraz cała pozostała załoga wojskowa w czasie pokoju"
 	selection_color = "#c2d5ee"
 	chat_color = "#c2d5ee"
 	access = list()			//See /datum/job/assistant/get_access()
@@ -56,7 +56,7 @@ Marine & all their unique stuff!
 	desc = "A cheaply made uniform worn by general combat officers."
 	icon_state = "marine"
 	item_state = "bl_suit"
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 30, "acid" = 30)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 30, "acid" = 30, "bleed" = 10)
 	can_adjust = TRUE
 
 /obj/item/clothing/under/ship/marine/engineer
@@ -74,7 +74,7 @@ Marine & all their unique stuff!
 	// Assign department
 	var/department = M?.client?.prefs?.active_character?.preferred_security_department
 	if(department == "None")
-		to_chat(M, "<b>You have not been assigned to any department. Help in any way you can!</b>")
+		to_chat(M, "<b>Nie przydzielono cię do żadnego działu. Pomagaj, jak tylko możesz!</b>")
 		return
 	else if(!(department in GLOB.available_depts))
 		department = pick(GLOB.available_depts)
@@ -115,7 +115,7 @@ Marine & all their unique stuff!
 	var/obj/item/card/id/W = H.wear_id
 	W.access |= dep_access
 
-	to_chat(M, "<b>You have been assigned to [department]!</b>")
+	to_chat(M, "<b>Zostajesz przydzielony do działu: [department]!</b>")
 
 /datum/job/assistant/register_squad(mob/living/H)
 	if(!ishuman(H)) //Nope

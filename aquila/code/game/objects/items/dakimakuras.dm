@@ -67,26 +67,39 @@
 		if(!body_choice || QDELETED(src) || !user.is_holding(src))
 			return
 		set_body(body_choice)
-		var/new_name = stripped_input(user, "What's her name?", "Dakimakura", "", MAX_NAME_LEN)
+		var/new_name = stripped_input(user, "Jak ona ma na imię?", "Dakimakura", "", MAX_NAME_LEN)
 		if(!new_name || QDELETED(src) || !user.is_holding(src))
 			return
 		if(CHAT_FILTER_CHECK(new_name))
-			to_chat(user, "<span class='warning'>That name is not allowed.</span>")
+			to_chat(user, "<span class='warning'>To imię jest niedozwolone.</span>")
 			return
 		set_custom_name(new_name)
 		return
-	switch(user.a_intent)
+	// Port Bee #11899: bez trybu walki przytulanie, w trybie walki "atak"; prawy przycisk to druga akcja
+	if(user.uses_legacy_intents())
+		daki_interact(user, user.a_intent)
+	else
+		daki_interact(user, user.combat_mode ? INTENT_HARM : INTENT_HELP)
+
+/obj/item/dakimakura/attack_self_secondary(mob/living/user)
+	if(!custom_name)
+		return attack_self(user)
+	daki_interact(user, user.combat_mode ? INTENT_GRAB : INTENT_DISARM)
+
+/// Hug, kiss, grope or hump, named after the old intents
+/obj/item/dakimakura/proc/daki_interact(mob/living/user, intent)
+	switch(intent)
 		if(INTENT_HELP)
-			user.visible_message("<span class='notice'>[user] hugs the [name].</span>")
+			user.visible_message("<span class='notice'>[user] przytula [name].</span>")
 			playsound(loc, "rustle", 50, TRUE, -5)
 		if(INTENT_DISARM)
-			user.visible_message("<span class='notice'>[user] kisses the [name].</span>")
+			user.visible_message("<span class='notice'>[user] całuje [name].</span>")
 			playsound(loc, 'aquila/sound/voice/kiss.ogg', 50, TRUE, -5)
 		if(INTENT_GRAB)
-			user.visible_message("<span class='warning'>[user] gropes the [name]!</span>")
+			user.visible_message("<span class='warning'>[user] obmacuje [name]!</span>")
 			playsound(loc, 'sound/items/bikehorn.ogg', 50, TRUE)
 		if(INTENT_HARM)
-			user.visible_message("<span class='danger'>[user] violently humps the [name]!</span>")
+			user.visible_message("<span class='danger'>[user] gwałtownie bzyka [name]!</span>")
 			playsound(user.loc, 'sound/effects/shieldbash.ogg', 50, TRUE)
 
 /obj/item/dakimakura/proc/set_body(body_choice)

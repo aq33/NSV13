@@ -16,14 +16,14 @@
 
 /obj/effect/proc_holder/spell/voice_of_god/can_cast(mob/user = usr)
 	if(!user.can_speak())
-		to_chat(user, "<span class='warning'>You are unable to speak!</span>")
+		to_chat(user, "<span class='warning'>Nie możesz mówić!</span>")
 		return FALSE
 	return TRUE
 
 /obj/effect/proc_holder/spell/voice_of_god/choose_targets(mob/user = usr)
 	perform(user=user)
 /obj/effect/proc_holder/spell/voice_of_god/perform(list/targets, recharge = 1, mob/user = usr)
-	command = input(user, "Speak with the Voice of God", "Command")
+	command = input(user, "Przemów Głosem Boga", "Command")
 	if(QDELETED(src) || QDELETED(user))
 		return
 	if(!command)

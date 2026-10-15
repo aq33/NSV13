@@ -13,11 +13,13 @@
 			if(damaged_clothes)
 				. += mutable_appearance('icons/effects/item_damage.dmi', "damagedmask")
 			if(HAS_BLOOD_DNA(src))
-				. += mutable_appearance('icons/effects/blood.dmi', "maskblood")
+				var/mutable_appearance/bloody_neck = mutable_appearance('icons/effects/blood.dmi', "maskblood")
+				bloody_neck.color = get_blood_dna_color(return_blood_DNA())
+				. += bloody_neck
 
 /obj/item/clothing/neck/tie
 	name = "tie"
-	desc = "A neosilk clip-on tie."
+	desc = "Krawat na klips z neojedwabiu."
 	icon = 'icons/obj/clothing/neck.dmi'
 	icon_state = "bluetie"
 	item_state = ""	//no inhands
@@ -38,7 +40,7 @@
 
 /obj/item/clothing/neck/tie/horrible
 	name = "horrible tie"
-	desc = "A neosilk clip-on tie. This one is disgusting."
+	desc = "Krawat na klips z neojedwabiu. Ten jest obrzydliwy."
 	icon_state = "horribletie"
 
 /obj/item/clothing/neck/tie/detective
@@ -57,35 +59,35 @@
 	icon_state = "stethoscope"
 
 /obj/item/clothing/neck/stethoscope/suicide_act(mob/living/carbon/user)
-	user.visible_message("<span class='suicide'>[user] puts \the [src] to [user.p_their()] chest! It looks like [user.p_they()] wont hear much!</span>")
+	user.visible_message("<span class='suicide'>[user] przykłada [src] do swojej klatki piersiowej! Wygląda na to, że niewiele usłyszy!</span>")
 	return OXYLOSS
 
 /obj/item/clothing/neck/stethoscope/attack(mob/living/carbon/human/M, mob/living/user)
 	if(ishuman(M) && isliving(user))
-		if(user.a_intent == INTENT_HELP)
+		if(!user.combat_mode)
 			var/body_part = parse_zone(user.zone_selected)
 
-			var/heart_strength = "<span class='danger'>no</span>"
-			var/lung_strength = "<span class='danger'>no</span>"
+			var/heart_strength = "<span class='danger'>brak</span>"
+			var/lung_strength = "<span class='danger'>brak</span>"
 
 			var/obj/item/organ/heart/heart = M.getorganslot(ORGAN_SLOT_HEART)
 			var/obj/item/organ/lungs/lungs = M.getorganslot(ORGAN_SLOT_LUNGS)
 
 			if(!(M.stat == DEAD || (HAS_TRAIT(M, TRAIT_FAKEDEATH))))
 				if(heart && istype(heart))
-					heart_strength = "<span class='danger'>an unstable</span>"
+					heart_strength = "<span class='danger'>niestabilny</span>"
 					if(heart.beating)
-						heart_strength = "a healthy"
+						heart_strength = "zdrowy"
 				if(lungs && istype(lungs))
-					lung_strength = "<span class='danger'>strained</span>"
+					lung_strength = "<span class='danger'>utrudniony</span>"
 					if(!(M.failed_last_breath || M.losebreath))
-						lung_strength = "healthy"
+						lung_strength = "zdrowy"
 
-			if(M.stat == DEAD && heart && world.time - M.timeofdeath < DEFIB_TIME_LIMIT * 10)
-				heart_strength = "<span class='boldannounce'>a faint, fluttery</span>"
+			if(M.stat == DEAD && heart && !(heart.organ_flags & ORGAN_FAILING)) // AQ EDIT - no defib time limit
+				heart_strength = "<span class='boldannounce'>słaby, trzepoczący</span>"
 
-			var/diagnosis = (body_part == BODY_ZONE_CHEST ? "You hear [heart_strength] pulse and [lung_strength] respiration." : "You faintly hear [heart_strength] pulse.")
-			user.visible_message("[user] places [src] against [M]'s [body_part] and listens attentively.", "<span class='notice'>You place [src] against [M]'s [body_part]. [diagnosis]</span>")
+			var/diagnosis = (body_part == BODY_ZONE_CHEST ? "Puls: [heart_strength], oddech: [lung_strength]." : "Słabo słyszysz puls: [heart_strength].")
+			user.visible_message("[user] przykłada [src] do ciała [M] ([strefa_pl(body_part)]) i uważnie nasłuchuje.", "<span class='notice'>Przykładasz [src] do ciała [M] ([strefa_pl(body_part)]). [diagnosis]</span>")
 			return
 	return ..(M,user)
 
@@ -181,7 +183,7 @@
 	var/tagname = null
 
 /obj/item/clothing/neck/petcollar/attack_self(mob/user)
-	tagname = stripped_input(user, "Would you like to change the name on the tag?", "Name your new pet", "Spot", MAX_NAME_LEN)
+	tagname = stripped_input(user, "Czy chcesz zmienić imię na zawieszce?", "Nazwij swojego nowego zwierzaka", "Spot", MAX_NAME_LEN)
 	name = "[initial(name)] - [tagname]"
 
 //////////////
@@ -190,7 +192,7 @@
 
 /obj/item/clothing/neck/necklace/dope
 	name = "gold necklace"
-	desc = "Damn, it feels good to be a gangster."
+	desc = "Kurczę, dobrze być gangsterem."
 	icon = 'icons/obj/clothing/neck.dmi'
 	icon_state = "bling"
 
@@ -210,7 +212,7 @@
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		if(C.get_item_by_slot(ITEM_SLOT_NECK) == src)
-			to_chat(user, "<span class='warning'>You can't untie [src] while wearing it!</span>")
+			to_chat(user, "<span class='warning'>Nie możesz rozwiązać [src], gdy ją nosisz!</span>")
 			return
 		if(user.is_holding(src))
 			var/obj/item/clothing/mask/bandana/newBand = new sourceBandanaType(user)
@@ -218,9 +220,9 @@
 			var/oldName = src.name
 			qdel(src)
 			user.put_in_hand(newBand, currentHandIndex)
-			user.visible_message("[user] unties [oldName] back into a [newBand.name]", "You untie [oldName] back into a [newBand.name]")
+			user.visible_message("[user] rozwiązuje [oldName], przywracając postać: [newBand.name]", "Rozwiązujesz [oldName], przywracając postać: [newBand.name]")
 		else
-			to_chat(user, "<span class='warning'>You must be holding [src] in order to untie it!")
+			to_chat(user, "<span class='warning'>Musisz trzymać [src], by ją rozwiązać!")
 
 /////////////////
 //DONATOR ITEMS//
@@ -228,10 +230,10 @@
 
 /obj/item/clothing/neck/bizzarescarf
 	name = "bizzare scarf"
-	desc = "Your next line is-"
+	desc = "Twoja następna kwestia brzmi:"
 	icon_state = "bizzare"
 
 /obj/item/clothing/neck/conductivescarf
 	name = "conductive scarf"
-	desc = "Made out of 30,000 scarabs. Use with caution."
+	desc = "Zrobiony z 30 000 skarabeuszy. Używać ostrożnie."
 	icon_state = "conductive"

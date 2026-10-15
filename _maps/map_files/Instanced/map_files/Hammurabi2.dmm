@@ -3051,7 +3051,7 @@
 /obj/structure/closet/crate,
 /obj/effect/spawner/lootdrop/maintenance/two,
 /obj/effect/spawner/lootdrop/glowstick,
-/obj/item/reagent_containers/food/snacks/canned/beans,
+/obj/item/food/canned/beans,
 /turf/open/floor/plasteel/tech/grid,
 /area/quartermaster/pvp)
 "sI" = (
@@ -3735,7 +3735,7 @@
 "xM" = (
 /obj/structure/table/reinforced,
 /obj/machinery/firealarm/directional/north,
-/obj/item/reagent_containers/food/snacks/cakeslice/trumpet,
+/obj/item/food/cakeslice/trumpet,
 /turf/open/floor/mineral/plastitanium,
 /area/crew_quarters/bar/pvp)
 "xP" = (

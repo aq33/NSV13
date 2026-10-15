@@ -5,7 +5,7 @@
  */
 /obj/item/circuit_component/select
 	display_name = "Select Query"
-	display_desc = "A component used with USB cables that can perform select queries on a list based on the column name selected. The values are then compared with the comparison input."
+	display_desc = "Komponent używany z kablami USB, który może wykonywać zapytania select na liście na podstawie wybranej nazwy kolumny. Wartości są następnie porównywane z wejściem porównania."
 	circuit_flags = CIRCUIT_FLAG_INPUT_SIGNAL|CIRCUIT_FLAG_OUTPUT_SIGNAL
 
 	/// The list to perform the filter on

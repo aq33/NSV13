@@ -22,7 +22,7 @@
 
 	density = TRUE
 	max_integrity = 400
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 100, "bomb" = 0, "bio" = 100, "rad" = 100, "fire" = 100, "acid" = 30, "stamina" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 100, "bomb" = 0, "bio" = 100, "rad" = 100, "fire" = 100, "acid" = 30, "stamina" = 0, "bleed" = 0)
 	layer = OBJ_LAYER
 	showpipe = TRUE
 
@@ -83,7 +83,7 @@
 /obj/machinery/atmospherics/components/unary/shuttle/heater/examine(mob/user)
 	. = ..()
 	var/datum/gas_mixture/air_contents = airs[1]
-	. += "The engine heater's gas dial reads [air_contents.get_moles(gas_type)] moles of gas.<br>"
+	. += "Pokrętło gazu podgrzewacza silnika pokazuje [air_contents.get_moles(gas_type)] moli gazu.<br>"
 
 /obj/machinery/atmospherics/components/unary/shuttle/heater/proc/updateGasStats()
 	var/datum/gas_mixture/air_contents = airs[1]

@@ -12,7 +12,7 @@
 		if(!check_rights(R_ADMIN))
 			return
 		var/target_ghost
-		switch(alert(usr, "Who is going to pilot this ghost ship?", "Pilot Select Format", "Open", "Choose", "Cancel"))
+		switch(alert(usr, "Kto będzie pilotował ten okręt widmo?", "Format wyboru pilota", "Open", "Choose", "Cancel"))
 			if("Cancel")
 				return
 			if("Open")
@@ -23,7 +23,7 @@
 				else
 					return
 			if("Choose")
-				target_ghost = input(usr, "Select player to pilot ghost ship:", "Select Player") as null|anything in GLOB.clients
+				target_ghost = input(usr, "Wybierz gracza, który będzie pilotował okręt widmo:", "Wybierz gracza") as null|anything in GLOB.clients
 
 		ghost_ship(target_ghost)
 		message_admins("[key_name_admin(usr)] has ghost shipped [src]!")

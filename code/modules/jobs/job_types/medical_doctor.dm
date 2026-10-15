@@ -6,7 +6,7 @@
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 2
-	supervisors = "the chief medical officer"
+	supervisors = JOB_NAME_CHIEFMEDICALOFFICER
 	selection_color = "#d4ebf2"
 	exp_requirements = 0
 	exp_type = EXP_TYPE_CREW
@@ -47,3 +47,14 @@
 	duffelbag = /obj/item/storage/backpack/duffelbag/med
 
 	chameleon_extras = /obj/item/gun/syringe
+
+/datum/outfit/job/medical_doctor/mod
+	name = "Medical Doctor (MODsuit)"
+
+	suit_store = /obj/item/tank/internals/oxygen
+	back = /obj/item/mod/control/pre_equipped/medical
+	suit = null
+	head = null
+	mask = /obj/item/clothing/mask/breath
+	r_pocket = /obj/item/flashlight/pen
+	internals_slot = ITEM_SLOT_SUITSTORE

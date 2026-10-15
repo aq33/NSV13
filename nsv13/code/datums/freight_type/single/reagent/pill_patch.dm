@@ -4,4 +4,4 @@
 	)
 
 /datum/freight_type/single/reagent/pill_patch/get_supply_request_form_segment()
-	return "<span>Permissible reagent containers: pills, patches</span><br>"
+	return "<span>Dopuszczalne pojemniki na odczynniki: pigułki, plastry</span><br>"

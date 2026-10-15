@@ -13,19 +13,19 @@
 		return
 	var/obj/docking_port/mobile/M = SSshuttle.getShuttle(shuttleId)
 	if(!M)
-		say("Unable to locate linked shuttle.")
+		say("Nie można znaleźć połączonego promu.")
 		return
 	if(M.mode == SHUTTLE_RECHARGING)
-		to_chat(user, "<span class='warning'>Shuttle engines are not ready for use.</span>")
+		to_chat(user, "<span class='warning'>Silniki promu nie są gotowe do użycia.</span>")
 		return
 	if(M.mode != SHUTTLE_IDLE)
-		to_chat(user, "<span class='warning'>Shuttle already in transit.</span>")
+		to_chat(user, "<span class='warning'>Prom jest już w tranzycie.</span>")
 		return
 	if(!M.canMove())
-		say("Warning: The shuttle's movement is being inhibited.")
+		say("Ostrzeżenie: ruch promu jest blokowany.")
 		return
 	if(current_user)
-		to_chat(user, "<span class='warning'>Somebody is already docking the shuttle.</span>")
+		to_chat(user, "<span class='warning'>Ktoś już dokuje prom.</span>")
 		return
 	if(!can_designate_landing(user))
 		return
@@ -41,6 +41,6 @@
 /obj/machinery/computer/shuttle_flight/custom_shuttle/can_designate_landing(mob/living/user)
 	calculateStats()
 	if(calculated_acceleration < CUSTOM_SHUTTLE_MIN_THRUST_TO_WEIGHT)
-		say("Insufficient engine power. Check the engines, heaters and plasma supply.")
+		say("Za mała moc silników. Sprawdź silniki, podgrzewacze i dopływ plazmy.")
 		return FALSE
 	return TRUE

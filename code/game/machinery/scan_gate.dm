@@ -6,6 +6,7 @@
 #define SCANGATE_WANTED			"Wanted"
 #define SCANGATE_SPECIES		"Species"
 #define SCANGATE_NUTRITION		"Nutrition"
+#define SCANGATE_HYGIENE		"Hygiene" // AQ EDIT - restored from tgstation#42364
 
 #define SCANGATE_HUMAN			"human"
 #define SCANGATE_LIZARD			"lizard"
@@ -38,6 +39,7 @@
 	var/detect_species = SCANGATE_HUMAN
 	var/reverse = FALSE //If true, signals if the scan returns false
 	var/detect_nutrition = NUTRITION_LEVEL_FAT
+	var/detect_hygiene = HYGIENE_LEVEL_DIRTY // AQ EDIT
 
 /obj/machinery/scanner_gate/Initialize(mapload)
 	. = ..()
@@ -50,9 +52,9 @@
 /obj/machinery/scanner_gate/examine(mob/user)
 	. = ..()
 	if(locked)
-		. += "<span class='notice'>The control panel is ID-locked. Swipe a valid ID to unlock it.</span>"
+		. += "<span class='notice'>Panel sterowania jest zablokowany kartą ID. Przeciągnij ważną kartę, by go odblokować.</span>"
 	else
-		. += "<span class='notice'>The control panel is unlocked. Swipe an ID to lock it.</span>"
+		. += "<span class='notice'>Panel sterowania jest odblokowany. Przeciągnij kartę ID, by go zablokować.</span>"
 
 /obj/machinery/scanner_gate/proc/on_entered(datum/source, atom/movable/AM)
 	SIGNAL_HANDLER
@@ -77,18 +79,18 @@
 			if(allowed(user))
 				locked = FALSE
 				req_access = list()
-				to_chat(user, "<span class='notice'>You unlock [src].</span>")
+				to_chat(user, "<span class='notice'>Odblokowujesz [src].</span>")
 				//Update to viewers
 				ui_update()
 		else if(!(obj_flags & EMAGGED))
-			to_chat(user, "<span class='notice'>You lock [src] with [W].</span>")
+			to_chat(user, "<span class='notice'>Blokujesz [src] za pomocą [W].</span>")
 			var/list/access = W.GetAccess()
 			req_access = access
 			locked = TRUE
 			//Update to viewers
 			ui_update()
 		else
-			to_chat(user, "<span class='warning'>You try to lock [src] with [W], but nothing happens.</span>")
+			to_chat(user, "<span class='warning'>Próbujesz zablokować [src] za pomocą [W], ale nic się nie dzieje.</span>")
 	else
 		return ..()
 
@@ -98,7 +100,7 @@
 	locked = FALSE
 	req_access = list()
 	obj_flags |= EMAGGED
-	to_chat(user, "<span class='notice'>You fry the ID checking system.</span>")
+	to_chat(user, "<span class='notice'>Przepalasz system sprawdzania ID.</span>")
 	//Update to viewers
 	ui_update()
 
@@ -170,6 +172,15 @@
 					beep = TRUE
 				if(H.nutrition >= detect_nutrition && detect_nutrition == NUTRITION_LEVEL_FAT)
 					beep = TRUE
+		// AQ EDIT START - hygiene scanning
+		if(SCANGATE_HYGIENE)
+			if(ishuman(M))
+				var/mob/living/carbon/human/H = M
+				if(H.hygiene >= detect_hygiene && detect_hygiene == HYGIENE_LEVEL_CLEAN)
+					beep = TRUE
+				if(H.hygiene <= detect_hygiene && detect_hygiene == HYGIENE_LEVEL_DIRTY)
+					beep = TRUE
+		// AQ EDIT END
 
 	if(reverse)
 		beep = !beep
@@ -210,6 +221,7 @@
 	data["disease_threshold"] = disease_threshold
 	data["target_species"] = detect_species
 	data["target_nutrition"] = detect_nutrition
+	data["target_hygiene"] = detect_hygiene // AQ EDIT
 	return data
 
 /obj/machinery/scanner_gate/ui_act(action, params)
@@ -253,6 +265,15 @@
 					if("Obese")
 						detect_nutrition = NUTRITION_LEVEL_FAT
 			. = TRUE
+		// AQ EDIT START
+		if("set_target_hygiene")
+			switch(params["new_hygiene"])
+				if("Clean")
+					detect_hygiene = HYGIENE_LEVEL_CLEAN
+				if("Dirty")
+					detect_hygiene = HYGIENE_LEVEL_DIRTY
+			. = TRUE
+		// AQ EDIT END
 
 #undef SCANGATE_NONE
 #undef SCANGATE_MINDSHIELD
@@ -262,6 +283,7 @@
 #undef SCANGATE_WANTED
 #undef SCANGATE_SPECIES
 #undef SCANGATE_NUTRITION
+#undef SCANGATE_HYGIENE // AQ EDIT
 
 #undef SCANGATE_HUMAN
 #undef SCANGATE_LIZARD

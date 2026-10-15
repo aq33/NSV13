@@ -11,14 +11,14 @@
 	if(!hive)
 		to_chat(user, "<span class='notice'>This is a bug. Error:HIVE1</span>")
 		return
-	to_chat(user, "<span class='notice'>We begin increasing the psionic bandwidth between ourself and the vessel!</span>")
+	to_chat(user, "<span class='notice'>Zaczynamy zwiększać przepustowość psioniczną między nami a naczyniem!</span>")
 	if(do_after(user,30,0,user))
 		if(target.mind.assigned_role in (GLOB.security_positions || GLOB.command_positions)) //Doesn't work on sec or command for balance reasons
-			to_chat(user, "<span class='warning'>A subconsciously trained response barely protects [target.name]'s mind.</span>")
-			to_chat(target, "<span class='assimilator'>Powerful mental attacks strike out against us, our training allows us to barely overcome it.</span>")
+			to_chat(user, "<span class='warning'>Podświadomie wyćwiczona reakcja ledwo chroni umysł [target.name].</span>")
+			to_chat(target, "<span class='assimilator'>Uderzają w nas potężne ataki umysłowe, a nasze szkolenie ledwo pozwala je odeprzeć.</span>")
 			return
 		if(HAS_TRAIT(target, TRAIT_MINDSHIELD))
-			to_chat(user, "<span class='warning'>Powerful technology protects [target.name]'s mind.</span>")
+			to_chat(user, "<span class='warning'>Potężna technologia chroni umysł [target.name].</span>")
 			return
 		if(!IS_HIVEHOST(target))
 			var/power = 120-get_dist(user, target)
@@ -33,11 +33,11 @@
 				else
 					power *= 3
 			if(power > 50 && user.get_virtual_z_level() == target.get_virtual_z_level())
-				to_chat(user, "<span class='notice'>We have overloaded the vessel for a short time!</span>")
+				to_chat(user, "<span class='notice'>Na chwilę przeciążyliśmy naczynie!</span>")
 				target.Jitter(round(power/10))
 				target.Unconscious(power)
 		else
-			to_chat(user, "<span class='notice'>The vessel was too far away to be affected!</span>")
+			to_chat(user, "<span class='notice'>Naczynie było za daleko, by to zadziałało!</span>")
 	else
-		to_chat(user, "<span class='notice'>Our concentration has been broken!</span>")
+		to_chat(user, "<span class='notice'>Nasza koncentracja została przerwana!</span>")
 		revert_cast()

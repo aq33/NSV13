@@ -4,15 +4,15 @@
 	desc = ""
 	gender = NEUTER
 	mob_biotypes = list(MOB_INORGANIC)
-	speak_emote = list("hisses")
-	response_help  = "thinks better of touching"
-	response_disarm = "flails at"
-	response_harm   = "punches"
+	speak_emote = list("syczy")
+	response_help  = "rozmyśla się i nie dotyka"
+	response_disarm = "macha rękami na"
+	response_harm   = "uderza"
 	speak_chance = 1
 	icon = 'icons/mob/mob.dmi'
 	speed = 0
 	spacewalk = TRUE
-	a_intent = INTENT_HARM
+	combat_mode = TRUE
 	stop_automated_movement = 1
 	status_flags = CANPUSH
 	attack_sound = 'sound/weapons/punch1.ogg'
@@ -31,11 +31,10 @@
 	loot = list(/obj/item/ectoplasm)
 	del_on_death = TRUE
 	initial_language_holder = /datum/language_holder/construct
-	deathmessage = "collapses in a shattered heap."
-	hud_type = /datum/hud/constructs
+	deathmessage = "rozpada się w stertę odłamków."
 	hardattacks = TRUE
 	var/list/construct_spells = list()
-	var/playstyle_string = "<span class='big bold'>You are a generic construct!</span><b> Your job is to not exist, and you should probably adminhelp this.</b>"
+	var/playstyle_string = "<span class='big bold'>Jesteś zwykłym konstruktem!</span><b> Twoim zadaniem jest nie istnieć i chyba powinieneś napisać adminhelp.</b>"
 	var/master = null
 	var/seeking = FALSE
 	var/can_repair_constructs = FALSE
@@ -83,14 +82,12 @@
 	to_chat(src, playstyle_string)
 
 /mob/living/simple_animal/hostile/construct/examine(mob/user)
-	var/t_He = p_they(TRUE)
-	var/t_s = p_s()
-	. = list("<span class='info'>This is [icon2html(src, user)] \a <b>[src]</b>!")
+	. = list("<span class='info'>To [icon2html(src, user)] <b>[src]</b>!")
 	if(health < maxHealth)
 		if(health >= maxHealth/2)
-			. += "<span class='warning'>[t_He] look[t_s] slightly dented.</span>"
+			. += "<span class='warning'>Jest lekko wgnieciony.</span>"
 		else
-			. += "<span class='warning'><b>[t_He] look[t_s] severely dented!</b></span>"
+			. += "<span class='warning'><b>Jest mocno powgniatany!</b></span>"
 	. += "</span>"
 
 /mob/living/simple_animal/hostile/construct/attack_animal(mob/living/simple_animal/M)
@@ -104,16 +101,16 @@
 			adjustHealth(-5)
 			if(src != M)
 				Beam(M,icon_state="sendbeam",time=4)
-				M.visible_message("<span class='danger'>[M] repairs some of \the <b>[src]'s</b> dents.</span>", \
-						   "<span class='cult'>You repair some of <b>[src]'s</b> dents, leaving <b>[src]</b> at <b>[health]/[maxHealth]</b> health.</span>")
+				M.visible_message("<span class='danger'>[M] naprawia część wgnieceń <b>[src]</b>.</span>", \
+						   "<span class='cult'>Naprawiasz część wgnieceń <b>[src]</b>, zostawiając <b>[src]</b> z <b>[health]/[maxHealth]</b> zdrowia.</span>")
 			else
-				M.visible_message("<span class='danger'>[M] repairs some of [p_their()] own dents.</span>", \
-						   "<span class='cult'>You repair some of your own dents, leaving you at <b>[M.health]/[M.maxHealth]</b> health.</span>")
+				M.visible_message("<span class='danger'>[M] naprawia część własnych wgnieceń.</span>", \
+						   "<span class='cult'>Naprawiasz część własnych wgnieceń, masz teraz <b>[M.health]/[M.maxHealth]</b> zdrowia.</span>")
 		else
 			if(src != M)
-				to_chat(M, "<span class='cult'>You cannot repair <b>[src]'s</b> dents, as [p_they()] [p_have()] none!</span>")
+				to_chat(M, "<span class='cult'>Nie możesz naprawić wgnieceń <b>[src]</b>, bo ich nie ma!</span>")
 			else
-				to_chat(M, "<span class='cult'>You cannot repair your own dents, as you have none!</span>")
+				to_chat(M, "<span class='cult'>Nie możesz naprawić własnych wgnieceń, bo ich nie masz!</span>")
 	else if(src != M)
 		return ..()
 
@@ -122,11 +119,6 @@
 
 /mob/living/simple_animal/hostile/construct/electrocute_act(shock_damage, source, siemens_coeff = 1, safety = 0, tesla_shock = 0, illusion = 0, stun = TRUE)
 	return 0
-
-/mob/living/simple_animal/hostile/construct/adjustHealth(amount, updating_health = TRUE, forced = FALSE)
-	. = ..()
-	if(updating_health)
-		update_health_hud()
 
 /////////////////Juggernaut///////////////
 /mob/living/simple_animal/hostile/construct/armored
@@ -137,11 +129,11 @@
 	icon_living = "behemoth"
 	maxHealth = 150
 	health = 150
-	response_harm = "punches"
+	response_harm = "uderza"
 
 	obj_damage = 90
 	melee_damage = 25
-	attacktext = "smashes their armored gauntlet into"
+	attacktext = "wbija opancerzoną rękawicę w"
 	speed = 2.5
 	environment_smash = ENVIRONMENT_SMASH_WALLS
 	attack_sound = 'sound/weapons/punch3.ogg'
@@ -152,8 +144,7 @@
 	construct_spells = list(/obj/effect/proc_holder/spell/targeted/forcewall/cult,
 							/obj/effect/proc_holder/spell/targeted/projectile/dumbfire/juggernaut)
 	runetype = /datum/action/innate/cult/create_rune/wall
-	playstyle_string = "<b>You are a Juggernaut. Though slow, your shell can withstand heavy punishment, \
-						create shield walls, rip apart enemies and walls alike, and even deflect energy weapons.</b>"
+	playstyle_string = "<b>Jesteś Juggernautem. Choć powolny, twoja powłoka wytrzymuje ciężkie ciosy, potrafisz tworzyć ściany tarcz, rozrywać wrogów i ściany, a nawet odbijać broń energetyczną.</b>"
 
 /mob/living/simple_animal/hostile/construct/armored/hostile //actually hostile, will move around, hit things
 	AIStatus = AI_ON
@@ -164,8 +155,8 @@
 		var/reflectchance = 40 - round(P.damage/3)
 		if(prob(reflectchance))
 			apply_damage(P.damage * 0.5, P.damage_type)
-			visible_message("<span class='danger'>The [P.name] is reflected by [src]'s armored shell!</span>", \
-							"<span class='userdanger'>The [P.name] is reflected by your armored shell!</span>")
+			visible_message("<span class='danger'>[P.name] odbija się od opancerzonej powłoki [src]!</span>", \
+							"<span class='userdanger'>[P.name] odbija się od twojej opancerzonej powłoki!</span>")
 
 			// Find a turf near or on the original location to bounce to
 			if(P.starting)
@@ -209,11 +200,11 @@
 	health = 65
 	melee_damage = 20
 	retreat_distance = 2 //AI wraiths will move in and out of combat
-	attacktext = "slashes"
+	attacktext = "tnie"
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	construct_spells = list(/obj/effect/proc_holder/spell/targeted/ethereal_jaunt/shift)
 	runetype = /datum/action/innate/cult/create_rune/tele
-	playstyle_string = "<b>You are a Wraith. Though relatively fragile, you are fast, deadly, can phase through walls, and your attacks will lower the cooldown on phasing.</b>"
+	playstyle_string = "<b>Jesteś Upiorem. Choć stosunkowo kruchy, jesteś szybki i zabójczy, potrafisz przenikać przez ściany, a twoje ataki skracają czas odnowienia przenikania.</b>"
 
 	var/attack_refund = 10 //1 second per attack
 	var/crit_refund = 50 //5 seconds when putting a target into critical
@@ -261,12 +252,12 @@
 	icon_living = "artificer"
 	maxHealth = 50
 	health = 50
-	response_harm = "viciously beats"
+	response_harm = "brutalnie bije"
 	obj_damage = 60
 	melee_damage = 5
 	retreat_distance = 10
 	minimum_distance = 10 //AI artificers will flee like fuck
-	attacktext = "rams"
+	attacktext = "taranuje"
 	environment_smash = ENVIRONMENT_SMASH_WALLS
 	attack_sound = 'sound/weapons/punch2.ogg'
 	construct_spells = list(/obj/effect/proc_holder/spell/aoe_turf/conjure/wall,
@@ -275,7 +266,7 @@
 							/obj/effect/proc_holder/spell/aoe_turf/conjure/soulstone,
 							/obj/effect/proc_holder/spell/aoe_turf/conjure/construct/lesser,
 							/obj/effect/proc_holder/spell/targeted/projectile/magic_missile/lesser)
-	playstyle_string = "<b>You are an Artificer. You are incredibly weak and fragile, but you are able to construct fortifications, \
+	playstyle_string = "<b>Jesteś Rzemieślnikiem. Jesteś niezwykle słaby i kruchy, ale potrafisz budować umocnienia, \
 
 						use magic missile, repair allied constructs, shades, and yourself (by clicking on them), \
 						<i>and, most important of all,</i> create new constructs by producing soulstones to capture souls, \
@@ -355,12 +346,11 @@
 	health = 40
 	sight = SEE_MOBS
 	melee_damage = 15
-	attacktext = "butchers"
+	attacktext = "masakruje"
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	construct_spells = list(/obj/effect/proc_holder/spell/aoe_turf/area_conversion,
 							/obj/effect/proc_holder/spell/targeted/forcewall/cult)
-	playstyle_string = "<B>You are a Harvester. You are incapable of directly killing humans, but your attacks will remove their limbs: \
-						Bring those who still cling to this world of illusion back to the Geometer so they may know Truth. Your form and any you are pulling can pass through runed walls effortlessly.</B>"
+	playstyle_string = "<B>Jesteś Żniwiarzem. Nie możesz bezpośrednio zabijać ludzi, ale twoje ataki odrywają im kończyny: przyprowadź tych, którzy wciąż kurczowo trzymają się tego świata iluzji, z powrotem do Geometry, aby poznali Prawdę. Ty i wszystko, co ciągniesz, możecie bez trudu przenikać przez ściany z runami.</B>"
 	can_repair_constructs = TRUE
 
 
@@ -393,8 +383,8 @@
 			if(undismembermerable_limbs) //they have limbs we can't remove, and no parts we can, attack!
 				return ..()
 			C.Paralyze(60)
-			visible_message("<span class='danger'>[src] knocks [C] down!</span>")
-			to_chat(src, "<span class='cultlarge'>\"Bring [C.p_them()] to me.\"</span>")
+			visible_message("<span class='danger'>[src] przewraca [C]!</span>")
+			to_chat(src, "<span class='cultlarge'>\"Przyprowadź ich do mnie.\"</span>")
 			return FALSE
 		do_attack_animation(C)
 		var/obj/item/bodypart/BP = pick(parts)
@@ -434,18 +424,18 @@
 		the_construct.master = C.cult_team.blood_target
 
 	if(!the_construct.master)
-		to_chat(the_construct, "<span class='cult italic'>You have no master to seek!</span>")
+		to_chat(the_construct, "<span class='cult italic'>Nie masz pana, którego mógłbyś szukać!</span>")
 		the_construct.seeking = FALSE
 		return
 	if(tracking)
 		tracking = FALSE
 		the_construct.seeking = FALSE
-		to_chat(the_construct, "<span class='cult italic'>You are no longer tracking your master.</span>")
+		to_chat(the_construct, "<span class='cult italic'>Nie śledzisz już swojego pana.</span>")
 		return
 	else
 		tracking = TRUE
 		the_construct.seeking = TRUE
-		to_chat(the_construct, "<span class='cult italic'>You are now tracking your master.</span>")
+		to_chat(the_construct, "<span class='cult italic'>Śledzisz teraz swojego pana.</span>")
 
 
 /datum/action/innate/seek_prey
@@ -464,34 +454,16 @@
 		desc = "None can hide from Nar'Sie, activate to track a survivor attempting to flee the red harvest!"
 		button_icon_state = "cult_mark"
 		the_construct.seeking = FALSE
-		to_chat(the_construct, "<span class='cult italic'>You are now tracking Nar'Sie, return to reap the harvest!</span>")
+		to_chat(the_construct, "<span class='cult italic'>Śledzisz teraz Nar'Sie, wracaj zebrać żniwo!</span>")
 		return
 	else
 		if(LAZYLEN(GLOB.cult_narsie.souls_needed))
 			the_construct.master = pick(GLOB.cult_narsie.souls_needed)
 			var/mob/living/real_target = the_construct.master //We can typecast this way because Narsie only allows /mob/living into the souls list
-			to_chat(the_construct, "<span class='cult italic'>You are now tracking your prey, [real_target.real_name] - harvest [real_target.p_them()]!</span>")
+			to_chat(the_construct, "<span class='cult italic'>Śledzisz teraz swoją ofiarę, [real_target.real_name] - zbierz żniwo!</span>")
 		else
-			to_chat(the_construct, "<span class='cult italic'>Nar'Sie has completed her harvest!</span>")
+			to_chat(the_construct, "<span class='cult italic'>Nar'Sie zakończyła swoje żniwa!</span>")
 			return
 		desc = "Activate to track Nar'Sie!"
 		button_icon_state = "sintouch"
 		the_construct.seeking = TRUE
-
-
-/////////////////////////////ui stuff/////////////////////////////
-
-/mob/living/simple_animal/hostile/construct/update_health_hud()
-	if(hud_used)
-		if(health >= maxHealth)
-			hud_used.healths.icon_state = "[icon_state]_health0"
-		else if(health > maxHealth*0.8)
-			hud_used.healths.icon_state = "[icon_state]_health2"
-		else if(health > maxHealth*0.6)
-			hud_used.healths.icon_state = "[icon_state]_health3"
-		else if(health > maxHealth*0.4)
-			hud_used.healths.icon_state = "[icon_state]_health4"
-		else if(health > maxHealth*0.2)
-			hud_used.healths.icon_state = "[icon_state]_health5"
-		else
-			hud_used.healths.icon_state = "[icon_state]_health6"

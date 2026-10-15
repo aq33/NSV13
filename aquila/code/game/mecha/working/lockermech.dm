@@ -38,7 +38,7 @@
 	if(href_list["drop_from_cargo"])
 		var/obj/O = locate(href_list["drop_from_cargo"]) in cargo
 		if(O)
-			occupant_message("<span class='notice'>You unload [O].</span>")
+			occupant_message("<span class='notice'>Wyładowujesz [O].</span>")
 			O.forceMove(drop_location())
 			cargo -= O
 			log_message("Unloaded [O]. Cargo compartment capacity: [cargo_capacity - src.cargo.len]", LOG_MECHA)
@@ -54,26 +54,26 @@
 
 /obj/mecha/working/lockermech/get_stats_part()
 	var/output = ..()
-	output += "<b>Cargo Compartment Contents:</b><div style=\"margin-left: 15px;\">"
+	output += "<b>Zawartość przedziału ładunkowego:</b><div style=\"margin-left: 15px;\">"
 	if(cargo.len)
 		for(var/obj/O in cargo)
-			output += "<a href='?src=[REF(src)];drop_from_cargo=[REF(O)]'>Unload</a> : [O]<br>"
+			output += "<a href='byond://?src=[REF(src)];drop_from_cargo=[REF(O)]'>Unload</a> : [O]<br>"
 	else
 		output += "Nothing"
 	output += "</div>"
 	return output
 
 /obj/mecha/working/lockermech/relay_container_resist(mob/living/user, obj/O)
-	to_chat(user, "<span class='notice'>You lean on the back of [O] and start pushing so it falls out of [src].</span>")
+	to_chat(user, "<span class='notice'>Opierasz się o tył [O] i zaczynasz pchać, by wypadł z [src].</span>")
 	if(do_after(user, 300, target = O))
 		if(!user || user.stat != CONSCIOUS || user.loc != src || O.loc != src )
 			return
-		to_chat(user, "<span class='notice'>You successfully pushed [O] out of [src]!</span>")
+		to_chat(user, "<span class='notice'>Udaje ci się wypchnąć [O] z [src]!</span>")
 		O.forceMove(drop_location())
 		cargo -= O
 	else
 		if(user.loc == src) //so we don't get the message if we resisted multiple times and succeeded.
-			to_chat(user, "<span class='warning'>You fail to push [O] out of [src]!</span>")
+			to_chat(user, "<span class='warning'>Nie udaje ci się wypchnąć [O] z [src]!</span>")
 //Nie spodziewalem sie ze to zadziala -b4cku
 
 //Narzedzia szafkomecha
@@ -110,7 +110,7 @@
 /obj/item/mecha_parts/mecha_equipment/hydraulic_clamp/makeshift/action(atom/target)
 	if(istype(target, /obj/machinery/door))
 		if(chassis?.occupant)
-			balloon_alert(chassis.occupant, "[src] is too weak to pry [target] open!")
+			balloon_alert(chassis.occupant, "[src] jest za słaby, by wyważyć [target]!")
 		return
 	return ..()
 

@@ -33,10 +33,10 @@
 /obj/machinery/gibber/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += "<span class='notice'>The status display reads: Outputting <b>[meat_produced]</b> meat slab(s) after <b>[gibtime*0.1]</b> seconds of processing.</span>"
+		. += "<span class='notice'>Wyświetlacz stanu pokazuje: wydawanie <b>[meat_produced]</b> płatów mięsa po <b>[gibtime*0.1]</b> s przetwarzania.</span>"
 		for(var/obj/item/stock_parts/manipulator/M in component_parts)
 			if(M.rating >= 2)
-				. += "<span class='notice'>Gibber has been upgraded to process inorganic materials.</span>"
+				. += "<span class='notice'>Rozdrabniarka została ulepszona do przetwarzania materiałów nieorganicznych.</span>"
 
 /obj/machinery/gibber/update_icon()
 	cut_overlays()
@@ -64,43 +64,43 @@
 /obj/machinery/gibber/relaymove(mob/living/user)
 	go_out()
 
-/obj/machinery/gibber/attack_hand(mob/user)
+/obj/machinery/gibber/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(.)
 		return
 	if(machine_stat & (NOPOWER|BROKEN))
 		return
 	if(operating)
-		to_chat(user, "<span class='danger'>It's locked and running.</span>")
+		to_chat(user, "<span class='danger'>Jest zablokowana i pracuje.</span>")
 		return
 
 	if(!anchored)
-		to_chat(user, "<span class='notice'>[src] cannot be used unless bolted to the ground.</span>")
+		to_chat(user, "<span class='notice'>[src] nie może być używana, dopóki nie zostanie przykręcona do podłoża.</span>")
 		return
 
-	if(user.pulling && user.a_intent == INTENT_GRAB && isliving(user.pulling))
+	if(user.pulling && isliving(user.pulling))
 		var/mob/living/L = user.pulling
 		if(!iscarbon(L))
-			to_chat(user, "<span class='danger'>This item is not suitable for the gibber!</span>")
+			to_chat(user, "<span class='danger'>Ten przedmiot nie nadaje się do rozdrabniarki!</span>")
 			return
 		var/mob/living/carbon/C = L
 		if(C.buckled ||C.has_buckled_mobs())
-			to_chat(user, "<span class='warning'>[C] is attached to something!</span>")
+			to_chat(user, "<span class='warning'>[C] jest do czegoś przyczepiony!</span>")
 			return
 
 		if(!ignore_clothing)
 			for(var/obj/item/I in C.held_items + C.get_equipped_items())
 				if(!HAS_TRAIT(I, TRAIT_NODROP))
-					to_chat(user, "<span class='danger'>Subject may not have abiotic items on.</span>")
+					to_chat(user, "<span class='danger'>Obiekt nie może mieć na sobie przedmiotów abiotycznych.</span>")
 					return
 
-		user.visible_message("<span class='danger'>[user] starts to put [C] into the gibber!</span>")
+		user.visible_message("<span class='danger'>[user] zaczyna wkładać [C] do rozdrabniarki!</span>")
 
 		add_fingerprint(user)
 
 		if(do_after(user, gibtime, target = src))
 			if(C && user.pulling == C && !C.buckled && !C.has_buckled_mobs() && !occupant)
-				user.visible_message("<span class='danger'>[user] stuffs [C] into the gibber!</span>")
+				user.visible_message("<span class='danger'>[user] wpycha [C] do rozdrabniarki!</span>")
 				C.forceMove(src)
 				occupant = C
 				update_icon()
@@ -128,8 +128,9 @@
 	set category = "Object"
 	set name = "empty gibber"
 	set src in oview(1)
-
 	if(usr.incapacitated())
+		return
+	if(!usr.canUseTopic())
 		return
 	src.go_out()
 	add_fingerprint(usr)
@@ -143,10 +144,10 @@
 	if(src.operating)
 		return
 	if(!src.occupant)
-		visible_message("<span class='italics'>You hear a loud metallic grinding sound.</span>")
+		visible_message("<span class='italics'>Słyszysz głośne metaliczne mielenie.</span>")
 		return
 	use_power(1000)
-	visible_message("<span class='italics'>You hear a loud squelchy grinding sound.</span>")
+	visible_message("<span class='italics'>Słyszysz głośne, mlaskające mielenie.</span>")
 	playsound(src.loc, 'sound/machines/juicer.ogg', 50, 1)
 	operating = TRUE
 	update_icon()
@@ -161,10 +162,10 @@
 		sourcejob = gibee.job
 	var/sourcenutriment = mob_occupant.nutrition / 15
 	var/gibtype = /obj/effect/decal/cleanable/blood/gibs
-	var/typeofmeat = /obj/item/reagent_containers/food/snacks/meat/slab/human
+	var/typeofmeat = /obj/item/food/meat/slab/human
 	var/typeofskin
 
-	var/obj/item/reagent_containers/food/snacks/meat/slab/allmeat[meat_produced]
+	var/obj/item/food/meat/slab/allmeat[meat_produced]
 	var/obj/item/stack/sheet/animalhide/skin
 	var/list/datum/disease/diseases = mob_occupant.get_static_viruses()
 
@@ -186,7 +187,7 @@
 	if(occupant?.reagents)
 		occupant_volume = occupant.reagents.total_volume
 	for (var/i=1 to meat_produced)
-		var/obj/item/reagent_containers/food/snacks/meat/slab/newmeat = new typeofmeat
+		var/obj/item/food/meat/slab/newmeat = new typeofmeat
 		newmeat.name = "[sourcename] [newmeat.name]"
 		if(istype(newmeat))
 			newmeat.subjectname = sourcename
@@ -206,7 +207,7 @@
 	qdel(src.occupant)
 	addtimer(CALLBACK(src, PROC_REF(make_meat), skin, allmeat, meat_produced, gibtype, diseases), gibtime)
 
-/obj/machinery/gibber/proc/make_meat(obj/item/stack/sheet/animalhide/skin, list/obj/item/reagent_containers/food/snacks/meat/slab/allmeat, meat_produced, gibtype, list/datum/disease/diseases)
+/obj/machinery/gibber/proc/make_meat(obj/item/stack/sheet/animalhide/skin, list/obj/item/food/meat/slab/allmeat, meat_produced, gibtype, list/datum/disease/diseases)
 	playsound(src.loc, 'sound/effects/splat.ogg', 50, 1)
 	operating = FALSE
 	var/turf/T = get_turf(src)

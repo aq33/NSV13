@@ -32,9 +32,9 @@
 
 /obj/machinery/computer/operating/attackby(obj/item/O, mob/user, params)
 	if(istype(O, /obj/item/disk/surgery))
-		user.visible_message("[user] begins to load \the [O] in \the [src]...",
-			"You begin to load a surgery protocol from \the [O]...",
-			"You hear the chatter of a floppy drive.")
+		user.visible_message("[user] zaczyna wczytywać [O] do [src]...",
+			"Zaczynasz wczytywać protokół operacji z [O]...",
+			"Słyszysz terkot stacji dyskietek.")
 		var/obj/item/disk/surgery/D = O
 		if(do_after(user, 10, target = src))
 			advanced_surgeries |= D.surgeries
@@ -141,7 +141,7 @@
 					alternative_step = capitalize(next_step.name)
 					alt_chems_needed = next_step.get_chem_list()
 				else
-					alternative_step = "Finish operation"
+					alternative_step = "Zakończ operację"
 			data["procedures"] += list(list(
 				"name" = capitalize("[parse_zone(procedure.location)] [procedure.name]"),
 				"next_step" = capitalize(surgery_step.name),
@@ -166,21 +166,21 @@
 		return ..()
 	. = TOOL_ACT_TOOLTYPE_SUCCESS
 	if(QDELETED(multitool.buffer))
-		to_chat(user, "<span class='warning'>\The [multitool]'s buffer is empty.</span>")
+		to_chat(user, "<span class='warning'>Bufor [multitool] jest pusty.</span>")
 		return
 	if(!istype(multitool.buffer, /obj/machinery/stasis))
-		to_chat(user, "<span class='warning'>You cannot link \the [multitool.buffer] to \the [src].</span>")
+		to_chat(user, "<span class='warning'>Nie możesz połączyć [multitool.buffer] z [src].</span>")
 		return
 	var/obj/machinery/stasis/new_stasis_bed = multitool.buffer
 	if(get_dist(src, new_stasis_bed) > 3)
-		to_chat(user, "<span class='warning'>\The [src] is too far away from \the [new_stasis_bed] to link!</span>")
+		to_chat(user, "<span class='warning'>[src] jest za daleko od [new_stasis_bed], by je połączyć!</span>")
 		return
-	balloon_alert(user, "linked to \the [new_stasis_bed]")
+	balloon_alert(user, "połączono z [new_stasis_bed]")
 	if(sbed)
 		sbed.op_computer = null
 	new_stasis_bed.op_computer = src
 	sbed = new_stasis_bed
-	to_chat(user, "<span class='notice'>You link \the [src] with \the [new_stasis_bed] to its [dir2text(get_dir(src, new_stasis_bed))].</span>")
+	to_chat(user, "<span class='notice'>Łączysz [src] z [new_stasis_bed] (kierunek: [dir2text(get_dir(src, new_stasis_bed))]).</span>")
 
 #undef MENU_OPERATION
 #undef MENU_SURGERIES

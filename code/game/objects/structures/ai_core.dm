@@ -50,8 +50,8 @@
 
 /obj/structure/AIcore/latejoin_inactive/examine(mob/user)
 	. = ..()
-	. += "Its transmitter seems to be <b>[active? "on" : "off"]</b>."
-	. += "<span class='notice'>You could [active? "deactivate" : "activate"] it with a multitool.</span>"
+	. += "Jego nadajnik wydaje się <b>[active? "włączony" : "wyłączony"]</b>."
+	. += "<span class='notice'>Możesz go [active? "wyłączyć" : "włączyć"] multitoolem.</span>"
 
 /obj/structure/AIcore/latejoin_inactive/proc/is_available()			//If people still manage to use this feature to spawn-kill AI latejoins ahelp them.
 	if(!available)
@@ -75,7 +75,7 @@
 /obj/structure/AIcore/latejoin_inactive/attackby(obj/item/P, mob/user, params)
 	if(P.tool_behaviour == TOOL_MULTITOOL)
 		active = !active
-		to_chat(user, "You [active? "activate" : "deactivate"] \the [src]'s transmitters.")
+		to_chat(user, "[active? "Włączasz" : "Wyłączasz"] nadajniki [src].")
 		return
 	return ..()
 
@@ -93,15 +93,15 @@
 	if(!anchored)
 		if(P.tool_behaviour == TOOL_WELDER && can_deconstruct)
 			if(state != EMPTY_CORE)
-				to_chat(user, "<span class='warning'>The core must be empty to deconstruct it!</span>")
+				to_chat(user, "<span class='warning'>Rdzeń musi być pusty, by go rozebrać!</span>")
 				return
 
 			if(!P.tool_start_check(user, amount=0))
 				return
 
-			to_chat(user, "<span class='notice'>You start to deconstruct the frame...</span>")
+			to_chat(user, "<span class='notice'>Zaczynasz rozbierać ramę...</span>")
 			if(P.use_tool(src, user, 20, volume=50) && state == EMPTY_CORE)
-				to_chat(user, "<span class='notice'>You deconstruct the frame.</span>")
+				to_chat(user, "<span class='notice'>Rozbierasz ramę.</span>")
 				deconstruct(TRUE)
 			return
 	else
@@ -111,7 +111,7 @@
 					if(!user.transferItemToLoc(P, src))
 						return
 					playsound(loc, 'sound/items/deconstruct.ogg', 50, 1)
-					to_chat(user, "<span class='notice'>You place the circuit board inside the frame.</span>")
+					to_chat(user, "<span class='notice'>Umieszczasz płytkę drukowaną w ramie.</span>")
 					update_icon()
 					state = CIRCUIT_CORE
 					circuit = P
@@ -119,13 +119,13 @@
 			if(CIRCUIT_CORE)
 				if(P.tool_behaviour == TOOL_SCREWDRIVER)
 					P.play_tool_sound(src)
-					to_chat(user, "<span class='notice'>You screw the circuit board into place.</span>")
+					to_chat(user, "<span class='notice'>Przykręcasz płytkę drukowaną.</span>")
 					state = SCREWED_CORE
 					update_icon()
 					return
 				if(P.tool_behaviour == TOOL_CROWBAR)
 					P.play_tool_sound(src)
-					to_chat(user, "<span class='notice'>You remove the circuit board.</span>")
+					to_chat(user, "<span class='notice'>Wyjmujesz płytkę drukowaną.</span>")
 					state = EMPTY_CORE
 					update_icon()
 					circuit.forceMove(loc)
@@ -134,7 +134,7 @@
 			if(SCREWED_CORE)
 				if(P.tool_behaviour == TOOL_SCREWDRIVER && circuit)
 					P.play_tool_sound(src)
-					to_chat(user, "<span class='notice'>You unfasten the circuit board.</span>")
+					to_chat(user, "<span class='notice'>Odkręcasz płytkę drukowaną.</span>")
 					state = CIRCUIT_CORE
 					update_icon()
 					return
@@ -142,21 +142,21 @@
 					var/obj/item/stack/cable_coil/C = P
 					if(C.get_amount() >= 5)
 						playsound(loc, 'sound/items/deconstruct.ogg', 50, 1)
-						to_chat(user, "<span class='notice'>You start to add cables to the frame...</span>")
+						to_chat(user, "<span class='notice'>Zaczynasz podłączać kable do ramy...</span>")
 						if(do_after(user, 20, target = src) && state == SCREWED_CORE && C.use(5))
-							to_chat(user, "<span class='notice'>You add cables to the frame.</span>")
+							to_chat(user, "<span class='notice'>Podłączasz kable do ramy.</span>")
 							state = CABLED_CORE
 							update_icon()
 					else
-						to_chat(user, "<span class='warning'>You need five lengths of cable to wire the AI core!</span>")
+						to_chat(user, "<span class='warning'>Do okablowania rdzenia SI potrzebujesz pięciu odcinków kabla!</span>")
 					return
 			if(CABLED_CORE)
 				if(P.tool_behaviour == TOOL_WIRECUTTER)
 					if(brain)
-						to_chat(user, "<span class='warning'>Get that [brain.name] out of there first!</span>")
+						to_chat(user, "<span class='warning'>Najpierw wyjmij stamtąd [brain.name]!</span>")
 					else
 						P.play_tool_sound(src)
-						to_chat(user, "<span class='notice'>You remove the cables.</span>")
+						to_chat(user, "<span class='notice'>Wyjmujesz kable.</span>")
 						state = SCREWED_CORE
 						update_icon()
 						new /obj/item/stack/cable_coil(drop_location(), 5)
@@ -166,18 +166,18 @@
 					var/obj/item/stack/sheet/rglass/G = P
 					if(G.get_amount() >= 2)
 						playsound(loc, 'sound/items/deconstruct.ogg', 50, 1)
-						to_chat(user, "<span class='notice'>You start to put in the glass panel...</span>")
+						to_chat(user, "<span class='notice'>Zaczynasz wkładać szklany panel...</span>")
 						if(do_after(user, 20, target = src) && state == CABLED_CORE && G.use(2))
-							to_chat(user, "<span class='notice'>You put in the glass panel.</span>")
+							to_chat(user, "<span class='notice'>Wkładasz szklany panel.</span>")
 							state = GLASS_CORE
 							update_icon()
 					else
-						to_chat(user, "<span class='warning'>You need two sheets of reinforced glass to insert them into the AI core!</span>")
+						to_chat(user, "<span class='warning'>Do rdzenia SI potrzebujesz dwóch arkuszy wzmocnionego szkła!</span>")
 					return
 
 				if(istype(P, /obj/item/aiModule))
 					if(brain && brain.laws.id != DEFAULT_AI_LAWID)
-						to_chat(user, "<span class='warning'>The installed [brain.name] already has set laws!</span>")
+						to_chat(user, "<span class='warning'>Zainstalowany [brain.name] ma już ustalone prawa!</span>")
 						return
 					var/obj/item/aiModule/module = P
 					module.install(laws, user)
@@ -186,36 +186,36 @@
 				if(istype(P, /obj/item/mmi) && !brain)
 					var/obj/item/mmi/M = P
 					if(!M.brainmob)
-						to_chat(user, "<span class='warning'>Sticking an empty [M.name] into the frame would sort of defeat the purpose!</span>")
+						to_chat(user, "<span class='warning'>Wkładanie pustego [M.name] do ramy mijałoby się z celem!</span>")
 						return
 					if(M.brainmob.stat == DEAD)
-						to_chat(user, "<span class='warning'>Sticking a dead [M.name] into the frame would sort of defeat the purpose!</span>")
+						to_chat(user, "<span class='warning'>Wkładanie martwego [M.name] do ramy mijałoby się z celem!</span>")
 						return
 
 					if(!M.brainmob.client)
-						to_chat(user, "<span class='warning'>Sticking an inactive [M.name] into the frame would sort of defeat the purpose.</span>")
+						to_chat(user, "<span class='warning'>Wkładanie nieaktywnego [M.name] do ramy mijałoby się z celem.</span>")
 						return
 
 					if(!CONFIG_GET(flag/allow_ai) || (is_banned_from(M.brainmob.ckey, JOB_NAME_AI) && !QDELETED(src) && !QDELETED(user) && !QDELETED(M) && !QDELETED(user) && Adjacent(user)))
 						if(!QDELETED(M))
-							to_chat(user, "<span class='warning'>This [M.name] does not seem to fit!</span>")
+							to_chat(user, "<span class='warning'>To [M.name] chyba nie pasuje!</span>")
 						return
 
 					if(!M.brainmob.mind)
-						to_chat(user, "<span class='warning'>This [M.name] is mindless!</span>")
+						to_chat(user, "<span class='warning'>To [M.name] nie ma umysłu!</span>")
 						return
 
 					if(!user.transferItemToLoc(M,src))
 						return
 
 					brain = M
-					to_chat(user, "<span class='notice'>You add [M.name] to the frame.</span>")
+					to_chat(user, "<span class='notice'>Dodajesz [M.name] do ramy.</span>")
 					update_icon()
 					return
 
 				if(P.tool_behaviour == TOOL_CROWBAR && brain)
 					P.play_tool_sound(src)
-					to_chat(user, "<span class='notice'>You remove the brain.</span>")
+					to_chat(user, "<span class='notice'>Wyjmujesz mózg.</span>")
 					brain.forceMove(loc)
 					brain = null
 					update_icon()
@@ -224,7 +224,7 @@
 			if(GLASS_CORE)
 				if(P.tool_behaviour == TOOL_CROWBAR)
 					P.play_tool_sound(src)
-					to_chat(user, "<span class='notice'>You remove the glass panel.</span>")
+					to_chat(user, "<span class='notice'>Wyjmujesz szklany panel.</span>")
 					state = CABLED_CORE
 					update_icon()
 					new /obj/item/stack/sheet/rglass(loc, 2)
@@ -232,7 +232,7 @@
 
 				if(P.tool_behaviour == TOOL_SCREWDRIVER)
 					P.play_tool_sound(src)
-					to_chat(user, "<span class='notice'>You connect the monitor.</span>")
+					to_chat(user, "<span class='notice'>Podłączasz monitor.</span>")
 					if(brain)
 						SSticker.mode.remove_antag_for_borging(brain.brainmob.mind)
 
@@ -244,7 +244,7 @@
 							A = new /mob/living/silicon/ai(loc, laws, brain.brainmob)
 
 						if(get_overmap()?.faction == "syndicate") //NSV13 start - Syndicate ship radio & traitor setting
-							A.set_zeroth_law("Accomplish the Syndicate's objectives at all costs.", "Accomplish your Syndicate's objectives at all costs.")
+							A.set_zeroth_law("Wykonaj cele Syndykatu za wszelką cenę.", "Wykonaj cele swojego Syndykatu za wszelką cenę.")
 							A.set_syndie_radio()
 							A.faction |= "Syndicate" //Why is this capitalized
 							A.network = list("syndicate")
@@ -253,7 +253,7 @@
 						if(brain.force_replace_ai_name)
 							A.fully_replace_character_name(A.name, brain.replacement_ai_name())
 						SSblackbox.record_feedback("amount", "ais_created", 1)
-						deadchat_broadcast("<span class='deadsay'><span class='name'>[A]</span> has been brought online at <b>[get_area_name(A, TRUE)]</b></span>.", "<span class='name'>[A]</span>", follow_target=A)
+						deadchat_broadcast("<span class='deadsay'><span class='name'>[A]</span> zostaje uruchomiona w <b>[get_area_name(A, TRUE)]</b></span>.", "<span class='name'>[A]</span>", follow_target=A)
 						qdel(src)
 					else
 						state = AI_READY_CORE
@@ -267,7 +267,7 @@
 
 				if(P.tool_behaviour == TOOL_SCREWDRIVER)
 					P.play_tool_sound(src)
-					to_chat(user, "<span class='notice'>You disconnect the monitor.</span>")
+					to_chat(user, "<span class='notice'>Odłączasz monitor.</span>")
 					state = GLASS_CORE
 					update_icon()
 					return
@@ -324,7 +324,7 @@ That prevents a few funky behaviors.
 /atom/proc/transfer_ai(interaction, mob/user, mob/living/silicon/ai/AI, obj/item/aicard/card)
 	if(istype(card))
 		if(card.flush)
-			to_chat(user, "<span class='boldannounce'>ERROR</span>: AI flush is in progress, cannot execute transfer protocol.")
+			to_chat(user, "<span class='boldannounce'>BŁĄD</span>: trwa czyszczenie SI, nie można wykonać protokołu transferu.")
 			return FALSE
 	return TRUE
 
@@ -336,13 +336,13 @@ That prevents a few funky behaviors.
 		AI.control_disabled = FALSE
 		AI.radio_enabled = TRUE
 		AI.forceMove(loc) // to replace the terminal.
-		to_chat(AI, "You have been uploaded to a stationary terminal. Remote device connection restored.")
-		to_chat(user, "<span class='boldnotice'>Transfer successful</span>: [AI.name] ([rand(1000,9999)].exe) installed and executed successfully. Local copy has been removed.")
+		to_chat(AI, "Zostajesz wgrany do stacjonarnego terminala. Przywrócono połączenie ze zdalnym urządzeniem.")
+		to_chat(user, "<span class='boldnotice'>Transfer zakończony sukcesem</span>: [AI.name] ([rand(1000,9999)].exe) zainstalowano i uruchomiono pomyślnie. Kopia lokalna została usunięta.")
 		card.AI = null
 		AI.battery = circuit.battery
 		qdel(src)
 	else //If for some reason you use an empty card on an empty AI terminal.
-		to_chat(user, "There is no AI loaded on this terminal!")
+		to_chat(user, "Na tym terminalu nie ma wczytanej SI!")
 
 /obj/item/circuitboard/aicore
 	name = "AI core (AI Core Board)" //Well, duh, but best to be consistent

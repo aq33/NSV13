@@ -18,14 +18,14 @@
 	time = 125
 
 /datum/surgery_step/thread_veins/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You start weaving [target]'s circulatory system.</span>",
-		"[user] starts weaving [target]'s circulatory system.",
-		"[user] starts manipulating [target]'s circulatory system.")
+	display_results(user, target, "<span class='notice'>Zaczynasz przeplatać układ krwionośny [target].</span>",
+		"[user] zaczyna przeplatać układ krwionośny [target].",
+		"[user] zaczyna manipulować układem krwionośnym [target].")
 
 /datum/surgery_step/thread_veins/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You weave [target]'s circulatory system into a resistant mesh!</span>",
-		"[user] weaves [target]'s circulatory system into a resistant mesh!",
-		"[user] finishes manipulating [target]'s circulatory system.")
+	display_results(user, target, "<span class='notice'>Przeplatasz układ krwionośny [target] w odporną siatkę!</span>",
+		"[user] przeplata układ krwionośny [target] w odporną siatkę!",
+		"[user] kończy manipulować układem krwionośnym [target].")
 	new /datum/bioware/threaded_veins(target)
 	return TRUE
 

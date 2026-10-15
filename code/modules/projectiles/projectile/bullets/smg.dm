@@ -22,6 +22,7 @@
 
 //Slightly worse disabler, but fully automatic
 /obj/item/projectile/bullet/c46x30mm_rubber
+	bleed_force = BLEED_SCRATCH
 	name = "4.6x30mm rubber bullet"
 	damage_type = STAMINA
 	flag = "stamina"

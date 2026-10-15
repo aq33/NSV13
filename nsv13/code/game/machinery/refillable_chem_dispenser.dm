@@ -81,7 +81,7 @@
 /obj/machinery/refillable_chem_dispenser/examine(mob/user)
 	. = ..()
 	if(panel_open)
-		. += "<span class='notice'>[src]'s maintenance hatch is open!</span>"
+		. += "<span class='notice'>Właz serwisowy [src] jest otwarty!</span>"
 
 /obj/machinery/refillable_chem_dispenser/proc/display_beaker()
 	var/mutable_appearance/b_o = beaker_overlay || mutable_appearance(icon, "disp_beaker")
@@ -213,7 +213,7 @@
 					var/datum/reagents/R = beaker.reagents
 					var/free = R.maximum_volume - R.total_volume
 					if(!reagents.get_reagent_amount(reagent))
-						say("No [reagent_name] left in storage!")
+						say("W magazynie nie zostało [reagent_name]!")
 						return
 					reagents.trans_id_to(beaker, reagent, min(amount, free))
 					update_reagents()
@@ -254,7 +254,7 @@
 					var/datum/reagents/R = beaker.reagents
 					free = R.maximum_volume - R.total_volume
 					if(!reagents.get_reagent_amount(reagent))
-						say("No [key] left in storage!")
+						say("W magazynie nie zostało [key]!")
 						return
 					reagents.trans_id_to(beaker, reagent, min(dispense_amount, free))
 					update_reagents()
@@ -262,7 +262,7 @@
 					recording_recipe[key] += dispense_amount
 			. = TRUE
 		if("clear_recipes")
-			var/yesno = alert("Clear all recipes?",, "Yes","No")
+			var/yesno = alert("Usunąć wszystkie receptury?",, "Yes","No")
 			if(yesno == "Yes")
 				saved_recipes = list()
 			. = TRUE
@@ -273,14 +273,14 @@
 			var/name = stripped_input(usr,"Name","What do you want to name this recipe?", "Recipe", MAX_NAME_LEN)
 			if(!usr.canUseTopic(src, !issilicon(usr)))
 				return
-			if(saved_recipes[name] && alert("\"[name]\" already exists, do you want to overwrite it?",, "Yes", "No") == "No")
+			if(saved_recipes[name] && alert("\"[name]\" już istnieje, czy chcesz to nadpisać?",, "Yes", "No") == "No")
 				return
 			if(name && recording_recipe)
 				for(var/reagent in recording_recipe)
 					var/reagent_id = GLOB.name2reagent[translate_legacy_chem_id(reagent)]
 					if(!dispensable_reagents.Find(reagent_id))
-						visible_message("<span class='warning'>[src] buzzes.</span>", "<span class='italics'>You hear a faint buzz.</span>")
-						to_chat(usr, "<span class ='danger'>[src] cannot find <b>[reagent]</b>!</span>")
+						visible_message("<span class='warning'>[src] buzzes.</span>", "<span class='italics'>Słyszysz ciche brzęczenie.</span>")
+						to_chat(usr, "<span class ='danger'>[src] nie może znaleźć <b>[reagent]</b>!</span>")
 						playsound(src, 'sound/machines/buzz-two.ogg', 50, 1)
 						return
 				saved_recipes[name] = recording_recipe
@@ -297,7 +297,7 @@
 			// Custom amount
 			if (amount == -1)
 				amount = text2num(input(
-					"Enter the amount you want to transfer:",
+					"Podaj ilość do przeniesienia:",
 					name, ""))
 			if (amount == null || amount <= 0)
 				return
@@ -326,11 +326,11 @@
 		if(!user.transferItemToLoc(B, src))
 			return
 		replace_beaker(user, B)
-		to_chat(user, "<span class='notice'>You add [B] to [src].</span>")
+		to_chat(user, "<span class='notice'>Dodajesz [B] do [src].</span>")
 		updateUsrDialog()
 		update_icon()
-	else if(user.a_intent != INTENT_HARM && !istype(I, /obj/item/card/emag))
-		to_chat(user, "<span class='warning'>You can't load [I] into [src]!</span>")
+	else if(!user.combat_mode && !istype(I, /obj/item/card/emag))
+		to_chat(user, "<span class='warning'>Nie możesz załadować [I] do [src]!</span>")
 		return ..()
 	else
 		return ..()

@@ -41,7 +41,7 @@
 /obj/machinery/coffeemaker/pendulum/examine(mob/user)
 	. = ..()
 	if(coffee)
-		. += "<span class='notice'The internal grinder conatins [coffee.len] scoop\s of coffee beans.</span>"
+		. += "<span class='notice'Wewnętrzny młynek zawiera miarek ziaren kawy: [coffee.len].</span>"
 	return
 
 /obj/machinery/coffeemaker/pendulum/update_overlays()
@@ -86,16 +86,16 @@
 
 /obj/machinery/coffeemaker/pendulum/can_brew()
 	if(coffee_amount <= 0)
-		balloon_alert_to_viewers("no coffee beans added!")
+		balloon_alert_to_viewers("nie dodano ziaren kawy!")
 		return FALSE
 	if(!coffeepot)
-		balloon_alert_to_viewers("no coffeepot inside!")
+		balloon_alert_to_viewers("w środku nie ma dzbanka!")
 		return FALSE
 	if(machine_stat & (NOPOWER|BROKEN) )
-		balloon_alert_to_viewers("machine unpowered!")
+		balloon_alert_to_viewers("maszyna nie ma zasilania!")
 		return FALSE
 	if(coffeepot.reagents.total_volume >= coffeepot.reagents.maximum_volume)
-		balloon_alert_to_viewers("the coffeepot is already full!")
+		balloon_alert_to_viewers("dzbanek jest już pełny!")
 		return FALSE
 	return TRUE
 
@@ -121,10 +121,10 @@
 	if(istype(attack_item, /obj/item/reagent_containers/food/drinks/coffee/empty) && !(attack_item.item_flags & ABSTRACT) && attack_item.is_open_container())
 		var/obj/item/reagent_containers/food/drinks/coffee/empty/new_cup = attack_item
 		if(new_cup.reagents.total_volume > 0)
-			balloon_alert(user, "the cup must be empty!")
+			balloon_alert(user, "kubek musi być pusty!")
 			return TRUE
 		if(coffee_cups >= max_coffee_cups)
-			balloon_alert(user, "the cup holder is full!")
+			balloon_alert(user, "uchwyt na kubki jest pełny!")
 			return TRUE
 		if(!user.transferItemToLoc(attack_item, src))
 			return TRUE
@@ -135,10 +135,10 @@
 	if(istype(attack_item, /obj/item/reagent_containers/food/condiment/pack/sugar))
 		var/obj/item/reagent_containers/food/condiment/pack/sugar/new_pack = attack_item
 		if(new_pack.reagents.total_volume < new_pack.reagents.maximum_volume)
-			balloon_alert(user, "the pack must be full!")
+			balloon_alert(user, "saszetka musi być pełna!")
 			return TRUE
 		if(sugar_packs >= max_sugar_packs)
-			balloon_alert(user, "the sugar compartment is full!")
+			balloon_alert(user, "przegródka na cukier jest pełna!")
 			return TRUE
 		if(!user.transferItemToLoc(attack_item, src))
 			return TRUE
@@ -149,10 +149,10 @@
 	if(istype(attack_item, /obj/item/reagent_containers/food/condiment/creamer))
 		var/obj/item/reagent_containers/food/condiment/creamer/new_pack = attack_item
 		if(new_pack.reagents.total_volume < new_pack.reagents.maximum_volume)
-			balloon_alert(user, "the pack must be full!")
+			balloon_alert(user, "saszetka musi być pełna!")
 			return TRUE
 		if(creamer_packs >= max_creamer_packs)
-			balloon_alert(user, "the creamer compartment is full!")
+			balloon_alert(user, "przegródka na śmietankę jest pełna!")
 			return TRUE
 		if(!user.transferItemToLoc(attack_item, src))
 			return TRUE
@@ -163,10 +163,10 @@
 	if(istype(attack_item, /obj/item/reagent_containers/food/condiment/pack/astrotame))
 		var/obj/item/reagent_containers/food/condiment/pack/astrotame/new_pack = attack_item
 		if(new_pack.reagents.total_volume < new_pack.reagents.maximum_volume)
-			balloon_alert(user, "the pack must be full!")
+			balloon_alert(user, "saszetka musi być pełna!")
 			return TRUE
 		if(sweetener_packs >= max_sweetener_packs)
-			balloon_alert(user, "the sweetener compartment is full!")
+			balloon_alert(user, "przegródka na słodzik jest pełna!")
 			return TRUE
 		if(!user.transferItemToLoc(attack_item, src))
 			return TRUE
@@ -174,40 +174,40 @@
 		update_icon()
 		return TRUE
 
-	if(istype(attack_item, /obj/item/reagent_containers/food/snacks/grown/coffee) && !(attack_item.item_flags & ABSTRACT))
+	if(istype(attack_item, /obj/item/food/grown/coffee) && !(attack_item.item_flags & ABSTRACT))
 		if(coffee_amount >= BEAN_CAPACITY)
-			balloon_alert(user, "the coffee container is full!")
+			balloon_alert(user, "pojemnik na kawę jest pełny!")
 			return TRUE
-		var/obj/item/reagent_containers/food/snacks/grown/coffee/new_coffee = attack_item
-		if(!(new_coffee.dry))
-			balloon_alert(user, "coffee beans must be dry!")
+		var/obj/item/food/grown/coffee/new_coffee = attack_item
+		if(!HAS_TRAIT(new_coffee, TRAIT_DRIED))
+			balloon_alert(user, "ziarna kawy muszą być suche!")
 			return TRUE
 		if(!user.transferItemToLoc(new_coffee, src))
 			return TRUE
 		coffee += new_coffee
 		coffee_amount++
-		balloon_alert(user, "added coffee")
+		balloon_alert(user, "dodano kawę")
 
 	if (istype(attack_item, /obj/item/storage/box/coffeepack))
 		if(coffee_amount >= BEAN_CAPACITY)
-			balloon_alert(user, "the coffee container is full!")
+			balloon_alert(user, "pojemnik na kawę jest pełny!")
 			return TRUE
 		var/obj/item/storage/box/coffeepack/new_coffee_pack = attack_item
-		for(var/obj/item/reagent_containers/food/snacks/grown/coffee/new_coffee in new_coffee_pack.contents)
-			if(!(new_coffee.dry))
+		for(var/obj/item/food/grown/coffee/new_coffee in new_coffee_pack.contents)
+			if(!HAS_TRAIT(new_coffee, TRAIT_DRIED))
 				if(coffee_amount < BEAN_CAPACITY)
 					if(user.transferItemToLoc(new_coffee, src))
 						coffee += new_coffee
 						coffee_amount++
 						new_coffee.forceMove(src)
-						balloon_alert(user, "added coffee")
+						balloon_alert(user, "dodano kawę")
 						update_icon()
 					else
 						return TRUE
 				else
 					return TRUE
 			else
-				balloon_alert(user, "non-dried beans inside the coffee pack!")
+				balloon_alert(user, "w paczce kawy są niesuszone ziarna!")
 				return TRUE
 		return TRUE
 
@@ -215,9 +215,9 @@
 
 /obj/machinery/coffeemaker/pendulum/take_cup(mob/user)
 	if(!coffee_cups)
-		balloon_alert(user, "no cups left!")
+		balloon_alert(user, "nie zostały żadne kubki!")
 		return
-	balloon_alert_to_viewers("took cup")
+	balloon_alert_to_viewers("wzięto kubek")
 	var/obj/item/reagent_containers/food/drinks/coffee/empty/new_cup = new(get_turf(src))
 	user.put_in_hands(new_cup)
 	coffee_cups--

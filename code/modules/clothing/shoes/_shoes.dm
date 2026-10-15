@@ -1,7 +1,7 @@
 /obj/item/clothing/shoes
 	name = "shoes"
 	icon = 'icons/obj/clothing/shoes.dmi'
-	desc = "Comfortable-looking shoes."
+	desc = "Wygodnie wyglądające buty."
 	gender = PLURAL //Carn: for grammarically correct text-parsing
 	var/chained = 0
 
@@ -25,7 +25,7 @@
 
 /obj/item/clothing/shoes/suicide_act(mob/living/carbon/user)
 	if(rand(2)>1)
-		user.visible_message("<span class='suicide'>[user] begins tying \the [src] up waaay too tightly! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+		user.visible_message("<span class='suicide'>[user] zaczyna zawiązywać [src] o wiele za mocno! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 		var/obj/item/bodypart/l_leg = user.get_bodypart(BODY_ZONE_L_LEG)
 		var/obj/item/bodypart/r_leg = user.get_bodypart(BODY_ZONE_R_LEG)
 		if(l_leg)
@@ -36,7 +36,7 @@
 			playsound(user,pick('sound/misc/desecration-01.ogg','sound/misc/desecration-02.ogg','sound/misc/desecration-01.ogg') ,50, 1, -1)
 		return BRUTELOSS
 	else//didnt realize this suicide act existed (was in miscellaneous.dm) and didnt want to remove it, so made it a 50/50 chance. Why not!
-		user.visible_message("<span class='suicide'>[user] is bashing [user.p_their()] own head in with [src]! Ain't that a kick in the head?</span>")
+		user.visible_message("<span class='suicide'>[user] wali się [src] po głowie! Ale kopniak, co?</span>")
 		for(var/i = 0, i < 3, i++)
 			sleep(3)
 			playsound(user, 'sound/weapons/genhit2.ogg', 50, 1)
@@ -54,7 +54,9 @@
 		if(damaged_clothes)
 			. += mutable_appearance('icons/effects/item_damage.dmi', "damagedshoe")
 		if(bloody)
-			. += mutable_appearance('icons/effects/blood.dmi', "shoeblood")
+			var/mutable_appearance/bloody_shoes_overlay = mutable_appearance('icons/effects/blood.dmi', "shoeblood")
+			bloody_shoes_overlay.color = get_blood_dna_color(return_blood_DNA())
+			. += bloody_shoes_overlay
 
 /obj/item/clothing/shoes/equipped(mob/user, slot)
 	. = ..()

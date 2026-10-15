@@ -34,7 +34,7 @@
 	model = "Floorbot"
 	bot_core = /obj/machinery/bot_core/floorbot
 	window_id = "autofloor"
-	window_name = "Automatic Station Atmospherics Restabilizer v1.1"
+	window_name = "Automatyczny Stabilizator Atmosfery Stacji v1.1"
 	path_image_color = "#FFA500"
 
 	auto_patrol = TRUE
@@ -91,14 +91,14 @@
 	update_icon()
 
 /mob/living/simple_animal/bot/atmosbot/set_custom_texts()
-	text_hack = "You corrupt [name]'s safety protocols."
-	text_dehack = "You detect errors in [name] and reset his programming."
-	text_dehack_fail = "[name] is not responding to reset commands!"
+	text_hack = "Psujesz protokoły bezpieczeństwa [name]."
+	text_dehack = "Wykrywasz błędy w [name] i resetujesz jego oprogramowanie."
+	text_dehack_fail = "[name] nie reaguje na polecenia resetu!"
 
 /mob/living/simple_animal/bot/atmosbot/emag_act(mob/user)
 	. = ..()
 	if(emagged == 2)
-		audible_message("<span class='danger'>[src] whirs ominously.</span>")
+		audible_message("<span class='danger'>[src] warczy złowieszczo.</span>")
 		playsound(src, "sparks", 75, TRUE)
 
 /mob/living/simple_animal/bot/atmosbot/handle_automated_action()
@@ -106,7 +106,7 @@
 		return
 
 	if(prob(5))
-		audible_message("[src] makes an excited whirring sound!")
+		audible_message("[src] wydaje podekscytowany warkot!")
 
 	action = ATMOSBOT_NOTHING
 	if(!isspaceturf(get_turf(src)))
@@ -287,18 +287,18 @@
 	var/dat
 	dat += hack(user)
 	dat += showpai(user)
-	dat += "<tt><b>Atmospheric Stabilizer Controls v1.1</b></tt><br><br>"
-	dat += "Status: <a href='?src=[REF(src)];power=1'>[on ? "On" : "Off"]</a><br>"
-	dat += "Maintenance panel panel is [open ? "opened" : "closed"]<br>"
+	dat += "<tt><b>Sterowanie stabilizatorem atmosfery v1.1</b></tt><br><br>"
+	dat += "Status: <a href='byond://?src=[REF(src)];power=1'>[on ? "On" : "Off"]</a><br>"
+	dat += "Panel serwisowy jest [open ? "otwarty" : "zamknięty"]<br>"
 	if(!locked || issilicon(user) || IsAdminGhost(user))
-		dat += "Breach Pressure: <a href='?src=[REF(src)];set_breach_pressure=1'>[breached_pressure]</a><br>"
-		dat += "Temperature Control: <a href='?src=[REF(src)];toggle_temp_control=1'>[temperature_control?"Enabled":"Disabled"]</a><br>"
-		dat += "Temperature Target: <a href='?src=[REF(src)];set_ideal_temperature=[ideal_temperature]'>[ideal_temperature]K</a><br>"
-		dat += "Gas Scrubbing Controls<br>"
+		dat += "Ciśnienie wyłomu: <a href='byond://?src=[REF(src)];set_breach_pressure=1'>[breached_pressure]</a><br>"
+		dat += "Kontrola temperatury: <a href='byond://?src=[REF(src)];toggle_temp_control=1'>[temperature_control?"Włączona":"Wyłączona"]</a><br>"
+		dat += "Temperatura docelowa: <a href='byond://?src=[REF(src)];set_ideal_temperature=[ideal_temperature]'>[ideal_temperature]K</a><br>"
+		dat += "Sterowanie filtrowaniem gazów<br>"
 		for(var/gas_id in gasses)
 			var/gas_enabled = gasses[gas_id]
-			dat += "[GLOB.gas_data.names[gas_id]]: <a href='?src=[REF(src)];toggle_gas=[gas_id]'>[gas_enabled?"Scrubbing":"Not Scrubbing"]</a><br>"
-		dat += "Patrol Station: <A href='?src=[REF(src)];operation=patrol'>[auto_patrol ? "Yes" : "No"]</A><BR>"
+			dat += "[GLOB.gas_data.names[gas_id]]: <a href='byond://?src=[REF(src)];toggle_gas=[gas_id]'>[gas_enabled?"Scrubbing":"Not Scrubbing"]</a><br>"
+		dat += "Patrolowanie stacji: <A href='byond://?src=[REF(src)];operation=patrol'>[auto_patrol ? "Tak" : "Nie"]</A><BR>"
 	return dat
 
 /mob/living/simple_animal/bot/atmosbot/Topic(href, href_list)
@@ -306,7 +306,7 @@
 		return TRUE
 
 	if(href_list["set_breach_pressure"])
-		var/new_breach_pressure = input(usr, "Pressure to scan for breaches at? (0 to 100)", "Breach Pressure") as num
+		var/new_breach_pressure = input(usr, "Przy jakim ciśnieniu szukać wyłomów? (0 do 100)", "Ciśnienie wyłomu") as num
 		if(!isnum(new_breach_pressure) || new_breach_pressure < 0 || new_breach_pressure > 100)
 			return
 		breached_pressure = new_breach_pressure
@@ -318,7 +318,7 @@
 			if("[G]" == gas_id)
 				gasses[G] = gasses[G] ? FALSE : TRUE
 	else if(href_list["set_ideal_temperature"])
-		var/new_temp = input(usr, "Set Target Temperature ([T0C]K to [T20C + 20]K)", "Target Temperature") as num
+		var/new_temp = input(usr, "Ustaw temperaturę docelową (od [T0C]K do [T20C + 20]K)", "Temperatura docelowa") as num
 		if(!isnum(new_temp) || new_temp < T0C || new_temp > T20C + 20)
 			return
 		ideal_temperature = new_temp
@@ -339,7 +339,7 @@
 
 /mob/living/simple_animal/bot/atmosbot/explode()
 	on = FALSE
-	visible_message("<span class='boldannounce'>[src] blows apart!</span>")
+	visible_message("<span class='boldannounce'>[src] rozpada się na kawałki!</span>")
 
 	var/atom/Tsec = drop_location()
 

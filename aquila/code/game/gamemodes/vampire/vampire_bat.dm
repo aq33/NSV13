@@ -1,14 +1,14 @@
 /mob/living/simple_animal/hostile/vampire_bat
 	name = "vampire bat"
-	desc = "A bat that sucks blood. Keep away from medical bays."
+	desc = "Nietoperz wysysający krew. Trzymać z dala od ambulatoriów."
 	icon_state = "bat"
 	icon_living = "bat"
 	icon_dead = "bat_dead"
 	icon_gib = "bat_dead"
 	turns_per_move = 1
-	response_help = "brushes aside"
-	response_disarm = "flails at"
-	response_harm = "hits"
+	response_help = "odpycha na bok"
+	response_disarm = "macha rękami na"
+	response_harm = "uderza"
 	speak_chance = 0
 	maxHealth = 20
 	health = 20
@@ -16,8 +16,8 @@
 	see_in_dark = 10
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	melee_damage = 7
-	attacktext = "bites"
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab = 1)
+	attacktext = "gryzie"
+	butcher_results = list(/obj/item/food/meat/slab = 1)
 	pass_flags = PASSTABLE
 	faction = list("hostile", "vampire")
 	attack_sound = 'sound/weapons/bite.ogg'
@@ -26,7 +26,7 @@
 	ventcrawler = VENTCRAWLER_ALWAYS
 	mob_size = MOB_SIZE_TINY
 	movement_type = FLYING
-	speak_emote = list("squeaks")
+	speak_emote = list("piszczy")
 
 	var/mob/living/controller
 
@@ -44,7 +44,7 @@
 		release_controller()
 		controller.Knockdown(120)
 		controller.adjustBruteLoss(20)
-		to_chat(controller, "<span class='userdanger'>The force of being exiled from your bat form painfully throws you to the ground!</span>")
+		to_chat(controller, "<span class='userdanger'>Siła wyrzucenia z postaci nietoperza boleśnie ciska tobą o ziemię!</span>")
 		controller = null
 	. = ..()
 

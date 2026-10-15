@@ -102,7 +102,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 
 	if(ic_blocked)
 		//The filter warning message shows the sanitized message though.
-		to_chat(src, "<span class='warning'>That message contained a word prohibited in IC chat! Consider reviewing the server rules.\n<span replaceRegex='show_filtered_ic_chat'>\"[message]\"</span></span>")
+		to_chat(src, "<span class='warning'>Ta wiadomość zawiera słowo zakazane na czacie IC! Zapoznaj się ponownie z zasadami serwera.\n<span replaceRegex='show_filtered_ic_chat'>\"[message]\"</span></span>")
 		return
 
 	if(!rp_acceptable) // AQ EDIT
@@ -115,7 +115,8 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	message = get_message_mods(message, message_mods)
 	var/datum/saymode/saymode = SSradio.saymodes[message_mods[RADIO_KEY]]
 	var/in_critical = InCritical()
-	message = check_for_custom_say_emote(message, message_mods) //NSV13
+	if(!forced && !saymode)
+		message = check_for_custom_say_emote(message, message_mods) //NSV13
 
 	if(!message)
 		return
@@ -150,7 +151,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		language = get_selected_language()
 
 	if(!can_speak_vocal(message))
-		to_chat(src, "<span class='warning'>You find yourself unable to speak!</span>")
+		to_chat(src, "<span class='warning'>Nie jesteś w stanie mówić!</span>")
 		return
 
 	var/message_range = 7
@@ -250,11 +251,11 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		avoid_highlight = src == speaker
 
 	if(speaker != src)
-		if(!radio_freq) //These checks have to be seperate, else people talking on the radio will make "You can't hear yourself!" appear when hearing people over the radio while deaf.
-			deaf_message = "<span class='name'>[speaker]</span> [speaker.verb_say] something but you cannot hear [speaker.p_them()]."
+		if(!radio_freq) //These checks have to be seperate, else people talking on the radio will make "Nie słyszysz samego siebie!" appear when hearing people over the radio while deaf.
+			deaf_message = "<span class='name'>[speaker]</span> [speaker.verb_say] coś, ale nic nie słyszysz."
 			deaf_type = 1
 	else
-		deaf_message = "<span class='notice'>You can't hear yourself!</span>"
+		deaf_message = "<span class='notice'>Nie słyszysz samego siebie!</span>"
 		deaf_type = 2 // Since you should be able to hear yourself without looking
 
 	// Create map text prior to modifying message for goonchat
@@ -358,7 +359,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 /mob/living/proc/is_muted(message, ignore_spam = FALSE, forced = FALSE) //Check BEFORE handling of xeno and ling channels
 	if(client)
 		if(client.prefs.muted & MUTE_IC)
-			to_chat(src, "<span class='danger'>You cannot speak in IC (muted).</span>")
+			to_chat(src, "<span class='danger'>Nie możesz mówić na IC (wyciszenie).</span>")
 			return TRUE
 		if(!ignore_spam && !forced && client.handle_spam_prevention(message, MUTE_IC))
 			return TRUE
@@ -440,13 +441,13 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	if(message_mods[WHISPER_MODE] == MODE_WHISPER)
 		. = verb_whisper
 	else if(message_mods[WHISPER_MODE] == MODE_WHISPER_CRIT)
-		. = "[verb_whisper] in [p_their()] last breath"
+		. = "[verb_whisper] ostatkiem sił"
 	else if(message_mods[MODE_SING])
 		. = verb_sing
 	else if(stuttering)
-		. = "stammers"
+		. = "jąka się"
 	else if(derpspeech)
-		. = "gibbers"
+		. = "bełkocze"
 	else
 		. = ..()
 

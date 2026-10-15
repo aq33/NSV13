@@ -149,13 +149,8 @@
 	. = list()
 	.["init_value"] = default || items[1]
 	.["message"] = message
-	.["preferences"] = list()
-	if(!user.client || !user.client.prefs)
-		.["preferences"]["large_buttons"] = TRUE
-		.["preferences"]["swapped_buttons"] = TRUE
-	else
-		.["preferences"]["large_buttons"] = (user.client?.prefs?.toggles2 & PREFTOGGLE_2_BIG_BUTTONS)
-		.["preferences"]["swapped_buttons"] = (user.client?.prefs?.toggles2 & PREFTOGGLE_2_SWITCHED_BUTTONS)
+	.["large_buttons"] = !user.client?.prefs || (user.client.prefs.toggles2 & PREFTOGGLE_2_BIG_BUTTONS) // AQ EDIT - płaskie dane jak w oknach Bee
+	.["swapped_buttons"] = !user.client?.prefs || (user.client.prefs.toggles2 & PREFTOGGLE_2_SWITCHED_BUTTONS)
 	.["title"] = title
 	if(timeout)
 		.["timeout"] = clamp((timeout - (world.time - start_time) - 1 SECONDS) / (timeout - 1 SECONDS), 0, 1)

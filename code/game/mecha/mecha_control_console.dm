@@ -61,11 +61,11 @@
 			var/obj/item/mecha_parts/mecha_tracking/MT = locate(params["tracker_ref"])
 			if(!istype(MT))
 				return
-			var/message = stripped_input(usr, "Input message", "Transmit message")
+			var/message = stripped_input(usr, "Wpisz wiadomość", "Wyślij wiadomość")
 			var/obj/mecha/M = MT.chassis
 			if(trim(message) && M)
 				M.occupant_message(message)
-				to_chat(usr, "<span class='notice'>Message sent.</span>")
+				to_chat(usr, "<span class='notice'>Wiadomość wysłana.</span>")
 				. = TRUE
 		if("shock")
 			var/obj/item/mecha_parts/mecha_tracking/MT = locate(params["tracker_ref"])
@@ -99,16 +99,10 @@
 		return FALSE
 
 	var/cell_charge = chassis.get_charge()
-	var/answer = {"<b>Name:</b> [chassis.name]<br>
-				<b>Integrity:</b> [round((chassis.obj_integrity/chassis.max_integrity * 100), 0.01)]%<br>
-				<b>Cell Charge:</b> [isnull(cell_charge) ? "Not Found":"[chassis.cell.percent()]%"]<br>
-				<b>Airtank:</b> [chassis.internal_tank ? "[round(chassis.return_pressure(), 0.01)]" : "Not Equipped"] kPa<br>
-				<b>Pilot:</b> [chassis.occupant || "None"]<br>
-				<b>Location:</b> [get_area_name(chassis, TRUE) || "Unknown"]<br>
-				<b>Active Equipment:</b> [chassis.selected || "None"]"}
+	var/answer = {"<b>Nazwa:</b> [chassis.name]<br><b>Integralność:</b> [round((chassis.obj_integrity/chassis.max_integrity * 100), 0.01)]%<br><b>Ładunek ogniwa:</b> [isnull(cell_charge) ? "Nie znaleziono":"[chassis.cell.percent()]%"]<br><b>Zbiornik powietrza:</b> [chassis.internal_tank ? "[round(chassis.return_pressure(), 0.01)]" : "Brak"] kPa<br><b>Pilot:</b> [chassis.occupant || "Brak"]<br><b>Lokalizacja:</b> [get_area_name(chassis, TRUE) || "Nieznana"]<br><b>Aktywne wyposażenie:</b> [chassis.selected || "Brak"]"}
 	if(istype(chassis, /obj/mecha/working/ripley))
 		var/obj/mecha/working/ripley/RM = chassis
-		answer += "<br><b>Used Cargo Space:</b> [round((RM.cargo.len / RM.cargo_capacity * 100), 0.01)]%"
+		answer += "<br><b>Zajęta przestrzeń ładunkowa:</b> [round((RM.cargo.len / RM.cargo_capacity * 100), 0.01)]%"
 
 	return answer
 

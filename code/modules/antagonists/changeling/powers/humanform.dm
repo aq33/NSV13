@@ -12,7 +12,7 @@
 	for(var/datum/changelingprofile/prof in changeling.stored_profiles)
 		names += "[prof.name]"
 
-	var/chosen_name = input("Select the target DNA: ", "Target DNA", null) as null|anything in sortList(names)
+	var/chosen_name = input("Wybierz docelowe DNA: ", "Docelowe DNA", null) as null|anything in sortList(names)
 	if(!chosen_name)
 		return
 
@@ -21,7 +21,7 @@
 		return
 	if(!user || user.notransform)
 		return 0
-	to_chat(user, "<span class='notice'>We transform our appearance.</span>")
+	to_chat(user, "<span class='notice'>Zmieniamy swój wygląd.</span>")
 	..()
 	changeling.purchasedpowers -= src
 

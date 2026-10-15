@@ -13,7 +13,7 @@
 	layer = WALL_OBJ_LAYER
 	resistance_flags = FIRE_PROOF
 
-	armor = list("melee" = 50, "bullet" = 20, "laser" = 20, "energy" = 20, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 90, "acid" = 50, "stamina" = 0)
+	armor = list("melee" = 50, "bullet" = 20, "laser" = 20, "energy" = 20, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 90, "acid" = 50, "stamina" = 0, "bleed" = 0)
 	max_integrity = 100
 	integrity_failure = 50
 	var/default_camera_icon = "camera" //the camera's base icon used by update_icon - icon_state is primarily used for mapping display purposes.
@@ -52,6 +52,8 @@
 
 	/// A copy of the last paper object that was shown to this camera.
 	var/obj/item/paper/last_shown_paper
+	///Proximity monitor associated with this atom, for motion sensitive cameras.
+	var/datum/proximity_monitor/proximity_monitor
 
 /obj/machinery/camera/preset/toxins //Bomb test site in space
 	name = "Hardened Bomb-Test Camera"
@@ -119,22 +121,22 @@
 /obj/machinery/camera/examine(mob/user)
 	. += ..()
 	if(isEmpProof(TRUE)) //don't reveal it's upgraded if was done via MALF AI Upgrade Camera Network ability
-		. += "It has electromagnetic interference shielding installed."
+		. += "Ma zainstalowane ekranowanie przed zakłóceniami elektromagnetycznymi."
 	else
-		. += "<span class='info'>It can be shielded against electromagnetic interference with some <b>plasma</b>.</span>"
+		. += "<span class='info'>Można ją osłonić przed zakłóceniami elektromagnetycznymi odrobiną <b>plazmy</b>.</span>"
 	if(isMotion())
-		. += "It has a proximity sensor installed."
+		. += "Ma zainstalowany czujnik zbliżeniowy."
 	else
-		. += "<span class='info'>It can be upgraded with a <b>proximity sensor</b>.</span>"
+		. += "<span class='info'>Można ją ulepszyć <b>czujnikiem zbliżeniowym</b>.</span>"
 
 	if(!status)
-		. += "<span class='info'>It's currently deactivated.</span>"
+		. += "<span class='info'>Jest obecnie wyłączona.</span>"
 		if(!panel_open && powered())
-			. += "<span class='notice'>You'll need to open its maintenance panel with a <b>screwdriver</b> to turn it back on.</span>"
+			. += "<span class='notice'>Aby ją z powrotem włączyć, musisz otworzyć jej panel serwisowy <b>śrubokrętem</b>.</span>"
 	if(panel_open)
-		. += "<span class='info'>Its maintenance panel is currently open.</span>"
+		. += "<span class='info'>Jej panel serwisowy jest obecnie otwarty.</span>"
 		if(!status && powered())
-			. += "<span class='info'>It can reactivated with a <b>screwdriver</b>.</span>"
+			. += "<span class='info'>Można ją ponownie włączyć <b>śrubokrętem</b>.</span>"
 
 /obj/machinery/camera/emp_act(severity)
 	. = ..()
@@ -155,7 +157,7 @@
 				if (M.client.eye == src)
 					M.unset_machine()
 					M.reset_perspective(null)
-					to_chat(M, "The screen bursts into static.")
+					to_chat(M, "Ekran zalewają szumy.")
 
 /obj/machinery/camera/emp_reset()
 	..()
@@ -192,7 +194,7 @@
 	if(..())
 		return TRUE
 	panel_open = !panel_open
-	to_chat(user, "<span class='notice'>You screw the camera's panel [panel_open ? "open" : "closed"].</span>")
+	to_chat(user, "<span class='notice'>[panel_open ? "Odkręcasz" : "Przykręcasz"] panel kamery.</span>")
 	I.play_tool_sound(src)
 	update_icon()
 	return TRUE
@@ -210,7 +212,7 @@
 		return FALSE
 
 	setViewRange((view_range == initial(view_range)) ? short_range : initial(view_range))
-	to_chat(user, "<span class='notice'>You [(view_range == initial(view_range)) ? "restore" : "mess up"] the camera's focus.</span>")
+	to_chat(user, "<span class='notice'>[(view_range == initial(view_range)) ? "Przywracasz" : "Psujesz"] ostrość kamery.</span>")
 	return TRUE
 
 /obj/machinery/camera/welder_act(mob/living/user, obj/item/I)
@@ -220,10 +222,10 @@
 	if(!I.tool_start_check(user, amount=0))
 		return TRUE
 
-	to_chat(user, "<span class='notice'>You start to weld [src]...</span>")
+	to_chat(user, "<span class='notice'>Zaczynasz spawać [src]...</span>")
 	if(I.use_tool(src, user, 100, volume=50))
-		user.visible_message("<span class='warning'>[user] unwelds [src], leaving it as just a frame bolted to the wall.</span>",
-			"<span class='warning'>You unweld [src], leaving it as just a frame bolted to the wall.</span>")
+		user.visible_message("<span class='warning'>[user] odspawuje [src], zostawiając samą ramę przykręconą do ściany.</span>",
+			"<span class='warning'>Odspawujesz [src], zostawiając samą ramę przykręconą do ściany.</span>")
 		deconstruct(TRUE)
 
 	return TRUE
@@ -239,9 +241,9 @@
 			if(!isEmpProof(TRUE)) //don't reveal it was already upgraded if was done via MALF AI Upgrade Camera Network ability
 				if(attacking_item.use_tool(src, user, 0, amount=1))
 					upgradeEmpProof(FALSE, TRUE)
-					to_chat(user, "<span class='notice'>You attach [attacking_item] into [assembly]'s inner circuits.</span>")
+					to_chat(user, "<span class='notice'>Podłączasz [attacking_item] do wewnętrznych obwodów [assembly].</span>")
 			else
-				to_chat(user, "<span class='notice'>[src] already has that upgrade!</span>")
+				to_chat(user, "<span class='notice'>[src] ma już to ulepszenie!</span>")
 			return
 
 		else if(istype(attacking_item, /obj/item/assembly/prox_sensor))
@@ -249,10 +251,10 @@
 				if(!user.temporarilyRemoveItemFromInventory(attacking_item))
 					return
 				upgradeMotion()
-				to_chat(user, "<span class='notice'>You attach [attacking_item] into [assembly]'s inner circuits.</span>")
+				to_chat(user, "<span class='notice'>Podłączasz [attacking_item] do wewnętrznych obwodów [assembly].</span>")
 				qdel(attacking_item)
 			else
-				to_chat(user, "<span class='notice'>[src] already has that upgrade!</span>")
+				to_chat(user, "<span class='notice'>[src] ma już to ulepszenie!</span>")
 			return
 
 	// OTHER
@@ -264,7 +266,7 @@
 		info = computer.note
 
 		itemname = sanitize(itemname)
-		to_chat(user, "<span class='notice'>You hold \the [itemname] up to the camera...</span>")
+		to_chat(user, "<span class='notice'>Podnosisz [itemname] przed kamerę...</span>")
 		user.log_talk(itemname, LOG_GAME, log_globally=TRUE, tag="Pressed to camera")
 		user.changeNext_move(CLICK_CD_MELEE)
 
@@ -273,17 +275,17 @@
 				var/mob/living/silicon/ai/AI = O
 				if(AI.control_disabled || (AI.stat == DEAD))
 					return
-				AI.last_tablet_note_seen = "<HTML><HEAD><TITLE>[itemname]</TITLE></HEAD><BODY><TT>[info]</TT></BODY></HTML>"
+				AI.last_tablet_note_seen = HTML_SKELETON_TITLE(itemname, "<tt>[info]</tt>")
 
 				if(user.name == "Unknown")
-					to_chat(AI, "<b>[user]</b> holds <a href='?_src_=usr;show_paper=1;'>\a [itemname]</a> up to one of your cameras ...")
+					to_chat(AI, "<b>[user]</b> pokazuje <a href='byond://?_src_=usr;show_paper=1;'>[itemname]</a> jednej z twoich kamer...")
 				else
-					to_chat(AI, "<b><a href='?src=[REF(AI)];track=[html_encode(user.name)]'>[user]</a></b> holds <a href='?_src_=usr;show_paper=1;'>\a [itemname]</a> up to one of your cameras ...")
+					to_chat(AI, "<b><a href='byond://?src=[REF(AI)];track=[html_encode(user.name)]'>[user]</a></b> pokazuje <a href='byond://?_src_=usr;show_paper=1;'>[itemname]</a> jednej z twoich kamer...")
 				continue
 
 			if (O.client?.eye == src)
-				to_chat(O, "[user] holds \a [itemname] up to one of the cameras ...")
-				O << browse(text("<HTML><HEAD><TITLE>[]</TITLE></HEAD><BODY><TT>[]</TT></BODY></HTML>", itemname, info), text("window=[]", itemname))
+				to_chat(O, "[user] pokazuje [itemname] jednej z kamer...")
+				O << browse(HTML_SKELETON_TITLE(itemname, "<tt>[info]</tt>"), "window=[itemname]")
 		return
 
 	if(istype(attacking_item, /obj/item/paper))
@@ -297,7 +299,7 @@
 		var/item_name = sanitize(last_shown_paper.name)
 
 		// Start the process of holding it up to the camera.
-		to_chat(user, "<span class='notice'>You hold \the [item_name] up to the camera...</span>")
+		to_chat(user, "<span class='notice'>Podnosisz [item_name] przed kamerę...</span>")
 		user.log_talk(item_name, LOG_GAME, log_globally=TRUE, tag="Pressed to camera")
 		user.changeNext_move(CLICK_CD_MELEE)
 
@@ -317,27 +319,27 @@
 				log_paper("[key_name(user)] held [last_shown_paper] up to [src], requesting [key_name(ai)] read it.")
 
 				if(user.name == "Unknown")
-					to_chat(ai, "<span class='name'[user]</span> holds <a href='?_src_=usr;show_paper_note=[REF(last_shown_paper)];'>\a [item_name]</a> up to one of your cameras ...")
+					to_chat(ai, "<span class='name'[user]</span> pokazuje <a href='byond://?_src_=usr;show_paper_note=[REF(last_shown_paper)];'>[item_name]</a> jednej z twoich kamer...")
 				else
-					to_chat(ai, "<b><a href='?src=[REF(ai)];track=[html_encode(user.name)]'>[user]</a></b> holds <a href='?_src_=usr;show_paper_note=[REF(last_shown_paper)];'>\a [item_name]</a> up to one of your cameras ...")
+					to_chat(ai, "<b><a href='byond://?src=[REF(ai)];track=[html_encode(user.name)]'>[user]</a></b> pokazuje <a href='byond://?_src_=usr;show_paper_note=[REF(last_shown_paper)];'>[item_name]</a> jednej z twoich kamer...")
 				continue
 
 			// If it's not an AI, eye if the client's eye is set to the camera. I wonder if this even works anymore with tgui camera apps and stuff?
 			if (potential_viewer.client?.eye == src)
 				log_paper("[key_name(user)] held [last_shown_paper] up to [src], and [key_name(potential_viewer)] may read it.")
-				to_chat(potential_viewer, "<span class='name'[user]</span> holds <a href='?_src_=usr;show_paper_note=[REF(last_shown_paper)];'>\a [item_name]</a> up to your camera...")
+				to_chat(potential_viewer, "<span class='name'[user]</span> pokazuje <a href='byond://?_src_=usr;show_paper_note=[REF(last_shown_paper)];'>[item_name]</a> twojej kamerze...")
 		return
 
 	else if(istype(attacking_item, /obj/item/camera_bug))
 		if(!can_use())
-			to_chat(user, "<span class='notice'>Camera non-functional.</span>")
+			to_chat(user, "<span class='notice'>Kamera nie działa.</span>")
 			return
 		if(bug)
-			to_chat(user, "<span class='notice'>Camera bug removed.</span>")
+			to_chat(user, "<span class='notice'>Usunięto pluskwę z kamery.</span>")
 			bug.bugged_cameras -= src.c_tag
 			bug = null
 		else
-			to_chat(user, "<span class='notice'>Camera bugged.</span>")
+			to_chat(user, "<span class='notice'>Kamera podsłuchiwana.</span>")
 			bug = attacking_item
 			bug.bugged_cameras[src.c_tag] = WEAKREF(src)
 		return
@@ -423,7 +425,7 @@
 		if (O.client && O.client.eye == src)
 			O.unset_machine()
 			O.reset_perspective(null)
-			to_chat(O, "The screen bursts into static.")
+			to_chat(O, "Ekran zalewają szumy.")
 
 /obj/machinery/camera/proc/triggerCameraAlarm()
 	alarm_on = TRUE

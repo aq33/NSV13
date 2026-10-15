@@ -5,16 +5,23 @@
 	var/blood_state = "" //I'm sorry but cleanable/blood code is ass, and so is blood_DNA
 	var/bloodiness = 0 //0-100, amount of blood in this decal, used for making footprints and affecting the alpha of bloody footprints
 	var/mergeable_decal = TRUE //when two of these are on a same tile or do we need to merge them into just one?
+	///The reagent this decal holds. Leave blank for none.
+	var/datum/reagent/decal_reagent
+	///The amount of reagent this decal holds, if decal_reagent is defined
+	var/reagent_amount = 0
 
 /obj/effect/decal/cleanable/Initialize(mapload, list/datum/disease/diseases)
 	. = ..()
 	if (random_icon_states && (icon_state == initial(icon_state)) && length(random_icon_states) > 0)
 		icon_state = pick(random_icon_states)
 	create_reagents(300)
+	if(decal_reagent)
+		reagents.add_reagent(decal_reagent, reagent_amount)
 	if(loc && isturf(loc))
 		for(var/obj/effect/decal/cleanable/C in loc)
 			if(C != src && C.type == type && !QDELETED(C))
 				if (replace_decal(C))
+					handle_merge_decal(C)
 					return INITIALIZE_HINT_QDEL
 
 	if(LAZYLEN(diseases))
@@ -39,12 +46,12 @@
 		if(src.reagents && W.reagents)
 			. = 1 //so the containers don't splash their content on the src while scooping.
 			if(!src.reagents.total_volume)
-				to_chat(user, "<span class='notice'>[src] isn't thick enough to scoop up!</span>")
+				to_chat(user, "<span class='notice'>[src] nie jest dość gęsty, by go zgarnąć!</span>")
 				return
 			if(W.reagents.total_volume >= W.reagents.maximum_volume)
-				to_chat(user, "<span class='notice'>[W] is full!</span>")
+				to_chat(user, "<span class='notice'>[W] jest pełny!</span>")
 				return
-			to_chat(user, "<span class='notice'>You scoop up [src] into [W]!</span>")
+			to_chat(user, "<span class='notice'>Zgarniasz [src] do [W]!</span>")
 			reagents.trans_to(W, reagents.total_volume, transfered_by = user)
 			if(!reagents.total_volume) //scooped up all of it
 				qdel(src)
@@ -55,7 +62,7 @@
 		else
 			var/hotness = W.is_hot()
 			reagents.expose_temperature(hotness)
-			to_chat(user, "<span class='notice'>You heat [name] with [W]!</span>")
+			to_chat(user, "<span class='notice'>Podgrzewasz [name] za pomocą [W]!</span>")
 	else
 		return ..()
 
@@ -100,3 +107,9 @@
 		return bloodiness
 	else
 		return 0
+
+/obj/effect/decal/cleanable/proc/handle_merge_decal(obj/effect/decal/cleanable/merger)
+	if(!merger)
+		return
+	if(merger.reagents && reagents)
+		reagents.trans_to(merger, reagents.total_volume)

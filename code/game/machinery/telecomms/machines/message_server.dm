@@ -14,7 +14,7 @@
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 10
 	active_power_usage = 100
-	armor = list("melee" = 25, "bullet" = 10, "laser" = 10, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 70, "stamina" = 0)
+	armor = list("melee" = 25, "bullet" = 10, "laser" = 10, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 70, "stamina" = 0, "bleed" = 0)
 	var/obj/item/stored
 	investigate_flags = ADMIN_INVESTIGATE_TARGET
 
@@ -27,19 +27,19 @@
 	if(stored)
 		user.put_in_hands(stored)
 		stored = null
-		to_chat(user, "<span class='notice'>You remove the blackbox from [src]. The tapes stop spinning.</span>")
+		to_chat(user, "<span class='notice'>Wyjmujesz czarną skrzynkę z [src]. Taśmy przestają się kręcić.</span>")
 		update_icon()
 	else
-		to_chat(user, "<span class='warning'>It seems that the blackbox is missing...</span>")
+		to_chat(user, "<span class='warning'>Wygląda na to, że brakuje czarnej skrzynki...</span>")
 
 /obj/machinery/blackbox_recorder/attackby(obj/item/I, mob/living/user, params)
 	. = ..()
 	if(istype(I, /obj/item/blackbox))
 		if(HAS_TRAIT(I, TRAIT_NODROP) || !user.transferItemToLoc(I, src))
-			to_chat(user, "<span class='warning'>[I] is stuck to your hand!</span>")
+			to_chat(user, "<span class='warning'>[I] przykleił się do twojej ręki!</span>")
 			return
-		user.visible_message("<span class='notice'>[user] clicks [I] into [src]!</span>", \
-		"<span class='notice'>You press the device into [src], and it clicks into place. The tapes begin spinning again.</span>")
+		user.visible_message("<span class='notice'>[user] wciska [I] do [src]!</span>", \
+		"<span class='notice'>Wciskasz urządzenie do [src], a ono zatrzaskuje się na miejscu. Taśmy znów zaczynają się kręcić.</span>")
 		playsound(src, 'sound/machines/click.ogg', 50, TRUE)
 		stored = I
 		update_icon()
@@ -92,15 +92,15 @@
 
 	if (calibrating)
 		calibrating += world.time
-		say("Calibrating... Estimated wait time: [rand(3, 9)] minutes.")
-		modular_msgs += new /datum/data_tablet_msg("System Administrator", "system", "This is an automated message. System calibration started at [station_time_timestamp()].")
+		say("Kalibracja... Szacowany czas oczekiwania: [rand(3, 9)] min.")
+		modular_msgs += new /datum/data_tablet_msg("Administrator systemu", "system", "To jest automatyczna wiadomość. Kalibracja systemu rozpoczęła się o [station_time_timestamp()].")
 	else
-		modular_msgs += new /datum/data_tablet_msg("System Administrator", "system", MESSAGE_SERVER_FUNCTIONING_MESSAGE)
+		modular_msgs += new /datum/data_tablet_msg("Administrator systemu", "system", MESSAGE_SERVER_FUNCTIONING_MESSAGE)
 
 /obj/machinery/telecomms/message_server/examine(mob/user)
 	. = ..()
 	if(calibrating)
-		. += "<span class='warning'>It's still calibrating.</span>"
+		. += "<span class='warning'>Wciąż się kalibruje.</span>"
 
 /obj/machinery/telecomms/message_server/proc/GenerateKey()
 	var/newKey
@@ -113,7 +113,7 @@
 	. = ..()
 	if(calibrating && calibrating <= world.time)
 		calibrating = 0
-		modular_msgs += new /datum/data_tablet_msg("System Administrator", "system", MESSAGE_SERVER_FUNCTIONING_MESSAGE)
+		modular_msgs += new /datum/data_tablet_msg("Administrator systemu", "system", MESSAGE_SERVER_FUNCTIONING_MESSAGE)
 
 /obj/machinery/telecomms/message_server/receive_information(datum/signal/subspace/messaging/signal, obj/machinery/telecomms/machine_from)
 	// can't log non-message signals
@@ -220,7 +220,7 @@
 	if(href_list["photo"])
 		var/mob/M = usr
 		M << browse_rsc(picture.picture_image, "pda_photo.png")
-		M << browse("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>PDA Photo</title></head>" \
+		M << browse("<!DOCTYPE html><html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>PDA Photo</title></head>" \
 		+ "<body style='overflow:hidden;margin:0;text-align:center'>" \
 		+ "<img src='pda_photo.png' width='480' style='-ms-interpolation-mode:nearest-neighbor' />" \
 		+ "</body></html>", "window=photo_showing;size=480x608")

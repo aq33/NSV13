@@ -8,7 +8,7 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the captain"
+	supervisors = JOB_NAME_CAPTAIN
 	selection_color = "#ffeeaa"
 	req_admin_notify = 1
 	minimal_player_age = 7
@@ -69,4 +69,13 @@
 	glasses = /obj/item/clothing/glasses/meson/engine
 	gloves = /obj/item/clothing/gloves/color/yellow
 	head = null
+	internals_slot = ITEM_SLOT_SUITSTORE
+
+/datum/outfit/job/chief_engineer/mod
+	name = "Chief Engineer (MODsuit)"
+
+	back = /obj/item/mod/control/pre_equipped/advanced
+	mask = /obj/item/clothing/mask/breath
+	shoes = /obj/item/clothing/shoes/magboots/advance
+	suit_store = /obj/item/tank/internals/oxygen
 	internals_slot = ITEM_SLOT_SUITSTORE

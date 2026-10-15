@@ -61,7 +61,11 @@
 ///for lizard snouts, because some HIDEFACE clothes don't actually conceal that portion of the head.
 #define HIDESNOUT (1<<12)
 ///hides mutant/moth wings, does not apply to functional wings
-//#define HIDEMUTWINGS (1<<13)
+#define HIDEMUTWINGS (1<<13)
+///hides belts and riggings
+#define HIDEBELT (1<<14)
+///hides antennae
+#define HIDEANTENNAE (1<<15)
 
 //bitflags for clothing coverage - also used for limbs
 #define HEAD		(1<<0)
@@ -163,6 +167,7 @@ GLOBAL_LIST_INIT(detective_vest_allowed, typecacheof(list(
 	/obj/item/melee/baton,
 	/obj/item/melee/classic_baton/police,
 	/obj/item/reagent_containers/spray/pepper,
+	/obj/item/reagent_containers/spray/luminol, // AQ EDIT
 	/obj/item/restraints/handcuffs,
 	/obj/item/storage/fancy/cigarettes,
 	/obj/item/tank/internals/emergency_oxygen,

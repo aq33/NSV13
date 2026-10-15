@@ -4,11 +4,11 @@
 /datum/clockcult/scripture/create_structure/prosperityprism
 	name = "Prosperity Prism"
 	desc = "Creates a prism that will remove a large amount of toxin damage and a small amount of other forms of damage from nearby servants. Requires power from a sigil of transmission."
-	tip = "Create a prosperity prism to heal servants using sentinel's compromise without taking any damage."
+	tip = "Tworzy pryzmat pomyślności, który leczy sługi Kompromisem Strażnika bez otrzymywania obrażeń."
 	button_icon_state = "Prolonging Prism"
 	power_cost = 300
 	invokation_time = 80
-	invokation_text = list("Your light shall heal the wounds beneath my skin.")
+	invokation_text = list("Twe światło uleczy rany pod mą skórą.")
 	summoned_structure = /obj/structure/destructible/clockwork/gear_base/prosperityprism
 	cogs_required = 2
 	category = SPELLTYPE_STRUCTURES
@@ -17,10 +17,10 @@
 /obj/structure/destructible/clockwork/gear_base/prosperityprism
 	name = "prosperity prism"
 	desc = "A prism that seems to somehow always have its gaze locked to you."
-	clockwork_desc = "A prism that will heal nearby servants of toxin damage."
+	clockwork_desc = "Pryzmat leczący zatrucia u pobliskich sług."
 	default_icon_state = "prolonging_prism"
 	anchored = TRUE
-	break_message = "<span class='warning'>The prism falls apart, toxic liquid leaking out into the air.</span>"
+	break_message = "<span class='warning'>Pryzmat się rozpada, a toksyczny płyn wycieka w powietrze.</span>"
 	max_integrity = 150
 	obj_integrity = 150
 	minimum_power = 4
@@ -82,13 +82,13 @@
 					L.reagents.remove_reagent(R.type, 50*delta_time)
 					holder.add_reagent(R.type, 50*delta_time)
 
-/obj/structure/destructible/clockwork/gear_base/prosperityprism/attack_hand(mob/user)
+/obj/structure/destructible/clockwork/gear_base/prosperityprism/attack_hand(mob/user, list/modifiers)
 	if(is_servant_of_ratvar(user))
 		if(!anchored)
-			to_chat(user, "<span class='warning'>[src] needs to be fastened to the floor!</span>")
+			to_chat(user, "<span class='warning'>[src] trzeba przymocować do podłogi!</span>")
 			return
 		toggled_on = !toggled_on
-		to_chat(user, "<span class='brass'>You flick the switch on [src], turning it [toggled_on?"on":"off"]!</span>")
+		to_chat(user, "<span class='brass'>Przestawiasz przełącznik [src], [toggled_on?"włączając":"wyłączając"] go!</span>")
 	else
 		. = ..()
 

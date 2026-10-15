@@ -8,7 +8,7 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the captain"
+	supervisors = JOB_NAME_CAPTAIN
 	selection_color = "#cae1e8" //NSV13
 	req_admin_notify = 1
 	minimal_player_age = 7
@@ -66,3 +66,13 @@
 	suit = /obj/item/clothing/suit/space/hardsuit/medical/cmo
 	suit_store = /obj/item/tank/internals/oxygen
 	r_pocket = /obj/item/flashlight/pen
+
+/datum/outfit/job/chief_medical_officer/mod
+	name = "Chief Medical Officer (MODsuit)"
+
+	back = /obj/item/mod/control/pre_equipped/rescue
+	suit = null
+	head = null
+	mask = /obj/item/clothing/mask/breath
+	suit_store = /obj/item/tank/internals/oxygen
+	internals_slot = ITEM_SLOT_SUITSTORE

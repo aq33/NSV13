@@ -56,84 +56,338 @@
 		-->
 		<div class="commit sansserif">
 
-			<h2 class="date">19 January 2024</h2>
-			<h3 class="author">DeltaFire15 updated:</h3>
+			<h2 class="date">15 October 2026</h2>
+			<h3 class="author">Joker66613 updated:</h3>
 			<ul class="changes bgimages16">
-				<li class="refactor">The Torp and Missile factory automation machinery has been rewritten almost entirely to make it less clunky and more fun.</li>
-				<li class="rscadd">Automated Assemblers will now pick up components of the last manually inserted type if they pass in front of them!</li>
-				<li class="bugfix">The Thirring Drive Core sound loop you have never heard before works now!</li>
-				<li class="bugfix">The client_by_z list shouldn't be getting flooded with nulls anymore.</li>
+				<li class="rscadd">32 nowe mapy dla magnesu górniczego i asteroid: dawne ruiny kosmiczne oraz porty z tg, Yogstation, Monkestation i Novy</li>
+				<li class="rscadd">billboardy z tg</li>
+				<li class="bugfix">ruiny górnicze mining4 i mining5 ładują się bez błędów</li>
+				<li class="bugfix">corgi-ochroniarz nie sypie błędem przy pojawieniu się</li>
+				<li class="code_imp">CI sprawdza mapy górnicze, test ładowania wszystkich asteroid</li>
+				<li class="rscadd">Zlecenia cywilne z tgstation: konsola i pad zleceń, propozycje zależne od pracy, wspólna lista zleceń statku, kostki zleceń z udziałem dla wykonawców i napiwkiem dla zaopatrzenia, patrole dla ochrony.</li>
+				<li class="rscadd">Galaktyczny rynek materiałów z tgstation: ceny materiałów zmieniają się co minutę, sprzedaż przez stock blocki, kupno arkuszy na prom zaopatrzenia, wiadomości giełdowe w newscasterze.</li>
+				<li class="balance">Żelazo, szkło, srebro, złoto, uran, tytan, diamenty i kryształy bluespace sprzedają się promem po cenie z giełdy.</li>
+				<li class="imageadd">Ikony kostki zleceń, stock blocka, maszyny rynku i ekranu konsoli zleceń cywilnych z tgstation.</li>
+				<li class="rscadd">Inflacja i raport ekonomiczny w newscasterze, event krachu rynku podnoszący ceny w automatach.</li>
+				<li class="rscadd">Zlecenia cywilne dla amunicji, pilotów, górników, mostka i woźnego.</li>
+				<li class="rscadd">Raport najbogatszych ewakuowanych na koniec rundy (saldo z karty ID, jak przy aquilosach) i ranking zarobków wszech czasów zapisywany w bazie (czasownik OOC „Ranking zarobków”).</li>
+				<li class="server">Nowe tabele bazy SS13_economy_earnings i SS13_aquila_perks (gra tworzy je sama, schemat w SQL/).</li>
+				<li class="rscadd">Raport końca rundy w nowym oknie: wynik, statystyki, misja, zarobki wszystkich graczy i ranking; ranking zarobków z podium.</li>
+				<li class="rscadd">Sklep za aquilosy: antag token za 10 000 (do kupowania wielokrotnie), bilet na pracę, ubezpieczenie salda, odznaki w rankingu, event token i admin item token.</li>
+				<li class="rscadd">Luminol ujawnia zmytą krew, ślady prochu na strzelcu i broni, balistyka (sygnatury broni na łuskach i kulach, numery seryjne)</li>
+				<li class="rscadd">Autopsja pokazuje, czym, ile i kiedy zraniono każdą kończynę, oraz kule w ciele</li>
+				<li class="rscadd">Program NTOS do czytania logów dostępu drzwi i szafek</li>
+				<li class="rscadd">Taśma policyjna, znaczniki dowodów, kreda z obrysem, holobariera detektywa, strefa zamknięta na projektorze ochrony</li>
+				<li class="tweak">Interfejs więźniów i kodeks po polsku, można wybrać kilka zarzutów i czasy się sumują</li>
+				<li class="bugfix">Przycisk „Uciekł” przywraca karcie zwolnionego więźnia wyrok</li>
+				<li class="imageadd">Ikony taśmy, znaczników, holobariery i strefy zamkniętej</li>
+				<li class="soundadd">Alarm strefy zamkniętej</li>
+				<li class="code_imp">Komora testowa ma pewne powietrze po załadowaniu i dokładniej czyści się przy resecie.</li>
+			</ul>
+			<h3 class="author">MrMelbert, joker updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Nowy antagonista: szpieg. Kradnie cele zleceń uplinkiem ukrytym w PDA, długopisie albo słuchawkach i dostaje za nie sprzęt z uplinka.</li>
+				<li class="rscadd">Czarny rynek: uplink czarnego rynku (crafting), maszyna LTSRBT do odbioru i sprzedaży towarów, kategoria z rzeczami skradzionymi przez szpiegów.</li>
+				<li class="rscadd">Nowy tryb gry „spy” w łagodnej puli.</li>
+				<li class="soundadd">Muzyka szpiega i dźwięk wykonanego zlecenia z tgstation.</li>
+				<li class="imageadd">Ikony uplinku czarnego rynku, LTSRBT i promienia skanu z tgstation.</li>
+				<li class="config">Wpisy PROBABILITY, CONTINUOUS, MIN_POP, MAX_POP i WEIGHTED_POOL dla trybu SPY.</li>
 			</ul>
 
-			<h2 class="date">13 January 2024</h2>
-			<h3 class="author">Bokkiewokkie updated:</h3>
+			<h2 class="date">14 October 2026</h2>
+			<h3 class="author">Joker66613 updated:</h3>
 			<ul class="changes bgimages16">
-				<li class="rscadd">Added the option to get another ticket objective if Rubicon is already cleared</li>
-				<li class="tweak">Increased Rubicon objective player requirement to 10</li>
-				<li class="tweak">Mission briefing names will now be consistent in a round</li>
-				<li class="balance">Fleets will now be stronger after the main mission is done</li>
-				<li class="admin">Added button to hide/unhide a system on the starsystem manager</li>
-				<li class="admin">Automatically unhides systems selected for the "clear system" objective</li>
+				<li class="rscadd">Demon impulsu z Paradise: elektryczny demon żyjący w kablach, który przejmuje APC, kradnie prąd i bawi się maszynami w przejętych pomieszczeniach</li>
+				<li class="admin">Komora testowa (Debug → Komora testowa) z zestawami przedmiotów do sprawdzania PR-ów.</li>
+				<li class="rscadd">Szczurzy król z tg: rzadko pojawia się przy migracji myszy jako rola dla duchów, zmienia myszy w armię szczurów i zatruwa okolicę miazmą.</li>
+				<li class="rscadd">Wrogie szczury i szczurza ślina.</li>
+				<li class="rscadd">Mysz, która zje królewski ser, zmienia się w szczurzego króla.</li>
+				<li class="rscadd">Szczurzy król ma w HUD przełącznik trybu walki.</li>
+				<li class="rscadd">Traitor ma nowe cele: zależne od pracy, zabójstwa z twistem, przedmioty działowe, dysk z głównego serwera B+R, bomby, podsłuchy, wirus T1de, włamanie do łączności, sabotaż powietrza, subwersję IFF i więcej.</li>
+				<li class="rscadd">Zdrajca wybiera frakcję i historię postaci w nowym oknie; czarny rynek i niezależni nie znają haseł.</li>
+				<li class="rscadd">Traitor może dostać cel zatrucia przedmiotów, a bracia krwi wyścig o beacon łączności (z reworku traitora BeeStation).</li>
+				<li class="rscadd">Pierwszy serwer B+R na statku jest główny; kradzież jego dysku spowalnia badania o połowę.</li>
+				<li class="rscdel">Usunięto cel pobierania badań i rolę złodzieja; cele złodzieja dostaje teraz traitor.</li>
+				<li class="rscadd">Darkspawn z Yogstation w nowej wersji: trzy klasy (wojownik, zwiadowca, czarnoksiężnik), sklep Psi Web za wolę i thralle</li>
+				<li class="rscadd">Tryb gry darkspawn i ruleset w dynamicu</li>
+				<li class="code_imp">System zaklęć /datum/action/cooldown/spell z tgstation</li>
+				<li class="rscadd">Nowa misja: abordaż i obrona placówki Syndykatu (port z BeeStation/NSV13#2823).</li>
+				<li class="bugfix">Zmiana IFF przez konsolę od razu widzą cele i flota Solgov.</li>
 			</ul>
-			<h3 class="author">DeltaFire15 updated:</h3>
+			<h3 class="author">PowerfulBacon, Tsar-Salat, Nakalon, MrMelbert, JohnFulpWillard, Mothblocks, Time-Green, timothymtorres updated:</h3>
 			<ul class="changes bgimages16">
-				<li class="rscadd">Overmap singularities now have more impactful effects, including but not limited to increased gravity inside nearby vessels, dampener interference, and improved directional pull.</li>
-				<li class="rscadd">Full hardsuits now provide 1G gravity protection against damage, though they do not improve movement.</li>
-				<li class="balance">Silicons will suffer from consistently very high gravity, starting at above 8G.</li>
-				<li class="tweak">Some interactions with high gravity previously limited to grav-sensitive individuals now are accessible to anyone, albeit at lower magnitude (generally 3G higher tolerance)</li>
-				<li class="bugfix">Starsystem persistence should now be slightly less volatile.</li>
-				<li class="config">The starsystem persistence config MUST be reset to the default starmap for the fixes in this PR to apply correctly.</li>
+				<li class="rscadd">Krwawienie ma ikonę alertu z tempem; kliknij ją, żeby ucisnąć ranę. Gaza opatruje krwawienie, ogień i laser przypalają ranę.</li>
+				<li class="rscadd">Nowe operacje: kauteryzacja krwawienia, płukanie żołądka, rekalibracja tożsamości (IPC) i autopsja.</li>
+				<li class="rscadd">Skaner autopsyjny drukuje raport z autopsji (NanoMed Plus, protolathe).</li>
+				<li class="rscadd">Ścienny monitor funkcji życiowych łączony multitoolem ze stołem, łóżkiem stazy, sleeperem albo kriokomorą.</li>
+				<li class="rscadd">Paczka cargo „Odzyskana załoga”: ożyw zwłoki, a przejmie je duch; medycyna dostaje premię.</li>
+				<li class="rscadd">Quirk Tanatorenazja: po DNR twoje ciało może przejąć inny duch.</li>
+				<li class="rscadd">Pole „Przyczyna zgonu” w aktach medycznych.</li>
+				<li class="rscadd">Operację wybiera się z menu radialnego wokół pacjenta.</li>
+				<li class="balance">Broń zadaje krwawienie, a pancerz przed nim chroni.</li>
+				<li class="balance">Defibrylator nie ma limitu czasu; reanimację blokuje rozkład serca i mózgu albo DNR.</li>
+				<li class="balance">Krew odnawia się tylko przy sprawnym sercu.</li>
+				<li class="tweak">Krew ma kolor gatunku: IPC krwawią chłodziwem, eterealne świecą, jaszczury mają turkusową krew.</li>
+				<li class="tweak">Kroplówka pokazuje rurkę do pacjenta i przyciąga go do stojaka.</li>
+				<li class="imageadd">Szare sprite'y krwi, ikony alertów krwawienia, monitora i skanera autopsyjnego (z BeeStation i tgstation).</li>
+				<li class="soundadd">Dźwięk krwawiącej rany z BeeStation.</li>
 			</ul>
-			<h3 class="author">covertcorvid updated:</h3>
+			<h3 class="author">sh4dow321 updated:</h3>
 			<ul class="changes bgimages16">
-				<li class="bugfix">fixed the database query for the round endings</li>
-			</ul>
-
-			<h2 class="date">03 January 2024</h2>
-			<h2 class="date">01 May 2025</h2>
-			<h3 class="author">Bokkiewokkie updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added Hardmode</li>
-				<li class="bugfix">Fixed the overmap gamemode panel being unable to switch gamemodes properly</li>
-				<li class="refactor">Added spawn fleet proc for starsystems</li>
-				<li class="config">Updated minimum build version to 515.1633 and max client version to 515.1647</li>
-			</ul>
-			<h3 class="author">DeltaFire15 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="balance">Being warm no longer bypasses insulation (sort of, it was worse than that but I'm not elaborating here) when in a colder environment than you.</li>
-			</ul>
-			<h3 class="author">HowToLoLu updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Buttons on nuclear bomb interfaces no longer overlap.</li>
-			</ul>
-			<h3 class="author">Invictus282, etherware-novice, 13spacemen, Gandalf2k15, Absolucy updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Examine boxes for examining, scanners, usage of multitools on cables, Geiger counters, clothing tags, tips of the round, status effects, inspecting one's self for injuries, and mood.</li>
-				<li class="rscadd">Nanite scanners display program rules.</li>
-				<li class="rscadd">Examining a squad leader finder when there is no squad leader says "_Your squad leader is: UNASSIGNED._"</li>
-				<li class="bugfix">Squad leader finder examination messages have periods and the message for syncing a gene sequencer with a scanning console has a capitalized start.</li>
-			</ul>
-			<h3 class="author">someone543 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">pilots dying in fighters turns on docking mode</li>
+				<li class="soundadd">Głośniki nagłośnienia i jukeboxy mają mniej echa, zwłaszcza za ścianami; głośniki nagłośnienia grają pełną głośnością w promieniu 3 kratek.</li>
 			</ul>
 
-			<h2 class="date">18 April 2025</h2>
-			<h2 class="date">29 November 2025</h2>
-			<h3 class="author">BetaCentari updated:</h3>
+			<h2 class="date">13 October 2026</h2>
+			<h3 class="author">Joker66613 updated:</h3>
 			<ul class="changes bgimages16">
-				<li class="rscadd">Added atmos connector port for the N2 Tank</li>
-				<li class="rscadd">Added atmos connector port for the O2 Tank</li>
-				<li class="rscadd">Added atmos connector port for cargo</li>
-				<li class="bugfix">Fixed Area designation in Captain's office</li>
-				<li class="rscadd">Added ability to unload shells from broadsides</li>
+				<li class="rscadd">Nowy event: zabłąkana kapsuła zaopatrzeniowa (także w wersji Syndykatu)</li>
+				<li class="rscadd">Nowy event: grzyb na ścianach, które kruszą się od pchnięcia. Usuwa go spawarka albo Plant-B-Gone</li>
+				<li class="rscadd">Nowy event: strajk i niepodległość losowego działu</li>
+				<li class="rscadd">Nowy event: inwazja kryształów (Crystal Invasion) i stabilizator supermaterii w Badaniach anomalii</li>
+				<li class="rscadd">Demon cieni z Paradise: łowca w ciemności z cienistym pełzem, cień-hakiem, kokonami pochłaniającymi światło i demonicznym szeptem</li>
+				<li class="rscdel">Koszmar nie pojawia się już jako event ani midround, zastąpił go demon cieni</li>
+				<li class="rscadd">MODsuity z BeeStation: modułowe kombinezony noszone na plecach, z panelem, rdzeniami i kilkudziesięcioma modułami</li>
+				<li class="rscadd">MODsuity w research, fabrykatorze egzoszkieletów, SSU, cargo i uplinku; warianty strojów z MODsuitem dla ról, ERT i deathsquadu</li>
+				<li class="rscadd">Skan RCD pokazujący hologramy zniszczonych ścian i okien</li>
+				<li class="tweak">Ninja korzysta z MODsuita i modułów zamiast starego kombinezonu, zbroja battlemage to zaczarowany MODsuit</li>
+				<li class="refactor">Pola i proximity monitory przeniesione na nowy system z BeeStation</li>
+				<li class="bugfix">Maska sechailer nie zgłasza już błędu przy usuwaniu</li>
+				<li class="rscadd">Samouczek w lobby: lekcje Podstawy, Przetrwanie i Alarm bojowy. Nowi gracze dostają propozycję przy pierwszym połączeniu.</li>
+				<li class="tweak">Działo Gaussa: kamera i wyjście z działa to przyciski akcji strzelca zamiast werbu.</li>
+				<li class="tweak">Okna konsoli działa i automatu składu są po polsku.</li>
+				<li class="bugfix">Tooltipy nie są już ucinane przy skalowaniu ekranu w Windows powyżej 100%.</li>
+				<li class="rscadd">Wędrowiec pustki z tgstation: niewidzialny w kosmosie łowca, który przenika przez szkło, nurkuje pod pokładem i porywa załogę do pustki</li>
+				<li class="rscadd">Porwani wracają z klątwą pustki: kosmiczna skóra, pacyfizm, zakaz wejścia w kosmos i wymioty mgławicą</li>
+				<li class="rscadd">Kosmiczna czaszka po wędrowcu daje stabilną klątwę i ramię rozbijające szkło</li>
 			</ul>
-			<h3 class="author">Bokkiewokkie updated:</h3>
+
+			<h2 class="date">12 October 2026</h2>
+			<h3 class="author">Joker66613 updated:</h3>
 			<ul class="changes bgimages16">
-				<li class="bugfix">Fixed cameras falling down pits from gravity</li>
+				<li class="rscadd">Klikając czymś skrzynką z narzędziami, wybierasz z menu narzędzie; ląduje w drugiej ręce, zostaje użyte i wraca do skrzynki.</li>
+				<li class="tweak">Szafy na skafandry (SSU) obsługuje się radialem zamiast okna. Inżynieryjne mają w schowku magnetyczne buty.</li>
+				<li class="rscadd">Alt-klik na karcie budżetowej pozwala przelać kredyty do budżetu innego departamentu.</li>
+				<li class="config">Z kart budżetowych nie da się już wypłacać gotówki.</li>
+				<li class="tweak">TAB w oknie czatu przełącza kanały radia z twoich słuchawek zamiast OOC/LOOC.</li>
+				<li class="rscadd">Nowe składy ERT: łowcy nagród i nieuzbrojeni stażyści. Każdy członek ERT ma mindshield.</li>
+				<li class="admin">Przy tworzeniu ERT można wybrać doświadczonego lidera, losowe nazwiska i pojawić się samemu jako oficer odprawy.</li>
+				<li class="rscadd">Serendipity: nowe xenobio, biuro kapelana, generator tarcz w inżynierii</li>
+				<li class="tweak">Serendipity: nowy prom cargo</li>
+				<li class="rscdel">Serendipity: usunięta platforma górnicza z magnesem asteroid</li>
+				<li class="rscadd">Combat mode z BeeStation: przełącznik trybu walki (F), prawy przycisk myszy to akcja dodatkowa, Ctrl+klik to chwyt, menu kontekstowe pod Shift+prawy przycisk.</li>
+				<li class="rscadd">Preferencja „Stary tryb intencji” (menu preferencji i zakładka Preferences) przywraca cztery intencje i menu kontekstowe pod prawym przyciskiem.</li>
+				<li class="rscadd">Sztuki walki mają licznik kombinacji i okno poradnika.</li>
+				<li class="rscadd">Akcje prawego przycisku: pobieranie strzykawką, klucz i śrubokręt, dzielenie stosów, rozbiórka RCD, granatnik M-90, hak, zryw katany i inne.</li>
+				<li class="tweak">Obracanie obiektów: Alt+lewy i Alt+prawy przycisk; preferencja odwraca kierunki.</li>
+				<li class="rscadd">Preferencja dźwięku przełączania trybu walki.</li>
+				<li class="soundadd">Dźwięki przełączania trybu walki i walenia w szybę z BeeStation.</li>
+				<li class="imageadd">Ikony trybu walki we wszystkich stylach HUD i licznik kombinacji.</li>
+				<li class="rscadd">Latarki, latarki na broni, kaski, hełmy, PDA i borgi świecą stożkiem w kierunku patrzenia</li>
+				<li class="rscadd">Rzucona latarka świeci tam, gdzie wskazuje po wylądowaniu</li>
+				<li class="refactor">Świecenie eteryków, luminescentów i mutacji Glowy na nowym systemie światła</li>
+				<li class="bugfix">Granaty flash/disco i błyski wybuchów dają poprawne światło</li>
+				<li class="rscadd">Okno wyboru profesji przy dołączaniu w trakcie rundy w nowym interfejsie: ikony ról, obsadzenie, priorytety i powody niedostępności.</li>
+				<li class="tweak">Cele statku ogłaszane są jednym komunikatem zamiast osobnego dla każdego projektu.</li>
+				<li class="rscadd">Duchy mogą raz na minutę nawiedzić okolicę przyciskiem „Nawiedź”: mrugające światła, straszny dźwięk i blady zarys ducha.</li>
 			</ul>
-			<h2 class="date">15 May 2026</h2>
-			<h3 class="author">DeltaFire15 updated:</h3>
+
+			<h2 class="date">11 October 2026</h2>
+			<h3 class="author">Joker66613 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fabrykator swarmerów znów co jakiś czas wytwarza skorupy swarmerów.</li>
+				<li class="bugfix">Po położeniu się z pozycji bokiem postać nie traci już jednej nogi.</li>
+			</ul>
+			<h3 class="author">sh4dow321 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="soundadd">Echo jukeboxa brzmi jak pogłos dużej sali: dwa odbicia, dłuższe z większej odległości, bez efektu drugiego utworu.</li>
+				<li class="rscadd">Jukebox gra też playlisty, profile i utwory z SoundCloud.</li>
+				<li class="soundadd">Ściany, okna i zamknięte drzwi mocniej tłumią muzykę z jukeboxa, a zmiana po otwarciu drzwi jest słyszalna od razu.</li>
+				<li class="rscadd">Na korytarzach wiszą głośniki nagłośnienia; kapitan programem "Nagłośnienie statku" (wgranym na konsolach dowodzenia) puszcza przez nie jukebox, a w pomieszczeniach i maintach słychać go przez ściany.</li>
+				<li class="rscadd">Amp stack: głośnik podłączany multitoolem do jukeboxa lub radia, cichszy i słabiej przebijający ściany; kliknięcie go włącza lub wyłącza. Do zbudowania albo w cargo (2 sztuki za 1500).</li>
+				<li class="rscadd">Radio: mały jukebox do zbudowania z płytki (ciemny boombox), z własną playlistą.</li>
+				<li class="rscadd">Nukies mają na promie głośnik Syndykatu z własną playlistą; gra też ciągnięty za sobą.</li>
+				<li class="imageadd">Ikony głośników z Goonstation i ciemny boombox z tgstation.</li>
+			</ul>
+
+			<h2 class="date">10 October 2026</h2>
+			<h3 class="author">Joker66613 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Port Newfood z BeeStation: setki nowych potraw na nowym systemie jedzenia.</li>
+				<li class="rscadd">Płyta grillowa i piec w kuchni. Mięso smaży się na płycie, pizze, ciasta i chleb piecze się w piecu.</li>
+				<li class="rscadd">Jedzenie zostawione na podłodze gnije i przyciąga mrówki.</li>
+				<li class="rscadd">Jedzenie zrobione przez kucharza daje buffy.</li>
+				<li class="rscadd">Płyta i piec w kuchniach statków z rotacji.</li>
+				<li class="tweak">Krojenie, wałkowanie i suszenie jedzenia działa na nowych zasadach.</li>
+				<li class="imageadd">Nowe sprite'y jedzenia i maszyn kuchennych z BeeStation.</li>
+				<li class="bugfix">Poprawione błędy Bee: mrówki, gorący olej, ikona buffa, moździerz.</li>
+				<li class="bugfix">Zniszczenie pagera oddziału nie powoduje już błędu.</li>
+				<li class="bugfix">Kapelusz spadający z wyższego pokładu nie powoduje już błędu.</li>
+				<li class="bugfix">Dywan niszczony eksplozją nie jest już usuwany dwukrotnie.</li>
+				<li class="bugfix">Masowe niszczenie rur nie psuje już sieci rur.</li>
+				<li class="bugfix">Pragnienie na starcie rundy jest teraz losowe (jak głód) zamiast zawsze na progu odwodnienia, więc krew od razu się regeneruje.</li>
+				<li class="bugfix">Popuszczenie w spodnie nie resetuje już pragnienia.</li>
+				<li class="rscadd">Reklamówki z Biedronki i Lidla oraz sandały z białymi skarpetkami można kupić w loadoucie za Aquilosy.</li>
+				<li class="rscadd">Nowa kategoria loadoutu „Polska bielizna”: polskie koszulki, zakolanówki, bokserki i mankini odblokowuje się za Aquilosy.</li>
+				<li class="tweak">Polskiej bielizny nie można już wybrać za darmo i nie trafia się w losowym wyglądzie.</li>
+				<li class="rscadd">Loadout pokazuje ikonki przedmiotów i ma przycisk „Podgląd”, który pokazuje przedmiot na postaci przed zakupem.</li>
+				<li class="rscadd">Nowy reagent: olej rycynowy (olej spożywczy + siarka + woda). Silnie przyspiesza potrzebę wypróżnienia, a wypróżnienie z nim w organizmie usuwa inne substancje.</li>
+				<li class="tweak">Kawa i ostre jedzenie (kapsaicyna, hell ramen) przyspieszają potrzebę wypróżnienia.</li>
+				<li class="rscadd">Kapitan, HoS i silikony mogą raz na 15 minut zlecić z konsoli komunikacyjnej wybudzenie załogi z kriostazy. Chętne duchy wracają do gry jako losowi Majtkowie przy komorach snu.</li>
+				<li class="bugfix">Prośby o ERT są widoczne w Request Managerze.</li>
+				<li class="config">Automatyczne ERT ma własną flagę ALLOW_ERT_REQUEST_AUTO_ACCEPT, a wybudzanie załogi flagę ALLOW_CREW_WAKE_REQUEST_AUTO_ACCEPT.</li>
+				<li class="rscadd">Wsparcie dla BYOND 516: czat, panel statystyk, okno mówienia i stare okna działają na nowym kliencie</li>
+				<li class="bugfix">Linki w starych oknach działają na kliencie 516</li>
+				<li class="bugfix">HUD antagonisty bloodlinga</li>
+				<li class="tweak">Na kliencie 516 historia czatu zapisuje się rzadziej, co usuwa regularne przycięcia</li>
+				<li class="code_imp">Linki w oknach browse() używają byond://, nowa reguła CI to sprawdza</li>
+				<li class="config">CLIENT_MAX_VERSION/BUILD podniesione do 516/1700</li>
+			</ul>
+
+			<h2 class="date">09 October 2026</h2>
+			<h3 class="author">Joker66613 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="admin">Admini dostają komunikat na czacie, gdy ktoś nie może dołączyć do serwera (whitelista, ban, limit graczy itp.).</li>
+				<li class="rscadd">Nowy typ budowy ciała „Polak” dla ludzi, do odblokowania za 5000 Aquilosów w loadoucie (OOC).</li>
+				<li class="imageadd">Sprite brzucha dla typu „Polak”.</li>
+				<li class="bugfix">Pożary na podłogach nie palą się już w nieskończoność i rozprzestrzeniają się wolniej</li>
+				<li class="bugfix">Chrono Legionnaire rozpoznaje imiona z polskimi znakami już od startu serwera.</li>
+				<li class="rscadd">Panel emotek w zakładce IC (wyszukiwarka i filtry)</li>
+				<li class="rscadd">Nowe emotki *smirk i *tilt, animacje dla *jump, *shiver, *sway, *tremble i *twitch</li>
+				<li class="tweak">Emotki widoczne wymagają wzroku, słyszalne słuchu; głusi widzą emotki słyszalne i widoczne</li>
+				<li class="tweak">/me pozwala wybrać emotkę słyszalną, widoczną lub obie</li>
+				<li class="soundadd">Dźwięki dla *giggle, *collapse, *surrender, *inhale, *wing, *boop, emotek MMI i slime'ów, nowy *whistle, dźwięk śmierci w masce SecHailer</li>
+				<li class="tweak">Wszystkie emotki mają polskie nazwy i komunikaty</li>
+			</ul>
+
+			<h2 class="date">07 October 2026</h2>
+			<h3 class="author">Joker66613 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Wraca miazma: zwłoki i gibsy gniją, kwiat trupi wydziela smród</li>
+				<li class="rscadd">Pierdy wypuszczają odrobinę miazmy</li>
+				<li class="balance">Miazma jest wyraźnie mniej opłacalna przy eksporcie i do badań</li>
+				<li class="code_imp">Nowy, dużo lżejszy system emisji miazmy (SSmiasma)</li>
+				<li class="code_imp">Dodano CLAUDE.md z wytycznymi dla Claude Code.</li>
+			</ul>
+			<h3 class="author">Produkcja: Ewa, Port: sh4dow321 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="imageadd">Security dostało spritework Polskiej Policji (Kosmobagiety): mundury, kurtki, kamizelki, kaski, czapki, okulary, pasy, plecaki, ID, tablety, radia, szafki i SecDrobe</li>
+				<li class="imageadd">Żandarm nosi mundur i pancerz w barwach policji</li>
+				<li class="rscadd">Nowe nakrycia głowy security: alternatywna czapka, czapka Naczelnika, bandana, furażerka i czapka oficerska</li>
+				<li class="tweak">Komendant zaczyna w mundurze policyjnym i kurtce policyjnej (te same statystyki)</li>
+			</ul>
+			<h3 class="author">Quartofel updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Pistolety Donksoft strzelają teraz plastikowymi i metalowymi kulkami, a granaty na kulki pokazują, ile zostało amunicji.</li>
+				<li class="rscadd">Zabawkowy chaingun LCG-4-BB „Ratat” na kulki dla mechów w automacie Donksoft.</li>
+				<li class="rscadd">Zabawkowe repliki strojów ERT w automacie Donksoft.</li>
+				<li class="tweak">Zabawki Syndykatu przeniesione do kontrabandy automatu Donksoft, ceny automatu podniesione.</li>
+				<li class="balance">Disabler dla mechów strzela szybciej.</li>
+				<li class="imageadd">Nowe sprite'y kulek, granatów na kulki i chaingunu dla mechów.</li>
+				<li class="soundadd">Dźwięk zabawkowego chaingunu.</li>
+				<li class="bugfix">Automat Donksoft zbudowany z płytki pokazuje już ikonki produktów.</li>
+			</ul>
+			<h3 class="author">Theos updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Emotka *cry pokazuje łzy na twarzy.</li>
+				<li class="rscadd">Krojenie cebuli bez osłony oczu wyciska łzy.</li>
+				<li class="imageadd">Dodano sprite łez.</li>
+			</ul>
+			<h3 class="author">ToGWtF updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Dodano rower stacjonarny, który generuje prąd z wysiłku przypiętej osoby (tylko spawn adminowski).</li>
+			</ul>
+			<h3 class="author">Wallem updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Konsola ksenobiologii wciąga i wypluwa szlamy, małpy i mikstury rurą zamiast je teleportować.</li>
+				<li class="rscadd">Konsola ksenobiologii ma HUD z liczbą małp, szlamów i załadowaną miksturą.</li>
+				<li class="imageadd">Recykler małp dostał fioletowe paski, żeby nie mylił się z maszynką do mięsa.</li>
+				<li class="soundadd">Dźwięki ssania i wystrzału rury.</li>
+			</ul>
+			<h3 class="author">` ... `/:cl:` ze zmergowanego PR-a, zapisuje `html/changelogs/AutoChangeLog-pr-N.yml`, kompiluje `html/changelog.html` i pushuje jednym commitem `[ci skip]`. Dodatkowo zrobiłem backfill: wpisy ze wszystkich zmergowanych PR-ów #1–#353, które miały blok `:cl:`, są już skompilowane w tym PR (84 wpisy z ostatnich 9 tygodni widoczne w grze, starsze tylko w cache `.all_changelog.yml`). Stare pliki `AutoChangeLog-pr-9..20` pochodziły z PR-ów forka NSV13-revive, nie z tego repo, więc weszły do kompilacji pod własnymi datami, a numery aq33 dostały właściwe wpisy. updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Changelog w grze znów pokazuje zmiany z ostatnich tygodni i aktualizuje się automatycznie po każdym merge'u.</li>
+			</ul>
+			<h3 class="author">mrmanlikesbt (BeeStation), Joker66613 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Smartwires: kable same łączą się z sąsiednimi kablami tego samego koloru, a węzły tworzą się automatycznie na końcówkach i pod maszynami.</li>
+				<li class="rscadd">Zwój kabla ma menu kolorów i kabel omni, a kable między pokładami łączą się same.</li>
+				<li class="rscdel">Usunięto RCL i warstwownik kabli dla mechów.</li>
+				<li class="tweak">Pętlę (noose) robi się teraz w menu craftingu.</li>
+				<li class="imageadd">Nowe ikony kabli i zwoju z BeeStation.</li>
+				<li class="soundadd">Dźwięk buczenia kabla między pokładami.</li>
+				<li class="code_imp">Mapy przerobione na nowe kable skryptem tools/smartwires/convert.py.</li>
+			</ul>
+			<h3 class="author">sh4dow321 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Added a Tesla Volume slider under Volume Controls in the Game Preferences tab.</li>
+			</ul>
+
+			<h2 class="date">06 October 2026</h2>
+			<h3 class="author">Joker66613 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">GR-3YT1.DE Locker Exosuit - nowy mech dostępny do wytworzenia z poziomu menu craftingu</li>
+				<li class="rscadd">wyposażenie dla nowego mecha, także dostępne do wytworzenia z poziomu menu craftingu</li>
+				<li class="rscadd">Improvised Laser Rifle do wytworzenia w craftingu</li>
+				<li class="rscadd">port yogowych bluespace pipes, czyli teleportujące się rurki</li>
+				<li class="rscadd">Morph ma nowe cele: zjedz określoną liczbę rzeczy i/lub zwłok</li>
+				<li class="rscadd">Morph widzi w status tabie, ile rzeczy i zwłok zjadł</li>
+				<li class="bugfix">Morph dostaje powitanie ze swoimi celami</li>
+				<li class="rscadd">Podłogi mogą się palić — pożary bez zamieniania stacji w piekło plazmy</li>
+				<li class="tweak">Miotacz ognia i mołotowy używają nowego systemu ognia</li>
+				<li class="tweak">Anomalia piroklastyczna podpala okolicę</li>
+				<li class="tweak">Heavy laser, pulse i amunicja zapalająca podpalają podłogi</li>
+				<li class="tweak">Kratki są odporniejsze na ogień</li>
+				<li class="soundadd">Nowe dźwięki miotacza ognia</li>
+				<li class="imageadd">Sprite'y ognia na podłodze</li>
+				<li class="rscadd">Ślady zależą teraz od butów i nóg (ślady stóp, łap, pazurów)</li>
+				<li class="bugfix">Naprawiono przeciekanie nakładki krwi z przedmiotów na inne obiekty</li>
+			</ul>
+
+			<h2 class="date">05 October 2026</h2>
+			<h3 class="author">EvilDragonfiend, HowToLoLu(sprite) updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Konsola genetyczna może drukować DNA nullifiery.</li>
+				<li class="tweak">Ręczny skaner sekwencji pokazuje stabilność genetyczną.</li>
+				<li class="imageadd">Sprite DNA nullifiera.</li>
+			</ul>
+			<h3 class="author">Joker66613 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Wampiry nie są już losowane wbrew preferencjom i banom, przycisk admina "Make Vampire" działa</li>
+				<li class="bugfix">Ciche ssanie krwi jest naprawdę ciche, a po 150 jednostkach krwi wampir traci możliwość cichego ssania</li>
+				<li class="bugfix">Holy water blokuje revive wampira, Bat Form pobiera krew, poprawki Lilith's Pact i nietoperzy</li>
+				<li class="balance">Nowe progi odblokowań zdolności wampira, szybszy nietoperz</li>
+				<li class="balance">Usunięto Diseased Touch i Shapeshift; płaszcz wampira daje unik i regenerację krwi zamiast pancerza</li>
+				<li class="balance">Rejuvenate kosztuje 20 krwi i leczy przez 5 sekund, pasywka regeneracji leczy stale</li>
+				<li class="balance">Ochrona oczu osłabia Gaze i Hypnotize zamiast je blokować</li>
+				<li class="balance">Revive wampira można anulować, cooldown liczy się po wskrzeszeniu</li>
+				<li class="balance">Traitor+Vampire może wylosować się od 15 graczy</li>
+				<li class="rscdel">Usunięto przycisk "How to suck blood 101", poradnik jest w wiadomości powitalnej</li>
+			</ul>
+
+			<h2 class="date">04 October 2026</h2>
+			<h3 class="author">Joker66613 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Dodano pupę jako narząd (port z HippieStation13) z ukrytą kieszenią oraz warianty xeno i bluespace.</li>
+				<li class="rscadd">Dodano emotkę *superfart, a *fart wymaga teraz pupy i ma efekty zależne od zawartości kieszeni.</li>
+				<li class="rscadd">Dodano buttbota, replikę kwiatu-pupy, fartium oraz zszywacz (także do zamykania trumien).</li>
+				<li class="imageadd">Dodano sprite'y pupy, buttbota, kwiatu-pupy, zszywacza, nakładkę trumny i efekt błyskawicy.</li>
+				<li class="soundadd">Dodano dźwięki pierdnięć, zszywacza i grzmotu.</li>
+			</ul>
+			<h3 class="author">sh4dow321 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="code_imp">Naprawiono test campaign_reset na CI oraz brakujący znak nowej linii w aquila.dm.</li>
+				<li class="bugfix">Wrogie floty nie pojawiają się już w systemie startowym (Argo) zaraz po każdym restarcie serwera. Zajęcie systemu przez flotę nie jest już zapisywane na kolejną rundę.</li>
+				<li class="bugfix">Naprawiono opcję „Hard Restart + New Campaign”, która nie restartowała serwera.</li>
+				<li class="code_imp">Naprawiono niestabilny test jednostkowy aquila_powersink_apc_drain.</li>
+				<li class="rscadd">Rewenanci widzą duchy, mogą krążyć wokół obiektów obok siebie i mają zaklęcie powrotu na stację.</li>
+				<li class="rscadd">Nowy cel zdrajcy: zniszczenie wszystkich maszyn danego typu w wybranych obszarach.</li>
+				<li class="rscadd">Dodano operację naprawy uszu.</li>
+				<li class="rscadd">Dodano dakimakury (kontrabanda w automacie z zabawkami Donksoft).</li>
+				<li class="bugfix">Naprawiono funkcje zależne od zawodu (składy, ograniczenia antagonistów, skalowanie ochrony, przedmioty i konta przypisane do działów), które przestały działać po przetłumaczeniu nazw zawodów.</li>
+				<li class="bugfix">Ratownik Medyczny znowu dostaje właściwą rangę; uzupełniono brakujące wpisy w plikach rang.</li>
+				<li class="server">Naprawiono workflowy GitHuba do etykiet PR i generowania changelogów na tym forku.</li>
+			</ul>
+
 			<h2 class="date">11 September 2026</h2>
 			<h3 class="author">Chichmuch updated:</h3>
 			<ul class="changes bgimages16">

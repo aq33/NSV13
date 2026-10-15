@@ -14,23 +14,23 @@
 	var/flipped_build_type
 	var/base_icon
 
+/obj/structure/c_transit_tube/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/simple_rotation, AfterRotation = CALLBACK(src, PROC_REF(AfterRotation)))
+
 /obj/structure/c_transit_tube/proc/can_wrench_in_loc(mob/user)
 	var/turf/source_turf = get_turf(loc)
 	var/existing_tubes = 0
 	for(var/obj/structure/transit_tube/tube in source_turf)
 		existing_tubes +=1
 		if(existing_tubes >= 2)
-			to_chat(user, "<span class='warning'>You cannot wrench anymore transit tubes!</span> ")
+			to_chat(user, "<span class='warning'>Nie możesz przykręcić więcej rur transportowych!</span> ")
 			return FALSE
 	return TRUE
 
-/obj/structure/c_transit_tube/ComponentInitialize()
-	. = ..()
-	AddComponent(/datum/component/simple_rotation,ROTATION_ALTCLICK | ROTATION_CLOCKWISE | ROTATION_FLIP | ROTATION_VERBS,null,null,CALLBACK(src,PROC_REF(after_rot)))
-
-/obj/structure/c_transit_tube/proc/after_rot(mob/user,rotation_type)
-	if(flipped_build_type && rotation_type == ROTATION_FLIP)
-		setDir(turn(dir,-180)) //Turn back we don't actually flip
+/obj/structure/c_transit_tube/proc/AfterRotation(mob/user, degrees)
+	if(flipped_build_type && degrees == ROTATION_FLIP)
+		setDir(turn(dir, degrees)) //Turn back we don't actually flip
 		flipped = !flipped
 		var/cur_flip = initial(flipped) ? !flipped : flipped
 		if(cur_flip)
@@ -42,14 +42,17 @@
 /obj/structure/c_transit_tube/wrench_act(mob/living/user, obj/item/I)
 	if(!can_wrench_in_loc(user))
 		return
-	to_chat(user, "<span class='notice'>You start attaching the [name]...</span>")
+	to_chat(user, "<span class='notice'>Zaczynasz podłączać [name]...</span>")
 	add_fingerprint(user)
 	if(I.use_tool(src, user, 2 SECONDS, volume=50, extra_checks=CALLBACK(src, PROC_REF(can_wrench_in_loc), user)))
-		to_chat(user, "<span class='notice'>You attach the [name].</span>")
+		to_chat(user, "<span class='notice'>Podłączasz [name].</span>")
 		var/obj/structure/transit_tube/R = new build_type(loc, dir)
 		transfer_fingerprints_to(R)
 		qdel(src)
 	return TRUE
+
+/obj/structure/c_transit_tube/AltClick(mob/user)
+	return ..() // This hotkey is BLACKLISTED since it's used by /datum/component/simple_rotation
 
 // transit tube station
 /obj/structure/c_transit_tube/station

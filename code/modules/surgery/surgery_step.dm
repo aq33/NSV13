@@ -44,7 +44,7 @@
 			if(get_location_accessible(target, target_zone) || surgery.ignore_clothes)
 				return initiate(user, target, target_zone, tool, surgery, try_to_fail)
 			else
-				to_chat(user, "<span class='warning'>You need to expose [target]'s [parse_zone(target_zone)] to perform surgery on it!</span>")
+				to_chat(user, "<span class='warning'>Aby operować [strefa_pl(target_zone, TRUE)] [target], musisz ją odsłonić!</span>")
 				return TRUE	//returns TRUE so we don't stab the guy in the dick or wherever.
 
 	if(repeatable)
@@ -129,9 +129,9 @@
 	return advance
 
 /datum/surgery_step/proc/preop(mob/user, mob/living/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to perform surgery on [target]...</span>",
-		"<span class='notice'>[user] begins to perform surgery on [target].</span>",
-		"<span class='notice'>[user] begins to perform surgery on [target].</span>")
+	display_results(user, target, "<span class='notice'>Zaczynasz operować [target]...</span>",
+		"<span class='notice'>[user] zaczyna operować [target].</span>",
+		"<span class='notice'>[user] zaczyna operować [target].</span>")
 
 /datum/surgery_step/proc/play_preop_sound(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	if(!preop_sound)
@@ -147,7 +147,7 @@
 	playsound(get_turf(target), sound_file_use, 75, TRUE, falloff_exponent = 12, falloff_distance = 1)
 
 /datum/surgery_step/proc/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/surgery/surgery, default_display_results = TRUE)
-	display_results(user, target, "<span class='notice'>You succeed.</span>",
+	display_results(user, target, "<span class='notice'>Udaje ci się.</span>",
 		"<span class='notice'>[user] succeeds.</span>",
 		"<span class='notice'>[user] finishes.</span>")
 	return TRUE
@@ -161,14 +161,14 @@
 	var/screwedmessage = ""
 	switch(fail_prob)
 		if(0 to 24)
-			screwedmessage = " You almost had it, though."
+			screwedmessage = " Ale było blisko."
 		if(50 to 74)//25 to 49 = no extra text
-			screwedmessage = " This is hard to get right in these conditions..."
+			screwedmessage = " W tych warunkach trudno to zrobić dobrze..."
 		if(75 to 99)
-			screwedmessage = " This is practically impossible in these conditions..."
+			screwedmessage = " W tych warunkach to praktycznie niemożliwe..."
 
-	display_results(user, target, "<span class='warning'>You screw up![screwedmessage]</span>",
-		"<span class='warning'>[user] screws up!</span>",
+	display_results(user, target, "<span class='warning'>Partaczysz![screwedmessage]</span>",
+		"<span class='warning'>[user] partaczy!</span>",
 		"<span class='notice'>[user] finishes.</span>", TRUE) //By default the patient will notice if the wrong thing has been cut
 	return FALSE
 

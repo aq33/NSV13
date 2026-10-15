@@ -81,7 +81,7 @@
 			locked_down = R.lockcharge,
 			status = R.stat,
 			charge = R.cell ? round(R.cell.percent()) : null,
-			module = R.module ? "[R.module.name] Module" : "No Module Detected",
+			module = R.module ? "[R.module.name] Module" : "Nie wykryto modułu",
 			synchronization = R.connected_ai,
 			emagged =  R.emagged,
 			ref = REF(R)
@@ -123,7 +123,7 @@
 	if(..())
 		return
 	if(extracting)
-		say("The machine is busy!")
+		say("Maszyna jest zajęta!")
 		return
 
 	switch(action)
@@ -133,7 +133,7 @@
 				if(can_control(usr, R) && !..())
 					R.self_destruct(usr)
 			else
-				to_chat(usr, "<span class='danger'>Access Denied.</span>")
+				to_chat(usr, "<span class='danger'>Odmowa dostępu.</span>")
 		if("stopbot")
 			if(allowed(usr))
 				var/mob/living/silicon/robot/R = locate(params["ref"]) in GLOB.silicon_mobs
@@ -144,9 +144,9 @@
 					R.SetLockdown(!R.lockcharge)
 					to_chat(R, "[!R.lockcharge ? "<span class='notice'>Your lockdown has been lifted!" : "<span class='alert'>You have been locked down!"]</span>")
 					if(R.connected_ai)
-						to_chat(R.connected_ai, "[!R.lockcharge ? "<span class='notice'>NOTICE - Cyborg lockdown lifted" : "<span class='alert'>ALERT - Cyborg lockdown detected"]: <a href='?src=[REF(R.connected_ai)];track=[html_encode(R.name)]'>[R.name]</a></span><br>")
+						to_chat(R.connected_ai, "[!R.lockcharge ? "<span class='notice'>NOTICE - Cyborg lockdown lifted" : "<span class='alert'>ALERT - Cyborg lockdown detected"]: <a href='byond://?src=[REF(R.connected_ai)];track=[html_encode(R.name)]'>[R.name]</a></span><br>")
 			else
-				to_chat(usr, "<span class='danger'>Access Denied.</span>")
+				to_chat(usr, "<span class='danger'>Odmowa dostępu.</span>")
 		if("magbot")
 			var/mob/living/silicon/S = usr
 			if((istype(S) && S.hack_software) || IsAdminGhost(usr))
@@ -155,12 +155,12 @@
 					log_game("[key_name(usr)] emagged [key_name(R)] using robotic console!")
 					message_admins("[ADMIN_LOOKUPFLW(usr)] emagged cyborg [key_name_admin(R)] using robotic console!")
 					R.SetEmagged(TRUE)
-					R.logevent("WARN: root privleges granted to PID [num2hex(rand(1,65535), -1)][num2hex(rand(1,65535), -1)].") //random eight digit hex value. Two are used because rand(1,4294967295) throws an error
+					R.logevent("OSTRZ.: przyznano uprawnienia roota procesowi PID [num2hex(rand(1,65535), -1)][num2hex(rand(1,65535), -1)].") //random eight digit hex value. Two are used because rand(1,4294967295) throws an error
 		if("killdrone")
 			if(allowed(usr))
 				var/mob/living/simple_animal/drone/D = locate(params["ref"]) in GLOB.mob_list
 				if(D.hacked)
-					to_chat(usr, "<span class='danger'>ERROR: [D] is not responding to external commands.</span>")
+					to_chat(usr, "<span class='danger'>BŁĄD: [D] nie reaguje na zewnętrzne polecenia.</span>")
 				else
 					var/turf/T = get_turf(D)
 					message_admins("[ADMIN_LOOKUPFLW(usr)] detonated [key_name_admin(D)] at [ADMIN_VERBOSEJMP(T)]!")
@@ -168,7 +168,7 @@
 					var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 					s.set_up(3, TRUE, D)
 					s.start()
-					D.visible_message("<span class='danger'>\the [D] self-destructs!</span>")
+					D.visible_message("<span class='danger'>\t[D] ulega samozniszczeniu!</span>")
 					D.gib()
 //		if("extract")						//NSV13 We don't need this
 //			if(!GLOB.upload_code)

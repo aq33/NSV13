@@ -7,7 +7,7 @@
 	lefthand_file = 'nsv13/icons/mob/inhands/equipment/banners_lefthand.dmi'
 	righthand_file = 'nsv13/icons/mob/inhands/equipment/banners_righthand.dmi'
 	job_loyalties = list(JOB_NAME_MASTERATARMS, JOB_NAME_MUNITIONSTECHNICIAN, JOB_NAME_PILOT, JOB_NAME_AIRTRAFFICCONTROLLER)
-	warcry = "EARS RINGING, GUNS SINGING!"
+	warcry = "USZY DZWONIĄ, DZIAŁA ŚPIEWAJĄ!"
 
 /obj/item/banner/munitions/mundane
     inspiration_available = FALSE
@@ -35,7 +35,7 @@
 	lefthand_file = 'nsv13/icons/mob/inhands/equipment/banners_lefthand.dmi'
 	righthand_file = 'nsv13/icons/mob/inhands/equipment/banners_righthand.dmi'
 	job_loyalties = null
-	warcry = "For Heart! For Home! For Luna! For Sol!"
+	warcry = "Za serce! Za dom! Za Lunę! Za Sol!"
 
 /obj/item/banner/solgov/mundane
 	inspiration_available = FALSE
@@ -71,7 +71,7 @@
 	time = 40
 	reqs = list(/obj/item/stack/rods = 2,
 				/obj/item/stack/sheet/durathread = 10,
-				/obj/item/reagent_containers/food/snacks/grown/moonflower = 1)
+				/obj/item/food/grown/moonflower = 1)
 	category = CAT_MISC
 
 /obj/item/banner/dominion
@@ -83,7 +83,7 @@
 	lefthand_file = 'nsv13/icons/mob/inhands/equipment/banners_lefthand.dmi'
 	righthand_file = 'nsv13/icons/mob/inhands/equipment/banners_righthand.dmi'
 	job_loyalties = null
-	warcry = "May the light of the torch guide us!"
+	warcry = "Niech prowadzi nas światło pochodni!"
 
 /obj/item/banner/dominion/mundane
 	inspiration_available = FALSE
@@ -112,7 +112,7 @@
 	lefthand_file = 'nsv13/icons/mob/inhands/equipment/banners_lefthand.dmi'
 	righthand_file = 'nsv13/icons/mob/inhands/equipment/banners_righthand.dmi'
 	job_loyalties = list("Traitor", "Nuclear Operative", "Syndicate Drop Trooper")
-	warcry = "Death to Nanotrasen! Death to Solgov!"
+	warcry = "Śmierć Nanotrasen! Śmierć Solgovowi!"
 
 /datum/uplink_item/badass/banner //Traitor Uplink Item
 	name = "Syndicate Banner"

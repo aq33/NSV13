@@ -10,6 +10,7 @@
 
 	density = FALSE
 	stat = DEAD
+	shift_to_open_context_menu = FALSE
 
 	var/mob/living/new_character	//for instant transfer once the round is set up
 	///Used to make sure someone doesn't get spammed with messages if they're ineligible for roles.
@@ -86,9 +87,9 @@
 				qdel(query_get_new_polls)
 				return
 			if(query_get_new_polls.NextRow())
-				output += "<p><b><a href='byond://?src=[rs];showpoll=1'>Show Player Polls</A> (NEW!)</b></p>"
+				output += "<p><b><a href='byond://?src=[rs];showpoll=1'>Pokaż ankiety</A> (NOWE!)</b></p>"
 			else
-				output += "<p><a href='byond://?src=[rs];showpoll=1'>Show Player Polls</A></p>"
+				output += "<p><a href='byond://?src=[rs];showpoll=1'>Pokaż ankiety</A></p>"
 			qdel(query_get_new_polls)
 			if(QDELETED(src))
 				return
@@ -120,7 +121,7 @@
 		relevant_cap = max(hpc, epc)
 
 	if(href_list["show_preferences"])
-		client.prefs.ShowChoices(src)
+		client.prefs.open_character_menu(src) // AQ EDIT - port BeeStation #8776: okno PreferencesMenu zamiast ShowChoices
 		return 1
 
 	if(href_list["ready"])
@@ -157,12 +158,12 @@
 
 			var/queue_position = SSticker.queued_players.Find(usr)
 			if(queue_position == 1)
-				to_chat(usr, "<span class='notice'>You are next in line to join the game. You will be notified when a slot opens up.</span>")
+				to_chat(usr, "<span class='notice'>Jesteś następny w kolejce. Dostaniesz powiadomienie, gdy zwolni się miejsce.</span>")
 			else if(queue_position)
-				to_chat(usr, "<span class='notice'>There are [queue_position-1] players in front of you in the queue to join the game.</span>")
+				to_chat(usr, "<span class='notice'>Przed tobą w kolejce do gry jest [queue_position-1] graczy.</span>")
 			else
 				SSticker.queued_players += usr
-				to_chat(usr, "<span class='notice'>You have been added to the queue to join the game. Your position in queue is [SSticker.queued_players.len].</span>")
+				to_chat(usr, "<span class='notice'>Dodano cię do kolejki do gry. Twoja pozycja w kolejce: [SSticker.queued_players.len].</span>")
 			return
 		LateChoices()
 
@@ -175,7 +176,7 @@
 			return
 
 		if(!GLOB.enter_allowed)
-			to_chat(usr, "<span class='notice'>There is an administrative lock on entering the game!</span>")
+			to_chat(usr, "<span class='notice'>Wejście do gry jest zablokowane przez administrację!</span>")
 			return
 
 		if(SSticker.queued_players.len && !(ckey(key) in GLOB.admin_datums) && !IS_PATRON(ckey(key)))
@@ -209,7 +210,7 @@
 
 	var/this_is_like_playing_right = "Tak"
 	if(!force_observe)
-		this_is_like_playing_right = alert(src,"Na pewno chcesz obserwować? Nie będziesz mógł grać podczas tej rundy!","Player Setup","Tak","Nie")
+		this_is_like_playing_right = alert(src,"Na pewno chcesz obserwować? Nie będziesz mógł grać podczas tej rundy!","Ustawienia gracza","Tak","Nie")
 
 	if(QDELETED(src) || !src.client || this_is_like_playing_right != "Tak")
 		ready = PLAYER_NOT_READY
@@ -244,18 +245,18 @@
 /proc/get_job_unavailable_error_message(retval, jobtitle)
 	switch(retval)
 		if(JOB_AVAILABLE)
-			return "[jobtitle] is available."
+			return "[jobtitle] - dostępne."
 		if(JOB_UNAVAILABLE_GENERIC)
-			return "[jobtitle] is unavailable."
+			return "[jobtitle] - niedostępne."
 		if(JOB_UNAVAILABLE_BANNED)
-			return "You are currently banned from [jobtitle]."
+			return "Masz obecnie bana na stanowisko [jobtitle]."
 		if(JOB_UNAVAILABLE_PLAYTIME)
-			return "You do not have enough relevant playtime for [jobtitle]."
+			return "Masz za mało przegranego czasu w odpowiednich rolach na stanowisko [jobtitle]."
 		if(JOB_UNAVAILABLE_ACCOUNTAGE)
-			return "Your account is not old enough for [jobtitle]."
+			return "Twoje konto jest za młode na stanowisko [jobtitle]."
 		if(JOB_UNAVAILABLE_SLOTFULL)
-			return "[jobtitle] is already filled to capacity."
-	return "Error: Unknown job availability."
+			return "Stanowisko [jobtitle] jest już w pełni obsadzone."
+	return "Błąd: nieznana dostępność stanowiska."
 
 /mob/dead/new_player/proc/IsJobUnavailable(rank, latejoin = FALSE)
 	var/datum/job/job = SSjob.GetJob(rank)
@@ -289,14 +290,14 @@
 		return FALSE
 
 	if(SSticker.late_join_disabled)
-		alert(src, "An administrator has disabled late join spawning.")
+		alert(src, "Administrator wyłączył dołączanie w trakcie rundy.")
 		return FALSE
 
 	var/arrivals_docked = TRUE
 	if(SSshuttle.arrivals)
 		close_spawn_windows()	//In case we get held up
 		if(SSshuttle.arrivals.damaged && CONFIG_GET(flag/arrivals_shuttle_require_safe_latejoin))
-			src << alert("The arrivals shuttle is currently malfunctioning! You cannot join.")
+			src << alert("Prom przylotów ma awarię! Nie możesz dołączyć.")
 			return FALSE
 
 		if(CONFIG_GET(flag/arrivals_shuttle_require_undocked))
@@ -339,7 +340,7 @@
 			AnnounceArrival(humanc, rank)
 		AddEmploymentContract(humanc)
 		if(GLOB.highlander)
-			to_chat(humanc, "<span class='userdanger'><i>THERE CAN BE ONLY ONE!!!</i></span>")
+			to_chat(humanc, "<span class='userdanger'><i>MOŻE BYĆ TYLKO JEDEN!!!</i></span>")
 			humanc.make_scottish()
 
 		if(GLOB.summon_guns_triggered)
@@ -353,7 +354,7 @@
 
 	GLOB.joined_player_list += character.ckey
 
-	if(CONFIG_GET(flag/allow_latejoin_antagonists) && humanc)	//Borgs aren't allowed to be antags. Will need to be tweaked if we get true latejoin ais.
+	if(CONFIG_GET(flag/allow_latejoin_antagonists) && humanc && isnull(SSticker.mode.weighted_antag_cap))	//Borgs aren't allowed to be antags. Will need to be tweaked if we get true latejoin ais. // AQUILA EDIT - no latejoin antagonists over the weighted rotation limit
 		if(SSshuttle.emergency)
 			switch(SSshuttle.emergency.mode)
 				if(SHUTTLE_RECALL, SHUTTLE_IDLE)
@@ -377,68 +378,8 @@
 			employmentCabinet.addFile(employee)
 
 
-/*
-	Ported from yogs: https://github.com/yogstation13/Yogstation-TG/blob/master/yogstation/code/modules/mob/dead/new_player/new_player.dm
-*/
-
 /mob/dead/new_player/proc/LateChoices()
-	var/static/list/department_order = list( // department order and its dept color
-		"Command" = "#ddddff",
-		"Engineering" = "#ffeeaa",
-		"Supply"= "#d7b088",
-		"Silicon" = "#ccffcc",
-		"Civilian"= "#bbe291",
-		"Gimmick" = "#dddddd",
-		"Medical" = "#c1e1ec",
-		"Science" = "#ffddff",
-		"Security" = "#ffdddd",
-		"Munitions" = "#ffd1a2" //NSV13 - added munitions
-	)
-	var/static/list/department_list = list(GLOB.command_positions) + list(GLOB.engineering_positions) + list(GLOB.supply_positions) + list(GLOB.nonhuman_positions - "pAI") + list(GLOB.civilian_positions) + list(GLOB.gimmick_positions) + list(GLOB.medical_positions) + list(GLOB.science_positions) + list(GLOB.security_positions) + list(GLOB.munitions_positions)
-
-	var/list/dat = list("<div class='notice'>Czas Rundy: [DisplayTimeText(world.time - SSticker.round_start_time)]</div>")
-	if(SSjob.prioritized_jobs.len > 0)
-		dat+="<div class='priority' style='text-align:center'>Jobs in Green have been prioritized by the Head of Personnel.<br>Please consider joining the game as that role.</div>"
-	if(SSshuttle.emergency)
-		switch(SSshuttle.emergency.mode)
-			if(SHUTTLE_ESCAPE)
-				dat += "<div class='notice red'>Stacja została ewakuowana.</div><br>"
-			if(SHUTTLE_CALL)
-				if(!SSshuttle.canRecall())
-					dat += "<div class='notice red'>Stacja przechodzi procedury ewakuacji.</div><br>"
-	for(var/datum/job/prioritized_job in SSjob.prioritized_jobs)
-		if(prioritized_job.current_positions >= prioritized_job.total_positions)
-			SSjob.prioritized_jobs -= prioritized_job
-	dat += "<table><tr><td valign='top'>"
-	var/column_counter = 0
-	for(var/list/category in department_list)
-		var/cat_color = department_order[department_order[column_counter+1]] // color from `department_order`
-		dat += "<fieldset style='width: 185px; border: 2px solid [cat_color]; display: inline'>"
-		dat += "<legend align='center' style='color: [cat_color]'>[department_order[column_counter+1]]</legend>"
-		var/list/dept_dat = list()
-		for(var/job in category)
-			var/datum/job/job_datum = SSjob.name_occupations[job]
-			if(job_datum && IsJobUnavailable(job_datum.title, TRUE) == JOB_AVAILABLE)
-				var/command_bold = ""
-				if(job in GLOB.command_positions)
-					command_bold = " command"
-				if(job_datum in SSjob.prioritized_jobs)
-					dept_dat += "<a class='job[command_bold]' href='byond://?src=[REF(src)];SelectedJob=[job_datum.title]'><span class='priority'>[job_datum.title] ([job_datum.current_positions])</span></a>"
-				else
-					dept_dat += "<a class='job[command_bold]' href='byond://?src=[REF(src)];SelectedJob=[job_datum.title]'>[job_datum.title] ([job_datum.current_positions])</a>"
-		if(!dept_dat.len)
-			dept_dat += "<span class='nopositions'>Brak otwartch pozycji.</span>"
-		dat += jointext(dept_dat, "")
-		dat += "</fieldset><br>"
-		column_counter++
-		if(column_counter > 0 && (column_counter % 4 == 0)) //NSV13 - modulo 4 to avoid cutting off
-			dat += "</td><td valign='top'>"
-	dat += "</td></tr></table></center>"
-	dat += "</div></div>"
-	var/datum/browser/popup = new(src, "latechoices", "Wybierz profesję", 680, 580)
-	popup.add_stylesheet("playeroptions", 'html/browser/playeroptions.css')
-	popup.set_content(jointext(dat, ""))
-	popup.open(FALSE) // 0 is passed to open so that it doesn't use the onclose() proc
+	GLOB.latejoin_menu.ui_interact(src) // AQ EDIT - okno TGUI JobSelection zamiast tabelki HTML
 
 /mob/dead/new_player/proc/create_character(transfer_after)
 	spawning = 1
@@ -484,11 +425,7 @@
 		return
 	client.crew_manifest_delay = world.time + (1 SECONDS)
 
-	var/dat = "<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'></head><body>"
-	dat += "<h4>Crew Manifest</h4>"
-	dat += GLOB.data_core.get_manifest_html()
-
-	src << browse(dat, "window=manifest;size=387x420;can_close=1")
+	GLOB.crew_manifest_tgui.ui_interact(src) // AQ EDIT - port BeeStation #9836: TGUI manifest
 
 /mob/dead/new_player/Move()
 	return 0
@@ -497,6 +434,7 @@
 /mob/dead/new_player/proc/close_spawn_windows()
 
 	src << browse(null, "window=latechoices") //closes late choices window
+	SStgui.close_user_uis(src, GLOB.latejoin_menu) // AQ EDIT - okno TGUI JobSelection
 	src << browse(null, "window=playersetup") //closes the player setup window
 	src << browse(null, "window=preferences") //closes job selection
 	src << browse(null, "window=mob_occupation")
@@ -516,7 +454,7 @@
 	var/has_antags = (length(client.prefs.role_preferences) + length(client.prefs.active_character?.role_preferences_character)) > 0
 	if(!length(client.prefs.active_character.job_preferences))
 		if(!ineligible_for_roles)
-			to_chat(src, "<span class='danger'>You have no jobs enabled, along with return to lobby if job is unavailable. This makes you ineligible for any round start role, please update your job preferences.</span>")
+			to_chat(src, "<span class='danger'>Nie masz włączonych żadnych zawodów i ustawiony jest powrót do lobby, gdy zawód jest niedostępny. Przez to nie możesz dostać żadnej roli na starcie rundy - zaktualizuj preferencje zawodów.</span>")
 		ineligible_for_roles = TRUE
 		ready = PLAYER_NOT_READY
 		if(has_antags)
@@ -554,8 +492,8 @@
 	UpdateMobStat(forced = TRUE)
 	set_stat_tab("Interview")
 
-	to_chat(src, "<span class='boldannounce'>Panic Bunker Active - Interview Required</span>" \
-					+ "\n<span class='danger'>To prevent abuse, players with no/low playtime are required to complete an interview to gain access." \
-					+ "\nThis is only required once and only for the duration that the panic bunker is active.</span>" \
-					+ "\n<span class='boldwarning'>If the interview interface is not open, use the Open Interview verb in the top right.</span>")
+	to_chat(src, "<span class='boldannounce'>Aktywny panic bunker - wymagana rozmowa kwalifikacyjna</span>" \
+					+ "\n<span class='danger'>Aby zapobiec nadużyciom, gracze z małą liczbą godzin lub bez nich muszą przejść rozmowę kwalifikacyjną, by uzyskać dostęp." \
+					+ "\nWymagane jest to tylko raz i tylko przez czas działania panic bunkera.</span>" \
+					+ "\n<span class='boldwarning'>Jeśli okno rozmowy się nie otworzyło, użyj komendy Open Interview w prawym górnym rogu.</span>")
 

@@ -6,7 +6,7 @@
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 3
-	supervisors = "the chief engineer"
+	supervisors = JOB_NAME_CHIEFENGINEER
 	selection_color = "#fff5cc"
 	exp_requirements = 120
 	exp_type = EXP_TYPE_CREW
@@ -61,3 +61,11 @@
 	head = null
 	internals_slot = ITEM_SLOT_SUITSTORE
 
+/datum/outfit/job/engineer/mod
+	name = "Station Engineer (MODsuit)"
+
+	suit_store = /obj/item/tank/internals/oxygen
+	back = /obj/item/mod/control/pre_equipped/engineering
+	head = null
+	mask = /obj/item/clothing/mask/breath
+	internals_slot = ITEM_SLOT_SUITSTORE

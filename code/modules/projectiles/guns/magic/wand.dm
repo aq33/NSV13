@@ -20,7 +20,7 @@
 
 /obj/item/gun/magic/wand/examine(mob/user)
 	. = ..()
-	. += "Has [charges] charge\s remaining."
+	. += "Pozostałe ładunki: [charges]."
 
 /obj/item/gun/magic/wand/update_icon()
 	icon_state = "[initial(icon_state)][charges ? "" : "-drained"]"
@@ -38,7 +38,7 @@
 		if(no_den_usage)
 			var/area/A = get_area(user)
 			if(istype(A, /area/wizard_station))
-				to_chat(user, "<span class='warning'>You know better than to violate the security of The Den, best wait until you leave to use [src].</span>")
+				to_chat(user, "<span class='warning'>Wiesz, że lepiej nie naruszać bezpieczeństwa Legowiska; poczekaj z użyciem [src], aż wyjdziesz.</span>")
 				return
 			else
 				no_den_usage = 0
@@ -49,7 +49,7 @@
 
 
 /obj/item/gun/magic/wand/proc/zap_self(mob/living/user)
-	user.visible_message("<span class='danger'>[user] zaps [user.p_them()]self with [src].</span>")
+	user.visible_message("<span class='danger'>[user] razi się [src].</span>")
 	playsound(user, fire_sound, 50, 1)
 	user.log_message("zapped [user.p_them()]self with a <b>[src]</b>", LOG_ATTACK)
 
@@ -68,8 +68,7 @@
 
 /obj/item/gun/magic/wand/death/zap_self(mob/living/user)
 	..()
-	to_chat(user, "<span class='warning'>You irradiate yourself with pure energy! \
-	[pick("Do not pass go. Do not collect 200 zorkmids.","You feel more confident in your spell casting skills.","You Die...","Do you want your possessions identified?")]\
+	to_chat(user, "<span class='warning'>Napromieniowujesz się czystą energią! [pick("Nie przechodzisz przez start. Nie pobierasz 200 zorkmidów.","Czujesz się pewniej w rzucaniu zaklęć.","Giniesz...","Czy chcesz zidentyfikować swoje rzeczy?")]\
 	</span>")
 	user.adjustOxyLoss(500)
 	charges--
@@ -100,7 +99,7 @@
 		var/mob/living/carbon/C = user
 		C.regenerate_limbs()
 		C.regenerate_organs()
-	to_chat(user, "<span class='notice'>You feel great!</span>")
+	to_chat(user, "<span class='notice'>Czujesz się świetnie!</span>")
 	charges--
 	..()
 
@@ -191,7 +190,7 @@
 	no_den_usage = 1
 
 /obj/item/gun/magic/wand/door/zap_self(mob/living/user)
-	to_chat(user, "<span class='notice'>You feel vaguely more open with your feelings.</span>")
+	to_chat(user, "<span class='notice'>Czujesz, że odrobinę łatwiej ci mówić o uczuciach.</span>")
 	charges--
 	..()
 

@@ -20,13 +20,13 @@
 	var/force_glass_colour = FALSE	//Should the user be forced to see the colour?
 
 /obj/item/clothing/glasses/suicide_act(mob/living/carbon/user)
-	user.visible_message("<span class='suicide'>[user] is stabbing \the [src] into [user.p_their()] eyes! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] wbija [src] w swoje oczy! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	return BRUTELOSS
 
 /obj/item/clothing/glasses/examine(mob/user)
 	. = ..()
 	if(glass_colour_type && ishuman(user))
-		. += "<span class='notice'>Alt-click to toggle its colors.</span>"
+		. += "<span class='notice'>Alt-klik, by przełączyć kolory.</span>"
 
 /obj/item/clothing/glasses/visor_toggling()
 	..()
@@ -49,7 +49,7 @@
 		var/obj/item/organ/eyes/eyes = H.getorganslot(ORGAN_SLOT_EYES)
 		if(!(HAS_TRAIT(H, TRAIT_BLIND)))
 			if(H.glasses == src)
-				to_chat(H, "<span class='danger'>[src] overloads and blinds you!</span>")
+				to_chat(H, "<span class='danger'>[src] przeciąża się i cię oślepia!</span>")
 				H.flash_act(visual = 1)
 				H.blind_eyes(3)
 				H.blur_eyes(5)
@@ -80,7 +80,7 @@
 			REMOVE_TRAIT(user, TRAIT_MADNESS_IMMUNE, CLOTHING_TRAIT)
 
 /obj/item/clothing/glasses/meson/suicide_act(mob/living/carbon/user)
-	user.visible_message("<span class='suicide'>[user] is putting \the [src] to [user.p_their()] eyes and overloading the brightness! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] przykłada [src] do oczu i podkręca jasność do oporu! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	return BRUTELOSS
 
 /obj/item/clothing/glasses/meson/night
@@ -98,9 +98,10 @@
 	item_state = "garm"
 	desc = "Do the impossible, see the invisible!"
 	force = 10
+	bleed_force = BLEED_SURFACE
 	throwforce = 10
 	throw_speed = 4
-	attack_verb = list("sliced")
+	attack_verb = list("kroi")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	sharpness = IS_SHARP
 
@@ -120,7 +121,7 @@
 	actions_types = list(/datum/action/item_action/toggle_research_scanner)
 	glass_colour_type = /datum/client_colour/glass_colour/purple
 	resistance_flags = ACID_PROOF
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 80, "acid" = 100, "stamina" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 80, "acid" = 100, "stamina" = 0, "bleed" = 0)
 
 /obj/item/clothing/glasses/science/item_action_slot_check(slot)
 	if(slot == ITEM_SLOT_EYES)
@@ -131,7 +132,7 @@
 	desc = "A crude combination between a pair of prescription glasses and the electronics of science goggles."
 	icon_state = "prescscihud"
 	resistance_flags = NONE
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 20, "acid" = 40, "stamina" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 20, "acid" = 40, "stamina" = 0, "bleed" = 0)
 	vision_correction = 1
 
 /obj/item/clothing/glasses/science/sciencesun
@@ -156,18 +157,18 @@
 	glass_colour_type = /datum/client_colour/glass_colour/green
 
 /obj/item/clothing/glasses/science/suicide_act(mob/living/carbon/user)
-	user.visible_message("<span class='suicide'>[user] is tightening \the [src]'s straps around [user.p_their()] neck! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] zaciska paski [src] na swojej szyi! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	return OXYLOSS
 
 /obj/item/clothing/glasses/eyepatch
 	name = "eyepatch"
-	desc = "Yarr."
+	desc = "Arr."
 	icon_state = "eyepatch"
 	item_state = "eyepatch"
 
 /obj/item/clothing/glasses/monocle
 	name = "monocle"
-	desc = "Such a dapper eyepiece!"
+	desc = "Cóż za szykowne szkiełko!"
 	icon_state = "monocle"
 	item_state = "headset" // lol
 
@@ -192,35 +193,36 @@
 	item_state = "garm"
 	desc = "Do the impossible, see the invisible!"
 	force = 10
+	bleed_force = BLEED_SURFACE
 	throwforce = 20
 	throw_speed = 4
-	attack_verb = list("sliced")
+	attack_verb = list("kroi")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	sharpness = IS_SHARP
 	glass_colour_type = /datum/client_colour/glass_colour/lightgreen
 
 /obj/item/clothing/glasses/regular
 	name = "prescription glasses"
-	desc = "Made by Nerd. Co."
+	desc = "Wyprodukowane przez Nerd. Co."
 	icon_state = "glasses"
 	item_state = "glasses"
 	vision_correction = 1 //corrects nearsightedness
 
 /obj/item/clothing/glasses/regular/jamjar
 	name = "jamjar glasses"
-	desc = "Also known as Virginity Protectors."
+	desc = "Znane też jako obrońcy dziewictwa."
 	icon_state = "jamjar_glasses"
 	item_state = "jamjar_glasses"
 
 /obj/item/clothing/glasses/regular/hipster
 	name = "prescription glasses"
-	desc = "Made by Uncool. Co."
+	desc = "Wyprodukowane przez Uncool. Co."
 	icon_state = "hipster_glasses"
 	item_state = "hipster_glasses"
 
 /obj/item/clothing/glasses/regular/circle
 	name = "circle glasses"
-	desc = "Why would you wear something so controversial yet so brave?"
+	desc = "Czemu nosisz coś tak kontrowersyjnego, a zarazem tak odważnego?"
 	icon_state = "circle_glasses"
 	item_state = "circle_glasses"
 
@@ -228,7 +230,7 @@
 
 /obj/item/clothing/glasses/sunglasses
 	name = "sunglasses"
-	desc = "Strangely ancient technology used to help provide rudimentary eye cover. They do not provide flash protection."
+	desc = "Dziwnie archaiczna technologia zapewniająca podstawową osłonę oczu. Nie chroni przed błyskami."
 	icon_state = "sun"
 	item_state = "sunglasses"
 	darkness_view = 1
@@ -266,9 +268,10 @@
 	icon_state = "garb"
 	item_state = "garb"
 	force = 10
+	bleed_force = BLEED_SURFACE
 	throwforce = 10
 	throw_speed = 4
-	attack_verb = list("sliced")
+	attack_verb = list("kroi")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	sharpness = IS_SHARP
 
@@ -286,9 +289,10 @@
 	icon_state = "gar"
 	item_state = "gar"
 	force = 10
+	bleed_force = BLEED_SURFACE
 	throwforce = 10
 	throw_speed = 4
-	attack_verb = list("sliced")
+	attack_verb = list("kroi")
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	sharpness = IS_SHARP
 	glass_colour_type = /datum/client_colour/glass_colour/orange
@@ -465,26 +469,26 @@
 
 /obj/item/clothing/glasses/cold
 	name = "cold goggles"
-	desc = "A pair of goggles meant for low temperatures."
+	desc = "Gogle przeznaczone na niskie temperatury."
 	icon_state = "cold"
 	item_state = "cold"
 
 /obj/item/clothing/glasses/heat
 	name = "heat goggles"
-	desc = "A pair of goggles meant for high temperatures."
+	desc = "Gogle przeznaczone na wysokie temperatury."
 	icon_state = "heat"
 	item_state = "heat"
 
 /obj/item/clothing/glasses/orange
 	name = "orange glasses"
-	desc = "A sweet pair of orange shades."
+	desc = "Fajne pomarańczowe okulary przeciwsłoneczne."
 	icon_state = "orangeglasses"
 	item_state = "orangeglasses"
 	glass_colour_type = /datum/client_colour/glass_colour/lightorange
 
 /obj/item/clothing/glasses/red
 	name = "red glasses"
-	desc = "Hey, you're looking good, senpai!"
+	desc = "Hej, świetnie wyglądasz, senpai!"
 	icon_state = "redglasses"
 	item_state = "redglasses"
 	glass_colour_type = /datum/client_colour/glass_colour/red
@@ -514,7 +518,7 @@
 				var/mob/living/carbon/C = user
 				C.update_inv_wear_mask()
 		else
-			to_chat(user, "<span class='notice'>The eye winks at you and vanishes into the abyss, you feel really unlucky.</span>")
+			to_chat(user, "<span class='notice'>Oko puszcza do ciebie oczko i znika w otchłani; czujesz, że masz naprawdę pecha.</span>")
 		qdel(src)
 	..()
 
@@ -526,9 +530,9 @@
 				if(src == H.glasses)
 					H.client.prefs.toggles2 ^= PREFTOGGLE_2_USES_GLASSES_COLOUR
 					if(H.client.prefs.toggles2 & PREFTOGGLE_2_USES_GLASSES_COLOUR)
-						to_chat(H, "You will now see glasses colors.")
+						to_chat(H, "Będziesz teraz widzieć kolory okularów.")
 					else
-						to_chat(H, "You will no longer see glasses colors.")
+						to_chat(H, "Nie będziesz już widzieć kolorów okularów.")
 					H.update_glasses_color(src, 1)
 
 /obj/item/clothing/glasses/proc/change_glass_color(mob/living/carbon/human/H, datum/client_colour/glass_colour/new_color_type)

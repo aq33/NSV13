@@ -127,10 +127,10 @@
 			var/mob/M = usr
 			var/obj/item/card/id/I = M.get_idcard(TRUE)
 			if(!I)
-				to_chat(usr, "<span class='warning'>No ID detected.</span>")
+				to_chat(usr, "<span class='warning'>Nie wykryto identyfikatora.</span>")
 				return
 			if(!machine.points)
-				to_chat(usr, "<span class='warning'>No points to claim.</span>")
+				to_chat(usr, "<span class='warning'>Brak punktów do odebrania.</span>")
 				return
 			I.mining_points += machine.points
 			machine.points = 0
@@ -175,14 +175,14 @@
 
 		if(istype(P.buffer, /obj/machinery/mineral/processing_unit))
 			if(get_area(P.buffer) != get_area(src))
-				to_chat(user, "<font color = #666633>-% Cannot link machines across power zones. %-</font color>")
+				to_chat(user, "<font color = #666633>-% Nie można łączyć maszyn z różnych stref zasilania. %-</font color>")
 				return
-			to_chat(user, "<font color = #666633>-% Successfully linked [P.buffer] with [src] %-</font color>")
+			to_chat(user, "<font color = #666633>-% Połączono [P.buffer] z [src] %-</font color>")
 			machine = P.buffer
 			machine.console = src
 		else
 			P.buffer = src
-			to_chat(user, "<font color = #666633>-% Successfully stored [REF(P.buffer)] [P.buffer.name] in buffer %-</font color>")
+			to_chat(user, "<font color = #666633>-% Zapisano [REF(P.buffer)] [P.buffer.name] w buforze %-</font color>")
 		return
 
 	return ..()
@@ -203,6 +203,8 @@
 	var/datum/material/selected_material = null
 	var/selected_alloy = null
 	var/datum/techweb/stored_research
+	///Proximity monitor associated with this atom, needed for proximity checks.
+	var/datum/proximity_monitor/proximity_monitor
 	var/link_id = null
 	var/points = 0
 	var/allow_point_redemption = FALSE
@@ -245,7 +247,7 @@
 	if(panel_open)
 		input_dir = turn(input_dir, -90)
 		output_dir = turn(output_dir, -90)
-		to_chat(user, "<span class='notice'>You change [src]'s I/O settings, setting the input to [dir2text(input_dir)] and the output to [dir2text(output_dir)].</span>")
+		to_chat(user, "<span class='notice'>Zmieniasz ustawienia wejścia/wyjścia [src]: wejście – [dir2text(input_dir)], wyjście – [dir2text(output_dir)].</span>")
 		unregister_input_turf() // someone just rotated the input and output directions, unregister the old turf
 		register_input_turf() // register the new one
 		return TRUE
@@ -267,14 +269,14 @@
 
 		if(istype(P.buffer, /obj/machinery/mineral/processing_unit_console))
 			if(get_area(P.buffer) != get_area(src))
-				to_chat(user, "<font color = #666633>-% Cannot link machines across power zones. %-</font color>")
+				to_chat(user, "<font color = #666633>-% Nie można łączyć maszyn z różnych stref zasilania. %-</font color>")
 				return
-			to_chat(user, "<font color = #666633>-% Successfully linked [P.buffer] with [src] %-</font color>")
+			to_chat(user, "<font color = #666633>-% Połączono [P.buffer] z [src] %-</font color>")
 			console = P.buffer
 			console.machine = src
 		else
 			P.buffer = src
-			to_chat(user, "<font color = #666633>-% Successfully stored [REF(P.buffer)] [P.buffer.name] in buffer %-</font color>")
+			to_chat(user, "<font color = #666633>-% Zapisano [REF(P.buffer)] [P.buffer.name] w buforze %-</font color>")
 		return
 
 	return ..()

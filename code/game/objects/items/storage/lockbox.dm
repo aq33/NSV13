@@ -9,7 +9,7 @@
 	req_access = list(ACCESS_ARMORY)
 	var/broken = FALSE
 	var/open = FALSE
-	var/base_icon_state = "lockbox"
+	base_icon_state = "lockbox"
 
 /obj/item/storage/lockbox/ComponentInitialize()
 	. = ..()
@@ -23,7 +23,7 @@
 	var/locked = SEND_SIGNAL(src, COMSIG_IS_STORAGE_LOCKED)
 	if(W.GetID())
 		if(broken)
-			to_chat(user, "<span class='danger'>It appears to be broken.</span>")
+			to_chat(user, "<span class='danger'>Wygląda na zepsuty.</span>")
 			return
 		if(allowed(user))
 			SEND_SIGNAL(src, COMSIG_TRY_STORAGE_SET_LOCKSTATE, !locked)
@@ -31,16 +31,16 @@
 			if(locked)
 				icon_state = "[base_icon_state]+l"
 				item_state = "[base_icon_state]+l"
-				to_chat(user, "<span class='danger'>You lock the [src.name]!</span>")
+				to_chat(user, "<span class='danger'>Zamykasz [src.name]!</span>")
 				SEND_SIGNAL(src, COMSIG_TRY_STORAGE_HIDE_ALL)
 				return
 			else
 				icon_state = "[base_icon_state]"
 				item_state = "[base_icon_state]"
-				to_chat(user, "<span class='danger'>You unlock the [src.name]!</span>")
+				to_chat(user, "<span class='danger'>Otwierasz [src.name]!</span>")
 				return
 		else
-			to_chat(user, "<span class='danger'>Access Denied.</span>")
+			to_chat(user, "<span class='danger'>Odmowa dostępu.</span>")
 			return
 	if(!locked)
 		return ..()
@@ -51,11 +51,11 @@
 	if(!broken)
 		broken = TRUE
 		SEND_SIGNAL(src, COMSIG_TRY_STORAGE_SET_LOCKSTATE, FALSE)
-		desc += "It appears to be broken."
+		desc += "Wygląda na zepsuty."
 		icon_state = "[src.base_icon_state]+b"
 		item_state = "[src.base_icon_state]+b"
 		if(user)
-			visible_message("<span class='warning'>\The [src] has been broken by [user] with an electromagnetic card!</span>")
+			visible_message("<span class='warning'>[user] łamie zabezpieczenia [src] kartą elektromagnetyczną!</span>")
 			return
 
 /obj/item/storage/lockbox/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
@@ -97,7 +97,7 @@
 /obj/item/storage/lockbox/medal/examine(mob/user)
 	. = ..()
 	if(!SEND_SIGNAL(src, COMSIG_IS_STORAGE_LOCKED))
-		. += "<span class='notice'>Alt-click to [open ? "close":"open"] it.</span>"
+		. += "<span class='notice'>Alt-kliknij, by [open ? "zamknąć":"otworzyć"].</span>"
 
 /obj/item/storage/lockbox/medal/AltClick(mob/user)
 	if(user.canUseTopic(src, BE_CLOSE))

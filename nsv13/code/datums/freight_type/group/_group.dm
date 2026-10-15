@@ -112,11 +112,11 @@
 
 	switch( require )
 		if ( REQUIRE_ALL )
-			info += "<li><span>All in group:</span></li>"
+			info += "<li><span>Wszystkie w grupie:</span></li>"
 		if ( REQUIRE_ANY )
-			info += "<li><span>One or more in group:</span></li>"
+			info += "<li><span>Jeden lub więcej w grupie:</span></li>"
 		if ( REQUIRE_ONE )
-			info += "<li><span>One and only one in group:</span></li>"
+			info += "<li><span>Jeden i tylko jeden w grupie:</span></li>"
 
 	info += "<br><ul>"
 
@@ -127,16 +127,15 @@
 
 			var/target = T.get_target()
 			if ( target )
-				info += "<span>Quantity: [target] unit\s</span><br>"
+				info += "<span>Ilość: [target] j.</span><br>"
 
 		if ( T.send_prepackaged_item )
 			if ( objective.send_to_station_pickup_point )
-				info += "<span>Prepackaged: Freight contents are prepackaged and delivered to [objective.pickup_destination]. Contact the station to receive the package.</span><br> \
-					<span>Pickup system: [objective.pickup_destination.current_system]</span><br>"
+				info += "<span>Zapakowane: zawartość ładunku jest zapakowana i dostarczona do [objective.pickup_destination]. Skontaktujcie się ze stacją, by odebrać paczkę.</span><br><span>System odbioru: [objective.pickup_destination.current_system]</span><br>"
 			else
-				info += "<span>Prepackaged: Freight contents are prepackaged and delivered to your cargo supplypod drop point.</span><br>"
+				info += "<span>Zapakowane: zawartość ładunku jest zapakowana i dostarczona do waszego punktu zrzutu kapsuł zaopatrzeniowych.</span><br>"
 		if ( T.require_loc )
-			info += "<span>Special container required: The target item must be delivered inside [T.require_loc_name]. Nested layers of packaging is permitted, as long as [item] can be found inside [T.require_loc_name]. Unsuitable containers will be rejected.</span><br>"
+			info += "<span>Wymagany specjalny pojemnik: przedmiot docelowy musi zostać dostarczony w [T.require_loc_name]. Dozwolone są zagnieżdżone warstwy opakowań, o ile [item] znajduje się w [T.require_loc_name]. Nieodpowiednie pojemniki zostaną odrzucone.</span><br>"
 		info += "[T.get_supply_request_form_segment()]<br>"
 
 	info += "</ul>"

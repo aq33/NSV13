@@ -1,0 +1,698 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/closed/indestructible/riveted,
+/area/test_chamber)
+"ab" = (
+/turf/open/floor/plasteel,
+/area/test_chamber)
+"ac" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/test_chamber)
+"ad" = (
+/obj/machinery/vending/medical,
+/turf/open/floor/plasteel,
+/area/test_chamber)
+"ae" = (
+/obj/machinery/vending/assist,
+/turf/open/floor/plasteel,
+/area/test_chamber)
+"af" = (
+/obj/machinery/vending/tool,
+/turf/open/floor/plasteel,
+/area/test_chamber)
+"ag" = (
+/obj/structure/closet/crate/bin,
+/turf/open/floor/plasteel,
+/area/test_chamber)
+"ah" = (
+/obj/machinery/light{
+	dir = 2
+	},
+/turf/open/floor/plasteel,
+/area/test_chamber)
+"ai" = (
+/obj/effect/landmark/test_chamber/arrival,
+/turf/open/floor/plasteel,
+/area/test_chamber)
+"aj" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/firstaid/regular,
+/obj/item/storage/firstaid/regular,
+/turf/open/floor/plasteel,
+/area/test_chamber)
+"ak" = (
+/obj/structure/table/reinforced,
+/obj/item/stack/sheet/iron/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/turf/open/floor/plasteel,
+/area/test_chamber)
+"al" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/belt/utility/full,
+/obj/item/storage/belt/utility/full,
+/turf/open/floor/plasteel,
+/area/test_chamber)
+"am" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/test_chamber)
+"an" = (
+/obj/structure/table/reinforced,
+/obj/item/stock_parts/cell/infinite,
+/obj/item/stock_parts/cell/infinite,
+/obj/item/storage/box/monkeycubes,
+/turf/open/floor/plasteel,
+/area/test_chamber)
+"ao" = (
+/obj/structure/table/reinforced,
+/obj/item/stack/sheet/plasteel/fifty,
+/obj/item/stack/cable_coil,
+/turf/open/floor/plasteel,
+/area/test_chamber)
+"ap" = (
+/obj/structure/table/reinforced,
+/obj/item/multitool,
+/obj/item/analyzer,
+/obj/item/healthanalyzer,
+/turf/open/floor/plasteel,
+/area/test_chamber)
+"aq" = (
+/obj/machinery/computer/test_chamber{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/test_chamber)
+"ar" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/test_chamber/arena)
+"as" = (
+/turf/open/floor/plasteel/dark,
+/area/test_chamber/arena)
+"at" = (
+/obj/machinery/light{
+	dir = 2
+	},
+/turf/open/floor/plasteel/dark,
+/area/test_chamber/arena)
+"au" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/test_chamber/arena)
+"av" = (
+/obj/effect/turf_decal/bot,
+/obj/effect/landmark/test_chamber/kit_center,
+/turf/open/floor/plasteel/dark,
+/area/test_chamber/arena)
+"aw" = (
+/obj/structure/target_stake,
+/obj/item/target,
+/turf/open/floor/plasteel/dark,
+/area/test_chamber/arena)
+"ax" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/test_chamber/arena)
+"ay" = (
+/obj/machinery/light/floor,
+/turf/open/floor/plasteel/dark,
+/area/test_chamber/arena)
+
+(1,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(2,1,1) = {"
+aa
+ab
+af
+ab
+ae
+ab
+ad
+ab
+ab
+ac
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(3,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ag
+ab
+aa
+"}
+(4,1,1) = {"
+aa
+am
+al
+ak
+ab
+aj
+ab
+ab
+ab
+ai
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ah
+aa
+"}
+(5,1,1) = {"
+aa
+ab
+ap
+ao
+ab
+an
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(6,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aq
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(7,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(8,1,1) = {"
+aa
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+ar
+aa
+"}
+(9,1,1) = {"
+aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+aa
+"}
+(10,1,1) = {"
+aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+aa
+"}
+(11,1,1) = {"
+aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+aa
+"}
+(12,1,1) = {"
+aa
+au
+as
+as
+ay
+as
+as
+as
+as
+ay
+as
+as
+as
+as
+ay
+as
+as
+at
+aa
+"}
+(13,1,1) = {"
+aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+aa
+"}
+(14,1,1) = {"
+aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+aa
+"}
+(15,1,1) = {"
+aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+aa
+"}
+(16,1,1) = {"
+aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+aa
+"}
+(17,1,1) = {"
+aa
+au
+as
+as
+ay
+as
+as
+as
+as
+av
+as
+as
+as
+as
+ay
+as
+as
+at
+aa
+"}
+(18,1,1) = {"
+aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+aa
+"}
+(19,1,1) = {"
+aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+aa
+"}
+(20,1,1) = {"
+aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+aa
+"}
+(21,1,1) = {"
+aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+aa
+"}
+(22,1,1) = {"
+aa
+au
+as
+as
+ay
+as
+as
+as
+as
+ay
+as
+as
+as
+as
+ay
+as
+as
+at
+aa
+"}
+(23,1,1) = {"
+aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+aa
+"}
+(24,1,1) = {"
+aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+aa
+"}
+(25,1,1) = {"
+aa
+as
+aw
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+aa
+"}
+(26,1,1) = {"
+aa
+as
+as
+as
+as
+as
+as
+as
+as
+ax
+as
+as
+as
+as
+as
+as
+as
+as
+aa
+"}
+(27,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}

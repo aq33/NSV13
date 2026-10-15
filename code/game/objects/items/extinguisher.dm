@@ -12,7 +12,7 @@
 	throw_range = 7
 	force = 10
 	materials = list(/datum/material/iron = 90)
-	attack_verb = list("slammed", "whacked", "bashed", "thunked", "battered", "bludgeoned", "thrashed")
+	attack_verb = list("grzmoci", "wali", "grzmoci", "stuka", "okłada", "tłucze", "młóci")
 	dog_fashion = /datum/dog_fashion/back
 	resistance_flags = FIRE_PROOF
 	var/max_water = 50
@@ -62,24 +62,24 @@
 
 /obj/item/extinguisher/suicide_act(mob/living/carbon/user)
 	if (!safety && (reagents.total_volume >= 1))
-		user.visible_message("<span class='suicide'>[user] puts the nozzle to [user.p_their()] mouth. It looks like [user.p_theyre()] trying to extinguish the spark of life!</span>")
+		user.visible_message("<span class='suicide'>[user] przykłada dyszę do ust. Wygląda na to, że próbuje zgasić iskrę życia!</span>")
 		afterattack(user,user)
 		return OXYLOSS
 	else if (safety && (reagents.total_volume >= 1))
-		user.visible_message("<span class='warning'>[user] puts the nozzle to [user.p_their()] mouth... The safety's still on!</span>")
+		user.visible_message("<span class='warning'>[user] przykłada dyszę do ust... Bezpiecznik wciąż jest włączony!</span>")
 		return SHAME
 	else
-		user.visible_message("<span class='warning'>[user] puts the nozzle to [user.p_their()] mouth... [src] is empty!</span>")
+		user.visible_message("<span class='warning'>[user] przykłada dyszę do ust... [src] jest pusta!</span>")
 		return SHAME
 
 /obj/item/extinguisher/attack_self(mob/user)
 	safety = !safety
 	src.icon_state = "[sprite_name][!safety]"
-	to_chat(user, "The safety is [safety ? "on" : "off"].")
+	to_chat(user, "Bezpiecznik jest [safety ? "włączony" : "wyłączony"].")
 	return
 
-/obj/item/extinguisher/attack(mob/M, mob/user)
-	if(user.a_intent == INTENT_HELP && !safety) //If we're on help intent and going to spray people, don't bash them.
+/obj/item/extinguisher/attack(mob/M, mob/living/user)
+	if(!user.combat_mode && !safety) //If we're on help intent and going to spray people, don't bash them.
 		return FALSE
 	else
 		return ..()
@@ -93,28 +93,28 @@
 
 /obj/item/extinguisher/examine(mob/user)
 	. = ..()
-	. += "The safety is [safety ? "on" : "off"]."
+	. += "Bezpiecznik jest [safety ? "włączony" : "wyłączony"]."
 
 	if(reagents.total_volume)
-		. += "<span class='notice'>Alt-click to empty it.</span>"
+		. += "<span class='notice'>Alt-kliknij, by ją opróżnić.</span>"
 
 /obj/item/extinguisher/proc/AttemptRefill(atom/target, mob/user)
 	if(istype(target, tanktype) && target.Adjacent(user))
 		var/safety_save = safety
 		safety = TRUE
 		if(reagents.total_volume == reagents.maximum_volume)
-			to_chat(user, "<span class='warning'>\The [src] is already full!</span>")
+			to_chat(user, "<span class='warning'>[src] jest już pełna!</span>")
 			safety = safety_save
 			return 1
 		var/obj/structure/reagent_dispensers/W = target //will it work?
 		var/transferred = W.reagents.trans_to(src, max_water, transfered_by = user)
 		if(transferred > 0)
-			to_chat(user, "<span class='notice'>\The [src] has been refilled by [transferred] units.</span>")
+			to_chat(user, "<span class='notice'>Uzupełniono [src] o [transferred] j.</span>")
 			playsound(src.loc, 'sound/effects/refill.ogg', 50, 1, -6)
 			for(var/datum/reagent/water/R in reagents.reagent_list)
 				R.cooling_temperature = cooling_power
 		else
-			to_chat(user, "<span class='warning'>\The [W] is empty!</span>")
+			to_chat(user, "<span class='warning'>[W] jest pusty!</span>")
 		safety = safety_save
 		return 1
 	else
@@ -134,7 +134,7 @@
 
 
 		if (src.reagents.total_volume < 1)
-			to_chat(usr, "<span class='warning'>\The [src] is empty!</span>")
+			to_chat(usr, "<span class='warning'>[src] jest pusta!</span>")
 			return
 
 		if (world.time < src.last_use + 12)
@@ -215,12 +215,12 @@
 			var/turf/open/theturf = T
 			theturf.MakeSlippery(TURF_WET_WATER, min_wet_time = 10 SECONDS, wet_time_to_add = 5 SECONDS)
 
-		user.visible_message("[user] empties out \the [src] onto the floor using the release valve.", "<span class='info'>You quietly empty out \the [src] using its release valve.</span>")
+		user.visible_message("[user] opróżnia [src] na podłogę zaworem spustowym.", "<span class='info'>Po cichu opróżniasz [src] zaworem spustowym.</span>")
 
 //firebot assembly
 /obj/item/extinguisher/attackby(obj/O, mob/user, params)
 	if(istype(O, /obj/item/bodypart/l_arm/robot) || istype(O, /obj/item/bodypart/r_arm/robot))
-		to_chat(user, "<span class='notice'>You add [O] to [src].</span>")
+		to_chat(user, "<span class='notice'>Dodajesz [O] do [src].</span>")
 		qdel(O)
 		qdel(src)
 		user.put_in_hands(new /obj/item/bot_assembly/firebot)

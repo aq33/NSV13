@@ -7,10 +7,10 @@
 	icon_living = "cat2"
 	icon_dead = "cat2_dead"
 	gender = MALE
-	speak = list("Meow!", "Esp!", "Purr!", "HSSSSS")
-	speak_emote = list("purrs", "meows")
-	emote_hear = list("meows.", "mews.")
-	emote_see = list("shakes its head.", "shivers.")
+	speak = list("Miau!", "Fff!", "Mrrr!", "SSSSSS")
+	speak_emote = list("mruczy", "miauczy")
+	emote_hear = list("miauczy.", "pomiaukuje.")
+	emote_see = list("potrząsa głową.", "drży.")
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 6
@@ -23,11 +23,10 @@
 	unsuitable_atmos_damage = 1
 	animal_species = /mob/living/simple_animal/pet/cat
 	childtype = list(/mob/living/simple_animal/pet/cat/kitten)
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab = 2, /obj/item/organ/ears/cat = 1, /obj/item/organ/tail/cat = 1, /obj/item/organ/tongue/cat = 1)
-	response_help  = "pets"
-	response_disarm = "gently pushes aside"
-	response_harm   = "kicks"
-	var/turns_since_scan = 0
+	butcher_results = list(/obj/item/food/meat/slab = 2, /obj/item/organ/ears/cat = 1, /obj/item/organ/tail/cat = 1, /obj/item/organ/tongue/cat = 1)
+	response_help  = "głaszcze"
+	response_disarm = "delikatnie odsuwa na bok"
+	response_harm   = "kopie"
 	var/mob/living/simple_animal/mouse/movement_target
 	gold_core_spawnable = FRIENDLY_SPAWN
 	collar_type = "cat"
@@ -169,14 +168,14 @@
 
 		for(var/mob/living/simple_animal/mouse/M in get_turf(src))
 			if(!M.stat)
-				INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, emote), "me", 1, "splats \the [M]!")
+				INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, emote), "me", 1, "rozpłaszcza [M]!")
 				M.splat()
 				movement_target = null
 				stop_automated_movement = 0
 				break
 		for(var/obj/item/toy/cattoy/T in get_turf(src))
 			if (T.cooldown < (world.time - 400))
-				INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, emote), "me", 1, "bats \the [T] around with its paw!")
+				INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, emote), "me", 1, "trąca łapą [T]!")
 				T.cooldown = world.time
 
 /mob/living/simple_animal/pet/cat/update_resting()
@@ -194,19 +193,19 @@
 		if(prob(3))
 			switch(rand(1, 3))
 				if (1)
-					INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, emote), "me", 1, pick("stretches out for a belly rub.", "wags its tail.", "lies down."))
+					INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, emote), "me", 1, pick("przeciąga się, czekając na drapanie po brzuszku.", "macha ogonem.", "kładzie się."))
 					set_resting(TRUE)
 				if (2)
-					INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, emote), "me", 1, pick("sits down.", "crouches on its hind legs.", "looks alert."))
+					INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, emote), "me", 1, pick("siada.", "przykuca na tylnych łapach.", "nastawia uszu."))
 					set_resting(TRUE)
 					icon_state = "[icon_living]_sit"
 					collar_type = "[initial(collar_type)]_sit"
 				if (3)
 					if (resting)
-						INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, emote), "me", 1, pick("gets up and meows.", "walks around.", "stops resting."))
+						INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, emote), "me", 1, pick("wstaje i miauczy.", "chodzi dookoła.", "przestaje odpoczywać."))
 						set_resting(FALSE)
 					else
-						INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, emote), "me", 1, pick("grooms its fur.", "twitches its whiskers.", "shakes out its coat."))
+						INVOKE_ASYNC(src, TYPE_PROC_REF(/mob, emote), "me", 1, pick("wylizuje futerko.", "rusza wąsikami.", "otrząsa futerko."))
 		else if(prob(10)) //AQUILA EDIT
 			playsound(loc, 'aquila/sound/misc/meow.ogg', 50, 1) //AQUILA EDIT
 	..()
@@ -234,11 +233,10 @@
 
 /mob/living/simple_animal/pet/cat/attack_hand(mob/living/carbon/human/M)
 	. = ..()
-	switch(M.a_intent)
-		if("help")
-			wuv(TRUE, M)
-		if("harm")
-			wuv(FALSE, M)
+	if(M.combat_mode)
+		wuv(FALSE, M)
+	else
+		wuv(TRUE, M)
 
 /mob/living/simple_animal/pet/cat/proc/wuv(change, mob/M)
 	if(change)
@@ -262,11 +260,11 @@
 	health = 50
 	maxHealth = 50
 	gender = FEMALE
-	butcher_results = list(/obj/item/organ/brain = 1, /obj/item/organ/heart = 1, /obj/item/reagent_containers/food/snacks/cakeslice/birthday = 3,  \
-	/obj/item/reagent_containers/food/snacks/meat/slab = 2)
-	response_harm = "takes a bite out of"
+	butcher_results = list(/obj/item/organ/brain = 1, /obj/item/organ/heart = 1, /obj/item/food/cakeslice/birthday = 3,  \
+	/obj/item/food/meat/slab = 2)
+	response_harm = "odgryza kawałek"
 	attacked_sound = 'sound/items/eatfood.ogg'
-	deathmessage = "loses its false life and collapses!"
+	deathmessage = "traci swoje fałszywe życie i pada!"
 	deathsound = "bodyfall"
 	held_state = "cak"
 
@@ -276,12 +274,10 @@
 	if(!B || !B.brainmob || !B.brainmob.mind)
 		return
 	B.brainmob.mind.transfer_to(src)
-	to_chat(src, "<span class='big bold'>You are a cak!</span><b> You're a harmless cat/cake hybrid that everyone loves. People can take bites out of you if they're hungry, but you regenerate health \
-	so quickly that it generally doesn't matter. You're remarkably resilient to any damage besides this and it's hard for you to really die at all. You should go around and bring happiness and \
-	free cake to the station!</b>")
-	var/new_name = stripped_input(src, "Enter your name, or press \"Cancel\" to stick with Keeki.", "Name Change")
+	to_chat(src, "<span class='big bold'>Jesteś kakiem!</span><b> Jesteś nieszkodliwą hybrydą kota i ciasta, którą wszyscy kochają. Głodni mogą odgryzać z ciebie kawałki, ale regenerujesz zdrowie tak szybko, że zwykle nie ma to znaczenia. Jesteś niezwykle odporny na wszelkie inne obrażenia i naprawdę trudno cię zabić. Chodź po stacji i rozdawaj szczęście oraz darmowe ciasto!</b>")
+	var/new_name = stripped_input(src, "Podaj swoje imię lub naciśnij \"Cancel\", by zostać przy imieniu Keeki.", "Zmiana imienia")
 	if(new_name)
-		to_chat(src, "<span class='notice'>Your name is now <b>\"new_name\"</b>!</span>")
+		to_chat(src, "<span class='notice'>Twoje imię to teraz <b>\"new_name\"</b>!</span>")
 		name = new_name
 
 /mob/living/simple_animal/pet/cat/cak/Life()
@@ -294,13 +290,13 @@
 /mob/living/simple_animal/pet/cat/cak/Move()
 	. = ..()
 	if(. && !stat)
-		for(var/obj/item/reagent_containers/food/snacks/donut/D in get_turf(src)) //Frosts nearby donuts!
+		for(var/obj/item/food/donut/D in get_turf(src)) //Frosts nearby donuts!
 			if(!D.is_decorated)
 				D.decorate_donut()
 
 /mob/living/simple_animal/pet/cat/cak/attack_hand(mob/living/L)
 	..()
-	if(L.a_intent == INTENT_HARM && L.reagents && !stat)
+	if(L.combat_mode && L.reagents && !stat)
 		L.reagents.add_reagent(/datum/reagent/consumable/nutriment, 0.4)
 		L.reagents.add_reagent(/datum/reagent/consumable/nutriment/vitamin, 0.4)
 
@@ -313,7 +309,7 @@
 	icon_dead = "breadcat_dead"
 	collar_type = null
 	held_state = "breadcat"
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab = 2, /obj/item/organ/ears/cat = 1, /obj/item/organ/tail/cat = 1, /obj/item/organ/tongue/cat = 1, /obj/item/reagent_containers/food/snacks/breadslice/plain = 1)
+	butcher_results = list(/obj/item/food/meat/slab = 2, /obj/item/organ/ears/cat = 1, /obj/item/organ/tail/cat = 1, /obj/item/organ/tongue/cat = 1, /obj/item/food/breadslice/plain = 1)
 
 /mob/living/simple_animal/pet/cat/halal
 	name = "arabian cat"

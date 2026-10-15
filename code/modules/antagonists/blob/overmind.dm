@@ -126,7 +126,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 		max_count = blobs_legit.len
 
 	if(!has_announced && (world.time >= announcement_time || blobs_legit.len >= announcement_size))
-		priority_announce("Confirmed outbreak of level 5 biohazard aboard [station_name()]. All personnel must contain the outbreak.", "Biohazard Alert", ANNOUNCER_OUTBREAK5)
+		priority_announce("Potwierdzono ognisko zagrożenia biologicznego poziomu 5 na pokładzie [station_name()]. Cały personel musi powstrzymać ognisko.", "Alarm biologiczny", ANNOUNCER_OUTBREAK5)
 		has_announced = TRUE
 /mob/camera/blob/proc/victory()
 	sound_to_playing_players('sound/machines/alarm.ogg')
@@ -204,7 +204,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 	. = ..()
 	if(blobstrain)
 		. += "Jego rodzaj to <font color=\"[blobstrain.color]\">[blobstrain.name]</font>."
-	. += "It currently consists of [blobs_legit.len] nodes, out of the [blobwincount] nodes needed to achieve critical mass."
+	. += "Obecnie składa się z [blobs_legit.len] z [blobwincount] węzłów potrzebnych do osiągnięcia masy krytycznej."
 
 /mob/camera/blob/update_health_hud()
 	if(blob_core)
@@ -223,7 +223,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 
 	if (src.client)
 		if(client.prefs.muted & MUTE_IC)
-			to_chat(src, "You cannot send IC messages (muted).")
+			to_chat(src, "Nie możesz wysyłać wiadomości IC (wyciszenie).")
 			return
 		if (src.client.handle_spam_prevention(message,MUTE_IC))
 			return
@@ -240,7 +240,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 	if (!message)
 		return
 	if(CHAT_FILTER_CHECK(message))
-		to_chat(usr, "<span class='warning'>Your message contains forbidden words.</span>")
+		to_chat(usr, "<span class='warning'>Twoja wiadomość zawiera zakazane słowa.</span>")
 		return
 	message = treat_message_min(message)
 	src.log_talk(message, LOG_SAY, tag="blob")
@@ -265,11 +265,11 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 	tab_data["Zasoby"] = GENERATE_STAT_TEXT("[blob_points]/[max_blob_points]")
 	tab_data["Wymagana ilość blobów do wygranej"] = GENERATE_STAT_TEXT("[blobs_legit.len]/[blobwincount]")
 	if(free_strain_rerolls)
-		tab_data["Strain Reroll"] = GENERATE_STAT_TEXT("Ilość twoich darmowych przelosowań odmiany wynosi: [free_strain_rerolls]")
+		tab_data["Przelosowanie odmiany"] = GENERATE_STAT_TEXT("Liczba darmowych przelosowań odmiany: [free_strain_rerolls]")
 	if(!placed)
 		if(manualplace_min_time)
 			tab_data["Czas do ręcznego umieszczenia rdzenia"] = GENERATE_STAT_TEXT("[max(round((manualplace_min_time - world.time)*0.1, 0.1), 0)]")
-		tab_data["Casz do automatycznego umieszczenia rdzenia"] = GENERATE_STAT_TEXT("[max(round((autoplace_max_time - world.time)*0.1, 0.1), 0)]")
+		tab_data["Czas do automatycznego umieszczenia rdzenia"] = GENERATE_STAT_TEXT("[max(round((autoplace_max_time - world.time)*0.1, 0.1), 0)]")
 	return tab_data
 
 /mob/camera/blob/canZMove(direction, turf/target)

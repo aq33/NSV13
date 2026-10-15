@@ -1,4 +1,0 @@
-author: sh4dow321
-delete-after: true
-changes:
-  - code_imp: Naprawiono niestabilny test jednostkowy aquila_powersink_apc_drain.

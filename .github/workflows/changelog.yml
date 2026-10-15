@@ -1,0 +1,102 @@
+name: Changelog
+
+# Turns the `:cl:` block of every merged PR into an entry of the in-game changelog
+# (html/changelog.html), which is compiled into the game binary.
+#
+# master is a protected branch, so the workflow needs a token that may push to it:
+# add a repository secret CHANGELOG_PAT holding a fine-grained PAT (Contents: read/write
+# on this repo) of an admin or bypass-allowed account. Without it the workflow falls back
+# to a pull request from the `auto-changelog` branch that a maintainer has to merge.
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+    inputs:
+      prs:
+        description: "PR numbers or ranges to (re)generate, e.g. `341 353` or `9-353`. Empty = only recompile."
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: changelog
+  cancel-in-progress: false
+
+jobs:
+  changelog:
+    runs-on: ubuntu-latest
+    # Our own compile commits carry [ci skip], this is a second guard against loops.
+    if: github.actor != 'github-actions[bot]'
+    env:
+      PUSH_TOKEN: ${{ secrets.CHANGELOG_PAT || secrets.GITHUB_TOKEN }}
+      FALLBACK_BRANCH: auto-changelog
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: master
+          fetch-depth: 50
+          token: ${{ secrets.CHANGELOG_PAT || secrets.GITHUB_TOKEN }}
+
+      - name: Python setup
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: tools/changelog/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r tools/changelog/requirements.txt
+
+      - name: Pick up entries waiting on the fallback branch
+        # Entries from earlier runs that could not push to master live only on the
+        # fallback branch until its PR is merged; carry them over so they are not lost.
+        run: |
+          git fetch origin "$FALLBACK_BRANCH" 2>/dev/null || exit 0
+          if git merge-base --is-ancestor "origin/$FALLBACK_BRANCH" HEAD; then
+            echo "Fallback branch already merged, nothing to carry over"
+            exit 0
+          fi
+          echo "Carrying over changelog state from $FALLBACK_BRANCH"
+          git checkout "origin/$FALLBACK_BRANCH" -- html/changelog.html html/changelogs
+
+      - name: Generate changelog entries from merged PRs
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python tools/changelog/generate_cl.py ${{ github.event.inputs.prs }}
+
+      - name: Compile changelog
+        run: python tools/changelog/ss13_genchangelog.py html/changelog.html html/changelogs
+
+      - name: Commit and push
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add html/changelog.html html/changelogs
+          if git diff --cached --quiet; then
+            echo "Changelog is up to date, nothing to commit"
+            exit 0
+          fi
+          git commit -m "Automatic changelog compile [ci skip]"
+
+          # Someone may have pushed to master while we were running.
+          git fetch origin master
+          git rebase origin/master
+          if git push origin HEAD:master; then
+            echo "Changelog pushed to master"
+            exit 0
+          fi
+
+          echo "::warning::Could not push to master (branch protection?). Falling back to a pull request from $FALLBACK_BRANCH. Add a CHANGELOG_PAT secret to make this fully automatic."
+          git push --force origin "HEAD:$FALLBACK_BRANCH"
+          gh pr create --base master --head "$FALLBACK_BRANCH" \
+            --title "Automatic changelog compile [ci skip]" \
+            --body "Compiled in-game changelog from the \`:cl:\` blocks of merged PRs. Opened automatically because the workflow token may not push to master; add a \`CHANGELOG_PAT\` repository secret to skip this step." \
+            || echo "A pull request for $FALLBACK_BRANCH already exists or could not be created (see above)"

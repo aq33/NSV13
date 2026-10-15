@@ -23,7 +23,7 @@
 
 /datum/reagent/blob/energized_jelly
 	name = "Energized Jelly"
-	taste_description = "gelatin"
+	taste_description = "żelatyna"
 	color = "#EFD65A"
 	chem_flags = CHEMICAL_NOT_SYNTH | CHEMICAL_RNG_FUN
 

@@ -163,22 +163,22 @@
 		return
 	var/atom/attached_atom = parent
 	if(attached_atom.loc != user)
-		to_chat(user, "<span class='warning'>You attempt to wield [parent] via the power of telekenisis, but it is too much for you to handle...</span>")
+		to_chat(user, "<span class='warning'>Próbujesz unieść [parent] mocą telekinezy, ale to dla ciebie za dużo...</span>")
 		return
 	if(ismonkey(user))
-		to_chat(user, "<span class='warning'>It's too heavy for you to wield fully.</span>")
+		to_chat(user, "<span class='warning'>To dla ciebie za ciężkie, by trzymać to oburącz.</span>")
 		return
 	if(swap_hands ? user.get_active_held_item() : user.get_inactive_held_item())
 		if(require_twohands)
-			to_chat(user, "<span class='notice'>[parent] is too cumbersome to carry in one hand!</span>")
+			to_chat(user, "<span class='notice'>[parent] jest zbyt nieporęczny, by nosić go w jednej ręce!</span>")
 			user.dropItemToGround(parent, force=TRUE)
 		else
-			to_chat(user, "<span class='warning'>You need your other hand to be empty!</span>")
+			to_chat(user, "<span class='warning'>Druga ręka musi być wolna!</span>")
 		return
 	if(user.get_num_arms() < 2)
 		if(require_twohands)
 			user.dropItemToGround(parent, force=TRUE)
-		to_chat(user, "<span class='warning'>You don't have enough intact hands.</span>")
+		to_chat(user, "<span class='warning'>Nie masz dość sprawnych rąk.</span>")
 		return
 
 	// wield update status
@@ -211,9 +211,9 @@
 	parent_item.update_icon()
 
 	if(iscyborg(user))
-		to_chat(user, "<span class='notice'>You dedicate your module to [parent].</span>")
+		to_chat(user, "<span class='notice'>Przeznaczasz swój moduł na [parent].</span>")
 	else
-		to_chat(user, "<span class='notice'>You grab [parent] with both hands.</span>")
+		to_chat(user, "<span class='notice'>Chwytasz [parent] oburącz.</span>")
 
 	// Play sound if one is set
 	if(wieldsound)
@@ -283,11 +283,11 @@
 	// Show message if requested
 	if(show_message)
 		if(iscyborg(wielder))
-			to_chat(wielder, "<span class='notice'>You free up your module.</span>")
+			to_chat(wielder, "<span class='notice'>Zwalniasz swój moduł.</span>")
 		else if(require_twohands)
-			to_chat(wielder, "<span class='notice'>You drop [parent].</span>")
+			to_chat(wielder, "<span class='notice'>Upuszczasz [parent].</span>")
 		else
-			to_chat(wielder, "<span class='notice'>You are now carrying [parent] with one hand.</span>")
+			to_chat(wielder, "<span class='notice'>Nosisz teraz [parent] w jednej ręce.</span>")
 
 	// Play sound if set
 	if(unwieldsound)
@@ -390,7 +390,7 @@
 	name = "offhand"
 	icon_state = "offhand"
 	w_class = WEIGHT_CLASS_HUGE
-	item_flags = ABSTRACT | DROPDEL
+	item_flags = ABSTRACT | DROPDEL | NOBLUDGEON
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	/// Off Hand tracking of wielded status
 	var/wielded = FALSE

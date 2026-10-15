@@ -5,7 +5,7 @@
 	name = "Nervousness"
 	desc = "Causes the holder to stutter."
 	quality = MINOR_NEGATIVE
-	text_gain_indication = "<span class='danger'>You feel nervous.</span>"
+	text_gain_indication = "<span class='danger'>Czujesz się zdenerwowany.</span>"
 
 /datum/mutation/nervousness/on_life()
 	if(prob(10))
@@ -16,8 +16,8 @@
 	name = "Wacky"
 	desc = "Unknown."
 	quality = MINOR_NEGATIVE
-	text_gain_indication = "<span class='sans'>You feel an off sensation in your voicebox.</span>"
-	text_lose_indication = "<span class='notice'>The off sensation passes.</span>"
+	text_gain_indication = "<span class='sans'>Czujesz dziwne uczucie w krtani.</span>"
+	text_lose_indication = "<span class='notice'>Dziwne uczucie mija.</span>"
 
 /datum/mutation/wacky/on_acquiring(mob/living/carbon/owner)
 	if(..())
@@ -38,8 +38,8 @@
 	name = "Mute"
 	desc = "Completely inhibits the vocal section of the brain."
 	quality = NEGATIVE
-	text_gain_indication = "<span class='danger'>You feel unable to express yourself at all.</span>"
-	text_lose_indication = "<span class='danger'>You feel able to speak freely again.</span>"
+	text_gain_indication = "<span class='danger'>Czujesz, że w ogóle nie potrafisz się wyrazić.</span>"
+	text_lose_indication = "<span class='danger'>Czujesz, że znów możesz swobodnie mówić.</span>"
 
 /datum/mutation/mute/on_acquiring(mob/living/carbon/owner)
 	if(..())
@@ -56,8 +56,8 @@
 	name = "Smile"
 	desc = "Causes the user to be in constant mania."
 	quality = MINOR_NEGATIVE
-	text_gain_indication = "<span class='notice'>You feel so happy. Nothing can be wrong with anything. :)</span>"
-	text_lose_indication = "<span class='notice'>Everything is terrible again. :(</span>"
+	text_gain_indication = "<span class='notice'>Czujesz się taki szczęśliwy. Nic nie może być źle. :)</span>"
+	text_lose_indication = "<span class='notice'>Znów wszystko jest okropne. :(</span>"
 
 /datum/mutation/smile/on_acquiring(mob/living/carbon/owner)
 	if(..())
@@ -86,7 +86,7 @@
 		message = replacetext(message," disgusting "," amazing ")
 		message = replacetext(message," loser "," winner ")
 		message = replacetext(message," useless "," useful ")
-		message = replacetext(message," oh god "," cheese and crackers ")
+		message = replacetext(message," oh god "," ser i krakersy ")
 		message = replacetext(message," jesus "," gee wiz ")
 		message = replacetext(message," weak "," strong ")
 		message = replacetext(message," kill "," hug ")
@@ -97,14 +97,14 @@
 		message = replacetext(message," whore "," lady ")
 		message = replacetext(message," nerd "," smart guy ")
 		message = replacetext(message," moron "," fun person ")
-		message = replacetext(message," IT'S LOOSE "," EVERYTHING IS FINE ")
+		message = replacetext(message," IT'S LOOSE "," WSZYSTKO W PORZĄDKU ")
 		message = replacetext(message," sex "," hug fight ")
 		message = replacetext(message," idiot "," genius ")
 		message = replacetext(message," fat "," thin ")
-		message = replacetext(message," beer "," water with ice ")
+		message = replacetext(message," beer "," woda z lodem ")
 		message = replacetext(message," drink "," water ")
 		message = replacetext(message," feminist "," empowered woman ")
-		message = replacetext(message," i hate you "," you're mean ")
+		message = replacetext(message," nienawidzę cię "," jesteś wredny ")
 		message = replacetext(message," jew "," jewish ")
 		message = replacetext(message," shit "," shiz ")
 		message = replacetext(message," crap "," poo ")
@@ -123,8 +123,8 @@
 	name = "Unintelligible"
 	desc = "Partially inhibits the vocal center of the brain, severely distorting speech."
 	quality = NEGATIVE
-	text_gain_indication = "<span class='danger'>You can't seem to form any coherent thoughts!</span>"
-	text_lose_indication = "<span class='danger'>Your mind feels more clear.</span>"
+	text_gain_indication = "<span class='danger'>Nie potrafisz ułożyć żadnej spójnej myśli!</span>"
+	text_lose_indication = "<span class='danger'>Twój umysł wydaje się jaśniejszy.</span>"
 
 /datum/mutation/unintelligible/on_acquiring(mob/living/carbon/owner)
 	if(..())
@@ -140,8 +140,8 @@
 	name = "Polish"
 	desc = "A horrible mutation originating from the distant past. Thought to be eradicated after the incident in 2137."
 	quality = MINOR_NEGATIVE
-	text_gain_indication = "<span class='notice'>You feel Polish, however that works.</span>"
-	text_lose_indication = "<span class='notice'>The feeling of Polishness passes.</span>"
+	text_gain_indication = "<span class='notice'>Czujesz się Polakiem, jakkolwiek to działa.</span>"
+	text_lose_indication = "<span class='notice'>Uczucie polskości mija.</span>"
 
 /datum/mutation/polish/on_acquiring(mob/living/carbon/owner)
 	if(..())
@@ -173,8 +173,8 @@
 	name = "Chav"
 	desc = "Unknown"
 	quality = MINOR_NEGATIVE
-	text_gain_indication = "<span class='notice'>Ye feel like a reet prat like, innit?</span>"
-	text_lose_indication = "<span class='notice'>You no longer feel like being rude and sassy.</span>"
+	text_gain_indication = "<span class='notice'>Czujesz się jak skończony dureń, nie?</span>"
+	text_lose_indication = "<span class='notice'>Nie masz już ochoty być niegrzeczny i pyskaty.</span>"
 
 /datum/mutation/chav/on_acquiring(mob/living/carbon/owner)
 	if(..())
@@ -224,16 +224,16 @@
 	desc = "A terrifying mutation named after its 'patient-zero'."
 	quality = MINOR_NEGATIVE
 	locked = TRUE
-	text_gain_indication = "<span class='notice'>You feel pretty good, honeydoll.</span>"
-	text_lose_indication = "<span class='notice'>You feel a little less conversation would be great.</span>"
+	text_gain_indication = "<span class='notice'>Czujesz się całkiem nieźle, laleczko.</span>"
+	text_lose_indication = "<span class='notice'>Czujesz, że trochę mniej gadania byłoby super.</span>"
 
 /datum/mutation/elvis/on_life()
 	switch(pick(1,2))
 		if(1)
 			if(prob(15))
-				var/list/dancetypes = list("swinging", "fancy", "stylish", "20'th century", "jivin'", "rock and roller", "cool", "salacious", "bashing", "smashing")
+				var/list/dancetypes = list("swinging", "fancy", "stylish", "20'th century", "jivin'", "rockandrollowiec", "cool", "salacious", "bashing", "smashing")
 				var/dancemoves = pick(dancetypes)
-				owner.visible_message("<b>[owner]</b> busts out some [dancemoves] moves!")
+				owner.visible_message("<b>[owner]</b> wykonuje kilka ruchów: [dancemoves]!")
 		if(2)
 			if(prob(15))
 				owner.visible_message("<b>[owner]</b> [pick("jiggles their hips", "rotates their hips", "gyrates their hips", "taps their foot", "dances to an imaginary song", "jiggles their legs", "snaps their fingers")]!")
@@ -258,9 +258,9 @@
 		message = replacetext(message," girl ",pick(" honey "," baby "," baby doll "))
 		message = replacetext(message," man ",pick(" son "," buddy "," brother"," pal "," friendo "))
 		message = replacetext(message," out of "," outta ")
-		message = replacetext(message," thank you "," thank you, thank you very much ")
-		message = replacetext(message," thanks "," thank you, thank you very much ")
-		message = replacetext(message," what are you "," whatcha ")
+		message = replacetext(message," dziękuję "," dziękuję, bardzo dziękuję ")
+		message = replacetext(message," thanks "," dziękuję, bardzo dziękuję ")
+		message = replacetext(message," czym ty jesteś "," whatcha ")
 		message = replacetext(message," yes ",pick(" sure", "yea "))
 		message = replacetext(message," muh valids "," my kicks ")
 		speech_args[SPEECH_MESSAGE] = trim(message)
@@ -271,8 +271,8 @@
 	desc = "A common mutation that severely decreases intelligence."
 	quality = NEGATIVE
 	locked = TRUE
-	text_gain_indication = "<span class='notice'>You feel...totally chill, man!</span>"
-	text_lose_indication = "<span class='notice'>You feel like you have a better sense of time.</span>"
+	text_gain_indication = "<span class='notice'>Czujesz się... totalnie wyluzowany, stary!</span>"
+	text_lose_indication = "<span class='notice'>Czujesz, że masz lepsze wyczucie czasu.</span>"
 
 /datum/mutation/stoner/on_acquiring(mob/living/carbon/owner)
 	..()
@@ -288,8 +288,8 @@
 	name = "Medieval"
 	desc = "A horrific genetic condition suffered in ancient times."
 	quality = MINOR_NEGATIVE
-	text_gain_indication = "<span class='notice'>Thoust feel as though thee couldst seekth the Grail.</span>"
-	text_lose_indication = "<span class='notice'>You no longer feel like seeking anything.</span>"
+	text_gain_indication = "<span class='notice'>Czujesz, iżby mógł wyruszyć na poszukiwanie Graala.</span>"
+	text_lose_indication = "<span class='notice'>Nie masz już ochoty niczego szukać.</span>"
 
 /datum/mutation/medieval/on_acquiring(mob/living/carbon/owner)
 	if(..())

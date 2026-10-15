@@ -6,20 +6,20 @@
 	icon_living = "goat"
 	icon_dead = "goat_dead"
 	speak = list("EHEHEHEHEH","eh?")
-	speak_emote = list("brays")
-	emote_hear = list("brays.")
-	emote_see = list("shakes its head.", "stamps a foot.", "glares around.")
+	speak_emote = list("ryczy")
+	emote_hear = list("ryczy.")
+	emote_see = list("potrząsa głową.", "tupie nogą.", "rozgląda się gniewnie.")
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 6
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab = 4)
-	response_help  = "pets"
-	response_disarm = "gently pushes aside"
-	response_harm   = "kicks"
+	butcher_results = list(/obj/item/food/meat/slab = 4)
+	response_help  = "głaszcze"
+	response_disarm = "delikatnie odsuwa na bok"
+	response_harm   = "kopie"
 	faction = list("neutral")
 	mob_biotypes = list(MOB_ORGANIC, MOB_BEAST)
 	attack_same = 1
-	attacktext = "kicks"
+	attacktext = "kopie"
 	attack_sound = 'sound/weapons/punch1.ogg'
 	health = 40
 	maxHealth = 40
@@ -52,7 +52,7 @@
 		if(enemies.len && prob(10))
 			clear_enemies()
 			LoseTarget()
-			src.visible_message("<span class='notice'>[src] calms down.</span>")
+			src.visible_message("<span class='notice'>[src] się uspokaja.</span>")
 	if(stat == CONSCIOUS)
 		udder.generateMilk()
 		eat_plants()
@@ -65,7 +65,7 @@
 
 /mob/living/simple_animal/hostile/retaliate/goat/Retaliate()
 	..()
-	src.visible_message("<span class='danger'>[src] gets an evil-looking gleam in [p_their()] eye.</span>")
+	src.visible_message("<span class='danger'>W oku [src] pojawia się złowrogi błysk.</span>")
 
 /mob/living/simple_animal/hostile/retaliate/goat/Move()
 	. = ..()
@@ -101,8 +101,8 @@
 		var/mob/living/carbon/human/H = target
 		if(istype(H.dna.species, /datum/species/pod))
 			var/obj/item/bodypart/NB = pick(H.bodyparts)
-			H.visible_message("<span class='warning'>[src] takes a big chomp out of [H]!</span>", \
-								  "<span class='userdanger'>[src] takes a big chomp out of your [NB]!</span>")
+			H.visible_message("<span class='warning'>[src] odgryza spory kęs [H]!</span>", \
+								  "<span class='userdanger'>[src] odgryza spory kęs twojej kończyny ([NB])!</span>")
 			NB.dismember()
 //cow
 /mob/living/simple_animal/cow
@@ -114,18 +114,18 @@
 	icon_gib = "cow_gib"
 	gender = FEMALE
 	mob_biotypes = list(MOB_ORGANIC, MOB_BEAST)
-	speak = list("moo?","moo","MOOOOOO")
-	speak_emote = list("moos","moos hauntingly")
-	emote_hear = list("brays.")
-	emote_see = list("shakes its head.")
+	speak = list("muu?","muu","MUUUUUU")
+	speak_emote = list("muczy","muczy upiornie")
+	emote_hear = list("ryczy.")
+	emote_see = list("potrząsa głową.")
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 6
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab = 6)
-	response_help  = "pets"
-	response_disarm = "gently pushes aside"
-	response_harm   = "kicks"
-	attacktext = "kicks"
+	butcher_results = list(/obj/item/food/meat/slab = 6)
+	response_help  = "głaszcze"
+	response_disarm = "delikatnie odsuwa na bok"
+	response_harm   = "kopie"
+	attacktext = "kopie"
 	attack_sound = 'sound/weapons/punch1.ogg'
 	health = 50
 	maxHealth = 50
@@ -157,11 +157,11 @@
 	if(stat == CONSCIOUS)
 		udder.generateMilk()
 
-/mob/living/simple_animal/cow/attack_hand(mob/living/carbon/M)
-	if(!stat && M.a_intent == INTENT_DISARM && icon_state != icon_dead)
-		M.visible_message("<span class='warning'>[M] tips over [src].</span>",
-			"<span class='notice'>You tip over [src].</span>")
-		to_chat(src, "<span class='userdanger'>You are tipped over by [M]!</span>")
+/mob/living/simple_animal/cow/attack_hand(mob/living/carbon/M, list/modifiers)
+	if(!stat && LAZYACCESS(modifiers, RIGHT_CLICK) && icon_state != icon_dead)
+		M.visible_message("<span class='warning'>[M] przewraca [src].</span>",
+			"<span class='notice'>Przewracasz [src].</span>")
+		to_chat(src, "<span class='userdanger'>[M] cię przewraca!</span>")
 		Paralyze(60, ignore_canstun = TRUE)
 		icon_state = icon_dead
 		addtimer(CALLBACK(src, PROC_REF(tip_back), M), rand(20,50))
@@ -176,13 +176,13 @@
 	var/internal
 	switch(pick(1,2,3,4))
 		if(1,2,3)
-			var/text = pick("imploringly.", "pleadingly.",
-				"with a resigned expression.")
-			external = "[src] looks at [M] [text]"
-			internal = "You look at [M] [text]"
+			var/text = pick("błagalnie.", "proszącym wzrokiem.",
+				"z rezygnacją.")
+			external = "[src] patrzy na [M] [text]"
+			internal = "Patrzysz na [M] [text]"
 		if(4)
-			external = "[src] seems resigned to its fate."
-			internal = "You resign yourself to your fate."
+			external = "[src] wydaje się pogodzony ze swoim losem."
+			internal = "Godzisz się ze swoim losem."
 	visible_message("<span class='notice'>[external]</span>",
 		"<span class='revennotice'>[internal]</span>")
 
@@ -198,18 +198,18 @@
 	held_state = "chick"
 	gender = FEMALE
 	mob_biotypes = list(MOB_ORGANIC, MOB_BEAST)
-	speak = list("Cherp.","Cherp?","Chirrup.","Cheep!")
-	speak_emote = list("cheeps")
-	emote_hear = list("cheeps.")
-	emote_see = list("pecks at the ground.","flaps its tiny wings.")
+	speak = list("Pi.","Pi?","Pi-pi.","Piii!")
+	speak_emote = list("piszczy")
+	emote_hear = list("piszczy.")
+	emote_see = list("dziobie ziemię.","trzepocze malutkimi skrzydełkami.")
 	density = FALSE
 	speak_chance = 2
 	turns_per_move = 2
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab/chicken = 1)
-	response_help  = "pets"
-	response_disarm = "gently pushes aside"
-	response_harm   = "kicks"
-	attacktext = "kicks"
+	butcher_results = list(/obj/item/food/meat/slab/chicken = 1)
+	response_help  = "głaszcze"
+	response_disarm = "delikatnie odsuwa na bok"
+	response_harm   = "kopie"
+	attacktext = "kopie"
 	health = 3
 	maxHealth = 3
 	ventcrawler = VENTCRAWLER_ALWAYS
@@ -258,20 +258,20 @@
 	icon_state = "chicken_brown"
 	icon_living = "chicken_brown"
 	icon_dead = "chicken_brown_dead"
-	speak = list("Cluck!","BWAAAAARK BWAK BWAK BWAK!","Bwaak bwak.")
-	speak_emote = list("clucks","croons")
-	emote_hear = list("clucks.")
-	emote_see = list("pecks at the ground.","flaps its wings viciously.")
+	speak = list("Ko!","KOOOOOO KO KO KO!","Ko-ko.")
+	speak_emote = list("gdacze","pogdakuje")
+	emote_hear = list("gdacze.")
+	emote_see = list("dziobie ziemię.","zawzięcie trzepocze skrzydłami.")
 	density = FALSE
 	speak_chance = 2
 	turns_per_move = 3
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab/chicken = 2)
-	var/egg_type = /obj/item/reagent_containers/food/snacks/egg
-	var/food_type = /obj/item/reagent_containers/food/snacks/grown/wheat
-	response_help  = "pets"
-	response_disarm = "gently pushes aside"
-	response_harm   = "kicks"
-	attacktext = "kicks"
+	butcher_results = list(/obj/item/food/meat/slab/chicken = 2)
+	var/egg_type = /obj/item/food/egg
+	var/food_type = /obj/item/food/grown/wheat
+	response_help  = "głaszcze"
+	response_disarm = "delikatnie odsuwa na bok"
+	response_harm   = "kopie"
+	attacktext = "kopie"
 	health = 15
 	maxHealth = 15
 	ventcrawler = VENTCRAWLER_ALWAYS
@@ -283,7 +283,7 @@
 	worn_slot_flags = ITEM_SLOT_HEAD
 	pass_flags = PASSTABLE | PASSMOB
 	mob_size = MOB_SIZE_SMALL
-	var/list/feedMessages = list("It clucks happily.","It clucks happily.")
+	var/list/feedMessages = list("Radośnie gdacze.","Radośnie gdacze.")
 	var/list/layMessage = EGG_LAYING_MESSAGES
 	var/list/validColors = list("brown","black","white")
 	gold_core_spawnable = FRIENDLY_SPAWN
@@ -318,12 +318,12 @@
 /mob/living/simple_animal/chicken/attackby(obj/item/O, mob/user, params)
 	if(istype(O, food_type)) //feedin' dem chickens
 		if(!stat && eggsleft < 8)
-			var/feedmsg = "[user] feeds [O] to [name]! [pick(feedMessages)]"
+			var/feedmsg = "[user] karmi [name], podając [O]! [pick(feedMessages)]"
 			user.visible_message(feedmsg)
 			qdel(O)
 			eggsleft += rand(1, 4)
 		else
-			to_chat(user, "<span class='warning'>[name] doesn't seem hungry!</span>")
+			to_chat(user, "<span class='warning'>[name] nie wygląda na głodnego!</span>")
 	else
 		..()
 
@@ -341,12 +341,12 @@
 			if(prob(25))
 				START_PROCESSING(SSobj, E)
 
-/obj/item/reagent_containers/food/snacks/egg/var/amount_grown = 0
-/obj/item/reagent_containers/food/snacks/egg/process(delta_time)
+/obj/item/food/egg/var/amount_grown = 0
+/obj/item/food/egg/process(delta_time)
 	if(isturf(loc))
 		amount_grown += rand(1,2) * delta_time
 		if(amount_grown >= 200)
-			visible_message("[src] hatches with a quiet cracking sound.")
+			visible_message("[src] wykluwa się z cichym trzaskiem.")
 			new /mob/living/simple_animal/chick(get_turf(src))
 			STOP_PROCESSING(SSobj, src)
 			qdel(src)
@@ -359,19 +359,19 @@
 	icon_state = "turkey_plain"
 	icon_living = "turkey_plain"
 	icon_dead = "turkey_plain_dead"
-	speak = list("Gobble!","GOBBLE GOBBLE GOBBLE!","Cluck.")
-	speak_emote = list("clucks","gobbles")
-	emote_hear = list("gobbles.")
-	emote_see = list("pecks at the ground.","flaps its wings viciously.")
+	speak = list("Gul!","GUL GUL GUL!","Ko.")
+	speak_emote = list("gdacze","gulgocze")
+	emote_hear = list("gulgocze.")
+	emote_see = list("dziobie ziemię.","zawzięcie trzepocze skrzydłami.")
 	density = FALSE
 	health = 15
 	maxHealth = 15
 	egg_type = null
-	attacktext = "pecks"
+	attacktext = "dziobie"
 	attack_sound = 'sound/creatures/turkey.ogg'
 	ventcrawler = VENTCRAWLER_ALWAYS
 	icon_prefix = "turkey"
-	feedMessages = list("It gobbles up the food voraciously.","It clucks happily.")
+	feedMessages = list("Łapczywie pożera jedzenie.","Radośnie gdacze.")
 	validColors = list("plain")
 	gold_core_spawnable = FRIENDLY_SPAWN
 	chat_color = "#FFDC9B"
@@ -384,18 +384,18 @@
 	icon_dead = "sheep_dead"
 	gender = FEMALE
 	mob_biotypes = list(MOB_ORGANIC, MOB_BEAST)
-	speak = list("baa?","baa","BAAAAAA")
-	speak_emote = list("bleats")
-	emote_hear = list("brays.")
-	emote_see = list("nibbles at the ground.")
+	speak = list("bee?","bee","BEEEEEE")
+	speak_emote = list("beczy")
+	emote_hear = list("ryczy.")
+	emote_see = list("skubie trawę.")
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 6
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab = 4)
-	response_help  = "pets"
-	response_disarm = "gently pushes aside"
-	response_harm   = "kicks"
-	attacktext = "kicks"
+	butcher_results = list(/obj/item/food/meat/slab = 4)
+	response_help  = "głaszcze"
+	response_disarm = "delikatnie odsuwa na bok"
+	response_harm   = "kopie"
+	attacktext = "kopie"
 	attack_sound = 'sound/weapons/punch1.ogg'
 	health = 40
 	maxHealth = 40
@@ -428,14 +428,14 @@
 /mob/living/simple_animal/sheep/attackby(obj/item/O, mob/user, params)
 	if (istype(O, /obj/item/razor))
 		if(shaved)
-			to_chat(user, "<span class='warning'>The sheep doesn't have enough wool, try again later...</span>")
+			to_chat(user, "<span class='warning'>Owca nie ma dość wełny, spróbuj później...</span>")
 			return
-		user.visible_message("[user] starts to shave [src] using \the [O].", "<span class='notice'>You start to shave [src] using \the [O]...</span>")
+		user.visible_message("[user] zaczyna golić [src] za pomocą [O].", "<span class='notice'>Zaczynasz golić [src] za pomocą [O]...</span>")
 		if(do_after(user, 50, target = src))
 			if(shaved)
-				user.visible_message("[src] has already been shaved!")
+				user.visible_message("[src] jest już ostrzyżona!")
 				return
-			user.visible_message("[user] shaves some wool off [src] using \the [O].", "<span class='notice'>You shave some wool off [src] using \the [O].</span>")
+			user.visible_message("[user] strzyże trochę wełny z [src] za pomocą [O].", "<span class='notice'>Strzyżesz trochę wełny z [src] za pomocą [O].</span>")
 			playsound(loc, 'sound/items/welder2.ogg', 20, 1)
 			shaved = TRUE
 			icon_living = "sheep_sheared"
@@ -483,10 +483,10 @@
 /obj/item/udder/proc/milkAnimal(obj/O, mob/user)
 	var/obj/item/reagent_containers/glass/G = O
 	if(G.reagents.total_volume >= G.volume)
-		to_chat(user, "<span class='danger'>[O] is full.</span>")
+		to_chat(user, "<span class='danger'>[O] jest pełne.</span>")
 		return
 	var/transfered = reagents.trans_to(O, rand(5,10))
 	if(transfered)
-		user.visible_message("[user] milks [src] using \the [O].", "<span class='notice'>You milk [src] using \the [O].</span>")
+		user.visible_message("[user] doi [src] do [O].", "<span class='notice'>Doisz [src] do [O].</span>")
 	else
-		to_chat(user, "<span class='danger'>The udder is dry. Wait a bit longer...</span>")
+		to_chat(user, "<span class='danger'>Wymię jest puste. Zaczekaj jeszcze trochę...</span>")

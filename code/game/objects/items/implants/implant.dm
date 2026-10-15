@@ -111,7 +111,7 @@
 	return ..()
 
 /obj/item/implant/proc/get_data()
-	return "No information available"
+	return "Brak informacji"
 
 /obj/item/implant/dropped(mob/user)
 	. = TRUE

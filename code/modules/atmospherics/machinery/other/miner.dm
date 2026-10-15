@@ -37,32 +37,32 @@
 /obj/machinery/atmospherics/miner/examine(mob/user)
 	. = ..()
 	if(broken)
-		. += {"Its debug output is printing "[broken_message]"."}
+		. += {"Jego wyjście diagnostyczne wypisuje „[broken_message]”."}
 
 /obj/machinery/atmospherics/miner/proc/check_operation()
 	if(!active)
 		return FALSE
 	var/turf/T = get_turf(src)
 	if(!isopenturf(T))
-		broken_message = "<span class='boldnotice'>VENT BLOCKED</span>"
+		broken_message = "<span class='boldnotice'>OTWÓR ZABLOKOWANY</span>"
 		set_broken(TRUE)
 		return FALSE
 	var/turf/open/OT = T
 	if(OT.planetary_atmos)
-		broken_message = "<span class='boldwarning'>DEVICE NOT ENCLOSED IN A PRESSURIZED ENVIRONMENT</span>"
+		broken_message = "<span class='boldwarning'>URZĄDZENIE NIE ZNAJDUJE SIĘ W HERMETYCZNYM ŚRODOWISKU</span>"
 		set_broken(TRUE)
 		return FALSE
 	if(isspaceturf(T))
-		broken_message = "<span class='boldnotice'>AIR VENTING TO SPACE</span>"
+		broken_message = "<span class='boldnotice'>POWIETRZE UCHODZI W KOSMOS</span>"
 		set_broken(TRUE)
 		return FALSE
 	var/datum/gas_mixture/G = OT.return_air()
 	if(G.return_pressure() > (max_ext_kpa - ((spawn_mol*spawn_temp*R_IDEAL_GAS_EQUATION)/(CELL_VOLUME))))
-		broken_message = "<span class='boldwarning'>EXTERNAL PRESSURE OVER THRESHOLD</span>"
+		broken_message = "<span class='boldwarning'>CIŚNIENIE ZEWNĘTRZNE POWYŻEJ PROGU</span>"
 		set_broken(TRUE)
 		return FALSE
 	if(G.total_moles() > max_ext_mol)
-		broken_message = "<span class='boldwarning'>EXTERNAL AIR CONCENTRATION OVER THRESHOLD</span>"
+		broken_message = "<span class='boldwarning'>STĘŻENIE POWIETRZA ZEWNĘTRZNEGO POWYŻEJ PROGU</span>"
 		set_broken(TRUE)
 		return FALSE
 	if(broken)
@@ -139,7 +139,7 @@
 
 /obj/machinery/atmospherics/miner/attack_ai(mob/living/silicon/user)
 	if(broken)
-		to_chat(user, "[src] seems to be broken. Its debug interface outputs: [broken_message]")
+		to_chat(user, "Wygląda na to, że [src] jest zepsuty. Jego interfejs diagnostyczny wypisuje: [broken_message]")
 	..()
 
 /obj/machinery/atmospherics/miner/n2o

@@ -19,7 +19,7 @@ GLOBAL_VAR_INIT(shuttle_docking_jammed, FALSE)
 	//Once pressed the shuttle will engage autopilot and return to the dock.
 	var/recall_docking_port_id = ""
 
-	var/request_shuttle_message = "Request Shuttle"
+	var/request_shuttle_message = "Wezwij prom"
 
 	//Admin controlled shuttles
 	var/admin_controlled = FALSE
@@ -59,9 +59,9 @@ GLOBAL_VAR_INIT(shuttle_docking_jammed, FALSE)
 	var/obj/item/circuitboard/computer/shuttle/circuit_board = circuit
 	if(istype(circuit_board))
 		if(circuit_board.hacked)
-			. += "It's access requirements have been disabled."
+			. += "Jego wymagania dostępu zostały wyłączone."
 		else
-			. += "It's access requirements could be disabled by disassembling the computer and using a multitool on the circuitboard."
+			. += "Jego wymagania dostępu można wyłączyć, rozbierając komputer i używając multitoola na płytce drukowanej."
 
 /obj/machinery/computer/shuttle_flight/process()
 	. = ..()
@@ -75,12 +75,12 @@ GLOBAL_VAR_INIT(shuttle_docking_jammed, FALSE)
 		shuttleObject.controlling_computer = null
 		switch(SSshuttle.moveShuttle(shuttleId, recall_docking_port_id, 1))
 			if(0)
-				say("Shuttle has arrived at destination.")
+				say("Prom dotarł do celu.")
 				QDEL_NULL(shuttleObject)
 			if(1)
-				to_chat(usr, "<span class='warning'>Invalid shuttle requested.</span>")
+				to_chat(usr, "<span class='warning'>Zażądano nieprawidłowego promu.</span>")
 			else
-				to_chat(usr, "<span class='notice'>Unable to comply.</span>")
+				to_chat(usr, "<span class='notice'>Nie można wykonać.</span>")
 
 /obj/machinery/computer/shuttle_flight/ui_state(mob/user)
 	return GLOB.default_state
@@ -209,11 +209,11 @@ GLOBAL_VAR_INIT(shuttle_docking_jammed, FALSE)
 		return
 
 	if(!allowed(usr))
-		say("Insufficient access rights.")
+		say("Niewystarczające uprawnienia dostępu.")
 		return
 
 	if(admin_controlled)
-		say("This shuttle is restricted to authorised personnel only.")
+		say("Ten prom jest dostępny wyłącznie dla upoważnionego personelu.")
 		return
 
 	if(recall_docking_port_id)
@@ -222,15 +222,15 @@ GLOBAL_VAR_INIT(shuttle_docking_jammed, FALSE)
 				//Find the z-level that the dock is on
 				var/obj/docking_port/stationary/target_port = SSshuttle.getDock(recall_docking_port_id)
 				if(!target_port)
-					say("Unable to locate port location.")
+					say("Nie można zlokalizować portu.")
 					return
 				//Locate linked shuttle
 				var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
 				if(!shuttle)
-					say("Unable to locate linked shuttle.")
+					say("Nie można zlokalizować połączonego promu.")
 					return
 				if(target_port in shuttle.loc)
-					say("Shuttle is already at destination.")
+					say("Prom jest już w miejscu docelowym.")
 					return
 				//Locate the orbital object
 				var/datum/orbital_map/viewing_map = SSorbits.orbital_maps[orbital_map_index]
@@ -249,15 +249,15 @@ GLOBAL_VAR_INIT(shuttle_docking_jammed, FALSE)
 							shuttleObject.shuttleTarget = z_linked
 							shuttleObject.autopilot = TRUE
 							shuttleObject.controlling_computer = src
-							say("Shuttle requested.")
+							say("Prom wezwany.")
 							return
-				say("Docking port in invalid location. Please contact a Nanotrasen technician.")
+				say("Port dokowania w nieprawidłowym miejscu. Skontaktuj się z technikiem Nanotrasen.")
 		return
 
 	switch(action)
 		if("setTarget")
 			if(QDELETED(shuttleObject))
-				say("Shuttle not in flight.")
+				say("Prom nie jest w locie.")
 				return
 			var/desiredTarget = params["target"]
 			if(shuttleObject.name == desiredTarget)
@@ -270,18 +270,18 @@ GLOBAL_VAR_INIT(shuttle_docking_jammed, FALSE)
 						return
 		if("setThrust")
 			if(QDELETED(shuttleObject))
-				say("Shuttle not in flight.")
+				say("Prom nie jest w locie.")
 				return
 			if(shuttleObject.autopilot)
-				to_chat(usr, "<span class='warning'>Shuttle is controlled by autopilot.</span>")
+				to_chat(usr, "<span class='warning'>Prom jest sterowany przez autopilota.</span>")
 				return
 			shuttleObject.thrust = CLAMP(params["thrust"], 0, 100)
 		if("setAngle")
 			if(QDELETED(shuttleObject))
-				say("Shuttle not in flight.")
+				say("Prom nie jest w locie.")
 				return
 			if(shuttleObject.autopilot)
-				to_chat(usr, "<span class='warning'>Shuttle is controlled by autopilot.</span>")
+				to_chat(usr, "<span class='warning'>Prom jest sterowany przez autopilota.</span>")
 				return
 			shuttleObject.angle = params["angle"]
 		if("nautopilot")
@@ -295,10 +295,10 @@ GLOBAL_VAR_INIT(shuttle_docking_jammed, FALSE)
 		//Dock at location.
 		if("dock")
 			if(QDELETED(shuttleObject))
-				say("Docking computer offline.")
+				say("Komputer dokowania offline.")
 				return
 			if(!shuttleObject.can_dock_with)
-				say("Docking computer failed to find docking target.")
+				say("Komputer dokowania nie znalazł celu dokowania.")
 				return
 			//Force dock with the thing we are colliding with.
 			shuttleObject.commence_docking(shuttleObject.can_dock_with, TRUE)
@@ -316,13 +316,13 @@ GLOBAL_VAR_INIT(shuttle_docking_jammed, FALSE)
 			. = TRUE
 		if("interdict")
 			if(QDELETED(shuttleObject))
-				say("Interdictor not ready.")
+				say("Interdyktor nie jest gotowy.")
 				return
 			if(shuttleObject.docking_target || shuttleObject.can_dock_with)
-				say("Cannot use interdictor while docking.")
+				say("Nie można użyć interdyktora podczas dokowania.")
 				return
 			if(shuttleObject.stealth)
-				say("Cannot use interdictor on stealthed shuttles.")
+				say("Nie można użyć interdyktora na ukrytych promach.")
 				return
 			var/list/interdicted_shuttles = list()
 			for(var/shuttleportid in SSorbits.assoc_shuttles)
@@ -333,16 +333,16 @@ GLOBAL_VAR_INIT(shuttle_docking_jammed, FALSE)
 				if(other_shuttle?.position?.DistanceTo(shuttleObject.position) <= interdiction_range && !other_shuttle.stealth)
 					interdicted_shuttles += other_shuttle
 			if(!length(interdicted_shuttles))
-				say("No targets to interdict in range.")
+				say("Brak celów do przechwycenia w zasięgu.")
 				return
-			say("Interdictor activated, shuttle throttling down...")
+			say("Interdyktor aktywowany, prom zwalnia...")
 			//Create the site of interdiction
 			var/datum/orbital_object/z_linked/beacon/z_linked = new /datum/orbital_object/z_linked/beacon/ruin/interdiction(
 				new /datum/orbital_vector(shuttleObject.position.x, shuttleObject.position.y)
 			)
 			z_linked.name = "Interdiction Site"
 			//Lets tell everyone about it
-			priority_announce("Supercruise interdiction detected, interdicted shuttles have been registered onto local GPS units. Source: [shuttleObject.name]")
+			priority_announce("Wykryto przechwycenie supercruise, przechwycone promy zostały zarejestrowane w lokalnych jednostkach GPS. Źródło: [shuttleObject.name]")
 			//Get all shuttle objects in range
 			for(var/datum/orbital_object/shuttle/other_shuttle in interdicted_shuttles)
 				other_shuttle.commence_docking(z_linked, TRUE)
@@ -354,16 +354,16 @@ GLOBAL_VAR_INIT(shuttle_docking_jammed, FALSE)
 		//Go to valid port
 		if("gotoPort")
 			if(QDELETED(shuttleObject))
-				say("Shuttle has already landed, cannot dock at this time.")
+				say("Prom już wylądował, nie można teraz dokować.")
 				return
 			if(QDELETED(shuttleObject.docking_target))
-				say("Docking target lost, please re-establish orbital trajectory.")
+				say("Utracono cel dokowania, przywróć trajektorię orbitalną.")
 				return
 			if(shuttleObject.docking_frozen)
-				say("Cannot dock at this time.")
+				say("Nie można teraz dokować.")
 				return
 			if(shuttleObject.docking_target.is_generating)
-				say("Please wait for docking computer to align...")
+				say("Poczekaj, aż komputer dokowania się wyrówna...")
 				return
 			//Get our port
 			var/obj/docking_port/mobile/mobile_port = SSshuttle.getShuttle(shuttleId)
@@ -371,20 +371,20 @@ GLOBAL_VAR_INIT(shuttle_docking_jammed, FALSE)
 				return
 			//Check ready
 			if(mobile_port.mode == SHUTTLE_RECHARGING)
-				say("Supercruise Warning: Shuttle engines not ready for use.")
+				say("Ostrzeżenie supercruise: silniki promu nie są gotowe do użycia.")
 				return
 			if(mobile_port.mode != SHUTTLE_CALL || mobile_port.destination)
-				say("Supercruise Warning: Already dethrottling shuttle.")
+				say("Ostrzeżenie supercruise: prom już zwalnia.")
 				return
 			//Special check
 			if(params["port"] == "custom_location")
 				//Open up internal docking computer if any location is allowed.
 				if(shuttleObject.docking_target.can_dock_anywhere)
 					if(GLOB.shuttle_docking_jammed && !shuttleObject.stealth && istype(shuttleObject.docking_target, /datum/orbital_object/z_linked/station))
-						say("Shuttle docking computer jammed.")
+						say("Komputer dokowania promu zablokowany.")
 						return
 					if(current_user)
-						to_chat(usr, "<span class='warning'>Somebody is already docking the shuttle.</span>")
+						to_chat(usr, "<span class='warning'>Ktoś już dokuje prom.</span>")
 						return
 					view_range = max(mobile_port.width, mobile_port.height, mobile_port.dwidth, mobile_port.dheight) * 0.5 - 4
 					give_eye_control(usr)
@@ -412,44 +412,44 @@ GLOBAL_VAR_INIT(shuttle_docking_jammed, FALSE)
 			SSzclear.temp_keep_z(target_port.z)
 			switch(SSshuttle.moveShuttle(shuttleId, target_port.id, 1))
 				if(0)
-					say("Initiating supercruise throttle-down, prepare for landing.")
+					say("Rozpoczynanie zwalniania z supercruise, przygotować się do lądowania.")
 					if(current_user)
 						remove_eye_control(current_user)
 					QDEL_NULL(shuttleObject)
 					//Hold the shuttle in the docking position until ready.
 					mobile_port.setTimer(INFINITY)
-					say("Waiting for hyperspace lane...")
+					say("Oczekiwanie na korytarz nadprzestrzenny...")
 					INVOKE_ASYNC(src, PROC_REF(unfreeze_shuttle), mobile_port, SSmapping.get_level(target_port.z))
 				if(1)
-					to_chat(usr, "<span class='warning'>Invalid shuttle requested.</span>")
+					to_chat(usr, "<span class='warning'>Zażądano nieprawidłowego promu.</span>")
 				else
-					to_chat(usr, "<span class='notice'>Unable to comply.</span>")
+					to_chat(usr, "<span class='notice'>Nie można wykonać.</span>")
 
 /obj/machinery/computer/shuttle_flight/proc/launch_shuttle()
 	if(SSorbits.interdicted_shuttles.Find(shuttleId))
 		if(world.time < SSorbits.interdicted_shuttles[shuttleId])
 			var/time_left = (SSorbits.interdicted_shuttles[shuttleId] - world.time) * 0.1
-			say("Supercruise Warning: Engines have been interdicted and will be recharged in [time_left] seconds.")
+			say("Ostrzeżenie supercruise: silniki zostały przechwycone i naładują się za [time_left] s.")
 			return
 	var/obj/docking_port/mobile/mobile_port = SSshuttle.getShuttle(shuttleId)
 	if(!mobile_port)
 		return
 	if(!mobile_port.canMove())
-		say("Supercruise Warning: The shuttle's movement is being inhibited.")
+		say("Ostrzeżenie supercruise: ruch promu jest blokowany.")
 		return
 	if(mobile_port.mode == SHUTTLE_RECHARGING)
-		say("Supercruise Warning: Shuttle engines not ready for use.")
+		say("Ostrzeżenie supercruise: silniki promu nie są gotowe do użycia.")
 		return
 	if(mobile_port.mode != SHUTTLE_IDLE)
-		say("Supercruise Warning: Shuttle already in transit.")
+		say("Ostrzeżenie supercruise: prom jest już w tranzycie.")
 		return
 	if(SSorbits.assoc_shuttles.Find(shuttleId))
-		say("Shuttle is controlled from another location, updating telemetry.")
+		say("Prom jest sterowany z innego miejsca, aktualizowanie telemetrii.")
 		shuttleObject = SSorbits.assoc_shuttles[shuttleId]
 		return shuttleObject
 	shuttleObject = mobile_port.enter_supercruise()
 	if(!shuttleObject)
-		say("Failed to enter supercruise due to an unknown error.")
+		say("Nie udało się wejść w supercruise z powodu nieznanego błędu.")
 		return
 	shuttleObject.valid_docks = valid_docks
 	return shuttleObject
@@ -504,21 +504,21 @@ GLOBAL_VAR_INIT(shuttle_docking_jammed, FALSE)
 		//Ok lets go there
 		switch(SSshuttle.moveShuttle(_shuttleId, random_port.id, 1))
 			if(0)
-				say("Initiating supercruise throttle-down, prepare for landing.")
+				say("Rozpoczynanie zwalniania z supercruise, przygotować się do lądowania.")
 				if(current_user)
 					remove_eye_control(current_user)
 				QDEL_NULL(_shuttleObject)
 				//Hold the shuttle in the docking position until ready.
 				shuttle_dock.setTimer(INFINITY)
-				say("Waiting for hyperspace lane...")
+				say("Oczekiwanie na korytarz nadprzestrzenny...")
 				INVOKE_ASYNC(src, PROC_REF(unfreeze_shuttle), shuttle_dock, target_spacelevel)
 				return TRUE
 			if(1)
-				say("Invalid shuttle requested")
+				say("Zażądano nieprawidłowego promu")
 			else
-				say("Unable to comply.")
+				say("Nie można wykonać.")
 	qdel(random_port)
-	say("FAILED TO DROP IN A RANDOM PLACE PLEASE TRY AGAIN!!!!!!!!!")
+	say("NIE UDAŁO SIĘ ZRZUCIĆ W LOSOWYM MIEJSCU SPRÓBUJ PONOWNIE!!!!!!!!!")
 	return FALSE
 
 /obj/machinery/computer/shuttle_flight/proc/unfreeze_shuttle(obj/docking_port/mobile/shuttle_dock, datum/space_level/target_spacelevel)
@@ -535,7 +535,7 @@ GLOBAL_VAR_INIT(shuttle_docking_jammed, FALSE)
 		return
 	req_access = list()
 	obj_flags |= EMAGGED
-	to_chat(user, "<span class='notice'>You fried the consoles ID checking system.</span>")
+	to_chat(user, "<span class='notice'>Przepalasz system sprawdzania identyfikatorów konsoli.</span>")
 
 /obj/machinery/computer/shuttle_flight/allowed(mob/M)
 	var/obj/item/circuitboard/computer/shuttle/circuit_board = circuit

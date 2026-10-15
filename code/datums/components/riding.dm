@@ -69,8 +69,8 @@
 	var/atom/movable/AM = parent
 	var/mob/AMM = AM
 	if((ride_check_rider_restrained && M.restrained(TRUE)) || (ride_check_rider_incapacitated && M.incapacitated(FALSE, TRUE)) || (ride_check_ridden_incapacitated && istype(AMM) && AMM.incapacitated(FALSE, TRUE)))
-		M.visible_message("<span class='warning'>[M] falls off of [AM]!</span>", \
-						"<span class='warning'>You fall off of [AM]!</span>")
+		M.visible_message("<span class='warning'>[M] spada z [AM]!</span>", \
+						"<span class='warning'>Spadasz z [AM]!</span>")
 		AM.unbuckle_mob(M)
 	return TRUE
 
@@ -170,7 +170,7 @@
 		if(!istype(next) || !istype(current))
 			return	//not happening.
 		if(!turf_check(next, current))
-			to_chat(user, "Your \the [AM] can not go onto [next]!")
+			to_chat(user, "[AM] nie może wjechać na [next]!")
 			return
 		if(!Process_Spacemove(direction) || !isturf(AM.loc))
 			return
@@ -184,7 +184,7 @@
 		handle_vehicle_layer()
 		handle_vehicle_offsets()
 	else
-		to_chat(user, "<span class='notice'>You'll need the keys in one of your hands to [drive_verb] [AM].</span>")
+		to_chat(user, "<span class='notice'>Musisz trzymać kluczyki w ręce, by [drive_verb] [AM].</span>")
 
 /datum/component/riding/proc/Unbuckle(atom/movable/M)
 	addtimer(CALLBACK(parent, TYPE_PROC_REF(/atom/movable, unbuckle_mob), M), 0, TIMER_UNIQUE)
@@ -219,12 +219,12 @@
 	var/mob/living/carbon/human/H = parent
 	H.add_movespeed_modifier(MOVESPEED_ID_HUMAN_CARRYING, multiplicative_slowdown = HUMAN_CARRY_SLOWDOWN)
 
-/datum/component/riding/human/proc/on_host_unarmed_melee(atom/target)
+/datum/component/riding/human/proc/on_host_unarmed_melee(mob/living/carbon/human/human_parent, atom/target, proximity, modifiers)
 	SIGNAL_HANDLER
 
-	var/mob/living/carbon/human/H = parent
-	if(H.a_intent == INTENT_DISARM && (target in H.buckled_mobs))
+	if(LAZYACCESS(modifiers, RIGHT_CLICK) && (target in human_parent.buckled_mobs))
 		force_dismount(target)
+		return COMPONENT_CANCEL_ATTACK_CHAIN
 
 /datum/component/riding/human/handle_vehicle_layer()
 	var/atom/movable/AM = parent
@@ -256,8 +256,8 @@
 	var/atom/movable/AM = parent
 	AM.unbuckle_mob(user)
 	user.Paralyze(60)
-	user.visible_message("<span class='warning'>[AM] pushes [user] off of [AM.p_them()]!</span>", \
-						"<span class='warning'>[AM] pushes you off of [AM.p_them()]!</span>")
+	user.visible_message("<span class='warning'>[AM] zrzuca z siebie [user]!</span>", \
+						"<span class='warning'>[AM] zrzuca cię z siebie!</span>")
 
 /datum/component/riding/cyborg
 	del_on_unbuckle_all = TRUE
@@ -271,14 +271,14 @@
 			if(R.module && R.module.ride_allow_incapacitated)
 				kick = FALSE
 		if(kick)
-			to_chat(user, "<span class='userdanger'>You fall off of [AM]!</span>")
+			to_chat(user, "<span class='userdanger'>Spadasz z [AM]!</span>")
 			Unbuckle(user)
 			return
 	if(iscarbon(user))
 		var/mob/living/carbon/carbonuser = user
 		if(!carbonuser.get_num_arms())
 			Unbuckle(user)
-			to_chat(user, "<span class='userdanger'>You can't grab onto [AM] with no hands!</span>")
+			to_chat(user, "<span class='userdanger'>Nie możesz chwycić się [AM] bez rąk!</span>")
 			return
 
 /datum/component/riding/cyborg/handle_vehicle_layer()
@@ -313,8 +313,8 @@
 	var/turf/target = get_edge_target_turf(AM, AM.dir)
 	var/turf/targetm = get_step(get_turf(AM), AM.dir)
 	M.Move(targetm)
-	M.visible_message("<span class='warning'>[M] is thrown clear of [AM]!</span>", \
-					"<span class='warning'>You're thrown clear of [AM]!</span>")
+	M.visible_message("<span class='warning'>[M] zostaje zrzucony z [AM]!</span>", \
+					"<span class='warning'>Zostajesz zrzucony z [AM]!</span>")
 	M.throw_at(target, 14, 5, AM)
 	M.Paralyze(60) //NSV13 - readded borg spin stuns
 

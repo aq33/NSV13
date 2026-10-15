@@ -32,7 +32,7 @@ GLOBAL_VAR(medibot_unique_id_gen)
 	model = "Medibot"
 	bot_core_type = /obj/machinery/bot_core/medbot
 	window_id = "automed"
-	window_name = "Automatic Medical Unit v1.1"
+	window_name = "Automatyczna Jednostka Medyczna v1.1"
 	data_hud_type = DATA_HUD_MEDICAL_ADVANCED
 	path_image_color = "#DDDDFF"
 	var/healthanalyzer = /obj/item/healthanalyzer
@@ -142,9 +142,9 @@ GLOBAL_VAR(medibot_unique_id_gen)
 
 /mob/living/simple_animal/bot/medbot/set_custom_texts()
 
-	text_hack = "You corrupt [name]'s healing processor circuits."
-	text_dehack = "You reset [name]'s healing processor circuits."
-	text_dehack_fail = "[name] seems damaged and does not respond to reprogramming!"
+	text_hack = "Psujesz obwody procesora leczenia [name]."
+	text_dehack = "Resetujesz obwody procesora leczenia [name]."
+	text_dehack_fail = "[name] wygląda na uszkodzonego i nie reaguje na przeprogramowanie!"
 
 /mob/living/simple_animal/bot/medbot/attack_paw(mob/user)
 	return attack_hand(user)
@@ -153,23 +153,23 @@ GLOBAL_VAR(medibot_unique_id_gen)
 	var/dat
 	dat += hack(user)
 	dat += showpai(user)
-	dat += "<TT><B>Medical Unit Controls v1.1</B></TT><BR><BR>"
-	dat += "Status: <A href='?src=[REF(src)];power=1'>[on ? "On" : "Off"]</A><BR>"
-	dat += "Maintenance panel panel is [open ? "opened" : "closed"]<BR>"
-	dat += "<br>Behaviour controls are [locked ? "locked" : "unlocked"]<hr>"
+	dat += "<TT><B>Sterowanie jednostką medyczną v1.1</B></TT><BR><BR>"
+	dat += "Status: <A href='byond://?src=[REF(src)];power=1'>[on ? "On" : "Off"]</A><BR>"
+	dat += "Panel serwisowy jest [open ? "otwarty" : "zamknięty"]<BR>"
+	dat += "<br>Sterowanie zachowaniem jest [locked ? "zablokowane" : "odblokowane"]<hr>"
 	if(!locked || issilicon(user) || IsAdminGhost(user))
-		dat += "<TT>Healing Threshold: "
-		dat += "<a href='?src=[REF(src)];adj_threshold=-10'>--</a> "
-		dat += "<a href='?src=[REF(src)];adj_threshold=-5'>-</a> "
+		dat += "<TT>Próg leczenia: "
+		dat += "<a href='byond://?src=[REF(src)];adj_threshold=-10'>--</a> "
+		dat += "<a href='byond://?src=[REF(src)];adj_threshold=-5'>-</a> "
 		dat += "[heal_threshold] "
-		dat += "<a href='?src=[REF(src)];adj_threshold=5'>+</a> "
-		dat += "<a href='?src=[REF(src)];adj_threshold=10'>++</a>"
+		dat += "<a href='byond://?src=[REF(src)];adj_threshold=5'>+</a> "
+		dat += "<a href='byond://?src=[REF(src)];adj_threshold=10'>++</a>"
 		dat += "</TT><br>"
-		dat += "The speaker switch is [shut_up ? "off" : "on"]. <a href='?src=[REF(src)];togglevoice=[1]'>Toggle</a><br>"
-		dat += "Critical Patient Alerts: <a href='?src=[REF(src)];critalerts=1'>[declare_crit ? "Yes" : "No"]</a><br>"
-		dat += "Patrol Station: <a href='?src=[REF(src)];operation=patrol'>[auto_patrol ? "Yes" : "No"]</a><br>"
-		dat += "Stationary Mode: <a href='?src=[REF(src)];stationary=1'>[stationary_mode ? "Yes" : "No"]</a><br>"
-		dat += "<a href='?src=[REF(src)];hptech=1'>Search for Technological Advancements</a><br>"
+		dat += "Głośnik jest [shut_up ? "wyłączony" : "włączony"]. <a href='byond://?src=[REF(src)];togglevoice=[1]'>Przełącz</a><br>"
+		dat += "Alarmy o pacjentach w stanie krytycznym: <a href='byond://?src=[REF(src)];critalerts=1'>[declare_crit ? "Tak" : "Nie"]</a><br>"
+		dat += "Patrolowanie stacji: <a href='byond://?src=[REF(src)];operation=patrol'>[auto_patrol ? "Tak" : "Nie"]</a><br>"
+		dat += "Tryb stacjonarny: <a href='byond://?src=[REF(src)];stationary=1'>[stationary_mode ? "Tak" : "Nie"]</a><br>"
+		dat += "<a href='byond://?src=[REF(src)];hptech=1'>Szukaj postępów technologicznych</a><br>"
 
 	return dat
 
@@ -207,7 +207,7 @@ GLOBAL_VAR(medibot_unique_id_gen)
 		if(tech_boosters)
 			heal_amount = (round(tech_boosters/2,0.1)*initial(heal_amount))+initial(heal_amount) //every 2 tend wounds tech gives you an extra 100% healing, adjusting for unique branches (combo is bonus)
 			if(oldheal_amount < heal_amount)
-				speak("Surgical research data found! Efficiency increased by [round(heal_amount/oldheal_amount*100)]%!")
+				speak("Znaleziono dane badań chirurgicznych! Skuteczność wzrasta o [round(heal_amount/oldheal_amount*100)]%!")
 	update_controls()
 	return
 
@@ -222,8 +222,8 @@ GLOBAL_VAR(medibot_unique_id_gen)
 	if(emagged == 2)
 		declare_crit = 0
 		if(user)
-			to_chat(user, "<span class='notice'>You short out [src]'s reagent synthesis circuits.</span>")
-		audible_message("<span class='danger'>[src] buzzes oddly!</span>")
+			to_chat(user, "<span class='notice'>Zwierasz obwody syntezy odczynników [src].</span>")
+		audible_message("<span class='danger'>[src] dziwnie brzęczy!</span>")
 		flick("medibot_spark", src)
 		playsound(src, "sparks", 75, TRUE)
 		if(user)
@@ -251,7 +251,7 @@ GLOBAL_VAR(medibot_unique_id_gen)
 /mob/living/simple_animal/bot/medbot/proc/tip_over(mob/user)
 	mobility_flags &= ~MOBILITY_MOVE
 	playsound(src, 'sound/machines/warning-buzzer.ogg', 50)
-	user.visible_message("<span class='danger'>[user] tips over [src]!</span>", "<span class='danger'>You tip [src] over!</span>")
+	user.visible_message("<span class='danger'>[user] przewraca [src]!</span>", "<span class='danger'>Przewracasz [src]!</span>")
 	tipped = TRUE
 	var/matrix/mat = transform
 	transform = mat.Turn(180)
@@ -262,13 +262,13 @@ GLOBAL_VAR(medibot_unique_id_gen)
 	var/list/messagevoice
 
 	if(user)
-		user.visible_message("<span class='notice'>[user] sets [src] right-side up!</span>", "<span class='green'>You set [src] right-side up!</span>")
+		user.visible_message("<span class='notice'>[user] stawia [src] z powrotem na nogi!</span>", "<span class='green'>Stawiasz [src] z powrotem na nogi!</span>")
 		if(user.name == tipper_name)
 			messagevoice = list("I forgive you." = 'sound/voice/medbot/forgive.ogg')
 		else
 			messagevoice = list("Thank you!" = 'sound/voice/medbot/thank_you.ogg', "You are a good person." = 'sound/voice/medbot/youre_good.ogg')
 	else
-		visible_message("<span class='notice'>[src] manages to writhe wiggle enough to right itself.</span>")
+		visible_message("<span class='notice'>[src] wierci się na tyle, że udaje mu się wstać.</span>")
 		messagevoice = list("Fuck you." = 'sound/voice/medbot/fuck_you.ogg', "Your behavior has been reported, have a nice day." = 'sound/voice/medbot/reported.ogg')
 
 	tipper_name = null
@@ -298,7 +298,7 @@ GLOBAL_VAR(medibot_unique_id_gen)
 		if(MEDBOT_PANIC_ENDING)
 			messagevoice = list("Is this the end?" = 'sound/voice/medbot/is_this_the_end.ogg', "Nooo!" = 'sound/voice/medbot/nooo.ogg')
 		if(MEDBOT_PANIC_END)
-			speak("PSYCH ALERT: Crewmember [tipper_name] recorded displaying antisocial tendencies by torturing bots in [get_area(src)]. Please schedule psych evaluation.", radio_channel)
+			speak("ALARM PSYCHOLOGICZNY: członek załogi [tipper_name] wykazuje skłonności aspołeczne, znęcając się nad botami w [get_area(src)]. Prosimy o umówienie oceny psychologicznej.", radio_channel)
 			set_right() // strong independent medbot
 
 	if(prob(tipped_status))
@@ -318,15 +318,15 @@ GLOBAL_VAR(medibot_unique_id_gen)
 
 	switch(tipped_status)
 		if(MEDBOT_PANIC_NONE to MEDBOT_PANIC_LOW)
-			. += "It appears to be tipped over, and is quietly waiting for someone to set it right."
+			. += "Jest przewrócony i cicho czeka, aż ktoś go postawi."
 		if(MEDBOT_PANIC_LOW to MEDBOT_PANIC_MED)
-			. += "It is tipped over and requesting help."
+			. += "Jest przewrócony i prosi o pomoc."
 		if(MEDBOT_PANIC_MED to MEDBOT_PANIC_HIGH)
-			. += "They are tipped over and appear visibly distressed." // now we humanize the medbot as a they, not an it
+			. += "Jest przewrócony i wygląda na wyraźnie zaniepokojonego." // now we humanize the medbot as a they, not an it
 		if(MEDBOT_PANIC_HIGH to MEDBOT_PANIC_AAAA)
-			. += "<span class='warning'>They are tipped over and visibly panicking!</span>"
+			. += "<span class='warning'>Jest przewrócony i wyraźnie panikuje!</span>"
 		if(MEDBOT_PANIC_AAAA to INFINITY)
-			. += "<span class='warning'><b>They are freaking out from being tipped over!</b></span>"
+			. += "<span class='warning'><b>Wpada w szał z powodu przewrócenia!</b></span>"
 
 
 /mob/living/simple_animal/bot/medbot/handle_automated_action()
@@ -440,6 +440,8 @@ GLOBAL_VAR(medibot_unique_id_gen)
 			var/obj/item/clothing/CH = H.head
 			if (CS.clothing_flags & CH.clothing_flags & THICKMATERIAL)
 				return FALSE // Skip over them if they have no exposed flesh.
+		if(H.is_bleeding())
+			return TRUE
 
 	if(declare_crit && C.health <= 0) //Critical condition! Call for help!
 		declare(C)
@@ -457,9 +459,9 @@ GLOBAL_VAR(medibot_unique_id_gen)
 	if(C.getToxLoss() >= heal_threshold)
 		return TRUE
 
-/mob/living/simple_animal/bot/medbot/attack_hand(mob/living/carbon/human/H)
-	if(H.a_intent == INTENT_DISARM && !tipped)
-		H.visible_message("<span class='danger'>[H] begins tipping over [src].</span>", "<span class='warning'>You begin tipping over [src]...</span>")
+/mob/living/simple_animal/bot/medbot/attack_hand(mob/living/carbon/human/H, list/modifiers)
+	if(LAZYACCESS(modifiers, RIGHT_CLICK) && !tipped)
+		H.visible_message("<span class='danger'>[H] zaczyna przewracać [src].</span>", "<span class='warning'>Zaczynasz przewracać [src]...</span>")
 
 		if(world.time > last_tipping_action_voice + 15 SECONDS)
 			last_tipping_action_voice = world.time // message for tipping happens when we start interacting, message for righting comes after finishing
@@ -471,8 +473,8 @@ GLOBAL_VAR(medibot_unique_id_gen)
 		if(do_after(H, 3 SECONDS, target=src))
 			tip_over(H)
 
-	else if(H.a_intent == INTENT_HELP && tipped)
-		H.visible_message("<span class='notice'>[H] begins righting [src].</span>", "<span class='notice'>You begin righting [src]...</span>")
+	else if(!H.combat_mode && tipped)
+		H.visible_message("<span class='notice'>[H] zaczyna stawiać [src].</span>", "<span class='notice'>Zaczynasz stawiać [src]...</span>")
 		if(do_after(H, 3 SECONDS, target=src))
 			set_right(H)
 	else
@@ -518,7 +520,10 @@ GLOBAL_VAR(medibot_unique_id_gen)
 
 		var/treatment_method = null
 
-		if(C.getBruteLoss() >= heal_threshold)
+		if(C.is_bleeding() && emagged != 2)
+			treatment_method = "bleed"
+
+		else if(C.getBruteLoss() >= heal_threshold)
 			treatment_method = BRUTE
 
 		else if(C.getFireLoss() >= heal_threshold)
@@ -532,7 +537,7 @@ GLOBAL_VAR(medibot_unique_id_gen)
 
 		if(!treatment_method && emagged != 2) //If they don't need any of that they're probably cured!
 			if(C.maxHealth - C.health < heal_threshold)
-				to_chat(src, "<span class='notice'>[C] is healthy! Your programming prevents you from injecting anyone without at least [heal_threshold] damage of any one type ([heal_threshold + 5] for oxygen damage.)</span>")
+				to_chat(src, "<span class='notice'>[C] jest zdrowy! Twoje oprogramowanie nie pozwala ci wstrzykiwać nikomu, kto nie ma przynajmniej [heal_threshold] obrażeń jednego typu ([heal_threshold + 5] dla obrażeń od niedotlenienia).</span>")
 			var/list/messagevoice = list("Pani doktor, pavulon się skończył." = 'aquila/sound/voice/medbot/pani_doktor.ogg') // AQUILA EDIT
 			var/message = pick(messagevoice)
 			speak(message)
@@ -540,11 +545,19 @@ GLOBAL_VAR(medibot_unique_id_gen)
 			bot_reset()
 			tending = FALSE
 		else if(patient)
-			C.visible_message("<span class='danger'>[src] is trying to tend the wounds of [patient]!</span>", \
-				"<span class='userdanger'>[src] is trying to tend your wounds!</span>")
+			C.visible_message("<span class='danger'>[src] próbuje opatrzyć rany [patient]!</span>", \
+				"<span class='userdanger'>[src] próbuje opatrzyć twoje rany!</span>")
 
 			if(do_mob(src, patient, 20)) //Slightly faster than default tend wounds, but does less HPS
-				if((get_dist(src, patient) <= 1) && (on) && assess_patient(patient))
+				if(treatment_method == "bleed")
+					if((get_dist(src, patient) <= 1) && (on) && C.is_bleeding())
+						C.suppress_bloodloss(BLEED_SURFACE) // as good as an improvised medical gauze
+						log_combat(src, patient, "bandaged", "internal tools")
+						C.visible_message("<span class='danger'>[src] bandażuje rany [patient]!</span>", \
+							"<span class='userdanger'>[src] bandażuje twoje rany!</span>")
+					else
+						tending = FALSE
+				else if((get_dist(src, patient) <= 1) && (on) && assess_patient(patient))
 					var/healies = heal_amount
 					var/obj/item/storage/firstaid/FA = firstaid
 					if(treatment_method == TOX && isoozeling(patient))
@@ -560,8 +573,8 @@ GLOBAL_VAR(medibot_unique_id_gen)
 					else
 						patient.apply_damage_type((healies*-1),treatment_method) //don't need to check treatment_method since we know by this point that they were actually damaged.
 						log_combat(src, patient, "tended the wounds of", "internal tools", "([uppertext(treatment_method)])")
-					C.visible_message("<span class='danger'>[src] tends the wounds of [patient]!</span>", \
-						"<span class='userdanger'>[src] tends your wounds!</span>")
+					C.visible_message("<span class='danger'>[src] opatruje rany [patient]!</span>", \
+						"<span class='userdanger'>[src] opatruje twoje rany!</span>")
 				else
 					tending = FALSE
 			else
@@ -569,14 +582,14 @@ GLOBAL_VAR(medibot_unique_id_gen)
 
 			update_icon()
 			if(!tending)
-				visible_message("[src] places its tools back into itself.")
+				visible_message("[src] chowa swoje narzędzia.")
 				soft_reset()
 		else
 			tending = FALSE
 
 /mob/living/simple_animal/bot/medbot/explode()
 	on = FALSE
-	visible_message("<span class='boldannounce'>[src] blows apart!</span>")
+	visible_message("<span class='boldannounce'>[src] rozpada się na kawałki!</span>")
 	var/atom/Tsec = drop_location()
 
 	drop_part(firstaid, Tsec)
@@ -604,7 +617,7 @@ GLOBAL_VAR(medibot_unique_id_gen)
 	if(declare_cooldown > world.time)
 		return
 	var/area/location = get_area(src)
-	speak("Medical emergency! [crit_patient || "A patient"] is in critical condition at [location]!",radio_channel)
+	speak("Nagły wypadek medyczny! [crit_patient || "Pacjent"] jest w stanie krytycznym w [location]!",radio_channel)
 	declare_cooldown = world.time + 200
 
 /obj/machinery/bot_core/medbot

@@ -24,6 +24,7 @@ tools/build/build --help
 ## Dependencies
 
 - On Windows, `build.bat` will automatically install a private (vendored) copy of Node.
+- On Windows, the build uses the BYOND version from `dependencies.sh` (`BYOND_MAJOR`/`BYOND_MINOR`). Installed compilers with a different major version or an older minor are skipped. If no matching one is found, that exact version is downloaded from byond.com into `tools/bootstrap/.cache/byond-<version>` and used from there. Set `DM_EXE` to force a specific `dm.exe`.
 - On Linux, install Node using your package manager or from <https://nodejs.org/en/download/>.
 - On Linux, unless using tgs4 or later you will need to compile rust-g on the server and obtain a .so file, for instructions see https://github.com/tgstation/rust-g
 

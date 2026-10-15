@@ -20,7 +20,7 @@
 		return FALSE
 	if(isliving(user))
 		if(!can_use(user))
-			to_chat(user, "<span class='warning'>You can't do that right now...</span>")
+			to_chat(user, "<span class='warning'>Nie możesz teraz tego zrobić...</span>")
 			return FALSE
 	else
 		user = holder.loc //Alright, seems like they clicked the item's action instead.
@@ -132,7 +132,7 @@
 
 	watching_mob = user
 	holomap_visible = TRUE
-	to_chat(user, "<span class='warning'>A hologram of the ship appears before your eyes.</span>")
+	to_chat(user, "<span class='warning'>Przed twoimi oczami pojawia się hologram statku.</span>")
 	return TRUE
 
 /datum/component/holomap/proc/deactivate_holomap(mob/user)

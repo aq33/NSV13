@@ -36,7 +36,7 @@
 
 	var/atom/movable/AM = parent
 	AM.forceMove(targetturf)
-	to_chat(get(parent, /mob), "<span class='danger'>You can't help but feel that you just lost something back there...</span>")
+	to_chat(get(parent, /mob), "<span class='danger'>Nie możesz oprzeć się wrażeniu, że właśnie coś tam zgubiłeś...</span>")
 	// move the disc, so ghosts remain orbiting it even if it's "destroyed"
 	return targetturf
 

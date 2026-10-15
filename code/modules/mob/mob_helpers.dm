@@ -136,9 +136,9 @@
 				newletter = " SIE "
 		if(rand(1, 4) == 4)
 			if(newletter == " ")
-				newletter = " no hope... "
+				newletter = " brak nadziei... "
 			else if(newletter == "H")
-				newletter = " IT COMES... "
+				newletter = " ONO NADCHODZI... "
 
 		switch(rand(1, 15))
 			if(1)
@@ -180,9 +180,9 @@
 				newletter = " VAR "
 		if(rand(1, 4) == 4)
 			if(newletter == " ")
-				newletter = " the brass... "
+				newletter = " mosiądz... "
 			else if(newletter == "H")
-				newletter = " CLOCK TICKS... "
+				newletter = " ZEGAR TYKA... "
 
 		switch(rand(1, 15))
 			if(1)
@@ -304,6 +304,9 @@
 	set name = "a-intent"
 	set hidden = 1
 
+	if(combat_mode_intent_change(input)) // AQ EDIT - port Bee #11899: w combat mode intencje tylko przełączają tryb walki
+		return
+
 	if(!possible_a_intents || !possible_a_intents.len)
 		return
 
@@ -331,6 +334,7 @@
 
 	if(hud_used && hud_used.action_intent)
 		hud_used.action_intent.icon_state = "[a_intent]"
+	legacy_intent_changed() // AQ EDIT - port Bee #11899: w starym trybie harm włącza combat mode
 
 ///Checks if passed through item is blind
 /proc/is_blind(A)
@@ -430,7 +434,7 @@
 				continue
 			var/orbit_link
 			if (source && action == NOTIFY_ORBIT)
-				orbit_link = " <a href='?src=[REF(O)];follow=[REF(source)]'>(Orbit)</a>"
+				orbit_link = " <a href='byond://?src=[REF(O)];follow=[REF(source)]'>(Orbit)</a>"
 			to_chat(O, "<span class='ghostalert'>[message][(enter_link) ? " [enter_link]" : ""][orbit_link]</span>")
 			if(ghost_sound)
 				SEND_SOUND(O, sound(ghost_sound, volume = notify_volume))
@@ -463,14 +467,18 @@
 			dam = 1
 		else
 			dam = 0
-		if((brute_heal > 0 && affecting.brute_dam > 0) || (burn_heal > 0 && affecting.burn_dam > 0))
+		if((brute_heal > 0 && (affecting.brute_dam > 0 || (H.is_bleeding() && H.has_mechanical_bleeding()))) || (burn_heal > 0 && affecting.burn_dam > 0))
 			if(affecting.heal_damage(brute_heal, burn_heal, 0, BODYTYPE_ROBOTIC))
 				H.update_damage_overlays()
-			user.visible_message("[user] has fixed some of the [dam ? "dents on" : "burnt wires in"] [H]'s [parse_zone(affecting.body_zone)].", \
-			"<span class='notice'>You fix some of the [dam ? "dents on" : "burnt wires in"] [H == user ? "your" : "[H]'s"] [parse_zone(affecting.body_zone)].</span>")
-			return 1 //successful heal
+			if (brute_heal > 0 && H.is_bleeding() && H.has_mechanical_bleeding())
+				H.cauterise_wounds(0.4)
+				user.visible_message("[user] naprawia część wgnieceń na kończynie [H] ([strefa_pl(affecting.body_zone)]), zmniejszając wyciek do [H.get_bleed_rate_string()].")
+			else
+				user.visible_message("[user] naprawia część [dam ? "wgnieceń" : "przepalonych przewodów"] na kończynie [H] ([strefa_pl(affecting.body_zone)]).", \
+				"<span class='notice'>Naprawiasz część [dam ? "wgnieceń" : "przepalonych przewodów"] na [H == user ? "swojej kończynie" : "kończynie [H]"] ([strefa_pl(affecting.body_zone)]).</span>")
+			return TRUE //successful heal
 		else
-			to_chat(user, "<span class='warning'>[affecting] is already in good condition!</span>")
+			to_chat(user, "<span class='warning'>[affecting] jest już w dobrym stanie!</span>")
 
 ///Is the passed in mob an admin ghost
 /proc/IsAdminGhost(var/mob/user)
@@ -492,11 +500,11 @@
   * Automatic logging and uses pollCandidatesForMob, how convenient
   */
 /proc/offer_control(mob/M)
-	to_chat(M, "Control of your mob has been offered to dead players.")
+	to_chat(M, "Kontrolę nad twoją postacią zaoferowano martwym graczom.")
 	if(usr)
 		log_admin("[key_name(usr)] has offered control of ([key_name(M)]) to ghosts.")
 		message_admins("[key_name_admin(usr)] has offered control of ([ADMIN_LOOKUPFLW(M)]) to ghosts")
-	var/poll_message = "Do you want to play as [M.real_name]?"
+	var/poll_message = "Chcesz zagrać jako [M.real_name]?"
 	var/ban_key = BAN_ROLE_ALL_ANTAGONISTS
 	if(M.mind && M.mind.assigned_role)
 		poll_message = "[poll_message] Job:[M.mind.assigned_role]."
@@ -511,13 +519,13 @@
 
 	if(LAZYLEN(candidates))
 		var/mob/dead/observer/C = pick(candidates)
-		to_chat(M, "Your mob has been taken over by a ghost!")
+		to_chat(M, "Twoją postać przejął duch!")
 		message_admins("[key_name_admin(C)] has taken control of ([ADMIN_LOOKUPFLW(M)])")
 		M.ghostize(0)
 		M.key = C.key
 		return TRUE
 	else
-		to_chat(M, "There were no ghosts willing to take control.")
+		to_chat(M, "Żaden duch nie chciał przejąć kontroli.")
 		message_admins("No ghosts were willing to take control of [ADMIN_LOOKUPFLW(M)])")
 		return FALSE
 
@@ -597,7 +605,7 @@
   */
 /mob/proc/common_trait_examine()
 	if(HAS_TRAIT(src, TRAIT_DISSECTED))
-		. += "<span class='notice'>This body has been dissected and analyzed. It is no longer worth experimenting on.</span><br>"
+		. += "<span class='notice'>To ciało zostało już rozcięte i przebadane. Nie warto na nim dalej eksperymentować.</span><br>"
 
 //Can the mob see reagents inside of containers?
 /mob/proc/can_see_reagents()
@@ -605,6 +613,8 @@
 	if(stat == DEAD) // Dead guys and silicons can always see reagents
 		return TRUE
 	else if(has_unlimited_silicon_privilege)
+		return TRUE
+	else if(HAS_TRAIT(src, TRAIT_REAGENT_SCANNER))
 		return TRUE
 	else if(HAS_TRAIT(src, TRAIT_BARMASTER)) // If they're a bar master, they know what reagents are at a glance
 		return TRUE

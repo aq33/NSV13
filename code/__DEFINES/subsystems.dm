@@ -175,7 +175,6 @@
 #define FIRE_PRIORITY_PROCESS		25
 #define FIRE_PRIORITY_THROWING		25
 #define FIRE_PRIORITY_SPACEDRIFT	30
-#define FIRE_PRIORITY_FIELDS		30
 #define FIRE_PRIOTITY_SMOOTHING		35
 #define FIRE_PRIORITY_NETWORKS		40
 #define FIRE_PRIORITY_OBJ			40
@@ -276,3 +275,18 @@
 #define SSMACHINES_DT (SSmachines.wait/10)
 #define SSMOBS_DT (SSmobs.wait/10)
 #define SSOBJ_DT (SSobj.wait/10)
+
+// AQ EDIT START - port BeeStation #13247: votes as datums
+/// Single choice vote: one selection per person
+#define VOTE_COUNT_METHOD_SINGLE 1
+/// Multiple choice vote: any number of selections per person
+#define VOTE_COUNT_METHOD_MULTI 2
+/// The choice with the most votes wins
+#define VOTE_WINNER_METHOD_SIMPLE "Simple"
+/// A random choice wins, weighted by votes
+#define VOTE_WINNER_METHOD_WEIGHTED_RANDOM "Weighted Random"
+/// Nobody wins, only the statistics are shown
+#define VOTE_WINNER_METHOD_NONE "None"
+/// Returned by can_be_initiated() when the vote may start
+#define VOTE_AVAILABLE "Vote Available"
+// AQ EDIT END

@@ -23,9 +23,9 @@
 	failure_sound = 'sound/surgery/organ2.ogg'
 
 /datum/surgery_step/lobectomy/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You begin to make an incision in [target]'s lungs...</span>",
-		"[user] begins to make an incision in [target].",
-		"[user] begins to make an incision in [target].")
+	display_results(user, target, "<span class='notice'>Zaczynasz nacinać płuca [target]...</span>",
+		"[user] zaczyna nacinać [target].",
+		"[user] zaczyna nacinać [target].")
 
 /datum/surgery_step/lobectomy/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	if(ishuman(target))
@@ -33,17 +33,17 @@
 		var/obj/item/organ/lungs/L = H.getorganslot(ORGAN_SLOT_LUNGS)
 		L.operated = TRUE
 		H.setOrganLoss(ORGAN_SLOT_LUNGS, 60)
-		display_results(user, target, "<span class='notice'>You successfully excise [H]'s most damaged lobe.</span>",
-			"Successfully removes a piece of [H]'s lungs.",
+		display_results(user, target, "<span class='notice'>Pomyślnie wycinasz najbardziej uszkodzony płat płuca [H].</span>",
+			"Pomyślnie usuwa fragment płuc [H].",
 			"")
 	return TRUE
 
 /datum/surgery_step/lobectomy/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
-		display_results(user, target, "<span class='warning'>You screw up, failing to excise [H]'s damaged lobe!</span>",
-			"<span class='warning'>[user] screws up!</span>",
-			"<span class='warning'>[user] screws up!</span>")
+		display_results(user, target, "<span class='warning'>Partaczysz i nie udaje ci się wyciąć uszkodzonego płata płuca [H]!</span>",
+			"<span class='warning'>[user] partaczy!</span>",
+			"<span class='warning'>[user] partaczy!</span>")
 		H.losebreath += 4
 		H.adjustOrganLoss(ORGAN_SLOT_LUNGS, 10)
 	return FALSE

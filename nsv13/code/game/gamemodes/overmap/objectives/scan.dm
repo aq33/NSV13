@@ -1,7 +1,7 @@
 /datum/overmap_objective/scan
 	name = "Scan anomalies"
 	desc = "Scan a target anomaly_type"
-	brief = "Locate and scan target anomaly_type"
+	brief = "Zlokalizujcie i zeskanujcie cel: anomaly_type"
 	binary = FALSE
 	var/anomaly_type
 	var/anomaly_name = "anomaly"
@@ -31,7 +31,7 @@
 /datum/overmap_objective/scan/instance()
 	. = ..()
 	desc = "Scan [target] [anomaly_name]\s"
-	brief = "Locate and scan [target] [anomaly_name]\s"
+	brief = "Zlokalizujcie i zeskanujcie anomalie: [anomaly_name] (sztuk: [target])"
 	RegisterSignal(SSstar_system.find_main_overmap(), COMSIG_ANOMALY_SCANNED, PROC_REF(register_scan))
 
 /datum/overmap_objective/scan/proc/register_scan()

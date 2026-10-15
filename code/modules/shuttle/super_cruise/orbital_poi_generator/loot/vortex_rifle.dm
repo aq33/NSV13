@@ -8,4 +8,4 @@
 /obj/item/gun/energy/vortex/examine(mob/user)
 	. = ..()
 	if(isabductor(user))
-		. += "<span class='abductor'>It has a subspace power core installed.</span>"
+		. += "<span class='abductor'>Ma zamontowany podprzestrzenny rdzeń zasilania.</span>"

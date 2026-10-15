@@ -31,6 +31,8 @@
 		"Cybernetics",
 		"Implants",
 		"Control Interfaces",
+		"MOD Construction",
+		"MOD Modules",
 		"Misc"
 	)
 
@@ -40,7 +42,7 @@
 	if(..())
 		return TRUE
 	if(being_built)
-		to_chat(user, "<span class='warning'>\The [src] is currently processing! Please wait until completion.</span>")
+		to_chat(user, "<span class='warning'>[src] obecnie przetwarza! Zaczekaj na zakończenie.</span>")
 		return FALSE
 	return default_deconstruction_screwdriver(user, "fab-o", "fab-idle", I)
 
@@ -48,7 +50,7 @@
 	if(..())
 		return TRUE
 	if(being_built)
-		to_chat(user, "<span class='warning'>\The [src] is currently processing! Please wait until completion.</span>")
+		to_chat(user, "<span class='warning'>[src] obecnie przetwarza! Zaczekaj na zakończenie.</span>")
 		return FALSE
 	return default_deconstruction_crowbar(I)
 
@@ -66,3 +68,45 @@
 
 /obj/machinery/modular_fabricator/exosuit_fab/maint
 	auto_link = FALSE
+
+// AQ EDIT START - port BeeStation #14723: the ExosuitFabricator window from Bee
+/obj/machinery/modular_fabricator/exosuit_fab/ui_interact(mob/user, datum/tgui/ui)
+	if(!is_operational)
+		return
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "ExosuitFabricator")
+		ui.set_autoupdate(TRUE)
+		ui.open()
+		viewing_mobs += user
+
+/obj/machinery/modular_fabricator/exosuit_fab/ui_static_data(mob/user)
+	var/list/data = list()
+	data["designs"] = fabricator_ui_designs(printable_designs(), coefficient_override = CALLBACK(src, PROC_REF(design_cost_coefficient)))
+	data["can_sync"] = can_sync
+	return data
+
+/obj/machinery/modular_fabricator/exosuit_fab/ui_data(mob/user)
+	var/list/data = list()
+	data["materials"] = fabricator_ui_materials(get_material_container())
+	data["processing"] = operating && !queue_stopped
+	data["queue"] = list()
+	if(being_built)
+		data["queue"] += list(list(
+			"jobId" = "building-[being_built.id]",
+			"designId" = being_built.id,
+			"processing" = TRUE,
+			"timeLeft" = max(process_completion_world_tick - world.time, 0),
+		))
+	var/queue_index = 0
+	for(var/design_id in item_queue)
+		for(var/copy in 1 to max(item_queue[design_id]["amount"], 1))
+			queue_index++
+			data["queue"] += list(list(
+				"jobId" = "queued-[queue_index]-[design_id]",
+				"designId" = design_id,
+				"processing" = FALSE,
+				"timeLeft" = 0,
+			))
+	return data
+// AQ EDIT END

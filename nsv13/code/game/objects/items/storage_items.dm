@@ -44,13 +44,13 @@ This file contains various storage items in this order:
 	desc = "It contains a few cookies for good patients."
 
 /obj/item/storage/box/cookie/PopulateContents()
-	new /obj/item/reagent_containers/food/snacks/cookie( src )
-	new /obj/item/reagent_containers/food/snacks/cookie( src )
-	new /obj/item/reagent_containers/food/snacks/cookie( src )
-	new /obj/item/reagent_containers/food/snacks/oatmealcookie( src )
-	new /obj/item/reagent_containers/food/snacks/oatmealcookie( src )
-	new /obj/item/reagent_containers/food/snacks/sugarcookie/spookyskull( src )
-	new /obj/item/reagent_containers/food/snacks/sugarcookie/spookyskull( src )
+	new /obj/item/food/cookie( src )
+	new /obj/item/food/cookie( src )
+	new /obj/item/food/cookie( src )
+	new /obj/item/food/cookie/oatmeal( src )
+	new /obj/item/food/cookie/oatmeal( src )
+	new /obj/item/food/cookie/sugar/spookyskull( src )
+	new /obj/item/food/cookie/sugar/spookyskull( src )
 
 /obj/item/storage/box/beakers/large_mix/PopulateContents()
 	for(var/i in 1 to 2)
@@ -60,7 +60,7 @@ This file contains various storage items in this order:
 
 /obj/item/storage/box/suitbox/maid
 	name = "compression box of maid uniforms"
-	desc = "Contains a state of the art maid uniform."
+	desc = "Zawiera najnowocześniejszy strój pokojówki."
 
 /obj/item/storage/box/suitbox/maid/PopulateContents()
 	new /obj/item/clothing/head/maidheadband(src)

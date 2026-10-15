@@ -5,11 +5,11 @@
 
 /datum/team/infiltrator
 	name = "Syndicate Infiltration Unit"
-	member_name = "syndicate infiltrator"
+	member_name = "infiltrator Syndykatu"
 
 /datum/team/infiltrator/roundend_report()
 	var/list/parts = list()
-	parts += span_header("Syndicate Infiltrators:<br>")
+	parts += span_header("Infiltratorzy Syndykatu:<br>")
 
 	var/result = get_result()
 	var/dead_as_a_doornail = TRUE
@@ -21,57 +21,57 @@
 	var/flavor_message
 	if (dead_as_a_doornail)
 		var/static/list/messages = list(
-			"Well, sending those nitwits was a waste of our time.",
-			"I'm gonna drag you incompetent idiots out of hell just so I can kill y'all myself!",
-			"We gave you dumbasses all those resources and you just go and die? What sad excuses for agents."
+			"No cóż, wysłanie tych matołów było stratą czasu.",
+			"Wyciągnę was, niekompetentnych idiotów, z piekła tylko po to, żeby osobiście was pozabijać!",
+			"Daliśmy wam, debilom, tyle zasobów, a wy po prostu giniecie? Żałosne namiastki agentów."
 		)
-		parts += "<span class='redtext big'>Crew Major Victory!</span>"
-		parts += "<B>The crew killed the Syndicate infiltrators!</B>"
+		parts += "<span class='redtext big'>Wielkie zwycięstwo załogi!</span>"
+		parts += "<B>Załoga zabiła infiltratorów Syndykatu!</B>"
 		flavor_message = pick(messages)
 	else
 		switch (result)
 			if (INFILTRATION_ALLCOMPLETE)
 				var/static/list/messages = list(
-					"Hell yeah! Nanotrasen is gonna regret screwing with us now, thanks to y'all!",
-					"The boys in dark red are proud of you, agents. We're going to reward you well.",
-					"I'm truly impressed, agents. You've earned your place in the Syndicate.",
-					"Ha! I knew y'all would come out on top! Nanotrasen stands no chance against human determination!"
+					"No pewnie! Dzięki wam Nanotrasen pożałuje, że z nami zadarł!",
+					"Chłopaki w ciemnej czerwieni są z was dumni, agenci. Sowicie was wynagrodzimy.",
+					"Naprawdę robicie wrażenie, agenci. Zasłużyliście na miejsce w Syndykacie.",
+					"Ha! Wiedziałem, że wygracie! Nanotrasen nie ma szans z ludzką determinacją!"
 				)
-				parts += span_greentext(span_big("Infiltrator Major Victory!"))
-				parts += span_bold("The Syndicate infiltrators completed all of their objectives successfully!")
+				parts += span_greentext(span_big("Wielkie zwycięstwo infiltratorów!"))
+				parts += span_bold("Infiltratorzy Syndykatu wykonali wszystkie cele!")
 				flavor_message = pick(messages)
 			if (INFILTRATION_MOSTCOMPLETE)
 				var/static/list/messages = list(
-					"Well, it ain't perfect, but y'all were damn good.",
-					"Good operation, agents. We didn't get everything, but not even we are perfect.",
-					"Thanks for the good work, y'all. Return to base and relax a bit before your next job."
+					"No, idealnie nie było, ale byliście cholernie dobrzy.",
+					"Dobra robota, agenci. Nie zdobyliśmy wszystkiego, ale nawet my nie jesteśmy idealni.",
+					"Dzięki za dobrą robotę. Wracajcie do bazy i odpocznijcie przed kolejnym zadaniem."
 				)
-				parts += span_greentext(span_big("Infiltrator Moderate Victory"))
-				parts += span_bold("The Syndicate infiltrators completed most of their objectives successfully!")
+				parts += span_greentext(span_big("Umiarkowane zwycięstwo infiltratorów"))
+				parts += span_bold("Infiltratorzy Syndykatu wykonali większość celów!")
 				flavor_message = pick(messages)
 			if (INFILTRATION_SOMECOMPLETE)
 				var/static/list/messages = list(
-					"Better than a complete fluke, I guess.",
-					"I'm going to have to pull some strings to make sure we don't get a pay cut for sub-par performance.",
-					"I suppose it wasn't a complete waste of time at least..."
+					"Lepsze to niż kompletna klapa, chyba.",
+					"Będę musiał pociągnąć za parę sznurków, żeby nie obcięli nam pensji za słabe wyniki.",
+					"Przynajmniej nie była to kompletna strata czasu..."
 				)
-				parts += span_marooned(span_big("Neutral Victory"))
-				parts += span_bold("The Syndicate infiltrators completed some of their objectives, but not enough to win.")
+				parts += span_marooned(span_big("Remis"))
+				parts += span_bold("Infiltratorzy Syndykatu wykonali część celów, ale za mało, by wygrać.")
 				flavor_message = pick(messages)
 			else
 				var/static/list/messages = list(
-					"When you nitwits come back to base, y'all better have a damn good explaination for this!",
-					"I hope y'all like space carp poop, because cleaning it is the biggest operation you idiots are going to have for a while!",
-					"How did y'all mess up such a simple operation? All you had to do was be sneaky and not cause a scene!"
+					"Jak wrócicie do bazy, matoły, to lepiej miejcie na to cholernie dobre wytłumaczenie!",
+					"Mam nadzieję, że lubicie kupy kosmicznych karpi, bo ich sprzątanie będzie przez jakiś czas waszą najważniejszą operacją, idioci!",
+					"Jak można było zawalić tak prostą operację? Mieliście tylko się skradać i nie robić scen!"
 				)
-				parts += span_redtext(span_big("Crew Victory"))
-				parts += span_bold("The crew stopped the Syndicate infiltrators from completing any of their objectives!")
+				parts += span_redtext(span_big("Zwycięstwo załogi"))
+				parts += span_bold("Załoga nie pozwoliła infiltratorom Syndykatu wykonać żadnego celu!")
 				flavor_message = pick(messages)
 	parts += "<div><font color='#FF0000'><i>\"[flavor_message]\"</i></font>"
-	parts += "[GLOB.TAB]- Syndicate Commander [pick(pick(GLOB.first_names_male,GLOB.first_names_female))]</div>"
+	parts += "[GLOB.TAB]- Dowódca Syndykatu [pick(pick(GLOB.first_names_male,GLOB.first_names_female))]</div>"
 
 	LAZYINITLIST(GLOB.uplink_purchase_logs_by_key)
-	var/text = span_header("The syndicate infiltrators were:")
+	var/text = span_header("Infiltratorzy Syndykatu:")
 	var/purchases = ""
 	var/tc_spent = 0
 	for (var/I in members)
@@ -81,7 +81,7 @@
 			tc_spent += H.total_spent
 			purchases += H.generate_render(show_key = FALSE)
 	text += printplayerlist(members)
-	text += "(Syndicates used [tc_spent] TC) [purchases]"
+	text += "(Syndykat wydał [tc_spent] TC) [purchases]"
 	if (tc_spent == 0 && !dead_as_a_doornail && result < INFILTRATION_NONECOMPLETE)
 		text += span_big("[icon2html('icons/badass.dmi', world, "badass")]")
 	parts += text
@@ -98,11 +98,7 @@
 		else
 			add_objective(/datum/objective/assassinate)
 	else
-		if(prob(15) && !(locate(/datum/objective/download) in objectives))
-			var/datum/objective/download/objective = add_objective(/datum/objective/download)
-			objective.gen_amount_goal()
-		else
-			add_objective(/datum/objective/steal)
+		add_objective(/datum/objective/steal)
 
 /datum/team/infiltrator/proc/add_objective(type)
 	var/datum/objective/O = type

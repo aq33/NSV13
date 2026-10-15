@@ -12,13 +12,13 @@
 
 /datum/gear/misc/eightball
 	display_name = "Magic Eightball"
-	description = "A black ball with a stenciled number eight in white on the side. It seems full of dark liquid. The instructions state that you should ask your question aloud, and then shake."
+	description = "Czarna kula z namalowaną białą ósemką na boku. Wydaje się pełna ciemnego płynu. Instrukcja mówi, by zadać pytanie na głos, a potem potrząsnąć."
 	path = /obj/item/toy/eightball
 	cost = 500
 
 /datum/gear/misc/antagtoken
 	display_name = "Discount Antag Token"
-	description = "Says \"Made in China\" on the back. Seems fishy."
+	description = "Z tyłu napis „Made in China”. Wygląda podejrzanie."
 	path = /obj/item/coin/antagtoken
 	cost = 10000
 

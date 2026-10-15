@@ -4,7 +4,7 @@
 	//- floor_tile is now a path, and not a tile obj
 	name = "floor"
 	icon = 'icons/turf/floors.dmi'
-	var/base_icon_state = "floor"
+	base_icon_state = "floor"
 	baseturfs = /turf/open/floor/plating
 
 	footstep = FOOTSTEP_FLOOR
@@ -171,10 +171,10 @@
 		broken = 0
 		burnt = 0
 		if(user && !silent)
-			to_chat(user, "<span class='notice'>You remove the broken plating.</span>")
+			to_chat(user, "<span class='notice'>Zdejmujesz zepsute poszycie.</span>")
 	else
 		if(user && !silent)
-			to_chat(user, "<span class='notice'>You remove the floor tile.</span>")
+			to_chat(user, "<span class='notice'>Zdejmujesz płytkę podłogową.</span>")
 		if(floor_tile && make_tile)
 			new floor_tile(src)
 	return make_plating()
@@ -215,7 +215,10 @@
 /turf/open/floor/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
 	switch(the_rcd.mode)
 		if(RCD_FLOORWALL)
-			return list("mode" = RCD_FLOORWALL, "delay" = 20, "cost" = 16)
+			return rcd_result_with_memory(
+				list("mode" = RCD_FLOORWALL, "delay" = 2 SECONDS, "cost" = 16),
+				src, RCD_MEMORY_WALL,
+			)
 		if(RCD_LADDER)
 			return list("mode" = RCD_LADDER, "delay" = 25, "cost" = 16)
 		if(RCD_AIRLOCK)
@@ -226,7 +229,10 @@
 		if(RCD_DECONSTRUCT)
 			return list("mode" = RCD_DECONSTRUCT, "delay" = 50, "cost" = 33)
 		if(RCD_WINDOWGRILLE)
-			return list("mode" = RCD_WINDOWGRILLE, "delay" = 10, "cost" = 4)
+			return rcd_result_with_memory(
+				list("mode" = RCD_WINDOWGRILLE, "delay" = 1 SECONDS, "cost" = 4),
+				src, RCD_MEMORY_WINDOWGRILLE,
+			)
 		if(RCD_MACHINE)
 			return list("mode" = RCD_MACHINE, "delay" = 20, "cost" = 25)
 		if(RCD_COMPUTER)
@@ -236,18 +242,18 @@
 /turf/open/floor/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, passed_mode)
 	switch(passed_mode)
 		if(RCD_FLOORWALL)
-			to_chat(user, "<span class='notice'>You build a wall.</span>")
+			to_chat(user, "<span class='notice'>Budujesz ścianę.</span>")
 			PlaceOnTop(/turf/closed/wall/ship) //NSV13 - Ship construction
 			return TRUE
 		if(RCD_LADDER)
-			to_chat(user, "<span class='notice'>You build a ladder.</span>")
+			to_chat(user, "<span class='notice'>Budujesz drabinę.</span>")
 			var/obj/structure/ladder/L = new(src)
 			L.anchored = TRUE
 			return TRUE
 		if(RCD_AIRLOCK)
 			if(locate(/obj/machinery/door/airlock) in src)
 				return FALSE
-			to_chat(user, "<span class='notice'>You build an airlock.</span>")
+			to_chat(user, "<span class='notice'>Budujesz śluzę.</span>")
 			var/obj/machinery/door/airlock/A = new the_rcd.airlock_type(src)
 			A.electronics = new /obj/item/electronics/airlock(A)
 			if(the_rcd.airlock_electronics)
@@ -266,12 +272,12 @@
 		if(RCD_DECONSTRUCT)
 			if(ScrapeAway(flags = CHANGETURF_INHERIT_AIR) == src)
 				return FALSE
-			to_chat(user, "<span class='notice'>You deconstruct [src].</span>")
+			to_chat(user, "<span class='notice'>Rozbierasz [src].</span>")
 			return TRUE
 		if(RCD_WINDOWGRILLE)
 			if(locate(/obj/structure/grille) in src)
 				return FALSE
-			to_chat(user, "<span class='notice'>You construct the grille.</span>")
+			to_chat(user, "<span class='notice'>Budujesz kratę.</span>")
 			var/obj/structure/grille/G = new(src)
 			G.anchored = TRUE
 			return TRUE

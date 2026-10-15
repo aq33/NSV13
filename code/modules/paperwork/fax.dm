@@ -39,14 +39,14 @@
 	)
 	/// List of types which should be allowed to be faxed if hacked
 	var/static/list/exotic_types = list(
-		/obj/item/reagent_containers/food/snacks/pizzaslice,
-		/obj/item/reagent_containers/food/snacks/breadslice, //NSV13 - For now until we get the food update.
-		/obj/item/reagent_containers/food/snacks/donkpocket,
-		/obj/item/reagent_containers/food/snacks/cookie,
-		/obj/item/reagent_containers/food/snacks/sugarcookie,
-		/obj/item/reagent_containers/food/snacks/oatmealcookie,
-		/obj/item/reagent_containers/food/snacks/raisincookie,
-		/obj/item/reagent_containers/food/snacks/pancakes,
+		/obj/item/food/pizzaslice,
+		/obj/item/food/breadslice,
+		/obj/item/food/donkpocket,
+		/obj/item/food/cookie,
+		/obj/item/food/cookie/sugar,
+		/obj/item/food/cookie/oatmeal,
+		/obj/item/food/cookie/raisin,
+		/obj/item/food/pancakes,
 		/obj/item/throwing_star,
 		/obj/item/stack/spacecash,
 		/obj/item/holochip,
@@ -59,7 +59,7 @@
 	if(!fax_id)
 		fax_id = SSnetworks.assign_random_name()
 	if(!fax_name)
-		fax_name = "Unregistered fax " + fax_id
+		fax_name = "Niezarejestrowany faks " + fax_id
 	wires = new /datum/wires/fax(src)
 
 /obj/machinery/fax/Destroy()
@@ -78,14 +78,14 @@
 /obj/machinery/fax/examine()
 	. = ..()
 	if(jammed)
-		. += "<span class='notice'>Its output port is jammed and needs cleaning.</span>"
+		. += "<span class='notice'>Jego port wyjściowy jest zablokowany i wymaga wyczyszczenia.</span>"
 
 
 /obj/machinery/fax/process(delta_time)
 	if(seconds_electrified > MACHINE_NOT_ELECTRIFIED)
 		seconds_electrified -= delta_time
 
-/obj/machinery/fax/attack_hand(mob/user)
+/obj/machinery/fax/attack_hand(mob/user, list/modifiers)
 	if(seconds_electrified && !(machine_stat & NOPOWER))
 		if(shock(user, 100))
 			return
@@ -97,11 +97,11 @@
  */
 /obj/machinery/fax/emag_act(mob/user)
 	if(!panel_open && !allow_exotic_faxes)
-		balloon_alert(user, "open the panel first!")
+		balloon_alert(user, "najpierw otwórz panel!")
 		return
 	if(!(obj_flags & EMAGGED))
 		obj_flags |= EMAGGED
-		to_chat(user, "<span class='warning'>An image appears on [src] screen for a moment with Ian in the cap of a Syndicate officer.</span>")
+		to_chat(user, "<span class='warning'>Na ekranie [src] na chwilę pojawia się obraz Iana w czapce oficera Syndykatu.</span>")
 
 /obj/machinery/fax/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
@@ -123,14 +123,14 @@
 /obj/machinery/fax/multitool_act(mob/living/user, obj/item/I)
 	if(panel_open)
 		return
-	var/new_fax_name = stripped_input(user, "Enter a new name for the fax machine.", "New Fax Name", max_length=128)
+	var/new_fax_name = stripped_input(user, "Podaj nową nazwę faksu.", "Nowa nazwa faksu", max_length=128)
 	if(!new_fax_name)
 		return TOOL_ACT_TOOLTYPE_SUCCESS
 	if(new_fax_name != fax_name)
 		if(fax_name_exist(new_fax_name))
 			// Being able to set the same name as another fax machine will give a lot of gimmicks for the traitor.
 			if(syndicate_network != TRUE && obj_flags != EMAGGED)
-				to_chat(user, "<span class='warning'>There is already a fax machine with this name on the network.</span>")
+				to_chat(user, "<span class='warning'>W sieci jest już faks o tej nazwie.</span>")
 				return TOOL_ACT_TOOLTYPE_SUCCESS
 		user.log_message("renamed [fax_name] (fax machine) to [new_fax_name]", LOG_GAME)
 		fax_name = new_fax_name
@@ -170,7 +170,7 @@
 // Switches access to the "legal" administrator's fax list. Access to the "illegal" is switched by hacking.
 /obj/machinery/fax/proc/access_additional_faxes_toggle()
 	access_additional_faxes = !access_additional_faxes
-	say("The channel of communication with CentCom is [access_additional_faxes ? "open" : "close"].")
+	say("Kanał komunikacji z Centralą jest [access_additional_faxes ? "otwarty" : "zamknięty"].")
 
 /**
  * Attempts to clean out a jammed machine using a passed item.
@@ -183,7 +183,7 @@
 			return FALSE
 		clean_spray.reagents.remove_reagent(/datum/reagent/space_cleaner, clean_spray.amount_per_transfer_from_this, 1)
 		playsound(loc, 'sound/effects/spray3.ogg', 50, TRUE, -5)
-		user.visible_message("<span class='notice'>[user] cleans \the [src].</span>", "<span class='notice'>You clean \the [src].</span>")
+		user.visible_message("<span class='notice'>[user] czyści [src].</span>", "<span class='notice'>Czyścisz [src].</span>")
 		jammed = FALSE
 		return TRUE
 	if(istype(item, /obj/item/soap) || istype(item, /obj/item/reagent_containers/glass/rag))
@@ -191,9 +191,9 @@
 		if(istype(item, /obj/item/soap))
 			var/obj/item/soap/used_soap = item
 			cleanspeed = used_soap.cleanspeed
-		user.visible_message("<span class='notice'>[user] starts to clean \the [src].</span>", "<span class='notice'>You start to clean \the [src]...</span>")
+		user.visible_message("<span class='notice'>[user] zaczyna czyścić [src].</span>", "<span class='notice'>Zaczynasz czyścić [src]...</span>")
 		if(do_after(user, cleanspeed, target = src))
-			user.visible_message("<span class='notice'>[user] cleans \the [src].</span>", "<span class='notice'>You clean \the [src].</span>")
+			user.visible_message("<span class='notice'>[user] czyści [src].</span>", "<span class='notice'>Czyścisz [src].</span>")
 			jammed = FALSE
 		return TRUE
 	return FALSE
@@ -298,7 +298,7 @@
 					update_icon()
 					return TRUE
 			else
-				say("The destination fax blocks the reception of this item.")
+				say("Docelowy faks blokuje odbiór tego przedmiotu.")
 		if("history_clear")
 			history_clear()
 			return TRUE
@@ -333,7 +333,7 @@
 			continue
 		if(fax.jammed)
 			do_sparks(5, TRUE, src)
-			balloon_alert(usr, "destination port jammed")
+			balloon_alert(usr, "port docelowy zablokowany")
 			playsound(src, 'sound/machines/scanbuzz.ogg', 25, TRUE, -9)
 			return FALSE
 		fax.receive(loaded, fax_name)
@@ -380,7 +380,7 @@
 /obj/machinery/fax/proc/receive(obj/item/loaded, sender_name)
 	playsound(src, 'sound/items/poster_being_created.ogg', 50, FALSE)
 	INVOKE_ASYNC(src, PROC_REF(animate_object_travel), loaded, "fax_receive", find_overlay_state(loaded, "receive"))
-	say("Received correspondence from [sender_name].")
+	say("Otrzymano korespondencję od [sender_name].")
 	history_add("Receive", sender_name)
 	addtimer(CALLBACK(src, PROC_REF(vend_item), loaded), 1.9 SECONDS)
 

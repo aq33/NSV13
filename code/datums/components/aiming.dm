@@ -35,11 +35,11 @@
 	COOLDOWN_START(src, aiming_cooldown, 5 SECONDS)
 	src.user = user
 	src.target = target
-	user.visible_message("<span class='warning'>[user] points [parent] at [target]!</span>")
-	to_chat(target, "<span class='userdanger'>[user] is pointing [parent] at you! If you equip or drop anything they will be notified! \n<b>You can use *surrender to give yourself up</b>.</span>")
-	to_chat(user, "<span class='notice'>You're now aiming at [target]. If they attempt to equip anything you'll be notified by a loud sound.</span>")
-	user.balloon_alert_to_viewers("[user] points [parent] at [target]!", ignored_mobs = list(user, target))
-	user.balloon_alert(target, "[user] points [parent] at you!")
+	user.visible_message("<span class='warning'>[user] celuje z [parent] w [target]!</span>")
+	to_chat(target, "<span class='userdanger'>[user] celuje w ciebie z [parent]! Jeśli coś założysz lub upuścisz, zostanie o tym powiadomiony! \n<b>Możesz użyć *surrender, by się poddać</b>.</span>")
+	to_chat(user, "<span class='notice'>Celujesz teraz w [target]. Jeśli spróbuje coś założyć, usłyszysz głośny dźwięk.</span>")
+	user.balloon_alert_to_viewers("[user] celuje z [parent] w [target]!", ignored_mobs = list(user, target))
+	user.balloon_alert(target, "[user] celuje w ciebie z [parent]!")
 	playsound(target, 'sound/weapons/autoguninsert.ogg', 100, TRUE)
 	new /obj/effect/temp_visual/aiming(get_turf(target))
 
@@ -102,7 +102,7 @@ Methods to alert the aimer about events (Surrendering/equipping an item/dropping
 	if(istype(I, /obj/item/gun))
 		target.balloon_alert(user, "[target] equipped a gun!")
 	else
-		target.balloon_alert(user, "[target] equipped something!")
+		target.balloon_alert(user, "[target] coś zakłada!")
 	SEND_SOUND(user, 'sound/machines/chime.ogg')
 	new /obj/effect/temp_visual/aiming/suspect_alert(get_turf(target))
 	COOLDOWN_START(src, notification_cooldown, 5 SECONDS)
@@ -112,12 +112,12 @@ Methods to alert the aimer about events (Surrendering/equipping an item/dropping
 	SIGNAL_HANDLER
 	if(!istype(loc, /turf)) // Checks to make sure the item was actually dropped to the ground
 		return
-	target.balloon_alert(user, "[target] dropped what they were holding!")
+	target.balloon_alert(user, "[target] upuszcza to, co trzymał!")
 
 // Called when the target mob gets paralyzed (happens if they surrender or are otherwise disabled)
 /datum/component/aiming/proc/on_paralyze()
 	SIGNAL_HANDLER
-	to_chat(user, "<span class='nicegreen'>[target] appears to be surrendering!</span>")
+	to_chat(user, "<span class='nicegreen'>[target] wygląda na to, że się poddaje!</span>")
 	target.balloon_alert(user, "[target] surrenders!")
 
 // Cancels aiming if we can't see the target
@@ -128,7 +128,7 @@ Methods to alert the aimer about events (Surrendering/equipping an item/dropping
 		return
 	if(target in view(user))
 		return
-	user.balloon_alert(user, "You can't see [target] anymore!")
+	user.balloon_alert(user, "Nie widzisz już [target]!")
 	stop_aiming()
 
 /**
@@ -174,11 +174,11 @@ AIMING_DROP_WEAPON means they selected the "drop your weapon" command
 		return
 	if(choice != CANCEL && choice != FIRE) // Handling voiceline cooldowns and mimes
 		if(!COOLDOWN_FINISHED(src, voiceline_cooldown))
-			to_chat(user, "<span class = 'warning'>You've already given a command recently!</span>")
+			to_chat(user, "<span class = 'warning'>Niedawno już wydałeś polecenie!</span>")
 			show_ui(user, target, choice)
 			return
 		if(user.mind.assigned_role == JOB_NAME_MIME)
-			user.visible_message("<span class='warning'>[user] waves [parent] around menacingly!</span>")
+			user.visible_message("<span class='warning'>[user] groźnie wymachuje [parent]!</span>")
 			show_ui(user, target, choice)
 			COOLDOWN_START(src, voiceline_cooldown, 2 SECONDS)
 			return
@@ -190,11 +190,11 @@ AIMING_DROP_WEAPON means they selected the "drop your weapon" command
 			fire()
 			return
 		if(RAISE_HANDS)
-			user.say(pick("Podnieś ręce nad głowę!", "Łapy! Już!", "Ręce do góry!"), forced = "Weapon aiming")
+			user.say(pick("Podnieś ręce nad głowę!", "Łapy! Już!", "Ręce do góry!"), forced = "Celowanie z broni")
 		if(DROP_WEAPON)
-			user.say(pick("Rzuć broń!", "Broń w dół! Teraz!", "Rzuć to!"), forced = "Weapon aiming")
+			user.say(pick("Rzuć broń!", "Broń w dół! Teraz!", "Rzuć to!"), forced = "Celowanie z broni")
 		if(DROP_TO_FLOOR)
-			user.say(pick("Na ziemię! Już!", "Kładź się i połóż ręce na głowie!", "Połóż się na ziemi!"), forced = "Weapon aiming")
+			user.say(pick("Na ziemię! Już!", "Kładź się i połóż ręce na głowie!", "Połóż się na ziemi!"), forced = "Celowanie z broni")
 	aim_react(target)
 	COOLDOWN_START(src, voiceline_cooldown, 2 SECONDS)
 	show_ui(user, target, choice)
@@ -212,7 +212,7 @@ AIMING_DROP_WEAPON means they selected the "drop your weapon" command
 	if(isitem(parent)) // Otherwise, just wave it at them
 		var/obj/item/I = parent
 		I.afterattack(target, user)
-		user.visible_message("<span class='warning'>[user] waves [parent] around menacingly!</span>")
+		user.visible_message("<span class='warning'>[user] groźnie wymachuje [parent]!</span>")
 		stop_aiming()
 
 /datum/component/aiming/proc/stop_aiming()
@@ -257,7 +257,7 @@ AIMING_DROP_WEAPON means they selected the "drop your weapon" command
 	layer = ABOVE_MOB_LAYER
 
 // Initializes aiming component in bananas
-/obj/item/reagent_containers/food/snacks/grown/banana/ComponentInitialize()
+/obj/item/food/grown/banana/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/aiming)
 

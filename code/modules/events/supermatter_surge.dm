@@ -18,7 +18,7 @@
 
 /datum/round_event/supermatter_surge/announce()
 	if(power > 800 || prob(round(power/8)))
-		priority_announce("Class [round(power/500) + 1] supermatter surge detected. Intervention may be required.", "Anomaly Alert", SSstation.announcer.get_rand_alert_sound())
+		priority_announce("Wykryto skok mocy supermaterii klasy [round(power/500) + 1]. Może być wymagana interwencja.", "Alarm - anomalia", SSstation.announcer.get_rand_alert_sound())
 
 /datum/round_event/supermatter_surge/start()
 	if(!GLOB.main_supermatter_engine) // AQ EDIT - admins can force it without a supermatter

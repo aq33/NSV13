@@ -123,7 +123,7 @@
 	worn_icon = 'nsv13/icons/mob/suit.dmi'
 	icon_state = "squad"
 	w_class = 2
-	armor = list("melee" = 30, "bullet" = 40, "laser" = 10, "energy" = 10, "bomb" = 30, "bio" = 20, "rad" = 25, "fire" = 25, "acid" = 50)
+	armor = list("melee" = 30, "bullet" = 40, "laser" = 10, "energy" = 10, "bomb" = 30, "bio" = 20, "rad" = 25, "fire" = 25, "acid" = 50, "bleed" = 5)
 	min_cold_protection_temperature = SPACE_SUIT_MIN_TEMP_PROTECT
 	body_parts_covered = CHEST|GROIN|LEGS|FEET
 	var/datum/squad/squad = null
@@ -138,7 +138,7 @@
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	allowed = list(/obj/item/flashlight, /obj/item/tank/internals)
 	slowdown = 1
-	armor = list("melee" = 20, "bullet" = 30, "laser" = 5,"energy" = 0, "bomb" = 10, "bio" = 100, "rad" = 50, "fire" = 80, "acid" = 70, "stamina" = 10)
+	armor = list("melee" = 20, "bullet" = 30, "laser" = 5,"energy" = 0, "bomb" = 10, "bio" = 100, "rad" = 50, "fire" = 80, "acid" = 70, "stamina" = 10, "bleed" = 50)
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 	cold_protection = CHEST | GROIN | LEGS | FEET | ARMS | HANDS
 	min_cold_protection_temperature = SPACE_SUIT_MIN_TEMP_PROTECT
@@ -155,7 +155,7 @@
 	worn_icon = 'nsv13/icons/mob/head.dmi'
 	icon_state = "squad"
 	w_class = WEIGHT_CLASS_NORMAL
-	armor = list("melee" = 30, "bullet" = 40, "laser" = 10, "energy" = 10, "bomb" = 30, "bio" = 20, "rad" = 25, "fire" = 25, "acid" = 50)
+	armor = list("melee" = 30, "bullet" = 40, "laser" = 10, "energy" = 10, "bomb" = 30, "bio" = 20, "rad" = 25, "fire" = 25, "acid" = 50, "bleed" = 50)
 	min_cold_protection_temperature = SPACE_HELM_MIN_TEMP_PROTECT
 	var/has_headcam = TRUE
 	var/datum/squad/squad = null
@@ -167,7 +167,7 @@
 	desc = "A special helmet with solar UV shielding to protect your eyes from harmful rays. It bears a squad's insignia."
 	clothing_flags = STOPSPRESSUREDAMAGE | THICKMATERIAL | SNUG_FIT
 	permeability_coefficient = 0.01
-	armor = list("melee" = 15, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 100, "rad" = 50, "fire" = 80, "acid" = 70, "stamina" = 10)
+	armor = list("melee" = 15, "bullet" = 10, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 100, "rad" = 50, "fire" = 80, "acid" = 70, "stamina" = 10, "bleed" = 50)
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 	dynamic_hair_suffix = ""
 	dynamic_fhair_suffix = ""
@@ -206,20 +206,20 @@
 
 /obj/item/clothing/neck/squad/examine( mob/user )
 	. = ..()
-	. += "<span class='notice'>Use the lanyard to update the appearance of the squad role indicator.</span>"
+	. += "<span class='notice'>Użyj smyczy, by zaktualizować wygląd wskaźnika roli w drużynie.</span>"
 
 /obj/item/clothing/neck/squad/attack_self(mob/living/carbon/human/user)
 	. = ..()
 	if(!ishuman(user) || user.stat || user.restrained())
 		return
 	if(!squad)
-		to_chat(user, "<span class='warning'>This lanyard hasn't got a registered squad on it...</span>")
+		to_chat(user, "<span class='warning'>Na tej smyczy nie ma zarejestrowanej drużyny...</span>")
 		return FALSE
 	if(user.squad && user.squad == squad)
-		to_chat(user, "<span class='notice'>The lanyard updates with your current squad role.</span>")
+		to_chat(user, "<span class='notice'>Smycz aktualizuje się zgodnie z twoją obecną rolą w drużynie.</span>")
 		apply_squad( user.squad )
 		return FALSE
-	if(alert(user, "Join [squad] Squad?",name,"Yes","No") == "Yes")
+	if(alert(user, "Dołączyć do drużyny [squad]?",name,"Yes","No") == "Yes")
 		if(user.squad)
 			user.squad.remove_member(user)
 		squad.add_member(user)
@@ -335,7 +335,7 @@
 /obj/item/clothing/head/ship/squad/colouronly/headband
 	name = "Headband"
 	icon_state = "squadheadband"
-	desc = "A headband which bears the colour of the wearer's squad."
+	desc = "Opaska w barwach oddziału noszącego."
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	dynamic_hair_suffix = "" //So it doesn't hide your hair
 
@@ -343,7 +343,7 @@
 /obj/item/clothing/head/ship/squad/colouronly/cap
 	name = "Cap"
 	icon_state = "squadsoft"
-	desc = "A stylish, coloured cap which bears the colour and insignia of the wearer's squad."
+	desc = "Stylowa kolorowa czapka w barwach i z insygniami oddziału noszącego."
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 
 //Credit goes to Eris for this sprite!
@@ -353,8 +353,8 @@
 	icon = 'nsv13/icons/obj/clothing/suits.dmi'
 	worn_icon = 'nsv13/icons/mob/suit.dmi'
 	icon_state = "squadbomber"
-	desc = "A stylish jacket bearing a squad's insignia and distinctive colours."
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	desc = "Stylowa kurtka z insygniami i charakterystycznymi barwami oddziału."
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0, "bleed" = 5)
 	body_parts_covered = CHEST
 
 //DC stuff:
@@ -390,7 +390,7 @@
 			return
 		if (do_after(user,5 SECONDS, target = src))
 			playsound(src, 'sound/effects/spray2.ogg', 50, 1, -6)
-			to_chat(user, "<span class='notice'>You seal up [src], good as new!</span>")
+			to_chat(user, "<span class='notice'>Łatasz [src], jak nowy!</span>")
 			torn = FALSE
 			name = "inflatable wall"
 			desc = "A folded membrane which rapidly expands into a large cubical shape on activation."
@@ -412,7 +412,7 @@
 /obj/item/inflatable/proc/inflate(turf/target, mob/user)
 	playsound(loc, 'sound/items/zip.ogg', 75, 1)
 	playsound(loc, 'sound/machines/hiss.ogg', 75, 1)
-	to_chat(user, "<span class='notice'>You inflate [src].</span>")
+	to_chat(user, "<span class='notice'>Nadmuchujesz [src].</span>")
 	var/obj/structure/inflatable/R = new inflatable_type(target)
 	src.transfer_fingerprints_to(R)
 	R.add_fingerprint(user)
@@ -442,16 +442,16 @@
 
 /obj/structure/inflatable/attackby(obj/item/W, mob/user, params)
 	if(W.is_sharp() || is_pointed(W))
-		visible_message("<span class='danger'>[user] pierces [src] with [W]!</span>")
+		visible_message("<span class='danger'>[user] przebija [src] za pomocą [W]!</span>")
 		deflate(1)
 		qdel(src)
 	if(istype(W, /obj/item/sealant))
 		if(obj_integrity >= max_integrity)
 			return
-		to_chat(user, "<span class='notice'>You start filling up the holes in [src]...</span>")
+		to_chat(user, "<span class='notice'>Zaczynasz łatać dziury w [src]...</span>")
 		if (do_after(user,5 SECONDS, target = src))
 			playsound(src, 'sound/effects/spray2.ogg', 50, 1, -6)
-			to_chat(user, "<span class='notice'>You seal up [src], good as new!</span>")
+			to_chat(user, "<span class='notice'>Łatasz [src], jak nowy!</span>")
 			obj_integrity = max_integrity
 	return ..()
 
@@ -459,11 +459,11 @@
 	set waitfor = FALSE
 	playsound(src, 'sound/machines/hiss.ogg', 75, 1)
 	if(violent)
-		visible_message("<span class='warning'>\The [src] rapidly deflates!</span>")
+		visible_message("<span class='warning'>[src] gwałtownie traci powietrze!</span>")
 		var/obj/item/inflatable/torn/R = new /obj/item/inflatable/torn(loc)
 		transfer_fingerprints_to(R)
 	else
-		visible_message("<span class='warning'>\The [src] slowly deflates.</span>")
+		visible_message("<span class='warning'>[src] powoli traci powietrze.</span>")
 		animate(src, transform = transform.Scale(0.125), time = 15)
 		sleep(15)
 		var/obj/item/inflatable/R = new inflatable_type(loc)

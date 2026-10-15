@@ -10,7 +10,7 @@
  */
 
 /obj/item/kitchen
-	icon = 'icons/obj/kitchen.dmi'
+	icon = 'icons/obj/service/kitchen.dmi'
 	lefthand_file = 'icons/mob/inhands/equipment/kitchen_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/kitchen_righthand.dmi'
 
@@ -25,13 +25,13 @@
 	throw_range = 5
 	materials = list(/datum/material/iron=80)
 	flags_1 = CONDUCT_1
-	attack_verb = list("attacked", "stabbed", "poked")
+	attack_verb = list("atakuje", "dźga", "szturcha")
 	hitsound = 'sound/weapons/bladeslice.ogg'
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 30, "stamina" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 30, "stamina" = 0, "bleed" = 0)
 	var/datum/reagent/forkload //NSV13 - used to eat any food (who coded this to just work for omlettes?)
 
 /obj/item/kitchen/fork/suicide_act(mob/living/carbon/user)
-	user.visible_message("<span class='suicide'>[user] stabs \the [src] into [user.p_their()] chest! It looks like [user.p_theyre()] trying to take a bite out of [user.p_them()]self!</span>")
+	user.visible_message("<span class='suicide'>[user] wbija [src] w swoją klatkę piersiową! Wygląda na to, że próbuje odgryźć kawałek samego siebie!</span>")
 	playsound(src, 'sound/items/eatfood.ogg', 50, 1)
 	return BRUTELOSS
 
@@ -42,16 +42,16 @@
 
 	if(forkload)
 		if(M == user)
-			M.visible_message("<span class='notice'>[user] eats the food off their fork!</span>")
+			M.visible_message("<span class='notice'>[user] zjada jedzenie z widelca!</span>")
 			M.reagents.add_reagent(forkload.type, 1)
 		else
-			M.visible_message("<span class='danger'>[user] attempts to feed [M] from the fork.</span>", \
-				"<span class='userdanger'>[user] attempts to feed you with the fork.</span>")
+			M.visible_message("<span class='danger'>[user] próbuje nakarmić [M] z widelca.</span>", \
+				"<span class='userdanger'>[user] próbuje nakarmić cię widelcem.</span>")
 			if(!do_mob(user, M))
 				return
 			if(!forkload)
 				return // Might be empty after the delay, such as by spam-feeding
-			M.visible_message("<span class='notice'>[user] feeds [M] a forkful of food!</span>")
+			M.visible_message("<span class='notice'>[user] karmi [M] kęsem jedzenia z widelca!</span>")
 			log_combat(user, M, "fed", forkload)
 			M.reagents.add_reagent(forkload.type, 1)
 		icon_state = "fork"
@@ -76,13 +76,13 @@
 	throw_range = 5
 	materials = list(/datum/material/iron=80)
 	flags_1 = CONDUCT_1
-	attack_verb = list("attacked", "scooped",)
+	attack_verb = list("atakuje", "zgarnia",)
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 30, "stamina" = 0)
 	var/datum/reagent/forkload //used to eat omelette
 
 /obj/item/kitchen/spoon/suicide_act(mob/living/carbon/user)
-	user.visible_message("<span class='suicide'>[user] stabs \the [src] into [user.p_their()] chest! It looks like [user.p_theyre()] trying to take a bite out of [user.p_them()]self!</span>")
+	user.visible_message("<span class='suicide'>[user] wbija [src] w swoją klatkę piersiową! Wygląda na to, że próbuje odgryźć kawałek samego siebie!</span>")
 	playsound(src, 'sound/items/eatfood.ogg', 50, 1)
 	return BRUTELOSS
 
@@ -92,16 +92,16 @@
 
 	if(forkload)
 		if(M == user)
-			M.visible_message("<span class='notice'>[user] eats the food off their spoon!</span>")
+			M.visible_message("<span class='notice'>[user] zjada jedzenie z łyżki!</span>")
 			M.reagents.add_reagent(forkload.type, 1)
 		else
-			M.visible_message("<span class='danger'>[user] attempts to feed [M] from the spoon.</span>", \
-				"<span class='userdanger'>[user] attempts to feed you with the spoon.</span>")
+			M.visible_message("<span class='danger'>[user] próbuje nakarmić [M] z łyżki.</span>", \
+				"<span class='userdanger'>[user] próbuje nakarmić cię łyżką.</span>")
 			if(!do_mob(user, M))
 				return
 			if(!forkload)
 				return // Might be empty after the delay, such as by spam-feeding
-			M.visible_message("<span class='notice'>[user] feeds [M] a spoonful of food!</span>")
+			M.visible_message("<span class='notice'>[user] karmi [M] łyżką jedzenia!</span>")
 			log_combat(user, M, "fed", forkload)
 			M.reagents.add_reagent(forkload.type, 1)
 		icon_state = "spoon"
@@ -130,11 +130,13 @@
 
 /obj/item/kitchen/knife
 	name = "kitchen knife"
+	icon = 'icons/obj/kitchen.dmi' //NSV13 - we don't have Bee's knife refactor (/obj/item/knife, knives.dmi), our knives keep their old sprites
 	icon_state = "knife"
 	item_state = "knife"
 	desc = "A general purpose Chef's Knife made by SpaceCook Incorporated. Guaranteed to stay sharp for years to come."
 	flags_1 = CONDUCT_1
 	force = 10
+	bleed_force = BLEED_CUT
 	w_class = WEIGHT_CLASS_SMALL
 	throwforce = 10
 	hitsound = 'sound/weapons/bladeslice.ogg'
@@ -142,11 +144,12 @@
 	throw_speed = 3
 	throw_range = 6
 	materials = list(/datum/material/iron=12000)
-	attack_verb = list("slashed", "stabbed", "sliced", "tore", "ripped", "diced", "cut")
+	attack_verb = list("ciacha", "dźga", "kroi", "rozdziera", "rozrywa", "sieka", "tnie")
 	sharpness = IS_SHARP_ACCURATE
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50, "stamina" = 0)
 	var/bayonet = FALSE	//Can this be attached to a gun?
 	custom_price = 30
+	tool_behaviour = TOOL_KNIFE
 
 /obj/item/kitchen/knife/Initialize(mapload)
 	. = ..()
@@ -162,9 +165,9 @@
 		return ..()
 
 /obj/item/kitchen/knife/suicide_act(mob/user)
-	user.visible_message(pick("<span class='suicide'>[user] is slitting [user.p_their()] wrists with the [src.name]! It looks like [user.p_theyre()] trying to commit suicide.</span>", \
-						"<span class='suicide'>[user] is slitting [user.p_their()] throat with the [src.name]! It looks like [user.p_theyre()] trying to commit suicide.</span>", \
-						"<span class='suicide'>[user] is slitting [user.p_their()] stomach open with the [src.name]! It looks like [user.p_theyre()] trying to commit seppuku.</span>"))
+	user.visible_message(pick("<span class='suicide'>[user] podcina sobie nadgarstki [src.name]! Wygląda na to, że próbuje popełnić samobójstwo.</span>", \
+						"<span class='suicide'>[user] podrzyna sobie gardło [src.name]! Wygląda na to, że próbuje popełnić samobójstwo.</span>", \
+						"<span class='suicide'>[user] rozcina sobie brzuch [src.name]! Wygląda na to, że próbuje popełnić seppuku.</span>"))
 	return (BRUTELOSS)
 
 /obj/item/kitchen/knife/ritual
@@ -185,7 +188,7 @@
 	force = 15
 	throwforce = 10
 	materials = list(/datum/material/iron=18000)
-	attack_verb = list("cleaved", "slashed", "stabbed", "sliced", "tore", "ripped", "diced", "cut")
+	attack_verb = list("rozłupuje", "ciacha", "dźga", "kroi", "rozdziera", "rozrywa", "sieka", "tnie")
 	w_class = WEIGHT_CLASS_NORMAL
 	custom_price = 60
 
@@ -223,7 +226,7 @@
 					amount_per_transfer_from_this = possible_transfer_amounts[i+1]
 				else
 					amount_per_transfer_from_this = possible_transfer_amounts[1]
-				to_chat(user, "<span class='notice'>[src]'s transfer amount is now [amount_per_transfer_from_this] units.</span>")
+				to_chat(user, "<span class='notice'>[src] przenosi teraz po [amount_per_transfer_from_this] j.</span>")
 				return
 
 /obj/item/kitchen/knife/combat
@@ -233,7 +236,7 @@
 	embedding = list("pain_mult" = 4, "embed_chance" = 65, "fall_chance" = 10, "ignore_throwspeed_threshold" = TRUE, "armour_block" = 60)
 	force = 20
 	throwforce = 20
-	attack_verb = list("slashed", "stabbed", "sliced", "tore", "ripped", "cut")
+	attack_verb = list("ciacha", "dźga", "kroi", "rozdziera", "rozrywa", "tnie")
 	bayonet = TRUE
 
 /obj/item/kitchen/knife/combat/survival
@@ -273,8 +276,8 @@
 	force = 8
 	throwforce = 12//fuck git
 	materials = list()
-	attack_verb = list("shanked", "shivved")
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0, "stamina" = 0)
+	attack_verb = list("kosi nożem", "dźga kosą")
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0, "stamina" = 0, "bleed" = 0)
 
 // Shank - Makeshift weapon that can embed on throw
 /obj/item/kitchen/knife/shank
@@ -290,10 +293,10 @@
 	throw_speed = 5 //yeets
 	armour_penetration = 10 //spear has 10 armour pen, I think its fitting another glass tipped item should have it too
 	embedding = list("embedded_pain_multiplier" = 6, "embed_chance" = 40, "embedded_fall_chance" = 5, "armour_block" = 30) // Incentive to disengage/stop chasing when stuck
-	attack_verb = list("stuck", "shanked")
+	attack_verb = list("wbija się w", "kosi nożem")
 
 /obj/item/kitchen/knife/shank/suicide_act(mob/user)
-	user.visible_message("<span class='suicide'>[user] is slitting [user.p_their()] [pick("wrists", "throat")] with the shank! It looks like [user.p_theyre()] trying to commit suicide.</span>")
+	user.visible_message("<span class='suicide'>[user] podcina sobie [pick("nadgarstki", "gardło")] kosą! Wygląda na to, że próbuje popełnić samobójstwo.</span>")
 	return (BRUTELOSS)
 
 /obj/item/kitchen/rollingpin
@@ -305,9 +308,10 @@
 	throw_speed = 3
 	throw_range = 7
 	w_class = WEIGHT_CLASS_NORMAL
-	attack_verb = list("bashed", "battered", "bludgeoned", "thrashed", "whacked")
+	attack_verb = list("grzmoci", "okłada", "tłucze", "młóci", "wali")
 	custom_price = 20
+	tool_behaviour = TOOL_ROLLINGPIN
 
 /obj/item/kitchen/rollingpin/suicide_act(mob/living/carbon/user)
-	user.visible_message("<span class='suicide'>[user] begins flattening [user.p_their()] head with \the [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	user.visible_message("<span class='suicide'>[user] zaczyna spłaszczać sobie głowę [src]! Wygląda na to, że próbuje popełnić samobójstwo!</span>")
 	return BRUTELOSS

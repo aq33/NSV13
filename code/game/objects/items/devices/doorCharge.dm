@@ -11,7 +11,7 @@
 	throw_speed = 1
 	item_flags = NOBLUDGEON
 	force = 3
-	attack_verb = list("blown up", "exploded", "detonated")
+	attack_verb = list("wysadza", "wysadza", "detonuje")
 	materials = list(/datum/material/iron=50, /datum/material/glass=30)
 
 /obj/item/doorCharge/ex_act(severity, target)
@@ -37,6 +37,6 @@
 /obj/item/doorCharge/examine(mob/user)
 	. = ..()
 	if(user.mind && user.mind.has_antag_datum(/datum/antagonist/traitor, /datum/antagonist/traitor/internal_affairs, /datum/antagonist/incursion, /datum/antagonist/nukeop))
-		. += "A small explosive device that can be used to sabotage airlocks to cause an explosion upon opening. To apply, remove the airlock's maintenance panel and place it within."
+		. += "Małe urządzenie wybuchowe do sabotowania śluz, by wybuchły przy otwarciu. Aby je założyć, zdejmij panel serwisowy śluzy i umieść je w środku."
 	else
-		. += "A small, suspicious object that feels lukewarm when held."
+		. += "Mały, podejrzany przedmiot, który w dłoni wydaje się letni."

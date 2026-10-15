@@ -32,9 +32,9 @@
 		var/obj/target_obj = target
 		if(target_obj.resistance_flags & UNACIDABLE)
 			return
-	target.visible_message("<span class='warning'>[chassis] starts to drill [target].</span>", \
-					"<span class='userdanger'>[chassis] starts to drill [target]...</span>", \
-					 "<span class='italics'>You hear drilling.</span>")
+	target.visible_message("<span class='warning'>[chassis] zaczyna wiercić w [target].</span>", \
+					"<span class='userdanger'>[chassis] zaczyna wiercić w [target]...</span>", \
+					 "<span class='italics'>Słyszysz wiercenie.</span>")
 
 	if(do_after_cooldown(target))
 		set_ready_state(FALSE)
@@ -71,7 +71,7 @@
 			drill.log_message("Drilled through [src]", LOG_MECHA)
 			dismantle_wall(TRUE, FALSE)
 	else
-		drill.occupant_message("<span class='danger'>[src] is too durable to drill through.</span>")
+		drill.occupant_message("<span class='danger'>[src] jest zbyt wytrzymały, by go przewiercić.</span>")
 
 /turf/closed/mineral/drill_act(obj/item/mecha_parts/mecha_equipment/drill/drill)
 	var/turf/T = get_turf(drill.chassis)
@@ -112,9 +112,9 @@
 	butchering.butchering_enabled = FALSE
 
 /obj/item/mecha_parts/mecha_equipment/drill/proc/drill_mob(mob/living/target, mob/user)
-	target.visible_message("<span class='danger'>[chassis] is drilling [target] with [src]!</span>", \
-						"<span class='userdanger'>[chassis] is drilling you with [src]!</span>")
-	log_combat(user, target, "drilled", "[name]", "(INTENT: [uppertext(user.a_intent)]) (DAMTYPE: [uppertext(damtype)])")
+	target.visible_message("<span class='danger'>[chassis] wierci w [target] za pomocą [src]!</span>", \
+						"<span class='userdanger'>[chassis] wierci w tobie za pomocą [src]!</span>")
+	log_combat(user, target, "wierci w", "[name]", "(COMBAT MODE: [user.combat_mode ? "ON" : "OFF"]) (DAMTYPE: [uppertext(damtype)])")
 	if(target.stat == DEAD && target.getBruteLoss() >= 200)
 		log_combat(user, target, "gibbed", name)
 		if(LAZYLEN(target.butcher_results) || LAZYLEN(target.guaranteed_butcher_results))

@@ -11,18 +11,18 @@
 	mob_biotypes = list(MOB_ORGANIC, MOB_HUMANOID)
 	speak_chance = 0
 	turns_per_move = 5
-	response_help = "pokes"
-	response_disarm = "shoves"
-	response_harm = "hits"
+	response_help = "szturcha"
+	response_disarm = "popycha"
+	response_harm = "uderza"
 	speed = 0
 	stat_attack = UNCONSCIOUS
 	robust_searching = 1
 	maxHealth = 120
 	health = 120
 	melee_damage = 14
-	attacktext = "slashes"
+	attacktext = "tnie"
 	attack_sound = 'sound/weapons/bladeslice.ogg'
-	a_intent = INTENT_HARM
+	combat_mode = TRUE
 	loot = list(/obj/effect/gibspawner/human)
 	atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 0, "max_n2" = 0)
 	unsuitable_atmos_damage = 10
@@ -44,9 +44,9 @@
 	maxHealth = 120
 	health = 120
 	melee_damage = 6
-	attacktext = "pistol whips"
+	attacktext = "uderza kolbą"
 	attack_sound = 'sound/weapons/punchmiss.ogg'
-	a_intent = INTENT_HARM
+	combat_mode = TRUE
 	atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 0, "max_n2" = 0)
 	unsuitable_atmos_damage = 10
 	faction = list("neutral")
@@ -66,7 +66,7 @@
 	maxHealth = 135
 	health = 135
 	melee_damage = 13
-	attacktext = "slashes"
+	attacktext = "tnie"
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
@@ -96,7 +96,7 @@
 	health = 175
 	maxHealth = 175
 	melee_damage = 10
-	attacktext = "bludgeons"
+	attacktext = "tłucze"
 	attack_sound = 'sound/weapons/genhit1.ogg'
 	icon_state = "nsvnt_ranged_space_elite"
 	icon_living = "nsvnt_ranged_space_elite"

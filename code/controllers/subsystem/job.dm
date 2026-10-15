@@ -323,6 +323,9 @@ SUBSYSTEM_DEF(job)
 
 	HandleFeedbackGathering()
 
+	//AQ EDIT - bilety na pracę kupione za aquilosy mają pierwszeństwo (aquila/code/modules/metacoin/perks.dm)
+	assign_job_tickets()
+
 	//People who wants to be the overflow role, sure, go on.
 	JobDebug("DO, Running Overflow Check 1")
 	var/datum/job/overflow = GetJob(SSjob.overflow_role)
@@ -511,7 +514,7 @@ SUBSYSTEM_DEF(job)
 
 	if(living_mob.mind)
 		living_mob.mind.assigned_role = rank
-	to_chat(M, "<b>You are the [rank].</b>")
+	to_chat(M, "<b>Jesteś: [rank].</b>")
 	if(job)
 		var/new_mob = job.equip(living_mob, null, null, joined_late , null, M.client)
 		if(ismob(new_mob))
@@ -528,16 +531,16 @@ SUBSYSTEM_DEF(job)
 				M.client.holder.auto_deadmin()
 			else
 				handle_auto_deadmin_roles(M.client, rank)
-		to_chat(M, "<b>As the [rank] you answer directly to [job.supervisors]. Special circumstances may change this.</b>")
+		to_chat(M, "<b>Jako [rank] podlegasz bezpośrednio: [job.supervisors]. Szczególne okoliczności mogą to zmienić.</b>")
 		job.radio_help_message(M)
 		if(job.req_admin_notify)
-			to_chat(M, "<b>You are playing a job that is important for Game Progression. If you have to disconnect, please notify the admins via adminhelp.</b>")
+			to_chat(M, "<b>Grasz na stanowisku ważnym dla przebiegu gry. Jeśli musisz się rozłączyć, powiadom adminów przez adminhelp.</b>")
 		if(CONFIG_GET(number/minimal_access_threshold))
-			to_chat(M, "<span class='notice'><B>As this station was initially staffed with a [CONFIG_GET(flag/jobs_have_minimal_access) ? "full crew, only your job's necessities" : "skeleton crew, additional access may"] have been added to your ID card.</B></span>")
-		to_chat(M, "<b>New to your job? Visit the <a href='https://nsv.beestation13.com/mediawiki2/index.php?search=[rank]'>[rank] wiki page</a> for more info!")
+			to_chat(M, "<span class='notice'><B>Ponieważ ta stacja była początkowo obsadzona [CONFIG_GET(flag/jobs_have_minimal_access) ? "pełną załogą, na twoją kartę ID mogły zostać dodane tylko niezbędne dostępy" : "szczątkową załogą, na twoją kartę ID mogły zostać dodane dodatkowe dostępy"].</B></span>")
+		to_chat(M, "<b>Jesteś nowy na tym stanowisku? Odwiedź <a href='https://nsv.beestation13.com/mediawiki2/index.php?search=[rank]'>stronę wiki: [rank]</a>, by dowiedzieć się więcej!")
 	if(ishuman(living_mob))
 		var/mob/living/carbon/human/wageslave = living_mob
-		living_mob.add_memory("Your account ID is [wageslave.account_id].")
+		living_mob.add_memory("Twój numer konta to [wageslave.account_id].")
 	if(job && living_mob)
 		job.after_spawn(living_mob, M, joined_late) // note: this happens before the mob has a key! M will always have a client, living_mob might not.
 
@@ -648,7 +651,7 @@ SUBSYSTEM_DEF(job)
 	if(PopcapReached() && !IS_PATRON(player.ckey))
 		JobDebug("Popcap overflow Check observer located, Player: [player]")
 	JobDebug("Player rejected :[player]")
-	to_chat(player, "<b>You have failed to qualify for any job you desired.</b>")
+	to_chat(player, "<b>Nie zakwalifikowałeś się do żadnego z wybranych stanowisk.</b>")
 	unassigned -= player
 	player.ready = PLAYER_NOT_READY
 
@@ -793,7 +796,7 @@ SUBSYSTEM_DEF(job)
 
 /obj/item/paper/fluff/spare_id_safe_code/Initialize(mapload)
 	var/id_safe_code = SSjob.spare_id_safe_code
-	default_raw_text = "Captain's Spare ID safe code combination: [id_safe_code ? id_safe_code : "\[REDACTED\]"]<br><br>The spare ID can be found in its dedicated safe on the bridge."
+	default_raw_text = "Szyfr sejfu z zapasowym ID kapitana: [id_safe_code ? id_safe_code : "\[UTAJNIONE\]"]<br><br>Zapasowe ID znajduje się w przeznaczonym do tego sejfie na mostku."
 	return ..()
 
 /datum/controller/subsystem/job/proc/promote_to_captain(var/mob/dead/new_player/new_captain, acting_captain = FALSE)
@@ -811,12 +814,12 @@ SUBSYSTEM_DEF(job)
 		"in your backpack" = ITEM_SLOT_BACKPACK,
 		"in your hands" = ITEM_SLOT_HANDS
 	)
-	var/where = H.equip_in_one_of_slots(paper, slots, FALSE) || "at your feet"
+	var/where = H.equip_in_one_of_slots(paper, slots, FALSE) || "pod twoimi stopami"
 
 	if(acting_captain)
-		to_chat(new_captain, "<span class='notice'>Due to your position in the chain of command, you have been granted access to captain's spare ID. You can find in important note about this [where].</span>")
+		to_chat(new_captain, "<span class='notice'>Ze względu na twoją pozycję w łańcuchu dowodzenia otrzymałeś dostęp do zapasowego ID kapitana. Ważną notatkę na ten temat znajdziesz: [where].</span>")
 	else
-		to_chat(new_captain, "<span class='notice'>You can find the code to obtain your spare ID from the secure safe on the Bridge [where].</span>")
+		to_chat(new_captain, "<span class='notice'>Szyfr do zapasowego ID z sejfu na mostku znajdziesz: [where].</span>")
 
 	// Force-give their ID card bridge access.
 	if(H.wear_id?.GetID())

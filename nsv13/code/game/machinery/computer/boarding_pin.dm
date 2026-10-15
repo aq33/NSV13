@@ -5,7 +5,7 @@ GLOBAL_VAR_INIT(boarding_guns_z_locked, TRUE)
 /obj/item/firing_pin/boarding
 	name = "boarding firing pin"
 	desc = "This safety firing pin allows weapons to be fired only on enemy ships at the HOS's discretion."
-	fail_message = "<span class='warning'>USE NOT AUTHORIZED.</span>"
+	fail_message = "<span class='warning'>UŻYCIE NIEAUTORYZOWANE.</span>"
 	pin_removeable = TRUE
 	force_replace = TRUE
 	req_one_access = list(ACCESS_ARMORY)
@@ -60,14 +60,14 @@ GLOBAL_VAR_INIT(boarding_guns_z_locked, TRUE)
 	. = ..()
 
 	var/dat = "[GLOB.boarding_guns_z_locked ? "Guns are set to Away only." : "Guns are set to General Quarters."]<br>"
-	dat += "Current alert level: [get_security_level()]<br>"
+	dat += "Obecny poziom alarmu: [get_security_level_pl()]<br>"
 
 	if(!GLOB.boarding_guns_z_locked)
-		dat += "<A href='?src=[REF(src)];locked=true'>Lock weapons on ship.</A><br>"
+		dat += "<A href='byond://?src=[REF(src)];locked=true'>Zablokuj broń na okręcie.</A><br>"
 	else
-		dat += "<A href='?src=[REF(src)];locked=false'>Unlock weapons during General Quarters.</A><br>"
+		dat += "<A href='byond://?src=[REF(src)];locked=false'>Odblokuj broń podczas alarmu bojowego.</A><br>"
 
-	dat += "<a href='?src=[REF(user)];mach_close=computer'>Close</a>"
+	dat += "<a href='byond://?src=[REF(user)];mach_close=computer'>Close</a>"
 
 	var/datum/browser/popup = new(user, "computer", "boarding weapon management", 300, 150) //width, height
 	popup.set_content("<center>[dat]</center>")
@@ -80,14 +80,14 @@ GLOBAL_VAR_INIT(boarding_guns_z_locked, TRUE)
 	usr.set_machine(src)
 	add_fingerprint(usr)
 	if(!allowed(usr))
-		to_chat(usr, "<span class='danger'>Access denied.</span>")
+		to_chat(usr, "<span class='danger'>Odmowa dostępu.</span>")
 		return
 
 	if(href_list["locked"] == "true")
 		GLOB.boarding_guns_z_locked = TRUE
-		say("Boarding pins set to Away.")
+		say("Bolce abordażowe ustawione na: misja.")
 	else if(href_list["locked"] == "false")
 		GLOB.boarding_guns_z_locked = FALSE
-		say("Boarding pins set to General Quarters.")
+		say("Bolce abordażowe ustawione na: alarm bojowy.")
 
 	updateUsrDialog()

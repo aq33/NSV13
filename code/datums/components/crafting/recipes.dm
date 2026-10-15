@@ -22,6 +22,10 @@
   * user: the /mob that initiated the crafting
   * collected_requirements: A list of lists of /obj/item instances that satisfy reqs. Top level list is keyed by requirement path.
   */
+///Called after the result is created and placed (newfood marks chef-made food here)
+/datum/crafting_recipe/proc/on_craft_completion(mob/user, atom/result)
+	return
+
 /datum/crafting_recipe/proc/check_requirements(mob/user, list/collected_requirements)
 	return TRUE
 
@@ -854,7 +858,7 @@
 
 /datum/crafting_recipe/noose/check_requirements(mob/user, list/collected_requirements)
 	if(!(locate(/obj/structure/chair) in get_turf(user)))
-		to_chat(user, "<span class='warning'>You have to be standing on top of a chair to make a noose!</span>")
+		to_chat(user, "<span class='warning'>Aby zrobić pętlę, musisz stać na krześle!</span>")
 		return FALSE
 	return ..()
 
@@ -896,7 +900,7 @@
 	time = 30
 	tools = list(TOOL_WIRECUTTER)
 	reqs = list(/obj/item/aicard = 1,
-					/obj/item/reagent_containers/food/snacks/grown/potato = 1,
+					/obj/item/food/grown/potato = 1,
 					/obj/item/stack/cable_coil = 5)
 	category = CAT_MISC
 
@@ -906,7 +910,7 @@
 	time = 30
 	tools = list(TOOL_WIRECUTTER)
 	reqs = list(/obj/item/aicard = 1,
-					/obj/item/reagent_containers/food/snacks/grown/pumpkin = 1,
+					/obj/item/food/grown/pumpkin = 1,
 					/obj/item/stack/cable_coil = 5)
 	category = CAT_MISC
 
@@ -917,14 +921,6 @@
 	reqs = list(/obj/item/tank/internals/oxygen/red = 2, /obj/item/extinguisher = 1, /obj/item/pipe = 3, /obj/item/stack/cable_coil = 30)//red oxygen tank so it looks right
 	category = CAT_MISC
 	tools = list(TOOL_WRENCH, TOOL_WELDER, TOOL_WIRECUTTER)
-
-/datum/crafting_recipe/multiduct
-	name = "Multi-layer duct"
-	result = /obj/machinery/duct/multilayered
-	time = 5
-	reqs = list(/obj/item/stack/ducts = 5)
-	category = CAT_MISC
-	tools = list(TOOL_WELDER)
 
 /datum/crafting_recipe/upgraded_gauze
 	name = "Improved Gauze"
@@ -977,12 +973,12 @@
 	result = /obj/item/clothing/accessory/poppy_pin
 	time = 5
 	reqs = list(/obj/item/stack/rods = 1,
-				/obj/item/reagent_containers/food/snacks/grown/poppy = 1)
+				/obj/item/food/grown/poppy = 1)
 	category = CAT_MISC
 
 /datum/crafting_recipe/poppy_pin_removal
 	name = "Poppy Pin Removal"
-	result = /obj/item/reagent_containers/food/snacks/grown/poppy
+	result = /obj/item/food/grown/poppy
 	time = 5
 	reqs = list(/obj/item/clothing/accessory/poppy_pin = 1)
 

@@ -10,6 +10,7 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 	icon_state = "clockwork_marauder"
 	icon_dead = "anime_fragment"
 	possible_a_intents = list(INTENT_HARM)
+	combat_mode = TRUE
 	health = 140
 	maxHealth = 140
 
@@ -22,7 +23,7 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 	pass_flags = PASSTABLE
 	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 0, CLONE = 0, STAMINA = 0, OXY = 0)
 
-	attacktext = "slices"
+	attacktext = "kroi"
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	chat_color = "#CAA25B"
 	mobchatspan = "brassmobsay"
@@ -50,7 +51,7 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 /mob/living/simple_animal/hostile/clockwork_marauder/Login()
 	. = ..()
 	add_servant_of_ratvar(src)
-	to_chat(src, "<span class='brass'>You can block up to 4 attacks with your shield, however it requires a welder to be repaired.</span>")
+	to_chat(src, "<span class='brass'>Tarczą możesz zablokować do 4 ataków, ale do jej naprawy potrzebna jest spawarka.</span>")
 
 /mob/living/simple_animal/hostile/clockwork_marauder/death(gibbed)
 	. = ..()
@@ -75,7 +76,7 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 	//Block Ranged Attacks
 	if(shield_health > 0)
 		damage_shield()
-		to_chat(src, "<span class='warning'>Your shield blocks the attack.</span>")
+		to_chat(src, "<span class='warning'>Twoja tarcza blokuje atak.</span>")
 		return BULLET_ACT_BLOCK
 	return ..()
 
@@ -83,13 +84,13 @@ GLOBAL_LIST_EMPTY(clockwork_marauders)
 	shield_health --
 	playsound(src, 'sound/magic/clockwork/anima_fragment_attack.ogg', 60, TRUE)
 	if(shield_health == 0)
-		to_chat(src, "<span class='userdanger'>Your shield breaks!</span>")
-		to_chat(src, "<span class='brass'>You require a welding tool to repair your damaged shield!</span>")
+		to_chat(src, "<span class='userdanger'>Twoja tarcza pęka!</span>")
+		to_chat(src, "<span class='brass'>Do naprawy uszkodzonej tarczy potrzebujesz spawarki!</span>")
 
 /mob/living/simple_animal/hostile/clockwork_marauder/welder_act(mob/living/user, obj/item/I)
 	if(do_after(user, 25, target=src))
 		health = min(health + 10, maxHealth)
-		to_chat(user, "<span class='notice'>You repair some of [src]'s damage.</span>")
+		to_chat(user, "<span class='notice'>Naprawiasz część uszkodzeń [src].</span>")
 		if(shield_health < MARAUDER_SHIELD_MAX)
 			shield_health ++
 			playsound(src, 'sound/magic/charge.ogg', 60, TRUE)

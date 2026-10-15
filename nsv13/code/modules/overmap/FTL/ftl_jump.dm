@@ -47,7 +47,7 @@
 /datum/star_system/proc/after_enter(obj/structure/overmap/OM)
 	SEND_SIGNAL(src, COMSIG_STAR_SYSTEM_AFTER_ENTER, OM)
 	if(desc)
-		OM.relay(null, "<span class='notice'><h2>Now entering [name]...</h2></span>")
+		OM.relay(null, "<span class='notice'><h2>Wchodzimy do [name]...</h2></span>")
 		OM.relay(null, "<span class='notice'>[desc]</span>")
 	//End the round upon entering O45.
 	if(system_traits & STARSYSTEM_END_ON_ENTER)
@@ -158,7 +158,7 @@
 			continue
 		if(same_faction_only && jumping.faction != OM.faction)	//We don't pull all small craft in the system unless we were the last ship here.
 			continue
-		OM.relay("<span class='warning'>You're caught in [jumping]'s bluespace wake!</span>")
+		OM.relay("<span class='warning'>Wpadasz w bluespace'owy ślad [jumping]!</span>")
 		SEND_SIGNAL(OM, COMSIG_FTL_STATE_CHANGE)
 		OM.forceMove(locate(OM.x, OM.y, jumping.reserved_z))
 		system_contents -= OM
@@ -227,7 +227,7 @@
 
 	var/interdict_return = SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CHECK_INTERDICT, src)
 	if(!force && ((interdict_return & STRONG_INTERDICT) || ((interdict_return & WEAK_INTERDICT) && !misjump))) // Override interdiction if the game is over, flying unsafe also bypasses non-fielddisruptive interdiction.
-		ftl_drive.radio.talk_into(ftl_drive, "Warning. Local energy anomaly detected - calculated jump parameters invalid. Performing emergency reboot.", ftl_drive.radio_channel)
+		ftl_drive.radio.talk_into(ftl_drive, "Ostrzeżenie. Wykryto lokalną anomalię energetyczną - obliczone parametry skoku nieprawidłowe. Wykonywanie awaryjnego restartu.", ftl_drive.radio_channel)
 		relay('sound/magic/lightning_chargeup.ogg', channel=CHANNEL_IMPORTANT_SHIP_ALERT)
 		ftl_drive.depower()
 		return
@@ -287,10 +287,10 @@
 				if ( nearestMachine )
 					var/newNausea = nearestMachine.reduceNausea( nearestDistance, 70 )
 					if ( newNausea > 10 )
-						to_chat(L, "<span class='warning'>You can feel your head start to swim...</span>")
+						to_chat(L, "<span class='warning'>Zaczyna ci się kręcić w głowie...</span>")
 					L.adjust_disgust( newNausea )
 				else
-					to_chat(L, "<span class='warning'>You can feel your head start to swim...</span>")
+					to_chat(L, "<span class='warning'>Zaczyna ci się kręcić w głowie...</span>")
 					L.adjust_disgust(pick(70, 100))
 		shake_with_inertia(M, 4, 1, list(distance=nearestDistance, machine=nearestMachine))
 
@@ -363,8 +363,8 @@
 
 /datum/techweb_node/ftl_slipstream
 	id = "ftl_slipstream"
-	display_name = "Quantum slipstream technology"
-	description = "Cutting edge upgrades for the Thirring Drive computer, allowing for more efficient FTL travel."
+	display_name = "Technologia kwantowego strumienia ślizgowego"
+	description = "Najnowocześniejsze ulepszenia komputera napędu Thirringa, pozwalające na wydajniejsze podróże FTL."
 	prereq_ids = list("comptech")
 	design_ids = list("ftl_slipstream_chip")
 	research_costs = list(TECHWEB_POINT_TYPE_WORMHOLE = 5000) //You need to have fully probed a wormhole to unlock this.

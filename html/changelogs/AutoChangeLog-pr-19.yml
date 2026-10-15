@@ -1,5 +1,0 @@
-author: sh4dow321
-delete-after: true
-changes:
-  - bugfix: Ratownik Medyczny znowu dostaje właściwą rangę; uzupełniono brakujące
-      wpisy w plikach rang.

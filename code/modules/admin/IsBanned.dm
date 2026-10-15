@@ -14,7 +14,8 @@ GLOBAL_LIST_EMPTY(ckey_redirects)
 		if(real_bans_only)
 			return FALSE
 		log_access("Failed Login (invalid data): [key] [address]-[computer_id]")
-		return list("reason"="invalid login data", "desc"="Error: Could not check ban status, Please try again. Error message: Your computer provided invalid or blank information to the server on connection (byond username, IP, and Computer ID.) Provided information for reference: Username:'[key]' IP:'[address]' Computer ID:'[computer_id]'. (If you continue to get this error, please restart byond or contact byond support.)")
+		message_admins("<span class='adminnotice'>Nieudane logowanie: [key] - nieprawidłowe dane połączenia (IP: [address], CID: [computer_id]).</span>")
+		return list("reason"="invalid login data", "desc"="Błąd: nie można sprawdzić statusu bana, spróbuj ponownie. Komunikat błędu: twój komputer przesłał serwerowi przy połączeniu nieprawidłowe lub puste informacje (nazwa użytkownika BYOND, IP i ID komputera). Przesłane informacje: nazwa użytkownika: '[key]', IP: '[address]', ID komputera: '[computer_id]'. (Jeśli ten błąd się powtarza, zrestartuj BYOND lub skontaktuj się z pomocą techniczną BYOND.)")
 
 	if (type == "world")
 		return ..() //shunt world topic banchecks to purely to byond's internal ban system
@@ -42,22 +43,30 @@ GLOBAL_LIST_EMPTY(ckey_redirects)
 				log_admin("The admin [key] has been allowed to bypass the whitelist")
 				if (message)
 					message_admins("<span class='adminnotice'>The admin [key] has been allowed to bypass the whitelist</span>")
-					addclientmessage(ckey,"<span class='adminnotice'>You have been allowed to bypass the whitelist</span>")
+					addclientmessage(ckey,"<span class='adminnotice'>Pozwolono ci ominąć białą listę</span>")
 			else
 				log_access("Failed Login: [key] - Not on whitelist")
+				if (message)
+					message_admins("<span class='adminnotice'>Nieudane logowanie: [key] - brak na whiteliście.</span>")
 				return list("reason"="whitelist", "desc" = "\nOdwiedź naszego Discorda (https://discord.gg/KE8XTzTuyN), by dostać dostęp na serwer. Przydziel sobie rangę w rolach, napisz na forum lub skontakuj się z adminem by podać swoją nazwę BYOND")
 
 	//Guest Checking
 	if(!real_bans_only && !C && IS_GUEST_KEY(key))
 		if (CONFIG_GET(flag/guest_ban))
 			log_access("Failed Login: [key] - Guests not allowed")
-			return list("reason"="guest", "desc"="\nReason: Guests not allowed. Please sign in with a byond account.")
+			if (message)
+				message_admins("<span class='adminnotice'>Nieudane logowanie: [key] - goście są zablokowani.</span>")
+			return list("reason"="guest", "desc"="\nPowód: goście nie są wpuszczani. Zaloguj się kontem BYOND.")
 		if (CONFIG_GET(flag/panic_bunker) && SSdbcore.Connect())
 			log_access("Failed Login: [key] - Guests not allowed during panic bunker")
-			return list("reason"="guest", "desc"="\nReason: Sorry but the server is currently not accepting connections from never before seen players or guests. If you have played on this server with a byond account before, please log in to the byond account you have played from.")
+			if (message)
+				message_admins("<span class='adminnotice'>Nieudane logowanie: [key] - goście są zablokowani przez panic bunker.</span>")
+			return list("reason"="guest", "desc"="\nPowód: przepraszamy, ale serwer obecnie nie przyjmuje połączeń od nowych graczy ani gości. Jeśli grałeś już na tym serwerze z kontem BYOND, zaloguj się na konto, z którego grałeś.")
 	if(CONFIG_GET(flag/panic_bunker) && CONFIG_GET(flag/panic_bunker_interview) && !CONFIG_GET(flag/panic_bunker_interview_retries) && GLOB.interviews.denied_ckeys.Find(ckey))
 		log_access("Failed Login: [key] - Interview denied")
-		return list("reason"="interview", "desc"="\nReason: You failed an interview while the panic bunker is enabled. Try again during the next round or after the panic bunker is disabled.")
+		if (message)
+			message_admins("<span class='adminnotice'>Nieudane logowanie: [key] - odrzucona rozmowa (interview) przy panic bunkrze.</span>")
+		return list("reason"="interview", "desc"="\nPowód: nie przeszedłeś rozmowy kwalifikacyjnej, gdy działał panic bunker. Spróbuj ponownie w następnej rundzie lub po wyłączeniu panic bunkera.")
 
 	//Population Cap Checking
 	var/extreme_popcap = CONFIG_GET(number/extreme_popcap)
@@ -68,9 +77,13 @@ GLOBAL_LIST_EMPTY(ckey_redirects)
 				var/redirect_address = CONFIG_GET(string/redirect_address)
 				if(redirect_address != "")
 					log_access("Failed Login: [key] - Population cap reached. Redirecting to overflow server.")
+					if (message)
+						message_admins("<span class='adminnotice'>Nieudane logowanie: [key] - limit graczy osiągnięty, przekierowanie na serwer zapasowy.</span>")
 					GLOB.ckey_redirects += ckey
 				else
 					log_access("Failed Login: [key] - Population cap reached")
+					if (message)
+						message_admins("<span class='adminnotice'>Nieudane logowanie: [key] - limit graczy osiągnięty.</span>")
 					return list("reason"="popcap", "desc"= "\nReason: [CONFIG_GET(string/extreme_popcap_message)]")
 
 	if(CONFIG_GET(flag/sql_enabled))
@@ -95,18 +108,20 @@ GLOBAL_LIST_EMPTY(ckey_redirects)
 							message_admins(msg)
 							addclientmessage(ckey,"<span class='adminnotice'>Admin [key] has been allowed to bypass a matching non-admin ban on [i["key"]] [i["ip"]]-[i["computerid"]].</span>")
 						continue
-				var/expires = "This is a permanent ban."
-				var/global_ban = "This is a global ban from all of our servers."
+				var/expires = "To jest ban permanentny."
+				var/global_ban = "To jest ban globalny na wszystkie nasze serwery."
 				if(i["expiration_time"])
-					expires = " The ban is for [DisplayTimeText(text2num(i["duration"]) MINUTES)] and expires on [i["expiration_time"]] (server time)."
+					expires = " Ban trwa [DisplayTimeText(text2num(i["duration"]) MINUTES)] i wygasa [i["expiration_time"]] (czas serwera)."
 				if(!text2num(i["global_ban"]))
-					global_ban = "This is a single-server ban, and only applies to [i["server_name"]]."
+					global_ban = "To jest ban na jeden serwer i dotyczy tylko [i["server_name"]]."
 				var/desc = {"You, or another user of this computer or connection ([i["key"]]) is banned from playing here.
 				The ban reason is: [i["reason"]].
 				This ban (BanID #[i["id"]]) was applied by [i["admin_key"]] on [i["bantime"]] during round ID [i["round_id"]].
 				[global_ban]
 				[expires]"}
 				log_access("Failed Login: [key] [computer_id] [address] - Banned (#[i["id"]]) [text2num(i["global_ban"]) ? "globally" : "locally"]")
+				if (message && !real_bans_only)
+					message_admins("<span class='adminnotice'>Nieudane logowanie: [key] - zbanowany (ban #[i["id"]] na [i["key"]], nałożony przez [i["admin_key"]]).</span>")
 				return list("reason"="Banned","desc"="[desc]")
 
 	var/list/ban = ..()	//default pager ban stuff
@@ -215,15 +230,17 @@ GLOBAL_LIST_EMPTY(ckey_redirects)
 			log_admin("The admin [key] has been allowed to bypass a matching host/sticky ban on [bannedckey]")
 			if (message)
 				message_admins("<span class='adminnotice'>The admin [key] has been allowed to bypass a matching host/sticky ban on [bannedckey]</span>")
-				addclientmessage(ckey,"<span class='adminnotice'>You have been allowed to bypass a matching host/sticky ban on [bannedckey]</span>")
+				addclientmessage(ckey,"<span class='adminnotice'>Pozwolono ci ominąć pasujący ban host/sticky na [bannedckey]</span>")
 			return null
 
 		if (C) //user is already connected!.
-			to_chat(C, "<span class='redtext'>You are about to get disconnected for matching a sticky ban after you connected. If this turns out to be the ban evasion detection system going haywire, we will automatically detect this and revert the matches. if you feel that this is the case, please wait EXACTLY 6 seconds then reconnect using file -> reconnect to see if the match was automatically reversed.</span>")
+			to_chat(C, "<span class='redtext'>Za chwilę zostaniesz rozłączony, bo po połączeniu dopasowano cię do sticky bana. Jeśli okaże się, że system wykrywania omijania banów zwariował, automatycznie to wykryjemy i cofniemy dopasowania. Jeśli uważasz, że tak jest, poczekaj DOKŁADNIE 6 sekund, a potem połącz się ponownie przez Plik -> Połącz ponownie, by sprawdzić, czy dopasowanie zostało automatycznie cofnięte.</span>")
 
 		var/desc = "\nReason:(StickyBan) You, or another user of this computer or connection ([bannedckey]) is banned from playing here. The ban reason is:\n[ban["message"]]\nThis ban was applied by [ban["admin"]]\nThis is a BanEvasion Detection System ban, if you think this ban is a mistake, please wait EXACTLY 6 seconds, then try again before filing an appeal.\n"
 		. = list("reason" = "Stickyban", "desc" = desc)
 		log_access("Failed Login: [key] [computer_id] [address] - StickyBanned [ban["message"]] Target Username: [bannedckey] Placed by [ban["admin"]]")
+		if (message)
+			message_admins("<span class='adminnotice'>Nieudane logowanie: [key] - stickyban na [bannedckey] (nałożony przez [ban["admin"]]).</span>")
 
 	return .
 

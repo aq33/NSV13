@@ -6,8 +6,7 @@
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 8;
-	pixel_x = 5;
-	pixel_y = 5
+	piping_layer = 4
 	},
 /turf/open/floor/plasteel/grimy,
 /area/ruin/space/has_grav/listeningstation)
@@ -16,8 +15,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	pixel_x = 5;
-	pixel_y = 5
+	piping_layer = 4
 	},
 /obj/machinery/door/airlock/hatch{
 	name = "Telecommunications";
@@ -38,8 +36,7 @@
 "bm" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	pixel_x = 5;
-	pixel_y = 5
+	piping_layer = 4
 	},
 /turf/open/floor/plasteel/white/side,
 /area/ruin/space/has_grav/listeningstation)
@@ -50,8 +47,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4;
-	pixel_x = 5;
-	pixel_y = 5
+	piping_layer = 4
 	},
 /obj/machinery/door/airlock{
 	name = "Personal Quarters"
@@ -86,8 +82,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 6;
-	pixel_x = 5;
-	pixel_y = 5
+	piping_layer = 4
 	},
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
@@ -106,8 +101,7 @@
 /obj/structure/chair/stool,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 4;
-	pixel_x = 5;
-	pixel_y = 5
+	piping_layer = 4
 	},
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
@@ -123,8 +117,7 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 4;
-	pixel_x = 5;
-	pixel_y = 5
+	piping_layer = 4
 	},
 /obj/effect/turf_decal/tile/red{
 	dir = 1
@@ -147,8 +140,7 @@
 "jb" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 1;
-	pixel_x = 5;
-	pixel_y = 5
+	piping_layer = 4
 	},
 /turf/open/floor/plasteel/white/corner,
 /area/ruin/space/has_grav/listeningstation)
@@ -169,8 +161,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 4;
-	pixel_x = 5;
-	pixel_y = 5
+	piping_layer = 4
 	},
 /turf/open/floor/plasteel/white/side{
 	dir = 9
@@ -191,8 +182,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4;
-	pixel_x = 5;
-	pixel_y = 5
+	piping_layer = 4
 	},
 /obj/effect/turf_decal/tile/red{
 	dir = 1
@@ -211,8 +201,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	pixel_x = 5;
-	pixel_y = 5
+	piping_layer = 4
 	},
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
@@ -222,8 +211,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 5;
-	pixel_x = 5;
-	pixel_y = 5
+	piping_layer = 4
 	},
 /turf/open/floor/plasteel/grimy,
 /area/ruin/space/has_grav/listeningstation)
@@ -277,7 +265,7 @@
 /obj/item/storage/box/donkpockets{
 	pixel_x = 2
 	},
-/obj/item/reagent_containers/food/snacks/chocolatebar,
+/obj/item/food/chocolatebar,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/sign/poster/contraband/random{
@@ -310,8 +298,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 8;
-	pixel_x = 5;
-	pixel_y = 5
+	piping_layer = 4
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -337,8 +324,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	pixel_x = 5;
-	pixel_y = 5
+	piping_layer = 4
 	},
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
@@ -346,8 +332,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 9;
-	pixel_x = 5;
-	pixel_y = 5
+	piping_layer = 4
 	},
 /turf/open/floor/plasteel/white/side{
 	dir = 5
@@ -405,8 +390,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4;
-	pixel_x = 5;
-	pixel_y = 5
+	piping_layer = 4
 	},
 /obj/effect/baseturf_helper/asteroid/airless,
 /obj/effect/turf_decal/tile/red{
@@ -421,8 +405,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 10;
-	pixel_x = 5;
-	pixel_y = 5
+	piping_layer = 4
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -465,8 +448,7 @@
 "vL" = (
 /obj/machinery/atmospherics/components/unary/outlet_injector/on{
 	dir = 8;
-	pixel_x = 5;
-	pixel_y = 5
+	piping_layer = 4
 	},
 /turf/open/floor/plating/airless,
 /area/ruin/space/has_grav/listeningstation)
@@ -581,8 +563,7 @@
 "DA" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	pixel_x = 5;
-	pixel_y = 5
+	piping_layer = 4
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -624,8 +605,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
-	pixel_x = 5;
-	pixel_y = 5
+	piping_layer = 4
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -704,8 +684,7 @@
 "KQ" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
-	pixel_x = 5;
-	pixel_y = 5
+	piping_layer = 4
 	},
 /obj/effect/turf_decal/tile/red{
 	dir = 1
@@ -727,8 +706,7 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 1;
-	pixel_x = 5;
-	pixel_y = 5
+	piping_layer = 4
 	},
 /obj/effect/turf_decal/tile/red{
 	dir = 1
@@ -814,8 +792,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	pixel_x = 5;
-	pixel_y = 5
+	piping_layer = 4
 	},
 /obj/machinery/door/airlock/hatch{
 	name = "E.V.A. Equipment";
@@ -836,8 +813,7 @@
 "Oh" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4;
-	pixel_x = 5;
-	pixel_y = 5
+	piping_layer = 4
 	},
 /turf/closed/wall/r_wall,
 /area/ruin/space/has_grav/listeningstation)
@@ -848,8 +824,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4;
-	pixel_x = 5;
-	pixel_y = 5
+	piping_layer = 4
 	},
 /obj/effect/turf_decal/tile/red{
 	dir = 4
@@ -904,8 +879,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4;
-	pixel_x = 5;
-	pixel_y = 5
+	piping_layer = 4
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/space/has_grav/listeningstation)
@@ -923,8 +897,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	pixel_x = 5;
-	pixel_y = 5
+	piping_layer = 4
 	},
 /obj/machinery/door/airlock/medical/glass{
 	name = "Medbay"
@@ -935,8 +908,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 4;
-	pixel_x = 5;
-	pixel_y = 5
+	piping_layer = 4
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -1022,8 +994,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 4;
-	pixel_x = 5;
-	pixel_y = 5
+	piping_layer = 4
 	},
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)

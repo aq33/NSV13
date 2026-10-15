@@ -56,7 +56,7 @@
 	if(is_type_in_list(src, GLOB.ventcrawl_machinery) && isliving(user))
 		var/mob/living/L = user
 		if(L.ventcrawler)
-			. += "<span class='notice'>Alt-click to crawl through it.</span>"
+			. += "<span class='notice'>Alt-klik, by się przez to przeczołgać.</span>"
 
 /obj/machinery/atmospherics/New(loc, process = TRUE, setdir)
 	if(!isnull(setdir))
@@ -231,7 +231,9 @@
 	if(istype(reference, /obj/machinery/atmospherics/pipe))
 		var/obj/machinery/atmospherics/pipe/P = reference
 		P.destroy_network()
-	nodes[nodes.Find(reference)] = null // for some reason things can still be acted on even though they've been deleted this is a really fucky way of detecting that
+	var/node_index = nodes.Find(reference) //AQ EDIT - reference may already be gone from nodes (mass destruction)
+	if(node_index)
+		nodes[node_index] = null // for some reason things can still be acted on even though they've been deleted this is a really fucky way of detecting that
 	update_icon()
 
 /obj/machinery/atmospherics/attackby(obj/item/W, mob/user, params)
@@ -275,18 +277,18 @@
 		empty_pipe = TRUE
 
 	if(!empty_pipe)
-		to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")
+		to_chat(user, "<span class='notice'>Zaczynasz odkręcać [src]...</span>")
 
 	if (internal_pressure > 2*ONE_ATMOSPHERE)
-		to_chat(user, "<span class='warning'>As you begin unwrenching \the [src] a gush of air blows in your face... maybe you should reconsider?</span>")
+		to_chat(user, "<span class='warning'>Gdy zaczynasz odkręcać [src], w twarz uderza cię podmuch powietrza... może powinieneś to przemyśleć?</span>")
 		unsafe_wrenching = TRUE //Oh dear oh dear
 
 	var/time_taken = empty_pipe ? 0 : 2 SECONDS
 	if(I.use_tool(src, user, time_taken, volume=50))
 		user.visible_message( \
-			"[user] unfastens \the [src].", \
-			"<span class='notice'>You unfasten \the [src].</span>", \
-			"<span class='italics'>You hear ratchet.</span>")
+			"[user] odkręca [src].", \
+			"<span class='notice'>Odkręcasz [src].</span>", \
+			"<span class='italics'>Słyszysz grzechotkę.</span>")
 		investigate_log("was <span class='warning'>REMOVED</span> by [key_name(usr)]", INVESTIGATE_ATMOS)
 
 		//You unwrenched a pipe full of pressure? Let's splat you into the wall, silly.
@@ -318,7 +320,7 @@
 		var/datum/gas_mixture/env_air = loc.return_air()
 		pressures = int_air.return_pressure() - env_air.return_pressure()
 
-	user.visible_message("<span class='danger'>[user] is sent flying by pressure!</span>","<span class='userdanger'>The pressure sends you flying!</span>")
+	user.visible_message("<span class='danger'>Ciśnienie odrzuca [user]!</span>","<span class='userdanger'>Ciśnienie cię odrzuca!</span>")
 
 	// if get_dir(src, user) is not 0, target is the edge_target_turf on that dir
 	// otherwise, edge_target_turf uses a random cardinal direction
@@ -405,7 +407,7 @@
 				if(!do_after(user, 2 SECONDS, get_turf(target_move)))
 					return
 				user.forceMove(target_move.loc) //handle entering and so on.
-				user.visible_message("<span class='notice'>You hear something squeezing through the ducts...</span>", "<span class='notice'>You climb out the ventilation system.")
+				user.visible_message("<span class='notice'>Słyszysz, jak coś przeciska się przez przewody...</span>", "<span class='notice'>Wychodzisz z systemu wentylacji.")
 			else
 				var/list/pipenetdiff = return_pipenets() ^ target_move.return_pipenets()
 				if(pipenetdiff.len)
@@ -417,7 +419,7 @@
 					playsound(src, 'sound/machines/ventcrawl.ogg', 50, 1, -3)
 	else if(is_type_in_typecache(src, GLOB.ventcrawl_machinery) && can_crawl_through()) //if we move in a way the pipe can connect, but doesn't - or we're in a vent
 		user.forceMove(loc)
-		user.visible_message("<span class='notice'>You hear something squeezing through the ducts...</span>", "<span class='notice'>You climb out the ventilation system.")
+		user.visible_message("<span class='notice'>Słyszysz, jak coś przeciska się przez przewody...</span>", "<span class='notice'>Wychodzisz z systemu wentylacji.")
 
 	//PLACEHOLDER COMMENT FOR ME TO READD THE 1 (?) DS DELAY THAT WAS IMPLEMENTED WITH A... TIMER?
 

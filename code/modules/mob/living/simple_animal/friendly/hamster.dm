@@ -1,12 +1,12 @@
 /mob/living/simple_animal/pet/hamster
 	mob_biotypes = list(MOB_ORGANIC, MOB_BEAST)
-	response_help  = "pets"
-	response_disarm = "bops"
-	response_harm   = "bites"
-	speak = list("Squeak", "SQUEAK!")
-	speak_emote = list("squeak", "hisses", "squeals")
-	emote_hear = list("squeaks.", "hisses.", "squeals.")
-	emote_see = list("skitters", "examines it's claws", "rolls around")
+	response_help  = "głaszcze"
+	response_disarm = "pstryka"
+	response_harm   = "gryzie"
+	speak = list("Pi", "PIII!")
+	speak_emote = list("piszczy", "syczy", "kwiczy")
+	emote_hear = list("piszczy.", "syczy.", "kwiczy.")
+	emote_see = list("drepcze", "ogląda swoje pazurki", "turla się")
 	faction = list("hamster")
 	see_in_dark = 5
 	speak_chance = 1
@@ -25,7 +25,7 @@
 	icon_living = "hamster"
 	held_state = "hamster"
 	icon_dead = "hamster_dead"
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab/hamster = 1)
+	butcher_results = list(/obj/item/food/meat/slab/hamster = 1)
 	childtype = /mob/living/simple_animal/pet/hamster
 	animal_species = /mob/living/simple_animal/pet/hamster
 	gold_core_spawnable = FRIENDLY_SPAWN

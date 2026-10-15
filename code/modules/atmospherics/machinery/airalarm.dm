@@ -69,7 +69,7 @@
 	req_access = list(ACCESS_ATMOSPHERICS)
 	max_integrity = 250
 	integrity_failure = 80
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 100, "bomb" = 0, "bio" = 100, "rad" = 100, "fire" = 90, "acid" = 30, "stamina" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 100, "bomb" = 0, "bio" = 100, "rad" = 100, "fire" = 90, "acid" = 30, "stamina" = 0, "bleed" = 0)
 	resistance_flags = FIRE_PROOF
 	clicksound = 'sound/machines/terminal_select.ogg'
 	layer = ABOVE_WINDOW_LAYER
@@ -238,15 +238,15 @@
 	. = ..()
 	switch(buildstage)
 		if(0)
-			. += "<span class='notice'>It is missing air alarm electronics.</span>"
+			. += "<span class='notice'>Brakuje w nim elektroniki alarmu powietrza.</span>"
 		if(1)
-			. += "<span class='notice'>It is missing wiring.</span>"
+			. += "<span class='notice'>Brakuje w nim okablowania.</span>"
 		if(2)
-			. += "<span class='notice'>Alt-click to [locked ? "unlock" : "lock"] the interface.</span>"
+			. += "<span class='notice'>Alt-klik, by [locked ? "odblokować" : "zablokować"] interfejs.</span>"
 
 /obj/machinery/airalarm/ui_status(mob/user)
 	if(user.has_unlimited_silicon_privilege && aidisabled)
-		to_chat(user, "AI control has been disabled.")
+		to_chat(user, "Sterowanie przez SI zostało wyłączone.")
 	else if(!shorted)
 		return ..()
 	return UI_CLOSE
@@ -426,7 +426,7 @@
 			var/datum/tlv/tlv = TLV[env]
 			if(isnull(tlv))
 				return
-			var/value = input("New [name] for [env]:", name, tlv.vars[name]) as num|null
+			var/value = input("Nowa wartość [name] dla [env]:", name, tlv.vars[name]) as num|null
 			if(!isnull(value) && !..())
 				if(value < 0)
 					tlv.vars[name] = -1
@@ -507,7 +507,7 @@
 		if(AALARM_MODE_REFILL)
 			return "Refill"
 		if(AALARM_MODE_PANIC)
-			return "Panic Siphon"
+			return "Awaryjne wysysanie"
 		if(AALARM_MODE_REPLACEMENT)
 			return "Cycle"
 		if(AALARM_MODE_SIPHON)
@@ -736,7 +736,7 @@
 		if(2)
 			if(W.tool_behaviour == TOOL_WIRECUTTER && panel_open && wires.is_all_cut())
 				W.play_tool_sound(src)
-				to_chat(user, "<span class='notice'>You cut the final wires.</span>")
+				to_chat(user, "<span class='notice'>Przecinasz ostatnie przewody.</span>")
 				new /obj/item/stack/cable_coil(loc, 5)
 				buildstage = 1
 				update_icon()
@@ -744,7 +744,7 @@
 			else if(W.tool_behaviour == TOOL_SCREWDRIVER)  // Opening that Air Alarm up.
 				W.play_tool_sound(src)
 				panel_open = !panel_open
-				to_chat(user, "<span class='notice'>The wires have been [panel_open ? "exposed" : "unexposed"].</span>")
+				to_chat(user, "<span class='notice'>Przewody zostały [panel_open ? "odsłonięte" : "zasłonięte"].</span>")
 				update_icon()
 				return
 			else if(istype(W, /obj/item/card/id) || istype(W, /obj/item/modular_computer/tablet/pda))// trying to unlock the interface with an ID card
@@ -755,12 +755,12 @@
 				return
 		if(1)
 			if(W.tool_behaviour == TOOL_CROWBAR)
-				user.visible_message("[user.name] removes the electronics from [src.name].",\
-									"<span class='notice'>You start prying out the circuit.</span>")
+				user.visible_message("[user.name] wyjmuje elektronikę z [src.name].",\
+									"<span class='notice'>Zaczynasz podważać płytkę.</span>")
 				W.play_tool_sound(src)
 				if (W.use_tool(src, user, 20))
 					if (buildstage == 1)
-						to_chat(user, "<span class='notice'>You remove the air alarm electronics.</span>")
+						to_chat(user, "<span class='notice'>Wyjmujesz elektronikę alarmu powietrza.</span>")
 						new /obj/item/electronics/airalarm( src.loc )
 						playsound(src.loc, 'sound/items/deconstruct.ogg', 50, 1)
 						buildstage = 0
@@ -770,14 +770,14 @@
 			if(istype(W, /obj/item/stack/cable_coil))
 				var/obj/item/stack/cable_coil/cable = W
 				if(cable.get_amount() < 5)
-					to_chat(user, "<span class='warning'>You need five lengths of cable to wire the air alarm!</span>")
+					to_chat(user, "<span class='warning'>Potrzebujesz pięciu odcinków kabla, by okablować alarm powietrza!</span>")
 					return
-				user.visible_message("[user.name] wires the air alarm.", \
-									"<span class='notice'>You start wiring the air alarm.</span>")
+				user.visible_message("[user.name] okablowuje alarm powietrza.", \
+									"<span class='notice'>Zaczynasz okablowywać alarm powietrza.</span>")
 				if (do_after(user, 20, target = src))
 					if (cable.get_amount() >= 5 && buildstage == 1)
 						cable.use(5)
-						to_chat(user, "<span class='notice'>You wire the air alarm.</span>")
+						to_chat(user, "<span class='notice'>Okablowujesz alarm powietrza.</span>")
 						wires.repair()
 						aidisabled = 0
 						locked = FALSE
@@ -790,7 +790,7 @@
 		if(0)
 			if(istype(W, /obj/item/electronics/airalarm))
 				if(user.temporarilyRemoveItemFromInventory(W))
-					to_chat(user, "<span class='notice'>You insert the circuit.</span>")
+					to_chat(user, "<span class='notice'>Wkładasz płytkę.</span>")
 					buildstage = 1
 					update_icon()
 					qdel(W)
@@ -800,14 +800,14 @@
 				var/obj/item/electroadaptive_pseudocircuit/P = W
 				if(!P.adapt_circuit(user, 25))
 					return
-				user.visible_message("<span class='notice'>[user] fabricates a circuit and places it into [src].</span>", \
-				"<span class='notice'>You adapt an air alarm circuit and slot it into the assembly.</span>")
+				user.visible_message("<span class='notice'>[user] wytwarza płytkę i umieszcza ją w [src].</span>", \
+				"<span class='notice'>Przystosowujesz płytkę alarmu powietrza i wsuwasz ją do konstrukcji.</span>")
 				buildstage = 1
 				update_icon()
 				return
 
 			if(W.tool_behaviour == TOOL_WRENCH)
-				to_chat(user, "<span class='notice'>You detach \the [src] from the wall.</span>")
+				to_chat(user, "<span class='notice'>Odczepiasz [src] od ściany.</span>")
 				W.play_tool_sound(src)
 				new /obj/item/wallframe/airalarm( user.loc )
 				qdel(src)
@@ -823,8 +823,8 @@
 /obj/machinery/airalarm/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, passed_mode)
 	switch(passed_mode)
 		if(RCD_UPGRADE_SIMPLE_CIRCUITS)
-			user.visible_message("<span class='notice'>[user] fabricates a circuit and places it into [src].</span>", \
-			"<span class='notice'>You adapt an air alarm circuit and slot it into the assembly.</span>")
+			user.visible_message("<span class='notice'>[user] wytwarza płytkę i umieszcza ją w [src].</span>", \
+			"<span class='notice'>Przystosowujesz płytkę alarmu powietrza i wsuwasz ją do konstrukcji.</span>")
 			buildstage = 1
 			update_icon()
 			return TRUE
@@ -838,14 +838,14 @@
 
 /obj/machinery/airalarm/proc/togglelock(mob/living/user)
 	if(machine_stat & (NOPOWER|BROKEN))
-		to_chat(user, "<span class='warning'>It does nothing!</span>")
+		to_chat(user, "<span class='warning'>Nic to nie daje!</span>")
 	else
 		if(src.allowed(usr) && !wires.is_cut(WIRE_IDSCAN))
 			locked = !locked
-			to_chat(user, "<span class='notice'>You [ locked ? "lock" : "unlock"] the air alarm interface.</span>")
+			to_chat(user, "<span class='notice'>[ locked ? "Blokujesz" : "Odblokowujesz"] interfejs alarmu powietrza.</span>")
 			updateUsrDialog()
 		else
-			to_chat(user, "<span class='danger'>Access denied.</span>")
+			to_chat(user, "<span class='danger'>Odmowa dostępu.</span>")
 	return
 
 /obj/machinery/airalarm/power_change()
@@ -856,7 +856,7 @@
 	if(obj_flags & EMAGGED)
 		return
 	obj_flags |= EMAGGED
-	visible_message("<span class='warning'>Sparks fly out of [src]!</span>", "<span class='notice'>You emag [src], disabling its safeties.</span>")
+	visible_message("<span class='warning'>Z [src] sypią się iskry!</span>", "<span class='notice'>Emagujesz [src], wyłączając zabezpieczenia.</span>")
 	playsound(src, "sparks", 50, 1)
 
 /obj/machinery/airalarm/obj_break(damage_flag)

@@ -39,18 +39,18 @@ GLOBAL_VAR_INIT(mouse_killed, 0)
 				D.throw_at(get_turf(D), 0, 1, src)
 
 /mob/living/simple_animal/mouse/proc/eat_cheese()
-	var/obj/item/reagent_containers/food/snacks/cheesewedge/CW = locate(/obj/item/reagent_containers/food/snacks/cheesewedge) in loc
+	var/obj/item/food/cheese/wedge/CW = locate(/obj/item/food/cheese/wedge) in loc
 	if(!QDELETED(CW) && full == FALSE)
-		say("Burp!")
-		visible_message("<span class='warning'>[src] gobbles up the [CW].</span>")
+		say("Bek!")
+		visible_message("<span class='warning'>[src] pożera [CW].</span>")
 		qdel(CW)
 		full = TRUE
 		addtimer(VARSET_CALLBACK(src, full, FALSE), 3 MINUTES)
 
 /mob/living/simple_animal/mouse/attackby(obj/item/O, mob/user, params)
-	if(istype(O, /obj/item/reagent_containers/food/snacks/cheesewedge))
-		to_chat(user, "<span class='notice'>You feed [O] to [src].</span>")
-		visible_message("[src] squeaks happily!")
+	if(istype(O, /obj/item/food/cheese/wedge))
+		to_chat(user, "<span class='notice'>Karmisz [src], podając [O].</span>")
+		visible_message("[src] radośnie piszczy!")
 		qdel(O)
 	else
 		return ..()
@@ -77,13 +77,13 @@ GLOBAL_VAR_INIT(mouse_killed, 0)
 
 	eating = TRUE
 	layer = MOB_LAYER
-	visible_message("<span class='danger'>[src] starts eating away [A]...</span>",
-						 "<span class='notice'>You start eating the [A]...</span>")
+	visible_message("<span class='danger'>[src] zaczyna zjadać [A]...</span>",
+						 "<span class='notice'>Zaczynasz zjadać [A]...</span>")
 	if(do_after(src, 30, FALSE, A))
 		if(QDELETED(A))
 			return
-		visible_message("<span class='danger'>[src] finishes eating up [A]!</span>",
-						 "<span class='notice'>You finish up eating [A]</span>")
+		visible_message("<span class='danger'>[src] kończy zjadać [A]!</span>",
+						 "<span class='notice'>Kończysz zjadać [A]</span>")
 		A.mouse_eat(src)
 		GLOB.mouse_food_eaten++
 
@@ -97,7 +97,7 @@ GLOBAL_VAR_INIT(mouse_killed, 0)
 		return FALSE
 	if(is_type_in_list(A, GLOB.mouse_comestible))
 		return TRUE
-	if(istype(A, /obj/item/reagent_containers/food) && !(locate(/obj/structure/table) in get_turf(A)))
+	if((istype(A, /obj/item/reagent_containers/food) || istype(A, /obj/item/food)) && !(locate(/obj/structure/table) in get_turf(A)))
 		return TRUE
 
 /mob/living/simple_animal/mouse/proc/regen_health(amt = 5)
@@ -123,7 +123,7 @@ GLOBAL_VAR_INIT(mouse_killed, 0)
 	add_movespeed_modifier(MOVESPEED_ID_MOUSE_CHEESE, TRUE, 100, multiplicative_slowdown = -1)
 	maxHealth = 30
 	health = maxHealth
-	to_chat(src, "<span class='userdanger'>You ate cheese! You are now stronger, bigger and faster!</span>")
+	to_chat(src, "<span class='userdanger'>Zjadasz ser! Jesteś teraz silniejsza, większa i szybsza!</span>")
 	cheese_time = cheese_time + 3 MINUTES
 
 /mob/living/simple_animal/mouse/proc/cheese_down()
@@ -133,25 +133,17 @@ GLOBAL_VAR_INIT(mouse_killed, 0)
 	resize = 0.5
 	update_transform()
 	remove_movespeed_modifier(MOVESPEED_ID_MOUSE_CHEESE, TRUE)
-	to_chat(src, "<span class='userdanger'>A feeling of sadness comes over you as the effects of the cheese wears off. You. Must. Get. More.</span>")
+	to_chat(src, "<span class='userdanger'>Ogarnia cię smutek, gdy działanie sera mija. Musisz. Zdobyć. Więcej.</span>")
 
 /atom/proc/mouse_eat(mob/living/simple_animal/mouse/M)
 	M.regen_health()
 	qdel(src)
 
-/obj/item/reagent_containers/food/snacks/cheesewedge/mouse_eat(mob/living/simple_animal/mouse/M)
+/obj/item/food/cheese/wedge/mouse_eat(mob/living/simple_animal/mouse/M)
 	M.cheese_up()
 	qdel(src)
 
-/obj/item/reagent_containers/food/snacks/cheesewheel/mouse_eat(mob/living/simple_animal/mouse/M)
-	M.cheese_up()
-	qdel(src)
-
-/obj/item/reagent_containers/food/snacks/store/cheesewheel/mouse_eat(mob/living/simple_animal/mouse/M)
-	M.cheese_up()
-	qdel(src)
-
-/obj/item/reagent_containers/food/snacks/customizable/cheesewheel/mouse_eat(mob/living/simple_animal/mouse/M)
+/obj/item/food/cheese/wheel/mouse_eat(mob/living/simple_animal/mouse/M)
 	M.cheese_up()
 	qdel(src)
 

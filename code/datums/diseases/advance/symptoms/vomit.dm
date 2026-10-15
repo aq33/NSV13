@@ -22,7 +22,7 @@ Bonus
 /datum/symptom/vomit
 
 	name = "Vomiting"
-	desc = "The virus causes nausea and irritates the stomach, causing occasional vomit."
+	desc = "Wirus wywołuje mdłości i podrażnia żołądek, powodując okazjonalne wymioty."
 	stealth = -2
 	resistance = 0
 	stage_speed = 1
@@ -37,9 +37,7 @@ Bonus
 	suffixes = list(" Emission")
 	var/vomit_blood = FALSE
 	var/proj_vomit = 0
-	threshold_desc = "<b>Stage Speed 5:</b> Host will vomit blood, causing internal damage.<br>\
-					  <b>Transmission 6:</b> Host will projectile vomit, increasing vomiting range.<br>\
-					  <b>Stealth 4:</b> The symptom remains hidden until active."
+	threshold_desc = "<b>Szybkość stadiów 5:</b> nosiciel wymiotuje krwią, co powoduje obrażenia wewnętrzne.<br><b>Transmisja 6:</b> nosiciel wymiotuje z rozmachem, zwiększając zasięg wymiotów.<br><b>Ukrycie 4:</b> objaw pozostaje ukryty, dopóki nie jest aktywny."
 
 /datum/symptom/vomit/Start(datum/disease/advance/A)
 	if(!..())

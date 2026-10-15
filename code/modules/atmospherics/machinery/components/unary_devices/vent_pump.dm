@@ -251,13 +251,13 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/welder_act(mob/living/user, obj/item/I)
 	if(!I.tool_start_check(user, amount=0))
 		return TRUE
-	to_chat(user, "<span class='notice'>You begin welding the vent...</span>")
+	to_chat(user, "<span class='notice'>Zaczynasz zaspawywać otwór wentylacyjny...</span>")
 	if(I.use_tool(src, user, 20, volume=50))
 		if(!welded)
-			user.visible_message("[user] welds the vent shut.", "<span class='notice'>You weld the vent shut.</span>", "<span class='italics'>You hear welding.</span>")
+			user.visible_message("[user] zaspawuje otwór wentylacyjny.", "<span class='notice'>Zaspawujesz otwór wentylacyjny.</span>", "<span class='italics'>Słyszysz spawanie.</span>")
 			welded = TRUE
 		else
-			user.visible_message("[user] unwelded the vent.", "<span class='notice'>You unweld the vent.</span>", "<span class='italics'>You hear welding.</span>")
+			user.visible_message("[user] odspawuje otwór wentylacyjny.", "<span class='notice'>Odspawujesz otwór wentylacyjny.</span>", "<span class='italics'>Słyszysz spawanie.</span>")
 			welded = FALSE
 		update_icon()
 		pipe_vision_img = image(src, loc, layer = ABOVE_HUD_LAYER, dir = dir)
@@ -267,13 +267,13 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/can_unwrench(mob/user)
 	. = ..()
 	if(. && on && is_operational)
-		to_chat(user, "<span class='warning'>You cannot unwrench [src], turn it off first!</span>")
+		to_chat(user, "<span class='warning'>Nie możesz odkręcić [src], najpierw go wyłącz!</span>")
 		return FALSE
 
 /obj/machinery/atmospherics/components/unary/vent_pump/examine(mob/user)
 	. = ..()
 	if(welded)
-		. += "It seems welded shut."
+		. += "Wygląda na zaspawany."
 
 /obj/machinery/atmospherics/components/unary/vent_pump/power_change()
 	..()
@@ -285,7 +285,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/attack_alien(mob/user)
 	if(!welded || !(do_after(user, 20, target = src)))
 		return
-	user.visible_message("<span class='warning'>[user] furiously claws at [src]!</span>", "<span class='notice'>You manage to clear away the stuff blocking the vent.</span>", "<span class='warning'>You hear loud scraping noises.</span>")
+	user.visible_message("<span class='warning'>[user] zajadle drapie [src]!</span>", "<span class='notice'>Udaje ci się usunąć to, co blokowało otwór wentylacyjny.</span>", "<span class='warning'>Słyszysz głośne skrobanie.</span>")
 	welded = FALSE
 	update_icon()
 	pipe_vision_img = image(src, loc, layer = ABOVE_HUD_LAYER, dir = dir)

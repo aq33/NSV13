@@ -29,7 +29,7 @@
 /obj/machinery/atmospherics/components/binary/temperature_gate/AltClick(mob/user)
 	if(can_interact(user))
 		target_temperature = max_temperature
-		balloon_alert(user, "You set the target temperature to [target_temperature] K.")
+		balloon_alert(user, "Ustawiasz docelową temperaturę na [target_temperature] K.")
 		investigate_log("was set to [target_temperature] K by [key_name(user)]", INVESTIGATE_ATMOS)
 		update_icon()
 	return ..()
@@ -37,11 +37,11 @@
 
 /obj/machinery/atmospherics/components/binary/temperature_gate/examine(mob/user)
 	. = ..()
-	. += "This device will let gas flow if the temperature of the gas in the input is [inverted ? "higher" : "lower"] than the temperature set in the interface."
+	. += "To urządzenie przepuszcza gaz, jeśli temperatura gazu na wejściu jest [inverted ? "wyższa" : "niższa"] niż ustawiona w interfejsie."
 	if(inverted)
-		. += "The device settings can be restored if a multitool is used on it."
+		. += "Ustawienia urządzenia można przywrócić, używając na nim multitoola."
 	else
-		. += "The sensor's settings can be changed by using a multitool on the device."
+		. += "Ustawienia czujnika można zmienić, używając na urządzeniu multitoola."
 
 /obj/machinery/atmospherics/components/binary/temperature_gate/update_icon_nopipes()
 	if(on && is_operational)
@@ -115,7 +115,7 @@
 /obj/machinery/atmospherics/components/binary/temperature_gate/can_unwrench(mob/user)
 	. = ..()
 	if(. && on && is_operational)
-		to_chat(user, "<span class='warning'>You cannot unwrench [src], turn it off first!</span>")
+		to_chat(user, "<span class='warning'>Nie możesz odkręcić [src], najpierw go wyłącz!</span>")
 		return FALSE
 
 /obj/machinery/atmospherics/components/binary/temperature_gate/multitool_act(mob/living/user, obj/item/multitool/I)
@@ -123,7 +123,7 @@
 	if(istype(I))
 		inverted = !inverted
 		if(inverted)
-			balloon_alert(user, "You set the sensors to release when the temperature is above the target value.")
+			balloon_alert(user, "Ustawiasz czujniki na wypuszczanie, gdy temperatura jest powyżej wartości docelowej.")
 		else
-			balloon_alert(user, "You set the sensors to release when the temperature is below the target value.")
+			balloon_alert(user, "Ustawiasz czujniki na wypuszczanie, gdy temperatura jest poniżej wartości docelowej.")
 	return TRUE

@@ -4,8 +4,8 @@ GLOBAL_LIST_EMPTY(asteroid_spawn_markers)		//handles mining asteroids, kind of s
 
 /datum/techweb_node/mineral_nonferrous
 	id = "mineral_nonferrous"
-	display_name = "Polytrinic asteroid mining equipment"
-	description = "Upgrades for the mining ship's asteroid arrestor and dradis console, allowing it to detect and lock on to more specific mineral compositions in asteroid cores."
+	display_name = "Polytriniczny sprzęt do wydobycia z asteroid"
+	description = "Ulepszenia zaczepu asteroid i konsoli DRADIS statku górniczego, pozwalające wykrywać i namierzać asteroidy o bardziej konkretnym składzie mineralnym rdzenia."
 	prereq_ids = list("base")
 	design_ids = list("deepcore1", "asteroidscanner")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 7500)
@@ -13,8 +13,8 @@ GLOBAL_LIST_EMPTY(asteroid_spawn_markers)		//handles mining asteroids, kind of s
 
 /datum/techweb_node/mineral_exotic
 	id = "mineral_exotic"
-	display_name = "Phasic asteroid mining equipment"
-	description = "Advanced arrestor and dradis console upgrade for the mining ship, allowing it to handle any asteroid with a mineral composition at it's core."
+	display_name = "Fazowy sprzęt do wydobycia z asteroid"
+	description = "Zaawansowane ulepszenie zaczepu i konsoli DRADIS statku górniczego, pozwalające obsłużyć każdą asteroidę z minerałami w rdzeniu."
 	prereq_ids = list("mineral_nonferrous")
 	design_ids = list("deepcore2", "asteroidscanner2")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 12500)
@@ -226,7 +226,7 @@ GLOBAL_LIST_EMPTY(asteroid_spawn_markers)		//handles mining asteroids, kind of s
 		var/obj/item/deepcore_upgrade/DU = I
 		if(DU.tier > tier)
 			playsound(src, 'sound/machines/terminal_insert_disc.ogg', 100, 0)
-			to_chat(user, "<span class='notice'>You slot [I] into [src], allowing it to lock on to a wider variety of asteroids.</span>")
+			to_chat(user, "<span class='notice'>Wkładasz [I] do [src], dzięki czemu może namierzać więcej rodzajów asteroid.</span>")
 			tier = DU.tier
 			qdel(DU)
 			icon_state = "magnet-[tier]"
@@ -244,23 +244,23 @@ GLOBAL_LIST_EMPTY(asteroid_spawn_markers)		//handles mining asteroids, kind of s
 	if(!allowed(user))
 		var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 		playsound(src, sound, 100, 1)
-		to_chat(user, "<span class='warning'>Access denied</span>")
+		to_chat(user, "<span class='warning'>Odmowa dostępu</span>")
 		return
 	if(!has_overmap())
 		var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 		playsound(src, sound, 100, 1)
-		to_chat(user, "<span class='warning'>A warning flashes across [src]'s screen: Unable to locate necessary parameters, no registered ship stored in microprocessor.</span>")
+		to_chat(user, "<span class='warning'>Na ekranie [src] miga ostrzeżenie: nie można znaleźć wymaganych parametrów, w mikroprocesorze nie zapisano zarejestrowanego statku.</span>")
 		return
 	playsound(src, 'nsv13/sound/effects/computer/hum.ogg', 100, 1)
 	if(!target_location)
 		return
 	var/dat
-	dat += "<h2>Current asteroid:  </h2>"
+	dat += "<h2>Obecna asteroida:  </h2>"
 	if(!current_asteroid)
-		dat += "<A href='?src=\ref[src];pull_asteroid=1'>Pull in asteroid</font></A><BR>"
+		dat += "<A href='byond://?src=\ref[src];pull_asteroid=1'>Przyciągnij asteroidę</font></A><BR>"
 	else
-		dat += "<A href='?src=\ref[src];push_asteroid=1'>Push away asteroid</font></A><BR>"
-	var/datum/browser/popup = new(user, "Pull Asteroids", name, 400, 500)
+		dat += "<A href='byond://?src=\ref[src];push_asteroid=1'>Odepchnij asteroidę</font></A><BR>"
+	var/datum/browser/popup = new(user, "Przyciąganie asteroid", name, 400, 500)
 	popup.set_content(dat)
 	popup.open()
 
@@ -270,14 +270,14 @@ GLOBAL_LIST_EMPTY(asteroid_spawn_markers)		//handles mining asteroids, kind of s
 	if(href_list["pull_asteroid"])
 		pull_in_asteroid(usr)
 	if(href_list["push_asteroid"])
-		if(alert(usr, "Are you sure you want to release the currently held asteroid?",name,"Yes","No") == "Yes" && Adjacent(usr))
+		if(alert(usr, "Na pewno chcesz uwolnić obecnie trzymaną asteroidę?",name,"Yes","No") == "Yes" && Adjacent(usr))
 			start_push()
 
 	attack_hand(usr) //Refresh window
 
 /obj/machinery/computer/ship/mineral_magnet/proc/pull_in_asteroid(mob/user)
 	if(cooldown)
-		say("ERROR: Magnetisation circuits recharging...")
+		say("BŁĄD: obwody magnetyzacji się ładują...")
 		return FALSE
 	if(!has_overmap())
 		var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
@@ -289,9 +289,9 @@ GLOBAL_LIST_EMPTY(asteroid_spawn_markers)		//handles mining asteroids, kind of s
 	if(!length(asteroids))
 		var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 		playsound(src, sound, 100, 1)
-		to_chat(user, "<span class='notice'>Cannot lock on to any asteroids near [linked]</span>")
+		to_chat(user, "<span class='notice'>Nie można namierzyć żadnej asteroidy w pobliżu [linked]</span>")
 		return FALSE
-	var/obj/structure/overmap/asteroid/AS = input(usr, "Select target:", "Target") as null|anything in asteroids
+	var/obj/structure/overmap/asteroid/AS = input(usr, "Wybierz cel:", "Target") as null|anything in asteroids
 	if(!AS || !length(AS.core_composition))
 		return FALSE
 	linked.relay('nsv13/sound/effects/ship/tractor.ogg', "<span class='warning'>DANGER: Magnet has locked on to an asteroid. Vacate the asteroid cage immediately.</span>")
@@ -315,7 +315,7 @@ GLOBAL_LIST_EMPTY(asteroid_spawn_markers)		//handles mining asteroids, kind of s
 		playsound(src, sound, 100, 1)
 		return
 	if(cooldown)
-		say("ERROR: Magnetisation circuits recharging...")
+		say("BŁĄD: obwody magnetyzacji się ładują...")
 		return
 	cooldown = TRUE
 	addtimer(VARSET_CALLBACK(src, cooldown, FALSE), 1 MINUTES)

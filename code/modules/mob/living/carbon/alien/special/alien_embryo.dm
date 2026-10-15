@@ -4,6 +4,7 @@
 	name = "alien embryo"
 	icon = 'icons/mob/alien.dmi'
 	icon_state = "larva0_dead"
+	food_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/toxin/acid = 10)
 	var/stage = 0
 	COOLDOWN_DECLARE(next_stage_time)
 	var/bursting = FALSE
@@ -11,16 +12,11 @@
 /obj/item/organ/body_egg/alien_embryo/on_find(mob/living/finder)
 	. = ..()
 	if(stage < 4)
-		to_chat(finder, "It's small and weak, barely the size of a foetus.")
+		to_chat(finder, "Jest mały i słaby, ledwie wielkości płodu.")
 	else
-		to_chat(finder, "It's grown quite large, and writhes slightly as you look at it.")
+		to_chat(finder, "Jest już całkiem duży i lekko się wije, gdy na niego patrzysz.")
 		if(prob(10))
 			AttemptGrow(0)
-
-/obj/item/organ/body_egg/alien_embryo/prepare_eat()
-	var/obj/S = ..()
-	S.reagents.add_reagent(/datum/reagent/toxin/acid, 10)
-	return S
 
 /obj/item/organ/body_egg/alien_embryo/on_life()
 	. = ..()
@@ -31,24 +27,24 @@
 			if(prob(2))
 				owner.emote("cough")
 			if(prob(2))
-				to_chat(owner, "<span class='danger'>Your throat feels sore.</span>")
+				to_chat(owner, "<span class='danger'>Boli cię gardło.</span>")
 			if(prob(2))
-				to_chat(owner, "<span class='danger'>Mucous runs down the back of your throat.</span>")
+				to_chat(owner, "<span class='danger'>Po tylnej ścianie gardła spływa ci śluz.</span>")
 		if(4)
 			if(prob(2))
 				owner.emote("sneeze")
 			if(prob(2))
 				owner.emote("cough")
 			if(prob(4))
-				to_chat(owner, "<span class='danger'>Your muscles ache.</span>")
+				to_chat(owner, "<span class='danger'>Bolą cię mięśnie.</span>")
 				if(prob(20))
 					owner.take_bodypart_damage(1)
 			if(prob(4))
-				to_chat(owner, "<span class='danger'>Your stomach hurts.</span>")
+				to_chat(owner, "<span class='danger'>Boli cię brzuch.</span>")
 				if(prob(20))
 					owner.adjustToxLoss(1)
 		if(5)
-			to_chat(owner, "<span class='danger'>You feel something tearing its way out of your stomach.</span>")
+			to_chat(owner, "<span class='danger'>Czujesz, jak coś wyrywa się z twojego brzucha.</span>")
 			owner.adjustToxLoss(10)
 
 /obj/item/organ/body_egg/alien_embryo/on_death()
@@ -125,7 +121,7 @@
 
 	var/mob/living/carbon/host = owner
 	if(kill_on_success)
-		new_xeno.visible_message("<span class='danger'>[new_xeno] bursts out of [owner] in a shower of gore!</span>", "<span class='userdanger'>You exit [owner], your previous host.</span>", "<span class='italics'>You hear organic matter ripping and tearing!</span>")
+		new_xeno.visible_message("<span class='danger'>[new_xeno] wyrywa się z [owner] w deszczu krwi i flaków!</span>", "<span class='userdanger'>Opuszczasz [owner], swojego poprzedniego nosiciela.</span>", "<span class='italics'>Słyszysz rozrywanie i darcie tkanki organicznej!</span>")
 		var/obj/item/bodypart/BP = owner.get_bodypart(BODY_ZONE_CHEST)
 		if(BP)
 			BP.receive_damage(brute = 200) // Kill them dead
@@ -133,7 +129,7 @@
 		else
 			owner.apply_damage(200)
 	else
-		new_xeno.visible_message("<span class='danger'>[new_xeno] wriggles out of [owner]!</span>", "<span class='userdanger'>You exit [owner], your previous host.</span>")
+		new_xeno.visible_message("<span class='danger'>[new_xeno] wypełza z [owner]!</span>", "<span class='userdanger'>Opuszczasz [owner], swojego poprzedniego nosiciela.</span>")
 		owner.adjustBruteLoss(40)
 	host.cut_overlay(overlay)
 	qdel(src)

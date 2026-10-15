@@ -42,7 +42,7 @@ GLOBAL_DATUM_INIT(lore_terminal_controller, /datum/lore_controller, new)
 	if(!allowed(user))
 		var/sound = pick('nsv13/sound/effects/computer/error.ogg','nsv13/sound/effects/computer/error2.ogg','nsv13/sound/effects/computer/error3.ogg')
 		playsound(src, sound, 100, 1)
-		to_chat(user, "<span class='warning'>Access denied</span>")
+		to_chat(user, "<span class='warning'>Odmowa dostępu</span>")
 		return
 	playsound(src, 'nsv13/sound/effects/computer/scroll_start.ogg', 100, 1)
 	user.set_machine(src)
@@ -51,7 +51,7 @@ GLOBAL_DATUM_INIT(lore_terminal_controller, /datum/lore_controller, new)
 		get_entries()
 	for(var/X in entries) //Allows you to remove things individually
 		var/datum/lore_entry/content = X
-		dat += "<a href='?src=[REF(src)];selectitem=\ref[content]'>[content.name]</a><br>"
+		dat += "<a href='byond://?src=[REF(src)];selectitem=\ref[content]'>[content.name]</a><br>"
 	var/datum/browser/popup = new(user, "cd C:/entries/local", name, 300, 500)
 	popup.set_content(dat)
 	popup.open()
@@ -63,7 +63,7 @@ GLOBAL_DATUM_INIT(lore_terminal_controller, /datum/lore_controller, new)
 	if(in_use)
 		var/sound = 'nsv13/sound/effects/computer/buzz2.ogg'
 		playsound(src, sound, 100, 1)
-		to_chat(usr, "<span class='warning'>ERROR: I/O function busy. A file is still loading...</span>")
+		to_chat(usr, "<span class='warning'>BŁĄD: funkcja wejścia/wyjścia zajęta. Plik wciąż się wczytuje...</span>")
 		return
 	var/datum/lore_entry/content = locate(href_list["selectitem"])
 	if(!content || !content?.content)

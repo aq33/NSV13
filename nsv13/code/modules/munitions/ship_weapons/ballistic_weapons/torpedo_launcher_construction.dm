@@ -71,25 +71,25 @@
 	. = ..()
 	switch(state)
 		if(BS_MOUNT_UNBOLTED)
-			. += "It is <i>unbolted</i> from the floor and could be <b>cut apart</b>."
+			. += "Jest <i>odkręcony</i> od podłogi i można go <b>rozciąć</b>."
 		if(BS_MOUNT_BOLTED)
-			. += "It is <b>bolted</b> down and can be <i>welded</i> to the floor."
+			. += "Jest <b>przykręcony</b> i można go <i>przyspawać</i> do podłogi."
 		if(BS_MOUNT_WELDED)
-			. += "It is <b>welded</b> to the floor and is ready for a <i>nanocarbon</i> barrel."
+			. += "Jest <b>przyspawany</b> do podłogi i gotowy na <i>nanowęglową</i> lufę."
 		if(BS_BARREL_PLACED)
-			. += "The <i>bolts</i> on the barrel are loose. It could be <b>pried off</b>."
+			. += "<i>Śruby</i> lufy są luźne. Można ją <b>wyważyć</b>."
 		if(BS_BARREL_BOLTED)
-			. += "The barrel is <b>bolted</b> in place. The assembly is <i>unwired</i>.</i>."
+			. += "Lufa jest <b>przykręcona</b>. Zespół jest <i>nieokablowany</i>.</i>."
 		if(BS_WIRED)
-			. += "The assembly is <b>wired</b> but has no <i>firing electronics</i>."
+			. += "Zespół jest <b>okablowany</b>, ale nie ma <i>elektroniki strzelniczej</i>."
 		if(BS_ELECTRONICS_LOOSE)
-			. += "The firing electronics sit loose in the frame. They could be <b>pried out</b> or <i>screwed</i> into place."
+			. += "Elektronika strzelnicza leży luźno w ramie. Można ją <b>wyważyć</b> albo <i>przykręcić</i>."
 		if(BS_ELECTRONICS_SECURE)
-			. += "The firing electronics are <b>screwed</b> into place. The tube is missing a <i>nanocarbon door</i>."
+			. += "Elektronika strzelnicza jest <b>przykręcona</b>. Wyrzutni brakuje <i>nanowęglowych drzwiczek</i>."
 		if(BS_DOOR_PLACED)
-			. += "The nanocarbon door is loose. It could be <b>pried off</b> or <i>bolted</i> into place."
+			. += "Nanowęglowe drzwiczki są luźne. Można je <b>wyważyć</b> albo <i>przykręcić</i>."
 		if(BS_DOOR_BOLTED)
-			. += "The door is <b>bolted</b> in place, and the maintenance hatch is <i>unscrewed</i>."
+			. += "Drzwiczki są <b>przykręcone</b>, a właz serwisowy jest <i>odkręcony</i>."
 
 // We just took apart a torp tube, put us at the end of the construction sequence
 /obj/structure/ship_weapon/torpedo_launcher_assembly/proc/set_final_state()
@@ -102,45 +102,45 @@
 		if(state == BS_MOUNT_WELDED)
 			var/obj/item/stack/sheet/nanocarbon_glass/S = W
 			if(S.get_amount() < num_sheets_barrel)
-				to_chat(user, "<span class='warning'>You need four sheets of [S] to build the tube!</span>")
+				to_chat(user, "<span class='warning'>Do budowy wyrzutni potrzebujesz czterech arkuszy [S]!</span>")
 				return
 			if(!do_after(user, 2 SECONDS, target=src))
 				return
 			if(S.get_amount() < num_sheets_barrel) // Check whether they used too much while standing here...
-				to_chat(user, "<span class='warning'>You need four sheets of [S] to build the tube!</span>")
+				to_chat(user, "<span class='warning'>Do budowy wyrzutni potrzebujesz czterech arkuszy [S]!</span>")
 				return
 			S.use(num_sheets_barrel)
-			to_chat(user, "<span class='notice'>You shape the nanocarbon torpedo tube.</span>")
+			to_chat(user, "<span class='notice'>Formujesz nanowęglową wyrzutnię torped.</span>")
 			state = BS_BARREL_PLACED
 			return TRUE
 
 		else if(state == BS_ELECTRONICS_SECURE)
 			var/obj/item/stack/sheet/nanocarbon_glass/S = W
 			if(S.get_amount() < num_sheets_door)
-				to_chat(user, "<span class='warning'>You need two sheets of [S] to build the door!</span>")
+				to_chat(user, "<span class='warning'>Do budowy drzwiczek potrzebujesz dwóch arkuszy [S]!</span>")
 				return
 			if(!do_after(user, 2 SECONDS, target=src))
 				return
 			if(S.get_amount() < num_sheets_door) // Check whether they used too much while standing here...
-				to_chat(user, "<span class='warning'>You need two sheets of [S] to build the door!</span>")
+				to_chat(user, "<span class='warning'>Do budowy drzwiczek potrzebujesz dwóch arkuszy [S]!</span>")
 				return
 			S.use(num_sheets_door)
-			to_chat(user, "<span class='notice'>You add the door to the [src].</span>")
+			to_chat(user, "<span class='notice'>Dodajesz drzwiczki do [src].</span>")
 			state = BS_DOOR_PLACED
 			return TRUE
 
 	else if(istype(W, /obj/item/stack/cable_coil) && (state == BS_BARREL_BOLTED))
 		var/obj/item/stack/cable_coil/S = W
 		if(S.get_amount() < num_cables)
-			to_chat(user, "<span class='warning'>You need two pieces of [S] to wire the railgun!</span>")
+			to_chat(user, "<span class='warning'>Do okablowania wyrzutni potrzebujesz dwóch kawałków [S]!</span>")
 			return
 		if(!do_after(user, 2 SECONDS, target=src))
 			return
 		if(S.get_amount() < num_cables)
-			to_chat(user, "<span class='warning'>You need two pieces of [S] to wire the railgun!</span>")
+			to_chat(user, "<span class='warning'>Do okablowania wyrzutni potrzebujesz dwóch kawałków [S]!</span>")
 			return
 		S.use(num_cables)
-		to_chat(user, "<span class='notice'>You wire the torpedo launcher.</span>")
+		to_chat(user, "<span class='notice'>Okablowujesz wyrzutnię torped.</span>")
 		state = BS_WIRED
 		return TRUE
 
@@ -148,7 +148,7 @@
 		if(!do_after(user, 2 SECONDS, target=src))
 			return
 		W.forceMove(src)
-		to_chat(user, "<span class='notice'>Add the electronic firing mechanism.</span>")
+		to_chat(user, "<span class='notice'>Dodaj elektroniczny mechanizm spustowy.</span>")
 		state = BS_ELECTRONICS_LOOSE
 		return TRUE
 
@@ -163,19 +163,19 @@
 	switch(state)
 		if(BS_ELECTRONICS_LOOSE)
 			if(tool.use_tool(src, user, 2 SECONDS, 0, 100))
-				to_chat(user, "<span class='notice'>You secure the firing electronics.</span>")
+				to_chat(user, "<span class='notice'>Przykręcasz elektronikę strzelniczą.</span>")
 				state = BS_ELECTRONICS_SECURE
 				return TRUE
 
 		if(BS_ELECTRONICS_SECURE)
 			if(tool.use_tool(src, user, 2 SECONDS, 0, 100))
-				to_chat(user, "<span class='notice'>You unsecure the firing electronics.</span>")
+				to_chat(user, "<span class='notice'>Odkręcasz elektronikę strzelniczą.</span>")
 				state = BS_ELECTRONICS_LOOSE
 				return TRUE
 
 		if(BS_DOOR_BOLTED)
 			if(tool.use_tool(src, user, 2 SECONDS, 0, 100))
-				to_chat(user, "<span class='notice'>You finish the torpedo launcher.</span>")
+				to_chat(user, "<span class='notice'>Kończysz wyrzutnię torped.</span>")
 				var/obj/machinery/ship_weapon/TL = new output_path(loc)
 				TL.dir = dir
 				TL.setAnchored(anchored)
@@ -197,38 +197,38 @@
 	switch(state)
 		if(BS_MOUNT_UNBOLTED)
 			if(tool.use_tool(src, user, 2 SECONDS, 0, 100))
-				to_chat(user, "<span class='notice'>You bolt the [src] to the floor.</span>")
+				to_chat(user, "<span class='notice'>Przykręcasz [src] do podłogi.</span>")
 				anchored = TRUE
 				state = BS_MOUNT_BOLTED
 				return TRUE
 
 		if(BS_BARREL_PLACED)
 			if(tool.use_tool(src, user, 2 SECONDS, 0, 100))
-				to_chat(user, "<span class='notice'>You secure the barrel.</span>")
+				to_chat(user, "<span class='notice'>Mocujesz lufę.</span>")
 				state = BS_BARREL_BOLTED
 				return TRUE
 
 		if(BS_BARREL_BOLTED)
 			if(tool.use_tool(src, user, 2 SECONDS, 0, 100))
-				to_chat(user, "<span class='notice'>You unbolt the the barrel.</span>")
+				to_chat(user, "<span class='notice'>Odkręcasz lufę.</span>")
 				state = BS_BARREL_PLACED
 				return TRUE
 
 		if(BS_MOUNT_BOLTED)
 			if(tool.use_tool(src, user, 2 SECONDS, 0, 100))
-				to_chat(user, "<span class='notice'>You unbolt the [src] from the floor.</span>")
+				to_chat(user, "<span class='notice'>Odkręcasz [src] od podłogi.</span>")
 				state = BS_MOUNT_UNBOLTED
 				return TRUE
 
 		if(BS_DOOR_PLACED)
 			if(tool.use_tool(src, user, 2 SECONDS, 0, 100))
-				to_chat(user, "<span class='notice'>You bolt the door to the frame.</span>")
+				to_chat(user, "<span class='notice'>Przykręcasz drzwiczki do ramy.</span>")
 				state = BS_DOOR_BOLTED
 				return TRUE
 
 		if(BS_DOOR_BOLTED)
 			if(tool.use_tool(src, user, 2 SECONDS, 0, 100))
-				to_chat(user, "<span class='notice'>You unbolt the door from the frame.</span>")
+				to_chat(user, "<span class='notice'>Odkręcasz drzwiczki od ramy.</span>")
 				state = BS_DOOR_PLACED
 				return TRUE
 
@@ -237,19 +237,19 @@
 	switch(state)
 		if(BS_MOUNT_BOLTED)
 			if(anchored && tool.use_tool(src, user, 2 SECONDS, 2, 100))
-				to_chat(user, "<span class='notice'>You weld the [src] to the floor.</span>")
+				to_chat(user, "<span class='notice'>Przyspawujesz [src] do podłogi.</span>")
 				state = BS_MOUNT_WELDED
 				return TRUE
 
 		if(BS_MOUNT_WELDED)
 			if(tool.use_tool(src, user, 2 SECONDS, 2, 100))
-				to_chat(user, "<span class='notice'>You unweld the [src] from the floor.</span>")
+				to_chat(user, "<span class='notice'>Odspawujesz [src] od podłogi.</span>")
 				state = BS_MOUNT_BOLTED
 				return TRUE
 
 		if(BS_MOUNT_UNBOLTED)
 			if(tool.use_tool(src, user, 2 SECONDS, 2, 100))
-				to_chat(user, "<span class='notice'>You cut apart the frame.</span>")
+				to_chat(user, "<span class='notice'>Rozcinasz ramę.</span>")
 				new/obj/item/stack/sheet/plasteel(loc, num_sheets_frame)
 				qdel(src)
 				return TRUE
@@ -259,7 +259,7 @@
 	switch(state)
 		if(BS_DOOR_PLACED)
 			if(tool.use_tool(src, user, 2 SECONDS, 0, 100))
-				to_chat(user, "<span class='notice'>You pry the door loose from the [src].</span>")
+				to_chat(user, "<span class='notice'>Wyważasz drzwiczki z [src].</span>")
 				new/obj/item/stack/sheet/nanocarbon_glass(loc, num_sheets_door)
 				state = BS_ELECTRONICS_SECURE
 				return TRUE
@@ -268,13 +268,13 @@
 			if(tool.use_tool(src, user, 2 SECONDS, 0, 100))
 				var/obj/item/ship_weapon/parts/firing_electronics/F = (locate(/obj/item/ship_weapon/parts/firing_electronics) in contents)
 				F.forceMove(loc)
-				to_chat(user, "<span class='notice'>You pry the firing electronics loose from the [src].</span>")
+				to_chat(user, "<span class='notice'>Wyważasz elektronikę strzelniczą z [src].</span>")
 				state = BS_WIRED
 				return TRUE
 
 		if(BS_BARREL_PLACED)
 			if(tool.use_tool(src, user, 2 SECONDS, 0, 100))
-				to_chat(user, "<span class='notice'>You pry the nanocarbon barrel off the [src].</span>")
+				to_chat(user, "<span class='notice'>Wyważasz nanowęglową lufę z [src].</span>")
 				new/obj/item/stack/sheet/nanocarbon_glass(loc, num_sheets_barrel)
 				state = BS_MOUNT_WELDED
 				return TRUE
@@ -284,7 +284,7 @@
 	if(state == BS_WIRED)
 		if(tool.use_tool(src, user, 2 SECONDS, 0, 100))
 			new /obj/item/stack/cable_coil(loc, num_cables)
-			to_chat(user, "<span class='notice'>You cut the wires from the frame.</span>")
+			to_chat(user, "<span class='notice'>Wycinasz przewody z ramy.</span>")
 			state = BS_BARREL_BOLTED
 			return TRUE
 

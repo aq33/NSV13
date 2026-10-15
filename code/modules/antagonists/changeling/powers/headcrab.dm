@@ -1,7 +1,7 @@
 /datum/action/changeling/headcrab
 	name = "Last Resort"
 	desc = "We sacrifice our current body in a moment of need, placing us in control of a vessel that can plant our likeness in a new host. Cannot be used while being absorbed by another changeling. Costs 20 chemicals."
-	helptext = "We will be placed in control of a small, fragile creature. We may attack a corpse like this to plant an egg which will slowly mature into a new form for us. Cannot be used while being absorbed by another changeling."
+	helptext = "Przejmujemy kontrolę nad małą, kruchą istotą. W tej postaci możemy zaatakować zwłoki, by złożyć jajo, z którego powoli wyrośnie nasza nowa forma. Nie działa, gdy wchłania nas inny zmiennokształtny."
 	button_icon_state = "last_resort"
 	chemical_cost = 20
 	dna_cost = 2 //Nsv13 - bloodling rebalance of lings
@@ -17,9 +17,9 @@
 		if(puller)
 			var/datum/antagonist/changeling/other_ling = is_changeling(puller)
 			if(other_ling?.isabsorbing)
-				to_chat(user, "<span class='warning'>Our last resort is being disrupted by another changeling!</span>")
+				to_chat(user, "<span class='warning'>Inny zmiennokształtny zakłóca naszą ostatnią deskę ratunku!</span>")
 				return
-	if(alert("Are we sure we wish to kill ourself and create a headslug?",,"Yes", "No") != "Yes")
+	if(alert("Czy na pewno chcemy się zabić i stworzyć ślimaka-pasożyta?",,"Yes", "No") != "Yes")
 		return
 	if(isliving(user))
 		var/mob/living/L = user
@@ -27,11 +27,11 @@
 		if(puller)
 			var/datum/antagonist/changeling/other_ling = is_changeling(puller)
 			if(other_ling?.isabsorbing)
-				to_chat(user, "<span class='warning'>Our last resort is being disrupted by another changeling!</span>")
+				to_chat(user, "<span class='warning'>Inny zmiennokształtny zakłóca naszą ostatnią deskę ratunku!</span>")
 				return
 	var/turf/T = user.loc
 	if(!T || !isopenturf(T) || !is_changeling(user))
-		to_chat(user, "<span class='warning'>You can't become a headslug right now!</span>")
+		to_chat(user, "<span class='warning'>Nie możesz teraz stać się ślimakiem-pasożytem!</span>")
 		return FALSE
 	var/datum/mind/M = user.mind
 	var/list/organs = user.getorganszone(BODY_ZONE_HEAD, 1)
@@ -44,14 +44,14 @@
 		if(ishuman(A))
 			var/mob/living/carbon/human/H = A
 			var/obj/item/organ/eyes/eyes = H.getorganslot(ORGAN_SLOT_EYES)
-			to_chat(H, "<span class='userdanger'>You are blinded by a shower of blood!</span>")
+			to_chat(H, "<span class='userdanger'>Oślepia cię deszcz krwi!</span>")
 			H.Stun(20)
 			H.blur_eyes(20)
 			eyes?.applyOrganDamage(5)
 			H.confused += 10
 		else if(issilicon(A))
 			var/mob/living/silicon/S = A
-			to_chat(S, "<span class='userdanger'>Your sensors are disabled by a shower of blood!</span>")
+			to_chat(S, "<span class='userdanger'>Deszcz krwi wyłącza twoje czujniki!</span>")
 			S.Paralyze(60)
 	// Headcrab transformation is *very* unique; origin mob death happens *before* resulting mob's creation. Action removal should happen beforehand.
 	for(var/datum/action/cp in user.actions)
@@ -60,9 +60,11 @@
 	var/mob/living/simple_animal/hostile/headcrab/crab = new(T)
 	for(var/obj/item/organ/I in organs)
 		I.forceMove(crab)
+	var/mob/living/simple_animal/horror/horror = user.has_horror_inside() // AQ EDIT - Yogstation#13033: let the horror out before the gib kills it
+	horror?.leave_victim()
 	crab.origin = M
 	if(crab.origin)
 		crab.origin.active = 1
 		crab.origin.transfer_to(crab)
 		user.gib()
-		to_chat(crab, "<span class='warning'>You burst out of the remains of your former body in a shower of gore!</span>")
+		to_chat(crab, "<span class='warning'>Wyrywasz się ze szczątków swojego dawnego ciała w deszczu krwi i flaków!</span>")

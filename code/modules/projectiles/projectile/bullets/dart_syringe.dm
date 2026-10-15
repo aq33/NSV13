@@ -1,4 +1,5 @@
 /obj/item/projectile/bullet/dart
+	bleed_force = BLEED_SURFACE
 	name = "dart"
 	icon_state = "cbbolt"
 	damage = 6
@@ -24,8 +25,8 @@
 					return BULLET_ACT_HIT
 			else
 				blocked = 100
-				target.visible_message("<span class='danger'>\The [src] was deflected!</span>", \
-									   "<span class='userdanger'>You were protected against \the [src]!</span>")
+				target.visible_message("<span class='danger'>[src] zostaje odbity!</span>", \
+									   "<span class='userdanger'>Ochroniono cię przed [src]!</span>")
 
 	..(target, blocked)
 	if(syringe)
@@ -56,7 +57,7 @@
 	if(iscarbon(target))
 		var/mob/living/carbon/M = target
 		if(blocked != 100) // not completely blocked
-			if(M.can_inject(null, FALSE, def_zone) && !HAS_TRAIT(M, TRAIT_BEEFRIEND))
+			if(M.can_inject(target_zone = def_zone) && !HAS_TRAIT(M, TRAIT_BEEFRIEND))
 				var/mob/living/simple_animal/hostile/poison/bees/B = new(src.loc)
 				for(var/datum/reagent/R in reagents.reagent_list)
 					B.assign_reagent(GLOB.chemical_reagents_list[R.type])

@@ -2,14 +2,14 @@
 /datum/game_mode/event
 	name = "event"
 	config_tag = "event"
-	announce_text = "An admin is running an event!"
+	announce_text = "Admin prowadzi event!"
 	false_report_weight = 0
 	required_players = 0
 
 	title_icon = null
 
 	// A few vars that the admins can set if they wish
-	var/endround_report = "The event has concluded!"
+	var/endround_report = "Event dobiegł końca!"
 	var/intercept_message
 
 /datum/game_mode/event/pre_setup()

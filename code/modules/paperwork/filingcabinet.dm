@@ -35,7 +35,7 @@
 	. = ..()
 	if(mapload)
 		for(var/obj/item/I in loc)
-			if(istype(I, /obj/item/paper) || istype(I, /obj/item/folder) || istype(I, /obj/item/photo))
+			if(I.w_class < WEIGHT_CLASS_NORMAL)
 				I.forceMove(src)
 
 /obj/structure/filingcabinet/deconstruct(disassembled = TRUE)
@@ -45,22 +45,23 @@
 			I.forceMove(loc)
 	qdel(src)
 
-/obj/structure/filingcabinet/attackby(obj/item/P, mob/user, params)
-	if(istype(P, /obj/item/paper) || istype(P, /obj/item/folder) || istype(P, /obj/item/photo) || istype(P, /obj/item/documents))
+/obj/structure/filingcabinet/attackby(obj/item/P, mob/living/user, params)
+	var/list/modifiers = params2list(params)
+	if(P.tool_behaviour == TOOL_WRENCH && LAZYACCESS(modifiers, RIGHT_CLICK))
+		to_chat(user, "<span class='notice'>Zaczynasz [anchored ? "odkręcać" : "przykręcać"] [src].</span>")
+		if(P.use_tool(src, user, 20, volume=50))
+			to_chat(user, "<span class='notice'>[anchored ? "Odkręcasz" : "Przykręcasz"] [src].</span>")
+			setAnchored(!anchored)
+	else if(P.w_class < WEIGHT_CLASS_NORMAL)
 		if(!user.transferItemToLoc(P, src))
 			return
-		to_chat(user, "<span class='notice'>You put [P] in [src].</span>")
+		to_chat(user, "<span class='notice'>Wkładasz [P] do [src].</span>")
 		icon_state = "[initial(icon_state)]-open"
 		sleep(5)
 		icon_state = initial(icon_state)
 		updateUsrDialog()
-	else if(P.tool_behaviour == TOOL_WRENCH)
-		to_chat(user, "<span class='notice'>You begin to [anchored ? "unwrench" : "wrench"] [src].</span>")
-		if(P.use_tool(src, user, 20, volume=50))
-			to_chat(user, "<span class='notice'>You successfully [anchored ? "unwrench" : "wrench"] [src].</span>")
-			anchored = !anchored
-	else if(user.a_intent != INTENT_HARM)
-		to_chat(user, "<span class='warning'>You can't put [P] in [src]!</span>")
+	else if(!user.combat_mode)
+		to_chat(user, "<span class='warning'>Nie możesz włożyć [P] do [src]!</span>")
 	else
 		return ..()
 
@@ -68,16 +69,16 @@
 /obj/structure/filingcabinet/ui_interact(mob/user)
 	. = ..()
 	if(contents.len <= 0)
-		to_chat(user, "<span class='notice'>[src] is empty.</span>")
+		to_chat(user, "<span class='notice'>[src] jest pusty.</span>")
 		return
 
 	var/dat = "<center><table>"
 	var/i
 	for(i=contents.len, i>=1, i--)
 		var/obj/item/P = contents[i]
-		dat += "<tr><td><a href='?src=[REF(src)];retrieve=[REF(P)]'>[P.name]</a></td></tr>"
+		dat += "<tr><td><a href='byond://?src=[REF(src)];retrieve=[REF(P)]'>[P.name]</a></td></tr>"
 	dat += "</table></center>"
-	user << browse("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>[name]</title></head><body>[dat]</body></html>", "window=filingcabinet;size=350x300")
+	user << browse(HTML_SKELETON_TITLE(name, dat), "window=filingcabinet;size=350x300")
 
 /obj/structure/filingcabinet/attack_tk(mob/user)
 	if(anchored)
@@ -92,15 +93,15 @@
 			I.forceMove(loc)
 			if(prob(25))
 				step_rand(I)
-			to_chat(user, "<span class='notice'>You pull \a [I] out of [src] at random.</span>")
+			to_chat(user, "<span class='notice'>Wyciągasz na chybił trafił [I] z [src].</span>")
 			return
-	to_chat(user, "<span class='notice'>You find nothing in [src].</span>")
+	to_chat(user, "<span class='notice'>Nic nie znajdujesz w [src].</span>")
 
 /obj/structure/filingcabinet/Topic(href, href_list)
-	if(!usr.canUseTopic(src, BE_CLOSE, ismonkey(usr)))
+	if(!usr.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, !iscyborg(usr)))
 		return
 	if(href_list["retrieve"])
-		usr << browse("", "window=filingcabinet") // Close the menu
+		usr << browse(null, "window=filingcabinet") // Close the menu
 
 		var/obj/item/P = locate(href_list["retrieve"]) in src //contents[retrieveindex]
 		if(istype(P) && in_range(src, usr))
@@ -123,9 +124,9 @@
 			if(!S)
 				continue
 			var/obj/item/paper/sec_record_paper = new /obj/item/paper(src)
-			var/sec_record_text = "<CENTER><B>Security Record</B></CENTER><BR>"
-			sec_record_text += "Name: [G.fields["name"]] ID: [G.fields["id"]]<BR>\nGender: [G.fields["gender"]]<BR>\nAge: [G.fields["age"]]<BR>\nFingerprint: [G.fields["fingerprint"]]<BR>\nPhysical Status: [G.fields["p_stat"]]<BR>\nMental Status: [G.fields["m_stat"]]<BR>"
-			sec_record_text += "<BR>\n<CENTER><B>Security Data</B></CENTER><BR>\nCriminal Status: [S.fields["criminal"]]<BR>\n<BR>\nCrimes: [S.fields["crim"]]<BR>\nDetails: [S.fields["crim_d"]]<BR>\n<BR>\nImportant Notes:<BR>\n\t[S.fields["notes"]]<BR>\n<BR>\n<CENTER><B>Comments/Log</B></CENTER><BR>"
+			var/sec_record_text = "<CENTER><B>Kartoteka ochrony</B></CENTER><BR>"
+			sec_record_text += "Imię: [G.fields["name"]] ID: [G.fields["id"]]<BR>\nPłeć: [G.fields["gender"]]<BR>\nWiek: [G.fields["age"]]<BR>\nOdcisk palca: [G.fields["fingerprint"]]<BR>\nStan fizyczny: [G.fields["p_stat"]]<BR>\nStan psychiczny: [G.fields["m_stat"]]<BR>"
+			sec_record_text += "<BR>\n<CENTER><B>Dane ochrony</B></CENTER><BR>\nStatus kryminalny: [S.fields["criminal"]]<BR>\n<BR>\nPrzestępstwa: [S.fields["crim"]]<BR>\nSzczegóły: [S.fields["crim_d"]]<BR>\n<BR>\nWażne uwagi:<BR>\n\t[S.fields["notes"]]<BR>\n<BR>\n<CENTER><B>Komentarze/dziennik</B></CENTER><BR>"
 			var/counter = 1
 			while(S.fields["com_[counter]"])
 				sec_record_text += "[S.fields["com_[counter]"]]<BR>"
@@ -158,9 +159,9 @@
 			if(!M)
 				continue
 			var/obj/item/paper/med_record_paper = new /obj/item/paper(src)
-			var/med_record_text = "<CENTER><B>Medical Record</B></CENTER><BR>"
-			med_record_text += "Name: [G.fields["name"]] ID: [G.fields["id"]]<BR>\nGender: [G.fields["gender"]]<BR>\nAge: [G.fields["age"]]<BR>\nFingerprint: [G.fields["fingerprint"]]<BR>\nPhysical Status: [G.fields["p_stat"]]<BR>\nMental Status: [G.fields["m_stat"]]<BR>"
-			med_record_text += "<BR>\n<CENTER><B>Medical Data</B></CENTER><BR>\nBlood Type: [M.fields["blood_type"]]<BR>\nDNA: [M.fields["b_dna"]]<BR>\n<BR>\nMinor Disabilities: [M.fields["mi_dis"]]<BR>\nDetails: [M.fields["mi_dis_d"]]<BR>\n<BR>\nMajor Disabilities: [M.fields["ma_dis"]]<BR>\nDetails: [M.fields["ma_dis_d"]]<BR>\n<BR>\nAllergies: [M.fields["alg"]]<BR>\nDetails: [M.fields["alg_d"]]<BR>\n<BR>\nCurrent Diseases: [M.fields["cdi"]] (per disease info placed in log/comment section)<BR>\nDetails: [M.fields["cdi_d"]]<BR>\n<BR>\nImportant Notes:<BR>\n\t[M.fields["notes"]]<BR>\n<BR>\n<CENTER><B>Comments/Log</B></CENTER><BR>"
+			var/med_record_text = "<CENTER><B>Kartoteka medyczna</B></CENTER><BR>"
+			med_record_text += "Imię: [G.fields["name"]] ID: [G.fields["id"]]<BR>\nPłeć: [G.fields["gender"]]<BR>\nWiek: [G.fields["age"]]<BR>\nOdcisk palca: [G.fields["fingerprint"]]<BR>\nStan fizyczny: [G.fields["p_stat"]]<BR>\nStan psychiczny: [G.fields["m_stat"]]<BR>"
+			med_record_text += "<BR>\n<CENTER><B>Dane medyczne</B></CENTER><BR>\nGrupa krwi: [M.fields["blood_type"]]<BR>\nDNA: [M.fields["b_dna"]]<BR>\n<BR>\nDrobne niepełnosprawności: [M.fields["mi_dis"]]<BR>\nSzczegóły: [M.fields["mi_dis_d"]]<BR>\n<BR>\nPoważne niepełnosprawności: [M.fields["ma_dis"]]<BR>\nSzczegóły: [M.fields["ma_dis_d"]]<BR>\n<BR>\nAlergie: [M.fields["alg"]]<BR>\nSzczegóły: [M.fields["alg_d"]]<BR>\n<BR>\nObecne choroby: [M.fields["cdi"]] (informacje o poszczególnych chorobach w sekcji dziennika/komentarzy)<BR>\nSzczegóły: [M.fields["cdi_d"]]<BR>\n<BR>\nWażne uwagi:<BR>\n\t[M.fields["notes"]]<BR>\n<BR>\n<CENTER><B>Komentarze/dziennik</B></CENTER><BR>"
 			var/counter = 1
 			while(M.fields["com_[counter]"])
 				med_record_text += "[M.fields["com_[counter]"]]<BR>"
@@ -223,7 +224,7 @@ GLOBAL_LIST_EMPTY(employmentCabinets)
 		sleep(100) // prevents the devil from just instantly emptying the cabinet, ensuring an easy win.
 		cooldown = 0
 	else
-		to_chat(user, "<span class='warning'>[src] is jammed, give it a few seconds.</span>")
+		to_chat(user, "<span class='warning'>[src] się zacięła, daj jej kilka sekund.</span>")
 	..()
 
 //NSV13

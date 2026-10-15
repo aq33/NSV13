@@ -55,14 +55,17 @@ SUBSYSTEM_DEF(atoms)
 	var/late_loader_len = late_loaders.len
 	#endif
 	if(late_loaders.len)
-		for(var/atom/A as() in late_loaders)
+		//AQ EDIT START - take the queue for ourselves; a map load running at the same time fills a fresh list,
+		// instead of having its atoms wiped by our Cut() and never getting LateInitialize
+		var/list/our_late_loaders = late_loaders
+		late_loaders = list()
+		for(var/atom/A as() in our_late_loaders)
 			//I hate that we need this
 			if(QDELETED(A))
 				continue
-			late_loaders -= A //We don't want to call LateInitialize twice in case of stoplag()
 			A.LateInitialize()
 		testing("Late initialized [late_loader_len] atoms")
-		late_loaders.Cut()
+		//AQ EDIT END
 
 	if(created_atoms)
 		atoms_to_return += created_atoms

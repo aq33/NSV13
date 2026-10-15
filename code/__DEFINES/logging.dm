@@ -8,6 +8,7 @@
 #define INVESTIGATE_ENGINES			"engines"
 #define INVESTIGATE_TELESCI			"telesci"
 #define INVESTIGATE_WIRES			"wires"
+#define INVESTIGATE_TOOLS			"tools"
 #define INVESTIGATE_PORTAL			"portals"
 #define INVESTIGATE_RESEARCH		"research"
 #define INVESTIGATE_HALLUCINATIONS	"hallucinations"
@@ -16,6 +17,7 @@
 #define INVESTIGATE_NANITES			"nanites"
 #define INVESTIGATE_PRESENTS		"presents"
 #define INVESTIGATE_ITEMS			"items"
+#define INVESTIGATE_DEATHS			"deaths"
 
 #define INVESTIGATE_VERB_PICKEDUP	"picked up"
 #define INVESTIGATE_VERB_DROPPED	"dropped"

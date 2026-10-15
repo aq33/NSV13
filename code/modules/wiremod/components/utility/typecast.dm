@@ -5,7 +5,7 @@
  */
 /obj/item/circuit_component/compare/typecast
 	display_name = "Typecast"
-	display_desc = "A component that checks and casts the type of its input."
+	display_desc = "Komponent, który sprawdza i rzutuje typ swojego wejścia."
 
 	input_port_amount = 1
 

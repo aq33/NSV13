@@ -70,7 +70,7 @@
 	time = 64
 	name = "manipulate organs"
 	repeatable = 1
-	implements = list(/obj/item/organ = 100, /obj/item/reagent_containers/food/snacks/organ = 0, /obj/item/organ_storage = 100)
+	implements = list(/obj/item/organ = 100, /obj/item/organ_storage = 100)
 	var/implements_extract = list(TOOL_HEMOSTAT = 100, TOOL_CROWBAR = 55)
 	var/current_type
 	var/obj/item/organ/I = null
@@ -85,38 +85,47 @@
 	I = null
 	if(istype(tool, /obj/item/organ_storage))
 		if(!tool.contents.len)
-			to_chat(user, "<span class='notice'>There is nothing inside [tool]!</span>")
+			to_chat(user, "<span class='notice'>W [tool] nic nie ma!</span>")
 			return -1
 		I = tool.contents[1]
 		if(!isorgan(I))
-			to_chat(user, "<span class='notice'>You cannot put [I] into [target]'s [parse_zone(target_zone)]!</span>")
+			to_chat(user, "<span class='notice'>Nie możesz włożyć [I] do ciała [target] ([strefa_pl(target_zone)])!</span>")
 			return -1
 		tool = I
 	if(isorgan(tool))
 		current_type = "insert"
 		I = tool
 		if(target_zone != I.zone || target.getorganslot(I.slot))
-			to_chat(user, "<span class='notice'>There is no room for [I] in [target]'s [parse_zone(target_zone)]!</span>")
+			to_chat(user, "<span class='notice'>W ciele [target] ([strefa_pl(target_zone)]) nie ma miejsca na [I]!</span>")
 			return -1
 		if(istype(I, /obj/item/organ/brain/positron))
 			var/obj/item/bodypart/affected = target.get_bodypart(check_zone(I.zone))
 			if(!affected)
 				return -1
 			if(IS_ORGANIC_LIMB(affected))
-				to_chat(user, "<span class='notice'>You can't put [I] into a meat enclosure!</span>")
+				to_chat(user, "<span class='notice'>Nie możesz włożyć [I] do mięsnej obudowy!</span>")
 				return -1
 			if(!isipc(target))
-				to_chat(user, "<span class='notice'>[target] does not have the proper connectors to interface with [I].</span>")
+				to_chat(user, "<span class='notice'>[target] nie ma odpowiednich złączy, by połączyć się z [I].</span>")
 				return -1
-			display_results(user, target, "<span class='notice'>You begin to insert [I] into [target]'s [parse_zone(target_zone)]...</span>",
-				"[user] begins to insert [I] into [target]'s [parse_zone(target_zone)].",
-				"[user] begins to insert something into [target]'s [parse_zone(target_zone)].")
+		var/obj/item/organ/meatslab = tool
+		if(!meatslab.useable)
+			to_chat(user, "<span class='warning'>[I] wygląda na pogryziony, nie możesz tego użyć!</span>")
+			return -1
+		display_results(user, target, "<span class='notice'>Zaczynasz wkładać [tool] do ciała [target] ([strefa_pl(target_zone)])...</span>",
+			"<span class='notice'>[user] zaczyna wkładać [tool] do ciała [target] ([strefa_pl(target_zone)]).</span>",
+			"<span class='notice'>[user] zaczyna coś wkładać do ciała [target] ([strefa_pl(target_zone)]).</span>")
 
 	else if(implement_type in implements_extract)
 		current_type = "extract"
 		var/list/organs = target.getorganszone(target_zone)
+		var/mob/living/simple_animal/horror/H = target.has_horror_inside() // AQ EDIT - Yogstation#13033
+		if(H)
+			user.visible_message("[user] zaczyna wyciągać [H] z ciała [target].",
+				"<span class='notice'>Zaczynasz wyciągać [H] z ciała [target]...</span>")
+			return TRUE
 		if(!organs.len)
-			to_chat(user, "<span class='notice'>There are no removable organs in [target]'s [parse_zone(target_zone)]!</span>")
+			to_chat(user, "<span class='notice'>W ciele [target] ([strefa_pl(target_zone)]) nie ma narządów, które można usunąć!</span>")
 			return -1
 		else
 			for(var/obj/item/organ/O in organs)
@@ -124,20 +133,16 @@
 				organs -= O
 				organs[O.name] = O
 
-			I = input("Remove which organ?", "Surgery", null, null) as null|anything in sortList(organs)
+			I = input("Który narząd usunąć?", "Surgery", null, null) as null|anything in sortList(organs)
 			if(I && user && target && user.Adjacent(target) && user.get_active_held_item() == tool)
 				I = organs[I]
 				if(!I)
 					return -1
-				display_results(user, target, "<span class='notice'>You begin to extract [I] from [target]'s [parse_zone(target_zone)]...</span>",
-					"[user] begins to extract [I] from [target]'s [parse_zone(target_zone)].",
-					"[user] begins to extract something from [target]'s [parse_zone(target_zone)].")
+				display_results(user, target, "<span class='notice'>Zaczynasz wydobywać [I] z ciała [target] ([strefa_pl(target_zone)])...</span>",
+					"[user] zaczyna wydobywać [I] z ciała [target] ([strefa_pl(target_zone)]).",
+					"[user] zaczyna coś wydobywać z ciała [target] ([strefa_pl(target_zone)]).")
 			else
 				return -1
-
-	else if(istype(tool, /obj/item/reagent_containers/food/snacks/organ))
-		to_chat(user, "<span class='warning'>[tool] was bitten by someone! It's too damaged to use!</span>")
-		return -1
 
 /datum/surgery_step/manipulate_organs/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	if(current_type == "insert")
@@ -151,20 +156,31 @@
 			I = tool
 		user.temporarilyRemoveItemFromInventory(I, TRUE)
 		I.Insert(target)
-		display_results(user, target, "<span class='notice'>You insert [tool] into [target]'s [parse_zone(target_zone)].</span>",
-			"[user] inserts [tool] into [target]'s [parse_zone(target_zone)]!",
-			"[user] inserts something into [target]'s [parse_zone(target_zone)]!")
+		display_results(user, target, "<span class='notice'>Wkładasz [tool] do ciała [target] ([strefa_pl(target_zone)]).</span>",
+			"[user] wkłada [tool] do ciała [target] ([strefa_pl(target_zone)])!",
+			"[user] wkłada coś do ciała [target] ([strefa_pl(target_zone)])!")
 
 	else if(current_type == "extract")
+		var/mob/living/simple_animal/horror/H = target.has_horror_inside() // AQ EDIT - Yogstation#13033
+		if(H && H.victim == target)
+			user.visible_message("[user] wyciąga [H] z ciała [target]!",
+				"<span class='notice'>Udało ci się wyciągnąć [H] z ciała [target].</span>")
+			log_combat(user, target, "surgically removed [H] from", addition="COMBAT MODE: [uppertext(user.combat_mode)]")
+			H.leave_victim()
+			return FALSE
+		if(istype(I, /obj/item/organ/shadowtumor/thrall)) // AQ EDIT - darkspawn z Yogstation: przytomny thrall odpycha operujących
+			var/obj/item/organ/shadowtumor/thrall/tumor = I
+			if(tumor.resist(target))
+				return FALSE
 		if(I && I.owner == target)
-			display_results(user, target, "<span class='notice'>You successfully extract [I] from [target]'s [parse_zone(target_zone)].</span>",
-				"[user] successfully extracts [I] from [target]'s [parse_zone(target_zone)]!",
-				"[user] successfully extracts something from [target]'s [parse_zone(target_zone)]!")
+			display_results(user, target, "<span class='notice'>Pomyślnie wydobywasz [I] z ciała [target] ([strefa_pl(target_zone)]).</span>",
+				"[user] pomyślnie wydobywa [I] z ciała [target] ([strefa_pl(target_zone)])!",
+				"[user] pomyślnie wydobywa coś z ciała [target] ([strefa_pl(target_zone)])!")
 			log_combat(user, target, "surgically removed [I.name] from", addition="INTENT: [uppertext(user.a_intent)]")
 			I.Remove(target)
 			I.forceMove(get_turf(target))
 		else
-			display_results(user, target, "<span class='notice'>You can't extract anything from [target]'s [parse_zone(target_zone)]!</span>",
-				"[user] can't seem to extract anything from [target]'s [parse_zone(target_zone)]!",
-				"[user] can't seem to extract anything from [target]'s [parse_zone(target_zone)]!")
+			display_results(user, target, "<span class='notice'>Nie możesz niczego wydobyć z ciała [target] ([strefa_pl(target_zone)])!</span>",
+				"[user] nie może niczego wydobyć z ciała [target] ([strefa_pl(target_zone)])!",
+				"[user] nie może niczego wydobyć z ciała [target] ([strefa_pl(target_zone)])!")
 	return 0

@@ -1,6 +1,24 @@
 /** Radio channels */
-export const CHANNELS = ['Say', 'Radio', 'Me', 'OOC', 'LOOC'];
+export const CHANNELS = [
+  'Say',
+  'Radio',
+  'Me',
+  'OOC',
+  'LOOC',
+  'Asay',
+  'Dsay',
+  'Msay',
+];
+export const CYCLEABLE_CHANNELS = ['Say', 'Radio', 'Me', 'OOC', 'LOOC'];
 export const NO_RADIO_CHANNELS = ['Me', 'OOC', 'LOOC'];
+/** Polskie etykiety kanałów (same kanały zostają po angielsku, bo idą do DM). */
+export const CHANNEL_LABELS: Record<string, string> = {
+  'Say': 'Mów',
+  'Radio': 'Radio',
+  'Me': 'Akcja',
+};
+
+export const RESTRICTED_CHANNELS = ['Asay', 'Dsay', 'Msay'];
 
 /** Window sizes in pixels */
 export enum WINDOW_SIZES {
@@ -25,7 +43,7 @@ export enum LINE_LENGTHS {
 export const RADIO_PREFIXES = {
   ':a ': {
     id: 'hive',
-    label: 'Hive',
+    label: 'Rój',
   },
   ':b ': {
     id: 'binary',
@@ -33,7 +51,7 @@ export const RADIO_PREFIXES = {
   },
   ':c ': {
     id: 'command',
-    label: 'Cmd',
+    label: 'Dow',
   },
   ':d ': {
     id: 'uplink',
@@ -41,7 +59,7 @@ export const RADIO_PREFIXES = {
   },
   ':e ': {
     id: 'engi',
-    label: 'Engi',
+    label: 'Inż',
   },
   ':h ': {
     id: 'holo',
@@ -49,11 +67,11 @@ export const RADIO_PREFIXES = {
   },
   ':i ': {
     id: 'intercom',
-    label: 'ICom',
+    label: 'Inter',
   },
   ':l ': {
     id: 'left',
-    label: 'Left',
+    label: 'Lewo',
   },
   ':m ': {
     id: 'medical',
@@ -61,49 +79,47 @@ export const RADIO_PREFIXES = {
   },
   ':n ': {
     id: 'science',
-    label: 'Sci',
+    label: 'Nauk',
   },
   ':o ': {
     id: 'ai',
-    label: 'AI',
+    label: 'SI',
   },
-  // NSV13 - We need this stuff
-  // ':q ': {
-  //  id: 'exploration',
-  //  label: 'Explo',
-  // },
+  ':q ': {
+    id: 'exploration',
+    label: 'Explo',
+  },
   ':r ': {
     id: 'right',
-    label: 'Right',
+    label: 'Prawo',
   },
   ':s ': {
     id: 'security',
-    label: 'Sec',
+    label: 'Ochr',
   },
   ':t ': {
     id: 'syndicate',
-    label: 'Syndi',
+    label: 'Synd',
   },
   ':u ': {
     id: 'supply',
-    label: 'Supp',
+    label: 'Zaop',
   },
   ':v ': {
     id: 'service',
-    label: 'Svc',
+    label: 'Usł',
   },
   ':y ': {
     id: 'centcom',
     label: 'CCom',
   },
-  // NSV13 - Start of NSV13 Comms
-  ':q ': {
-    id: 'atc',
-    label: 'ATC',
+  ':p ': {
+    id: 'holoparasite',
+    label: 'HPara',
   },
   ':w ': {
     id: 'munition',
-    label: 'Muni',
+    label: 'Amun',
   },
   ':z ': {
     id: 'space_pirate',

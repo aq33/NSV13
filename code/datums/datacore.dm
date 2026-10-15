@@ -165,8 +165,8 @@
 					manifest_out[department] = list()
 				manifest_out[department] += list(list(
 					"name" = name,
-					"rank" = rank
-					// note: `"hud" = hud` is not needed. that is used to sort, not used to display. check `if(hud in jobs_hud)`
+					"rank" = rank,
+					"hud" = hud, // AQ EDIT - port BeeStation #9836: the TGUI manifest shows job icons and sorts by them
 				))
 				has_department = TRUE
 				if(department != "Command") //List heads in both command and their own department.
@@ -176,7 +176,8 @@
 				manifest_out["Misc"] = list()
 			manifest_out["Misc"] += list(list(
 				"name" = name,
-				"rank" = rank
+				"rank" = rank,
+				"hud" = hud, // AQ EDIT - port BeeStation #9836
 			))
 	//Sort the list by 'departments' primarily so command is on top.
 	var/list/sorted_out = list()
@@ -241,8 +242,8 @@
 		var/datum/picture/ps = new
 		pf.picture_name = "[H]"
 		ps.picture_name = "[H]"
-		pf.picture_desc = "This is [H]."
-		ps.picture_desc = "This is [H]."
+		pf.picture_desc = "To jest [H]."
+		ps.picture_desc = "To jest [H]."
 		pf.picture_image = icon(image, dir = SOUTH)
 		ps.picture_image = icon(image, dir = WEST)
 		var/obj/item/photo/photo_front = new(null, pf)

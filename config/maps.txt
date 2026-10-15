@@ -13,16 +13,6 @@ Format:
 	votable (THIS IS REQUIRED!!!!!)
 endmap
 
-map tycoon
-	minplayers 12
-#	votable
-endmap
-
-map atlas
-	minplayers 20
-#	votable
-endmap
-
 map aquila_atlas
 	minplayers 15
 	default
@@ -39,45 +29,9 @@ map aquila_serendipity
 	votable
 endmap
 
-map aetherwhisp
-	minplayers 12
-	voteweight 0.5
-#	votable
-endmap
-
-map eclipse
-	maxplayers 20
-#	votable
-endmap
-
-map galactica
-	minplayers 27
-#	votable
-endmap
-
-map gladius
-	minplayers 17
-#	votable
-endmap
-
-map hammerhead
-#	votable
-endmap
-
-map serendipity
-	maxplayers 30
-	votable
-endmap
-
 map shrike
 	maxplayers 24
 #	votable
-endmap
-
-map snake
-	minplayers 20
-#	maxplayers 30
-	votable
 endmap
 
 map atlantis
@@ -86,19 +40,7 @@ map atlantis
 #	votable
 endmap
 
-#--------------
-# EVENT MAPS
-#--------------
-
-map Vago
-#	votable
-endmap
-
 #BEGIN DEBUG MAPS
-
-#map testship
-	disabled
-endmap
 
 #map runtimestation
 	disabled

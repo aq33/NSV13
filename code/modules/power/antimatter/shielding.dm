@@ -38,7 +38,7 @@
 	qdel(src)
 
 /obj/machinery/am_shielding/proc/collapse()
-	visible_message("<span class='notice'>[src] collapses back into a container!</span>")
+	visible_message("<span class='notice'>[src] składa się z powrotem w pojemnik!</span>")
 	new /obj/item/am_shielding_container(drop_location())
 	qdel(src)
 

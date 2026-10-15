@@ -34,7 +34,7 @@
 				continue
 			O_limit++
 			if(O_limit >= 20)
-				audible_message("<span class='notice'>[src] lets out a screech, it doesn't seem to be able to handle the load.</span>")
+				audible_message("<span class='notice'>[src] wydaje zgrzyt, nie wydaje się radzić sobie z obciążeniem.</span>")
 				break
 			use_power(power_per_obj)
 			O.throw_at(target, drive_range * power, power)

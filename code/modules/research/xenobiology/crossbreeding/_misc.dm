@@ -13,7 +13,7 @@ Slimecrossing Items
 	pictures_left = 1
 	pictures_max = 1
 	can_customise = FALSE
-	default_picture_name = "A nostalgic picture"
+	default_picture_name = "Nostalgiczne zdjęcie"
 	var/used = FALSE
 
 /datum/saved_bodypart
@@ -96,7 +96,7 @@ Slimecrossing Items
 	addtimer(CALLBACK(src, PROC_REF(rewind)), DEJAVU_REWIND_INTERVAL)
 
 /datum/component/dejavu/proc/rewind()
-	to_chat(parent, "<span class=notice>You remember a time not so long ago...</span>")
+	to_chat(parent, "<span class=notice>Przypominasz sobie czasy nie tak dawne...</span>")
 
 	if(isliving(parent))
 		var/mob/living/L = parent
@@ -127,7 +127,7 @@ Slimecrossing Items
 	if(rewinds_remaining)
 		addtimer(CALLBACK(src, PROC_REF(rewind)), DEJAVU_REWIND_INTERVAL)
 	else
-		to_chat(parent, "<span class=notice>But the memory falls out of your reach.</span>")
+		to_chat(parent, "<span class=notice>Ale wspomnienie wymyka ci się z rąk.</span>")
 
 
 
@@ -136,11 +136,11 @@ Slimecrossing Items
 		return
 	if(!used)//selfie time
 		if(user == target)
-			to_chat(user, "<span class=notice>You take a selfie!</span>")
+			to_chat(user, "<span class=notice>Robisz sobie selfie!</span>")
 		else
-			to_chat(user, "<span class=notice>You take a photo with [target]!</span>")
-			to_chat(target, "<span class=notice>[user] takes a photo with you!</span>")
-		to_chat(target, "<span class=notice>You'll remember this moment forever!</span>")
+			to_chat(user, "<span class=notice>Robisz sobie zdjęcie z [target]!</span>")
+			to_chat(target, "<span class=notice>[user] robi sobie z tobą zdjęcie!</span>")
+		to_chat(target, "<span class=notice>Zapamiętasz tę chwilę na zawsze!</span>")
 
 		used = TRUE
 		target.AddComponent(/datum/component/dejavu, 2)
@@ -184,11 +184,11 @@ Slimecrossing Items
 
 /obj/item/barriercube/attack_self(mob/user)
 	if(locate(/obj/structure/barricade/slime) in get_turf(loc))
-		to_chat(user, "<span class='warning'>You can't fit more than one barrier in the same space!</span>")
+		to_chat(user, "<span class='warning'>Nie zmieścisz więcej niż jednej bariery w tym samym miejscu!</span>")
 		return
-	to_chat(user, "<span class='notice'>You squeeze [src].</span>")
+	to_chat(user, "<span class='notice'>Ściskasz [src].</span>")
 	var/obj/B = new /obj/structure/barricade/slime(get_turf(loc))
-	B.visible_message("<span class='warning'>[src] suddenly grows into a large, gelatinous barrier!</span>")
+	B.visible_message("<span class='warning'>[src] nagle rozrasta się w dużą, galaretowatą barierę!</span>")
 	qdel(src)
 
 //Slime barricade - Chilling Grey
@@ -216,29 +216,6 @@ Slimecrossing Items
 	desc = "Despite others' urgings, you probably shouldn't taste this."
 	icon_state = "rainbowbarrier"
 
-//Ration pack - Chilling Silver
-/obj/item/reagent_containers/food/snacks/rationpack
-	name = "ration pack"
-	desc = "A square bar that sadly <i>looks</i> like chocolate, packaged in a nondescript grey wrapper. Has saved soldiers' lives before - usually by stopping bullets."
-	icon_state = "rationpack"
-	bitesize = 3
-	junkiness = 15
-	filling_color = "#964B00"
-	tastes = list("cardboard" = 3, "sadness" = 3)
-	foodtype = null //Don't ask what went into them. You're better off not knowing.
-	list_reagents = list(/datum/reagent/consumable/nutriment/stabilized = 10, /datum/reagent/consumable/nutriment = 2) //Won't make you fat. Will make you question your sanity.
-
-/obj/item/reagent_containers/food/snacks/rationpack/checkLiked(fraction, mob/M)	//Nobody likes rationpacks. Nobody.
-	if(last_check_time + 50 < world.time)
-		if(ishuman(M))
-			var/mob/living/carbon/human/H = M
-			if(H.mind && !HAS_TRAIT(H, TRAIT_AGEUSIA))
-				to_chat(H,"<span class='notice'>That didn't taste very good...</span>") //No disgust, though. It's just not good tasting.
-				SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "gross_food", /datum/mood_event/gross_food)
-				last_check_time = world.time
-				return
-	..()
-
 //Ice stasis block - Chilling Dark Blue
 /obj/structure/ice_stasis
 	name = "ice block"
@@ -247,7 +224,7 @@ Slimecrossing Items
 	icon_state = "frozen"
 	density = TRUE
 	max_integrity = 100
-	armor = list("melee" = 30, "bullet" = 50, "laser" = -50, "energy" = -50, "bomb" = 0, "bio" = 100, "rad" = 100, "fire" = -80, "acid" = 30, "stamina" = 0)
+	armor = list("melee" = 30, "bullet" = 50, "laser" = -50, "energy" = -50, "bomb" = 0, "bio" = 100, "rad" = 100, "fire" = -80, "acid" = 30, "stamina" = 0, "bleed" = 0)
 
 /obj/structure/ice_stasis/Initialize(mapload)
 	. = ..()
@@ -269,41 +246,41 @@ Slimecrossing Items
 
 /obj/item/capturedevice/attack(mob/living/M, mob/user)
 	if(length(contents))
-		to_chat(user, "<span class='warning'>The device already has something inside.</span>")
+		to_chat(user, "<span class='warning'>W urządzeniu już coś jest.</span>")
 		return
 	if(!isanimal(M))
-		to_chat(user, "<span class='warning'>The capture device only works on simple creatures.</span>")
+		to_chat(user, "<span class='warning'>Urządzenie do chwytania działa tylko na proste stworzenia.</span>")
 		return
 	if(M.mind)
 		INVOKE_ASYNC(src, PROC_REF(offer_entry), M, user)
 		return
 	else
 		if(istype(M, /mob/living/simple_animal/hostile) && !("neutral" in M.faction))
-			to_chat(user, "<span class='warning'>This creature is too aggressive to capture.</span>")
+			to_chat(user, "<span class='warning'>To stworzenie jest zbyt agresywne, by je schwytać.</span>")
 			return
-	to_chat(user, "<span class='notice'>You store [M] in the capture device.</span>")
+	to_chat(user, "<span class='notice'>Umieszczasz [M] w urządzeniu do chwytania.</span>")
 	store(M)
 
 /obj/item/capturedevice/proc/offer_entry(mob/living/M, mob/user)
-	to_chat(user, "<span class='notice'>You offer the device to [M].</span>")
-	if(alert(M, "Would you like to enter [user]'s capture device?", "Gold Capture Device", "Yes", "No") != "Yes")
-		to_chat(user, "<span class='warning'>[M] refused to enter the device.</span>")
+	to_chat(user, "<span class='notice'>Oferujesz urządzenie [M].</span>")
+	if(alert(M, "Czy chcesz wejść do urządzenia do chwytania należącego do [user]?", "Złote urządzenie do chwytania", "Yes", "No") != "Yes")
+		to_chat(user, "<span class='warning'>[M] odmawia wejścia do urządzenia.</span>")
 		return
 	if(!user.canUseTopic(src, BE_CLOSE) || !user.canUseTopic(M, BE_CLOSE))
-		to_chat(user, "<span class='warning'>You were too far away from [M].</span>")
-		to_chat(M, "<span class='warning'>You were too far away from [user].</span>")
+		to_chat(user, "<span class='warning'>Jesteś za daleko od [M].</span>")
+		to_chat(M, "<span class='warning'>Jesteś za daleko od [user].</span>")
 		return
 
-	to_chat(user, "<span class='notice'>You store [M] in the capture device.</span>")
-	to_chat(M, "<span class='notice'>The world warps around you, and you're suddenly in an endless void, with a window to the outside floating in front of you.</span>")
+	to_chat(user, "<span class='notice'>Umieszczasz [M] w urządzeniu do chwytania.</span>")
+	to_chat(M, "<span class='notice'>Świat wykrzywia się wokół ciebie i nagle znajdujesz się w bezkresnej pustce, a przed tobą unosi się okno na zewnątrz.</span>")
 	store(M, user)
 
 /obj/item/capturedevice/attack_self(mob/user)
 	if(contents.len)
-		to_chat(user, "<span class='notice'>You open the capture device!</span>")
+		to_chat(user, "<span class='notice'>Otwierasz urządzenie do chwytania!</span>")
 		release()
 	else
-		to_chat(user, "<span class='warning'>The device is empty...</span>")
+		to_chat(user, "<span class='warning'>Urządzenie jest puste...</span>")
 
 /obj/item/capturedevice/proc/store(var/mob/living/M)
 	M.forceMove(src)
@@ -326,7 +303,7 @@ Slimecrossing Items
 	var/obj/item/stack/stack_item = target
 
 	if(istype(stack_item,/obj/item/stack/telecrystal))
-		to_chat(user,"<span class='notice'>The crystal disappears!</span>")
+		to_chat(user,"<span class='notice'>Kryształ znika!</span>")
 		qdel(src)
 		return
 

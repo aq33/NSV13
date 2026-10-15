@@ -4,9 +4,9 @@
 	value = 0
 	mob_trait = TRAIT_GFORCE_WEAKNESS
 	human_only = TRUE
-	gain_text = "<span class='notice'>Your body feels heavy.</span>"
-	lose_text = "<span class='notice'>You don't feel so heavy anymore.</span>"
-	medical_record_text = "The patient's body has adapted to low-G environments."
+	gain_text = "<span class='notice'>Twoje ciało wydaje się ciężkie.</span>"
+	lose_text = "<span class='notice'>Nie czujesz się już taki ciężki.</span>"
+	medical_record_text = "Ciało pacjenta przystosowało się do środowisk o niskiej grawitacji."
 	// Extra safety checks to make sure no one cheeses the multiplication somehow. Although ideally this trait shouldn't be removed
 	var/og_oxmod = 1
 	var/cached_oxmod = 1

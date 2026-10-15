@@ -21,14 +21,14 @@
 
 /obj/item/computer_hardware/network_card/diagnostics(var/mob/user)
 	..()
-	to_chat(user, "NIX Unique ID: [hardware_id]")
-	to_chat(user, "NIX User Tag: [identification_string]")
-	to_chat(user, "Supported protocols:")
-	to_chat(user, "511.m SFS (Subspace) - Standard Frequency Spread")
+	to_chat(user, "Unikalny ID NIX: [hardware_id]")
+	to_chat(user, "Znacznik użytkownika NIX: [identification_string]")
+	to_chat(user, "Obsługiwane protokoły:")
+	to_chat(user, "511.m SFS (podprzestrzeń) – standardowe rozproszenie częstotliwości")
 	if(long_range)
-		to_chat(user, "511.n WFS/HB (Subspace) - Wide Frequency Spread/High Bandiwdth")
+		to_chat(user, "511.n WFS/HB (podprzestrzeń) – szerokie rozproszenie częstotliwości/wysoka przepustowość")
 	if(ethernet)
-		to_chat(user, "OpenEth (Physical Connection) - Physical network connection port")
+		to_chat(user, "OpenEth (połączenie fizyczne) – port fizycznego połączenia sieciowego")
 
 
 // Returns a string identifier of this network card

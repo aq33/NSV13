@@ -19,7 +19,7 @@
 	health = 50
 	maxHealth = 50
 	damage_coeff = list(BRUTE = 0.5, BURN = 0.7, TOX = 0, CLONE = 0, STAMINA = 0, OXY = 0)
-	a_intent = INTENT_HARM //No swapping
+	combat_mode = TRUE //No swapping
 	buckle_lying = 0
 	buckle_prevents_pull = TRUE // No pulling loaded shit
 	mob_size = MOB_SIZE_LARGE
@@ -92,12 +92,12 @@
 	. = ..()
 	if(open)
 		if(cell)
-			. += "<span class='notice'>It has \a [cell] installed.</span>"
-			. += "<span class='info'>You can use a <b>crowbar</b> to remove it.</span>"
+			. += "<span class='notice'>Ma zainstalowane [cell].</span>"
+			. += "<span class='info'>Możesz je wyjąć <b>łomem</b>.</span>"
 		else
-			. += "<span class='notice'>It has an empty compartment where a <b>power cell</b> can be installed.</span>"
+			. += "<span class='notice'>Ma pustą komorę, w której można zainstalować <b>ogniwo zasilające</b>.</span>"
 	if(load) //observer check is so we don't show the name of the ghost that's sitting on it to prevent metagaming who's ded.
-		. += "<span class='notice'>\A [isobserver(load) ? "ghostly figure" : load] is on its load platform.</span>"
+		. += "<span class='notice'>Na platformie ładunkowej jest [isobserver(load) ? "upiorna postać" : load].</span>"
 
 
 /mob/living/simple_animal/bot/mulebot/Destroy()
@@ -135,7 +135,7 @@
 	new_destination = null //NSV13
 	reached_target = FALSE
 
-/mob/living/simple_animal/bot/mulebot/attackby(obj/item/I, mob/user, params)
+/mob/living/simple_animal/bot/mulebot/attackby(obj/item/I, mob/living/user, params)
 	if(I.tool_behaviour == TOOL_SCREWDRIVER)
 		. = ..()
 		if(open)
@@ -144,34 +144,34 @@
 			update_icon() //this is also handled by turn_off(), so no need to call this twice.
 	else if(istype(I, /obj/item/stock_parts/cell) && open)
 		if(cell)
-			to_chat(user, "<span class='warning'>[src] already has a power cell!</span>")
+			to_chat(user, "<span class='warning'>[src] ma już ogniwo zasilające!</span>")
 			return
 		if(!user.transferItemToLoc(I, src))
 			return
 		cell = I
-		visible_message("<span class='notice'>[user] inserts \a [cell] into [src].</span>",
-						"<span class='notice'>You insert [cell] into [src].</span>")
-	else if(I.tool_behaviour == TOOL_CROWBAR && open && user.a_intent != INTENT_HARM)
+		visible_message("<span class='notice'>[user] wkłada [cell] do [src].</span>",
+						"<span class='notice'>Wkładasz [cell] do [src].</span>")
+	else if(I.tool_behaviour == TOOL_CROWBAR && open && !user.combat_mode)
 		if(!cell)
-			to_chat(user, "<span class='warning'>[src] doesn't have a power cell!</span>")
+			to_chat(user, "<span class='warning'>[src] nie ma ogniwa zasilającego!</span>")
 			return
 		cell.add_fingerprint(user)
 		if(Adjacent(user) && !issilicon(user))
 			user.put_in_hands(cell)
 		else
 			cell.forceMove(drop_location())
-		visible_message("<span class='notice'>[user] crowbars [cell] out from [src].</span>",
-						"<span class='notice'>You pry [cell] out of [src].</span>")
+		visible_message("<span class='notice'>[user] wyważa łomem [cell] z [src].</span>",
+						"<span class='notice'>Wyważasz [cell] z [src].</span>")
 		cell = null
 	else if(is_wire_tool(I) && open)
 		return attack_hand(user)
 	else if(load && ismob(load))  // chance to knock off rider
 		if(prob(1 + I.force * 2))
 			unload(0)
-			user.visible_message("<span class='danger'>[user] knocks [load] off [src] with \the [I]!</span>",
-									"<span class='danger'>You knock [load] off [src] with \the [I]!</span>")
+			user.visible_message("<span class='danger'>[user] strąca [load] z [src] za pomocą [I]!</span>",
+									"<span class='danger'>Strącasz [load] z [src] za pomocą [I]!</span>")
 		else
-			to_chat(user, "<span class='warning'>You hit [src] with \the [I] but to no effect!</span>")
+			to_chat(user, "<span class='warning'>Uderzasz [src] za pomocą [I], ale bez efektu!</span>")
 			return ..()
 	else
 		return ..()
@@ -219,7 +219,7 @@
 		if(prob(50) && !isnull(load))
 			unload(0)
 		if(prob(25))
-			visible_message("<span class='danger'>Something shorts out inside [src]!</span>")
+			visible_message("<span class='danger'>Coś zwiera się w środku [src]!</span>")
 			wires.cut_random()
 
 /mob/living/simple_animal/bot/mulebot/interact(mob/user)
@@ -280,11 +280,11 @@
 			if(on)
 				turn_off()
 			else if(open)
-				to_chat(usr, "<span class='warning'>[name]'s maintenance panel is open!</span>")
+				to_chat(usr, "<span class='warning'>Panel serwisowy [name] jest otwarty!</span>")
 				return
 			else if(cell)
 				if(!turn_on())
-					to_chat(usr, "<span class='warning'>You can't switch on [src]!</span>")
+					to_chat(usr, "<span class='warning'>Nie możesz włączyć [src]!</span>")
 					return
 			. = TRUE
 		else
@@ -310,7 +310,7 @@
 		if("destination")
 			var/new_dest
 			if(pda)
-				new_dest = input(user, "Enter Destination:", name, destination) as null|anything in GLOB.deliverybeacontags
+				new_dest = input(user, "Podaj cel:", name, destination) as null|anything in GLOB.deliverybeacontags
 			else
 				new_dest = params["value"]
 			if(new_dest)
@@ -319,7 +319,7 @@
 		if("setid")
 			var/new_id
 			if(pda)
-				new_id = stripped_input(user, "Enter ID:", name, id, MAX_NAME_LEN)
+				new_id = stripped_input(user, "Podaj ID:", name, id, MAX_NAME_LEN)
 			else
 				new_id = params["value"]
 			if(new_id)
@@ -328,7 +328,7 @@
 		if("sethome")
 			var/new_home
 			if(pda)
-				new_home = input(user, "Enter Home:", name, home_destination) as null|anything in GLOB.deliverybeacontags
+				new_home = input(user, "Podaj bazę:", name, home_destination) as null|anything in GLOB.deliverybeacontags
 			else
 				new_home = params["value"]
 			if(new_home)
@@ -358,7 +358,7 @@
 /mob/living/simple_animal/bot/mulebot/get_controls(mob/user)
 	var/ai = issilicon(user)
 	var/dat
-	dat += "<h3>Multiple Utility Load Effector Mk. V</h3>"
+	dat += "<h3>Wielofunkcyjny Efektor Ładunkowy Mk. V</h3>"
 	dat += "<b>ID:</b> [id]<BR>"
 	dat += "<b>Power:</b> [on ? "On" : "Off"]<BR>"
 	dat += "<h3>Status</h3>"
@@ -378,44 +378,44 @@
 			dat += "<span class='bad'>[mode_name[BOT_NO_ROUTE]]</span>"
 	dat += "</div>"
 
-	dat += "<b>Current Load:</b> [isobserver(load) ? "<i>Unknown</i>" : (load ? load.name : "<i>None</i>")]<BR>"
+	dat += "<b>Obecny ładunek:</b> [isobserver(load) ? "<i>Nieznany</i>" : (load ? load.name : "<i>Brak</i>")]<BR>"
 	dat += "<b>Destination:</b> [!destination ? "<i>none</i>" : destination]<BR>"
-	dat += "<b>Power level:</b> [cell ? cell.percent() : 0]%"
+	dat += "<b>Poziom zasilania:</b> [cell ? cell.percent() : 0]%"
 
 	if(locked && !ai && !IsAdminGhost(user))
-		dat += "&nbsp;<br /><div class='notice'>Controls are locked</div><A href='byond://?src=[REF(src)];op=unlock'>Unlock Controls</A>"
+		dat += "&nbsp;<br /><div class='notice'>Sterowanie jest zablokowane</div><A href='byond://?src=[REF(src)];op=unlock'>Odblokuj sterowanie</A>"
 	else
-		dat += "&nbsp;<br /><div class='notice'>Controls are unlocked</div><A href='byond://?src=[REF(src)];op=lock'>Lock Controls</A><BR><BR>"
+		dat += "&nbsp;<br /><div class='notice'>Sterowanie jest odblokowane</div><A href='byond://?src=[REF(src)];op=lock'>Zablokuj sterowanie</A><BR><BR>"
 
-		dat += "<A href='byond://?src=[REF(src)];op=power'>Toggle Power</A><BR>"
+		dat += "<A href='byond://?src=[REF(src)];op=power'>Włącz/wyłącz</A><BR>"
 		dat += "<A href='byond://?src=[REF(src)];op=stop'>Stop</A><BR>"
 		dat += "<A href='byond://?src=[REF(src)];op=go'>Proceed</A><BR>"
-		dat += "<A href='byond://?src=[REF(src)];op=home'>Return to Home</A><BR>"
-		dat += "<A href='byond://?src=[REF(src)];op=destination'>Set Destination</A><BR>"
-		dat += "<A href='byond://?src=[REF(src)];op=setid'>Set Bot ID</A><BR>"
-		dat += "<A href='byond://?src=[REF(src)];op=sethome'>Set Home</A><BR>"
-		dat += "<A href='byond://?src=[REF(src)];op=autoret'>Toggle Auto Return Home</A> ([auto_return ? "On":"Off"])<BR>"
-		dat += "<A href='byond://?src=[REF(src)];op=autopick'>Toggle Auto Pickup Crate</A> ([auto_pickup ? "On":"Off"])<BR>"
-		dat += "<A href='byond://?src=[REF(src)];op=report'>Toggle Delivery Reporting</A> ([report_delivery ? "On" : "Off"])<BR>"
+		dat += "<A href='byond://?src=[REF(src)];op=home'>Wróć do bazy</A><BR>"
+		dat += "<A href='byond://?src=[REF(src)];op=destination'>Ustaw cel</A><BR>"
+		dat += "<A href='byond://?src=[REF(src)];op=setid'>Ustaw ID bota</A><BR>"
+		dat += "<A href='byond://?src=[REF(src)];op=sethome'>Ustaw bazę</A><BR>"
+		dat += "<A href='byond://?src=[REF(src)];op=autoret'>Automatyczny powrót do bazy</A> ([auto_return ? "Wł.":"Wył."])<BR>"
+		dat += "<A href='byond://?src=[REF(src)];op=autopick'>Automatyczny odbiór skrzyń</A> ([auto_pickup ? "Wł.":"Wył."])<BR>"
+		dat += "<A href='byond://?src=[REF(src)];op=report'>Raportowanie dostaw</A> ([report_delivery ? "Wł." : "Wył."])<BR>"
 		if(load)
-			dat += "<A href='byond://?src=[REF(src)];op=unload'>Unload Now</A><BR>"
-		dat += "<div class='notice'>The maintenance hatch is closed.</div>"
+			dat += "<A href='byond://?src=[REF(src)];op=unload'>Rozładuj teraz</A><BR>"
+		dat += "<div class='notice'>Właz serwisowy jest zamknięty.</div>"
 
 	return dat
 
 /mob/living/simple_animal/bot/mulebot/proc/buzz(type)
 	switch(type)
 		if(SIGH)
-			audible_message("[src] makes a sighing buzz.", "<span class='italics'>You hear an electronic buzzing sound.</span>")
+			audible_message("[src] wydaje brzęczenie przypominające westchnienie.", "<span class='italics'>Słyszysz elektroniczne brzęczenie.</span>")
 			playsound(loc, 'sound/machines/buzz-sigh.ogg', 50, 0)
 		if(ANNOYED)
-			audible_message("[src] makes an annoyed buzzing sound.", "<span class='italics'>You hear an electronic buzzing sound.</span>")
+			audible_message("[src] wydaje zirytowane brzęczenie.", "<span class='italics'>Słyszysz elektroniczne brzęczenie.</span>")
 			playsound(loc, 'sound/machines/buzz-two.ogg', 50, 0)
 		if(DELIGHT)
-			audible_message("[src] makes a delighted ping!", "<span class='italics'>You hear a ping.</span>")
+			audible_message("[src] wydaje radosny dźwięk!", "<span class='italics'>Słyszysz pingnięcie.</span>")
 			playsound(loc, 'sound/machines/ping.ogg', 50, 0)
 		if(CHIME)
-			audible_message("[src] makes a chiming sound!", "<span class='italics'>You hear a chime.</span>")
+			audible_message("[src] wydaje dźwięk dzwonka!", "<span class='italics'>Słyszysz dzwonek.</span>")
 			playsound(loc, 'sound/machines/chime.ogg', 50, 0)
 	flick("[base_icon]1", src)
 
@@ -560,8 +560,13 @@
 			if(loc == target) // reached target
 				if(last_target != null)
 					if(z != last_target.z)
-						mulebot_z_movement()
+						// AQ EDIT - an elevator target without an elevator (moved by hand, elevator gone) used to stall the bot forever
+						if(locate(/obj/structure/bot_elevator) in loc)
+							mulebot_z_movement()
+						else
+							reset_z_navigation(TRUE)
 						return
+					reset_z_navigation()
 				at_target()
 				return
 
@@ -657,6 +662,15 @@
 		target = go_here
 		path = get_path_to(src, target, 250, id=access_card)
 
+/// AQ EDIT - forget the floor change in progress; with retarget the bot heads for its real destination again
+/mob/living/simple_animal/bot/mulebot/proc/reset_z_navigation(retarget = FALSE)
+	if(retarget && last_target)
+		target = last_target
+	last_target = null
+	mulebot_z_mode = null
+	if(retarget)
+		mode = BOT_NAV
+
 //BOT MULTI-Z MOVEMENT
 /mob/living/simple_animal/bot/mulebot/proc/mulebot_z_movement()
 	var/obj/structure/bot_elevator/E = locate(/obj/structure/bot_elevator) in get_turf(src)
@@ -709,14 +723,14 @@
 		if(pathset) //The AI called us here, so notify it of our arrival.
 			loaddir = dir //The MULE will attempt to load a crate in whatever direction the MULE is "facing".
 			if(calling_ai)
-				to_chat(calling_ai, "<span class='notice'>[icon2html(src, calling_ai)] [src] wirelessly plays a chiming sound!</span>")
+				to_chat(calling_ai, "<span class='notice'>[icon2html(src, calling_ai)] [src] bezprzewodowo odtwarza dźwięk dzwonka!</span>")
 				calling_ai.playsound_local(calling_ai, 'sound/machines/chime.ogg', 40, FALSE)
 				calling_ai = null
 				radio_channel = RADIO_CHANNEL_AI_PRIVATE //Report on AI Private instead if the AI is controlling us.
 
 		if(load)		// if loaded, unload at target
 			if(report_delivery)
-				speak("Destination <b>[destination]</b> reached. Unloading [load].",radio_channel)
+				speak("Osiągnięto cel <b>[destination]</b>. Rozładunek: [load].",radio_channel)
 			unload(loaddir)
 		else
 			// not loaded
@@ -732,7 +746,7 @@
 				if(AM && AM.Adjacent(src))
 					load(AM)
 					if(report_delivery)
-						speak("Now loading [load] at <b>[get_area_name(src)]</b>.", radio_channel)
+						speak("Ładowanie [load] w <b>[get_area_name(src)]</b>.", radio_channel)
 		// whatever happened, check to see if we return home
 
 		if(auto_return && home_destination && destination != home_destination)
@@ -749,18 +763,18 @@
 	var/mob/living/L = M
 	if(wires.is_cut(WIRE_AVOIDANCE)) // usually just bumps, but if the avoidance wire is cut, knocks them over.
 		if(iscyborg(L))
-			visible_message("<span class='danger'>[src] bumps into [L]!</span>")
+			visible_message("<span class='danger'>[src] wpada na [L]!</span>")
 		else if(L.Paralyze(160))
 			log_combat(src, L, "knocked down")
-			visible_message("<span class='danger'>[src] knocks over [L]!</span>")
+			visible_message("<span class='danger'>[src] przewraca [L]!</span>")
 	return ..()
 
 // called from mob/living/carbon/human/Crossed()
 // when mulebot is in the same loc
 /mob/living/simple_animal/bot/mulebot/proc/RunOver(mob/living/carbon/human/H)
 	log_combat(src, H, "run over", null, "(DAMTYPE: [uppertext(BRUTE)])")
-	H.visible_message("<span class='danger'>[src] drives over [H]!</span>", \
-					"<span class='userdanger'>[src] drives over you!</span>")
+	H.visible_message("<span class='danger'>[src] przejeżdża po [H]!</span>", \
+					"<span class='userdanger'>[src] przejeżdża po tobie!</span>")
 	playsound(src, 'sound/effects/splat.ogg', 50, TRUE)
 
 	var/damage = rand(5,15)
@@ -790,8 +804,12 @@
 /mob/living/simple_animal/bot/mulebot/proc/get_nav()
 	if(!on || wires.is_cut(WIRE_BEACON))
 		return
+	var/obj/structure/overmap/overmap = get_overmap() // AQ EDIT - no overmap (e.g. reserved z) used to runtime
+	if(!overmap)
+		return
+	reset_z_navigation() // AQ EDIT - a new destination starts a fresh route
 
-	for(var/obj/machinery/navbeacon/NB in get_overmap().beacons_in_ship) //NSV13
+	for(var/obj/machinery/navbeacon/NB in overmap.beacons_in_ship) //NSV13
 		if(NB.location == new_destination)	// if the beacon location matches the set destination
 									// the we will navigate there
 			destination = new_destination
@@ -817,7 +835,7 @@
 
 
 /mob/living/simple_animal/bot/mulebot/explode()
-	visible_message("<span class='boldannounce'>[src] blows apart!</span>")
+	visible_message("<span class='boldannounce'>[src] rozpada się na kawałki!</span>")
 	var/atom/Tsec = drop_location()
 
 	new /obj/item/assembly/prox_sensor(Tsec)
@@ -857,7 +875,7 @@
 /mob/living/simple_animal/bot/mulebot/insertpai(mob/user, obj/item/paicard/card)
 	. = ..()
 	if(.)
-		visible_message("[src]'s safeties are locked on.")
+		visible_message("Zabezpieczenia [src] są zablokowane.")
 
 #undef SIGH
 #undef ANNOYED

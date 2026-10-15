@@ -39,9 +39,9 @@
 /obj/machinery/dna_scannernew/examine(mob/user)
 	. = ..()
 	if(in_range(user, src) || isobserver(user))
-		. += "<span class='notice'>The status display reads: Radiation pulse accuracy increased by factor <b>[precision_coeff**2]</b>.<br>Radiation pulse damage decreased by factor <b>[damage_coeff**2]</b>.</span>"
+		. += "<span class='notice'>Wyświetlacz stanu pokazuje: dokładność impulsu promieniowania zwiększona <b>[precision_coeff**2]</b>-krotnie.<br>Obrażenia od impulsu promieniowania zmniejszone <b>[damage_coeff**2]</b>-krotnie.</span>"
 		if(scan_level >= 3)
-			. += "<span class='notice'>Scanner has been upgraded to support autoprocessing.</span>"
+			. += "<span class='notice'>Skaner został ulepszony o automatyczne przetwarzanie.</span>"
 
 /obj/machinery/dna_scannernew/update_icon()
 	cut_overlays()
@@ -70,7 +70,7 @@
 
 /obj/machinery/dna_scannernew/proc/toggle_open(mob/user)
 	if(locked)
-		to_chat(user, "<span class='notice'>The bolts are locked down, securing the door [state_open ? "open" : "shut"].</span>")
+		to_chat(user, "<span class='notice'>Rygle są zablokowane, utrzymując drzwi [state_open ? "otwarte" : "zamknięte"].</span>")
 		return
 
 	if(state_open)
@@ -85,15 +85,15 @@
 		return
 	user.changeNext_move(CLICK_CD_BREAKOUT)
 	user.last_special = world.time + CLICK_CD_BREAKOUT
-	user.visible_message("<span class='notice'>You see [user] kicking against the door of [src]!</span>", \
-		"<span class='notice'>You lean on the back of [src] and start pushing the door open... (this will take about [DisplayTimeText(breakout_time)].)</span>", \
-		"<span class='italics'>You hear a metallic creaking from [src].</span>")
+	user.visible_message("<span class='notice'>Widzisz, jak [user] kopie w drzwi [src]!</span>", \
+		"<span class='notice'>Opierasz się o tył [src] i zaczynasz pchać drzwi... (zajmie to około [DisplayTimeText(breakout_time)].)</span>", \
+		"<span class='italics'>Słyszysz metaliczne skrzypienie z [src].</span>")
 	if(do_after(user,(breakout_time), target = src))
 		if(!user || user.stat != CONSCIOUS || user.loc != src || state_open || !locked)
 			return
 		locked = FALSE
-		user.visible_message("<span class='warning'>[user] successfully broke out of [src]!</span>", \
-			"<span class='notice'>You successfully break out of [src]!</span>")
+		user.visible_message("<span class='warning'>[user] wydostaje się z [src]!</span>", \
+			"<span class='notice'>Wydostajesz się z [src]!</span>")
 		open_machine()
 
 /obj/machinery/dna_scannernew/proc/locate_computer(type_)
@@ -123,7 +123,7 @@
 	if(user.stat || (locked && !state_open))
 		if(message_cooldown <= world.time)
 			message_cooldown = world.time + 50
-			to_chat(user, "<span class='warning'>[src]'s door won't budge!</span>")
+			to_chat(user, "<span class='warning'>Drzwi [src] ani drgną!</span>")
 		return
 	open_machine()
 
@@ -157,7 +157,7 @@
 /obj/machinery/dna_scannernew/proc/irradiate(mob/living/carbon/target)
 	if(HAS_TRAIT(target, TRAIT_RADIMMUNE))
 		return
-	to_chat(target, "<span class='danger'>You feel warm.</span>")
+	to_chat(target, "<span class='danger'>Robi ci się ciepło.</span>")
 	target.rad_act(250/(damage_coeff ** 2))
 
 	if(!target.has_dna() || HAS_TRAIT(target, TRAIT_BADDNA))

@@ -3,12 +3,12 @@
 	set name = "Dsay"
 	set hidden = 1
 	if(!holder)
-		to_chat(src, "Only administrators may use this command.")
+		to_chat(src, "Tylko administratorzy mogą używać tej komendy.")
 		return
 	if(!mob)
 		return
 	if(prefs.muted & MUTE_DEADCHAT)
-		to_chat(src, "<span class='danger'>You cannot send DSAY messages (muted).</span>")
+		to_chat(src, "<span class='danger'>Nie możesz wysyłać wiadomości DSAY (wyciszenie).</span>")
 		return
 
 	if (handle_spam_prevention(msg,MUTE_DEADCHAT))
@@ -25,7 +25,7 @@
 	if(holder.fakekey)
 		rank_name = pick(strings(DSAY_NICKNAME_FILE, "ranks", CONFIG_DIRECTORY))
 		admin_name = pick(strings(DSAY_NICKNAME_FILE, "names", CONFIG_DIRECTORY))
-	var/rendered = "<span class='game deadsay'><span class='prefix'>DEAD:</span> <span class='name'>[rank_name]([admin_name])</span> says, <span class='message'>\"[emoji_parse(msg)]\"</span></span>"
+	var/rendered = "<span class='game deadsay'><span class='prefix'>MARTWI:</span> <span class='name'>[rank_name]([admin_name])</span> mówi: <span class='message'>\"[emoji_parse(msg)]\"</span></span>"
 
 	for (var/mob/M in GLOB.player_list)
 		if(isnewplayer(M))

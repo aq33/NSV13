@@ -370,7 +370,7 @@ Returns a faction datum by its name (case insensitive!)
 /datum/controller/subsystem/star_system/proc/bounty_payout()
 	if(!bounty_pool) //No need to spam when there is no cashola payout
 		return
-	minor_announce("Bounty Payment Of [bounty_pool] Credits Processed", "Naval Command")
+	minor_announce("Przetworzono wypłatę nagrody w wysokości [bounty_pool] kredytów", "Dowództwo Marynarki")
 	var/split_bounty = bounty_pool / 2 //Split between our two accounts
 	var/datum/bank_account/D = SSeconomy.get_dep_account(ACCOUNT_CAR)
 	D.adjust_money(split_bounty)
@@ -593,11 +593,11 @@ Returns a faction datum by its name (case insensitive!)
 		adjacency_list += S.name
 		wormhole_connections += S.name
 		SSstar_system.spawn_anomaly(/obj/effect/overmap_anomaly/wormhole, src, center=TRUE)
-		var/oneway = "One-way"
+		var/oneway = "Jednokierunkowe"
 		if(!(LAZYFIND(S.adjacency_list, src)) && prob(30)) //Two-directional wormholes, AKA valid hyperlanes, are exceedingly rare.
 			S.adjacency_list += name
 			S.wormhole_connections += name
-			oneway = "Two-way"
+			oneway = "Dwukierunkowe"
 			SSstar_system.spawn_anomaly(/obj/effect/overmap_anomaly/wormhole, S, center=TRUE) //Wormholes are cool. Like Fezzes. Fezzes are cool.
 		log_game("[oneway] wormhole created between [S] and [src]")
 
@@ -615,6 +615,12 @@ Returns a faction datum by its name (case insensitive!)
 			anomaly_info["anomaly_id"] = "\ref[OA]"
 			anomalies[++anomalies.len] = anomaly_info
 	return anomalies
+
+/datum/star_system/proc/has_anomaly_type(anomaly_type)
+	for(var/obj/effect/overmap_anomaly/OA in system_contents)
+		if(istype(OA, anomaly_type))
+			return TRUE
+	return FALSE
 
 /obj/effect/overmap_anomaly //Should not appear normally.
 	name = "Tear in reality"
@@ -647,7 +653,7 @@ Returns a faction datum by its name (case insensitive!)
 			SSresearch.science_tech.add_point_type(specialist_research_type, research_points)
 		research_points = 0
 		scanned = TRUE
-		minor_announce("Successfully received probe telemetry. Full astrological survey of [name] complete.", "WAYFARER subsystem")
+		minor_announce("Pomyślnie odebrano telemetrię sondy. Pełny przegląd astrograficzny [name] zakończony.", "WAYFARER subsystem")
 		for(var/obj/structure/overmap/OM in GLOB.overmap_objects) //Has to go through global overmaps due to anomalies not referencing their system - probably something to change one day.
 			if(OM && OM.z == z)
 				OM.relay('nsv13/sound/effects/ship/FTL.ogg')

@@ -12,6 +12,8 @@
 	..()
 
 /datum/wires/robot/interactable(mob/user)
+	if(!..())
+		return FALSE
 	var/mob/living/silicon/robot/R = holder
 	if(R.wiresexposed)
 		return TRUE
@@ -19,11 +21,11 @@
 /datum/wires/robot/get_status()
 	var/mob/living/silicon/robot/R = holder
 	var/list/status = list()
-	status += "The law sync module is [R.lawupdate ? "on" : "off"]."
-	status += "The intelligence link display shows [R.connected_ai ? R.connected_ai.name : "NULL"]."
-	status += "The camera light is [!isnull(R.builtInCamera) && R.builtInCamera.status ? "on" : "off"]."
-	status += "The lockdown indicator is [R.lockcharge ? "on" : "off"]."
-	status += "There is a star symbol above the [get_color_of_wire(WIRE_RESET_MODULE)] wire."
+	status += "Moduł synchronizacji praw jest [R.lawupdate ? "włączony" : "wyłączony"]."
+	status += "Wyświetlacz łącza inteligencji pokazuje [R.connected_ai ? R.connected_ai.name : "NULL"]."
+	status += "Lampka kamery [!isnull(R.builtInCamera) && R.builtInCamera.status ? "świeci się" : "jest zgaszona"]."
+	status += "Wskaźnik blokady [R.lockcharge ? "świeci się" : "jest zgaszony"]."
+	status += "Nad przewodem [get_color_of_wire(WIRE_RESET_MODULE)] jest symbol gwiazdki."
 	return status
 
 /datum/wires/robot/on_pulse(wire, user)
@@ -48,7 +50,7 @@
 		if(WIRE_CAMERA) // Pulse to disable the camera.
 			if(!QDELETED(R.builtInCamera) && !R.scrambledcodes)
 				R.builtInCamera.toggle_cam(usr, FALSE)
-				R.visible_message("[R]'s camera lens focuses loudly.", "Your camera lens focuses loudly.")
+				R.visible_message("[R]'s camera lens focuses loudly.", "Obiektyw twojej kamery głośno ustawia ostrość.")
 				log_combat(usr, R, "toggled cyborg camera to [R.builtInCamera.status ? "on" : "off"] via pulse")
 		if(WIRE_LAWSYNC) // Forces a law update if possible.
 			if(R.lawupdate)
@@ -63,7 +65,7 @@
 
 		if(WIRE_RESET_MODULE)
 			if(R.has_module())
-				R.visible_message("[R]'s module servos twitch.", "Your module display flickers.")
+				R.visible_message("[R]'s module servos twitch.", "Wyświetlacz twoich modułów migocze.")
 	ui_update()
 
 /datum/wires/robot/on_cut(wire, mend)
@@ -90,7 +92,7 @@
 			if(!QDELETED(R.builtInCamera) && !R.scrambledcodes)
 				R.builtInCamera.status = mend
 				R.builtInCamera.toggle_cam(usr, FALSE)
-				R.visible_message("[R]'s camera lens focuses loudly.", "Your camera lens focuses loudly.")
+				R.visible_message("[R]'s camera lens focuses loudly.", "Obiektyw twojej kamery głośno ustawia ostrość.")
 				R.logevent("Camera Module fault [mend?"cleared":"detected"]")
 				log_combat(usr, R, "[mend ? "enabled" : "disabled"] cyborg camera via wire")
 		if(WIRE_LOCKDOWN) // Simple lockdown.

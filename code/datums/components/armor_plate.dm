@@ -36,16 +36,16 @@
 	if(ismecha(parent))
 		if(amount)
 			if(amount < maxamount)
-				examine_list += "<span class='notice'>Its armor is enhanced with [amount] [upgrade_name].</span>"
+				examine_list += "<span class='notice'>Jego pancerz jest wzmocniony: [amount] × [upgrade_name].</span>"
 			else
-				examine_list += "<span class='notice'>It's wearing a fearsome carapace entirely composed of [upgrade_name] - its pilot must be an experienced monster hunter.</span>"
+				examine_list += "<span class='notice'>Nosi przerażający pancerz złożony w całości z [upgrade_name] - jego pilot musi być doświadczonym łowcą potworów.</span>"
 		else
-			examine_list += "<span class='notice'>It has attachment points for strapping monster hide on for added protection.</span>"
+			examine_list += "<span class='notice'>Ma punkty mocowania do przypięcia skór potworów dla dodatkowej ochrony.</span>"
 	else
 		if(amount)
-			examine_list += "<span class='notice'>It has been strengthened with [amount]/[maxamount] [upgrade_name].</span>"
+			examine_list += "<span class='notice'>Wzmocniono go: [amount]/[maxamount] × [upgrade_name].</span>"
 		else
-			examine_list += "<span class='notice'>It can be strengthened with up to [maxamount] [upgrade_name].</span>"
+			examine_list += "<span class='notice'>Można go wzmocnić maksymalnie: [maxamount] × [upgrade_name].</span>"
 
 /datum/component/armor_plate/proc/applyplate(datum/source, obj/item/I, mob/user, params)
 	SIGNAL_HANDLER
@@ -53,14 +53,14 @@
 	if(!istype(I,upgrade_item))
 		return
 	if(amount >= maxamount)
-		to_chat(user, "<span class='warning'>You can't improve [parent] any further!</span>")
+		to_chat(user, "<span class='warning'>Nie możesz bardziej ulepszyć [parent]!</span>")
 		return
 
 	if(istype(I,/obj/item/stack))
 		I.use(1)
 	else
 		if(length(I.contents))
-			to_chat(user, "<span class='warning'>[I] cannot be used for armoring while there's something inside!</span>")
+			to_chat(user, "<span class='warning'>[I] nie może zostać użyty do opancerzenia, gdy coś jest w środku!</span>")
 			return
 		qdel(I)
 
@@ -71,9 +71,9 @@
 	if(ismecha(O))
 		var/obj/mecha/R = O
 		R.update_icon()
-		to_chat(user, "<span class='info'>You strengthen [R], improving its resistance against melee, bullet and laser damage.</span>")
+		to_chat(user, "<span class='info'>Wzmacniasz [R], poprawiając jego odporność na obrażenia wręcz, od pocisków i laserów.</span>")
 	else
-		to_chat(user, "<span class='info'>You strengthen [O], improving its resistance against melee attacks.</span>")
+		to_chat(user, "<span class='info'>Wzmacniasz [O], poprawiając jego odporność na ataki wręcz.</span>")
 
 
 /datum/component/armor_plate/proc/dropplates(datum/source, force)

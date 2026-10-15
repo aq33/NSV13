@@ -16,7 +16,7 @@
 
 /mob/living/silicon/ai/proc/show_camera_list()
 	var/list/cameras = get_camera_list()
-	var/camera = input(src, "Choose which camera you want to view", "Cameras") as null|anything in cameras
+	var/camera = input(src, "Wybierz kamerę, którą chcesz oglądać", "Cameras") as null|anything in cameras
 	switchCamera(cameras[camera])
 
 /datum/trackable
@@ -85,7 +85,7 @@
 
 /mob/living/silicon/ai/proc/ai_start_tracking(mob/living/target) //starts ai tracking
 	if(!target || !target.can_track(src))
-		to_chat(src, "<span class='warning'>Target is not near any active cameras.</span>")
+		to_chat(src, "<span class='warning'>Cel nie znajduje się w pobliżu żadnej aktywnej kamery.</span>")
 		return
 	if(ai_tracking_target) //if there is already a tracking going when this gets called makes sure the old tracking gets stopped before we register the new signals
 		ai_stop_tracking()
@@ -93,7 +93,7 @@
 	RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(ai_actual_track))
 	ai_tracking_target = target
 	eyeobj.setLoc(get_turf(target)) //on the first call of this we obviously need to jump to the target ourselfs else we would go there only after they moved once
-	to_chat(src, "<span class='notice'>Now tracking [target.get_visible_name()] on camera.</span>")
+	to_chat(src, "<span class='notice'>Śledzenie [target.get_visible_name()] na kamerach.</span>")
 
 /mob/living/silicon/ai/proc/tracking_target_qdeleted() //we wrap the ai_stop_tracking proc so we don't need to offset the arguments in ai_stop_tracking
 	SIGNAL_HANDLER
@@ -105,7 +105,7 @@
 	ai_tracking_target = null
 	if(reacquire_timer)
 		if(reacquire_failed) //edge case when someone might jump to another camera while the reacquire timer is running
-			to_chat(src, "<span class='warning'>Unable to reacquire, cancelling track...</span>")
+			to_chat(src, "<span class='warning'>Nie można ponownie namierzyć, anulowanie śledzenia...</span>")
 		else
 			deltimer(reacquire_timer)
 		reacquire_timer = null
@@ -119,7 +119,7 @@
 	else
 		if(!reacquire_timer)
 			reacquire_timer = addtimer(CALLBACK(src, PROC_REF(ai_stop_tracking), TRUE), 10 SECONDS, TIMER_STOPPABLE) //A timer for how long to wait before we stop tracking someone after loosing them
-			to_chat(src, "<span class='warning'>Target is not near any active cameras. Attempting to reacquire...</span>")
+			to_chat(src, "<span class='warning'>Cel nie znajduje się w pobliżu żadnej aktywnej kamery. Próba ponownego namierzenia...</span>")
 		return
 
 	eyeobj.setLoc(get_turf(ai_tracking_target))

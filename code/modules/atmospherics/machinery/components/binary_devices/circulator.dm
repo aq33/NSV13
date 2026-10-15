@@ -30,7 +30,7 @@
 
 /obj/machinery/atmospherics/components/binary/circulator/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/simple_rotation,ROTATION_ALTCLICK | ROTATION_CLOCKWISE | ROTATION_COUNTERCLOCKWISE | ROTATION_VERBS )
+	AddComponent(/datum/component/simple_rotation)
 
 /obj/machinery/atmospherics/components/binary/circulator/Destroy()
 	if(generator)
@@ -140,7 +140,7 @@
 	if(generator)
 		disconnectFromGenerator()
 	mode = !mode
-	to_chat(user, "<span class='notice'>You set [src] to [mode?"cold":"hot"] mode.</span>")
+	to_chat(user, "<span class='notice'>Ustawiasz [src] w tryb [mode?"zimny":"gorący"].</span>")
 	return TRUE
 
 /obj/machinery/atmospherics/components/binary/circulator/screwdriver_act(mob/user, obj/item/I)
@@ -148,7 +148,7 @@
 		return TRUE
 	panel_open = !panel_open
 	I.play_tool_sound(src)
-	to_chat(user, "<span class='notice'>You [panel_open?"open":"close"] the panel on [src].</span>")
+	to_chat(user, "<span class='notice'>[panel_open?"Otwierasz":"Zamykasz"] panel [src].</span>")
 	return TRUE
 
 /obj/machinery/atmospherics/components/binary/circulator/crowbar_act(mob/user, obj/item/I)
@@ -181,9 +181,9 @@
 		return
 
 	if(anchored)
-		to_chat(usr, "<span class='danger'>[src] is anchored!</span>")
+		to_chat(usr, "<span class='danger'>[src] jest przymocowany!</span>")
 		return
 
 	flipped = !flipped
-	to_chat(usr, "<span class='notice'>You flip [src].</span>")
+	to_chat(usr, "<span class='notice'>Obracasz [src].</span>")
 	update_icon()

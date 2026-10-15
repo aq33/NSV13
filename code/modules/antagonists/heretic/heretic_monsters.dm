@@ -1,7 +1,7 @@
 ///Tracking reasons
 /datum/antagonist/heretic_monster
-	name = "\improper Eldritch Horror"
-	roundend_category = "Heretics"
+	name = "\improper Pradawny horror"
+	roundend_category = "heretycy"
 	antagpanel_category = "Heretic Beast"
 	antag_moodlet = /datum/mood_event/heretics
 	show_in_antagpanel = FALSE
@@ -19,10 +19,10 @@
 /datum/antagonist/heretic_monster/on_removal()
 	if(!silent)
 		if(master?.current)
-			to_chat(master.current, "<span class='warning'>The essence of [owner], your servant, fades from your mind.</span>")
+			to_chat(master.current, "<span class='warning'>Esencja twojego sługi, [owner], znika z twojego umysłu.</span>")
 		if(owner.current)
-			to_chat(owner.current, "<span class='deconversion_message'>Your mind begins to fill with haze - your master is no longer[master ? " [master]":""], you are free!</span>")
-			owner.current.visible_message("[owner.current] looks like [owner.current.p_theyve()] been freed from the chains of the Mansus!", ignored_mobs = owner.current)
+			to_chat(owner.current, "<span class='deconversion_message'>Twój umysł spowija mgła - [master ? "[master] nie jest już twoim panem":"nie masz już pana"], jesteś wolny!</span>")
+			owner.current.visible_message("[owner.current] wygląda, jakby uwolnił się z łańcuchów Mansusa!", ignored_mobs = owner.current)
 
 	master = null
 	return ..()
@@ -38,13 +38,13 @@
 
 	var/datum/objective/master_obj = new()
 	master_obj.owner = owner
-	master_obj.explanation_text = "Assist your master."
+	master_obj.explanation_text = "Wspieraj swojego pana."
 	master_obj.completed = TRUE
 
 	objectives += master_obj
 	owner.announce_objectives()
-	to_chat(owner, "<span class='boldnotice'>You are a horrible creation brought to this plane through the Gates of the Mansus.</span>")
-	to_chat(owner, "<span class='notice'>Your master is [master.name]. Assist them to all ends.</span>")
+	to_chat(owner, "<span class='boldnotice'>Jesteś okropnym tworem sprowadzonym na ten plan przez Bramy Mansusa.</span>")
+	to_chat(owner, "<span class='notice'>Twoim panem jest [master.name]. Wspieraj go we wszystkim.</span>")
 
 /datum/antagonist/heretic_monster/apply_innate_effects(mob/living/mob_override)
 	. = ..()
@@ -56,5 +56,5 @@
 
 /datum/antagonist/heretic_monster/get_antag_name() // good to recognise who's responsible with these monsters
 	if(!master)
-		return "Unchained Eldritch Horror"
-	return "Eldritch Horror of [master.name]"
+		return "Pradawny horror bez pana"
+	return "Pradawny horror: [master.name]"

@@ -1,4 +1,5 @@
 /obj/item/projectile/bullet/dnainjector
+	bleed_force = BLEED_SURFACE
 	name = "\improper DNA injector"
 	icon_state = "syringeproj"
 	var/obj/item/dnainjector/injector
@@ -9,14 +10,14 @@
 	if(iscarbon(target))
 		var/mob/living/carbon/M = target
 		if(blocked != 100)
-			if(M.can_inject(null, FALSE, def_zone, FALSE))
+			if(M.can_inject(target_zone = def_zone))
 				if(injector.inject(M, firer))
 					QDEL_NULL(injector)
 					return BULLET_ACT_HIT
 			else
 				blocked = 100
-				target.visible_message("<span class='danger'>\The [src] was deflected!</span>", \
-									   "<span class='userdanger'>You were protected against \the [src]!</span>")
+				target.visible_message("<span class='danger'>[src] zostaje odbity!</span>", \
+									   "<span class='userdanger'>Ochroniono cię przed [src]!</span>")
 	return ..()
 
 /obj/item/projectile/bullet/dnainjector/Destroy()

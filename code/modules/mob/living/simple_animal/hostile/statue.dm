@@ -8,11 +8,11 @@
 	icon_living = "human_male"
 	icon_dead = "human_male"
 	gender = NEUTER
-	a_intent = INTENT_HARM
+	combat_mode = TRUE
 	mob_biotypes = list(MOB_INORGANIC, MOB_HUMANOID)
 
-	response_help = "touches"
-	response_disarm = "pushes"
+	response_help = "dotyka"
+	response_disarm = "popycha"
 
 	speed = -1
 	maxHealth = 50000
@@ -21,7 +21,7 @@
 
 	obj_damage = 100
 	melee_damage = 70
-	attacktext = "claws"
+	attacktext = "drapie"
 	attack_sound = 'sound/hallucinations/growl1.ogg'
 
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
@@ -76,7 +76,7 @@
 /mob/living/simple_animal/hostile/statue/Move(turf/NewLoc)
 	if(can_be_seen(NewLoc))
 		if(client)
-			to_chat(src, "<span class='warning'>You cannot move, there are eyes on you!</span>")
+			to_chat(src, "<span class='warning'>Nie możesz się ruszyć, ktoś na ciebie patrzy!</span>")
 		return 0
 	return ..()
 
@@ -94,7 +94,7 @@
 /mob/living/simple_animal/hostile/statue/AttackingTarget()
 	if(can_be_seen(get_turf(loc)))
 		if(client)
-			to_chat(src, "<span class='warning'>You cannot attack, there are eyes on you!</span>")
+			to_chat(src, "<span class='warning'>Nie możesz atakować, ktoś na ciebie patrzy!</span>")
 		return FALSE
 	else
 		return ..()
@@ -181,7 +181,7 @@
 	name = "Blindness"
 	desc = "Your prey will be momentarily blind for you to advance on them."
 
-	message = "<span class='notice'>You glare your eyes.</span>"
+	message = "<span class='notice'>Piorunujesz wzrokiem.</span>"
 	charge_max = 600
 	clothes_req = 0
 	range = 10
@@ -195,13 +195,13 @@
 
 //Toggle Night Vision
 /obj/effect/proc_holder/spell/targeted/night_vision
-	name = "Toggle Nightvision \[ON\]"
-	desc = "Toggle your nightvision mode."
+	name = "Widzenie w ciemności \[WŁ.\]"
+	desc = "Przełącza twoje widzenie w ciemności."
 
 	charge_max = 10
 	clothes_req = 0
 
-	message = "<span class='notice'>You toggle your night vision!</span>"
+	message = "<span class='notice'>Przełączasz noktowizję!</span>"
 	range = -1
 	include_user = 1
 
@@ -210,16 +210,16 @@
 		switch(target.lighting_alpha)
 			if (LIGHTING_PLANE_ALPHA_VISIBLE)
 				target.lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
-				name = "Toggle Nightvision \[More]"
+				name = "Widzenie w ciemności \[MOCNIEJ]"
 			if (LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE)
 				target.lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
-				name = "Toggle Nightvision \[Full]"
+				name = "Widzenie w ciemności \[PEŁNE]"
 			if (LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE)
 				target.lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
-				name = "Toggle Nightvision \[OFF]"
+				name = "Widzenie w ciemności \[WYŁ.]"
 			else
 				target.lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
-				name = "Toggle Nightvision \[ON]"
+				name = "Widzenie w ciemności \[WŁ.]"
 		target.update_sight()
 
 /mob/living/simple_animal/hostile/statue/sentience_act()

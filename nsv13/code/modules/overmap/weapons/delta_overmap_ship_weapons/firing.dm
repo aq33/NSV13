@@ -20,7 +20,7 @@
 		if(ai_aim)
 			next_firetime += ai_fire_delay
 	else if(inplace_report)
-		inplace_report[1] = "Error - unknown firing cycle failure. ([src])"
+		inplace_report[1] = "Błąd - nieznana awaria cyklu strzału. ([src])"
 	return
 
 /**

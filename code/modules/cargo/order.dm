@@ -52,14 +52,14 @@
 	var/obj/item/paper/requisition_paper  = new(T)
 
 	requisition_paper.name = "requisition form - #[id] ([pack.name])"
-	var/requisition_text = "<h2>[GLOB.station_name] Supply Requisition</h2>"
+	var/requisition_text = "<h2>Zamówienie zaopatrzenia [GLOB.station_name]</h2>"
 	requisition_text += "<hr/>"
 	requisition_text += "Order #[id]<br/>"
 	requisition_text += "Item: [pack.name]<br/>"
-	requisition_text += "Access Restrictions: [get_access_desc(pack.access)]<br/>"
-	requisition_text += "Requested by: [orderer]<br/>"
+	requisition_text += "Ograniczenia dostępu: [get_access_desc(pack.access)]<br/>"
+	requisition_text += "Zamawiający: [orderer]<br/>"
 	if(paying_account)
-		requisition_text += "Paid by: [paying_account.account_holder]<br/>"
+		requisition_text += "Płatnik: [paying_account.account_holder]<br/>"
 	requisition_text += "Rank: [orderer_rank]<br/>"
 	requisition_text += "Comment: [reason]<br/>"
 
@@ -74,11 +74,11 @@
 
 	manifest_paper.name = "shipping manifest - [packname?"#[id] ([pack.name])":"(Grouped Item Crate)"]"
 
-	var/manifest_text = "<h2>[command_name()] Shipping Manifest</h2>"
+	var/manifest_text = "<h2>Manifest wysyłkowy [command_name()]</h2>"
 	manifest_text += "<hr/>"
 	if(owner && !(owner == "Cargo"))
-		manifest_text += "Direct purchase from [owner]<br/>"
-		manifest_paper.name += " - Purchased by [owner]"
+		manifest_text += "Zakup bezpośredni od [owner]<br/>"
+		manifest_paper.name += " - Kupione przez [owner]"
 	manifest_text += "Order[packname?"":"s"]: [id]<br/>"
 	manifest_text += "Destination: [station_name]<br/>"
 	if(packname)
@@ -93,7 +93,7 @@
 				continue
 		manifest_text += "<li>[AM.name]</li>"
 	manifest_text += "</ul>"
-	manifest_text += "<h4>Stamp below to confirm receipt of goods:</h4>"
+	manifest_text += "<h4>Podstempluj poniżej, by potwierdzić odbiór towaru:</h4>"
 
 	manifest_paper.add_raw_text(manifest_text)
 

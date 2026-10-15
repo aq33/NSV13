@@ -7,8 +7,8 @@
 	healing_factor = STANDARD_ORGAN_HEALING
 	decay_factor = STANDARD_ORGAN_DECAY
 
-	now_failing = "<span class='warning'>An explosion of pain erupts in your lower right abdomen!</span>"
-	now_fixed = "<span class='info'>The pain in your abdomen has subsided.</span>"
+	now_failing = "<span class='warning'>W prawym dolnym rogu brzucha wybucha przeszywający ból!</span>"
+	now_fixed = "<span class='info'>Ból brzucha ustępuje.</span>"
 
 	var/inflamed
 
@@ -39,9 +39,3 @@
 	..()
 	if(inflamed)
 		M.ForceContractDisease(new /datum/disease/appendicitis(), FALSE, TRUE)
-
-/obj/item/organ/appendix/prepare_eat()
-	var/obj/S = ..()
-	if(inflamed)
-		S.reagents.add_reagent(/datum/reagent/toxin/bad_food, 5)
-	return S

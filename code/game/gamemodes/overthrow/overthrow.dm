@@ -11,9 +11,7 @@
 	recommended_enemies = 4
 
 	announce_span = "danger"
-	announce_text = "There are sleeping Syndicate agents on the station who are trying to stage a coup!\n\
-	<span class='danger'>Agents</span>: Accomplish your objectives, convert heads and targets, take control of the AI.\n\
-	<span class='notice'>Crew</span>: Do not let the agents succeed!"
+	announce_text = "Na stacji są uśpieni agenci Syndykatu, którzy próbują przeprowadzić zamach stanu!\n<span class='danger'>Agenci</span>: wykonajcie swoje cele, nawracajcie szefów i cele, przejmijcie kontrolę nad SI.\n<span class='notice'>Załoga</span>: nie pozwólcie agentom odnieść sukcesu!"
 	var/list/initial_agents = list() // Why doesn't this exist at /game_mode level? Literally every gamemode has some sort of version for this, what the fuck
 
 /datum/game_mode/overthrow/pre_setup()
@@ -75,4 +73,4 @@
 		var/datum/team/Tagain = l
 		if(teams[Tagain] == max_points)
 			winners += Tagain.name
-	return "<div class='panel redborder'><span class='greentext big'>The [english_list(winners)] team[winners.len > 1 ? "s tied" : " won"] with [max_points] points!</span></div>"
+	return "<div class='panel redborder'><span class='greentext big'>[winners.len > 1 ? "Remis między drużynami" : "Wygrywa drużyna"] [english_list(winners)] z wynikiem [max_points] pkt!</span></div>"

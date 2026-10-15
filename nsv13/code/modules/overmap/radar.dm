@@ -101,9 +101,9 @@ Called by add_sensor_profile_penalty if remove_in is used.
 
 /obj/machinery/computer/ship/dradis/examine(mob/user)
 	. = ..()
-	. += "<span class='sciradio'>You can link supplypod beacons to it to tell traders where to deliver your goods! Hit it with a multitool to swap between delivery locations.</span>"
+	. += "<span class='sciradio'>Możesz połączyć z nim nadajniki kapsuł zaopatrzeniowych, by wskazać handlarzom, gdzie dostarczać towary! Uderz go multitoolem, by przełączać miejsca dostaw.</span>"
 	if(beacon)
-		. += "<span class='sciradio'>It's currently linked to [beacon] in [get_area(beacon)]. You can use a multitool to switch whether it delivers here, or to your cargo bay.</span>"
+		. += "<span class='sciradio'>Jest obecnie połączony z [beacon] w [get_area(beacon)]. Multitoolem możesz przełączyć, czy dostawy mają trafiać tutaj, czy do twojej ładowni.</span>"
 
 /obj/machinery/computer/ship/dradis/Destroy()
 	if(linked && linked.dradis == src)
@@ -114,18 +114,18 @@ Called by add_sensor_profile_penalty if remove_in is used.
 	if(istype(W, /obj/item/supplypod_beacon))
 		var/obj/item/supplypod_beacon/sb = W
 		if(linked?.dradis != src)
-			to_chat(user, "<span class='warning'>Supplypod beacons can only be linked to the primary DRADIS of a ship (try the one in CIC?).</span>")
+			to_chat(user, "<span class='warning'>Nadajniki kapsuł zaopatrzeniowych można łączyć tylko z głównym DRADIS-em okrętu (spróbuj tego w CIC).</span>")
 			return FALSE
 		if (sb.express_console != src)
 			sb.link_console(src, user)
 			return TRUE
 		else
-			to_chat(user, "<span class='notice'>[src] is already linked to [sb].</span>")
+			to_chat(user, "<span class='notice'>[src] jest już połączony z [sb].</span>")
 	..()
 
 /obj/machinery/computer/ship/dradis/multitool_act(mob/living/user, obj/item/I)
 	usingBeacon = !usingBeacon
-	to_chat(user, "<span class='sciradio'>You switch [src]'s trader delivery location to [usingBeacon ? "target supply beacons" : "target the default landing location on your ship"]</span>")
+	to_chat(user, "<span class='sciradio'>Przełączasz miejsce dostaw handlarzy [src] na: [usingBeacon ? "docelowe nadajniki zaopatrzeniowe" : "domyślne miejsce lądowania na twoim okręcie"]</span>")
 	return TRUE
 
 /obj/machinery/computer/ship/dradis/minor //Secondary dradis consoles usable by people who arent on the bridge. All secondary dradis consoles should be a subtype of this
@@ -142,14 +142,14 @@ Called by add_sensor_profile_penalty if remove_in is used.
 	. = ..()
 	var/obj/item/paper/paper = new /obj/item/paper(get_turf(src))
 	var/final_paper_text = ""
-	final_paper_text += "<h2>How to perform deliveries with the Cargo DRADIS</h2>"
+	final_paper_text += "<h2>Jak wykonywać dostawy za pomocą DRADIS-u ładunkowego</h2>"
 	final_paper_text += "<hr/><br/>"
-	final_paper_text += "Step 1: Find or build a freight torpedo.<br/><br/>"
-	final_paper_text += "Step 2: Load your contents directly into the freight torpedo. Or load your contents into a crate, then load the crate into the freight torpedo (click drag the object onto the torpedo).<br/><br/>"
-	final_paper_text += "Step 3: Load the freight torpedo into the Cargo freight launcher (click drag the torpedo onto the launcher). You may need to use a munitions trolley to move the freight torpedo closer.<br/><br/>"
-	final_paper_text += "Step 4: Use the munitions console to load the payload, chamber the payload, and disable weapon safeties.<br/><br/>"
-	final_paper_text += "Step 5: Put on hearing protection gear, such as earmuffs.<br/><br/>"
-	final_paper_text += "Step 6: Navigate to the cargo DRADIS, and click on the recipient. If the payload is malformed or not chambered, an error will display. If the payload is properly chambered, a final confirmation will display. Click Yes.<br/><br/>"
+	final_paper_text += "Krok 1: znajdź lub zbuduj torpedę transportową.<br/><br/>"
+	final_paper_text += "Krok 2: załaduj zawartość bezpośrednio do torpedy transportowej. Albo załaduj zawartość do skrzyni, a skrzynię do torpedy (przeciągnij przedmiot na torpedę).<br/><br/>"
+	final_paper_text += "Krok 3: załaduj torpedę transportową do wyrzutni ładunków (przeciągnij torpedę na wyrzutnię). Może być potrzebny wózek amunicyjny, by przysunąć torpedę bliżej.<br/><br/>"
+	final_paper_text += "Krok 4: użyj konsoli uzbrojenia, by załadować ładunek, wprowadzić go do komory i wyłączyć zabezpieczenia broni.<br/><br/>"
+	final_paper_text += "Krok 5: załóż ochronę słuchu, na przykład nauszniki.<br/><br/>"
+	final_paper_text += "Krok 6: przejdź do DRADIS-u ładunkowego i kliknij odbiorcę. Jeśli ładunek jest nieprawidłowy lub nie jest w komorze, wyświetli się błąd. Jeśli jest prawidłowo w komorze, wyświetli się ostateczne potwierdzenie. Kliknij „Tak”.<br/><br/>"
 	paper.add_raw_text(final_paper_text)
 	paper.update_appearance()
 	sensor_range = hail_range
@@ -170,7 +170,7 @@ Called by add_sensor_profile_penalty if remove_in is used.
 		launcher.linked_dradis = src
 		linked_launcher = launcher
 		P.buffer = null
-		to_chat(user, "<span class='notice'>Buffer transferred</span>")
+		to_chat(user, "<span class='notice'>Przesłano bufor</span>")
 		return TRUE
 	// Call the parent proc and allow supply beacon swaps
 	else
@@ -231,7 +231,7 @@ Called by add_sensor_profile_penalty if remove_in is used.
 	if(!user.can_interact_with(src)) //Theyre too far away and not flying the ship
 		return FALSE
 	if((interaction_flags_atom & INTERACT_ATOM_REQUIRES_DEXTERITY) && !user.IsAdvancedToolUser())
-		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
+		to_chat(user, "<span class='warning'>Brakuje ci zręczności, by to zrobić!</span>")
 		return FALSE
 	if(!(interaction_flags_atom & INTERACT_ATOM_IGNORE_INCAPACITATED) && user.incapacitated((interaction_flags_atom & INTERACT_ATOM_IGNORE_RESTRAINED), !(interaction_flags_atom & INTERACT_ATOM_CHECK_GRAB)))
 		return FALSE
@@ -242,7 +242,7 @@ Called by add_sensor_profile_penalty if remove_in is used.
 
 /obj/machinery/computer/ship/dradis/ui_interact(mob/user, datum/tgui/ui)
 	if(!has_overmap())
-		to_chat(user, "<span class='warning'>Failed to initiate ship connection.</span>")
+		to_chat(user, "<span class='warning'>Nie udało się nawiązać połączenia z okrętem.</span>")
 		return
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -303,7 +303,7 @@ Called by add_sensor_profile_penalty if remove_in is used.
 		if("sensor_mode")
 			sensor_mode = (sensor_mode == SENSOR_MODE_PASSIVE) ? SENSOR_MODE_RADAR : SENSOR_MODE_PASSIVE
 		if("radar_delay")
-			var/newDelay = input(usr, "Set a new radar delay (seconds)", "Radar Delay", null) as num|null
+			var/newDelay = input(usr, "Ustaw nowe opóźnienie radaru (sekundy)", "Opóźnienie radaru", null) as num|null
 			if(!newDelay)
 				return
 			newDelay = CLAMP(newDelay SECONDS, MIN_RADAR_DELAY, MAX_RADAR_DELAY)
@@ -321,11 +321,11 @@ Called by add_sensor_profile_penalty if remove_in is used.
 		var/obj/item/mining_sensor_upgrade/MS = I
 		if(MS.tier > mining_sensor_tier)
 			playsound(src, 'sound/machines/terminal_insert_disc.ogg', 100, 0)
-			to_chat(user, "<span class='notice'>You slot [I] into [src], allowing it to detect a wider variety of asteroids.</span>")
+			to_chat(user, "<span class='notice'>Wkładasz [I] do [src], dzięki czemu wykrywa więcej rodzajów asteroid.</span>")
 			mining_sensor_tier = MS.tier
 			qdel(MS)
 		else
-			to_chat(user, "<span class='notice'>[src] has already been upgraded to a higher tier than [MS].</span>")
+			to_chat(user, "<span class='notice'>[src] został już ulepszony do wyższego poziomu niż [MS].</span>")
 
 //Cloaking and sensors!
 

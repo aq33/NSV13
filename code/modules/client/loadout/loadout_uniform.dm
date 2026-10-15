@@ -299,7 +299,7 @@
 
 /datum/gear/uniform/rank/cargo/mining_classic
 	display_name = "miner's overalls, asteroid purple"
-	description = "Purple jumpsuit, dirty overalls. Standard Nanotrasen Shaft Miner attire, from when Lavaland had yet to be discovered and exploited for plasma."
+	description = "Fioletowy kombinezon, brudne ogrodniczki. Standardowy strój górnika Nanotrasen z czasów, gdy Lavaland nie został jeszcze odkryty i wyeksploatowany dla plazmy."
 	path = /obj/item/clothing/under/rank/cargo/miner
 	allowed_roles = list (JOB_NAME_SHAFTMINER)
 

@@ -75,54 +75,54 @@
 		if("salvage")
 			var/obj/structure/overmap/OM = locate(params["target"])
 			if(!linked)
-				radio.talk_into(src, "This console is not attached to the ship's EWAR scrambling systems.", radio_channel)
+				radio.talk_into(src, "Ta konsola nie jest podłączona do systemów zakłóceń EWAR okrętu.", radio_channel)
 				return FALSE
 			if(!OM)
-				radio.talk_into(src, "Detection of target systems failed.", radio_channel)
+				radio.talk_into(src, "Wykrycie systemów celu nieudane.", radio_channel)
 				return FALSE
 			if(OM.ghost_controlled)
-				radio.talk_into(src, "EWAR scrambling unable to achieve positive lock, aborting process.", radio_channel)
+				radio.talk_into(src, "Zakłócanie EWAR nie zdołało uzyskać namiaru, przerywanie procesu.", radio_channel)
 				return FALSE
 			if(!can_salvage)
-				radio.talk_into(src, "EWAR scrambling equipment is starting up or shutting down. Try again later.", radio_channel)
+				radio.talk_into(src, "Sprzęt zakłóceń EWAR się uruchamia lub wyłącza. Spróbuj później.", radio_channel)
 				return FALSE
 			if((linked.active_boarding_target && !QDELETED(linked.active_boarding_target)))
 				playsound(pick('nsv13/sound/effects/computer/alarm.ogg','nsv13/sound/effects/computer/alarm_2.ogg'), 100, 1)
-				radio.talk_into(src, "WARNING: This console is already maintaining EWAR scrambling on [linked.active_boarding_target]. Confirmation required to proceed.", radio_channel)
+				radio.talk_into(src, "OSTRZEŻENIE: ta konsola już utrzymuje zakłócanie EWAR na [linked.active_boarding_target]. Wymagane potwierdzenie, by kontynuować.", radio_channel)
 				return FALSE
 			if((OM.obj_integrity * 100 / initial(OM.obj_integrity)) > required_damage_percentage)
-				radio.talk_into(src, "Target is not sufficiently compromised for EWAR scrambling.", radio_channel)
+				radio.talk_into(src, "Cel nie jest wystarczająco osłabiony do zakłócania EWAR.", radio_channel)
 				return FALSE
-			radio.talk_into(src, "Electronic countermeasure deployment in progress.", radio_channel)
+			radio.talk_into(src, "Trwa rozmieszczanie elektronicznych środków przeciwdziałania.", radio_channel)
 			can_salvage = FALSE
 			DISABLE_BITFIELD(OM.overmap_deletion_traits, DAMAGE_DELETES_UNOCCUPIED) // Simplemobs don't count, so don't let this explode before we're ready
 			if(OM.ai_load_interior(linked))
 				linked.active_boarding_target = OM
 				addtimer(VARSET_CALLBACK(src, can_salvage, TRUE), salvage_cooldown)
 				OM.ai_controlled = FALSE
-				radio.talk_into(src, "Enemy point defense systems scrambled. Bluefor strike teams cleared for approach.", radio_channel)
+				radio.talk_into(src, "Zakłócono wrogie systemy obrony punktowej. Sojusznicze grupy uderzeniowe mają zgodę na podejście.", radio_channel)
 			else
-				radio.talk_into(src, "Unable to scramble enemy point defense systems. Aborting...", radio_channel)
+				radio.talk_into(src, "Nie można zakłócić wrogich systemów obrony punktowej. Przerywanie...", radio_channel)
 				linked.active_boarding_target.kill_boarding_level(linked)
 				linked.active_boarding_target = null
 				addtimer(VARSET_CALLBACK(src, can_salvage, TRUE), salvage_cooldown/2)
 
 		if("stop_salvage")
 			if(!linked)
-				radio.talk_into(src, "This console is not attached to the ship's EWAR scrambling systems.", radio_channel)
+				radio.talk_into(src, "Ta konsola nie jest podłączona do systemów zakłóceń EWAR okrętu.", radio_channel)
 				return FALSE
 			if(!linked.active_boarding_target)
-				radio.talk_into(src, "EWAR scambling not currently engaged.", radio_channel)
+				radio.talk_into(src, "Zakłócanie EWAR nie jest obecnie aktywne.", radio_channel)
 				return FALSE
 			if(!can_salvage)
-				radio.talk_into(src, "EWAR scrambling equipment is starting up or shutting down. Try again later.", radio_channel)
+				radio.talk_into(src, "Sprzęt zakłóceń EWAR się uruchamia lub wyłącza. Spróbuj później.", radio_channel)
 				return FALSE
 			if(SEND_SIGNAL(linked.active_boarding_target, COMSIG_SHIP_RELEASE_BOARDING))
-				radio.talk_into(src, "Target is mission critical. Cannot cancel EWAR scrambling on [linked.active_boarding_target].", radio_channel)
+				radio.talk_into(src, "Cel jest przeznaczony do przejęcia. Nie można anulować zakłócania EWAR na [linked.active_boarding_target].", radio_channel)
 				return FALSE // Something blocked this
-			if(alert("Are you sure? (ALL BOARDERS WILL BE KILLED)",name,"Release Hammerlock","Cancel") == "Cancel")
+			if(alert("Na pewno? (WSZYSCY ABORDAŻOWCY ZGINĄ)",name,"Zwolnij blokadę","Cancel") == "Cancel")
 				return FALSE
-			radio.talk_into(src, "EWAR scrambling on [linked.active_boarding_target] cancelled.", radio_channel)
+			radio.talk_into(src, "Anulowano zakłócanie EWAR na [linked.active_boarding_target].", radio_channel)
 			//They REALLY NEED TO NOT SPAM THIS
 			can_salvage = FALSE
 			message_admins("[usr] released boarding/salvage lock on [linked.active_boarding_target]")

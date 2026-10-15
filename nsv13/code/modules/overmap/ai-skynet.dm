@@ -50,7 +50,7 @@ Adding tasks is easy! Just define a datum for it.
 	var/hide_movements = FALSE
 	var/alignment = "syndicate"
 	var/list/taunts = list("Unidentified vessel, you have entered our airspace. Leave immediately or be destroyed", "Identify yourselves immediately or be destroyed", "Unidentified vessel, leave immediately. You are entering Syndicate territory.", "Hold it right there. Prepare to be boarded, Captain.", "Nanotrasen vessel, surrender immediately or face unnecessary casualties.", "All Nanotrasen crewmen, please prepare for immediate evisceration.", "Unidentified vessel, transmit your credentials now or- Wait a second, that’s the ship we’re looking for! Deploy fighters!", "Nanotrasen? You’ve just made my day, all crafts prepare to engage.", "Unknown vessel, failure to contact Syndicate control on frequency 0.4 is a suspected act of aggression. Prepare for engagement.")
-	var/list/greetings = list("IFF confirmed, good to see you", "Allied vessel, IFF confirmed.")
+	var/list/greetings = list("IFF potwierdzone, dobrze was widzieć", "Sojuszniczy okręt, IFF potwierdzone.")
 	var/list/recently_visited = list()
 	var/fleet_trait = FLEET_TRAIT_INVASION
 	var/last_encounter_time = 0
@@ -310,11 +310,11 @@ Adding tasks is easy! Just define a datum for it.
 /datum/fleet/proc/defeat()
 	var/datum/star_system/player_system = SSstar_system.find_main_overmap().current_system
 	var/datum/star_system/mining_system = SSstar_system.find_main_miner()?.current_system
-	var/message = "\A [name] has been defeated [(current_system && !current_system.hidden) ? "during combat in the [current_system.name] system" : "in battle"]."
+	var/message = "[name] został pokonany [(current_system && !current_system.hidden) ? "podczas walki w systemie [current_system.name]" : "w bitwie"]."
 	if(alignment == "nanotrasen" || current_system == player_system || current_system == mining_system)
-		minor_announce(message, "White Rapids Fleet Command")
+		minor_announce(message, "Dowództwo Floty White Rapids")
 	else
-		mini_announce(message, "White Rapids Fleet Command")
+		mini_announce(message, "Dowództwo Floty White Rapids")
 	if(current_system.fleets && current_system.fleets.len)
 		var/datum/fleet/F = pick(current_system.fleets)
 		current_system.alignment = F.alignment
@@ -346,7 +346,7 @@ Adding tasks is easy! Just define a datum for it.
 
 /datum/fleet/solgov/earth/defeat()
 	. = ..() //If you lose sol...game over man, game over.
-	priority_announce("Dowództwo SolGov, odbieracie nas?! Wzywamy natychniastowe wsparcie, jesteśmy w obliczu desantu, powtarzam, desan##----///", "White Rapids Fleet Command")
+	priority_announce("Dowództwo SolGov, odbieracie nas?! Wzywamy natychniastowe wsparcie, jesteśmy w obliczu desantu, powtarzam, desan##----///", "Dowództwo Floty White Rapids")
 	SSticker.mode.check_finished(TRUE)
 	SSticker.force_ending = TRUE
 
@@ -365,7 +365,7 @@ Adding tasks is easy! Just define a datum for it.
 		return FALSE
 	if(!source_ship)
 		return FALSE
-	var/text = stripped_input(user, "What do you want to say?", "Hailing")
+	var/text = stripped_input(user, "Co chcesz powiedzieć?", "Hailing")
 	if(text)
 		source_ship.hail(text, name, user.name, TRUE) // Let the crew on the source ship know an Outbound message was sent
 		hail(text, source_ship.name, user.name)
@@ -374,24 +374,24 @@ Adding tasks is easy! Just define a datum for it.
 	if( !isliving(user) )
 		return FALSE
 	if( !allowed(user) ) //Only cargo auth'd personnel can make purchases.
-		to_chat(user, "<span class='warning'>Warning: You cannot open a communications channel without appropriate requisitions access registered to your ID card.</span>")
+		to_chat(user, "<span class='warning'>Ostrzeżenie: nie możesz otworzyć kanału komunikacyjnego bez odpowiedniego dostępu zaopatrzeniowego zarejestrowanego na karcie ID.</span>")
 		return FALSE
 
 	if (!console?.linked_launcher)
-		to_chat(user, "<span class='warning'>[console] has no cargo launcher attached! Use a multitool with a cargo launcher stored on its buffer to connect it.</span>")
+		to_chat(user, "<span class='warning'>[console] nie ma podłączonej wyrzutni ładunków! Użyj multitoola z wyrzutnią zapisaną w buforze, by ją podłączyć.</span>")
 		if ( console && console.linked )
 			try_hail( user, console.linked )
 		return FALSE
 
 	var/obj/machinery/ship_weapon/torpedo_launcher/cargo/launcher = console.linked_launcher
 	if ( !launcher.chambered )
-		to_chat(user, "<span class='warning'>[launcher] has no freight torpedoes loaded!</span>")
+		to_chat(user, "<span class='warning'>W [launcher] nie załadowano żadnych torped transportowych!</span>")
 		if ( console.linked )
 			try_hail( user, console.linked )
 		return FALSE
 
 	if ( launcher.safety ) //cannot fire with safety on
-		to_chat(user, "<span class='warning'>[launcher] has its safeties on!</span")
+		to_chat(user, "<span class='warning'>[launcher] ma włączone zabezpieczenia!</span")
 		if ( console.linked )
 			try_hail( user, console.linked )
 		return FALSE
@@ -399,12 +399,10 @@ Adding tasks is easy! Just define a datum for it.
 	for(var/a in launcher.chambered.GetAllContents())
 		if(is_type_in_typecache(a, GLOB.blacklisted_cargo_types))
 			if ( !istype( a, /mob/living/simple_animal ) ) // Allow the transfer of specimens specifically for cargo missions
-				to_chat(user, "<span class='warning'>[launcher] Cargo Shuttle Brand lifeform checker blinks an error, \
-					for safety reasons it cannot transport hazardous organisms, human remains, classified nuclear weaponry, \
-					homing beacons or machinery housing any form of artificial intelligence.")
+				to_chat(user, "<span class='warning'>Detektor form życia marki Cargo Shuttle w [launcher] wyświetla błąd: ze względów bezpieczeństwa nie może przewozić niebezpiecznych organizmów, ludzkich szczątków, tajnej broni jądrowej, nadajników naprowadzających ani maszyn zawierających jakąkolwiek formę sztucznej inteligencji.")
 				return FALSE
 
-	var/choice = input("Transfer cargo to [src]?", "Confirm delivery", "No") in list("Yes", "No")
+	var/choice = input("Przekazać ładunek do [src]?", "Potwierdź dostawę", "No") in list("Yes", "No")
 	if(!choice || choice == "No")
 		if ( console.linked )
 			try_hail( user, console.linked )
@@ -443,10 +441,10 @@ Adding tasks is easy! Just define a datum for it.
 		var/obj/structure/overmap/MO = SSstar_system.find_main_overmap()
 		SEND_SOUND(user, 'nsv13/sound/effects/ship/freespace2/computer/textdraw.wav')
 		MO.hail( pick( list(
-			"Message received, we are delivering your package for transfer now.",
-			"Understood, delivering the cargo.",
-			"The package is enroute, make sure it arrives intact to the destination.",
-			"Understood, the package is enroute. Is there anything else you needed?",
+			"Wiadomość odebrana, dostarczamy teraz waszą paczkę do przekazania.",
+			"Zrozumiano, dostarczamy ładunek.",
+			"Paczka jest w drodze, dopilnujcie, by dotarła nienaruszona.",
+			"Zrozumiano, paczka jest w drodze. Potrzebujecie czegoś jeszcze?",
 		) ), src)
 
 		O.deliver_package()
@@ -486,17 +484,13 @@ Adding tasks is easy! Just define a datum for it.
 /obj/structure/overmap/proc/make_paperwork( var/datum/freight_delivery_receipt/receipt, var/approval )
 	// Cargo DRADIS automatically synthesizes and attaches the requisition form to the cargo torp
 	var/obj/item/paper/paper = new /obj/item/paper()
-	var/final_paper_text = "<h2>[receipt.vessel] Shipping Manifest</h2><hr/>"
+	var/final_paper_text = "<h2>[receipt.vessel] - list przewozowy</h2><hr/>"
 
 	if ( length( receipt.completed_objectives ) == 1 )
 		var/datum/overmap_objective/cargo/objective = receipt.completed_objectives[ 1 ]
-		final_paper_text += "Order: #[GLOB.round_id]-[objective.objective_number]<br/> \
-			Destination: [src]<br/> \
-			Item: [objective.crate_name]<br/>"
+		final_paper_text += "Zamówienie: #[GLOB.round_id]-[objective.objective_number]<br/>Cel: [src]<br/>Przedmiot: [objective.crate_name]<br/>"
 	else
-		final_paper_text += "Order: N/A<br/> \
-			Destination: [src]<br/> \
-			Item: Unregistered Shipment<br/>"
+		final_paper_text += "Zamówienie: brak<br/>Cel: [src]<br/>Przedmiot: niezarejestrowana przesyłka<br/>"
 
 	final_paper_text += "Contents:<br/><ul>"
 
@@ -509,9 +503,9 @@ Adding tasks is easy! Just define a datum for it.
 			if ( !is_type_in_typecache( item.type, GLOB.blacklisted_paperwork_itemtypes ) )
 				final_paper_text += "<li>[item]</li>"
 	else
-		final_paper_text += "<li>miscellaneous unpackaged objects</li>"
+		final_paper_text += "<li>różne niezapakowane przedmioty</li>"
 
-	final_paper_text += "</ul><h4>Stamp below to confirm receipt of goods:</h4>"
+	final_paper_text += "</ul><h4>Przybij pieczątkę poniżej, by potwierdzić odbiór towarów:</h4>"
 
 	//paper.stamped = list()
 	//paper.stamps = list()
@@ -545,19 +539,19 @@ Adding tasks is easy! Just define a datum for it.
 		if ( returns_rejected_cargo )
 			SEND_SOUND(receipt.courier, 'nsv13/sound/effects/ship/freespace2/computer/textdraw.wav')
 			receipt.vessel.hail( pick( list(
-				"We're not expecting any shipments at this time. Please give us some time to arrange the return shipment.",
-				"We're not expecting any shipments, please don't send us your trash.",
-				"This cargo isn't registered on our supply requests. We will return it as soon as we can.",
-				"We haven't asked for any cargo like this. Take your business elsewhere.",
+				"Obecnie nie spodziewamy się żadnych przesyłek. Dajcie nam trochę czasu na zorganizowanie odesłania.",
+				"Nie spodziewamy się żadnych przesyłek, nie przysyłajcie nam swoich śmieci.",
+				"Ten ładunek nie jest zarejestrowany w naszych zamówieniach. Odeślemy go najszybciej, jak się da.",
+				"Nie zamawialiśmy takiego ładunku. Idźcie z tym gdzie indziej.",
 			) ), src)
 			addtimer(CALLBACK(src, PROC_REF(return_shipment), receipt), speed_cargo_return)
 		else
 			SEND_SOUND(receipt.courier, 'nsv13/sound/effects/ship/freespace2/computer/textdraw.wav')
 			receipt.vessel.hail( pick( list(
-				"We're not expecting any shipments at this time. We hope you weren't attached to this.",
-				"We're not expecting any shipments, but our assistants could make use of this.",
-				"This cargo isn't registered on our supply requests. We won't be returning this.",
-				"We haven't asked for any cargo like this. Take your unwanted business elsewhere.",
+				"Obecnie nie spodziewamy się żadnych przesyłek. Mamy nadzieję, że nie byliście do tego przywiązani.",
+				"Nie spodziewamy się żadnych przesyłek, ale nasi asystenci mogą to wykorzystać.",
+				"Ten ładunek nie jest zarejestrowany w naszych zamówieniach. Nie odeślemy go.",
+				"Nie zamawialiśmy takiego ładunku. Idźcie ze swoimi niechcianymi interesami gdzie indziej.",
 			) ), src)
 
 /obj/structure/overmap/proc/reject_incomplete_shipment( var/datum/freight_delivery_receipt/receipt )
@@ -565,17 +559,17 @@ Adding tasks is easy! Just define a datum for it.
 		// Won't check for returns_rejected_cargo if the station is actually expecting cargo, but the torp they receive is incorrect
 		SEND_SOUND(receipt.courier, 'nsv13/sound/effects/ship/freespace2/computer/textdraw.wav')
 		receipt.vessel.hail( pick( list(
-			"Some of the cargo contents are missing. We're sending the crates back, please double check your crates and try again.",
-			"We're not expecting this kind of shipment. We will return it as soon as we can.",
-			"This cargo isn't matching on our supply requests, please review the attached contents manifest and resend the contents.",
-			"We haven't asked for any cargo like this. Take your business elsewhere if you won't complete the job.",
+			"Brakuje części zawartości ładunku. Odsyłamy skrzynie, sprawdźcie je dokładnie i spróbujcie ponownie.",
+			"Nie spodziewamy się takiej przesyłki. Odeślemy ją najszybciej, jak się da.",
+			"Ten ładunek nie zgadza się z naszymi zamówieniami, sprawdźcie załączony manifest zawartości i wyślijcie ponownie.",
+			"Nie zamawialiśmy takiego ładunku. Jeśli nie wykonacie zlecenia, idźcie z tym gdzie indziej.",
 		) ), src)
 		addtimer(CALLBACK(src, PROC_REF(return_shipment), receipt), speed_cargo_return)
 
 /obj/structure/overmap/proc/approve_shipment( var/datum/freight_delivery_receipt/receipt )
 	if(receipt?.vessel)
 		SEND_SOUND(receipt.courier, 'nsv13/sound/effects/ship/freespace2/computer/textdraw.wav')
-		receipt.vessel.hail( "Thank you for delivering this cargo. We have marked the supply request as received.", src)
+		receipt.vessel.hail( "Dziękujemy za dostarczenie ładunku. Oznaczyliśmy zamówienie jako odebrane.", src)
 		addtimer(CALLBACK(src, PROC_REF(return_approved_form), receipt), speed_cargo_return)
 		SSovermap_mode.update_reminder(objective=TRUE) // Completing any valid delivery resets the timer
 
@@ -601,7 +595,7 @@ Adding tasks is easy! Just define a datum for it.
 		var/obj/structure/overmap/trader/T = src
 		if ( !T.inhabited_trader )
 			// We're not allowing syndicate to hitscan the player ship with boarders at this time
-			to_chat(user, "<span class='warning'>The cargo launcher IFF checker blinks an error, recipient faction is unmatched!</span>")
+			to_chat(user, "<span class='warning'>Detektor IFF wyrzutni ładunków wyświetla błąd: frakcja odbiorcy się nie zgadza!</span>")
 			return FALSE
 
 	var/datum/freight_delivery_receipt/receipt = new /datum/freight_delivery_receipt()
@@ -614,7 +608,7 @@ Adding tasks is easy! Just define a datum for it.
 		speed_cargo_check = 1 SECONDS
 		speed_cargo_return = 1 SECONDS
 
-	to_chat(user, "<span class='notice'>The cargo has been sent to [src] and should be received shortly.</span>")
+	to_chat(user, "<span class='notice'>Ładunek został wysłany do [src] i wkrótce powinien zostać odebrany.</span>")
 	addtimer(CALLBACK(src, PROC_REF(check_objectives), receipt), speed_cargo_check)
 
 	src.send_supplypod( shipment, courier, TRUE )
@@ -627,7 +621,7 @@ Adding tasks is easy! Just define a datum for it.
 		return
 	var/player_string = ""
 	if(player_name && player_name != ship_name) // No sender means AI ship, or a ghost ship if the player and ship name are the same
-		player_string = " (Sent by [player_name])"
+		player_string = " (Wysłane przez: [player_name])"
 
 	if(outbound)
 		relay('nsv13/sound/effects/ship/freespace2/computer/textdraw.wav', "<h3>Outbound hail to: [ship_name][player_string]</h3><hr><span class='danger'>[text]</span><br>")
@@ -804,7 +798,7 @@ Adding tasks is easy! Just define a datum for it.
 		current_system.enemies_in_system += member
 	all_ships += member
 	RegisterSignal(member, COMSIG_PARENT_QDELETING , /datum/fleet/proc/remove_ship, member)
-	RegisterSignal(member, COMSIG_SHIP_BOARDED , /datum/fleet/proc/remove_ship, member)
+	RegisterSignal(member, COMSIG_SHIP_IFF_CHANGE , /datum/fleet/proc/remove_ship, member)
 
 	if(current_system.occupying_z)
 		current_system.add_ship(member)
@@ -1622,7 +1616,7 @@ Seek a ship thich we'll station ourselves around
 		SSovermap_mode.update_reminder()
 	if(OM.tactical)
 		var/sound = pick('nsv13/sound/effects/computer/alarm.ogg','nsv13/sound/effects/computer/alarm_3.ogg','nsv13/sound/effects/computer/alarm_4.ogg')
-		var/message = "<span class='warning'>DANGER: [src] is now targeting [OM].</span>"
+		var/message = "<span class='warning'>NIEBEZPIECZEŃSTWO: [src] namierza teraz [OM].</span>"
 		OM.tactical.relay_sound(sound, message)
 	else
 		if(OM.dradis)

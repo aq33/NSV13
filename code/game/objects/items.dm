@@ -123,6 +123,10 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	var/slowdown = 0
 	/// Percentage of armour effectiveness to remove
 	var/armour_penetration = 0
+	/// The click cooldown given after attacking. Lower numbers means faster attacks
+	var/attack_speed = CLICK_CD_MELEE
+	/// The click cooldown on secondary attacks. Lower numbers mean faster attacks. Will use attack_speed if undefined.
+	var/secondary_attack_speed
 	/// A list of items that can be put in this item for like suit storage or something?? I honestly have no idea.
 	var/list/allowed = null
 	/// In deciseconds, how long an item takes to equip; counts only for normal clothing slots, not pockets etc.
@@ -215,8 +219,8 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	//Grinder vars
 	/// A reagent list containing the reagents this item produces when ground up in a grinder - this can be an empty list to allow for reagent transferring only
 	var/list/grind_results
-	/// A reagent list containing the reagents this item produces when JUICED in a grinder!
-	var/list/juice_results
+	///A reagent the nutriments are converted into when the item is juiced.
+	var/datum/reagent/consumable/juice_typepath
 
 	///Icon for monkey
 	var/icon/monkey_icon
@@ -235,6 +239,9 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 	if (attack_verb)
 		attack_verb = typelist("attack_verb", attack_verb)
+
+	if(sharpness && force > 5) //give sharp objects butchering functionality, for consistency
+		AddComponent(/datum/component/butchering, _speed = 8 SECONDS * toolspeed)
 
 	. = ..()
 	for(var/path in actions_types)
@@ -351,42 +358,42 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	. += "[gender == PLURAL ? "They are" : "It is"] a [weight_class_to_text(w_class)] item."
 
 	if(resistance_flags & INDESTRUCTIBLE)
-		. += "[src] seems extremely robust! It'll probably withstand anything that could happen to it!"
+		. += "[src] wydaje się niezwykle wytrzymały! Pewnie wytrzyma wszystko, co mogłoby go spotkać!"
 	else
 		if(resistance_flags & LAVA_PROOF)
-			. += "[src] is made of an extremely heat-resistant material, it'd probably be able to withstand lava!"
+			. += "[src] jest wykonany z niezwykle żaroodpornego materiału, pewnie wytrzymałby nawet lawę!"
 		if(resistance_flags & (ACID_PROOF | UNACIDABLE))
-			. += "[src] looks pretty robust! It'd probably be able to withstand acid!"
+			. += "[src] wygląda na całkiem wytrzymały! Pewnie wytrzymałby kwas!"
 		if(resistance_flags & FREEZE_PROOF)
-			. += "[src] is made of cold-resistant materials."
+			. += "[src] jest wykonany z materiałów odpornych na zimno."
 		if(resistance_flags & FIRE_PROOF)
-			. += "[src] is made of fire-retardant materials."
+			. += "[src] jest wykonany z materiałów ognioodpornych."
 	if(block_level || block_upgrade_walk)
 		if(block_upgrade_walk == 1 && !block_level)
-			. += "While walking, [src] can block attacks in a <b>narrow</b> arc."
+			. += "Podczas chodzenia [src] może blokować ataki w <b>wąskim</b> łuku."
 		else
 			switch(block_upgrade_walk + block_level)
 				if(1)
-					. += "[src] can block attacks in a <b>narrow</b> arc."
+					. += "[src] może blokować ataki w <b>wąskim</b> łuku."
 				if(2)
-					. += "[src] can block attacks in a <b>wide</b> arc."
+					. += "[src] może blokować ataki w <b>szerokim</b> łuku."
 				if(3)
-					. += "[src] can block attacks in a <b>very wide</b> arc."
+					. += "[src] może blokować ataki w <b>bardzo szerokim</b> łuku."
 				if(4 to INFINITY)
-					. += "[src] can block attacks in a <b>nearly complete</b> arc."
+					. += "[src] może blokować ataki w <b>niemal pełnym</b> łuku."
 			if(block_upgrade_walk)
-				. += "[src] is <b>less</b> effective at blocking while the user is <b>running</b>."
+				. += "[src] blokuje <b>gorzej</b>, gdy użytkownik <b>biegnie</b>."
 		switch(block_power)
 			if(-INFINITY to -1)
-				. += "[src] is weighted extremely poorly for blocking"
+				. += "[src] jest bardzo źle wyważony do blokowania"
 			if(0 to 10)
-				. += "[src] is average at blocking"
+				. += "[src] jest przeciętny w blokowaniu"
 			if(10 to 30)
-				. += "[src] is well-weighted for blocking"
+				. += "[src] jest dobrze wyważony do blokowania"
 			if(31 to 50)
-				. += "[src] is extremely well-weighted for blocking"
+				. += "[src] jest wyjątkowo dobrze wyważony do blokowania"
 			if(51 to INFINITY)
-				. += "[src] is as well weighted as possible for blocking"
+				. += "[src] jest najlepiej wyważony do blokowania, jak to tylko możliwe"
 	if(force)
 		if(!force_string)
 			set_force_string()
@@ -438,7 +445,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	add_fingerprint(usr)
 	return ..()
 
-/obj/item/attack_hand(mob/user)
+/obj/item/attack_hand(mob/user, modifiers)
 	. = ..()
 	if(.)
 		return
@@ -459,9 +466,9 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 		if(can_handle_hot)
 			extinguish()
-			to_chat(user, "<span class='notice'>You put out the fire on [src].</span>")
+			to_chat(user, "<span class='notice'>Gasisz ogień na [src].</span>")
 		else
-			to_chat(user, "<span class='warning'>You burn your hand on [src]!</span>")
+			to_chat(user, "<span class='warning'>Parzysz sobie rękę o [src]!</span>")
 			var/obj/item/bodypart/affecting = C.get_bodypart("[(user.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
 			if(affecting && affecting.receive_damage( 0, 5 ))		// 5 burn damage
 				C.update_damage_overlays()
@@ -471,7 +478,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		var/mob/living/carbon/C = user
 		if(istype(C))
 			if(!C.gloves || (!(C.gloves.resistance_flags & (UNACIDABLE|ACID_PROOF))))
-				to_chat(user, "<span class='warning'>The acid on [src] burns your hand!</span>")
+				to_chat(user, "<span class='warning'>Kwas na [src] parzy ci rękę!</span>")
 				var/obj/item/bodypart/affecting = C.get_bodypart("[(user.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
 				if(affecting && affecting.receive_damage( 0, 5 ))		// 5 burn damage
 					C.update_damage_overlays()
@@ -483,7 +490,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	var/grav = user.has_gravity()
 	if(grav > STANDARD_GRAVITY)
 		var/grav_power = min(3,grav - STANDARD_GRAVITY)
-		to_chat(user,"<span class='notice'>You start picking up [src]...</span>")
+		to_chat(user,"<span class='notice'>Zaczynasz podnosić [src]...</span>")
 		if(!do_mob(user,src,30*grav_power))
 			return
 
@@ -531,7 +538,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if(!A.has_fine_manipulation)
 		if(src in A.contents) // To stop Aliens having items stuck in their pockets
 			A.dropItemToGround(src)
-		to_chat(user, "<span class='warning'>Your claws aren't capable of such fine manipulation!</span>")
+		to_chat(user, "<span class='warning'>Twoje szpony nie nadają się do tak precyzyjnych czynności!</span>")
 		return
 	attack_paw(A)
 
@@ -573,12 +580,12 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if(!blockhand)
 		return 0
 	if(blockhand.is_disabled())
-		to_chat(owner, "<span_class='danger'>You're too exausted to block the attack!</span>")
+		to_chat(owner, "<span_class='danger'>Jesteś zbyt wyczerpany, by zablokować atak!</span>")
 		return 0
 	else if(HAS_TRAIT(owner, TRAIT_NOLIMBDISABLE) && owner.getStaminaLoss() >= 30)
-		to_chat(owner, "<span_class='danger'>You're too exausted to block the attack!</span>")
+		to_chat(owner, "<span_class='danger'>Jesteś zbyt wyczerpany, by zablokować atak!</span>")
 		return 0
-	if(owner.a_intent == INTENT_HELP) //you can choose not to block an attack
+	if(!owner.combat_mode) //you can choose not to block an attack
 		return 0
 	if(block_flags & BLOCKING_ACTIVE && owner.get_active_held_item() != src) //you can still parry with the offhand
 		return 0
@@ -595,22 +602,22 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		if(180, -180)
 			if(final_block_level >= 1)
 				playsound(src, block_sound, 50, 1)
-				owner.visible_message("<span class='danger'>[owner] blocks [attack_text] with [src]!</span>")
+				owner.visible_message("<span class='danger'>[owner] blokuje [attack_text] za pomocą [src]!</span>")
 				return 1
 		if(135, 225, -135, -225)
 			if(final_block_level >= 2)
 				playsound(src, block_sound, 50, 1)
-				owner.visible_message("<span class='danger'>[owner] blocks [attack_text] with [src]!</span>")
+				owner.visible_message("<span class='danger'>[owner] blokuje [attack_text] za pomocą [src]!</span>")
 				return 1
 		if(90, 270, -90, -270)
 			if(final_block_level >= 3)
-				owner.visible_message("<span class='danger'>[owner] blocks [attack_text] with [src]!</span>")
+				owner.visible_message("<span class='danger'>[owner] blokuje [attack_text] za pomocą [src]!</span>")
 				playsound(src, block_sound, 50, 1)
 				return 1
 		if(45, 315, -45, -315)
 			if(final_block_level >= 4)
 				playsound(src, block_sound, 50, 1)
-				owner.visible_message("<span class='danger'>[owner] blocks [attack_text] with [src]!</span>")
+				owner.visible_message("<span class='danger'>[owner] blokuje [attack_text] za pomocą [src]!</span>")
 				return 1
 	return 0
 
@@ -645,7 +652,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		var/mob/living/L = hitby
 		if(block_flags & BLOCKING_NASTY && !HAS_TRAIT(L, TRAIT_PIERCEIMMUNE))
 			L.attackby(src, owner)
-			owner.visible_message("<span class='danger'>[L] injures themselves on [owner]'s [src]!</span>")
+			owner.visible_message("<span class='danger'>[L] rani się o [src] należący do [owner]!</span>")
 	else if(isliving(hitby))
 		var/mob/living/L = hitby
 		attackforce = (damage * 2)//simplemobs have an advantage here because of how much these blocking mechanics put them at a disadvantage
@@ -654,10 +661,10 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 				var/mob/living/simple_animal/S = L
 				if(!S.hardattacks)
 					S.attackby(src, owner)
-					owner.visible_message("<span class='danger'>[S] injures themselves on [owner]'s [src]!</span>")
+					owner.visible_message("<span class='danger'>[S] rani się o [src] należący do [owner]!</span>")
 			else
 				L.attackby(src, owner)
-				owner.visible_message("<span class='danger'>[L] injures themselves on [owner]'s [src]!</span>")
+				owner.visible_message("<span class='danger'>[L] rani się o [src] należący do [owner]!</span>")
 	owner.apply_damage(attackforce, STAMINA, blockhand, block_power)
 	if((owner.getStaminaLoss() >= 35 && HAS_TRAIT(src, TRAIT_NODROP)) || (HAS_TRAIT(owner, TRAIT_NOLIMBDISABLE) && owner.getStaminaLoss() >= 30))//if you don't drop the item, you can't block for a few seconds
 		owner.blockbreak()
@@ -721,10 +728,21 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		compile_monkey_icon()
 	log_item(user, INVESTIGATE_VERB_EQUIPPED)
 	if(!initial)
-		if(equip_sound && slot_flags)
+		if(equip_sound && (slot_flags & slot)) // AQ EDIT - only when worn, not when picked up
 			playsound(src, equip_sound, EQUIP_SOUND_VOLUME, TRUE, ignore_walls = FALSE)
 		else if(slot == ITEM_SLOT_HANDS)
 			playsound(src, pickup_sound, PICKUP_SOUND_VOLUME, ignore_walls = FALSE)
+
+/**
+ * Called by the outfit system after this item has been equipped as part of an outfit.
+ *
+ * Arguments:
+ * * outfit_wearer - who the outfit was equipped on
+ * * visuals_only - whether the outfit is only for display (character preview)
+ * * item_slot - the slot the item ended up in
+ */
+/obj/item/proc/on_outfit_equip(mob/living/carbon/human/outfit_wearer, visuals_only, item_slot)
+	return
 
 //sometimes we only want to grant the item's action if it's equipped in a specific slot.
 /obj/item/proc/item_action_slot_check(slot, mob/user)
@@ -778,15 +796,15 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 	if(M.is_eyes_covered())
 		// you can't stab someone in the eyes wearing a mask!
-		to_chat(user, "<span class='danger'>You're going to need to remove [M.p_their()] eye protection first!</span>")
+		to_chat(user, "<span class='danger'>Najpierw musisz zdjąć mu ochronę oczu!</span>")
 		return
 
 	if(isalien(M))//Aliens don't have eyes./N     slimes also don't have eyes!
-		to_chat(user, "<span class='warning'>You cannot locate any eyes on this creature!</span>")
+		to_chat(user, "<span class='warning'>Nie możesz znaleźć oczu u tego stworzenia!</span>")
 		return
 
 	if(isbrain(M))
-		to_chat(user, "<span class='danger'>You cannot locate any organic eyes on this brain!</span>")
+		to_chat(user, "<span class='danger'>Nie możesz znaleźć żadnych organicznych oczu w tym mózgu!</span>")
 		return
 
 	add_fingerprint(user)
@@ -796,12 +814,12 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	user.do_attack_animation(M)
 
 	if(M != user)
-		M.visible_message("<span class='danger'>[user] has stabbed [M] in the eye with [src]!</span>", \
-							"<span class='userdanger'>[user] stabs you in the eye with [src]!</span>")
+		M.visible_message("<span class='danger'>[user] dźga [M] w oko za pomocą [src]!</span>", \
+							"<span class='userdanger'>[user] dźga cię w oko za pomocą [src]!</span>")
 	else
 		user.visible_message( \
-			"<span class='danger'>[user] has stabbed [user.p_them()]self in the eyes with [src]!</span>", \
-			"<span class='userdanger'>You stab yourself in the eyes with [src]!</span>" \
+			"<span class='danger'>[user] dźga się w oczy za pomocą [src]!</span>", \
+			"<span class='userdanger'>Dźgasz się w oczy za pomocą [src]!</span>" \
 		)
 	if(is_human_victim)
 		var/mob/living/carbon/human/U = M
@@ -812,7 +830,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "eye_stab", /datum/mood_event/eye_stab)
 
-	log_combat(user, M, "attacked", "[src.name]", "(INTENT: [uppertext(user.a_intent)])")
+	log_combat(user, M, "attacked", "[src.name]", "(Combat mode: [user.combat_mode ? "On" : "Off"])")
 
 	var/obj/item/organ/eyes/eyes = M.getorganslot(ORGAN_SLOT_EYES)
 	if (!eyes)
@@ -822,13 +840,13 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if(eyes.damage >= 10)
 		M.adjust_blurriness(15)
 		if(M.stat != DEAD)
-			to_chat(M, "<span class='danger'>Your eyes start to bleed profusely!</span>")
+			to_chat(M, "<span class='danger'>Twoje oczy zaczynają obficie krwawić!</span>")
 		if(!(HAS_TRAIT(M, TRAIT_BLIND) || HAS_TRAIT(M, TRAIT_NEARSIGHT)))
-			to_chat(M, "<span class='danger'>You become nearsighted!</span>")
+			to_chat(M, "<span class='danger'>Stajesz się krótkowzroczny!</span>")
 		M.become_nearsighted(EYE_DAMAGE)
 		if (eyes.damage >= 60)
 			M.become_blind(EYE_DAMAGE)
-			to_chat(M, "<span class='danger'>You go blind!</span>")
+			to_chat(M, "<span class='danger'>Ślepniesz!</span>")
 
 /obj/item/singularity_pull(S, current_size)
 	..()
@@ -844,7 +862,8 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 /obj/item/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	if(hit_atom && !QDELETED(hit_atom))
-		SEND_SIGNAL(src, COMSIG_MOVABLE_IMPACT, hit_atom, throwingdatum)
+		if(SEND_SIGNAL(src, COMSIG_MOVABLE_IMPACT, hit_atom, throwingdatum) & COMPONENT_MOVABLE_IMPACT_NEVERMIND)
+			return
 		if(is_hot() && isliving(hit_atom))
 			var/mob/living/L = hit_atom
 			L.IgniteMob()
@@ -950,7 +969,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 /obj/item/proc/ignition_effect(atom/A, mob/user)
 	if(is_hot())
-		. = "<span class='notice'>[user] lights [A] with [src].</span>"
+		. = "<span class='notice'>[user] zapala [A] za pomocą [src].</span>"
 	else
 		. = ""
 
@@ -975,7 +994,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		if(w_class == WEIGHT_CLASS_HUGE || w_class == WEIGHT_CLASS_GIGANTIC)
 			ash_type = /obj/effect/decal/cleanable/ash/large
 		var/obj/effect/decal/cleanable/ash/A = new ash_type(T)
-		A.desc += "\nLooks like this used to be \an [name] some time ago."
+		A.desc += "\nWygląda na to, że kiedyś był to [name]."
 		..()
 
 /obj/item/acid_melt()
@@ -988,6 +1007,8 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		..()
 
 /obj/item/proc/microwave_act(obj/machinery/microwave/M)
+	if(SEND_SIGNAL(src, COMSIG_ITEM_MICROWAVE_ACT, M) & COMPONENT_SUCCESFUL_MICROWAVE)
+		return
 	if(istype(M) && M.dirty < 100)
 		M.dirty++
 
@@ -996,11 +1017,36 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 /obj/item/proc/grind_requirements(obj/machinery/reagentgrinder/R) //Used to check for extra requirements for grinding an object
 	return TRUE
 
- //Called BEFORE the object is ground up - use this to change grind results based on conditions
- //Use "return -1" to prevent the grinding from occurring
+//Called BEFORE the object is ground up - use this to change grind results based on conditions
+//Return "-1" to prevent the grinding from occurring
 /obj/item/proc/on_grind()
+	return SEND_SIGNAL(src, COMSIG_ITEM_ON_GRIND)
 
+///Grind item, adding grind_results to item's reagents and transfering to target_holder if specified
+/obj/item/proc/grind(datum/reagents/target_holder, mob/user)
+	if(on_grind() == -1)
+		return FALSE
+	if(target_holder)
+		target_holder.add_reagent_list(grind_results)
+		if(reagents)
+			reagents.trans_to(target_holder, reagents.total_volume, transfered_by = user)
+	return TRUE
+
+///Called BEFORE the object is ground up - use this to change grind results based on conditions. Return "-1" to prevent the grinding from occurring
 /obj/item/proc/on_juice()
+	if(!juice_typepath)
+		return -1
+	return SEND_SIGNAL(src, COMSIG_ITEM_ON_JUICE)
+
+///Juice item, converting nutriments into juice_typepath and transfering to target_holder if specified
+/obj/item/proc/juice(datum/reagents/target_holder, mob/user)
+	if(on_juice() == -1)
+		return FALSE
+	if(reagents)
+		reagents.convert_reagent(/datum/reagent/consumable, juice_typepath, include_source_subtypes = TRUE)
+		if(target_holder)
+			reagents.trans_to(target_holder, reagents.total_volume, transfered_by = user)
+	return TRUE
 
 /obj/item/proc/set_force_string()
 	switch(force)
@@ -1029,6 +1075,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		openToolTip(user,src,params,title = name,content = "[desc]<br><b>Force:</b> [force_string]",theme = "")
 
 /obj/item/MouseEntered(location, control, params)
+	..() // AQ EDIT - screentips potrzebują /atom/MouseEntered() (port BeeStation #11938)
 	if((item_flags & PICKED_UP || item_flags & IN_STORAGE) && (usr.client.prefs.toggles2 & PREFTOGGLE_2_ENABLE_TIPS) && !QDELETED(src))
 		var/timedelay = usr.client.prefs.tip_delay/100
 		var/user = usr
@@ -1239,6 +1286,98 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		pain_stam_pct = (!isnull(embedding["pain_stam_pct"]) ? embedding["pain_stam_pct"] : EMBEDDED_PAIN_STAM_PCT),\
 		armour_block = (!isnull(embedding["armour_block"]) ? embedding["armour_block"] : EMBEDDED_ARMOUR_BLOCK))
 	return TRUE
+
+/// How many different types of mats will be counted in a bite?
+#define MAX_MATS_PER_BITE 2
+
+/*
+ * On accidental consumption: when you somehow end up eating an item accidentally (currently, this is used for when items are hidden in food like bread or cake)
+ *
+ * The base proc will check if the item is sharp and has a decent force.
+ * Then, it checks the item's mat datums for the effects it applies afterwards.
+ * Then, it checks tiny items.
+ * After all that, it returns TRUE if the item is set to be discovered. Otherwise, it returns FALSE.
+ *
+ * This works similarily to /suicide_act: if you want an item to have a unique interaction, go to that item
+ * and give it an /on_accidental_consumption proc override. For a simple example of this, check out the nuke disk.
+ *
+ * Arguments
+ * * M - the mob accidentally consuming the item
+ * * user - the mob feeding M the item - usually, it's the same as M
+ * * source_item - the item that held the item being consumed - bread, cake, etc
+ * * discover_after - if the item will be discovered after being chomped (FALSE will usually mean it was swallowed, TRUE will usually mean it was bitten into and discovered)
+ */
+/obj/item/proc/on_accidental_consumption(mob/living/carbon/victim, mob/living/carbon/user, obj/item/source_item, discover_after = TRUE)
+	if(is_sharp() && force >= 5) //if we've got something sharp with a decent force (ie, not plastic)
+		INVOKE_ASYNC(victim, TYPE_PROC_REF(/mob, emote), "scream")
+		victim.visible_message("<span class='warning'>[victim] wygląda, jakby właśnie ugryzł coś, czego nie powinien!</span>", \
+							"<span class='boldwarning'>O BOŻE! Czy to było chrupnięcie? To wcale nie było przyjemne!!</span>")
+
+		victim.apply_damage(max(15, force), BRUTE, BODY_ZONE_HEAD)
+		victim.losebreath += 2
+		if(tryEmbed(victim.get_bodypart(BODY_ZONE_CHEST), forced = TRUE)) //and if it embeds successfully in their chest, cause a lot of pain
+			victim.apply_damage(max(25, force*1.5), BRUTE, BODY_ZONE_CHEST)
+			victim.losebreath += 6
+			discover_after = FALSE
+		if(QDELETED(src)) // in case trying to embed it caused its deletion (say, if it's DROPDEL)
+			return
+		source_item?.reagents?.add_reagent(/datum/reagent/blood, 2)
+
+	else if(custom_materials?.len) //if we've got materials, lets see whats in it
+		/// How many mats have we found? You can only be affected by two material datums by default
+		var/found_mats = 0
+		/// How much of each material is in it? Used to determine if the glass should break
+		var/total_material_amount = 0
+
+		for(var/mats in custom_materials)
+			total_material_amount += custom_materials[mats]
+			if(found_mats >= MAX_MATS_PER_BITE)
+				continue //continue instead of break so we can finish adding up all the mats to the total
+
+			var/datum/material/discovered_mat = mats
+			if(discovered_mat.on_accidental_mat_consumption(victim, source_item))
+				found_mats++
+
+		//if there's glass in it and the glass is more than 60% of the item, then we can shatter it
+		if(custom_materials[getmaterialref(/datum/material/glass)] >= total_material_amount * 0.60)
+			if(prob(66)) //66% chance to break it
+				/// The glass shard that is spawned into the source item
+				var/obj/item/shard/broken_glass = new /obj/item/shard(loc)
+				broken_glass.name = "broken [name]"
+				broken_glass.desc = "This used to be \a [name], but it sure isn't anymore."
+				playsound(victim, "shatter", 25, TRUE)
+				qdel(src)
+				if(QDELETED(source_item))
+					broken_glass.on_accidental_consumption(victim, user)
+			else //33% chance to just "crack" it (play a sound) and leave it in the bread
+				playsound(victim, "shatter", 15, TRUE)
+			discover_after = FALSE
+
+		victim.adjust_disgust(33)
+		victim.visible_message(
+			"<span class='warning'>[victim] wygląda, jakby właśnie ugryzł coś twardego.</span>", \
+			"<span class='warning'>Fuj! Czy ja właśnie w coś wgryzłem?</span>")
+
+	else if(w_class == WEIGHT_CLASS_TINY) //small items like soap or toys that don't have mat datums
+		/// victim's chest (for cavity implanting the item)
+		var/obj/item/bodypart/chest/victim_cavity = victim.get_bodypart(BODY_ZONE_CHEST)
+		if(victim_cavity.cavity_item)
+			victim.vomit(5, FALSE, FALSE, distance = 0)
+			forceMove(drop_location())
+			to_chat(victim, "<span class='warning'>Wymiotujesz [name]! [source_item? "Czy to było w [source_item]?" : ""]</span>")
+		else
+			victim.transferItemToLoc(src, victim, TRUE)
+			victim.losebreath += 2
+			victim_cavity.cavity_item = src
+			to_chat(victim, "<span class='warning'>Z trudem przełykasz. [source_item? "W [source_item] było coś małego..." : ""]</span>")
+		discover_after = FALSE
+
+	else
+		to_chat(victim, "<span class='warning'>[source_item? "Something strange was in the \the [source_item]..." : "I just bit something strange..."] </span>")
+
+	return discover_after
+
+#undef MAX_MATS_PER_BITE
 
 /**
  * * An interrupt for offering an item to other people, called mainly from [/mob/living/carbon/proc/give], in case you want to run your own offer behavior instead.

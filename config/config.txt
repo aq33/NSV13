@@ -253,7 +253,7 @@ CHECK_RANDOMIZER
 #WEBCLIENT_ONLY_BYOND_MEMBERS
 
 ## Set to prevent anyone but those ckeys listed in config/whitelist.txt and config/admins.txt from joining your server
-USEWHITELIST
+#USEWHITELIST
 
 ## Use the patron list as a whitelist. 'USEWHITELIST' must also be enabled. The two lists will be joined together.
 #USE_PATRONS_AS_WHITELIST
@@ -310,7 +310,8 @@ BANAPPEALS https://forums-nsv.beestation13.com/c/administration/ban-appeals/6
 ## The default value assumes youtube-dl is in your system PATH
 #INVOKE_YOUTUBEDL C:\TGSINSTANCES\NSV\Static\youtube-dl.exe
 
-@INVOKE_YOUTUBEDL C:\youtubedl\youtube-dl.exe --no-check-certificate
+## AQUILA EDIT - yt-dlp.exe leży w repo (katalog główny, obok rust_g.dll) i deploy.sh kopiuje go obok nsv13.dmb
+@INVOKE_YOUTUBEDL .\yt-dlp.exe --no-check-certificate
 
 ## In-game features
 ##Toggle for having jobs load up from the .txt
@@ -467,13 +468,13 @@ CLIENT_WARN_VERSION 0
 CLIENT_WARN_MESSAGE Currently Unused! If you see this message yell at Francinum!
 
 #Error, Blocks non-admin connection.
-CLIENT_ERROR_VERSION 515
+CLIENT_ERROR_VERSION 516
 CLIENT_ERROR_MESSAGE Your version of byond is not supported. Please upgrade.
 ## The minimum build needed for joining the server
-CLIENT_ERROR_BUILD 1590
+CLIENT_ERROR_BUILD 1666
 ## The maximum build recommended for clients
-CLIENT_MAX_BUILD 1647
-CLIENT_MAX_VERSION 515
+CLIENT_MAX_BUILD 1700
+CLIENT_MAX_VERSION 516
 
 ## TOPIC RATE LIMITING
 ## This allows you to limit how many topic calls (clicking on an interface window) the client can do in any given game second and/or game minute.

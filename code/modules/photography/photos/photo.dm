@@ -40,7 +40,7 @@
 		icon = I
 
 /obj/item/photo/suicide_act(mob/living/carbon/user)
-	user.visible_message("<span class='suicide'>[user] is taking one last look at \the [src]! It looks like [user.p_theyre()] giving in to death!</span>")//when you wanna look at photo of waifu one last time before you die...
+	user.visible_message("<span class='suicide'>[user] po raz ostatni spogląda na [src]! Wygląda na to, że poddaje się śmierci!</span>")//when you wanna look at photo of waifu one last time before you die...
 	if (user.gender == MALE)
 		playsound(user, 'sound/voice/human/manlaugh1.ogg', 50, 1)//EVERY TIME I DO IT MAKES ME LAUGH
 	else if (user.gender == FEMALE)
@@ -55,10 +55,10 @@
 		return
 	if(istype(P, /obj/item/pen) || istype(P, /obj/item/toy/crayon))
 		if(!user.is_literate())
-			to_chat(user, "<span class='notice'>You scribble illegibly on [src]!</span>")
+			to_chat(user, "<span class='notice'>Gryzmolisz nieczytelnie na [src]!</span>")
 			return
 
-		var/txt = stripped_input(user, "What would you like to write on the back?", "Photo Writing", max_length=128)
+		var/txt = stripped_input(user, "Co chcesz napisać na odwrocie?", "Pisanie na zdjęciu", max_length=128)
 
 		if(txt && user.canUseTopic(src, BE_CLOSE))
 			scribble = txt
@@ -71,14 +71,14 @@
 	if(in_range(src, user) || isobserver(user))
 		show(user)
 	else
-		. += "<span class='warning'>You need to get closer to get a good look at this photo!</span>"
+		. += "<span class='warning'>Musisz podejść bliżej, by dobrze przyjrzeć się temu zdjęciu!</span>"
 
 /obj/item/photo/proc/show(mob/user)
 	if(!istype(picture) || !picture.picture_image)
-		to_chat(user, "<span class='warning'>[src] seems to be blank...</span>")
+		to_chat(user, "<span class='warning'>[src] wydaje się puste...</span>")
 		return
 	user << browse_rsc(picture.picture_image, "tmp_photo.png")
-	user << browse("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>[name]</title></head>" \
+	user << browse("<!DOCTYPE html><html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>[name]</title></head>" \
 		+ "<body style='overflow:hidden;margin:0;text-align:center'>" \
 		+ "<img src='tmp_photo.png' width='480' style='-ms-interpolation-mode:nearest-neighbor' />" \
 		+ "[scribble ? "<br>Written on the back:<br><i>[scribble]</i>" : ""]"\
@@ -90,7 +90,7 @@
 	set category = "Object"
 	set src in usr
 
-	var/n_name = stripped_input(usr, "What would you like to label the photo?", "Photo Labelling", max_length=MAX_NAME_LEN)
+	var/n_name = stripped_input(usr, "Jak chcesz podpisać zdjęcie?", "Podpisywanie zdjęcia", max_length=MAX_NAME_LEN)
 	//loc.loc check is for making possible renaming photos in clipboards
 	if(n_name && (loc == usr || loc.loc && loc.loc == usr) && usr.stat == CONSCIOUS && !usr.incapacitated())
 		name = "photo[(n_name ? text("- '[n_name]'") : null)]"

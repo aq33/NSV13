@@ -146,7 +146,7 @@ GLOBAL_LIST_INIT(input_window_presets, list(
 /client/verb/fix_chatbox()
 	set name = "Fix chatbox"
 
-	var/preset = input(src, "Which chat window do you want to recreate?", "Fix chatbox") as null|anything in GLOB.input_window_presets
+	var/preset = input(src, "Które okno czatu chcesz odtworzyć?", "Napraw okno czatu") as null|anything in GLOB.input_window_presets
 
 	if(!preset)
 		return

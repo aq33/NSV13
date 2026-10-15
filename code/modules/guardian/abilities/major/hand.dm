@@ -21,5 +21,5 @@
 /datum/guardian_ability/major/hand/Stat()
 	var/list/tab_data = list()
 	if(next_hand > world.time)
-		tab_data["THE HAND Cooldown Remaining"] = GENERATE_STAT_TEXT("[DisplayTimeText(next_hand - world.time)]")
+		tab_data["Odnowienie RĘKI"] = GENERATE_STAT_TEXT("[DisplayTimeText(next_hand - world.time)]")
 	return tab_data

@@ -2,7 +2,7 @@
 	max_level = 3
 
 /datum/component/enchantment/burn/apply_effect(obj/item/target)
-	examine_description = "It has been blessed with the power of fire and will set striked targets on fire."
+	examine_description = "Pobłogosławiono go mocą ognia - podpala trafione cele."
 	target.w_class = WEIGHT_CLASS_TINY
 	target.damtype = BURN
 	RegisterSignal(target, COMSIG_ITEM_ATTACK, PROC_REF(burn_target))

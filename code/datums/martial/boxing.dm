@@ -1,26 +1,27 @@
 /datum/martial_art/boxing
 	name = "Boxing"
 	id = MARTIALART_BOXING
+	pacifist_style = TRUE
 
 /datum/martial_art/boxing/disarm_act(mob/living/carbon/human/A, mob/living/carbon/human/D)
-	to_chat(A, "<span class='warning'>Can't disarm while boxing!</span>")
+	to_chat(A, "<span class='warning'>Podczas boksu nie można rozbrajać!</span>")
 	return 1
 
 /datum/martial_art/boxing/grab_act(mob/living/carbon/human/A, mob/living/carbon/human/D)
-	to_chat(A, "<span class='warning'>Can't grab while boxing!</span>")
+	to_chat(A, "<span class='warning'>Podczas boksu nie można chwytać!</span>")
 	return 1
 
 /datum/martial_art/boxing/harm_act(mob/living/carbon/human/A, mob/living/carbon/human/D)
 
 	A.do_attack_animation(D, ATTACK_EFFECT_PUNCH)
 
-	var/atk_verb = pick("left hook","right hook","straight punch")
+	var/atk_verb = pick("lewym sierpowym","prawym sierpowym","prostym ciosem")
 
 	var/damage = 6 + A.dna.species.punchdamage
 	if(!damage)
 		playsound(D.loc, A.dna.species.miss_sound, 25, 1, -1)
-		D.visible_message("<span class='warning'>[A]'s [atk_verb] misses [D]!</span>", \
-			"<span class='userdanger'>[A]'s [atk_verb] misses you!</span>", null, COMBAT_MESSAGE_RANGE)
+		D.visible_message("<span class='warning'>[A] chybia [atk_verb], celując w [D]!</span>", \
+			"<span class='userdanger'>[A] chybia [atk_verb], celując w ciebie!</span>", null, COMBAT_MESSAGE_RANGE)
 		log_combat(A, D, "attempted to hit", atk_verb)
 		return 0
 
@@ -30,16 +31,16 @@
 
 	playsound(D.loc, A.dna.species.attack_sound, 25, 1, -1)
 
-	D.visible_message("<span class='danger'>[A] [atk_verb]ed [D]!</span>", \
-			"<span class='userdanger'>[A] [atk_verb]ed you!</span>", null, COMBAT_MESSAGE_RANGE)
+	D.visible_message("<span class='danger'>[A] trafia [D] [atk_verb]!</span>", \
+			"<span class='userdanger'>[A] trafia cię [atk_verb]!</span>", null, COMBAT_MESSAGE_RANGE)
 
 	D.apply_damage(damage, STAMINA, affecting, armor_block)
 	log_combat(A, D, "punched (boxing) ")
 	if(D.getStaminaLoss() > 50 && istype(D.mind?.martial_art, /datum/martial_art/boxing))
 		var/knockout_prob = D.getStaminaLoss() + rand(-15,15)
 		if((D.stat != DEAD) && prob(knockout_prob))
-			D.visible_message("<span class='danger'>[A] knocks [D] out with a haymaker!</span>", \
-								"<span class='userdanger'>[A] knocks you out with a haymaker!</span>")
+			D.visible_message("<span class='danger'>[A] nokautuje [D] potężnym zamachem!</span>", \
+								"<span class='userdanger'>[A] nokautuje cię potężnym zamachem!</span>")
 			D.apply_effect(200,EFFECT_KNOCKDOWN,armor_block)
 			D.SetSleeping(100)
 			D.force_say(A)

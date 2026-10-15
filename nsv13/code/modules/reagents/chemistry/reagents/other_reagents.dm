@@ -1,27 +1,27 @@
 /datum/reagent/methane
 	name = "Methane"
-	description = "A light, flammable hydrocarbon. Commonly used in the production of cryogenic fuel."
+	description = "Lekki, łatwopalny węglowodór. Powszechnie używany do produkcji paliwa kriogenicznego."
 	reagent_state = GAS
 	color = "#ccf6ff"
-	taste_description = "nothing"
+	taste_description = "nic"
 
 /datum/reagent/consumable/creamer
 	name = "Coffee Creamer"
-	description = "Powdered milk for cheap coffee. How delightful."
-	taste_description = "milk"
+	description = "Mleko w proszku do taniej kawy. Jak uroczo."
+	taste_description = "mleko"
 	color = "#efeff0"
 	nutriment_factor = 1.5 * REAGENTS_METABOLISM
 
 /datum/reagent/consumable/navy_coffee
 	name = "Naval Coffee"
-	description = "The lifeblood of the Navy and Militaries everywhere, this coffee is strong enough to keep you awake for days, ruin your tastebuds and wake the freaking dead."
+	description = "Krew życia marynarki i wojska wszędzie; ta kawa jest tak mocna, że nie da ci spać przez wiele dni, zniszczy kubki smakowe i obudzi pieprzonych umarłych."
 	color = "#241000"
 	nutriment_factor = 0
 	addiction_threshold = 40 //Downing two cups in one go will make you addicted to it.
-	taste_description = "extreme bitterness with a hint of fuel"
+	taste_description = "skrajna gorycz z nutą paliwa"
 	glass_icon_state = "glass_brown"
 	glass_name = "glass of navy coffee"
-	glass_desc = "Don't drop it, or you'll get busted back down to midshipman!"
+	glass_desc = "Nie upuść jej, bo zdegradują cię z powrotem do kadeta!"
 
 /datum/reagent/consumable/navy_coffee/on_mob_life(mob/living/carbon/M)
 	M.dizziness = max(0,M.dizziness-5)

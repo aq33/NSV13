@@ -14,7 +14,7 @@
 			U.Jitter(35)
 			U.stuttering = 20
 			if(U.getStaminaLoss() > 95)
-				to_chat(U, "<font color ='red', size ='4'><B>Your ears weren't meant for this spectral sound.</B></font>")
+				to_chat(U, "<font color ='red', size ='4'><B>Twoje uszy nie były stworzone na ten upiorny dźwięk.</B></font>")
 				INVOKE_ASYNC(src, PROC_REF(spectral_change), U)
 			return
 
@@ -40,7 +40,7 @@
 	if((H.getStaminaLoss() > 95) && (!istype(H.dna.species, /datum/species/skeleton)) && (!istype(H.dna.species, /datum/species/golem)) && (!istype(H.dna.species, /datum/species/android)) && (!istype(H.dna.species, /datum/species/jelly)))
 		H.Paralyze(20)
 		H.set_species(/datum/species/skeleton)
-		H.visible_message("<span class='warning'>[H] has given up on life as a mortal.</span>")
+		H.visible_message("<span class='warning'>[H] porzuca życie śmiertelnika.</span>")
 		var/T = get_turf(H)
 		if(too_spooky)
 			if(prob(30))
@@ -50,13 +50,13 @@
 			else if(prob(30))
 				new/obj/item/instrument/trombone/spectral(T)
 			else
-				to_chat(H, "The spooky gods forgot to ship your instrument. Better luck next unlife.")
-		to_chat(H, "<B>You are the spooky skeleton!</B>")
-		to_chat(H, "A new life and identity has begun. Help your fellow skeletons into bringing out the spooky-pocalypse. You haven't forgotten your past life, and are still beholden to  past loyalties.")
+				to_chat(H, "Upiorni bogowie zapomnieli wysłać ci instrument. Więcej szczęścia w następnym nieżyciu.")
+		to_chat(H, "<B>Jesteś upiornym szkieletem!</B>")
+		to_chat(H, "Zaczyna się nowe życie i nowa tożsamość. Pomóż innym szkieletom wywołać upiorną apokalipsę. Nie zapomniałeś swojego poprzedniego życia i wciąż wiążą cię dawne lojalności.")
 		change_name(H)	//time for a new name!
 
 /datum/component/spooky/proc/change_name(mob/living/carbon/human/H)
-	var/t = sanitize_name(stripped_input(H, "Enter your new skeleton name", H.real_name, null, MAX_NAME_LEN))
+	var/t = sanitize_name(stripped_input(H, "Podaj swoje nowe szkieletowe imię", H.real_name, null, MAX_NAME_LEN))
 	if(!t)
 		t = "spooky skeleton"
 	H.fully_replace_character_name(null, t)

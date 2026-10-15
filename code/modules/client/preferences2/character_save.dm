@@ -255,7 +255,8 @@
 	backbag	= sanitize_inlist(backbag, GLOB.backbaglist, initial(backbag))
 	jumpsuit_style = sanitize_inlist(jumpsuit_style, GLOB.jumpsuitlist, initial(jumpsuit_style))
 	uplink_spawn_loc = sanitize_inlist(uplink_spawn_loc, GLOB.uplink_spawn_loc_list_save, initial(uplink_spawn_loc))
-	features["body_size"] = sanitize_inlist(features["body_size"], GLOB.body_sizes, "Normal")
+	features["body_size"] = sanitize_inlist(features["body_size"], pref_species.get_body_sizes(), "Normal") // AQ EDIT - Polak tylko dla ludzi
+	features["voice_pitch"] = sanitize_voice_pitch(features["voice_pitch"], real_name) // AQ EDIT - voice pitch
 	features["mcolor"]	= sanitize_hexcolor(features["mcolor"], 3, 0)
 	features["ethcolor"]	= copytext_char(features["ethcolor"], 1, 7)
 	features["tail_lizard"]	= sanitize_inlist(features["tail_lizard"], GLOB.tails_list_lizard)
@@ -332,6 +333,7 @@
 		var/datum/species/spath = GLOB.species_list[pick(GLOB.roundstart_races)]
 		pref_species = new spath
 	features = random_features()
+	features["voice_pitch"] = random_voice_pitch() // AQ EDIT
 	if(gender)
 		features["body_model"] = pick(MALE,FEMALE)
 	age = rand(AGE_MIN,AGE_MAX)
@@ -358,6 +360,8 @@
 	if(previewJob)
 		mannequin.job = previewJob.title
 		previewJob.equip(mannequin, TRUE, preference_source = parent)
+
+	parent.prefs?.apply_gear_preview(mannequin) // AQ EDIT - podgląd przedmiotu z loadoutu
 
 	COMPILE_OVERLAYS(mannequin)
 	parent.show_character_previews(new /mutable_appearance(mannequin))
@@ -503,7 +507,7 @@
 	))
 
 	if(!insert_query.warn_execute())
-		to_chat(usr, "<span class='boldannounce'>Failed to save your character. Please inform the server operator.</span>")
+		to_chat(usr, "<span class='boldannounce'>Nie udało się zapisać postaci. Powiadom operatora serwera.</span>")
 		qdel(insert_query)
 		return
 

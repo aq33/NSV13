@@ -5,12 +5,13 @@ import {
   KEY_TAB,
   KEY_UP,
 } from 'common/keycodes';
-import { isAlphanumeric, getHistoryLength } from '../helpers';
+
+import { getHistoryLength, isAlphanumeric } from '../helpers';
 import { Modal } from '../types';
 
 /**
  * Handles other key events.
- * TAB - Changes channels.
+ * TAB - Cycles IC and radio channels (AQUILA).
  * UP/DOWN - Sets history counter and input value.
  * BKSP/DEL - Resets history counter and checks window size.
  * TYPING - When users key, it tells byond that it's typing.
@@ -18,7 +19,7 @@ import { Modal } from '../types';
 export const handleKeyDown = function (
   this: Modal,
   event: KeyboardEvent,
-  value: string
+  value: string,
 ) {
   const { channel } = this.state;
   const { radioPrefix } = this.fields;
@@ -34,11 +35,7 @@ export const handleKeyDown = function (
   }
   if (event.keyCode === KEY_TAB) {
     event.preventDefault();
-    if (event.shiftKey) {
-      this.events.onDecrementChannel();
-    } else {
-      this.events.onIncrementChannel();
-    }
+    this.events.onCycleRadio(event.shiftKey ? -1 : 1);
     return;
   }
   if (event.keyCode === KEY_DELETE || event.keyCode === KEY_BACKSPACE) {
@@ -46,7 +43,7 @@ export const handleKeyDown = function (
     return;
   }
   if (isAlphanumeric(event.keyCode)) {
-    if (channel !== 3 && radioPrefix !== ':b ') {
+    if (channel < 3 && radioPrefix !== ':b ') {
       this.timers.typingThrottle();
     }
   }

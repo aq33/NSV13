@@ -9,7 +9,7 @@
 	idle_power_usage = 2
 	active_power_usage = 4
 	max_integrity = 150
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 100, "bomb" = 0, "bio" = 100, "rad" = 100, "fire" = 40, "acid" = 0, "stamina" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 100, "bomb" = 0, "bio" = 100, "rad" = 100, "fire" = 40, "acid" = 0, "stamina" = 0, "bleed" = 0)
 	var/frequency = 0
 	var/atom/target
 	var/target_layer = PIPING_LAYER_DEFAULT
@@ -102,23 +102,23 @@
 	if (target)
 		var/datum/gas_mixture/environment = target.return_air()
 		if(environment)
-			. = "The pressure gauge reads [round(environment.return_pressure(), 0.01)] kPa; [round(environment.return_temperature(),0.01)] K ([round(environment.return_temperature()-T0C,0.01)]&deg;C)."
+			. = "Manometr pokazuje [round(environment.return_pressure(), 0.01)] kPa; [round(environment.return_temperature(),0.01)] K ([round(environment.return_temperature()-T0C,0.01)]&deg;C)."
 		else
-			. = "The sensor error light is blinking."
+			. = "Miga lampka błędu czujnika."
 	else
-		. = "The connect error light is blinking."
+		. = "Miga lampka błędu połączenia."
 
 /obj/machinery/meter/examine(mob/user)
 	. = ..()
 	. += status()
 
 /obj/machinery/meter/wrench_act(mob/user, obj/item/I)
-	to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")
+	to_chat(user, "<span class='notice'>Zaczynasz odkręcać [src]...</span>")
 	if (I.use_tool(src, user, 40, volume=50))
 		user.visible_message(
-			"[user] unfastens \the [src].",
-			"<span class='notice'>You unfasten \the [src].</span>",
-			"<span class='italics'>You hear ratchet.</span>")
+			"[user] odkręca [src].",
+			"<span class='notice'>Odkręcasz [src].</span>",
+			"<span class='italics'>Słyszysz grzechotkę.</span>")
 		deconstruct()
 	return TRUE
 

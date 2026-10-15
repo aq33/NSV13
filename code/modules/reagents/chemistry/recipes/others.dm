@@ -9,8 +9,8 @@
 
 /datum/chemical_reaction/cooking_oil
 	name = "Cooking Oil"
-	id = /datum/reagent/consumable/cooking_oil
-	results = list(/datum/reagent/consumable/cooking_oil = 4)
+	id = /datum/reagent/consumable/nutriment/fat/oil
+	results = list(/datum/reagent/consumable/nutriment/fat/oil = 4)
 	required_reagents = list(/datum/reagent/hydrogen = 1, /datum/reagent/oil = 1, /datum/reagent/consumable/sugar = 1, /datum/reagent/carbon = 1)
 
 /datum/chemical_reaction/lube
@@ -29,7 +29,7 @@
 	name = "Spray Tan"
 	id = /datum/reagent/spraytan
 	results = list(/datum/reagent/spraytan = 2)
-	required_reagents = list(/datum/reagent/consumable/orangejuice = 1, /datum/reagent/consumable/cornoil = 1)
+	required_reagents = list(/datum/reagent/consumable/orangejuice = 1, /datum/reagent/consumable/nutriment/fat/oil = 1)
 
 /datum/chemical_reaction/impedrezene
 	name = "Impedrezene"
@@ -47,7 +47,7 @@
 	name = "Glycerol"
 	id = /datum/reagent/glycerol
 	results = list(/datum/reagent/glycerol = 1)
-	required_reagents = list(/datum/reagent/consumable/cornoil = 3, /datum/reagent/toxin/acid = 1)
+	required_reagents = list(/datum/reagent/consumable/nutriment/fat/oil = 3, /datum/reagent/toxin/acid = 1)
 
 /datum/chemical_reaction/sodiumchloride
 	name = "Sodium Chloride"
@@ -121,13 +121,14 @@
 /datum/chemical_reaction/meatification
 	name = "Meatification"
 	id = "meatification"
-	required_reagents = list(/datum/reagent/liquidgibs = 10, /datum/reagent/consumable/nutriment = 10, /datum/reagent/carbon = 10)
+	required_reagents = list(/datum/reagent/liquidgibs = 10, /datum/reagent/consumable/nutriment = 10)
 	mob_react = FALSE
+	required_catalysts = list(/datum/reagent/consumable/enzyme = 5)
 
 /datum/chemical_reaction/meatification/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/i = 1, i <= created_volume, i++)
-		new /obj/item/reagent_containers/food/snacks/meat/slab/meatproduct(location)
+		new /obj/item/food/meat/slab/meatproduct(location)
 	return
 
 /datum/chemical_reaction/carbondioxide
@@ -230,7 +231,7 @@
 	id = "virusfood_admin"
 	results = list(/datum/reagent/consumable/virus_food/advvirusfood = 1)
 	required_reagents = list(/datum/reagent/consumable/virus_food/viralbase = 1, /datum/reagent/uranium = 20)
-	mix_message = "The mixture turns every colour of the rainbow, soon settling on a bright white. There's no way this isn't a good idea."
+	mix_message = "Mieszanina przybiera wszystkie kolory tęczy, by w końcu ustalić się na jaskrawej bieli. To na pewno dobry pomysł."
 
 //Adds a virus symptom from the level_min to level_max range
 /datum/chemical_reaction/mix_virus
@@ -427,7 +428,7 @@
 /datum/chemical_reaction/foam/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/mob/M as() in viewers(5, location))
-		to_chat(M, "<span class='danger'>The solution spews out foam!</span>")
+		to_chat(M, "<span class='danger'>Roztwór wyrzuca pianę!</span>")
 	var/datum/effect_system/foam_spread/s = new()
 	s.set_up(created_volume*2, location, holder)
 	s.start()
@@ -445,7 +446,7 @@
 	var/location = get_turf(holder.my_atom)
 
 	for(var/mob/M as() in viewers(5, location))
-		to_chat(M, "<span class='danger'>The solution spews out a metallic foam!</span>")
+		to_chat(M, "<span class='danger'>Roztwór wyrzuca metaliczną pianę!</span>")
 
 	var/datum/effect_system/foam_spread/metal/s = new()
 	s.set_up(created_volume*5, location, holder, 1)
@@ -460,7 +461,7 @@
 
 /datum/chemical_reaction/smart_foam/on_reaction(datum/reagents/holder, created_volume)
 	var/turf/location = get_turf(holder.my_atom)
-	location.visible_message("<span class='danger'>The solution spews out metallic foam!</span>")
+	location.visible_message("<span class='danger'>Roztwór wyrzuca metaliczną pianę!</span>")
 	var/datum/effect_system/foam_spread/metal/smart/s = new()
 	s.set_up(created_volume * 5, location, holder, TRUE)
 	s.start()
@@ -475,7 +476,7 @@
 /datum/chemical_reaction/ironfoam/on_reaction(datum/reagents/holder, created_volume)
 	var/location = get_turf(holder.my_atom)
 	for(var/mob/M as() in viewers(5, location))
-		to_chat(M, "<span class='danger'>The solution spews out a metallic foam!</span>")
+		to_chat(M, "<span class='danger'>Roztwór wyrzuca metaliczną pianę!</span>")
 	var/datum/effect_system/foam_spread/metal/s = new()
 	s.set_up(created_volume*5, location, holder, 2)
 	s.start()
@@ -492,7 +493,7 @@
 	id = /datum/reagent/smart_foaming_agent
 	results = list(/datum/reagent/smart_foaming_agent = 3)
 	required_reagents = list(/datum/reagent/foaming_agent = 3, /datum/reagent/acetone = 1, /datum/reagent/iron = 1)
-	mix_message = "The solution mixes into a frothy metal foam and conforms to the walls of its container."
+	mix_message = "Roztwór miesza się w pienisty metal, który dopasowuje się do ścianek pojemnika."
 
 
 /////////////////////////////// Cleaning and hydroponics /////////////////////////////////////////////////
@@ -782,3 +783,23 @@
 	id = /datum/reagent/mutationtoxin/plasma
 	results = list(/datum/reagent/mutationtoxin/plasma = 5)
 	required_reagents  = list(/datum/reagent/aslimetoxin = 5, /datum/reagent/toxin/plasma = 60, /datum/reagent/uranium = 20)
+
+/datum/chemical_reaction/ants // Breeding ants together, high sugar cost makes this take a while to farm.
+	name = "Ant breeding" //NSV13 - our reactions carry a name and id
+	id = "ants"
+	results = list(/datum/reagent/ants = 3)
+	required_reagents = list(/datum/reagent/ants = 2, /datum/reagent/consumable/sugar = 8)
+
+/datum/chemical_reaction/ant_slurry // We're basically glueing ants together with synthflesh & maint sludge to make a bigger ant.
+	name = "Ant slurry"
+	id = "ant_slurry"
+	required_reagents = list(/datum/reagent/ants = 50, /datum/reagent/medicine/synthflesh = 20, /datum/reagent/ammonia = 5)
+	required_temp = 480
+	//reaction_flags = REACTION_INSTANT
+	//reaction_tags = REACTION_TAG_EASY | REACTION_TAG_UNIQUE
+
+/datum/chemical_reaction/ant_slurry/on_reaction(datum/reagents/holder, created_volume)
+	var/location = get_turf(holder.my_atom)
+	for(var/i in rand(1, created_volume) to created_volume)
+		new /mob/living/simple_animal/hostile/ant(location)
+	..()

@@ -82,7 +82,7 @@
 /obj/machinery/computer/shuttle_flight/custom_shuttle/launch_shuttle()
 	calculateStats()
 	if(calculated_acceleration < CUSTOM_SHUTTLE_MIN_THRUST_TO_WEIGHT)
-		say("Insufficient engine power to engage supercruise.")
+		say("Za mała moc silników, by wejść w supercruise.")
 		return
 	var/datum/orbital_object/shuttle/custom_shuttle/shuttle = ..()
 	if(shuttle)
@@ -127,7 +127,7 @@
 
 /obj/machinery/computer/shuttle_flight/custom_shuttle/proc/check_stranded()
 	if(!calculated_engine_count && shuttleObject)
-		say("Fuel reserves depleted, dropping out of supercruise.")
+		say("Rezerwy paliwa wyczerpane, wychodzenie z supercruise.")
 		if(!shuttleObject.docking_target)
 			if(shuttleObject.can_dock_with)
 				shuttleObject.commence_docking(shuttleObject.can_dock_with, TRUE)
@@ -136,13 +136,13 @@
 				var/datum/orbital_object/z_linked/beacon/z_linked = new /datum/orbital_object/z_linked/beacon/ruin/stranded_shuttle(new /datum/orbital_vector(shuttleObject.position.x, shuttleObject.position.y))
 				z_linked.name = "Stranded [shuttleObject]"
 				if(!z_linked)
-					say("Failed to dethrottle shuttle, please contact a Nanotrasen supervisor.")
+					say("Nie udało się zdławić promu, skontaktuj się z przełożonym Nanotrasen.")
 					return
 				shuttleObject.commence_docking(z_linked, TRUE)
 		shuttleObject.docking_frozen = TRUE
 		//Dock
 		if(!random_drop())
-			say("Failed to drop at a random location. Please select a location.")
+			say("Nie udało się zrzucić w losowym miejscu. Wybierz lokalizację.")
 			shuttleObject.docking_frozen = FALSE
 		return TRUE
 	return FALSE

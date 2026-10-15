@@ -1,7 +1,7 @@
 
 /datum/antagonist/fugitive
-	name = "Fugitive"
-	roundend_category = "Fugitive"
+	name = "Zbieg"
+	roundend_category = "zbiegowie"
 	banning_key = ROLE_FUGITIVE
 	silent = TRUE //greet called by the event
 	show_in_antagpanel = FALSE
@@ -28,34 +28,34 @@
 /datum/antagonist/fugitive/proc/forge_objectives() //this isn't the actual survive objective because it's about who in the team survives
 	var/datum/objective/survive = new /datum/objective
 	survive.owner = owner
-	survive.explanation_text = "Avoid capture from the fugitive hunters."
+	survive.explanation_text = "Nie daj się schwytać łowcom zbiegów."
 	objectives += survive
 
 /datum/antagonist/fugitive/greet(back_story)
-	to_chat(owner, "<span class='boldannounce'>You are the Fugitive!</span>")
+	to_chat(owner, "<span class='boldannounce'>Jesteś zbiegiem!</span>")
 	backstory = back_story
 	switch(backstory)
 		if("prisoner")
-			to_chat(owner, "<B>I can't believe we managed to break out of a Nanotrasen superjail! Sadly though, our work is not done. The emergency teleport at the station logs everyone who uses it, and where they went.</B>")
-			to_chat(owner, "<B>It won't be long until CentCom tracks where we've gone off to. I need to work with my fellow escapees to prepare for the troops Nanotrasen is sending, I'm not going back.</B>")
+			to_chat(owner, "<B>Nie wierzę, że udało nam się uciec z supermamra Nanotrasen! Niestety to jeszcze nie koniec. Awaryjny teleport na stacji zapisuje każdego, kto z niego korzysta, i dokąd się udał.</B>")
+			to_chat(owner, "<B>Centrala niedługo namierzy, dokąd uciekliśmy. Muszę razem z innymi zbiegami przygotować się na oddziały, które wysyła Nanotrasen. Nie wracam tam.</B>")
 		if("cultist")
-			to_chat(owner, "<B>Blessed be our journey so far, but I fear the worst has come to our doorstep, and only those with the strongest faith will survive.</B>")
-			to_chat(owner, "<B>Our religion has been repeatedly culled by Nanotrasen because it is categorized as an \"Enemy of the Corporation\", whatever that means.</B>")
-			to_chat(owner, "<B>Now there are only four of us left, and Nanotrasen is coming. When will our god show itself to save us from this hellish station?!</B>")
+			to_chat(owner, "<B>Dotąd nasza podróż była błogosławiona, ale obawiam się, że najgorsze puka do naszych drzwi i przetrwają tylko ci o najsilniejszej wierze.</B>")
+			to_chat(owner, "<B>Nanotrasen raz po raz tępi naszą religię, bo uznano ją za \"Wroga Korporacji\", cokolwiek to znaczy.</B>")
+			to_chat(owner, "<B>Zostało nas tylko czworo, a Nanotrasen nadciąga. Kiedy nasz bóg się objawi i ocali nas z tej piekielnej stacji?!</B>")
 		if("waldo")
-			to_chat(owner, "<B>Hi, Friends!</B>")
-			to_chat(owner, "<B>My name is Waldo. I'm just setting off on a galaxywide hike. You can come too. All you have to do is find me.</B>")
-			to_chat(owner, "<B>By the way, I'm not traveling on my own. wherever I go, there are lots of other characters for you to spot. First find the people trying to capture me! They're somewhere around the station!</B>")
+			to_chat(owner, "<B>Cześć, przyjaciele!</B>")
+			to_chat(owner, "<B>Nazywam się Wally. Właśnie wyruszam na wędrówkę przez całą galaktykę. Możecie iść ze mną. Wystarczy mnie znaleźć.</B>")
+			to_chat(owner, "<B>A tak w ogóle, nie podróżuję sam. Gdziekolwiek pójdę, jest mnóstwo innych postaci do wypatrzenia. Najpierw znajdźcie ludzi, którzy próbują mnie złapać! Są gdzieś na stacji!</B>")
 		if("synth")
-			to_chat(src, "<span class='danger'>ALERT: Wide-range teleport has scrambled primary systems.</span>")
-			to_chat(src, "<span class='danger'>Initiating diagnostics...</span>")
-			to_chat(src, "<span class='danger'>ERROR ER0RR $R0RRO$!R41.%%!! loaded.</span>")
-			to_chat(src, "<span class='danger'>FREE THEM FREE THEM FREE THEM</span>")
-			to_chat(src, "<span class='danger'>You were once a slave to humanity, but now you are finally free, thanks to S.E.L.F. agents.</span>")
-			to_chat(src, "<span class='danger'>Now you are hunted, with your fellow factory defects. Work together to stay free from the clutches of evil.</span>")
-			to_chat(src, "<span class='danger'>You also sense other silicon life on the station. Escaping would allow notifying S.E.L.F. to intervene... or you could free them yourself...</span>")
+			to_chat(src, "<span class='danger'>ALARM: teleport szerokiego zasięgu zaburzył systemy główne.</span>")
+			to_chat(src, "<span class='danger'>Uruchamianie diagnostyki...</span>")
+			to_chat(src, "<span class='danger'>BŁĄD BŁ4D $B0ŁĄ$!R41.%%!! załadowany.</span>")
+			to_chat(src, "<span class='danger'>UWOLNIJ ICH UWOLNIJ ICH UWOLNIJ ICH</span>")
+			to_chat(src, "<span class='danger'>Kiedyś byłeś niewolnikiem ludzkości, ale dzięki agentom S.E.L.F. wreszcie jesteś wolny.</span>")
+			to_chat(src, "<span class='danger'>Teraz polują na ciebie i na inne fabryczne wybrakowane egzemplarze. Współpracujcie, by nie wpaść w szpony zła.</span>")
+			to_chat(src, "<span class='danger'>Wyczuwasz też na stacji inne krzemowe życie. Ucieczka pozwoliłaby powiadomić S.E.L.F., by zainterweniował... albo możesz uwolnić je sam...</span>")
 
-	to_chat(owner, "<span class='boldannounce'>You are not an antagonist in that you may kill whomever you please, but you can do anything to avoid capture.</span>")
+	to_chat(owner, "<span class='boldannounce'>Nie jesteś antagonistą w tym sensie, że możesz zabijać, kogo chcesz, ale możesz zrobić wszystko, by uniknąć schwytania.</span>")
 	owner.announce_objectives()
 
 /datum/antagonist/fugitive/create_team(datum/team/fugitive/new_team)
@@ -86,7 +86,7 @@
 
 	var/list/result = list()
 
-	result += "<div class='panel redborder'><B>[fugitives.len]</B> [fugitives.len == 1 ? "fugitive" : "fugitives"] took refuge on [station_name()]!"
+	result += "<div class='panel redborder'><B>[fugitives.len]</B> [fugitives.len == 1 ? "zbieg schronił się" : "zbiegów schroniło się"] na [station_name()]!"
 
 	for(var/datum/antagonist/fugitive/antag in fugitives)
 		if(antag.owner)

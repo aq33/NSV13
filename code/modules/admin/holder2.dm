@@ -18,10 +18,7 @@ GLOBAL_PROTECT(href_token)
 
 	var/spamcooldown = 0
 
-	var/admincaster_screen = 0	//TODO: remove all these 5 variables, they are completly unacceptable
-	var/datum/newscaster/feed_message/admincaster_feed_message = new /datum/newscaster/feed_message
-	var/datum/newscaster/wanted_message/admincaster_wanted_message = new /datum/newscaster/wanted_message
-	var/datum/newscaster/feed_channel/admincaster_feed_channel = new /datum/newscaster/feed_channel
+	///Randomly generated signature used for security records authorization name.
 	var/admin_signature
 
 	var/href_token
@@ -175,7 +172,7 @@ you will have to do something like if(client.rights & R_ADMIN) yourself.
 			return 1
 		else
 			if(show_msg)
-				to_chat(usr, "<font color='red'>Error: You do not have sufficient rights to do that. You require one of the following flags:[rights2text(rights_required," ")].</font>")
+				to_chat(usr, "<font color='red'>Błąd: nie masz wystarczających uprawnień. Potrzebujesz jednej z następujących flag:[rights2text(rights_required," ")].</font>")
 	return 0
 
 //probably a bit iffy - will hopefully figure out a better solution

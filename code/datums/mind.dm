@@ -314,7 +314,7 @@
 					uplink_loc = P
 			if(UPLINK_RADIO)
 				if(HAS_TRAIT(traitor_mob, TRAIT_MUTE))  // cant speak code into headset
-					to_chat(traitor_mob, "Using a radio uplink would be impossible with your muteness! Equipping PDA Uplink..")
+					to_chat(traitor_mob, "Przez twoją niemotę uplink radiowy byłby bezużyteczny! Wydawanie uplinku w PDA...")
 					uplink_loc = PDA
 					if(!uplink_loc)
 						uplink_loc = R
@@ -344,11 +344,11 @@
 		U.setup_unlock_code()
 		if(!silent)
 			if(uplink_loc == R)
-				to_chat(traitor_mob, "<span class='boldnotice'>[employer] has cunningly disguised a Syndicate Uplink as your [R.name]. Simply speak [U.unlock_code] into the :d channel to unlock its hidden features.</span>")
+				to_chat(traitor_mob, "<span class='boldnotice'>[employer] sprytnie zamaskował uplink Syndykatu jako twoje [R.name]. Wystarczy powiedzieć [U.unlock_code] na kanale :d, żeby odblokować jego ukryte funkcje.</span>")
 			else if(uplink_loc == PDA)
-				to_chat(traitor_mob, "<span class='boldnotice'>[employer] has cunningly disguised a Syndicate Uplink as your [PDA.name]. Simply enter the code \"[U.unlock_code]\" into the ring tone selection to unlock its hidden features.</span>")
+				to_chat(traitor_mob, "<span class='boldnotice'>[employer] sprytnie zamaskował uplink Syndykatu jako twoje [PDA.name]. Wystarczy wpisać kod \"[U.unlock_code]\" jako dzwonek, żeby odblokować jego ukryte funkcje.</span>")
 			else if(uplink_loc == P)
-				to_chat(traitor_mob, "<span class='boldnotice'>[employer] has cunningly disguised a Syndicate Uplink as your [P.name]. Simply twist the top of the pen [english_list(U.unlock_code)] from its starting position to unlock its hidden features.</span>")
+				to_chat(traitor_mob, "<span class='boldnotice'>[employer] sprytnie zamaskował uplink Syndykatu jako twój [P.name]. Wystarczy przekręcić skuwkę długopisu o [english_list(U.unlock_code)] od pozycji początkowej, żeby odblokować jego ukryte funkcje.</span>")
 
 		if(uplink_owner)
 			uplink_owner.antag_memory += U.unlock_note + "<br>"
@@ -358,7 +358,7 @@
 		var/obj/item/implant/uplink/starting/I = new(traitor_mob)
 		I.implant(traitor_mob, null, silent = TRUE)
 		if(!silent)
-			to_chat(traitor_mob, "<span class='boldnotice'>[employer] has cunningly implanted you with a Syndicate Uplink (although uplink implants cost valuable TC, so you will have slightly less). Simply trigger the uplink to access it.</span>")
+			to_chat(traitor_mob, "<span class='boldnotice'>[employer] sprytnie wszczepił ci implant uplinku Syndykatu (implanty kosztują cenne TC, więc masz ich trochę mniej). Wystarczy aktywować uplink, żeby z niego skorzystać.</span>")
 		return I
 
 
@@ -392,7 +392,7 @@
 	var/mob/living/carbon/C = creator
 	if(creator.mind?.special_role || (istype(C) && C.last_mind?.special_role))
 		message_admins("[ADMIN_LOOKUPFLW(current)] has been created by [ADMIN_LOOKUPFLW(creator)], an antagonist.")
-		to_chat(current, "<span class='userdanger'>Despite your creator's current allegiances, your true master remains [creator.real_name]. If their loyalties change, so do yours. This will never change unless your creator's body is destroyed.</span>")
+		to_chat(current, "<span class='userdanger'>Bez względu na obecną lojalność twojego stwórcy, twoim prawdziwym panem pozostaje [creator.real_name]. Jeśli jego lojalność się zmieni, zmieni się i twoja. Nie zmieni się to, dopóki ciało twojego stwórcy nie zostanie zniszczone.</span>")
 
 /datum/mind/proc/show_memory(mob/recipient, window=1)
 	if(!recipient)
@@ -406,25 +406,25 @@
 		output += A.antag_memory
 
 	if(antag_objectives.len)
-		output += "<br><B>Objectives:</B>"
+		output += "<br><B>Cele:</B>"
 		var/obj_count = 1
 		for(var/datum/objective/objective in antag_objectives)
-			output += "<br><B>Objective #[obj_count++]</B>: [objective.explanation_text]"
+			output += "<br><B>Cel nr [obj_count++]</B>: [objective.explanation_text]"
 			if (objective.name == "gimmick")
-				output += " - This objective is optional and not tracked, so just have fun with it!"
+				output += " - Ten cel jest opcjonalny i nie jest sprawdzany, więc po prostu baw się dobrze!"
 			var/list/datum/mind/other_owners = objective.get_owners() - src
 			if(other_owners.len)
 				output += "<ul>"
 				for(var/datum/mind/M in other_owners)
-					output += "<li>Conspirator: [M.name]</li>"
+					output += "<li>Wspólnik: [M.name]</li>"
 				output += "</ul>"
 	if(crew_objectives.len)
-		output += "<br><B>Optional Objectives:</B>"
+		output += "<br><B>Cele opcjonalne:</B>"
 		for(var/datum/objective/objective as() in crew_objectives)
 			output += "<br>[objective.explanation_text]"
 
 	if(window)
-		recipient << browse(output,"window=memory")
+		recipient << browse(HTML_SKELETON(output),"window=memory")
 	else if(antag_objectives.len || crew_objectives.len || memory)
 		to_chat(recipient, "<i>[output]</i>")
 
@@ -444,13 +444,13 @@
 		A.admin_remove(usr)
 
 	if (href_list["role_edit"])
-		var/new_role = input("Select new role", "Assigned role", assigned_role) as null|anything in sortList(get_all_jobs())
+		var/new_role = input("Wybierz nową rolę", "Przypisana rola", assigned_role) as null|anything in sortList(get_all_jobs())
 		if (!new_role)
 			return
 		assigned_role = new_role
 
 	else if (href_list["memory_edit"])
-		var/new_memo = stripped_multiline_input(usr, "Write new memory", "Memory", memory, MAX_MESSAGE_LEN)
+		var/new_memo = stripped_multiline_input(usr, "Zapisz nowe wspomnienie", "Memory", memory, MAX_MESSAGE_LEN)
 		if (isnull(new_memo))
 			return
 		memory = new_memo
@@ -470,7 +470,7 @@
 					objective_pos = A.objectives.Find(old_objective)
 					break
 			if(!old_objective)
-				to_chat(usr,"Invalid objective.")
+				to_chat(usr,"Nieprawidłowy cel.")
 				return
 		else
 			if(href_list["target_antag"])
@@ -484,7 +484,7 @@
 					if(1)
 						target_antag = antag_datums[1]
 					else
-						var/datum/antagonist/target = input("Which antagonist gets the objective:", "Antagonist", "(new custom antag)") as null|anything in sortList(antag_datums) + "(new custom antag)"
+						var/datum/antagonist/target = input("Który antagonista otrzymuje cel:", "Antagonist", "(new custom antag)") as null|anything in sortList(antag_datums) + "(new custom antag)"
 						if (QDELETED(target))
 							return
 						else if(target == "(new custom antag)")
@@ -536,7 +536,7 @@
 				A.objectives -= objective
 				break
 		if(!objective)
-			to_chat(usr,"Invalid objective.")
+			to_chat(usr,"Nieprawidłowy cel.")
 			return
 		//qdel(objective) Needs cleaning objective destroys
 		message_admins("[key_name_admin(usr)] removed an objective for [current]: [objective.explanation_text]")
@@ -550,7 +550,7 @@
 				objective = objective
 				break
 		if(!objective)
-			to_chat(usr,"Invalid objective.")
+			to_chat(usr,"Nieprawidłowy cel.")
 			return
 		objective.completed = !objective.completed
 		log_admin("[key_name(usr)] toggled the win state for [current]'s objective: [objective.explanation_text]")
@@ -585,14 +585,14 @@
 				if(check_rights(R_FUN, 0))
 					var/datum/component/uplink/U = find_syndicate_uplink()
 					if(U)
-						var/crystals = input("Amount of telecrystals for [key]","Syndicate uplink", U.telecrystals) as null | num
+						var/crystals = input("Liczba telekryształów dla [key]","Uplink Syndykatu", U.telecrystals) as null | num
 						if(!isnull(crystals))
 							U.telecrystals = crystals
 							message_admins("[key_name_admin(usr)] changed [current]'s telecrystal count to [crystals].")
 							log_admin("[key_name(usr)] changed [current]'s telecrystal count to [crystals].")
 			if("uplink")
 				if(!equip_traitor())
-					to_chat(usr, "<span class='danger'>Equipping a syndicate failed!</span>")
+					to_chat(usr, "<span class='danger'>Nie udało się wyposażyć agenta Syndykatu!</span>")
 					log_admin("[key_name(usr)] tried and failed to give [current] an uplink.")
 				else
 					log_admin("[key_name(usr)] gave [current] an uplink.")
@@ -628,12 +628,15 @@
 	var/obj_count = 1
 	var/list/antag_objectives = get_all_antag_objectives()
 	if(antag_objectives.len)
-		to_chat(current, "<span class='notice'>Your current objectives:</span>")
+		to_chat(current, "<span class='notice'>Twoje obecne cele:</span>")
 		for(var/datum/objective/O as() in antag_objectives)
-			to_chat(current, "<B>Objective #[obj_count]</B>: [O.explanation_text]")
+			to_chat(current, "<B>Cel nr [obj_count]</B>: [O.explanation_text]")
 			obj_count++
+		// Objectives are often stored in the static data of antag uis, so we should update those as well
+		for(var/datum/antagonist/antag as anything in antag_datums)
+			antag.update_static_data(current)
 	if(crew_objectives.len)
-		to_chat(current, "<span class='notice'>Your optional objectives:</span>")
+		to_chat(current, "<span class='notice'>Twoje cele opcjonalne:</span>")
 		for(var/datum/objective/C as() in crew_objectives)
 			to_chat(current, "[C.explanation_text]")
 
@@ -674,12 +677,11 @@
 	if(!has_antag_datum(/datum/antagonist/cult,TRUE))
 		SSticker.mode.add_cultist(src,FALSE,equip=TRUE)
 		special_role = ROLE_CULTIST
-		to_chat(current, "<font color=\"purple\"><b><i>You catch a glimpse of the Realm of Nar'Sie, The Geometer of Blood. You now see how flimsy your world is, you see that it should be open to the knowledge of Nar'Sie.</b></i></font>")
-		to_chat(current, "<font color=\"purple\"><b><i>Assist your new brethren in their dark dealings. Their goal is yours, and yours is theirs. You serve the Dark One above all else. Bring It back.</b></i></font>")
+		to_chat(current, "<font color=\"purple\"><b><i>Dostrzegasz przebłysk Królestwa Nar'Sie, Geometry Krwi. Widzisz teraz, jak kruchy jest twój świat i że powinien zostać otwarty na wiedzę Nar'Sie.</b></i></font>")
+		to_chat(current, "<font color=\"purple\"><b><i>Wspieraj swoich nowych braci w ich mrocznych sprawach. Ich cel jest twoim, a twój - ich. Ponad wszystko służysz Mrocznemu. Sprowadź Go z powrotem.</b></i></font>")
 
 /datum/mind/proc/make_Rev()
 	var/datum/antagonist/rev/head/head = new()
-	head.give_flash = TRUE
 	head.give_hud = TRUE
 	add_antag_datum(head)
 	special_role = ROLE_REV_HEAD

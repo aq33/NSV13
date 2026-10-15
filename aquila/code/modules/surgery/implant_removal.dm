@@ -2,13 +2,13 @@
 	if(I)
 		I.removed(target)
 		if (QDELETED(I)) // yogs: properly handle self-deleting implants
-			display_results(user, target, "<span class='notice'>You remove [I] from [target]'s [target_zone], destroying it in the process!</span>",
-				"[user] removes [I] from [target]'s [target_zone], destroying it in the process!",
-				"[user] removes something from [target]'s [target_zone], destroying it in the process!")
+			display_results(user, target, "<span class='notice'>Usuwasz [I] z ciała [target] ([strefa_pl(target_zone)]), niszcząc go przy tym!</span>",
+				"[user] usuwa [I] z ciała [target] ([strefa_pl(target_zone)]), niszcząc go przy tym!",
+				"[user] usuwa coś z ciała [target] ([strefa_pl(target_zone)]), niszcząc to przy tym!")
 		else
-			display_results(user, target, "<span class='notice'>You successfully remove [I] from [target]'s [target_zone].</span>",
-				"[user] successfully removes [I] from [target]'s [target_zone]!",
-				"[user] successfully removes something from [target]'s [target_zone]!")
+			display_results(user, target, "<span class='notice'>Pomyślnie usuwasz [I] z ciała [target] ([strefa_pl(target_zone)]).</span>",
+				"[user] pomyślnie usuwa [I] z ciała [target] ([strefa_pl(target_zone)])!",
+				"[user] pomyślnie usuwa coś z ciała [target] ([strefa_pl(target_zone)])!")
 			var/obj/item/implantcase/case
 			for(var/obj/item/implantcase/ic in user.held_items)
 				case = ic
@@ -19,11 +19,11 @@
 				case.imp = I
 				I.forceMove(case)
 				case.update_icon()
-				display_results(user, target, "<span class='notice'>You place [I] into [case].</span>",
-					"[user] places [I] into [case]!",
-					"[user] places it into [case]!")
+				display_results(user, target, "<span class='notice'>Umieszczasz [I] w [case].</span>",
+					"[user] umieszcza [I] w [case]!",
+					"[user] umieszcza to w [case]!")
 			else
 				qdel(I)
 	else
-		to_chat(user, "<span class='warning'>You can't find anything in [target]'s [target_zone]!</span>")
+		to_chat(user, "<span class='warning'>Nie możesz niczego znaleźć w ciele [target] ([strefa_pl(target_zone)])!</span>")
 	return TRUE

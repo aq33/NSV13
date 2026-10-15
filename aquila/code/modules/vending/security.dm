@@ -4,10 +4,12 @@
 					/obj/item/grenade/flashbang = 4,
 					/obj/item/assembly/flash/handheld = 5,
 					/obj/item/book/manual/wiki/security_space_law = 3,
-					/obj/item/reagent_containers/food/snacks/donut = 12,
 					/obj/item/storage/box/evidence = 6,
+					/obj/item/reagent_containers/spray/luminol = 2, // luminol (detectivework/luminol.dm)
 					/obj/item/flashlight/seclite = 4,
 					/obj/item/holosign_creator/security = 3,
+					/obj/item/barrier_tape_roll = 4, // taśma policyjna (detectivework/crime_scene)
+					/obj/item/storage/box/csi_markers = 2,
 					/obj/item/restraints/legcuffs/bola/energy = 7,
 					//obj/item/melee/classic_baton/police = 5   //AQ edit - replaced with police tonfa
 					/obj/item/melee/classic_baton/police/tonfa = 5)

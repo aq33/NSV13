@@ -5,15 +5,15 @@
 	icon_state = "sloth"
 	icon_living = "sloth"
 	icon_dead = "sloth_dead"
-	speak_emote = list("yawns")
-	emote_hear = list("snores.","yawns.")
-	emote_see = list("dozes off.", "looks around sleepily.")
+	speak_emote = list("ziewa")
+	emote_hear = list("chrapie.","ziewa.")
+	emote_see = list("przysypia.", "rozgląda się sennie.")
 	speak_chance = 1
 	turns_per_move = 5
-	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab = 3)
-	response_help = "pets"
-	response_disarm = "gently pushes aside"
-	response_harm = "kicks"
+	butcher_results = list(/obj/item/food/meat/slab = 3)
+	response_help = "głaszcze"
+	response_disarm = "delikatnie odsuwa na bok"
+	response_harm = "kopie"
 	mob_biotypes = list(MOB_ORGANIC, MOB_BEAST)
 	gold_core_spawnable = FRIENDLY_SPAWN
 	melee_damage = 18 //why the fuck does it do this much damage

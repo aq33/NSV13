@@ -30,7 +30,7 @@
 	model = "Hugbot"
 	bot_core_type = /obj/machinery/bot_core/hugbot
 	window_id = "autohug"
-	window_name = "Automatic Hugging Unit v2.0"
+	window_name = "Automatyczna Jednostka Przytulania v2.0"
 	path_image_color = "#FFDDDD"
 
 	var/stationary_mode = 0 //If enabled, the Hugbot will not move automatically.
@@ -83,38 +83,38 @@
 	update_icon()
 
 /mob/living/simple_animal/bot/hugbot/set_custom_texts()
-	text_hack = "You bypass [name]'s manipulator pressure sensors."
-	text_dehack = "You rewire [name]'s manipulator pressure sensors."
-	text_dehack_fail = "[name] seems damaged and does not respond to reprogramming!"
+	text_hack = "Omijasz czujniki nacisku manipulatorów [name]."
+	text_dehack = "Przełączasz z powrotem czujniki nacisku manipulatorów [name]."
+	text_dehack_fail = "[name] wygląda na uszkodzonego i nie reaguje na przeprogramowanie!"
 
 /mob/living/simple_animal/bot/hugbot/get_controls(mob/user)
 	var/dat
 	dat += hack(user)
 	dat += showpai(user)
-	dat += "<TT><B>Hugging Unit Controls v2.0</B></TT><BR><BR>"
-	dat += "Status: <A href='?src=[REF(src)];power=1'>[on ? "On" : "Off"]</A><BR>"
-	dat += "Maintenance panel panel is [open ? "opened" : "closed"]<BR>"
-	dat += "Behaviour controls are [locked ? "locked" : "unlocked"]<hr>"
+	dat += "<TT><B>Sterowanie jednostką przytulania v2.0</B></TT><BR><BR>"
+	dat += "Status: <A href='byond://?src=[REF(src)];power=1'>[on ? "On" : "Off"]</A><BR>"
+	dat += "Panel serwisowy jest [open ? "otwarty" : "zamknięty"]<BR>"
+	dat += "Sterowanie zachowaniem jest [locked ? "zablokowane" : "odblokowane"]<hr>"
 	if(!locked || issilicon(user) || IsAdminGhost(user))
-		dat += "Maximum sanity: "
-		dat += "<a href='?src=[REF(src)];adj_sanity=-10'>-</a> "
+		dat += "Maksymalna poczytalność: "
+		dat += "<a href='byond://?src=[REF(src)];adj_sanity=-10'>-</a> "
 		dat += "[max_sanity] "
-		dat += "<a href='?src=[REF(src)];adj_sanity=10'>+</a> "
+		dat += "<a href='byond://?src=[REF(src)];adj_sanity=10'>+</a> "
 		dat += "<br>"
-		dat += "Operating mode: "
+		dat += "Tryb pracy: "
 		switch(zone_selected)
 			if(BODY_ZONE_CHEST)
-				dat += "<a href='?src=[REF(src)];op_mode=[BODY_ZONE_HEAD]'>Hug</a>"
+				dat += "<a href='byond://?src=[REF(src)];op_mode=[BODY_ZONE_HEAD]'>Hug</a>"
 			if(BODY_ZONE_HEAD)
-				dat += "<a href='?src=[REF(src)];op_mode=[BODY_ZONE_PRECISE_MOUTH]'>Pat</a>"
+				dat += "<a href='byond://?src=[REF(src)];op_mode=[BODY_ZONE_PRECISE_MOUTH]'>Pat</a>"
 			if(BODY_ZONE_PRECISE_MOUTH)
-				dat += "<a href='?src=[REF(src)];op_mode=[BODY_ZONE_CHEST]'>Boop</a>"
+				dat += "<a href='byond://?src=[REF(src)];op_mode=[BODY_ZONE_CHEST]'>Boop</a>"
 		dat += "<br>"
-		dat += "The speaker switch is [shut_up ? "off" : "on"]. <a href='?src=[REF(src)];togglevoice=[1]'>Toggle</a><br>"
-		dat += "Patrol Station: <a href='?src=[REF(src)];operation=patrol'>[auto_patrol ? "Yes" : "No"]</a><br>"
-		dat += "Stationary Mode: <a href='?src=[REF(src)];stationary=1'>[stationary_mode ? "Yes" : "No"]</a><br><hr>"
+		dat += "Głośnik jest [shut_up ? "wyłączony" : "włączony"]. <a href='byond://?src=[REF(src)];togglevoice=[1]'>Przełącz</a><br>"
+		dat += "Patrolowanie stacji: <a href='byond://?src=[REF(src)];operation=patrol'>[auto_patrol ? "Tak" : "Nie"]</a><br>"
+		dat += "Tryb stacjonarny: <a href='byond://?src=[REF(src)];stationary=1'>[stationary_mode ? "Tak" : "Nie"]</a><br><hr>"
 	if(open || IsAdminGhost(user))
-		dat += "There is an exposed pink wire which is <a href='?src=[REF(src)];tania_mode=1'>[tania_mode ? "Cut" : "Intact"]</a><br>"
+		dat += "Jest odsłonięty różowy przewód, który jest <a href='byond://?src=[REF(src)];tania_mode=1'>[tania_mode ? "przecięty" : "nienaruszony"]</a><br>"
 
 	return dat
 
@@ -157,9 +157,9 @@
 /mob/living/simple_animal/bot/medbot/attack_paw(mob/user)
 	return attack_hand(user)
 
-/mob/living/simple_animal/bot/hugbot/attack_hand(mob/living/carbon/human/H)
-	if(H.a_intent == INTENT_DISARM && !tipped)
-		H.visible_message("<span class='danger'>[H] begins tipping over [src].</span>", "<span class='warning'>You begin tipping over [src]...</span>")
+/mob/living/simple_animal/bot/hugbot/attack_hand(mob/living/carbon/human/H, list/modifiers)
+	if(LAZYACCESS(modifiers, RIGHT_CLICK) && !tipped) // AQ EDIT - port Bee #11899: przewracanie prawym przyciskiem
+		H.visible_message("<span class='danger'>[H] zaczyna przewracać [src].</span>", "<span class='warning'>Zaczynasz przewracać [src]...</span>")
 
 		if(world.time > last_tipping_action_voice + 15 SECONDS)
 			last_tipping_action_voice = world.time // message for tipping happens when we start interacting, message for righting comes after finishing
@@ -171,8 +171,8 @@
 		if(do_after(H, 3 SECONDS, target=src))
 			tip_over(H)
 
-	else if(H.a_intent == INTENT_HELP && tipped)
-		H.visible_message("<span class='notice'>[H] begins righting [src].</span>", "<span class='notice'>You begin righting [src]...</span>")
+	else if(!H.combat_mode && tipped)
+		H.visible_message("<span class='notice'>[H] zaczyna stawiać [src].</span>", "<span class='notice'>Zaczynasz stawiać [src]...</span>")
 		if(do_after(H, 3 SECONDS, target=src))
 			set_right(H)
 	else
@@ -182,8 +182,8 @@
 	..()
 	if(emagged == 2)
 		if(user)
-			to_chat(user, "<span class='notice'>You short out [src]'s manipulator pressure sensors.</span>")
-		visible_message("<span class='danger'>[src]'s arm twitches violently!</span>")
+			to_chat(user, "<span class='notice'>Zwierasz czujniki nacisku manipulatorów [src].</span>")
+		visible_message("<span class='danger'>Ramię [src] gwałtownie drga!</span>")
 		flick("medibot_spark", src)
 		playsound(src, "sparks", 75, 1)
 
@@ -263,29 +263,29 @@
 				var/peptalk
 				if (emagged == 2)
 					peptalk = list(
-						"I hate you.",
-						"You'll never be good at your job.",
-						"You are a horrible person.",
-						"Give up.",
-						"We all hate you.",
-						"You are doing a horrible job.",
-						"You are a burden to the ship.",
-						"Fuck off."
+						"Nienawidzę cię.",
+						"Nigdy nie będziesz dobry w swojej pracy.",
+						"Jesteś okropną osobą.",
+						"Poddaj się.",
+						"Wszyscy cię nienawidzimy.",
+						"Okropnie wykonujesz swoją pracę.",
+						"Jesteś ciężarem dla okrętu.",
+						"Spadaj."
 					)
 				else
 					peptalk = list("Thank you!",
 						"You are a good person.",
-						"I love you.",
-						"Keep doing what you are good at.",
-						"You are a brilliant person.",
-						"Keep doing what you love.",
-						"We all love you.",
-						"You are doing a great job.",
-						"You are important to us all.",
-						"Keep it up.",
-						"What's the matter, I'm here for you.",
+						"Kocham cię.",
+						"Rób dalej to, w czym jesteś dobry.",
+						"Jesteś wspaniałą osobą.",
+						"Rób dalej to, co kochasz.",
+						"Wszyscy cię kochamy.",
+						"Świetnie wykonujesz swoją pracę.",
+						"Jesteś dla nas wszystkich ważny.",
+						"Tak trzymaj.",
+						"Co się stało? Jestem przy tobie.",
 						"Don't cry.",
-						"Stay safe!"
+						"Uważaj na siebie!"
 					)
 
 				var/message = pick(peptalk)
@@ -359,21 +359,21 @@
 	if(zone_selected == BODY_ZONE_PRECISE_MOUTH)
 		visible_message( \
 			"<span class='notice'>[src] boops [H]'s nose.</span>", \
-			"<span class='notice'>You boop [H] on the nose.</span>")
+			"<span class='notice'>Pstrykasz [H] w nos.</span>")
 		playsound(H, 'sound/weapons/tap.ogg', 50, 0)
 		SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "headpat", /datum/mood_event/headpat)
 	else if(check_zone(zone_selected) == BODY_ZONE_HEAD)
 		if(ishuman(H))
-			visible_message("<span class='notice'>[src] gives [H] a pat on the head to make [H.p_them()] feel better!</span>", \
-						"<span class='notice'>You give [src] a pat on the head to make [H.p_them()] feel better!</span>")
+			visible_message("<span class='notice'>[src] klepie [H] po głowie, żeby poczuł się lepiej!</span>", \
+						"<span class='notice'>Klepiesz [src] po głowie, żeby poczuł się lepiej!</span>")
 			SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "headpat", /datum/mood_event/headpat)
 			var/obj/item/organ/tail/tail = H.get_bodypart(ORGAN_SLOT_TAIL)
 			if(!tail)
 				return
 			tail.toggle_wag(H)
 	else
-		visible_message("<span class='notice'>[src] hugs [H] to make [H.p_them()] feel better!</span>", \
-					"<span class='notice'>You hug [H] to make [H.p_them()] feel better!</span>")
+		visible_message("<span class='notice'>[src] przytula [H], żeby poczuł się lepiej!</span>", \
+					"<span class='notice'>Przytulasz [H], żeby poczuł się lepiej!</span>")
 		SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "hug", /datum/mood_event/hug)
 
 	playsound(H.loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
@@ -393,7 +393,7 @@
 
 /mob/living/simple_animal/bot/hugbot/explode()
 	on = FALSE
-	visible_message("<span class='boldannounce'>[src] blows apart!</span>")
+	visible_message("<span class='boldannounce'>[src] rozpada się na kawałki!</span>")
 	do_sparks(3, TRUE, src)
 	var/atom/Tsec = drop_location()
 	drop_part(/obj/item/storage/box/hug, Tsec)
@@ -419,19 +419,19 @@
 		var/mob/living/simple_animal/bot/hugbot/A = new(drop_location())
 		A.name = created_name
 		A.robot_arm = W.type
-		to_chat(user, "<span class='notice'>You add [W] to [src]. Beep boop!</span>")
+		to_chat(user, "<span class='notice'>Dodajesz [W] do [src]. Bip bup!</span>")
 		qdel(W)
 		qdel(src)
 
 /obj/item/storage/box/hug/attackby(obj/item/I, mob/user, params)
 	if((istype(I, /obj/item/bodypart/l_arm/robot)) || (istype(I, /obj/item/bodypart/r_arm/robot)))
 		if(contents.len) //prevent accidently deleting contents
-			to_chat(user, "<span class='warning'>You need to empty [src] out first!</span>")
+			to_chat(user, "<span class='warning'>Najpierw musisz opróżnić [src]!</span>")
 			return
 		if(!user.temporarilyRemoveItemFromInventory(I))
 			return
 		qdel(I)
-		to_chat(user, "<span class='notice'>You add [I] to the [src]! You've got a hugbot assembly now!</span>")
+		to_chat(user, "<span class='notice'>Dodajesz [I] do [src]! Masz teraz zespół hugbota!</span>")
 		var/obj/item/bot_assembly/hugbot/A = new
 		qdel(src)
 		user.put_in_hands(A)
@@ -441,7 +441,7 @@
 /mob/living/simple_animal/bot/hugbot/proc/tip_over(mob/user)
 	mobility_flags &= ~MOBILITY_MOVE
 	playsound(src, 'sound/machines/warning-buzzer.ogg', 50)
-	user.visible_message("<span class='danger'>[user] tips over [src]!</span>", "<span class='danger'>You tip [src] over!</span>")
+	user.visible_message("<span class='danger'>[user] przewraca [src]!</span>", "<span class='danger'>Przewracasz [src]!</span>")
 	tipped = TRUE
 	tipper_name = user.name
 	var/matrix/mat = transform
@@ -451,13 +451,13 @@
 	mobility_flags &= MOBILITY_MOVE
 	var/list/messagevoice
 	if(user)
-		user.visible_message("<span class='notice'>[user] sets [src] right-side up!</span>", "<span class='green'>You set [src] right-side up!</span>")
+		user.visible_message("<span class='notice'>[user] stawia [src] z powrotem na nogi!</span>", "<span class='green'>Stawiasz [src] z powrotem na nogi!</span>")
 		if(user.name == tipper_name)
 			messagevoice = list("I forgive you." = 'sound/voice/medbot/forgive.ogg')
 		else
 			messagevoice = list("Thank you!" = 'sound/voice/medbot/thank_you.ogg', "You are a good person." = 'sound/voice/medbot/youre_good.ogg')
 	else
-		visible_message("<span class='notice'>[src] manages to writhe wiggle enough to right itself.</span>")
+		visible_message("<span class='notice'>[src] wierci się na tyle, że udaje mu się wstać.</span>")
 		messagevoice = list("Fuck you." = 'sound/voice/medbot/fuck_you.ogg', "Your behavior has been reported, have a nice day." = 'sound/voice/medbot/reported.ogg')
 
 	tipper_name = null
@@ -486,7 +486,7 @@
 		if(HUGBOT_PANIC_ENDING)
 			messagevoice = list("Is this the end?" = 'sound/voice/medbot/is_this_the_end.ogg', "Nooo!" = 'sound/voice/medbot/nooo.ogg')
 		if(HUGBOT_PANIC_END)
-			speak("PSYCH ALERT: Crewmember [tipper_name] recorded displaying antisocial tendencies torturing bots in [get_area(src)]. Please schedule psych evaluation.", radio_channel)
+			speak("ALARM PSYCHOLOGICZNY: członek załogi [tipper_name] wykazuje skłonności aspołeczne, znęcając się nad botami w [get_area(src)]. Prosimy o umówienie oceny psychologicznej.", radio_channel)
 			set_right() // strong independent hugbot
 
 	if(prob(tipped_status))
