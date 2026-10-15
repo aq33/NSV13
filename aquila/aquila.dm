@@ -395,7 +395,7 @@
 #include "code\modules\events\shadow_demon.dm"
 #include "code\modules\events\shit_storm.dm"
 #include "code\modules\events\sinfuldemon.dm"
-#include "code\modules\events\skeleton_closet.dm"
+#include "code\modules\events\cowiek_maupa.dm"
 #include "code\modules\events\ship_partition.dm"
 #include "code\modules\events\teratoma.dm"
 #include "code\modules\events\spider_infestation.dm"
