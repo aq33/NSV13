@@ -56,8 +56,8 @@ GLOBAL_LIST_INIT(special_slime_colours, list("dark green", "cobalt", "dark grey"
 	return ..()
 
 /mob/living/simple_animal/slime/adjustFireLoss(amount, updating_health = TRUE, forced = FALSE)
-	if(!forced)
-		burn_damage_stored += abs(amount)
+	if(!forced && amount > 0)
+		burn_damage_stored += amount
 	return ..()
 
 /mob/living/simple_animal/slime/bullet_act(obj/item/projectile/Proj, def_zone, piercing_hit = FALSE)

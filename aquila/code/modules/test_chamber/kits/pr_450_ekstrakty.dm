@@ -16,11 +16,13 @@
 		/obj/item/reagent_containers/glass/bottle/water = 1,
 		/obj/item/organ/regenerative_core = 1,
 		/obj/item/food/monkeycube = 3,
-		/obj/item/stack/tile/grass = 5,
+		/obj/item/stack/tile/grass = 1,
 		/mob/living/simple_animal/hostile/asteroid/goliath/beast = 1
 	)
 
 /datum/test_chamber_kit/pr_450/setup(list/spawned, list/turfs, turf/center, mob/user)
+	for(var/obj/item/stack/tile/grass/G in spawned)
+		G.add(4) // stos 5 płytek; osobne sztuki na jednym turfie same by się połączyły
 	var/index = length(items) + 1
 	for(var/colour in list("green", "pink", "red", "gold"))
 		var/turf/T = turfs[min(index++, length(turfs))]
