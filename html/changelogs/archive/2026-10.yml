@@ -392,3 +392,13 @@
   - bugfix: Przycisk „Uciekł” przywraca karcie zwolnionego więźnia wyrok
   - imageadd: Ikony taśmy, znaczników, holobariery i strefy zamkniętej
   - soundadd: Alarm strefy zamkniętej
+  MrMelbert, joker:
+  - rscadd: 'Nowy antagonista: szpieg. Kradnie cele zleceń uplinkiem ukrytym w PDA,
+      długopisie albo słuchawkach i dostaje za nie sprzęt z uplinka.'
+  - rscadd: 'Czarny rynek: uplink czarnego rynku (crafting), maszyna LTSRBT do odbioru
+      i sprzedaży towarów, kategoria z rzeczami skradzionymi przez szpiegów.'
+  - rscadd: Nowy tryb gry „spy” w łagodnej puli.
+  - soundadd: Muzyka szpiega i dźwięk wykonanego zlecenia z tgstation.
+  - imageadd: Ikony uplinku czarnego rynku, LTSRBT i promienia skanu z tgstation.
+  - config: Wpisy PROBABILITY, CONTINUOUS, MIN_POP, MAX_POP i WEIGHTED_POOL dla trybu
+      SPY.
