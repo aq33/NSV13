@@ -560,8 +560,13 @@
 			if(loc == target) // reached target
 				if(last_target != null)
 					if(z != last_target.z)
-						mulebot_z_movement()
+						// AQ EDIT - an elevator target without an elevator (moved by hand, elevator gone) used to stall the bot forever
+						if(locate(/obj/structure/bot_elevator) in loc)
+							mulebot_z_movement()
+						else
+							reset_z_navigation(TRUE)
 						return
+					reset_z_navigation()
 				at_target()
 				return
 
@@ -656,6 +661,15 @@
 		last_target = target
 		target = go_here
 		path = get_path_to(src, target, 250, id=access_card)
+
+/// AQ EDIT - forget the floor change in progress; with retarget the bot heads for its real destination again
+/mob/living/simple_animal/bot/mulebot/proc/reset_z_navigation(retarget = FALSE)
+	if(retarget && last_target)
+		target = last_target
+	last_target = null
+	mulebot_z_mode = null
+	if(retarget)
+		mode = BOT_NAV
 
 //BOT MULTI-Z MOVEMENT
 /mob/living/simple_animal/bot/mulebot/proc/mulebot_z_movement()
@@ -790,8 +804,12 @@
 /mob/living/simple_animal/bot/mulebot/proc/get_nav()
 	if(!on || wires.is_cut(WIRE_BEACON))
 		return
+	var/obj/structure/overmap/overmap = get_overmap() // AQ EDIT - no overmap (e.g. reserved z) used to runtime
+	if(!overmap)
+		return
+	reset_z_navigation() // AQ EDIT - a new destination starts a fresh route
 
-	for(var/obj/machinery/navbeacon/NB in get_overmap().beacons_in_ship) //NSV13
+	for(var/obj/machinery/navbeacon/NB in overmap.beacons_in_ship) //NSV13
 		if(NB.location == new_destination)	// if the beacon location matches the set destination
 									// the we will navigate there
 			destination = new_destination
