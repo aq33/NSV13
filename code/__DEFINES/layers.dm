@@ -159,6 +159,9 @@
 #define ABOVE_HUD_PLANE 24
 #define ABOVE_HUD_LAYER 24
 #define ABOVE_HUD_RENDER_TARGET "ABOVE_HUD_PLANE"
+// Radial menus sit above everything else on ABOVE_HUD_PLANE (held items, progress bars, storage)
+#define RADIAL_BACKGROUND_LAYER 30
+#define RADIAL_CONTENT_LAYER 31
 
 #define SPLASHSCREEN_LAYER 25
 #define SPLASHSCREEN_PLANE 25
