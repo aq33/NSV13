@@ -380,3 +380,15 @@
   - rscadd: 'Sklep za aquilosy: antag token za 10 000 (do kupowania wielokrotnie),
       bilet na pracę, ubezpieczenie salda, odznaki w rankingu, event token i admin
       item token.'
+  - rscadd: Luminol ujawnia zmytą krew, ślady prochu na strzelcu i broni, balistyka
+      (sygnatury broni na łuskach i kulach, numery seryjne)
+  - rscadd: Autopsja pokazuje, czym, ile i kiedy zraniono każdą kończynę, oraz kule
+      w ciele
+  - rscadd: Program NTOS do czytania logów dostępu drzwi i szafek
+  - rscadd: Taśma policyjna, znaczniki dowodów, kreda z obrysem, holobariera detektywa,
+      strefa zamknięta na projektorze ochrony
+  - tweak: Interfejs więźniów i kodeks po polsku, można wybrać kilka zarzutów i czasy
+      się sumują
+  - bugfix: Przycisk „Uciekł” przywraca karcie zwolnionego więźnia wyrok
+  - imageadd: Ikony taśmy, znaczników, holobariery i strefy zamkniętej
+  - soundadd: Alarm strefy zamkniętej
