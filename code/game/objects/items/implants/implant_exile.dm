@@ -1,13 +1,13 @@
-//Exile implants will allow you to use the station gate, but not return home.
-//This will allow security to exile badguys/for badguys to exile their kill targets
+// AQ EDIT - Exile implants mark the wearer for digital exile: put them into a netpod and they are sent to the Loop forever.
+// (aquila/code/modules/bitrunning/exile). Gateways are gone from our maps.
 
 /obj/item/implant/exile
 	name = "exile implant"
-	desc = "Prevents you from returning from away missions."
+	desc = "Oznacza nosiciela do cyfrowego wygnania. Gdy trafi do netpoda, zostanie na zawsze przeniesiony do Pętli."
 	activated = 0
 
 /obj/item/implant/exile/get_data()
-	var/dat = {"<b>Specyfikacja implantu:</b><BR><b>Nazwa:</b> Implant wygnania pracownika Nanotrasen<BR><b>Szczegóły implantu:</b> pokładowy system bramy został zmodyfikowany tak, by nie wpuszczać osób z tym implantem<BR>"}
+	var/dat = {"<b>Specyfikacja implantu:</b><BR><b>Nazwa:</b> Implant wygnania pracownika Nanotrasen<BR><b>Szczegóły implantu:</b> netpod, który wykryje ten implant, rozpoczyna procedurę cyfrowego wygnania: świadomość nosiciela zostaje na zawsze przeniesiona do Pętli, cyfrowego więzienia, z którego nie ma powrotu. Bramy też nie wpuszczają osób z tym implantem.<BR>"}
 	return dat
 
 /obj/item/implanter/exile

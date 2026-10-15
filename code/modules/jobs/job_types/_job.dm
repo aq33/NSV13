@@ -348,6 +348,8 @@
 	var/datum/job/J = SSjob.GetJobType(jobtype)
 	if(!J)
 		J = SSjob.GetJob(H.job)
+	if(!J) // AQ EDIT - job outfits on NPCs (KNPC, bitrunning) when the job is disabled on this map
+		return
 
 	var/obj/item/card/id/C = H.wear_id
 	if(istype(C))

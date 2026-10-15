@@ -1,0 +1,2635 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/template_noop,
+/area/template_noop)
+"ab" = (
+/turf/closed/indestructible/binary,
+/area/virtual_domain/fullbright)
+"ac" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/lavaland/surface/outdoors/virtual_domain)
+"ad" = (
+/obj/structure/disposalpipe/junction/yjunction{
+	dir = 1;
+	invisibility = 101
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#EFB341"
+	},
+/turf/open/indestructible/permalube,
+/area/lavaland/surface/outdoors/virtual_domain)
+"ae" = (
+/obj/structure/table/glass,
+/obj/item/clothing/shoes/clown_shoes/banana_shoes,
+/turf/open/floor/carpet,
+/area/lavaland/surface/outdoors/virtual_domain)
+"af" = (
+/obj/structure/table/glass,
+/obj/item/gun/magic/staff/honk,
+/turf/open/floor/carpet,
+/area/lavaland/surface/outdoors/virtual_domain)
+"ag" = (
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
+/obj/structure/disposaloutlet{
+	dir = 8
+	},
+/turf/open/floor/noslip,
+/area/lavaland/surface/outdoors/virtual_domain)
+"ah" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#EFB341"
+	},
+/turf/open/indestructible/permalube,
+/area/lavaland/surface/outdoors/virtual_domain)
+"ai" = (
+/obj/effect/decal/cleanable/food/pie_smudge,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#EFB341"
+	},
+/turf/open/indestructible/permalube,
+/area/lavaland/surface/outdoors/virtual_domain)
+"aj" = (
+/obj/effect/mob_spawn/human/corpse/damaged,
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#EFB341"
+	},
+/turf/open/indestructible/permalube,
+/area/lavaland/surface/outdoors/virtual_domain)
+"ak" = (
+/obj/structure/closet/crate/secure/bitrunning/encrypted,
+/turf/open/floor/carpet,
+/area/lavaland/surface/outdoors/virtual_domain)
+"al" = (
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
+/obj/machinery/disposal/deliveryChute{
+	dir = 8
+	},
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors/virtual_domain)
+"am" = (
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 5
+	},
+/obj/structure/tank_dispenser/oxygen,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain/safehouse)
+"an" = (
+/turf/open/floor/plating,
+/area/lavaland/surface/outdoors/virtual_domain)
+"ao" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/effect/landmark/bitrunning/cache_goal_turf,
+/turf/open/indestructible/bitrunning_transport,
+/area/virtual_domain/safehouse)
+"ap" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 4
+	},
+/obj/structure/railing,
+/obj/effect/landmark/bitrunning/cache_goal_turf,
+/turf/open/indestructible/bitrunning_transport,
+/area/virtual_domain/safehouse)
+"aq" = (
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 6
+	},
+/obj/item/kirbyplants/random,
+/obj/structure/sign/departments/cargo{
+	dir = 2;
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain/safehouse)
+"ar" = (
+/obj/item/bikehorn,
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	invisibility = 101
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#EFB341"
+	},
+/turf/open/indestructible/permalube,
+/area/lavaland/surface/outdoors/virtual_domain)
+"as" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	invisibility = 101
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#DE3A3A"
+	},
+/turf/open/indestructible/permalube,
+/area/lavaland/surface/outdoors/virtual_domain)
+"at" = (
+/obj/structure/mecha_wreckage/honker,
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	invisibility = 101
+	},
+/turf/open/floor/plating,
+/area/lavaland/surface/outdoors/virtual_domain)
+"au" = (
+/obj/item/coin/bananium,
+/obj/item/coin/bananium,
+/obj/item/coin/bananium,
+/obj/item/coin/bananium,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/carpet,
+/area/lavaland/surface/outdoors/virtual_domain)
+"av" = (
+/obj/effect/baseturf_helper/virtual_domain,
+/turf/closed/wall,
+/area/virtual_domain/safehouse)
+"aw" = (
+/obj/structure/disposalpipe/segment{
+	dir = 6
+	},
+/turf/open/indestructible{
+	icon_state = "white"
+	},
+/area/lavaland/surface/outdoors/virtual_domain)
+"ax" = (
+/obj/structure/disposalpipe/segment{
+	invisibility = 101
+	},
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/open/indestructible{
+	icon_state = "white"
+	},
+/area/lavaland/surface/outdoors/virtual_domain)
+"ay" = (
+/obj/structure/disposalpipe/segment{
+	dir = 6
+	},
+/turf/closed/wall/r_wall,
+/area/lavaland/surface/outdoors/virtual_domain)
+"az" = (
+/obj/structure/disposalpipe/segment{
+	dir = 9
+	},
+/turf/open/indestructible{
+	icon_state = "white"
+	},
+/area/lavaland/surface/outdoors/virtual_domain)
+"aA" = (
+/obj/effect/decal/cleanable/oil,
+/obj/structure/disposalpipe/segment{
+	dir = 10
+	},
+/turf/open/floor/plating,
+/area/lavaland/surface/outdoors/virtual_domain)
+"aB" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	invisibility = 101
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#EFB341"
+	},
+/turf/open/indestructible/permalube,
+/area/lavaland/surface/outdoors/virtual_domain)
+"aC" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	invisibility = 101
+	},
+/obj/effect/decal/cleanable/food/pie_smudge,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#EFB341"
+	},
+/turf/open/indestructible/permalube,
+/area/lavaland/surface/outdoors/virtual_domain)
+"aD" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	invisibility = 101
+	},
+/obj/structure/table,
+/obj/item/paper/crumpled/bloody/ruins/lavaland/clown_planet/escape,
+/obj/item/pen/fourcolor,
+/turf/open/indestructible{
+	icon_state = "white"
+	},
+/area/lavaland/surface/outdoors/virtual_domain)
+"aE" = (
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/obj/structure/disposaloutlet{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/lavaland/surface/outdoors/virtual_domain)
+"aF" = (
+/obj/structure/window/reinforced,
+/obj/structure/disposalpipe/segment{
+	invisibility = 101
+	},
+/turf/open/floor/plating,
+/area/lavaland/surface/outdoors/virtual_domain)
+"aG" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	invisibility = 101
+	},
+/turf/open/floor/plating,
+/area/lavaland/surface/outdoors/virtual_domain)
+"aH" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	invisibility = 101
+	},
+/obj/structure/table,
+/obj/item/flashlight/lamp/bananalamp,
+/turf/open/indestructible{
+	icon_state = "white"
+	},
+/area/lavaland/surface/outdoors/virtual_domain)
+"aI" = (
+/obj/machinery/disposal/deliveryChute{
+	dir = 1
+	},
+/obj/structure/disposalpipe/trunk,
+/turf/open/indestructible{
+	icon_state = "white"
+	},
+/area/lavaland/surface/outdoors/virtual_domain)
+"aJ" = (
+/obj/structure/disposalpipe/segment{
+	invisibility = 101
+	},
+/turf/open/floor/plating,
+/area/lavaland/surface/outdoors/virtual_domain)
+"aK" = (
+/obj/structure/disposalpipe/segment{
+	dir = 9
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#DE3A3A"
+	},
+/turf/open/indestructible/permalube,
+/area/lavaland/surface/outdoors/virtual_domain)
+"aL" = (
+/obj/item/bikehorn,
+/turf/open/indestructible{
+	icon_state = "bananium";
+	name = "bananium floor"
+	},
+/area/lavaland/surface/outdoors/virtual_domain)
+"aM" = (
+/obj/structure/disposalpipe/segment{
+	dir = 10
+	},
+/turf/open/indestructible{
+	icon_state = "white"
+	},
+/area/lavaland/surface/outdoors/virtual_domain)
+"aN" = (
+/obj/structure/disposalpipe/segment{
+	dir = 5
+	},
+/turf/open/indestructible{
+	icon_state = "white"
+	},
+/area/lavaland/surface/outdoors/virtual_domain)
+"aO" = (
+/obj/structure/disposalpipe/segment{
+	dir = 9
+	},
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/open/indestructible{
+	icon_state = "white"
+	},
+/area/lavaland/surface/outdoors/virtual_domain)
+"aP" = (
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#EFB341"
+	},
+/turf/open/indestructible/permalube,
+/area/lavaland/surface/outdoors/virtual_domain)
+"aQ" = (
+/obj/structure/disposalpipe/segment{
+	dir = 10
+	},
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#EFB341"
+	},
+/turf/open/indestructible/permalube,
+/area/lavaland/surface/outdoors/virtual_domain)
+"aR" = (
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/indestructible{
+	icon_state = "bananium";
+	name = "bananium floor"
+	},
+/area/lavaland/surface/outdoors/virtual_domain)
+"aS" = (
+/obj/structure/disposalpipe/segment{
+	dir = 10
+	},
+/turf/closed/indestructible/binary,
+/area/virtual_domain/fullbright)
+"aT" = (
+/obj/structure/disposalpipe/segment{
+	dir = 9
+	},
+/turf/closed/indestructible/binary,
+/area/virtual_domain/fullbright)
+"aU" = (
+/obj/structure/disposalpipe/segment{
+	dir = 9
+	},
+/turf/open/floor/plating,
+/area/lavaland/surface/outdoors/virtual_domain)
+"aV" = (
+/obj/structure/disposalpipe/segment{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#EFB341"
+	},
+/turf/open/indestructible/permalube,
+/area/lavaland/surface/outdoors/virtual_domain)
+"aW" = (
+/obj/structure/disposalpipe/segment{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#EFB341"
+	},
+/turf/open/indestructible/permalube,
+/area/lavaland/surface/outdoors/virtual_domain)
+"aX" = (
+/obj/structure/disposalpipe/segment{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/food/pie_smudge,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#EFB341"
+	},
+/turf/open/indestructible/permalube,
+/area/lavaland/surface/outdoors/virtual_domain)
+"aY" = (
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/indestructible{
+	icon_state = "bananium";
+	name = "bananium floor"
+	},
+/area/lavaland/surface/outdoors/virtual_domain)
+"aZ" = (
+/turf/open/indestructible{
+	icon_state = "bananium";
+	name = "bananium floor"
+	},
+/area/lavaland/surface/outdoors/virtual_domain)
+"ba" = (
+/obj/structure/disposalpipe/segment{
+	dir = 6
+	},
+/turf/closed/indestructible/binary,
+/area/virtual_domain/fullbright)
+"bb" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	invisibility = 101
+	},
+/obj/effect/decal/cleanable/cobweb,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#EFB341"
+	},
+/turf/open/indestructible/permalube,
+/area/lavaland/surface/outdoors/virtual_domain)
+"bc" = (
+/obj/structure/disposalpipe/segment{
+	dir = 6
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#EFB341"
+	},
+/turf/open/indestructible/permalube,
+/area/lavaland/surface/outdoors/virtual_domain)
+"bd" = (
+/obj/structure/disposalpipe/segment{
+	invisibility = 101
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#EFB341"
+	},
+/turf/open/indestructible/permalube,
+/area/lavaland/surface/outdoors/virtual_domain)
+"be" = (
+/obj/item/bikehorn,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment{
+	invisibility = 101
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#EFB341"
+	},
+/turf/open/indestructible/permalube,
+/area/lavaland/surface/outdoors/virtual_domain)
+"bf" = (
+/obj/structure/disposalpipe/segment{
+	dir = 5
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#EFB341"
+	},
+/turf/open/indestructible/permalube,
+/area/lavaland/surface/outdoors/virtual_domain)
+"bg" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	invisibility = 101
+	},
+/turf/closed/wall/r_wall,
+/area/lavaland/surface/outdoors/virtual_domain)
+"bh" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/indestructible{
+	icon_state = "bananium";
+	name = "bananium floor"
+	},
+/area/lavaland/surface/outdoors/virtual_domain)
+"bi" = (
+/obj/effect/mob_spawn/human/corpse/damaged,
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/indestructible{
+	icon_state = "bananium";
+	name = "bananium floor"
+	},
+/area/lavaland/surface/outdoors/virtual_domain)
+"bj" = (
+/obj/effect/decal/cleanable/food/pie_smudge,
+/obj/structure/disposalpipe/segment{
+	invisibility = 101
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#EFB341"
+	},
+/turf/open/indestructible/permalube,
+/area/lavaland/surface/outdoors/virtual_domain)
+"bk" = (
+/obj/structure/disposalpipe/segment{
+	dir = 9
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#EFB341"
+	},
+/turf/open/indestructible/permalube,
+/area/lavaland/surface/outdoors/virtual_domain)
+"bl" = (
+/obj/structure/disposalpipe/segment{
+	invisibility = 101
+	},
+/turf/closed/indestructible/binary,
+/area/virtual_domain/fullbright)
+"bm" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	invisibility = 101
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#EFB341"
+	},
+/turf/open/indestructible/permalube,
+/area/lavaland/surface/outdoors/virtual_domain)
+"bn" = (
+/obj/effect/decal/cleanable/cobweb,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#DE3A3A"
+	},
+/turf/open/indestructible/permalube,
+/area/lavaland/surface/outdoors/virtual_domain)
+"bo" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#DE3A3A"
+	},
+/turf/open/indestructible/permalube,
+/area/lavaland/surface/outdoors/virtual_domain)
+"bp" = (
+/obj/structure/disposalpipe/segment{
+	dir = 10
+	},
+/turf/open/floor/plating,
+/area/lavaland/surface/outdoors/virtual_domain)
+"bq" = (
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
+/obj/structure/disposaloutlet{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/lavaland/surface/outdoors/virtual_domain)
+"br" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	invisibility = 101
+	},
+/turf/open/indestructible{
+	icon_state = "white"
+	},
+/area/lavaland/surface/outdoors/virtual_domain)
+"bs" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	invisibility = 101
+	},
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/open/indestructible{
+	icon_state = "white"
+	},
+/area/lavaland/surface/outdoors/virtual_domain)
+"bt" = (
+/turf/closed/mineral/bananium,
+/area/lavaland/surface/outdoors/virtual_domain)
+"bu" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#DE3A3A"
+	},
+/turf/open/indestructible/permalube,
+/area/lavaland/surface/outdoors/virtual_domain)
+"bv" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	invisibility = 101
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#EFB341"
+	},
+/turf/open/indestructible/permalube,
+/area/lavaland/surface/outdoors/virtual_domain)
+"bw" = (
+/obj/structure/disposalpipe/segment{
+	dir = 5
+	},
+/turf/closed/indestructible/binary,
+/area/virtual_domain/fullbright)
+"bx" = (
+/obj/item/pickaxe,
+/turf/open/indestructible{
+	icon_state = "white"
+	},
+/area/lavaland/surface/outdoors/virtual_domain)
+"by" = (
+/obj/item/bikehorn,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/indestructible{
+	icon_state = "bananium";
+	name = "bananium floor"
+	},
+/area/lavaland/surface/outdoors/virtual_domain)
+"bz" = (
+/obj/machinery/light{
+	dir = 2
+	},
+/turf/open/indestructible{
+	icon_state = "bananium";
+	name = "bananium floor"
+	},
+/area/lavaland/surface/outdoors/virtual_domain)
+"bA" = (
+/obj/effect/baseturf_helper/virtual_domain,
+/turf/closed/wall/r_wall,
+/area/lavaland/surface/outdoors/virtual_domain)
+"bB" = (
+/obj/structure/disposalpipe/segment{
+	dir = 10
+	},
+/turf/closed/wall/r_wall,
+/area/lavaland/surface/outdoors/virtual_domain)
+"bC" = (
+/obj/effect/mob_spawn/human/corpse/damaged,
+/obj/effect/decal/cleanable/blood/old,
+/obj/structure/disposalpipe/segment{
+	invisibility = 101
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#EFB341"
+	},
+/turf/open/indestructible/permalube,
+/area/lavaland/surface/outdoors/virtual_domain)
+"bD" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	invisibility = 101
+	},
+/turf/open/indestructible{
+	icon_state = "light_on";
+	light_range = 3;
+	light_power = 1;
+	light_color = "#7DE1E1"
+	},
+/area/lavaland/surface/outdoors/virtual_domain)
+"bE" = (
+/turf/open/indestructible{
+	icon_state = "light_on";
+	light_range = 3;
+	light_power = 1;
+	light_color = "#7DE1E1"
+	},
+/area/lavaland/surface/outdoors/virtual_domain)
+"bF" = (
+/turf/open/indestructible{
+	icon_state = "white"
+	},
+/area/lavaland/surface/outdoors/virtual_domain)
+"bG" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	invisibility = 101
+	},
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors/virtual_domain)
+"bH" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	invisibility = 101
+	},
+/turf/closed/indestructible/binary,
+/area/virtual_domain/fullbright)
+"bI" = (
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors/virtual_domain)
+"bJ" = (
+/obj/structure/disposalpipe/segment{
+	invisibility = 101
+	},
+/turf/closed/wall/r_wall,
+/area/lavaland/surface/outdoors/virtual_domain)
+"bK" = (
+/obj/structure/disposalpipe/segment{
+	invisibility = 101
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#EFB341"
+	},
+/turf/open/indestructible/permalube,
+/area/lavaland/surface/outdoors/virtual_domain)
+"bL" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	invisibility = 101
+	},
+/obj/item/pickaxe,
+/turf/open/indestructible{
+	icon_state = "white"
+	},
+/area/lavaland/surface/outdoors/virtual_domain)
+"bM" = (
+/obj/structure/marker_beacon{
+	picked_color = "Yellow";
+	icon_state = "markeryellow"
+	},
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors/virtual_domain)
+"bN" = (
+/obj/structure/disposalpipe/segment{
+	dir = 5
+	},
+/obj/item/bikehorn,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#EFB341"
+	},
+/turf/open/indestructible/permalube,
+/area/lavaland/surface/outdoors/virtual_domain)
+"bO" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	invisibility = 101
+	},
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/open/indestructible{
+	icon_state = "white"
+	},
+/area/lavaland/surface/outdoors/virtual_domain)
+"bP" = (
+/obj/effect/mapping_helpers/no_lava,
+/turf/closed/wall/r_wall,
+/area/lavaland/surface/outdoors/virtual_domain)
+"bQ" = (
+/obj/structure/disposalpipe/segment{
+	dir = 10
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#EFB341"
+	},
+/turf/open/indestructible/permalube,
+/area/lavaland/surface/outdoors/virtual_domain)
+"bR" = (
+/obj/structure/disposalpipe/segment{
+	dir = 6
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#DE3A3A"
+	},
+/turf/open/indestructible/permalube,
+/area/lavaland/surface/outdoors/virtual_domain)
+"bS" = (
+/turf/closed/wall/r_wall,
+/area/lavaland/surface/outdoors/virtual_domain)
+"bT" = (
+/obj/structure/statue/bananium/clown,
+/turf/open/floor/carpet,
+/area/lavaland/surface/outdoors/virtual_domain)
+"bU" = (
+/obj/item/coin/bananium,
+/obj/item/coin/bananium,
+/obj/item/coin/bananium,
+/obj/item/coin/bananium,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/carpet,
+/area/lavaland/surface/outdoors/virtual_domain)
+"bV" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/indestructible{
+	icon_state = "bananium";
+	name = "bananium floor"
+	},
+/area/lavaland/surface/outdoors/virtual_domain)
+"bW" = (
+/turf/closed/wall,
+/area/virtual_domain/safehouse)
+"bX" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/virtual_domain/safehouse)
+"bY" = (
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/obj/machinery/disposal/deliveryChute{
+	dir = 4
+	},
+/turf/open/floor/noslip,
+/area/lavaland/surface/outdoors/virtual_domain)
+"bZ" = (
+/obj/item/clothing/head/cone,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/floor/noslip,
+/area/lavaland/surface/outdoors/virtual_domain)
+"ca" = (
+/obj/item/bikehorn,
+/obj/structure/disposalpipe/segment{
+	invisibility = 101
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#EFB341"
+	},
+/turf/open/indestructible/permalube,
+/area/lavaland/surface/outdoors/virtual_domain)
+"cb" = (
+/obj/structure/disposalpipe/segment{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#EFB341"
+	},
+/turf/open/indestructible/permalube,
+/area/lavaland/surface/outdoors/virtual_domain)
+"cc" = (
+/obj/structure/disposalpipe/segment{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#EFB341"
+	},
+/turf/open/indestructible/permalube,
+/area/lavaland/surface/outdoors/virtual_domain)
+"cd" = (
+/turf/open/lava/smooth,
+/area/lavaland/surface/outdoors/virtual_domain)
+"ce" = (
+/obj/item/reagent_containers/food/drinks/trophy/gold_cup,
+/obj/structure/table/glass,
+/turf/open/floor/carpet,
+/area/lavaland/surface/outdoors/virtual_domain)
+"cf" = (
+/turf/open/floor/carpet,
+/area/lavaland/surface/outdoors/virtual_domain)
+"cg" = (
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/obj/structure/disposaloutlet{
+	dir = 4
+	},
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors/virtual_domain)
+"ch" = (
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 9
+	},
+/obj/machinery/suit_storage_unit/mining,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain/safehouse)
+"ci" = (
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 8
+	},
+/obj/machinery/suit_storage_unit/mining,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 4
+	},
+/area/virtual_domain/safehouse)
+"cj" = (
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 8
+	},
+/obj/machinery/suit_storage_unit/mining,
+/turf/open/floor/plasteel/dark{
+	dir = 4
+	},
+/area/virtual_domain/safehouse)
+"ck" = (
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 10
+	},
+/obj/structure/table,
+/obj/item/flashlight/lantern{
+	pixel_x = 8;
+	pixel_y = null
+	},
+/obj/item/flashlight/lantern{
+	pixel_y = 4
+	},
+/obj/item/flashlight/lantern{
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain/safehouse)
+"cl" = (
+/turf/open/floor/noslip,
+/area/lavaland/surface/outdoors/virtual_domain)
+"cm" = (
+/obj/effect/mapping_helpers/no_lava,
+/mob/living/simple_animal/hostile/retaliate/clown,
+/turf/open/floor/noslip,
+/area/lavaland/surface/outdoors/virtual_domain)
+"cn" = (
+/obj/machinery/disposal/deliveryChute{
+	desc = "The following is engraved upon the chute: A FATE WORSE THAN DEATH LIES WITHIN";
+	dir = 1;
+	name = "THE TRIAL OF HONKITUDE"
+	},
+/obj/structure/disposalpipe/trunk,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/floor/noslip,
+/area/lavaland/surface/outdoors/virtual_domain)
+"co" = (
+/obj/structure/disposalpipe/segment{
+	dir = 6
+	},
+/turf/open/floor/plating,
+/area/lavaland/surface/outdoors/virtual_domain)
+"cp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment{
+	invisibility = 101
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#EFB341"
+	},
+/turf/open/indestructible/permalube,
+/area/lavaland/surface/outdoors/virtual_domain)
+"cq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#EFB341"
+	},
+/turf/open/indestructible/permalube,
+/area/lavaland/surface/outdoors/virtual_domain)
+"cr" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/carpet,
+/area/lavaland/surface/outdoors/virtual_domain)
+"cs" = (
+/obj/structure/table/glass,
+/obj/item/grown/bananapeel/bluespace,
+/turf/open/floor/carpet,
+/area/lavaland/surface/outdoors/virtual_domain)
+"ct" = (
+/obj/structure/table/glass,
+/obj/item/reagent_containers/spray/waterflower/superlube,
+/turf/open/floor/carpet,
+/area/lavaland/surface/outdoors/virtual_domain)
+"cu" = (
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain/safehouse)
+"cv" = (
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain/safehouse)
+"cw" = (
+/obj/effect/turf_decal/trimline/brown/filled/line,
+/obj/effect/landmark/bitrunning/hololadder_spawn,
+/turf/open/floor/plasteel/dark{
+	dir = 1
+	},
+/area/virtual_domain/safehouse)
+"cx" = (
+/obj/item/paper/crumpled/bloody/ruins/lavaland/clown_planet/hope,
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/floor/noslip,
+/area/lavaland/surface/outdoors/virtual_domain)
+"cy" = (
+/obj/machinery/light/small{
+	dir = 2
+	},
+/obj/effect/mapping_helpers/no_lava,
+/mob/living/simple_animal/hostile/retaliate/clown,
+/turf/open/floor/noslip,
+/area/lavaland/surface/outdoors/virtual_domain)
+"cz" = (
+/obj/structure/disposalpipe/segment{
+	dir = 5
+	},
+/turf/closed/wall/r_wall,
+/area/lavaland/surface/outdoors/virtual_domain)
+"cA" = (
+/obj/structure/disposalpipe/segment{
+	dir = 5
+	},
+/turf/open/floor/plating,
+/area/lavaland/surface/outdoors/virtual_domain)
+"cB" = (
+/obj/machinery/disposal/deliveryChute,
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/turf/open/floor/carpet,
+/area/lavaland/surface/outdoors/virtual_domain)
+"cC" = (
+/obj/item/bikehorn/airhorn,
+/turf/open/floor/carpet,
+/area/lavaland/surface/outdoors/virtual_domain)
+"cD" = (
+/obj/machinery/door/airlock/bananium{
+	use_power = 0
+	},
+/turf/open/floor/carpet,
+/area/lavaland/surface/outdoors/virtual_domain)
+"cE" = (
+/obj/machinery/door/airlock/external/glass{
+	name = "Mining External Airlock"
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain/safehouse)
+"cF" = (
+/obj/structure/disposalpipe/trunk,
+/obj/structure/disposaloutlet{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/floor/noslip,
+/area/lavaland/surface/outdoors/virtual_domain)
+"cG" = (
+/obj/structure/disposalpipe/sorting/mail/flip{
+	dir = 1
+	},
+/turf/closed/wall/r_wall,
+/area/lavaland/surface/outdoors/virtual_domain)
+"cH" = (
+/obj/structure/disposalpipe/segment{
+	dir = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#EFB341"
+	},
+/turf/open/indestructible/permalube,
+/area/lavaland/surface/outdoors/virtual_domain)
+"cI" = (
+/obj/item/bikehorn,
+/obj/structure/disposalpipe/segment{
+	dir = 10
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#EFB341"
+	},
+/turf/open/indestructible/permalube,
+/area/lavaland/surface/outdoors/virtual_domain)
+"cJ" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#EFB341"
+	},
+/turf/open/indestructible/permalube,
+/area/lavaland/surface/outdoors/virtual_domain)
+
+(1,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(2,1,1) = {"
+aa
+ab
+ba
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bw
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(3,1,1) = {"
+aa
+ab
+bH
+ab
+ab
+ab
+ab
+ab
+bS
+bS
+bS
+bS
+bS
+bS
+bS
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+bS
+bS
+bS
+bS
+bS
+ab
+ab
+ab
+ab
+ab
+ab
+bH
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(4,1,1) = {"
+aa
+ab
+bH
+ab
+ab
+ab
+bS
+bS
+bS
+cd
+cd
+cd
+cd
+cd
+bS
+bS
+ab
+ab
+aa
+ab
+ab
+bS
+bS
+cd
+cd
+cd
+bS
+bS
+bS
+ab
+ab
+aa
+ab
+bH
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(5,1,1) = {"
+aa
+ab
+bH
+ab
+ab
+bS
+bS
+cd
+cd
+cd
+co
+cz
+co
+cz
+cd
+bS
+bS
+ab
+ab
+ab
+bS
+bS
+cd
+cd
+ac
+an
+cd
+cd
+bS
+bS
+ab
+ab
+ab
+bH
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(6,1,1) = {"
+aa
+ab
+bH
+ab
+bS
+bS
+cd
+cd
+ay
+aJ
+aU
+aV
+aW
+aX
+cz
+cd
+bS
+bS
+bS
+bS
+bS
+aY
+aZ
+ac
+cd
+cd
+cd
+cd
+cd
+bS
+bS
+ab
+ab
+bH
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(7,1,1) = {"
+aa
+ab
+bH
+ab
+bS
+cd
+cd
+bS
+bb
+bc
+bd
+be
+bd
+bf
+bg
+cd
+bS
+aZ
+bh
+aZ
+bS
+aZ
+bh
+bi
+aZ
+ac
+cd
+ac
+cd
+cd
+bS
+ab
+ab
+bH
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(8,1,1) = {"
+aa
+ab
+bH
+bS
+bS
+cd
+ay
+bj
+bk
+bm
+bc
+bd
+cz
+bg
+bg
+bS
+bn
+bo
+aZ
+bh
+bh
+aZ
+bh
+aZ
+aZ
+aZ
+bS
+cd
+an
+cd
+bS
+bS
+ab
+bH
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(9,1,1) = {"
+aa
+ab
+bH
+bS
+cd
+cd
+bp
+bd
+bf
+bm
+bg
+bq
+bg
+br
+bs
+bt
+bS
+bu
+bo
+aZ
+bS
+bS
+bh
+bS
+aZ
+aZ
+aZ
+ac
+cd
+cd
+cd
+bS
+ab
+bH
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+"}
+(10,1,1) = {"
+aa
+ab
+bH
+bS
+cd
+ay
+bd
+bd
+aW
+bv
+bv
+bg
+br
+br
+br
+bx
+bt
+bS
+bS
+bo
+aZ
+aZ
+bh
+aZ
+aZ
+by
+bh
+bz
+bS
+cd
+cd
+bS
+bS
+bg
+bS
+bS
+bS
+bS
+bS
+bS
+bS
+bS
+bA
+ab
+"}
+(11,1,1) = {"
+aa
+ab
+bH
+bS
+cd
+bB
+bC
+bd
+bf
+bg
+bm
+bg
+br
+br
+bD
+bE
+bF
+bo
+bo
+bo
+aZ
+bS
+aZ
+aZ
+bh
+bh
+aZ
+aZ
+cd
+ac
+cd
+bS
+bS
+bG
+bI
+bI
+bI
+bI
+bI
+bI
+bI
+bI
+bS
+ab
+"}
+(12,1,1) = {"
+aa
+ab
+bH
+bS
+cd
+co
+bJ
+bK
+aW
+bm
+bm
+bg
+br
+bL
+bD
+bE
+bt
+bS
+bo
+bo
+aZ
+aZ
+bS
+aZ
+aZ
+aZ
+aZ
+bh
+cd
+ac
+cd
+cd
+bS
+bG
+bM
+bI
+bI
+bI
+bI
+bI
+bM
+bI
+bS
+ab
+"}
+(13,1,1) = {"
+ab
+ab
+bH
+bS
+cd
+bp
+bd
+bd
+bN
+bm
+bB
+bk
+bg
+br
+bO
+bF
+bS
+bS
+bo
+aZ
+aZ
+bS
+bS
+aZ
+aZ
+bS
+aZ
+bh
+cd
+an
+ac
+cd
+bS
+bG
+bI
+bI
+bI
+bI
+bI
+bI
+bI
+bI
+bS
+ab
+"}
+(14,1,1) = {"
+ab
+bS
+bg
+bP
+bP
+an
+bc
+bd
+bk
+bQ
+bj
+bd
+bk
+bg
+bg
+bR
+bJ
+cz
+bS
+bS
+bS
+bT
+bU
+bS
+bV
+aZ
+bh
+by
+aZ
+cd
+ac
+cd
+bS
+bG
+bI
+bW
+bW
+bW
+bX
+bX
+bW
+bI
+bS
+ab
+"}
+(15,1,1) = {"
+ab
+bS
+bY
+bZ
+bP
+bS
+bB
+bd
+bd
+bd
+bd
+ca
+bd
+aW
+bv
+cb
+cc
+bm
+bS
+bS
+ce
+cf
+cf
+cf
+bS
+aZ
+bh
+bh
+aZ
+cd
+ac
+cd
+bS
+cg
+bI
+bX
+ch
+ci
+cj
+ck
+bW
+bI
+bS
+ab
+"}
+(16,1,1) = {"
+ab
+bS
+cl
+cm
+cn
+bJ
+aJ
+bd
+bJ
+bd
+cp
+bJ
+bj
+bd
+aW
+cq
+bv
+bQ
+bf
+bS
+cr
+cs
+ct
+cf
+bS
+bS
+bh
+aZ
+aZ
+cd
+ac
+cd
+bS
+bI
+bI
+bW
+cu
+cv
+cv
+cw
+bX
+bI
+bS
+ab
+"}
+(17,1,1) = {"
+ab
+bS
+cl
+cx
+cy
+bS
+co
+bd
+cz
+bc
+bf
+bc
+bd
+bd
+aJ
+cA
+bQ
+bf
+cb
+bJ
+cB
+cf
+cC
+cf
+cD
+aZ
+bh
+aZ
+bS
+cd
+ac
+cd
+bS
+bI
+bI
+cE
+cu
+cv
+cv
+cw
+bX
+bI
+bS
+ab
+"}
+(18,1,1) = {"
+ab
+bS
+cl
+cm
+cF
+bJ
+cG
+cc
+bv
+bv
+bg
+bv
+cH
+bd
+bf
+cI
+cJ
+ad
+cq
+bS
+cf
+ae
+af
+cf
+bS
+aZ
+aZ
+aZ
+aZ
+cd
+ac
+cd
+bS
+bI
+bI
+bW
+cu
+cv
+cv
+cw
+bX
+bI
+bS
+ab
+"}
+(19,1,1) = {"
+ab
+bS
+ag
+cm
+bP
+bS
+bS
+bm
+bm
+bm
+bv
+bv
+bv
+ah
+bQ
+bf
+ai
+bg
+aj
+bS
+ce
+cf
+cf
+ak
+bS
+aZ
+aZ
+aZ
+aZ
+cd
+ac
+cd
+bS
+al
+bI
+bX
+am
+ao
+ap
+aq
+bW
+bI
+bS
+ab
+"}
+(20,1,1) = {"
+ab
+bS
+bg
+bP
+bP
+cd
+bS
+bm
+bm
+ar
+bv
+bv
+bg
+bS
+bS
+as
+bS
+at
+bS
+aZ
+bS
+bT
+au
+bS
+bV
+aZ
+bh
+bh
+aZ
+cd
+ac
+cd
+bS
+bG
+bI
+bW
+bW
+bW
+bX
+bX
+av
+bI
+bS
+ab
+"}
+(21,1,1) = {"
+ab
+ab
+bH
+bS
+cd
+bS
+bS
+bv
+bv
+bv
+bm
+bv
+bg
+aw
+ax
+az
+bS
+aA
+cz
+aZ
+aZ
+bS
+bS
+bi
+aZ
+aZ
+bh
+aZ
+cd
+ac
+an
+cd
+bS
+bG
+bI
+bI
+bI
+bI
+bI
+bI
+bI
+bI
+bS
+ab
+"}
+(22,1,1) = {"
+aa
+ab
+bH
+bS
+cd
+bS
+bS
+aB
+aC
+bg
+bm
+bg
+aD
+br
+bE
+bE
+bt
+bS
+as
+bo
+aZ
+aZ
+bS
+aZ
+bh
+aZ
+aZ
+aZ
+cd
+ac
+cd
+cd
+bS
+bG
+bI
+bI
+bM
+bI
+bI
+bI
+bI
+bI
+bS
+ab
+"}
+(23,1,1) = {"
+aa
+ab
+bH
+bS
+cd
+aE
+aF
+bk
+bg
+aG
+bm
+bg
+aH
+br
+bE
+bE
+aI
+bJ
+aK
+bS
+aZ
+aZ
+bh
+bh
+bh
+aZ
+aL
+bz
+bS
+ac
+cd
+bS
+bS
+bG
+bI
+bI
+bI
+bI
+bI
+bI
+bI
+bI
+bS
+ab
+"}
+(24,1,1) = {"
+aa
+ab
+bH
+bS
+cd
+bS
+bS
+ah
+bv
+bv
+ar
+as
+br
+aM
+aN
+bF
+bt
+bS
+bo
+bo
+aZ
+aZ
+bh
+bh
+aZ
+aZ
+bS
+bS
+cd
+an
+cd
+bS
+bS
+bg
+bS
+bS
+bS
+bS
+bS
+bS
+bS
+bS
+bS
+ab
+"}
+(25,1,1) = {"
+aa
+ab
+bH
+bS
+cd
+bS
+bS
+cq
+bv
+bg
+bv
+bg
+bg
+aw
+aO
+bt
+bS
+bu
+bo
+aZ
+aZ
+aZ
+aZ
+aZ
+bS
+aZ
+aZ
+cd
+an
+cd
+cd
+bS
+ab
+bH
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+"}
+(26,1,1) = {"
+aa
+ab
+bH
+bS
+cd
+cd
+bS
+aP
+bv
+bv
+bv
+bQ
+bk
+bg
+bS
+bS
+bo
+bo
+aZ
+aZ
+aZ
+bh
+aL
+aZ
+aZ
+aZ
+bS
+cd
+ac
+cd
+bS
+bS
+ab
+bH
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(27,1,1) = {"
+aa
+ab
+bH
+bS
+bS
+cd
+bS
+bS
+bQ
+bk
+aQ
+bd
+bd
+aU
+bS
+cd
+bS
+aR
+aZ
+aZ
+bS
+aZ
+aZ
+bS
+aZ
+aZ
+cd
+an
+cd
+cd
+bS
+ab
+ab
+bH
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(28,1,1) = {"
+aa
+ab
+bH
+ab
+bS
+bS
+cd
+cd
+bS
+an
+bS
+ai
+ah
+an
+bS
+cd
+bS
+bS
+bS
+bS
+bS
+aZ
+aZ
+aZ
+cd
+cd
+cd
+cd
+cd
+bS
+bS
+ab
+ab
+bH
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(29,1,1) = {"
+aa
+ab
+bH
+ab
+ab
+bS
+bS
+cd
+cd
+cd
+ac
+ac
+ac
+bS
+cd
+bS
+bS
+ab
+ab
+ab
+bS
+bS
+cd
+cd
+an
+ac
+cd
+cd
+bS
+bS
+ab
+ab
+ab
+bH
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(30,1,1) = {"
+aa
+ab
+bH
+ab
+ab
+ab
+bS
+bS
+bS
+cd
+cd
+cd
+cd
+cd
+bS
+bS
+ab
+ab
+aa
+ab
+ab
+bS
+bS
+cd
+cd
+cd
+bS
+bS
+bS
+ab
+ab
+aa
+ab
+bH
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(31,1,1) = {"
+aa
+ab
+bH
+ab
+ab
+ab
+ab
+ab
+bS
+bS
+bS
+bS
+bS
+bS
+bS
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+bS
+bS
+bS
+bS
+bS
+ab
+ab
+ab
+ab
+ab
+ab
+bH
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(32,1,1) = {"
+aa
+ab
+aS
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+bl
+aT
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(33,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}

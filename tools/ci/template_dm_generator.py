@@ -5,7 +5,8 @@ import sys
 
 folders = ["_maps/RandomRooms", "_maps/RandomRuins",
            "_maps/shuttles", "_maps/templates",
-           "_maps/map_files/Mining/nsv13/asteroids", "_maps/map_files/Mining/nsv13/ruins"]
+           "_maps/map_files/Mining/nsv13/asteroids", "_maps/map_files/Mining/nsv13/ruins",
+           "_maps/virtual_domains"]
 
 generated = "_maps/templates.dm"
 

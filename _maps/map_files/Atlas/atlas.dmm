@@ -564,6 +564,9 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/port)
+"be" = (
+/turf/closed/wall/steel,
+/area/quartermaster/bitrunning/den)
 "bf" = (
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
@@ -619,6 +622,16 @@
 /obj/machinery/door/firedoor/border_only/directional/east,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/starboard)
+"bl" = (
+/obj/structure/sign/directions/supply{
+	dir = 4;
+	pixel_y = -6
+	},
+/obj/structure/sign/directions/science{
+	dir = 4
+	},
+/turf/closed/wall/steel,
+/area/quartermaster/bitrunning/den)
 "bm" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
@@ -667,6 +680,11 @@
 /obj/machinery/firealarm/directional/west,
 /turf/open/floor/monotile/dark,
 /area/nsv/weapons/gauss/battery/deck2/starboard)
+"bs" = (
+/obj/machinery/netpod,
+/obj/effect/turf_decal/box,
+/turf/open/floor/circuit/green,
+/area/quartermaster/bitrunning/den)
 "bt" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -680,6 +698,14 @@
 /obj/structure/cable,
 /turf/open/floor/durasteel/riveted,
 /area/engine/atmos)
+"bu" = (
+/obj/machinery/netpod,
+/obj/effect/turf_decal/box,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/circuit/green,
+/area/quartermaster/bitrunning/den)
 "bv" = (
 /obj/machinery/rnd/server,
 /obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
@@ -716,6 +742,13 @@
 /obj/machinery/disposal/bin,
 /turf/open/floor/durasteel,
 /area/crew_quarters/kitchen)
+"by" = (
+/obj/effect/landmark/start/bitrunner,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
 "bz" = (
 /obj/machinery/atmospherics/pipe/simple/green/visible{
 	dir = 4
@@ -779,6 +812,12 @@
 /obj/structure/cable/yellow,
 /turf/open/floor/durasteel/alt,
 /area/hallway/nsv/deck2/primary)
+"bE" = (
+/obj/machinery/quantum_server,
+/obj/effect/turf_decal/box,
+/obj/machinery/status_display/ai/west,
+/turf/open/floor/circuit/green,
+/area/quartermaster/bitrunning/den)
 "bF" = (
 /obj/structure/cable,
 /obj/machinery/door/airlock/ship/maintenance{
@@ -796,6 +835,16 @@
 	},
 /turf/open/floor/monotile/dark,
 /area/maintenance/nsv/deck2/port)
+"bG" = (
+/obj/effect/turf_decal/tile/ship/brown{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/ship/brown{
+	dir = 8
+	},
+/obj/machinery/airalarm/directional/north,
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
 "bH" = (
 /turf/closed/wall/steel,
 /area/crew_quarters/bar/mess_hall)
@@ -824,6 +873,12 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
 /turf/open/floor/monotile/steel,
 /area/hallway/secondary/exit/departure_lounge)
+"bL" = (
+/obj/effect/turf_decal/tile/ship/brown{
+	dir = 1
+	},
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
 "bM" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
@@ -1144,6 +1199,27 @@
 /obj/structure/grille,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/starboard)
+"cr" = (
+/obj/item/kirbyplants/random,
+/obj/effect/turf_decal/tile/ship/brown{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/ship/brown{
+	dir = 4
+	},
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
+"cs" = (
+/obj/machinery/computer/quantum_console{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 4
+	},
+/obj/machinery/power/apc/auto_name/west,
+/obj/structure/cable,
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
 "ct" = (
 /obj/structure/lattice/catwalk/over/ship,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
@@ -1235,6 +1311,13 @@
 /obj/effect/landmark/start/depsec/engineering,
 /turf/open/floor/monotile/steel,
 /area/engine/break_room)
+"cC" = (
+/obj/structure/chair/office{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
 "cD" = (
 /obj/structure/sign/departments/minsky/supply/mining{
 	pixel_x = -32
@@ -1242,12 +1325,29 @@
 /obj/structure/ore_box,
 /turf/open/floor/plasteel/techmaint,
 /area/hallway/nsv/deck2/primary)
+"cE" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
 "cF" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4,
 /turf/open/floor/monotile/dark,
 /area/security/brig)
+"cG" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
 "cH" = (
 /obj/machinery/atmospherics/pipe/simple/green/visible{
 	dir = 4
@@ -1274,6 +1374,26 @@
 /obj/structure/cable,
 /turf/open/floor/durasteel/techfloor_grid,
 /area/engine/atmos)
+"cJ" = (
+/obj/effect/turf_decal/tile/ship/brown{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
+"cK" = (
+/obj/structure/chair/fancy/comfy{
+	dir = 4
+	},
+/obj/structure/extinguisher_cabinet/west,
+/turf/open/floor/carpet/ship/beige_carpet,
+/area/quartermaster/bitrunning/den)
 "cL" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
@@ -1314,6 +1434,14 @@
 	},
 /turf/open/floor/monotile/dark,
 /area/security/brig)
+"cP" = (
+/obj/machinery/byteforge,
+/obj/effect/turf_decal/ship/delivery/yellow,
+/obj/machinery/light{
+	dir = 2
+	},
+/turf/open/floor/plasteel/tech/grid,
+/area/quartermaster/bitrunning/den)
 "cQ" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
@@ -1380,6 +1508,34 @@
 	},
 /turf/open/floor/monotile/steel,
 /area/engine/engine_room)
+"cW" = (
+/obj/structure/table/wood/fancy/green,
+/obj/item/reagent_containers/food/drinks/soda_cans/space_mountain_wind{
+	pixel_x = -6;
+	pixel_y = 8
+	},
+/obj/item/reagent_containers/food/drinks/soda_cans/pwr_game{
+	pixel_x = 6;
+	pixel_y = 10
+	},
+/obj/item/food/cornchips{
+	pixel_y = 2
+	},
+/obj/item/toy/figure/bitrunner{
+	pixel_x = -8;
+	pixel_y = 14
+	},
+/turf/open/floor/carpet/ship/beige_carpet,
+/area/quartermaster/bitrunning/den)
+"cX" = (
+/obj/machinery/computer/arcade/battle{
+	dir = 1
+	},
+/obj/machinery/camera/autoname{
+	dir = 1
+	},
+/turf/open/floor/carpet/ship/beige_carpet,
+/area/quartermaster/bitrunning/den)
 "cY" = (
 /obj/machinery/light{
 	dir = 8
@@ -1387,6 +1543,16 @@
 /obj/machinery/suit_storage_unit/mining/eva,
 /turf/open/floor/monotile/steel,
 /area/quartermaster/miningoffice)
+"cZ" = (
+/obj/machinery/computer/order_console/bitrunning{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/ship/brown{
+	dir = 4
+	},
+/obj/item/radio/intercom/directional/south,
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
 "da" = (
 /obj/structure/chair/office,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
@@ -1399,6 +1565,28 @@
 /mob/living/carbon/monkey/punpun,
 /turf/open/floor/carpet/royalblack,
 /area/crew_quarters/bar)
+"dc" = (
+/obj/machinery/door/airlock/ship/cargo/glass{
+	name = "Pracownia Bitrunnerów";
+	req_one_access_txt = "78"
+	},
+/obj/effect/turf_decal/ship/delivery/yellow,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/effect/landmark/zebra_interlock_point,
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plasteel/tech/grid,
+/area/quartermaster/bitrunning/den)
 "dd" = (
 /obj/machinery/door/poddoor/shutters{
 	id = "stationgate";
@@ -1424,6 +1612,10 @@
 	},
 /turf/open/floor/monotile/dark,
 /area/nsv/weapons/gauss/battery/deck2/port)
+"dg" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/quartermaster/bitrunning/den)
 "dh" = (
 /obj/item/chair,
 /turf/open/floor/plating,
@@ -50573,9 +50765,9 @@ Qk
 rW
 lG
 ob
-LH
-LH
-LH
+be
+be
+be
 tw
 tw
 tw
@@ -50830,9 +51022,9 @@ XU
 OO
 vC
 ob
-Ff
-cv
-Uo
+bE
+cs
+cK
 tw
 qY
 uM
@@ -51087,9 +51279,9 @@ qT
 qT
 ob
 ob
-og
-ud
-cT
+bG
+cC
+cP
 tw
 CU
 Ih
@@ -51341,12 +51533,12 @@ IW
 cj
 Jt
 uX
-LH
-UA
-ty
-Lo
-uv
-oC
+be
+bs
+by
+bL
+cE
+cW
 tw
 hx
 In
@@ -51598,12 +51790,12 @@ CD
 rU
 kT
 RR
-LH
-Tv
-sy
-vS
-Yw
-aw
+be
+bu
+by
+bL
+cG
+cX
 tw
 ND
 Vj
@@ -51855,12 +52047,12 @@ IW
 wN
 JW
 Sn
-LH
-VA
-Bi
-RG
-PM
-em
+be
+bs
+by
+cr
+cJ
+cZ
 tw
 Ae
 qn
@@ -52112,12 +52304,12 @@ jR
 IW
 IW
 IW
-RI
-PC
-Rm
-af
-zA
-dd
+bl
+dg
+dg
+be
+dc
+dg
 tw
 tw
 yl

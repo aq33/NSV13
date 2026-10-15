@@ -236,6 +236,8 @@
 	if(H.stat == DEAD)
 		return
 	H.say("Jednostka [H.real_name] jest w pełni sprawna. Miłego dnia.")
+	if(QDELETED(H) || !H.dna) // AQ EDIT - the body can be deleted while rebooting
+		return
 	H.dna.features["ipc_screen"] = saved_screen
 
 /datum/species/ipc/get_harm_descriptors()

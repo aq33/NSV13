@@ -1,0 +1,1301 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/template_noop,
+/area/template_noop)
+"b" = (
+/turf/closed/indestructible/binary,
+/area/virtual_domain/fullbright)
+"c" = (
+/obj/structure/rack,
+/obj/item/reagent_containers/food/drinks/bottle/beer{
+	pixel_x = 3
+	},
+/obj/item/reagent_containers/food/drinks/bottle/beer{
+	pixel_x = -3
+	},
+/obj/item/reagent_containers/food/drinks/bottle/beer{
+	pixel_y = 1
+	},
+/turf/open/indestructible{
+	icon_state = "darkfull"
+	},
+/area/virtual_domain)
+"d" = (
+/obj/effect/mob_spawn/human/corpse{
+	outfit = /datum/outfit/cyber_police;
+	name = "Cyber Police Corpse"
+	},
+/turf/open/indestructible{
+	icon_state = "darkfull"
+	},
+/area/virtual_domain)
+"e" = (
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/clothing/suit/caution = 800, /obj/structure/holosign/wetsign = 100, /obj/structure/holosign/barrier = 60, /obj/structure/holosign/barrier/wetsign = 40);
+	name = "caution sign spawner"
+	},
+/turf/open/indestructible{
+	icon_state = "darkfull"
+	},
+/area/virtual_domain)
+"f" = (
+/turf/open/chasm,
+/area/virtual_domain)
+"g" = (
+/obj/structure/sign/warning{
+	dir = 4;
+	pixel_x = 32
+	},
+/turf/open/indestructible{
+	icon_state = "darkfull"
+	},
+/area/virtual_domain)
+"h" = (
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/machinery/door/airlock/abductor,
+/turf/open/indestructible{
+	icon_state = "darkfull"
+	},
+/area/virtual_domain)
+"i" = (
+/obj/structure/rack,
+/turf/open/indestructible{
+	icon_state = "darkfull"
+	},
+/area/virtual_domain/protected_space)
+"j" = (
+/turf/open/indestructible{
+	icon_state = "darkfull"
+	},
+/area/virtual_domain/protected_space)
+"k" = (
+/obj/effect/baseturf_helper/virtual_domain,
+/turf/open/indestructible{
+	icon_state = "darkfull"
+	},
+/area/virtual_domain/protected_space)
+"l" = (
+/turf/closed/wall/mineral/silver,
+/area/virtual_domain/safehouse)
+"m" = (
+/turf/open/indestructible{
+	icon_state = "darkfull"
+	},
+/area/virtual_domain)
+"n" = (
+/obj/structure/closet/crate/secure/weapon{
+	name = "mystery box";
+	locked = 0;
+	desc = "Tajemnicza skrzynia pełna broni."
+	},
+/obj/effect/spawner/lootdrop{
+	name = "mystery box guns";
+	lootcount = 4;
+	loot = list(/obj/item/gun/ballistic/shotgun/lethal = 3, /obj/item/gun/ballistic/automatic/pistol = 3, /obj/item/gun/ballistic/revolver/detective = 2, /obj/item/gun/ballistic/automatic/wt550 = 2, /obj/item/gun/ballistic/rifle/boltaction = 2, /obj/item/gun/ballistic/automatic/c20r/unrestricted = 1, /obj/item/gun/energy/laser = 2)
+	},
+/obj/effect/spawner/lootdrop{
+	name = "mystery box ammo";
+	lootcount = 6;
+	loot = list(/obj/item/storage/box/lethalshot = 2, /obj/item/ammo_box/magazine/m10mm = 2, /obj/item/ammo_box/c38 = 2, /obj/item/ammo_box/magazine/wt550m9 = 2, /obj/item/ammo_box/a762 = 2)
+	},
+/turf/open/indestructible{
+	icon_state = "darkfull"
+	},
+/area/virtual_domain/protected_space)
+"o" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/light/small{
+	bulb_colour = "#A700FF";
+	brightness = 4;
+	nightshift_allowed = 0;
+	dir = 8
+	},
+/turf/open/floor/plasteel/freezer,
+/area/virtual_domain/safehouse)
+"p" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/toilet{
+	dir = 4
+	},
+/turf/open/floor/plasteel/freezer,
+/area/virtual_domain/safehouse)
+"q" = (
+/obj/structure/urinal{
+	dir = 4;
+	pixel_x = -32
+	},
+/turf/open/floor/plasteel/freezer,
+/area/virtual_domain/safehouse)
+"r" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small{
+	bulb_colour = "#A700FF";
+	brightness = 4;
+	nightshift_allowed = 0;
+	dir = 8
+	},
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/storage/firstaid/regular = 204, /obj/item/storage/firstaid/o2 = 197, /obj/item/storage/firstaid/fire = 197, /obj/item/storage/firstaid/brute = 197, /obj/item/storage/firstaid/toxin = 197, /obj/item/storage/firstaid/advanced = 7);
+	name = "medkit spawner"
+	},
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/storage/firstaid/regular = 204, /obj/item/storage/firstaid/o2 = 197, /obj/item/storage/firstaid/fire = 197, /obj/item/storage/firstaid/brute = 197, /obj/item/storage/firstaid/toxin = 197, /obj/item/storage/firstaid/advanced = 7);
+	name = "medkit spawner"
+	},
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/stack/medical/bruise_pack = 333, /obj/item/stack/medical/ointment = 333, /obj/item/stack/medical/gauze = 333);
+	name = "minor healing spawner"
+	},
+/turf/open/floor/plasteel/freezer,
+/area/virtual_domain/safehouse)
+"s" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/extinguisher_cabinet{
+	dir = 1;
+	pixel_y = 29
+	},
+/turf/open/floor/plasteel/freezer,
+/area/virtual_domain/safehouse)
+"t" = (
+/turf/open/floor/plasteel/freezer,
+/area/virtual_domain/safehouse)
+"u" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel/freezer,
+/area/virtual_domain/safehouse)
+"v" = (
+/obj/effect/landmark/bitrunning/hololadder_spawn,
+/turf/open/floor/plasteel/freezer,
+/area/virtual_domain/safehouse)
+"w" = (
+/obj/machinery/door/airlock/abductor,
+/turf/open/indestructible{
+	icon_state = "darkfull"
+	},
+/area/virtual_domain/protected_space)
+"x" = (
+/obj/effect/landmark/bitrunning/cache_spawn,
+/turf/open/indestructible{
+	icon_state = "darkfull"
+	},
+/area/virtual_domain)
+"y" = (
+/obj/structure/fans/tiny,
+/obj/machinery/door/airlock/freezer,
+/turf/open/floor/plasteel/freezer,
+/area/virtual_domain/safehouse)
+"z" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/extinguisher_cabinet{
+	dir = 1;
+	pixel_y = 29
+	},
+/turf/open/floor/plasteel/freezer,
+/area/virtual_domain/safehouse)
+"A" = (
+/obj/structure/railing/corner{
+	dir = 4
+	},
+/turf/open/floor/plasteel/freezer,
+/area/virtual_domain/safehouse)
+"B" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel/freezer,
+/area/virtual_domain/safehouse)
+"C" = (
+/obj/effect/landmark/bitrunning/cache_goal_turf,
+/obj/effect/turf_decal/loading_area{
+	dir = 4
+	},
+/obj/machinery/light/small{
+	bulb_colour = "#A700FF";
+	brightness = 4;
+	nightshift_allowed = 0;
+	dir = 4
+	},
+/turf/open/indestructible/bitrunning_transport,
+/area/virtual_domain/safehouse)
+"D" = (
+/obj/structure/railing,
+/obj/effect/landmark/bitrunning/cache_goal_turf,
+/obj/effect/turf_decal/loading_area{
+	dir = 4
+	},
+/turf/open/indestructible/bitrunning_transport,
+/area/virtual_domain/safehouse)
+"E" = (
+/obj/structure/sign/poster/contraband/random{
+	dir = 4;
+	pixel_x = 32
+	},
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/floor/plasteel/freezer,
+/area/virtual_domain/safehouse)
+"F" = (
+/obj/machinery/light/small{
+	bulb_colour = "#A700FF";
+	brightness = 4;
+	nightshift_allowed = 0;
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/vehicle/ridden/wheelchair,
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/implanter = 333, /obj/item/reagent_containers/dropper = 333, /obj/item/reagent_containers/syringe = 333);
+	name = "injector spawner"
+	},
+/turf/open/floor/plasteel/freezer,
+/area/virtual_domain/safehouse)
+"G" = (
+/obj/effect/spawner/structure/window,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/plasteel/freezer,
+/area/virtual_domain/safehouse)
+"H" = (
+/obj/effect/baseturf_helper/virtual_domain,
+/turf/closed/wall/mineral/silver,
+/area/virtual_domain/safehouse)
+"I" = (
+/obj/effect/baseturf_helper/virtual_domain,
+/turf/closed/indestructible/binary,
+/area/virtual_domain/fullbright)
+"J" = (
+/obj/structure/sign/warning{
+	dir = 8;
+	pixel_x = -32
+	},
+/turf/open/chasm,
+/area/virtual_domain)
+"K" = (
+/obj/machinery/door/airlock/abductor,
+/turf/open/indestructible{
+	icon_state = "darkfull"
+	},
+/area/virtual_domain)
+"L" = (
+/obj/effect/mob_spawn/human/corpse/zombie,
+/turf/open/indestructible{
+	icon_state = "darkfull"
+	},
+/area/virtual_domain)
+"M" = (
+/obj/structure/sign/warning{
+	dir = 4;
+	pixel_x = 32
+	},
+/turf/open/chasm,
+/area/virtual_domain)
+"N" = (
+/obj/effect/mob_spawn/human/corpse{
+	outfit = /datum/outfit/cyber_police;
+	name = "Cyber Police Corpse"
+	},
+/obj/effect/landmark/bitrunning/cache_spawn,
+/turf/open/indestructible{
+	icon_state = "darkfull"
+	},
+/area/virtual_domain)
+"O" = (
+/mob/living/carbon/human/ai_boarder/zombie,
+/turf/open/indestructible{
+	icon_state = "darkfull"
+	},
+/area/virtual_domain)
+"P" = (
+/obj/machinery/door/airlock/abductor,
+/obj/effect/mapping_helpers/airlock/abandoned,
+/turf/open/indestructible{
+	icon_state = "darkfull"
+	},
+/area/virtual_domain)
+"Q" = (
+/obj/effect/mine/explosive{
+	range_devastation = 0;
+	range_heavy = 0;
+	range_light = 2
+	},
+/turf/open/indestructible{
+	icon_state = "darkfull"
+	},
+/area/virtual_domain)
+"R" = (
+/obj/item/pizzabox/bomb/armed,
+/obj/structure/rack,
+/turf/open/indestructible{
+	icon_state = "darkfull"
+	},
+/area/virtual_domain)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+b
+b
+b
+b
+b
+b
+b
+b
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+a
+a
+a
+a
+a
+b
+b
+b
+m
+m
+m
+m
+m
+x
+b
+b
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(3,1,1) = {"
+b
+b
+b
+b
+b
+b
+b
+m
+m
+m
+m
+m
+m
+m
+m
+m
+b
+b
+I
+a
+a
+a
+a
+a
+a
+"}
+(4,1,1) = {"
+b
+N
+O
+m
+P
+m
+m
+m
+m
+Q
+b
+b
+O
+m
+m
+m
+m
+b
+b
+a
+a
+a
+a
+a
+a
+"}
+(5,1,1) = {"
+b
+R
+R
+c
+b
+Q
+m
+m
+m
+b
+b
+b
+b
+O
+m
+m
+m
+m
+b
+a
+a
+a
+a
+a
+a
+"}
+(6,1,1) = {"
+b
+b
+b
+b
+b
+m
+m
+m
+b
+b
+m
+m
+b
+b
+b
+b
+m
+m
+b
+a
+a
+a
+a
+a
+a
+"}
+(7,1,1) = {"
+b
+b
+b
+b
+b
+b
+m
+m
+b
+m
+m
+m
+b
+b
+b
+m
+m
+m
+b
+a
+a
+a
+a
+a
+a
+"}
+(8,1,1) = {"
+b
+b
+O
+m
+m
+m
+m
+m
+b
+m
+m
+m
+m
+m
+m
+m
+Q
+b
+b
+a
+a
+a
+a
+a
+a
+"}
+(9,1,1) = {"
+b
+b
+d
+m
+m
+m
+e
+m
+b
+O
+m
+m
+m
+m
+m
+m
+m
+b
+a
+a
+a
+a
+a
+a
+a
+"}
+(10,1,1) = {"
+b
+b
+m
+f
+f
+f
+f
+m
+b
+b
+m
+f
+f
+f
+f
+f
+m
+b
+a
+a
+a
+a
+a
+a
+a
+"}
+(11,1,1) = {"
+b
+m
+m
+f
+f
+f
+f
+m
+m
+b
+m
+f
+f
+f
+f
+f
+m
+b
+a
+a
+a
+a
+a
+a
+a
+"}
+(12,1,1) = {"
+b
+m
+m
+m
+m
+m
+m
+m
+m
+b
+m
+m
+m
+m
+e
+m
+m
+b
+a
+a
+a
+a
+a
+a
+a
+"}
+(13,1,1) = {"
+b
+m
+m
+m
+b
+b
+m
+m
+m
+b
+m
+b
+m
+m
+m
+m
+m
+b
+a
+a
+a
+a
+a
+a
+a
+"}
+(14,1,1) = {"
+b
+m
+m
+m
+m
+b
+m
+m
+b
+b
+m
+b
+m
+m
+m
+m
+m
+b
+a
+a
+a
+a
+a
+a
+a
+"}
+(15,1,1) = {"
+b
+m
+Q
+m
+b
+b
+m
+m
+b
+b
+m
+b
+b
+m
+m
+m
+O
+b
+a
+a
+a
+a
+a
+a
+a
+"}
+(16,1,1) = {"
+b
+m
+m
+m
+O
+b
+m
+m
+O
+b
+m
+m
+b
+m
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+"}
+(17,1,1) = {"
+b
+m
+g
+m
+b
+b
+m
+m
+m
+h
+m
+m
+m
+m
+b
+i
+j
+k
+l
+l
+l
+l
+l
+l
+b
+"}
+(18,1,1) = {"
+b
+x
+b
+f
+b
+b
+m
+m
+b
+b
+O
+m
+m
+m
+b
+n
+j
+j
+l
+o
+p
+q
+r
+l
+b
+"}
+(19,1,1) = {"
+b
+f
+f
+f
+b
+O
+m
+m
+b
+b
+b
+m
+m
+m
+b
+j
+j
+j
+l
+s
+t
+u
+v
+l
+b
+"}
+(20,1,1) = {"
+b
+f
+f
+f
+b
+x
+m
+m
+b
+m
+m
+m
+m
+m
+w
+j
+j
+j
+y
+u
+t
+t
+v
+l
+b
+"}
+(21,1,1) = {"
+b
+b
+f
+f
+b
+b
+m
+m
+b
+b
+m
+Q
+m
+m
+b
+j
+j
+j
+l
+z
+A
+B
+v
+l
+b
+"}
+(22,1,1) = {"
+b
+b
+f
+b
+b
+b
+m
+m
+b
+b
+m
+m
+m
+m
+b
+n
+j
+j
+l
+C
+D
+E
+F
+G
+b
+"}
+(23,1,1) = {"
+b
+b
+f
+b
+b
+b
+m
+m
+b
+b
+b
+b
+m
+m
+b
+i
+j
+j
+l
+l
+l
+l
+l
+H
+b
+"}
+(24,1,1) = {"
+b
+b
+f
+b
+b
+b
+m
+m
+b
+b
+b
+b
+b
+m
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+"}
+(25,1,1) = {"
+b
+J
+f
+b
+b
+b
+K
+b
+b
+b
+b
+b
+b
+m
+m
+Q
+b
+b
+a
+a
+a
+a
+a
+a
+a
+"}
+(26,1,1) = {"
+b
+f
+f
+b
+b
+d
+m
+d
+b
+b
+b
+m
+m
+m
+m
+m
+b
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(27,1,1) = {"
+b
+m
+m
+K
+m
+m
+m
+b
+b
+b
+m
+m
+Q
+m
+m
+b
+b
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(28,1,1) = {"
+b
+m
+O
+b
+x
+O
+O
+b
+O
+b
+m
+m
+m
+m
+Q
+b
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(29,1,1) = {"
+b
+m
+b
+b
+b
+b
+b
+b
+m
+m
+m
+m
+b
+b
+b
+b
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(30,1,1) = {"
+b
+m
+m
+Q
+b
+b
+Q
+m
+m
+m
+m
+m
+m
+m
+O
+b
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(31,1,1) = {"
+b
+m
+m
+m
+b
+m
+m
+m
+b
+b
+m
+m
+m
+L
+b
+b
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(32,1,1) = {"
+b
+m
+m
+m
+b
+m
+Q
+b
+b
+b
+b
+m
+m
+m
+b
+b
+b
+b
+b
+a
+a
+a
+a
+a
+a
+"}
+(33,1,1) = {"
+b
+b
+Q
+m
+b
+m
+b
+b
+m
+m
+Q
+m
+m
+m
+m
+m
+f
+f
+b
+a
+a
+a
+a
+a
+a
+"}
+(34,1,1) = {"
+a
+b
+m
+m
+m
+m
+m
+m
+m
+b
+b
+b
+m
+L
+x
+d
+M
+f
+b
+a
+a
+a
+a
+a
+a
+"}
+(35,1,1) = {"
+a
+b
+x
+m
+m
+m
+O
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+b
+a
+a
+a
+a
+a
+a
+"}
+(36,1,1) = {"
+a
+b
+b
+b
+b
+b
+b
+b
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}

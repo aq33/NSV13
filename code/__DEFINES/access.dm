@@ -71,6 +71,7 @@
 #define ACCESS_TRANSPORT_PILOT 73 //NSV13 - Imagine getting your ATPLs
 #define ACCESS_MINING_ENGINEERING 74
 #define ACCESS_MINING_BRIDGE 75
+#define ACCESS_BIT_DEN 78 //! AQ EDIT - Bitrunning den (port z tg)
 #define ACCESS_SEC_RECORDS 77 //! Update security records //NSV13 - changed from 69
 #define ACCESS_HANGAR 79 //NSV13 - Access to the hangar
 

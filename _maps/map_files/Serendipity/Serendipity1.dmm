@@ -516,6 +516,9 @@
 	},
 /turf/open/floor/wood,
 /area/crew_quarters/kitchen)
+"bi" = (
+/turf/closed/wall/r_wall/ship,
+/area/quartermaster/bitrunning/den)
 "bj" = (
 /obj/structure/disposalpipe/junction{
 	dir = 1
@@ -525,6 +528,9 @@
 /obj/machinery/holopad,
 /turf/open/floor/plasteel/tiled/light,
 /area/science)
+"bk" = (
+/turf/closed/wall/ship,
+/area/quartermaster/bitrunning/den)
 "bl" = (
 /obj/machinery/clonepod/prefilled,
 /obj/machinery/firealarm/directional/north,
@@ -546,6 +552,33 @@
 /obj/item/stamp/research_director,
 /turf/open/floor/carpet/purple,
 /area/crew_quarters/heads/hor)
+"bp" = (
+/obj/machinery/netpod,
+/obj/effect/turf_decal/box,
+/turf/open/floor/circuit/green,
+/area/quartermaster/bitrunning/den)
+"bq" = (
+/obj/machinery/netpod,
+/obj/effect/turf_decal/box,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/circuit/green,
+/area/quartermaster/bitrunning/den)
+"br" = (
+/obj/effect/turf_decal/tile/ship/brown{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/ship/brown{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
 "bs" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
@@ -568,6 +601,27 @@
 	},
 /turf/open/floor/engine/light,
 /area/ai_monitored/nuke_storage)
+"bu" = (
+/obj/machinery/computer/order_console/bitrunning{
+	dir = 2
+	},
+/obj/effect/turf_decal/tile/ship/brown{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/ship/brown{
+	dir = 4
+	},
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
+"bv" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
 "bw" = (
 /obj/machinery/door/window/eastright,
 /obj/effect/landmark/event_spawn,
@@ -581,6 +635,13 @@
 	},
 /turf/open/floor/carpet/ship/red_carpet,
 /area/ai_monitored/security/armory/security)
+"by" = (
+/obj/effect/landmark/start/bitrunner,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
 "bz" = (
 /obj/structure/sign/poster/official/moth1{
 	pixel_x = -30
@@ -675,6 +736,12 @@
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/plasteel/tiled/light,
 /area/science/xenobiology)
+"bI" = (
+/obj/effect/landmark/start/bitrunner,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
 "bJ" = (
 /obj/machinery/disposal/bin,
 /obj/structure/disposalpipe/trunk{
@@ -682,6 +749,14 @@
 	},
 /turf/open/floor/carpet/purple,
 /area/crew_quarters/heads/hor)
+"bK" = (
+/obj/machinery/byteforge,
+/obj/effect/turf_decal/ship/delivery/yellow,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plasteel/tech/grid,
+/area/quartermaster/bitrunning/den)
 "bL" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
@@ -730,11 +805,22 @@
 /obj/machinery/light/floor,
 /turf/open/floor/grass/fairy/yellow,
 /area/crew_quarters/dorms/nsv/nature_deck)
+"bP" = (
+/obj/machinery/quantum_server,
+/obj/effect/turf_decal/box,
+/turf/open/floor/circuit/green,
+/area/quartermaster/bitrunning/den)
 "bQ" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
 /obj/effect/landmark/start/geneticist,
 /turf/open/floor/plasteel/tiled/light,
 /area/medical/genetics)
+"bR" = (
+/obj/effect/turf_decal/tile/ship/brown{
+	dir = 8
+	},
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
 "bS" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/trunk/multiz/down{
@@ -826,6 +912,14 @@
 /obj/item/storage/lockbox/medal,
 /turf/open/floor/carpet,
 /area/crew_quarters/heads/captain/private)
+"cb" = (
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
+"cc" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
 "cd" = (
 /obj/effect/turf_decal/tile/ship/half/purple,
 /obj/effect/turf_decal/tile/ship/purple{
@@ -848,6 +942,13 @@
 	},
 /turf/open/floor/plasteel/tiled/light,
 /area/science/lab)
+"cf" = (
+/obj/structure/closet/secure_closet/exile,
+/obj/effect/turf_decal/tile/ship/brown{
+	dir = 4
+	},
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
 "cg" = (
 /obj/machinery/computer/ship/viewscreen,
 /obj/effect/turf_decal/tile/ship/half/purple{
@@ -889,6 +990,15 @@
 	},
 /turf/open/floor/plasteel/tiled/light,
 /area/medical/nsv/trauma)
+"ck" = (
+/obj/machinery/computer/quantum_console{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 4
+	},
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
 "cl" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
@@ -896,16 +1006,87 @@
 	},
 /turf/open/floor/plasteel/tiled/light,
 /area/medical/chemistry)
+"cm" = (
+/obj/structure/chair/fancy/comfy{
+	dir = 8
+	},
+/obj/machinery/airalarm/directional/south,
+/turf/open/floor/carpet/ship/beige_carpet,
+/area/quartermaster/bitrunning/den)
 "cn" = (
 /obj/structure/closet/secure_closet/hydroponics,
 /obj/item/storage/bag/plants,
 /obj/item/plant_analyzer,
 /turf/open/floor/grass,
 /area/hydroponics)
+"co" = (
+/obj/structure/table/wood/fancy/green,
+/obj/item/reagent_containers/food/drinks/soda_cans/space_mountain_wind{
+	pixel_x = -6;
+	pixel_y = 8
+	},
+/obj/item/food/cornchips{
+	pixel_y = 2
+	},
+/obj/item/toy/figure/bitrunner{
+	pixel_x = -8;
+	pixel_y = 14
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 4
+	},
+/obj/machinery/computer/ship/viewscreen{
+	pixel_y = -30
+	},
+/turf/open/floor/carpet/ship/beige_carpet,
+/area/quartermaster/bitrunning/den)
 "cp" = (
 /obj/machinery/light/floor,
 /turf/open/floor/circuit,
 /area/ai_monitored/turret_protected/aisat_interior)
+"cq" = (
+/obj/item/kirbyplants/random,
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/south,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 9
+	},
+/turf/open/floor/carpet/ship/beige_carpet,
+/area/quartermaster/bitrunning/den)
+"cr" = (
+/obj/effect/turf_decal/tile/ship/brown{
+	dir = 2
+	},
+/obj/effect/turf_decal/tile/ship/brown{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
+"cs" = (
+/obj/machinery/door/airlock/ship/cargo/glass{
+	name = "Pracownia Bitrunnerów";
+	req_one_access_txt = "78"
+	},
+/obj/structure/cable,
+/obj/machinery/door/firedoor/border_only/directional/north,
+/obj/machinery/door/firedoor/border_only/directional/south,
+/obj/effect/landmark/zebra_interlock_point,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/turf/open/floor/plasteel/tiled/light,
+/area/quartermaster/bitrunning/den)
+"ct" = (
+/obj/machinery/door/airlock/ship/cargo{
+	name = "Pracownia Bitrunnerów";
+	req_one_access_txt = "78"
+	},
+/obj/machinery/door/firedoor/border_only/directional/south,
+/obj/machinery/door/firedoor/border_only/directional/north,
+/obj/effect/landmark/zebra_interlock_point,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/maintenance/department/crew_quarters/dorms)
 "cu" = (
 /obj/item/toy/plush/moth,
 /obj/structure/falsewall/durasteel{
@@ -41254,12 +41435,12 @@ VC
 Ax
 Re
 WD
-Jr
-Jr
-Jr
-Jr
-Jr
-Jr
+bi
+bi
+bi
+bi
+bi
+bi
 dm
 qb
 qb
@@ -41511,12 +41692,12 @@ Qw
 WD
 tu
 Bs
-Jr
-hz
-KY
-JE
-gZ
-hd
+bi
+bp
+bv
+bP
+ck
+bk
 vA
 qb
 qb
@@ -41768,12 +41949,12 @@ ZW
 WD
 hH
 WD
-Jr
-xe
-Ei
-Gx
-wO
-hd
+bi
+bq
+by
+bR
+cm
+bk
 vA
 qb
 qb
@@ -42025,12 +42206,12 @@ AU
 FB
 Le
 pE
-Jr
-oS
-IE
-fm
-rr
-hd
+bi
+bp
+by
+cb
+co
+bk
 vA
 qb
 qb
@@ -42282,12 +42463,12 @@ KS
 Dd
 vb
 bc
-gu
-gA
-Fm
-GA
-Xo
-hd
+cs
+br
+bI
+cc
+cq
+bk
 vA
 vA
 aP
@@ -42539,12 +42720,12 @@ Qw
 qx
 gs
 Oa
-Jr
-dh
-ko
-er
-rd
-oD
+bi
+bu
+bK
+cf
+cr
+ct
 fZ
 qb
 qb
@@ -42796,11 +42977,11 @@ SJ
 Gs
 Gs
 Gs
-hd
-hd
-hd
-hd
-hd
+bk
+bk
+bk
+bk
+bk
 vA
 LU
 qb

@@ -1,0 +1,3167 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/template_noop,
+/area/template_noop)
+"ab" = (
+/obj/structure/curtain/bounty,
+/turf/closed/indestructible/binary,
+/area/virtual_domain/fullbright)
+"ac" = (
+/obj/machinery/light{
+	icon_state = "tube-empty";
+	status = 1;
+	dir = 8
+	},
+/obj/item/light/tube/broken,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"ad" = (
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain/protected_space/fullbright)
+"ae" = (
+/turf/open/floor/plating/dirt/jungle,
+/area/virtual_domain/fullbright)
+"af" = (
+/obj/item/kirbyplants/random,
+/turf/open/indestructible/hotelwood,
+/area/virtual_domain/safehouse)
+"ag" = (
+/turf/open/floor/carpet/green,
+/area/virtual_domain/safehouse)
+"ah" = (
+/obj/effect/landmark/bitrunning/hololadder_spawn,
+/turf/open/indestructible/hotelwood,
+/area/virtual_domain/safehouse)
+"ai" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/item/toy/balloon{
+	pixel_x = 7;
+	pixel_y = 2
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"aj" = (
+/obj/machinery/vending/sovietsoda,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"ak" = (
+/turf/closed/indestructible/fakedoor,
+/area/virtual_domain)
+"al" = (
+/obj/structure/sign/poster/contraband/bountyhunters{
+	dir = 2;
+	pixel_y = -32
+	},
+/turf/template_noop,
+/area/virtual_domain)
+"am" = (
+/obj/structure/sign/poster/contraband/random,
+/obj/structure/sign/poster/official/the_owl,
+/turf/closed/indestructible/riveted,
+/area/virtual_domain/protected_space/fullbright)
+"an" = (
+/obj/effect/decal/cleanable/glitter,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"ao" = (
+/obj/structure/table/reinforced,
+/obj/item/modular_computer/laptop/preset/civillian,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain/protected_space/fullbright)
+"ap" = (
+/obj/machinery/door/airlock,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain/protected_space/fullbright)
+"aq" = (
+/obj/machinery/door/airlock/wood/glass,
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/virtual_domain/safehouse)
+"ar" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/virtual_domain)
+"as" = (
+/obj/structure/curtain,
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"at" = (
+/obj/structure/railing,
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"au" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#B11111"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#B11111"
+	},
+/obj/structure/chair{
+	dir = 4
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"av" = (
+/obj/item/trash/chips,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"aw" = (
+/obj/machinery/vending/boozeomat,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"ax" = (
+/obj/structure/sign/poster/official/the_owl,
+/turf/closed/indestructible/riveted,
+/area/virtual_domain/protected_space/fullbright)
+"ay" = (
+/obj/effect/decal/cleanable/glitter,
+/obj/machinery/light{
+	icon_state = "tube-empty";
+	status = 1;
+	dir = 8
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"az" = (
+/obj/structure/table/reinforced,
+/obj/item/toy/plush/nukeplushie{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/obj/item/phone{
+	pixel_x = -6
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain/protected_space/fullbright)
+"aA" = (
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain/protected_space/fullbright)
+"aB" = (
+/obj/structure/table/reinforced,
+/obj/item/gun/energy/laser{
+	pixel_x = -4
+	},
+/obj/item/gun/energy/laser{
+	pixel_y = 2
+	},
+/obj/item/gun/energy/laser{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/machinery/recharger{
+	pixel_x = 7;
+	pixel_y = -1
+	},
+/obj/machinery/button/door{
+	dir = 4;
+	pixel_x = 24;
+	id = "door2"
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain/protected_space/fullbright)
+"aC" = (
+/obj/structure/closet/crate/trashcart,
+/turf/open/floor/plating/dirt/jungle,
+/area/virtual_domain/fullbright)
+"aD" = (
+/obj/structure/railing/corner{
+	dir = 4
+	},
+/turf/open/floor/carpet/green,
+/area/virtual_domain/safehouse)
+"aE" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/effect/turf_decal/caution/stand_clear,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"aF" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#B11111"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#B11111"
+	},
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"aG" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#B11111"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#B11111"
+	},
+/obj/structure/table,
+/obj/effect/decal/cleanable/glitter,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"aH" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/structure/table,
+/obj/item/toy/balloon,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"aI" = (
+/obj/structure/table/wood/poker,
+/obj/item/toy/cards/deck/syndicate,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"aJ" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/leaper_sludge,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"aK" = (
+/obj/effect/spawner/structure/window/reinforced/indestructable,
+/turf/open/floor/plasteel,
+/area/virtual_domain/protected_space/fullbright)
+"aL" = (
+/obj/machinery/door/poddoor{
+	id = "door2"
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain/protected_space/fullbright)
+"aM" = (
+/obj/structure/sign/poster/official/report_crimes,
+/turf/closed/indestructible/riveted,
+/area/virtual_domain/protected_space/fullbright)
+"aN" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/effect/landmark/bitrunning/cache_goal_turf,
+/obj/effect/turf_decal/loading_area{
+	dir = 4
+	},
+/turf/open/indestructible/bitrunning_transport,
+/area/virtual_domain/safehouse)
+"aO" = (
+/obj/structure/railing,
+/obj/effect/landmark/bitrunning/cache_goal_turf,
+/obj/effect/turf_decal/loading_area{
+	dir = 4
+	},
+/turf/open/indestructible/bitrunning_transport,
+/area/virtual_domain/safehouse)
+"aP" = (
+/obj/structure/sign/poster/random{
+	dir = 4;
+	pixel_x = 32
+	},
+/turf/open/indestructible/hotelwood,
+/area/virtual_domain/safehouse)
+"aQ" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/table/wood,
+/obj/item/newspaper,
+/turf/open/indestructible/hotelwood,
+/area/virtual_domain/safehouse)
+"aR" = (
+/mob/living/simple_animal/hostile/bear/russian,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"aS" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"aT" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/structure/table,
+/obj/item/pizzabox/bomb/armed{
+	pixel_x = 3;
+	pixel_y = 6
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"aU" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/virtual_domain)
+"aV" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#B11111"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#B11111"
+	},
+/mob/living/simple_animal/hostile/bear/snow,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"aW" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#791500";
+	alpha = 130
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#791500";
+	alpha = 130
+	},
+/obj/structure/sign/poster/official/moth1{
+	dir = 8;
+	pixel_x = -32
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"aX" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#791500";
+	alpha = 130
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#791500";
+	alpha = 130
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/machinery/button/door{
+	dir = 8;
+	pixel_x = -24;
+	id = "door2"
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"aY" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#791500";
+	alpha = 130
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#791500";
+	alpha = 130
+	},
+/obj/structure/closet/gmcloset,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"aZ" = (
+/obj/effect/baseturf_helper/virtual_domain,
+/turf/closed/wall/mineral/wood,
+/area/virtual_domain/safehouse)
+"ba" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bb" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#B11111"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#B11111"
+	},
+/obj/item/toy/balloon,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/machinery/light{
+	icon_state = "tube-empty";
+	status = 1;
+	dir = 4
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bc" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bd" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#B11111"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#B11111"
+	},
+/obj/structure/chair{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"be" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/structure/chair{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/insectguts,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bf" = (
+/obj/item/toy/balloon,
+/obj/machinery/light{
+	icon_state = "tube-empty";
+	status = 1;
+	dir = 8
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bg" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#B11111"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#B11111"
+	},
+/obj/structure/chair{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/gibs/up,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bh" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/machinery/light{
+	icon_state = "tube-empty";
+	status = 1;
+	dir = 4
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bi" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#791500";
+	alpha = 130
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#791500";
+	alpha = 130
+	},
+/mob/living/simple_animal/hostile/bear/snow,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bj" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#791500";
+	alpha = 130
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#791500";
+	alpha = 130
+	},
+/obj/machinery/light{
+	icon_state = "tube-empty";
+	status = 1;
+	dir = 4
+	},
+/obj/effect/decal/cleanable/glass/plasma,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bk" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#791500";
+	alpha = 130
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#791500";
+	alpha = 130
+	},
+/obj/effect/decal/cleanable/blood/gibs/down,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bl" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#791500";
+	alpha = 130
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#791500";
+	alpha = 130
+	},
+/obj/structure/closet/gmcloset,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bm" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bn" = (
+/obj/structure/sign/poster/official/pda_ad{
+	dir = 1;
+	pixel_y = 32
+	},
+/turf/closed/indestructible/riveted,
+/area/virtual_domain)
+"bo" = (
+/mob/living/simple_animal/hostile/bear/russian,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bp" = (
+/obj/structure/chair/stool/bar{
+	dir = 4
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bq" = (
+/obj/structure/closet/crate/trashcart,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"br" = (
+/obj/structure/chair/fancy/sofa/corp/right,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bs" = (
+/obj/structure/table/glass,
+/obj/item/reagent_containers/food/drinks/soda_cans/grey_bull,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bt" = (
+/obj/structure/chair/fancy/sofa/corp/left{
+	dir = 1
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bu" = (
+/obj/structure/table/wood,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bv" = (
+/obj/structure/chair/stool/bar{
+	dir = 1
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bw" = (
+/obj/structure/chair/fancy/sofa/corp,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bx" = (
+/obj/structure/table/glass,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"by" = (
+/obj/structure/chair/fancy/sofa/corp{
+	dir = 1
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bz" = (
+/obj/machinery/door/airlock,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bA" = (
+/obj/effect/decal/cleanable/food/salt,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bB" = (
+/obj/item/trash/pistachios,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bC" = (
+/mob/living/simple_animal/hostile/bear/fightpit,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bD" = (
+/obj/structure/table,
+/obj/item/kitchen/fork,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bE" = (
+/obj/structure/table,
+/obj/item/kitchen/rollingpin,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bF" = (
+/obj/structure/sign/poster/contraband/ambrosia_vulgaris{
+	dir = 8;
+	pixel_x = -32
+	},
+/turf/closed/indestructible/riveted,
+/area/virtual_domain)
+"bG" = (
+/obj/machinery/chem_dispenser/drinks/beer,
+/obj/structure/table/wood,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bH" = (
+/obj/structure/chair/fancy/sofa/corp/left,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bI" = (
+/obj/structure/table/glass,
+/obj/item/reagent_containers/food/drinks/drinkingglass/filled/soda{
+	pixel_x = 3;
+	pixel_y = 6
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bJ" = (
+/obj/structure/chair/fancy/sofa/corp/right{
+	dir = 1
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bK" = (
+/obj/effect/decal/cleanable/food/flour,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bL" = (
+/obj/structure/table,
+/obj/effect/decal/cleanable/food/salt,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bM" = (
+/obj/machinery/computer/arcade/amputation,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bN" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/food/drinks/shaker{
+	pixel_x = 5
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bO" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/food/drinks/bottle/goldschlager{
+	pixel_y = 11;
+	pixel_x = 7
+	},
+/obj/item/reagent_containers/food/drinks/bottle/cognac{
+	pixel_x = -4
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bP" = (
+/obj/machinery/light{
+	icon_state = "tube-empty";
+	status = 1;
+	dir = 4
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bQ" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bR" = (
+/obj/effect/decal/cleanable/blood/footprints,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bS" = (
+/obj/structure/closet/secure_closet/freezer/kitchen,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bT" = (
+/obj/machinery/deepfryer,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bU" = (
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 4
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bV" = (
+/obj/machinery/griddle,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bW" = (
+/obj/structure/closet/secure_closet/freezer/cream_pie,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bX" = (
+/obj/item/trash/boritos{
+	pixel_x = 4;
+	pixel_y = 11
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bY" = (
+/obj/machinery/light{
+	icon_state = "tube-empty";
+	status = 1;
+	dir = 4
+	},
+/obj/effect/decal/cleanable/food/tomato_smudge,
+/obj/effect/landmark/bitrunning/cache_spawn,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"bZ" = (
+/obj/machinery/oven,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"ca" = (
+/obj/effect/landmark/bitrunning/cache_spawn,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"cb" = (
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"cc" = (
+/obj/item/trash/raisins,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"cd" = (
+/obj/machinery/computer/arcade/amputation{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/glitter,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"ce" = (
+/obj/structure/sign/poster/contraband/random,
+/turf/closed/indestructible/riveted,
+/area/virtual_domain)
+"cf" = (
+/obj/machinery/computer/arcade/amputation,
+/obj/effect/decal/cleanable/glitter,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"cg" = (
+/obj/machinery/computer/arcade/amputation{
+	dir = 1
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"ch" = (
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/effect/decal/cleanable/crayon = 1000);
+	name = "random graffiti spawner"
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"ci" = (
+/obj/structure/chair/fancy/comfy{
+	color = "#3D3C38";
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"cj" = (
+/obj/structure/chair/fancy/comfy{
+	color = "#3D3C38";
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"ck" = (
+/obj/structure/chair/fancy/comfy{
+	color = "#3D3C38";
+	dir = 8
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"cl" = (
+/obj/structure/chair/fancy/comfy{
+	color = "#3D3C38";
+	dir = 8
+	},
+/obj/item/trash/pistachios,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"cm" = (
+/turf/open/floor/wood,
+/area/virtual_domain)
+"cn" = (
+/obj/structure/sign/poster/official/soft_cap_pop_art,
+/turf/closed/indestructible/riveted,
+/area/virtual_domain)
+"co" = (
+/mob/living/simple_animal/hostile/bear/butter,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"cp" = (
+/obj/effect/decal/cleanable/molten_object/large,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"cq" = (
+/obj/structure/sign/poster/contraband/random{
+	dir = 1;
+	pixel_y = 32
+	},
+/turf/closed/indestructible/riveted,
+/area/virtual_domain)
+"cr" = (
+/obj/effect/decal/cleanable/oil,
+/mob/living/simple_animal/hostile/bear/fightpit,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"cs" = (
+/obj/structure/sign/poster/official/no_erp{
+	dir = 1;
+	pixel_y = 32
+	},
+/turf/closed/indestructible/riveted,
+/area/virtual_domain)
+"ct" = (
+/obj/structure/sign/poster/official/no_erp{
+	dir = 1;
+	pixel_y = 32
+	},
+/obj/structure/sign/poster/official/no_erp{
+	dir = 1;
+	pixel_y = 32
+	},
+/turf/closed/indestructible/riveted,
+/area/virtual_domain)
+"cu" = (
+/obj/structure/sign/poster/contraband/random{
+	dir = 2;
+	pixel_y = -32
+	},
+/obj/effect/landmark/bitrunning/cache_spawn,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"cv" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#B11111"
+	},
+/turf/closed/indestructible/riveted,
+/area/virtual_domain)
+"cw" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"cx" = (
+/mob/living/simple_animal/hostile/bear/fightpit,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"cy" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#B11111"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#B11111"
+	},
+/obj/effect/decal/cleanable/blood/gibs/old,
+/obj/machinery/light{
+	icon_state = "tube-empty";
+	status = 1;
+	dir = 8
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"cz" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/effect/decal/cleanable/blood/xtracks,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"cA" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#B11111"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#B11111"
+	},
+/obj/structure/chair{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/insectguts,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"cB" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/structure/chair{
+	dir = 4
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"cC" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#B11111"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#B11111"
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"cD" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/structure/chair{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/glitter,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"cE" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#B11111"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#B11111"
+	},
+/obj/structure/chair{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/glitter,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"cF" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/item/toy/balloon,
+/obj/machinery/light{
+	icon_state = "tube-empty";
+	status = 1;
+	dir = 8
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"cG" = (
+/obj/effect/decal/cleanable/insectguts,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"cH" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#791500";
+	alpha = 130
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#791500";
+	alpha = 130
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"cI" = (
+/obj/effect/landmark/bitrunning/cache_spawn,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"cJ" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#791500";
+	alpha = 130
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#791500";
+	alpha = 130
+	},
+/obj/machinery/light{
+	icon_state = "tube-empty";
+	status = 1;
+	dir = 8
+	},
+/obj/effect/decal/cleanable/glass/plasma,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"cK" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#791500";
+	alpha = 130
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#791500";
+	alpha = 130
+	},
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"cL" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#791500";
+	alpha = 130
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#791500";
+	alpha = 130
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"cM" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#791500";
+	alpha = 130
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#791500";
+	alpha = 130
+	},
+/obj/structure/closet/gmcloset,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/item/clothing/head/bearpelt,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"cN" = (
+/turf/closed/indestructible/binary,
+/area/virtual_domain/fullbright)
+"cO" = (
+/obj/structure/railing,
+/obj/structure/curtain,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"cP" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#B11111"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#B11111"
+	},
+/obj/effect/turf_decal/caution/stand_clear,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"cQ" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#B11111"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#B11111"
+	},
+/obj/effect/decal/cleanable/glitter,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"cR" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/structure/table,
+/obj/item/food/pizza/margherita{
+	pixel_y = 6
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"cS" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#B11111"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#B11111"
+	},
+/obj/structure/table,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"cT" = (
+/turf/closed/indestructible/riveted,
+/area/virtual_domain)
+"cU" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#B11111"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#B11111"
+	},
+/obj/structure/table,
+/obj/item/food/pizzaslice/margherita,
+/obj/effect/decal/cleanable/glitter,
+/obj/effect/decal/cleanable/insectguts,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"cV" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/structure/table,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"cW" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#B11111"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#B11111"
+	},
+/obj/item/toy/balloon{
+	pixel_x = 7;
+	pixel_y = 2
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"cX" = (
+/obj/machinery/computer/slot_machine,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"cY" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#791500";
+	alpha = 130
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#791500";
+	alpha = 130
+	},
+/obj/item/restraints/legcuffs/beartrap{
+	armed = 1;
+	icon_state = "beartrap1"
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"cZ" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#791500";
+	alpha = 130
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#791500";
+	alpha = 130
+	},
+/obj/effect/decal/chempuff,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"da" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#791500";
+	alpha = 130
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#791500";
+	alpha = 130
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/machinery/button/door{
+	dir = 4;
+	pixel_x = 24;
+	id = "door1"
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"db" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#791500";
+	alpha = 130
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#791500";
+	alpha = 130
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/effect/decal/cleanable/greenglow,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"dc" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#791500";
+	alpha = 130
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#791500";
+	alpha = 130
+	},
+/obj/structure/janitorialcart,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/effect/decal/cleanable/greenglow,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"dd" = (
+/turf/closed/wall/mineral/wood,
+/area/virtual_domain/safehouse)
+"de" = (
+/obj/structure/sign/poster/official/the_owl,
+/turf/closed/indestructible/riveted,
+/area/virtual_domain)
+"df" = (
+/obj/effect/spawner/structure/window,
+/turf/open/floor/plating,
+/area/virtual_domain/safehouse)
+"dg" = (
+/obj/structure/curtain,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"dh" = (
+/obj/structure/railing,
+/obj/effect/decal/cleanable/oil,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"di" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/effect/decal/cleanable/glitter,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"dj" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#B11111"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#B11111"
+	},
+/obj/structure/table,
+/obj/item/food/pizza/margherita,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"dk" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/structure/table,
+/obj/item/trash/tray,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"dl" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#B11111"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#B11111"
+	},
+/obj/structure/table,
+/obj/item/food/pizza/margherita/raw{
+	pixel_x = 3;
+	pixel_y = 8
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"dm" = (
+/obj/structure/table/wood/poker,
+/obj/item/toy/cards/deck,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"dn" = (
+/obj/structure/table/wood/poker,
+/obj/item/trash/chips,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"do" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#791500";
+	alpha = 130
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#791500";
+	alpha = 130
+	},
+/obj/effect/decal/cleanable/ants,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"dp" = (
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/machinery/computer/slot_machine = 1000);
+	name = "spawn random slot machine"
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"dq" = (
+/turf/closed/indestructible/riveted,
+/area/virtual_domain/protected_space/fullbright)
+"dr" = (
+/obj/effect/spawner/structure/window/reinforced/indestructable,
+/obj/structure/sign/poster/contraband/space_cola{
+	dir = 1;
+	pixel_y = 32
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain/protected_space/fullbright)
+"ds" = (
+/obj/machinery/door/poddoor{
+	id = "door1"
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain/protected_space/fullbright)
+"dt" = (
+/obj/structure/sign/poster/contraband/free_key,
+/turf/closed/indestructible/riveted,
+/area/virtual_domain/protected_space/fullbright)
+"du" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/open/indestructible/hotelwood,
+/area/virtual_domain/safehouse)
+"dv" = (
+/turf/open/indestructible/hotelwood,
+/area/virtual_domain/safehouse)
+"dw" = (
+/obj/structure/railing,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"dx" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/structure/chair{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/glitter,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"dy" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#B11111"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#B11111"
+	},
+/obj/structure/chair{
+	dir = 8
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"dz" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#52B4E9"
+	},
+/obj/structure/chair{
+	dir = 8
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"dA" = (
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"dB" = (
+/obj/item/trash/popcorn,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"dC" = (
+/obj/structure/table/wood/poker,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"dD" = (
+/obj/effect/spawner/structure/window/plasma/reinforced,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dE" = (
+/obj/item/trash/can,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"dF" = (
+/obj/structure/reagent_dispensers/water_cooler,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"dG" = (
+/turf/template_noop,
+/area/virtual_domain)
+"dH" = (
+/obj/structure/table/reinforced,
+/obj/item/flashlight/seclite{
+	pixel_y = 9
+	},
+/obj/item/flashlight/seclite,
+/obj/item/flashlight/seclite{
+	pixel_y = 6
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain/protected_space/fullbright)
+"dI" = (
+/obj/effect/decal/cleanable/glitter,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain/protected_space/fullbright)
+"dJ" = (
+/obj/effect/decal/cleanable/oil,
+/obj/effect/decal/cleanable/glitter,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain/protected_space/fullbright)
+"dK" = (
+/obj/machinery/button/door{
+	dir = 8;
+	pixel_x = -24;
+	id = "door1"
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain/protected_space/fullbright)
+
+(1,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(2,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(3,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+cb
+cm
+cm
+cm
+cm
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(4,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+cm
+cm
+cm
+cm
+cx
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(5,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+cI
+cm
+cm
+cm
+cI
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(6,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+cT
+cT
+cT
+cT
+cT
+cT
+de
+cT
+cT
+cT
+cT
+cT
+cm
+cm
+cm
+cT
+cT
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(7,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+cT
+dp
+dA
+dA
+ac
+dA
+dA
+an
+dA
+dA
+dA
+ay
+aJ
+aU
+aU
+bf
+cT
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(8,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+cT
+bq
+bB
+dA
+bM
+bX
+cc
+cd
+an
+dA
+dA
+dA
+an
+an
+dA
+dA
+cT
+aa
+aa
+cT
+cT
+cT
+cT
+cT
+cT
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(9,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+ce
+bq
+dA
+dA
+cf
+dA
+dA
+cg
+ch
+dA
+dA
+dA
+ci
+cj
+ck
+dA
+cT
+aa
+aa
+cT
+dA
+dA
+dA
+dA
+cT
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(10,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+cT
+bq
+dA
+dA
+cf
+an
+dA
+cg
+dA
+dA
+dA
+dA
+cl
+ck
+ck
+dA
+cn
+aa
+aa
+cT
+dA
+co
+dA
+dA
+cT
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(11,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+cT
+dp
+dA
+dA
+dA
+dA
+dA
+dA
+dA
+dA
+dA
+dA
+ck
+ck
+ck
+dA
+cT
+aa
+aa
+cT
+dA
+dA
+dA
+dA
+cT
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(12,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+cT
+cT
+cT
+cT
+dA
+dA
+dA
+cp
+cT
+cT
+cq
+dA
+dA
+dA
+dA
+cr
+cT
+cT
+cT
+cT
+cT
+cT
+cT
+cT
+cT
+cT
+cs
+cs
+ct
+cs
+cT
+cT
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(13,1,1) = {"
+aa
+ab
+cm
+cm
+cu
+cv
+cw
+cy
+cz
+cA
+cB
+cC
+cD
+cE
+cF
+cT
+dA
+cG
+dA
+dA
+cH
+cH
+cH
+cH
+cJ
+cH
+cH
+cK
+cH
+cH
+cH
+cL
+cL
+cL
+cL
+cM
+cT
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+"}
+(14,1,1) = {"
+aa
+ab
+cm
+cm
+cm
+cO
+cP
+cw
+cQ
+cR
+cS
+cw
+cU
+cV
+cW
+cT
+dA
+cX
+cX
+dA
+cH
+cY
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+cZ
+cL
+da
+cL
+db
+dc
+cT
+cN
+dd
+dd
+df
+dd
+dd
+dd
+cN
+"}
+(15,1,1) = {"
+aa
+ab
+cm
+cm
+cm
+dg
+dh
+cC
+di
+dj
+dk
+cC
+cV
+dl
+cw
+dA
+dA
+dm
+dn
+dA
+do
+cT
+cT
+cT
+cT
+cT
+cT
+cT
+dq
+dq
+dr
+ds
+dq
+dt
+dq
+cT
+cT
+cT
+df
+du
+dv
+dv
+du
+df
+cN
+"}
+(16,1,1) = {"
+aa
+ab
+cm
+cm
+cm
+dg
+dw
+cw
+cC
+dx
+dy
+cw
+dy
+dz
+cQ
+dA
+dB
+dC
+dA
+dA
+cH
+dD
+dE
+dF
+cT
+dG
+dG
+dG
+dq
+dH
+dI
+dJ
+dK
+ad
+dq
+ae
+ae
+ae
+dd
+af
+ag
+ag
+ah
+dd
+cN
+"}
+(17,1,1) = {"
+aa
+ab
+cm
+cm
+cm
+dg
+dw
+cC
+cw
+cC
+ai
+cC
+cw
+cC
+di
+dA
+dA
+dC
+dA
+dA
+cH
+dA
+dA
+aj
+ak
+dG
+dG
+al
+am
+ao
+ad
+ad
+ad
+ad
+ap
+ae
+ae
+ae
+aq
+dv
+ag
+ag
+ah
+dd
+cN
+"}
+(18,1,1) = {"
+aa
+ab
+cm
+cm
+ar
+as
+at
+cw
+cC
+cD
+au
+cw
+au
+cD
+cQ
+dA
+dA
+dC
+dA
+dA
+cH
+dD
+av
+aw
+cT
+dG
+dG
+dG
+ax
+az
+aA
+dI
+aB
+ad
+dq
+aC
+ae
+ae
+dd
+dv
+aD
+ag
+ah
+dd
+cN
+"}
+(19,1,1) = {"
+aa
+ab
+cm
+cm
+ar
+cO
+aE
+aF
+di
+aG
+cV
+cC
+aH
+cS
+di
+dA
+dA
+dC
+aI
+dA
+cH
+cT
+cT
+cT
+cT
+cT
+cT
+cT
+dq
+dq
+aK
+aL
+dq
+aM
+dq
+cT
+cT
+cT
+df
+aN
+aO
+aP
+aQ
+df
+cN
+"}
+(20,1,1) = {"
+aa
+ab
+cm
+cm
+aR
+cT
+cC
+aS
+cC
+cV
+dl
+cw
+cS
+aT
+aV
+cT
+dA
+cX
+cX
+dA
+cH
+cH
+cH
+cH
+cH
+cH
+cH
+aW
+cH
+cH
+cH
+cL
+aX
+cL
+cL
+aY
+cT
+cN
+dd
+dd
+df
+dd
+dd
+aZ
+cN
+"}
+(21,1,1) = {"
+aa
+ab
+cm
+cm
+cI
+cT
+ba
+bb
+bc
+bd
+be
+cQ
+dz
+bg
+bh
+cT
+dA
+dA
+dA
+dA
+bi
+cH
+cH
+cH
+bj
+cH
+cH
+bk
+cH
+cH
+cH
+cL
+cL
+cL
+cL
+bl
+cT
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+cN
+"}
+(22,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+cT
+cT
+cT
+cT
+bm
+dA
+dA
+dA
+cT
+cT
+cT
+dA
+dA
+dA
+dA
+dA
+cT
+cT
+cT
+cT
+cT
+cT
+ak
+cT
+cT
+bn
+cT
+cT
+cT
+cT
+cT
+cT
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(23,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+cT
+bo
+dA
+dA
+dA
+dA
+dA
+dA
+dA
+dA
+dA
+dA
+dA
+dA
+dA
+dA
+cT
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(24,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+cT
+bp
+bp
+bp
+bp
+bp
+bp
+dA
+dA
+dA
+dA
+dA
+br
+bs
+bt
+dA
+cT
+cT
+cT
+cT
+cT
+cT
+cT
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(25,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+cT
+bu
+bu
+bu
+bu
+bu
+bu
+bv
+dA
+dA
+dA
+dA
+bw
+bx
+by
+dA
+bz
+dA
+bA
+bC
+bD
+bE
+cT
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(26,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+bF
+bG
+dA
+dA
+dA
+dA
+bu
+bv
+dA
+dA
+dA
+bC
+bH
+bI
+bJ
+dA
+bz
+dA
+dA
+bK
+dA
+bL
+cT
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(27,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+cT
+aw
+dA
+bN
+bO
+bP
+bu
+bv
+dA
+dA
+bQ
+bR
+bR
+bP
+dA
+dA
+cT
+cT
+cT
+bS
+dA
+bT
+cT
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(28,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+cT
+cT
+ak
+cT
+cT
+cT
+cT
+cT
+cT
+dA
+bU
+cT
+cT
+cT
+cT
+cT
+cT
+aa
+cT
+bS
+dA
+bV
+cT
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(29,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+cT
+dA
+bU
+cT
+aa
+aa
+aa
+aa
+aa
+aa
+cT
+bW
+bY
+bZ
+cT
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(30,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+cT
+cT
+cT
+cT
+cT
+cT
+cT
+cT
+cT
+dA
+dA
+cT
+cT
+cT
+cT
+cT
+cT
+aa
+cT
+cT
+cT
+cT
+cT
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(31,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+cT
+dA
+dA
+dA
+dA
+dA
+bC
+dA
+dA
+dA
+dA
+dA
+dA
+dA
+dA
+dA
+cT
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(32,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+cT
+ca
+dA
+dA
+dA
+dA
+dA
+dA
+dA
+dA
+dA
+dA
+dA
+dA
+dA
+dA
+cT
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(33,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+cT
+cT
+cT
+ak
+ak
+cT
+cT
+cT
+cT
+cT
+cT
+cT
+cT
+ak
+ak
+cT
+cT
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}

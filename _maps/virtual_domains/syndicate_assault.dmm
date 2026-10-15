@@ -1,0 +1,4513 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/closed/indestructible/binary,
+/area/virtual_domain/fullbright)
+"ab" = (
+/turf/open/space/basic,
+/area/space/virtual_domain)
+"ac" = (
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"ad" = (
+/obj/machinery/light/small{
+	dir = 2
+	},
+/obj/effect/landmark/bitrunning/cache_spawn,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"ae" = (
+/turf/closed/wall/r_wall/syndicate,
+/area/virtual_domain/protected_space)
+"af" = (
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain/protected_space)
+"ag" = (
+/obj/machinery/ore_silo,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain/protected_space)
+"ah" = (
+/turf/closed/mineral/random,
+/area/virtual_domain/protected_space)
+"ai" = (
+/turf/open/space/basic,
+/area/virtual_domain/protected_space)
+"aj" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#D4D4D4";
+	alpha = 50;
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"ak" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"al" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"am" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/bitrunning/cache_goal_turf,
+/obj/effect/turf_decal/loading_area,
+/turf/open/indestructible/bitrunning_transport,
+/area/virtual_domain/safehouse)
+"an" = (
+/obj/effect/landmark/bitrunning/cache_spawn,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"ao" = (
+/obj/item/storage/backpack/duffelbag/syndie/surgery,
+/obj/structure/table/reinforced,
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"ap" = (
+/obj/machinery/camera/xray{
+	c_tag = "Medbay";
+	dir = 6;
+	network = list("fsci");
+	screen_loc = ""
+	},
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"aq" = (
+/obj/machinery/door/airlock/grunge{
+	name = "Syndicate Ship Airlock";
+	req_access_txt = "150"
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"ar" = (
+/obj/machinery/atmospherics/components/unary/vent_pump,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"as" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"at" = (
+/obj/machinery/door/airlock/grunge{
+	name = "Syndicate Ship Airlock";
+	req_access_txt = "150"
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"au" = (
+/obj/machinery/shower{
+	dir = 1;
+	pixel_y = -16
+	},
+/obj/machinery/light{
+	dir = 2
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"av" = (
+/obj/structure/sign/poster/contraband/c20r,
+/turf/closed/wall/r_wall/syndicate,
+/area/virtual_domain/protected_space)
+"aw" = (
+/obj/structure/tank_dispenser/oxygen,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain/protected_space)
+"ax" = (
+/obj/structure/transit_tube/station/reverse{
+	dir = 4
+	},
+/obj/structure/transit_tube_pod{
+	dir = 2
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain/protected_space)
+"ay" = (
+/obj/structure/closet/crate/secure/gear{
+	req_access_txt = "150"
+	},
+/obj/item/stack/ore/diamond{
+	amount = 3
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"az" = (
+/obj/structure/transit_tube/crossing,
+/turf/closed/wall/r_wall/syndicate,
+/area/virtual_domain/protected_space)
+"aA" = (
+/obj/structure/transit_tube/crossing,
+/turf/closed/mineral/random,
+/area/virtual_domain/protected_space)
+"aB" = (
+/obj/structure/transit_tube/crossing,
+/turf/open/space/basic,
+/area/virtual_domain/protected_space)
+"aC" = (
+/obj/structure/transit_tube/crossing,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/door/airlock/shuttle/glass,
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/sand,
+/obj/structure/fans/tiny,
+/turf/open/floor/plasteel/white,
+/area/virtual_domain/safehouse)
+"aD" = (
+/obj/structure/transit_tube/station/reverse{
+	dir = 8
+	},
+/obj/structure/transit_tube_pod{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"aE" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"aF" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/generic,
+/obj/effect/landmark/bitrunning/hololadder_spawn,
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"aG" = (
+/obj/machinery/camera/xray{
+	c_tag = "Cargo pod";
+	dir = 9;
+	network = list("fsci");
+	screen_loc = ""
+	},
+/obj/structure/closet,
+/obj/item/clothing/under/syndicate/tacticool,
+/obj/item/clothing/under/syndicate/tacticool,
+/obj/item/clothing/under/syndicate/tacticool,
+/obj/item/card/id/syndicate_command,
+/obj/item/card/id/syndicate_command,
+/obj/item/card/id/syndicate_command,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain/protected_space)
+"aH" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#D4D4D4";
+	alpha = 50;
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"aI" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/structure/chair/fancy/shuttle{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"aJ" = (
+/obj/structure/closet/crate/secure/gear{
+	req_access_txt = "150"
+	},
+/obj/item/stack/ore/plasma{
+	amount = 19
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"aK" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#D4D4D4";
+	alpha = 50;
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/landmark/bitrunning/hololadder_spawn,
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"aL" = (
+/obj/structure/bodycontainer/crematorium{
+	id = "fscremate"
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"aM" = (
+/obj/machinery/button/crematorium{
+	id = "fscremate";
+	pixel_x = -32
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"aN" = (
+/obj/machinery/power/apc/auto_name/north{
+	req_access_txt = "150"
+	},
+/obj/structure/cable,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"aO" = (
+/obj/structure/cable,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"aP" = (
+/obj/machinery/suit_storage_unit/syndicate{
+	helmet_type = /obj/item/clothing/head/helmet/space/syndicate/black;
+	suit_type = /obj/item/clothing/suit/space/syndicate/black
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"aQ" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/firstaid/regular,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain/protected_space)
+"aR" = (
+/obj/structure/cable,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain/protected_space)
+"aS" = (
+/obj/machinery/light/small{
+	dir = 2
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain/protected_space)
+"aT" = (
+/turf/closed/mineral,
+/area/ruin/space/virtual_domain)
+"aU" = (
+/obj/structure/closet/crate/secure/gear{
+	req_access_txt = "150"
+	},
+/obj/effect/spawner/lootdrop/maintenance,
+/obj/effect/spawner/lootdrop/maintenance,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"aV" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/structure/table/reinforced,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/storage/toolbox/emergency,
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"aW" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/computer{
+	dir = 8;
+	name = "shuttle console";
+	icon_screen = "shuttle"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"aX" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/structure/table/reinforced,
+/obj/item/tank/internals/emergency_oxygen{
+	pixel_x = 3
+	},
+/obj/item/clothing/mask/gas,
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"aY" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/machinery/light/small{
+	dir = 2
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/bitrunning/hololadder_spawn,
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"aZ" = (
+/obj/machinery/light/small{
+	dir = 2
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"ba" = (
+/obj/machinery/airalarm/directional/north{
+	req_access_txt = "150"
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"bb" = (
+/obj/structure/chair/fancy/shuttle{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"bc" = (
+/obj/structure/chair/fancy/shuttle{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"bd" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"be" = (
+/obj/structure/sign/poster/contraband/tools,
+/turf/closed/wall/r_wall/syndicate,
+/area/virtual_domain/protected_space)
+"bf" = (
+/obj/structure/closet/crate/secure/gear{
+	req_access_txt = "150"
+	},
+/obj/effect/spawner/lootdrop/costume,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"bg" = (
+/obj/structure/cable,
+/obj/structure/table/reinforced,
+/obj/item/storage/toolbox/syndicate,
+/obj/item/storage/toolbox/syndicate,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain/protected_space)
+"bh" = (
+/obj/machinery/suit_storage_unit/syndicate,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain/protected_space)
+"bi" = (
+/obj/effect/baseturf_helper/virtual_domain,
+/turf/closed/wall/mineral/titanium/overspace,
+/area/virtual_domain/safehouse)
+"bj" = (
+/obj/structure/fans/tiny,
+/obj/machinery/door/airlock/external{
+	name = "Syndicate Ship Airlock";
+	req_access_txt = "150"
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"bk" = (
+/obj/machinery/door/airlock/external{
+	name = "Syndicate Ship Airlock";
+	req_access_txt = "150"
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"bl" = (
+/obj/structure/chair/fancy/shuttle,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"bm" = (
+/obj/structure/table/reinforced,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer2,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"bn" = (
+/obj/structure/table/reinforced,
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"bo" = (
+/obj/structure/chair/fancy/shuttle{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"bp" = (
+/obj/structure/cable,
+/obj/machinery/door/airlock/external{
+	name = "Syndicate Ship Airlock";
+	req_access_txt = "150"
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"bq" = (
+/obj/effect/landmark/bitrunning/mob_segment,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"br" = (
+/obj/structure/cable,
+/mob/living/carbon/human/ai_boarder/syndicate/shotgun,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"bs" = (
+/obj/structure/cable,
+/obj/structure/fans/tiny,
+/obj/machinery/door/airlock/external{
+	name = "Syndicate Ship Airlock";
+	req_access_txt = "150"
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"bt" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable,
+/turf/open/space/basic,
+/area/space/virtual_domain)
+"bu" = (
+/obj/machinery/door/airlock/external{
+	name = "Syndicate Ship Airlock";
+	req_access_txt = "150"
+	},
+/obj/structure/cable,
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/virtual_domain/protected_space)
+"bv" = (
+/obj/structure/sign/warning/vacuum/external{
+	dir = 1;
+	pixel_y = 32
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"bw" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden,
+/obj/effect/landmark/bitrunning/mob_segment,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"bx" = (
+/obj/structure/sign/warning/vacuum/external{
+	dir = 2;
+	pixel_y = -32
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"by" = (
+/obj/structure/table/reinforced,
+/obj/item/gun/ballistic/automatic/l6_saw/unrestricted,
+/obj/item/ammo_box/magazine/mm712x82,
+/obj/structure/sign/departments/cargo{
+	dir = 1;
+	pixel_y = 32
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain/protected_space)
+"bz" = (
+/obj/machinery/recharge_station,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"bA" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"bB" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"bC" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"bD" = (
+/obj/machinery/light{
+	dir = 2
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"bE" = (
+/obj/structure/tank_dispenser/oxygen,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"bF" = (
+/obj/structure/table/reinforced,
+/obj/item/ammo_box/magazine/smgm45,
+/obj/item/ammo_box/magazine/smgm45,
+/obj/item/ammo_box/magazine/smgm45,
+/obj/item/gun/ballistic/automatic/c20r/unrestricted,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain/protected_space)
+"bG" = (
+/obj/structure/table/reinforced,
+/obj/item/dualsaber/green,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain/protected_space)
+"bH" = (
+/obj/machinery/vending/cigarette/syndicate,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"bI" = (
+/obj/machinery/camera/xray{
+	dir = 4;
+	c_tag = "Conference room";
+	network = list("fsc");
+	screen_loc = ""
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"bJ" = (
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/virtual_domain)
+"bK" = (
+/obj/machinery/door/airlock/grunge{
+	name = "Bridge";
+	req_access_txt = "150"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"bL" = (
+/obj/structure/sign/poster/contraband/syndicate_recruitment,
+/turf/closed/wall/r_wall/syndicate,
+/area/virtual_domain)
+"bM" = (
+/obj/effect/baseturf_helper/virtual_domain,
+/turf/closed/wall/r_wall/syndicate,
+/area/virtual_domain)
+"bN" = (
+/obj/structure/closet/syndicate{
+	anchored = 1;
+	desc = "A basic closet for all your villainous needs.";
+	locked = 1;
+	name = "Closet";
+	req_access_txt = "150";
+	secure = 1
+	},
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/gun/ballistic/automatic/pistol = 381, /obj/item/gun/ballistic/shotgun/automatic/combat = 238, /obj/item/storage/box/syndie_kit/throwing_weapons = 143, /obj/item/grenade/clusterbuster/teargas = 95, /obj/item/grenade/clusterbuster = 95, /obj/item/gun/ballistic/revolver/mateba = 43, /obj/item/gun/ballistic/automatic/pistol/deagle = 5);
+	name = "armory loot spawner"
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"bO" = (
+/obj/structure/closet/syndicate{
+	anchored = 1;
+	desc = "A basic closet for all your villainous needs.";
+	locked = 1;
+	name = "Closet";
+	req_access_txt = "150";
+	secure = 1
+	},
+/obj/item/ammo_box/c9mm,
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"bP" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"bQ" = (
+/obj/structure/closet/syndicate{
+	anchored = 1;
+	desc = "A basic closet for all your villainous needs.";
+	locked = 1;
+	name = "Closet";
+	req_access_txt = "150";
+	secure = 1
+	},
+/obj/item/gun/ballistic/automatic/pistol,
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"bR" = (
+/obj/structure/closet/syndicate{
+	anchored = 1;
+	desc = "A basic closet for all your villainous needs.";
+	locked = 1;
+	name = "Closet";
+	req_access_txt = "150";
+	secure = 1
+	},
+/obj/item/ammo_box/c9mm,
+/obj/item/gun/ballistic/automatic/pistol,
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"bS" = (
+/obj/machinery/turretid{
+	enabled = 0;
+	lethal = 1;
+	name = "Ship turret control panel";
+	pixel_y = 32;
+	req_access_txt = "150"
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"bT" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"bU" = (
+/obj/machinery/atmospherics/components/unary/vent_pump,
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"bV" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 9
+	},
+/obj/effect/landmark/bitrunning/mob_segment,
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"bW" = (
+/obj/machinery/light{
+	dir = 2
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"bX" = (
+/obj/machinery/door/airlock/grunge{
+	name = "Syndicate Ship Airlock";
+	req_access_txt = "150"
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"bY" = (
+/obj/structure/closet/syndicate{
+	anchored = 1;
+	desc = "A basic closet for all your villainous needs.";
+	locked = 1;
+	name = "Closet";
+	req_access_txt = "150";
+	secure = 1
+	},
+/obj/item/clothing/under/syndicate/combat,
+/obj/item/clothing/gloves/combat,
+/obj/item/clothing/shoes/combat,
+/obj/item/clothing/mask/gas/syndicate,
+/obj/item/clothing/under/syndicate,
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"bZ" = (
+/obj/effect/landmark/bitrunning/cache_spawn,
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"ca" = (
+/obj/machinery/door/window/southleft{
+	name = "Control Room";
+	req_access_txt = "150"
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"cb" = (
+/obj/structure/chair/fancy/shuttle{
+	dir = 4
+	},
+/mob/living/carbon/human/ai_boarder/syndicate/smg,
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"cc" = (
+/obj/structure/chair/fancy/shuttle{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"cd" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer2{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"ce" = (
+/obj/machinery/door/window/northleft{
+	name = "Spare Equipment";
+	req_access_txt = "150"
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"cf" = (
+/obj/machinery/computer/security{
+	desc = "Used to access interrogation room camera.";
+	dir = 8;
+	name = "Ship cameras console";
+	network = list("fsc","fsci");
+	screen_loc = ""
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"cg" = (
+/obj/machinery/computer/atmos_alert{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"ch" = (
+/obj/structure/closet/syndicate{
+	anchored = 1;
+	desc = "A basic closet for all your villainous needs.";
+	locked = 1;
+	name = "Closet";
+	req_access_txt = "150";
+	secure = 1
+	},
+/obj/item/clothing/head/HoS/beret/syndicate,
+/obj/item/clothing/suit/armor/vest/capcarapace/syndicate,
+/obj/item/clothing/mask/gas/syndicate,
+/obj/item/clothing/under/syndicate,
+/obj/item/clothing/under/syndicate,
+/obj/item/clothing/gloves/combat,
+/obj/item/clothing/shoes/combat,
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"ci" = (
+/turf/closed/mineral/random/high_chance,
+/area/ruin/space/virtual_domain)
+"cj" = (
+/obj/structure/table/reinforced,
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"ck" = (
+/obj/structure/table/reinforced,
+/obj/item/toy/plush/nukeplushie,
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"cl" = (
+/obj/structure/table/reinforced,
+/obj/machinery/button/door{
+	id = "fslockdown";
+	name = "Window shutters";
+	req_access_txt = "150"
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"cm" = (
+/obj/structure/window/plastitanium,
+/obj/machinery/door/poddoor{
+	id = "fslockdown";
+	name = "Ship Blast Door";
+	state_open = 1
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"cn" = (
+/obj/effect/mob_spawn/human/virtual_domain/syndie,
+/turf/open/floor/carpet/royalblack,
+/area/virtual_domain)
+"co" = (
+/obj/structure/closet/syndicate{
+	anchored = 1;
+	desc = "A basic closet for all your villainous needs.";
+	locked = 1;
+	name = "Closet";
+	req_access_txt = "150";
+	secure = 1
+	},
+/obj/item/crowbar/red,
+/obj/item/ammo_box/magazine/pistolm9mm,
+/obj/item/ammo_box/magazine/pistolm9mm,
+/obj/item/gun/ballistic/automatic/pistol/APS,
+/turf/open/floor/carpet/royalblack,
+/area/virtual_domain)
+"cp" = (
+/obj/machinery/power/smes,
+/obj/structure/cable,
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"cq" = (
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/item/paper{
+	name = "Power issues";
+	default_raw_text = "Welcome to battle cruiser SCSBC-12!<br>In case of power loss, <b>you must</b> enable emergency generator using uranium as fuel and enable turrets in bridge afterwards."
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"cr" = (
+/obj/machinery/power/port_gen/pacman/super{
+	anchored = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"cs" = (
+/obj/structure/table/reinforced,
+/obj/item/assembly/prox_sensor,
+/obj/item/assembly/prox_sensor,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"ct" = (
+/obj/structure/chair/fancy/comfy{
+	color = "#FFFFFF";
+	dir = 1
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"cu" = (
+/obj/structure/closet/syndicate{
+	anchored = 1;
+	desc = "A basic closet for all your villainous needs.";
+	locked = 1;
+	name = "Closet";
+	req_access_txt = "150";
+	secure = 1
+	},
+/obj/item/crowbar/red,
+/obj/item/ammo_box/magazine/pistolm9mm,
+/obj/item/ammo_box/magazine/pistolm9mm,
+/obj/item/gun/ballistic/automatic/pistol,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"cv" = (
+/turf/closed/mineral/random,
+/area/ruin/space/virtual_domain)
+"cw" = (
+/turf/open/space/basic,
+/area/virtual_domain)
+"cx" = (
+/obj/structure/table/reinforced,
+/obj/item/reagent_containers/food/drinks/trophy/silver_cup,
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"cy" = (
+/obj/machinery/light/small{
+	dir = 2
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"cz" = (
+/turf/open/floor/carpet/royalblack,
+/area/virtual_domain)
+"cA" = (
+/obj/machinery/light/small{
+	dir = 2
+	},
+/turf/open/floor/carpet/royalblack,
+/area/virtual_domain)
+"cB" = (
+/obj/item/stack/sheet/mineral/uranium{
+	amount = 15
+	},
+/obj/structure/cable,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"cC" = (
+/obj/machinery/atmospherics/components/unary/vent_pump{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"cD" = (
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"cE" = (
+/obj/machinery/light/small{
+	dir = 2
+	},
+/obj/effect/mob_spawn/human/virtual_domain/syndie,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"cF" = (
+/obj/machinery/door/airlock/grunge{
+	name = "Captain's Room";
+	req_access_txt = "150"
+	},
+/obj/machinery/door/poddoor{
+	id = "fscaproom";
+	name = "Captain's Blast Door";
+	state_open = 1;
+	req_access_txt = "150"
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"cG" = (
+/obj/machinery/door/airlock/grunge{
+	name = "Captain's Room";
+	req_access_txt = "150"
+	},
+/obj/machinery/door/poddoor{
+	id = "fscaproom";
+	name = "Captain's Blast Door";
+	state_open = 1;
+	req_access_txt = "150"
+	},
+/turf/open/floor/carpet/royalblack,
+/area/virtual_domain)
+"cH" = (
+/obj/structure/shuttle/engine/huge{
+	dir = 8
+	},
+/turf/open/space/basic,
+/area/virtual_domain)
+"cI" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 6
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"cJ" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"cK" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 5
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"cL" = (
+/obj/machinery/door/airlock/grunge{
+	name = "Syndicate Ship Airlock";
+	req_access_txt = "150"
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"cM" = (
+/obj/structure/chair/fancy/comfy{
+	color = "#FFFFFF"
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"cN" = (
+/obj/structure/table/reinforced,
+/obj/item/paper{
+	name = "Mission objectives";
+	default_raw_text = "Greetings, operatives. You are assigned to SCSBC-12 (Syndicate Cyber Sun Battle Cruiser 12) to protect our high-ranking officer while he is on his way to next outpost.<br><br>Hasło do skarbca: <b>Cybersun</b>"
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"cO" = (
+/turf/closed/indestructible/syndicate,
+/area/virtual_domain/protected_space)
+"cP" = (
+/obj/structure/closet/syndicate{
+	anchored = 1;
+	desc = "A basic closet for all your villainous needs.";
+	locked = 1;
+	name = "Closet";
+	req_access_txt = "150";
+	secure = 1
+	},
+/obj/item/coin/antagtoken,
+/obj/item/dnainjector/thermal,
+/obj/item/storage/box/firingpins,
+/obj/item/storage/box/firingpins,
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"cQ" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"cR" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer2{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"cS" = (
+/obj/structure/shuttle/engine/propulsion{
+	dir = 8
+	},
+/turf/open/space/basic,
+/area/virtual_domain)
+"cT" = (
+/obj/structure/table/reinforced,
+/obj/item/ammo_box/c9mm,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"cU" = (
+/obj/structure/closet/crate/secure/gear{
+	req_access_txt = "150"
+	},
+/obj/item/clothing/head/helmet/space/syndicate/black/engie,
+/obj/item/clothing/suit/space/syndicate/black/engie,
+/turf/open/floor/pod/dark,
+/area/virtual_domain/protected_space)
+"cV" = (
+/obj/effect/baseturf_helper/virtual_domain,
+/turf/closed/indestructible/syndicate,
+/area/virtual_domain/protected_space)
+"cW" = (
+/obj/item/aiModule/core/full/tyrant,
+/obj/structure/table/reinforced,
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"cX" = (
+/obj/structure/chair/fancy/comfy{
+	color = "#3D3C38"
+	},
+/turf/open/floor/carpet/royalblack,
+/area/virtual_domain)
+"cY" = (
+/obj/structure/table/reinforced,
+/obj/item/paper,
+/obj/item/pen,
+/obj/machinery/computer/security/telescreen{
+	network = list("fsci");
+	dir = 1;
+	pixel_y = -32
+	},
+/turf/open/floor/carpet/royalblack,
+/area/virtual_domain)
+"cZ" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 10
+	},
+/obj/item/wrench,
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"da" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 8
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"db" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 9
+	},
+/obj/machinery/light/small{
+	dir = 2
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"dc" = (
+/obj/structure/closet/syndicate{
+	anchored = 1;
+	desc = "A basic closet for all your villainous needs.";
+	locked = 1;
+	name = "Closet";
+	req_access_txt = "150";
+	secure = 1
+	},
+/obj/item/crowbar/red,
+/obj/item/ammo_box/magazine/pistolm9mm,
+/obj/item/ammo_box/magazine/pistolm9mm,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/item/gun/ballistic/automatic/pistol,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"dd" = (
+/turf/closed/wall/r_wall/syndicate,
+/area/virtual_domain)
+"de" = (
+/obj/effect/mob_spawn/human/virtual_domain/syndie,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"df" = (
+/obj/structure/tank_dispenser/oxygen,
+/turf/closed/mineral/random,
+/area/ruin/space/virtual_domain)
+"dg" = (
+/obj/structure/closet/crate/secure/gear{
+	req_access_txt = "150"
+	},
+/obj/item/stack/sheet/iron/fifty,
+/obj/item/stack/sheet/iron/fifty,
+/obj/item/stack/sheet/iron/fifty,
+/obj/item/stack/sheet/plasteel/twenty,
+/obj/item/stack/sheet/mineral/plastitanium{
+	amount = 50
+	},
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/rods/fifty,
+/turf/open/floor/pod/dark,
+/area/virtual_domain/protected_space)
+"dh" = (
+/turf/open/floor/pod/dark,
+/area/virtual_domain/protected_space)
+"di" = (
+/obj/structure/closet/crate/secure/gear{
+	req_access_txt = "150"
+	},
+/obj/item/stack/sheet/mineral/titanium{
+	amount = 40
+	},
+/obj/item/stack/sheet/mineral/uranium{
+	amount = 15
+	},
+/turf/open/floor/pod/dark,
+/area/virtual_domain/protected_space)
+"dj" = (
+/obj/machinery/porta_turret/syndicate/energy{
+	dir = 4;
+	name = "Syndicate Ship Turret";
+	on = 0;
+	shot_delay = 10
+	},
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/virtual_domain)
+"dk" = (
+/obj/structure/filingcabinet,
+/obj/machinery/door/window/westleft{
+	name = "Syndicate Interior Door";
+	req_access_txt = "150"
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"dl" = (
+/obj/structure/table/reinforced,
+/obj/machinery/button/door{
+	id = "fscaproom";
+	name = "Room shutters control";
+	req_access_txt = "150"
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"dm" = (
+/obj/structure/table/reinforced,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"dn" = (
+/obj/structure/sign/poster/contraband/syndicate_pistol,
+/turf/closed/wall/r_wall/syndicate,
+/area/virtual_domain)
+"do" = (
+/obj/machinery/porta_turret/syndicate/energy{
+	dir = 4;
+	name = "Syndicate Ship Turret";
+	on = 0;
+	shot_delay = 10
+	},
+/turf/closed/wall/r_wall/syndicate,
+/area/virtual_domain)
+"dp" = (
+/obj/machinery/atmospherics/components/unary/portables_connector/visible/layer2,
+/obj/machinery/portable_atmospherics/scrubber{
+	anchored = 1
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"dq" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/virtual_domain)
+"dr" = (
+/obj/structure/closet/crate/secure/gear{
+	req_access_txt = "150"
+	},
+/obj/item/melee/transforming/energy/sword/saber/red,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/pod/dark,
+/area/virtual_domain/protected_space)
+"ds" = (
+/obj/structure/closet/crate/secure/gear{
+	req_access_txt = "150"
+	},
+/obj/item/stack/sheet/mineral/gold{
+	amount = 30
+	},
+/obj/item/stack/sheet/mineral/silver{
+	amount = 30
+	},
+/obj/machinery/light/small{
+	dir = 2
+	},
+/turf/open/floor/pod/dark,
+/area/virtual_domain/protected_space)
+"dt" = (
+/obj/machinery/door/airlock/grunge{
+	name = "Syndicate Ship Airlock";
+	req_access_txt = "150"
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"du" = (
+/obj/structure/closet/crate/secure/gear{
+	req_access_txt = "150"
+	},
+/turf/open/floor/pod/dark,
+/area/virtual_domain/protected_space)
+"dv" = (
+/turf/closed/wall/mineral/titanium/overspace,
+/area/virtual_domain/safehouse)
+"dw" = (
+/obj/structure/shuttle/engine/propulsion/burst{
+	dir = 8
+	},
+/obj/structure/window/reinforced/spawner/east,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/plating/airless,
+/area/virtual_domain/safehouse)
+"dx" = (
+/obj/effect/spawner/structure/window/shuttle,
+/turf/open/floor/plating,
+/area/virtual_domain/safehouse)
+"dy" = (
+/obj/machinery/computer/operating,
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"dz" = (
+/obj/structure/closet/crate/secure/gear{
+	req_access_txt = "150"
+	},
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/storage/box/donkpockets = 167, /obj/item/storage/box/donkpockets/donkpocketspicy = 167, /obj/item/storage/box/donkpockets/donkpocketteriyaki = 167, /obj/item/storage/box/donkpockets/donkpocketpizza = 167, /obj/item/storage/box/donkpockets/donkpocketberry = 167, /obj/item/storage/box/donkpockets/donkpockethonk = 167);
+	name = "donk pocket box spawner"
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"dA" = (
+/obj/effect/landmark/bitrunning/cache_spawn,
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"dB" = (
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"dC" = (
+/obj/machinery/vending/medical/syndicate_access,
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"dD" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"dE" = (
+/obj/structure/sink{
+	dir = 2;
+	pixel_y = 14
+	},
+/obj/structure/mirror{
+	dir = 8;
+	pixel_x = -28
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"dF" = (
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"dG" = (
+/obj/machinery/door/airlock/grunge{
+	name = "Syndicate Ship Airlock";
+	req_access_txt = "150"
+	},
+/turf/open/floor/plasteel/dark/side{
+	dir = 1
+	},
+/area/virtual_domain)
+"dH" = (
+/obj/structure/toilet{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 2
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dI" = (
+/obj/machinery/door/password/voice{
+	name = "Voice-activated Vault door";
+	desc = "You'll need special syndicate passcode to open this one.";
+	password = null;
+	req_access_txt = "150"
+	},
+/obj/structure/fans/tiny,
+/obj/machinery/door/airlock/grunge{
+	desc = "Vault airlock preventing air from going out.";
+	name = "Syndicate Vault Airlock";
+	req_access_txt = "150"
+	},
+/turf/open/floor/pod/dark,
+/area/virtual_domain/protected_space)
+"dJ" = (
+/obj/effect/turf_decal/stripes/end{
+	dir = 1
+	},
+/obj/effect/turf_decal/sand,
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"dK" = (
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"dL" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"dM" = (
+/obj/effect/turf_decal/stripes/end,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"dN" = (
+/obj/machinery/light/small{
+	dir = 2
+	},
+/obj/effect/landmark/bitrunning/cache_goal_turf,
+/obj/effect/turf_decal/loading_area,
+/turf/open/indestructible/bitrunning_transport,
+/area/virtual_domain/safehouse)
+"dO" = (
+/turf/closed/wall/mineral/titanium,
+/area/virtual_domain/safehouse)
+"dP" = (
+/obj/structure/table/optable,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"dQ" = (
+/obj/effect/landmark/bitrunning/mob_segment,
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"dR" = (
+/obj/machinery/stasis,
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"dS" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/layer2,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"dT" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/virtual_domain)
+"dU" = (
+/obj/structure/sink{
+	dir = 2;
+	pixel_y = 14
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+
+(1,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(2,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(3,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(4,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(5,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(6,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(7,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ci
+ci
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(8,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ci
+ci
+ci
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(9,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ci
+ci
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(10,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+cw
+cw
+cH
+ab
+ab
+cw
+cw
+cH
+ab
+ab
+cw
+cw
+cH
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(11,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+cw
+cw
+cw
+ab
+ab
+cw
+cw
+cw
+ab
+ab
+cw
+cw
+cw
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(12,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+cS
+cw
+cw
+cw
+cS
+cS
+cw
+cw
+cw
+cS
+cS
+cw
+cw
+cw
+cS
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ci
+ci
+ci
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(13,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+dd
+dd
+dd
+dd
+dd
+dd
+dd
+dd
+dd
+dd
+dd
+dd
+dd
+dd
+dd
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ci
+ci
+ci
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(14,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+do
+dd
+dz
+dK
+ac
+an
+ay
+dK
+ac
+aJ
+aU
+an
+ac
+dK
+bf
+dd
+do
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(15,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+dd
+an
+ac
+ac
+bq
+bB
+ac
+ac
+ac
+ac
+ac
+bB
+ac
+bq
+ac
+an
+bM
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(16,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+dd
+dd
+dd
+dd
+dd
+dd
+dd
+dd
+bX
+dd
+dd
+dd
+bX
+dd
+dd
+dd
+dd
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(17,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+dd
+dd
+cj
+dd
+cn
+co
+dd
+cp
+cq
+cr
+dd
+cs
+ct
+ac
+cu
+ac
+dd
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+cv
+ci
+cv
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(18,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+dd
+cx
+cy
+dd
+cz
+cA
+dd
+cB
+cC
+cD
+dd
+cu
+ac
+ac
+ac
+cE
+dd
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+cv
+cv
+cv
+cv
+cv
+cv
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(19,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+dd
+cD
+cD
+cF
+cz
+cz
+cG
+cI
+cJ
+cK
+cL
+ac
+ac
+an
+cM
+cN
+dd
+ab
+ab
+ab
+ab
+ab
+ab
+cv
+cv
+cO
+cO
+cO
+cO
+cv
+cv
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(20,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+dd
+cP
+cD
+dd
+cz
+cz
+cG
+cQ
+cR
+cQ
+cL
+ac
+ac
+bq
+cM
+cT
+dd
+ab
+ab
+ab
+ab
+ab
+cv
+cv
+cO
+cO
+cU
+cU
+cO
+cV
+cv
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(21,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+dd
+cW
+cD
+dd
+cX
+cY
+dd
+cZ
+da
+db
+dd
+dc
+ac
+ac
+ac
+de
+dd
+ab
+ab
+ab
+ab
+cv
+df
+cv
+cO
+dg
+dh
+dh
+di
+cO
+cv
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(22,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+dj
+dd
+dk
+dd
+dl
+dm
+dn
+dp
+dq
+cD
+dd
+dm
+ct
+ac
+cu
+dd
+dj
+ab
+ab
+ab
+ab
+cv
+ci
+cv
+cO
+dr
+dh
+dh
+ds
+cO
+cv
+ci
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(23,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+dd
+dd
+dd
+dd
+dd
+dd
+dd
+dt
+dd
+dd
+dd
+dd
+dd
+dd
+dd
+ab
+ab
+ab
+ab
+ab
+ab
+cv
+cv
+cO
+du
+dh
+dh
+du
+cO
+cv
+cv
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+dv
+dw
+dx
+dx
+dw
+dv
+ab
+aa
+"}
+(24,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+dd
+dy
+dA
+dB
+dC
+dd
+ac
+dD
+ac
+dd
+dE
+dF
+dG
+dH
+dd
+ab
+ab
+ab
+ab
+ab
+cv
+cv
+cv
+cO
+cO
+dI
+cO
+cO
+cO
+cv
+cv
+cv
+ab
+ab
+ab
+ab
+ab
+ab
+dx
+dJ
+dL
+dM
+dN
+dO
+ab
+aa
+"}
+(25,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+dd
+dP
+dB
+dQ
+dR
+dd
+dS
+dT
+ac
+dd
+dU
+ad
+dd
+dd
+dd
+ab
+ab
+ab
+ab
+ab
+cv
+cv
+ci
+ae
+ae
+af
+ag
+ae
+ae
+ah
+ah
+ah
+ah
+ai
+ai
+ai
+ai
+ai
+dO
+aj
+ak
+al
+am
+dx
+ab
+aa
+"}
+(26,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+dd
+ao
+ap
+dB
+dB
+aq
+ar
+as
+ac
+at
+dF
+dF
+dG
+au
+dd
+ab
+ab
+ab
+ab
+ab
+ab
+cv
+cv
+av
+aw
+af
+af
+ax
+az
+aA
+aA
+aB
+aB
+aB
+aB
+aB
+aB
+aB
+aC
+aD
+ak
+aE
+aF
+dO
+ab
+aa
+"}
+(27,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+do
+dd
+dd
+dd
+dd
+dd
+dd
+dd
+dt
+dd
+dd
+dd
+dd
+dd
+dd
+dd
+dd
+ab
+ab
+ab
+ab
+ab
+cv
+cv
+ae
+aG
+af
+af
+af
+ae
+ah
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+dO
+aH
+aI
+aE
+aK
+dx
+ab
+aa
+"}
+(28,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+dd
+aL
+aM
+dd
+aN
+aO
+aO
+aO
+dD
+aO
+aO
+aO
+ac
+dd
+ac
+aP
+dd
+ab
+ab
+ab
+ab
+ab
+ab
+cv
+ae
+aQ
+aR
+af
+aS
+ae
+aT
+cv
+cv
+cv
+ab
+ab
+ab
+ab
+ab
+dx
+aV
+aW
+aX
+aY
+dO
+ab
+aa
+"}
+(29,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+dd
+ac
+aZ
+dd
+ba
+ac
+bb
+bb
+bc
+bb
+bb
+aO
+ac
+dd
+bd
+aP
+dd
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+be
+bg
+aR
+af
+bh
+ae
+ci
+cv
+cv
+ab
+ab
+ab
+ab
+ab
+ab
+dv
+dO
+dx
+dx
+dO
+bi
+ab
+aa
+"}
+(30,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+bj
+ac
+ac
+bk
+ac
+bl
+dm
+bm
+bn
+dm
+dm
+bo
+aO
+bp
+br
+aO
+bs
+bt
+bt
+bt
+bt
+bt
+bt
+bt
+bu
+aR
+aR
+af
+bh
+ae
+cv
+cv
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(31,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+dd
+ac
+ac
+dd
+bv
+ac
+ac
+ar
+bw
+ac
+ac
+ac
+bx
+dd
+ac
+aP
+dd
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ae
+by
+af
+af
+bh
+ae
+cv
+cv
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(32,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+dd
+bz
+ac
+dd
+bA
+ac
+ac
+ac
+bC
+ac
+ac
+ac
+bD
+dd
+ac
+bE
+dd
+ab
+ab
+ab
+ab
+ab
+ab
+cv
+ae
+ae
+bF
+bG
+ae
+ae
+cv
+cv
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(33,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+dj
+dd
+dm
+dd
+bH
+ac
+ac
+ac
+bC
+bI
+ac
+ac
+ac
+dd
+dm
+dd
+bJ
+ab
+ab
+ab
+ab
+ab
+cv
+cv
+cv
+ae
+ae
+ae
+ae
+cv
+cv
+ci
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(34,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+dd
+dd
+dd
+dd
+dd
+dd
+dd
+bK
+dd
+dd
+dd
+dd
+dd
+dd
+dd
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+cv
+cv
+cv
+cv
+ci
+cv
+cv
+cv
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(35,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+bL
+bN
+bO
+cD
+cD
+bP
+cD
+cD
+bQ
+bR
+dd
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ci
+cv
+cv
+cv
+cv
+cv
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(36,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+dd
+dd
+dd
+dd
+cD
+cD
+cD
+cD
+bP
+cD
+cD
+cD
+cD
+dd
+dd
+dd
+dd
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(37,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+dd
+bS
+cD
+dd
+bT
+cD
+cD
+bU
+bV
+cD
+cD
+cD
+bW
+dd
+bY
+bY
+dd
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(38,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+dd
+cD
+bZ
+ca
+cD
+cb
+cD
+cc
+cd
+cc
+cD
+cb
+cD
+ce
+cD
+cy
+dd
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(39,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+dj
+dd
+cD
+dd
+cD
+cD
+cD
+cf
+cD
+cg
+cD
+cD
+cD
+dd
+ch
+dd
+dj
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(40,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+dd
+dd
+dd
+cD
+cD
+cD
+cD
+cD
+cD
+cD
+cD
+bZ
+dd
+dd
+dd
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(41,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+dd
+dd
+cj
+cj
+ck
+cj
+cl
+cj
+cj
+cj
+cj
+dd
+dd
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ci
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(42,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+dj
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+cm
+dj
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ci
+ci
+ci
+ci
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(43,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ci
+ci
+ci
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(44,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ci
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(45,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ci
+ci
+ci
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(46,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ci
+ci
+ci
+ci
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(47,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ci
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(48,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(49,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(50,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(51,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(52,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
