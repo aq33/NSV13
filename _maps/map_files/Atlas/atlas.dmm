@@ -564,6 +564,19 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/port)
+"be" = (
+/obj/machinery/computer/piratepad_control/civilian,
+/obj/effect/turf_decal/tile/ship/green{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/ship/green{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/durasteel/alt,
+/area/hallway/nsv/deck2/primary)
 "bf" = (
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
@@ -619,6 +632,25 @@
 /obj/machinery/door/firedoor/border_only/directional/east,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/starboard)
+"bl" = (
+/obj/machinery/piratepad/civilian,
+/obj/effect/turf_decal/tile/ship/green{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/ship/green{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/firealarm{
+	pixel_y = 24
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/durasteel/alt,
+/area/hallway/nsv/deck2/primary)
 "bm" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 4
@@ -667,6 +699,20 @@
 /obj/machinery/firealarm/directional/west,
 /turf/open/floor/monotile/dark,
 /area/nsv/weapons/gauss/battery/deck2/starboard)
+"bs" = (
+/obj/machinery/materials_market,
+/obj/effect/turf_decal/tile/ship/green{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/ship/green{
+	dir = 1
+	},
+/obj/machinery/airalarm/directional/north,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/durasteel/alt,
+/area/hallway/nsv/deck2/primary)
 "bt" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -54240,7 +54286,7 @@ RP
 GM
 FE
 eY
-Jz
+be
 un
 On
 tR
@@ -54497,7 +54543,7 @@ eY
 pd
 Ty
 eY
-oV
+bl
 un
 GP
 pj
@@ -54754,7 +54800,7 @@ Dy
 Dy
 Dy
 Dy
-XY
+bs
 un
 GP
 XK

@@ -255,6 +255,10 @@
 	},
 /turf/open/floor/plating/airless,
 /area/nsv/hanger/notkmcstupidhanger)
+"aJ" = (
+/obj/machinery/computer/piratepad_control/civilian,
+/turf/open/floor/plasteel,
+/area/maintenance/fore)
 "aK" = (
 /obj/effect/turf_decal/tile/ship/red,
 /obj/structure/sign/poster/official/random{
@@ -282,6 +286,10 @@
 "aM" = (
 /turf/closed/wall/r_wall,
 /area/science/xenobiology)
+"aN" = (
+/obj/machinery/piratepad/civilian,
+/turf/open/floor/plasteel,
+/area/maintenance/fore)
 "aO" = (
 /obj/machinery/door/poddoor/shutters/ship{
 	id = "riot_storage";
@@ -298,6 +306,10 @@
 /obj/structure/lattice/catwalk,
 /turf/open/openspace/airless,
 /area/space/nearstation)
+"aQ" = (
+/obj/machinery/materials_market,
+/turf/open/floor/plasteel,
+/area/maintenance/fore)
 "aT" = (
 /turf/closed/wall/r_wall,
 /area/maintenance/aft)
@@ -57132,7 +57144,7 @@ DU
 AU
 bo
 pc
-Oz
+aJ
 vj
 ck
 KM
@@ -57905,7 +57917,7 @@ DG
 zz
 Jl
 wQ
-Oz
+aN
 yQ
 RR
 zD
@@ -58162,7 +58174,7 @@ IC
 lc
 BE
 FT
-Oz
+aQ
 KM
 KM
 KM
