@@ -836,7 +836,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/visible/layer2{
 	dir = 5
 	},
-/obj/effect/landmark/start/atmospheric_technician,
+/obj/effect/landmark/start/station_engineer,
 /turf/open/floor/engine,
 /area/engine/atmos)
 "eu" = (
@@ -2512,7 +2512,7 @@
 /turf/open/floor/carpet/ship/beige_carpet,
 /area/hallway/nsv/deck1/hallway)
 "nh" = (
-/obj/effect/landmark/start/atmospheric_technician,
+/obj/effect/landmark/start/station_engineer,
 /obj/structure/cable,
 /turf/open/floor/plasteel/dark/side{
 	dir = 10
@@ -2637,7 +2637,7 @@
 /area/quartermaster)
 "nV" = (
 /obj/machinery/airalarm/directional/east,
-/obj/effect/landmark/start/atmospheric_technician,
+/obj/effect/landmark/start/station_engineer,
 /turf/open/floor/monotile/steel,
 /area/engine/engineering)
 "nW" = (
@@ -6193,7 +6193,7 @@
 /area/quartermaster)
 "HP" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/effect/landmark/start/atmospheric_technician,
+/obj/effect/landmark/start/station_engineer,
 /turf/open/floor/plasteel/ridged/steel,
 /area/engine/break_room)
 "HS" = (
@@ -8082,7 +8082,7 @@
 	name = "Engineering RC";
 	pixel_x = -30
 	},
-/obj/effect/landmark/start/atmospheric_technician,
+/obj/effect/landmark/start/station_engineer,
 /turf/open/floor/plasteel/dark/side{
 	dir = 4
 	},

@@ -629,6 +629,7 @@
 #include "code\modules\surgery\identity_recalibration.dm"
 #include "code\modules\surgery\implant_removal.dm"
 #include "code\modules\surgery\organs\heart_blood.dm"
+#include "code\modules\surgery\organs\liver_cirrhosis.dm"
 #include "code\modules\surgery\stomach_pump.dm"
 #include "code\modules\tgui\layout.dm"
 #include "code\modules\tgui_input\say_modal.dm"

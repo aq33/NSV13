@@ -12,13 +12,14 @@
 	total_positions = 1
 	spawn_positions = 1
 
+// Inżynier przejął atmosferykę: dodatkowy slot i dostęp do atmosferyki także przy minimal access
 /datum/job/station_engineer
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 2
+	spawn_positions = 2
 
-/datum/job/atmospheric_technician
-	total_positions = 1
-	spawn_positions = 1
+/datum/job/station_engineer/New()
+	. = ..()
+	minimal_access |= ACCESS_ATMOSPHERICS
 
 /datum/job/medical_doctor
 	total_positions = 2
@@ -51,4 +52,7 @@
 	return FALSE
 
 /datum/job/deputy/map_check()
+	return FALSE
+
+/datum/job/atmospheric_technician/map_check()
 	return FALSE
