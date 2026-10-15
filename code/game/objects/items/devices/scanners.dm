@@ -334,6 +334,9 @@ GENE SCANNER
 			message += minor_damage
 			message += major_damage
 			message += max_damage
+		var/cirrhosis_text = H.cirrhosis_scan_text() // Aquila: aquila/code/modules/surgery/organs/liver_cirrhosis.dm
+		if(cirrhosis_text)
+			message += cirrhosis_text
 		//Genetic damage
 		if(advanced && H.has_dna())
 			message += "\t<span class='info'>Stabilność genetyczna: [H.dna.stability]%.</span>"

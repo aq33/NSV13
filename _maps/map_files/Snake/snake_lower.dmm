@@ -8549,7 +8549,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 10
 	},
-/obj/effect/landmark/start/atmospheric_technician,
+/obj/effect/landmark/start/station_engineer,
 /turf/open/floor/plasteel/dark,
 /area/engine/atmos)
 "xH" = (
@@ -8828,7 +8828,7 @@
 /obj/machinery/atmospherics/pipe/simple/yellow/visible/layer2{
 	dir = 4
 	},
-/obj/effect/landmark/start/atmospheric_technician,
+/obj/effect/landmark/start/station_engineer,
 /turf/open/floor/plasteel/dark,
 /area/engine/atmos)
 "yF" = (
@@ -9210,7 +9210,7 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
 	dir = 8
 	},
-/obj/effect/landmark/start/atmospheric_technician,
+/obj/effect/landmark/start/station_engineer,
 /turf/open/floor/plasteel/dark,
 /area/engine/atmos)
 "zS" = (
@@ -9341,7 +9341,7 @@
 	name = "Atmospherics RC";
 	pixel_y = -30
 	},
-/obj/effect/landmark/start/atmospheric_technician,
+/obj/effect/landmark/start/station_engineer,
 /obj/machinery/atmospherics/pipe/simple/dark/visible/layer4{
 	dir = 10
 	},
@@ -9660,7 +9660,7 @@
 /obj/machinery/atmospherics/pipe/layer_manifold/visible{
 	dir = 4
 	},
-/obj/effect/landmark/start/atmospheric_technician,
+/obj/effect/landmark/start/station_engineer,
 /turf/open/floor/plasteel/dark,
 /area/engine/atmos)
 "Bt" = (
@@ -15944,7 +15944,7 @@
 /obj/machinery/atmospherics/pipe/simple/purple/visible/layer4{
 	dir = 6
 	},
-/obj/effect/landmark/start/atmospheric_technician,
+/obj/effect/landmark/start/station_engineer,
 /turf/open/floor/plasteel/dark,
 /area/engine/atmos)
 "Xu" = (

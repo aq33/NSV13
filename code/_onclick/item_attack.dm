@@ -192,6 +192,7 @@
 
 	M.lastattacker = user.real_name
 	M.lastattackerckey = user.ckey
+	M.last_attacked_time = world.time
 
 	user.do_attack_animation(M)
 	M.attacked_by(src, user)

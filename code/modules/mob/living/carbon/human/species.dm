@@ -1669,6 +1669,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 		target.lastattacker = user.real_name
 		target.lastattackerckey = user.ckey
+		target.last_attacked_time = world.time
 		user.dna.species.spec_unarmedattacked(user, target)
 
 		if(user.limb_destroyer)

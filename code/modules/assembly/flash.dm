@@ -245,7 +245,6 @@
 	if(targeted)
 		if(M.flash_act(1, 1))
 			if(user)
-				terrible_conversion_proc(M, user)
 				visible_message("<span class='disarm'>[user] oślepia [M] fleszem!</span>")
 				to_chat(user, "<span class='danger'>Oślepiasz [M] fleszem!</span>")
 				to_chat(M, "<span class='userdanger'>[user] oślepia cię fleszem!</span>")
@@ -299,22 +298,6 @@
 	if(!..())
 		return
 	AOE_flash()
-
-/obj/item/assembly/flash/proc/terrible_conversion_proc(mob/living/carbon/H, mob/user)
-	if(istype(H) && H.stat != DEAD)
-		if(user.mind)
-			var/datum/antagonist/rev/head/converter = user.mind.has_antag_datum(/datum/antagonist/rev/head)
-			if(!converter)
-				return
-			if(!H.client)
-				to_chat(user, "<span class='warning'>Ten umysł jest tak pusty, że nie da się na niego wpłynąć!</span>")
-				return
-			if(H.stat != CONSCIOUS)
-				to_chat(user, "<span class='warning'>Musi być przytomny, zanim go nawrócisz!</span>")
-				return
-			if(!converter.add_revolutionary(H.mind))
-				to_chat(user, "<span class='warning'>Ten umysł wydaje się odporny na flesz!</span>")
-
 
 /obj/item/assembly/flash/cyborg
 	bulb = /obj/item/flashbulb/recharging/cyborg

@@ -339,6 +339,7 @@
 			return
 
 	SSshuttle.emergencyCallAmount++
+	check_revolution_delay(call_time) // Aquila: aquila/code/modules/antagonists/revolution/revolution_conversion.dm
 
 	if(prob(70))
 		SSshuttle.emergencyLastCallLoc = signalOrigin

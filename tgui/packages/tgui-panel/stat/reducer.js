@@ -8,6 +8,7 @@ const initialState = {
   statInfomation: [],
   verbData: {},
   statTabMode: 'Scroll',
+  verbSearch: '',
 };
 
 export const statReducer = (state = initialState, action) => {
@@ -16,6 +17,12 @@ export const statReducer = (state = initialState, action) => {
     return {
       ...state,
       selectedTab: payload,
+    };
+  }
+  if (type === 'stat/setVerbSearch') {
+    return {
+      ...state,
+      verbSearch: payload,
     };
   }
   if (type === 'stat/setStatTabs') {
