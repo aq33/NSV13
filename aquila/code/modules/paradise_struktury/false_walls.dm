@@ -13,6 +13,8 @@
 /obj/structure/falsewall/bitmask_connects_to(turf/T)
 	return paradise_structure_connects(T)
 
+// Pełne nadpisanie (wpis w aquila/LEGACY_OVERRIDES.md): wersja NSV13 dokłada nakładki narożników goon,
+// których pliki Paradise nie mają, więc ..() woła się tylko dla typów bez bitmaski
 /obj/structure/falsewall/update_icon()
 	if(!bitmask_smooth)
 		return ..()

@@ -119,7 +119,7 @@
 	if(QDELETED(A))
 		return
 	if(A.smooth & (SMOOTH_TRUE | SMOOTH_MORE))
-		if(A.bitmask_smooth) //AQUILA EDIT - struktury z Paradise, bitmaska zamiast narożników (aquila/code/modules/paradise_struktury)
+		if(A.bitmask_smooth) // AQ EDIT - struktury z Paradise: bitmaska zamiast narożników (aquila/code/modules/paradise_struktury)
 			A.bitmask_smooth_icon()
 			return
 		if(A.legacy_smooth) //nsv13 - Adds support for goon style walls

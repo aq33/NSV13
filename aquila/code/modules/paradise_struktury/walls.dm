@@ -38,12 +38,19 @@
 
 // Etapy demontażu mają w Paradise własne stany r_wall_1..6 bez wygładzania
 /turf/closed/wall/r_wall/update_icon_state()
+	. = ..()
 	if(!bitmask_smooth)
-		return ..()
+		return
 	if(d_state != INTACT)
 		icon_state = "r_wall_[d_state]"
 	else
 		icon_state = "[base_icon_state]-[smoothing_junction]"
+
+// Smoothing nie może nadpisać etapu demontażu stanem wygładzonej ściany
+/turf/closed/wall/r_wall/bitmask_smoothed()
+	. = ..()
+	if(d_state != INTACT)
+		icon_state = "r_wall_[d_state]"
 
 /turf/closed/wall/r_wall/syndicate
 	icon = 'aquila/icons/paradise/turf/walls/32x40plastitanium_wall.dmi'

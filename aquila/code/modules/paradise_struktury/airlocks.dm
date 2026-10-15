@@ -27,9 +27,9 @@
 
 // NSV13 obraca śluzy statku po swojemu w Initialize, tu bierze górę wersja z Paradise
 /obj/machinery/door/airlock/set_smooth_dir()
-	if(!paradise_sprites)
-		return ..()
-	paradise_face_walls()
+	. = ..()
+	if(paradise_sprites)
+		paradise_face_walls()
 
 /obj/machinery/door/airlock/proc/paradise_face_walls()
 	var/direction = paradise_door_direction(src)
