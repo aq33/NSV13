@@ -17,8 +17,10 @@
 /turf/closed/wall/steel
 	color = null
 
+// Ściany statku (tylko Serendipity) były jasne w NSV13, więc dostają rozjaśnioną wersję ścian Paradise
+// (32x40white_*.dmi, skrypt biale_sciany.py: przemapowana jasność, kształty i cieniowanie bez zmian)
 /turf/closed/wall/ship
-	icon = 'aquila/icons/paradise/turf/walls/32x40wall.dmi'
+	icon = 'aquila/icons/paradise/turf/walls/32x40white_wall.dmi'
 	icon_state = "wall-0"
 	base_icon_state = "wall"
 	legacy_smooth = FALSE
@@ -31,7 +33,7 @@
 	texture = null
 
 /turf/closed/wall/r_wall/ship
-	icon = 'aquila/icons/paradise/turf/walls/32x40reinforced_wall.dmi'
+	icon = 'aquila/icons/paradise/turf/walls/32x40white_reinforced_wall.dmi'
 	icon_state = "reinforced_wall-0"
 	base_icon_state = "reinforced_wall"
 	legacy_smooth = FALSE
