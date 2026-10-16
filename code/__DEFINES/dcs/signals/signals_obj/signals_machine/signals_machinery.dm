@@ -10,6 +10,8 @@
 #define COMSIG_MACHINE_CLOSE "machine_close"
 //from /obj/machinery/obj_break(damage_flag): (damage_flag)
 #define COMSIG_MACHINERY_BROKEN "machinery_broken"
+/// AQ EDIT - from /obj/machinery/vending/vend(): (obj/item/vended_item)
+#define COMSIG_VENDING_DISPENSED "vending_dispensed"
 ///from /obj/machinery/can_interact(mob/user): Called on user when attempting to interact with a machine (obj/machinery/machine)
 #define COMSIG_TRY_USE_MACHINE "try_use_machine"
 	/// Can't interact with the machine

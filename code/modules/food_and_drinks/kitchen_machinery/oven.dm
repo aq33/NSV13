@@ -158,9 +158,9 @@
 
 /obj/machinery/oven/proc/update_baking_audio()
 	if(!open && used_tray?.contents.len)
-		oven_loop.start()
+		oven_loop?.start() // AQ EDIT - oven_loop is null after Destroy
 	else
-		oven_loop.stop()
+		oven_loop?.stop()
 
 ///Updates the smoke state to something else, setting particles if relevant
 /obj/machinery/oven/proc/set_smoke_state(new_state)

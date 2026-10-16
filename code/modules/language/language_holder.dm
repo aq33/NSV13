@@ -152,6 +152,8 @@ Key procs
 /// Checks if you can speak the language. Tongue limitations should be supplied as an argument.
 /datum/language_holder/proc/can_speak_language(language)
 	var/atom/movable/our_atom = get_atom()
+	if(!our_atom) // AQ EDIT - owner already deleted
+		return FALSE
 	var/tongue = our_atom.could_speak_language(language)
 	if((omnitongue || tongue) && has_language(language, TRUE))
 		return TRUE

@@ -1,0 +1,1741 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/template_noop,
+/area/template_noop)
+"ab" = (
+/turf/closed/indestructible/abductor,
+/area/virtual_domain)
+"ac" = (
+/turf/open/floor/holofloor/hyperspace,
+/area/space/virtual_domain)
+"ad" = (
+/turf/closed/wall/mineral/abductor,
+/area/virtual_domain)
+"ae" = (
+/obj/structure/closet/abductor,
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"af" = (
+/obj/effect/decal/cleanable/blood/xtracks,
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"ag" = (
+/obj/effect/mob_spawn/human/abductor{
+	pixel_x = 9;
+	pixel_y = -5
+	},
+/obj/effect/decal/cleanable/xenoblood,
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"ah" = (
+/obj/structure/table/abductor,
+/obj/item/storage/belt/military/abductor{
+	pixel_x = 5;
+	pixel_y = 8
+	},
+/obj/item/storage/belt/military/abductor{
+	pixel_x = -5;
+	pixel_y = -1
+	},
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"ai" = (
+/obj/effect/decal/cleanable/xenoblood/xsplatter,
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"aj" = (
+/obj/effect/landmark/bitrunning/cache_spawn,
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"ak" = (
+/obj/structure/table/abductor,
+/obj/item/weldingtool/abductor,
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"al" = (
+/obj/structure/table/abductor,
+/obj/item/toy/plush/abductor/agent{
+	pixel_x = 10;
+	pixel_y = 8
+	},
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"am" = (
+/obj/machinery/fat_sucker,
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"an" = (
+/obj/machinery/harvester,
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"ao" = (
+/obj/structure/table/abductor,
+/obj/item/wrench/abductor{
+	pixel_x = 2;
+	pixel_y = 7
+	},
+/obj/item/wirecutters/abductor{
+	pixel_x = -3;
+	pixel_y = 4
+	},
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"ap" = (
+/obj/effect/baseturf_helper/virtual_domain,
+/turf/closed/indestructible/abductor,
+/area/virtual_domain)
+"aq" = (
+/obj/machinery/door/airlock/abductor{
+	name = "Repair Bay"
+	},
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"ar" = (
+/obj/machinery/door/airlock/abductor,
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"as" = (
+/obj/effect/decal/cleanable/xenoblood/xgibs/body,
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"at" = (
+/obj/structure/table/abductor,
+/obj/item/poster/random_contraband{
+	pixel_x = 9;
+	pixel_y = 3
+	},
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"au" = (
+/obj/item/shell/server,
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"av" = (
+/obj/effect/mob_spawn/human/abductor,
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"aw" = (
+/obj/structure/table/abductor,
+/obj/item/clothing/head/helmet/abductor{
+	pixel_x = -5;
+	pixel_y = 7
+	},
+/obj/item/abductor/silencer{
+	pixel_x = 6;
+	pixel_y = -4
+	},
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"ax" = (
+/obj/machinery/iv_drip,
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"ay" = (
+/obj/structure/server,
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"az" = (
+/turf/closed/indestructible/opsglass,
+/area/virtual_domain)
+"aA" = (
+/turf/open/floor/plating/abductor,
+/area/virtual_domain/safehouse)
+"aB" = (
+/turf/closed/wall/mineral/abductor,
+/area/virtual_domain/safehouse)
+"aC" = (
+/obj/machinery/computer/camera_advanced/abductor,
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"aD" = (
+/obj/structure/chair/fancy/shuttle{
+	dir = 4
+	},
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"aE" = (
+/obj/effect/spawner/structure/window/plastitanium,
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"aF" = (
+/obj/machinery/abductor/pad{
+	desc = "A funky looking disc, built into the floor."
+	},
+/turf/open/floor/plating/abductor,
+/area/virtual_domain/safehouse)
+"aG" = (
+/obj/effect/landmark/bitrunning/hololadder_spawn,
+/turf/open/floor/plating/abductor2,
+/area/virtual_domain/safehouse)
+"aH" = (
+/obj/effect/landmark/bitrunning/hololadder_spawn,
+/turf/open/floor/plating/abductor,
+/area/virtual_domain/safehouse)
+"aI" = (
+/obj/structure/bed/abductor,
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"aJ" = (
+/obj/machinery/abductor/console,
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"aK" = (
+/obj/machinery/door/airlock/abductor{
+	name = "Command Center";
+	locked = 1
+	},
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"aL" = (
+/obj/item/flashlight/seclite{
+	pixel_x = 9;
+	pixel_y = -11
+	},
+/obj/item/clothing/suit/armor/vest/alt{
+	pixel_x = 10;
+	pixel_y = 8
+	},
+/obj/item/clothing/suit/armor/vest/alt{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/item/clothing/suit/armor/vest/alt{
+	pixel_x = 2;
+	pixel_y = -2
+	},
+/turf/open/floor/plating/abductor,
+/area/virtual_domain/safehouse)
+"aM" = (
+/obj/item/flashlight/lantern{
+	pixel_x = 4;
+	pixel_y = -8;
+	light_on = 1
+	},
+/obj/item/flashlight/lantern{
+	pixel_x = -9;
+	pixel_y = 8;
+	light_on = 1
+	},
+/turf/open/floor/plating/abductor,
+/area/virtual_domain/safehouse)
+"aN" = (
+/obj/structure/table/abductor,
+/obj/item/abductor/baton{
+	desc = "Even aliens can see the use of a good old-fashioned beating stick.";
+	pixel_x = 6;
+	pixel_y = -5
+	},
+/obj/item/gun/energy/alien{
+	pixel_x = -5;
+	pixel_y = 7
+	},
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"aO" = (
+/obj/machinery/door/airlock/abductor,
+/turf/open/floor/plating/abductor,
+/area/virtual_domain/safehouse)
+"aP" = (
+/obj/structure/table/abductor,
+/obj/item/dualsaber/green{
+	pixel_x = -5;
+	pixel_y = 2
+	},
+/obj/item/gun/ballistic/automatic/c20r/unrestricted{
+	pixel_x = 8;
+	pixel_y = -6
+	},
+/turf/open/floor/plating/abductor,
+/area/virtual_domain/safehouse)
+"aQ" = (
+/obj/structure/table/abductor,
+/obj/item/ammo_box/magazine/smgm45,
+/obj/item/ammo_box/magazine/smgm45{
+	pixel_x = 9;
+	pixel_y = 3
+	},
+/obj/item/gun/ballistic/automatic/c20r/unrestricted{
+	pixel_x = -5;
+	pixel_y = -5
+	},
+/turf/open/floor/plating/abductor,
+/area/virtual_domain/safehouse)
+"aR" = (
+/obj/structure/chair/fancy/shuttle{
+	dir = 8
+	},
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"aS" = (
+/obj/machinery/abductor/console,
+/turf/open/floor/plating/abductor,
+/area/virtual_domain/safehouse)
+"aT" = (
+/obj/structure/table/abductor,
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"aU" = (
+/obj/effect/landmark/bitrunning/cache_goal_turf,
+/turf/open/floor/plating/abductor2,
+/area/virtual_domain/safehouse)
+"aV" = (
+/obj/item/storage/firstaid/regular,
+/obj/item/storage/firstaid/regular,
+/turf/open/floor/plating/abductor,
+/area/virtual_domain/safehouse)
+"aW" = (
+/obj/effect/baseturf_helper/virtual_domain,
+/turf/open/floor/plating/abductor,
+/area/virtual_domain/safehouse)
+"aX" = (
+/obj/machinery/chem_dispenser/abductor,
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"aY" = (
+/obj/item/organ/tail/cat,
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"aZ" = (
+/obj/effect/decal/cleanable/molten_object{
+	pixel_x = -6;
+	pixel_y = -7
+	},
+/obj/effect/landmark/bitrunning/cache_spawn,
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"ba" = (
+/obj/structure/table/abductor,
+/obj/item/food/soylentgreen{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"bb" = (
+/obj/effect/decal/cleanable/blood/footprints,
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"bc" = (
+/obj/machinery/door/airlock/abductor{
+	name = "Experimentation Lab"
+	},
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"bd" = (
+/obj/structure/table/abductor,
+/obj/item/abductor/mind_device{
+	desc = "Just holding this makes your head ache.";
+	pixel_x = 3
+	},
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"be" = (
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"bf" = (
+/obj/machinery/abductor/pad,
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"bg" = (
+/obj/effect/decal/cleanable/molten_object/large{
+	pixel_x = -5;
+	pixel_y = 14
+	},
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"bh" = (
+/obj/structure/table_frame/abductor,
+/obj/item/organ/lungs{
+	pixel_x = 8;
+	pixel_y = 7
+	},
+/obj/item/shard/plasma{
+	pixel_x = -8;
+	pixel_y = 1
+	},
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"bi" = (
+/obj/structure/bed/abductor,
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"bj" = (
+/obj/structure/table/abductor,
+/obj/item/storage/box/alienhandcuffs,
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"bk" = (
+/obj/effect/decal/cleanable/molten_object{
+	pixel_x = 9;
+	pixel_y = 7
+	},
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"bl" = (
+/obj/structure/chair/fancy/comfy{
+	color = "#75D6D6";
+	dir = 8
+	},
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"bm" = (
+/obj/machinery/abductor/gland_dispenser,
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"bn" = (
+/obj/structure/table/abductor,
+/obj/item/food/soylentgreen{
+	pixel_x = 4;
+	pixel_y = -1
+	},
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"bo" = (
+/obj/machinery/abductor/pad{
+	desc = "A funky looking disc, built into the floor."
+	},
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"bp" = (
+/obj/effect/landmark/bitrunning/mob_segment,
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"bq" = (
+/obj/machinery/abductor/experiment,
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"br" = (
+/obj/structure/chair/office{
+	dir = 4
+	},
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"bs" = (
+/obj/machinery/recharge_station,
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"bt" = (
+/obj/structure/table/abductor,
+/obj/item/crowbar/abductor,
+/obj/item/stock_parts/cell/infinite/abductor{
+	pixel_x = 5;
+	pixel_y = -3
+	},
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"bu" = (
+/obj/structure/table/abductor,
+/obj/item/multitool/abductor{
+	pixel_y = 6;
+	pixel_x = 5
+	},
+/obj/item/screwdriver/abductor{
+	pixel_y = 8;
+	pixel_x = -1
+	},
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+"bv" = (
+/turf/closed/indestructible/binary,
+/area/virtual_domain/fullbright)
+"bw" = (
+/obj/item/kirbyplants/photosynthetic,
+/turf/open/floor/plating/abductor,
+/area/virtual_domain)
+
+(1,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(2,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(3,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+am
+ax
+aI
+aT
+aT
+aI
+ax
+am
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(4,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+be
+be
+be
+be
+be
+be
+be
+be
+be
+be
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(5,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+be
+be
+be
+be
+be
+be
+be
+be
+be
+bp
+be
+be
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(6,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+be
+be
+be
+be
+be
+be
+be
+be
+be
+be
+be
+be
+be
+be
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(7,1,1) = {"
+aa
+bv
+bv
+bv
+bv
+aa
+aa
+aa
+aa
+ab
+ab
+be
+be
+be
+bw
+ab
+ab
+ab
+be
+be
+ab
+ab
+ab
+bw
+be
+be
+be
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(8,1,1) = {"
+bv
+bv
+ac
+ac
+bv
+aa
+aa
+aa
+ab
+ab
+ax
+be
+be
+ab
+ab
+ab
+ad
+ab
+be
+be
+ab
+ab
+ab
+ab
+ab
+be
+be
+ax
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+"}
+(9,1,1) = {"
+bv
+ac
+ac
+ac
+bv
+aa
+aa
+ab
+ab
+be
+be
+be
+ab
+ab
+ad
+ad
+ab
+ab
+be
+be
+ab
+ab
+ab
+ab
+ab
+ab
+be
+be
+be
+ab
+ab
+aa
+aa
+aa
+aa
+"}
+(10,1,1) = {"
+bv
+ac
+ac
+ac
+bv
+aa
+ab
+ab
+be
+be
+be
+ab
+ab
+ae
+af
+ag
+ab
+bw
+be
+be
+bw
+ab
+ah
+ai
+ae
+ab
+ab
+aj
+be
+be
+ab
+ab
+aa
+aa
+aa
+"}
+(11,1,1) = {"
+bv
+ac
+ac
+ac
+bv
+ab
+ab
+aj
+be
+be
+ab
+ab
+ak
+be
+be
+be
+ab
+be
+be
+be
+be
+ab
+al
+be
+be
+be
+ab
+ab
+an
+be
+bw
+ab
+ab
+aa
+aa
+"}
+(12,1,1) = {"
+bv
+ac
+ac
+ac
+ab
+ad
+ab
+be
+be
+ab
+ab
+ao
+be
+bp
+ab
+ab
+be
+be
+be
+be
+be
+be
+ab
+ab
+be
+be
+ae
+ab
+ab
+ab
+ab
+ab
+ab
+ap
+aa
+"}
+(13,1,1) = {"
+bv
+ac
+ac
+ac
+ab
+ad
+ab
+be
+be
+ab
+ae
+be
+be
+be
+aq
+be
+be
+be
+be
+be
+be
+be
+be
+ar
+be
+be
+as
+at
+ab
+ab
+ab
+au
+ab
+ab
+ab
+"}
+(14,1,1) = {"
+bv
+ac
+ac
+ac
+ab
+ab
+ab
+bw
+an
+ab
+aj
+be
+bw
+ab
+ab
+be
+be
+be
+be
+be
+be
+be
+be
+ab
+ab
+ae
+av
+aw
+ab
+ab
+ay
+be
+ay
+ab
+ab
+"}
+(15,1,1) = {"
+bv
+ac
+ac
+ac
+az
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+bw
+be
+be
+aA
+aB
+aB
+aB
+aB
+aA
+be
+be
+bw
+ab
+ab
+ab
+ab
+ab
+ay
+be
+ay
+ab
+ab
+"}
+(16,1,1) = {"
+bv
+ac
+ac
+az
+az
+aC
+aD
+aD
+be
+aE
+bw
+be
+be
+be
+be
+be
+aB
+aF
+aG
+aG
+aH
+aB
+be
+be
+be
+be
+be
+be
+ab
+ab
+az
+az
+az
+ab
+ab
+"}
+(17,1,1) = {"
+bv
+ac
+ac
+az
+aJ
+be
+be
+be
+be
+aK
+be
+be
+be
+be
+be
+be
+aB
+aA
+aL
+aM
+aA
+aB
+be
+be
+be
+be
+be
+be
+be
+ab
+be
+be
+be
+ab
+ab
+"}
+(18,1,1) = {"
+bv
+ac
+ac
+az
+aN
+be
+be
+be
+be
+aE
+be
+be
+be
+be
+be
+be
+aO
+aA
+aP
+aQ
+aA
+aO
+be
+be
+be
+bp
+be
+be
+be
+ar
+be
+bp
+be
+ab
+ab
+"}
+(19,1,1) = {"
+bv
+ac
+ac
+az
+aJ
+be
+be
+be
+be
+aK
+be
+be
+be
+be
+be
+be
+aB
+aA
+aA
+aA
+aA
+aB
+be
+be
+be
+be
+be
+be
+be
+ab
+be
+be
+be
+ab
+ab
+"}
+(20,1,1) = {"
+bv
+ac
+ac
+az
+az
+aC
+aR
+aR
+be
+aE
+bw
+be
+be
+be
+be
+be
+aB
+aS
+aU
+aU
+aV
+aB
+be
+be
+be
+be
+be
+be
+ab
+ab
+az
+az
+az
+ab
+ab
+"}
+(21,1,1) = {"
+bv
+ac
+ac
+ac
+az
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+bw
+be
+be
+aA
+aB
+aB
+aB
+aB
+aW
+be
+be
+bw
+ab
+ab
+ab
+ab
+ad
+ay
+be
+ay
+ab
+ab
+"}
+(22,1,1) = {"
+bv
+ac
+ac
+ac
+ab
+ab
+ab
+bw
+aI
+ab
+aX
+aY
+aI
+ab
+ab
+be
+be
+be
+be
+be
+be
+be
+be
+ab
+ab
+bw
+aZ
+ba
+ab
+ad
+ay
+be
+ay
+ab
+ab
+"}
+(23,1,1) = {"
+bv
+ac
+ac
+ac
+ab
+ad
+ab
+aj
+be
+ab
+aI
+be
+be
+bb
+bc
+be
+be
+be
+be
+be
+be
+be
+be
+ar
+be
+be
+be
+bd
+ab
+ad
+ad
+au
+ab
+ab
+ab
+"}
+(24,1,1) = {"
+bv
+ac
+ac
+ac
+ab
+ad
+ab
+be
+be
+ab
+ab
+bf
+be
+be
+ab
+ab
+be
+be
+be
+be
+be
+be
+ab
+ab
+bg
+be
+aT
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(25,1,1) = {"
+bv
+ac
+ac
+ac
+bv
+ab
+ab
+be
+be
+be
+ab
+ab
+bh
+be
+be
+bi
+ab
+be
+be
+be
+be
+ab
+bj
+bk
+bp
+bl
+ab
+ab
+aj
+be
+bw
+ab
+ab
+aa
+aa
+"}
+(26,1,1) = {"
+bv
+ac
+ac
+ac
+bv
+aa
+ab
+ab
+be
+be
+be
+ab
+ab
+aI
+bw
+bm
+ab
+bw
+be
+be
+be
+ab
+bn
+be
+bw
+ab
+ab
+be
+be
+be
+ab
+ab
+aa
+aa
+aa
+"}
+(27,1,1) = {"
+bv
+ac
+ac
+ac
+bv
+aa
+aa
+ab
+ab
+bo
+be
+be
+ab
+ab
+ab
+ab
+ab
+ab
+be
+be
+ab
+ab
+ab
+ab
+ab
+ab
+be
+be
+bo
+ab
+ab
+aa
+aa
+aa
+aa
+"}
+(28,1,1) = {"
+bv
+bv
+ac
+ac
+bv
+aa
+aa
+aa
+ab
+ab
+ax
+bp
+be
+ab
+ab
+ab
+ad
+ab
+be
+be
+ab
+ad
+ab
+ab
+ab
+be
+be
+ax
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+"}
+(29,1,1) = {"
+aa
+bv
+bv
+bv
+bv
+aa
+aa
+aa
+aa
+ab
+ab
+be
+be
+be
+bw
+ab
+ab
+ab
+be
+be
+ab
+ab
+ab
+bw
+be
+be
+bp
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(30,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+be
+be
+be
+be
+be
+be
+be
+be
+be
+be
+be
+be
+be
+be
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(31,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+be
+be
+be
+be
+be
+be
+be
+be
+be
+be
+be
+be
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(32,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+bq
+be
+br
+be
+be
+be
+be
+br
+be
+bq
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(33,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+bs
+bt
+bs
+be
+be
+bs
+bu
+bs
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(34,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(35,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
