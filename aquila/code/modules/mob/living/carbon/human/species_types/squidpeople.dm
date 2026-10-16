@@ -37,7 +37,7 @@
 
 /datum/species/squid/random_name(gender, unique, lastname, attempts)
 	if(unique)
-		return random_unique_squid_name(gender, lastname)
+		return random_unique_squid_name(gender, lastname, attempts || 10)
 	return squid_name(gender, lastname)
 
 /// Kałamarnicze imię i nazwisko: podane nazwisko ma pierwszeństwo przed losowym
