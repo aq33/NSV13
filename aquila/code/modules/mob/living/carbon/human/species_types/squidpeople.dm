@@ -37,20 +37,18 @@
 
 /datum/species/squid/random_name(gender, unique, lastname, attempts)
 	if(unique)
-		return random_unique_squid_name(gender)
-	var/randname = squid_name(gender)
-	if(lastname)
-		randname += " [lastname]"
-	return randname
+		return random_unique_squid_name(gender, lastname)
+	return squid_name(gender, lastname)
 
-/proc/squid_name(gender)
-	if(gender == MALE)
-		return "[pick(GLOB.squid_names_male)] [pick(GLOB.last_names_male)]"
-	return "[pick(GLOB.squid_names_female)] [pick(GLOB.last_names_female)]"
+/// Kałamarnicze imię i nazwisko: podane nazwisko ma pierwszeństwo przed losowym
+/proc/squid_name(gender, lastname)
+	if(!lastname)
+		lastname = pick(gender == MALE ? GLOB.last_names_male : GLOB.last_names_female)
+	return "[pick(gender == MALE ? GLOB.squid_names_male : GLOB.squid_names_female)] [lastname]"
 
-/proc/random_unique_squid_name(gender, attempts_to_find_unique_name = 10)
+/proc/random_unique_squid_name(gender, lastname, attempts_to_find_unique_name = 10)
 	for(var/i in 1 to attempts_to_find_unique_name)
-		. = capitalize(squid_name(gender))
+		. = capitalize(squid_name(gender, lastname))
 		if(!findname(.))
 			break
 

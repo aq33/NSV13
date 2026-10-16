@@ -125,6 +125,8 @@
 		return 'aquila/sound/voice/shadow/shadow_wail.ogg'
 	if(isipc(screamer) || isandroid(screamer))
 		return 'sound/machines/buzz-two.ogg'
+	if(is_species(screamer, /datum/species/egg))
+		return 'aquila/sound/voice/egg_scream.ogg'
 	. = ..()
 	if(. && (!ishumanbasic(screamer) || iscatperson(screamer)))
 		return

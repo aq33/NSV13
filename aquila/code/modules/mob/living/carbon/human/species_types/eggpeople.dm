@@ -2,6 +2,8 @@
 #define EGG_MAXBRUTEMOD 1.5
 #define EGG_ALPHA 0.00018
 #define EGG_BETA (-0.027)
+#define EGG_HARDEST_FIRELOSS 75
+#define EGG_SHATTER_BRUTE 200
 
 /datum/species/egg
 	name = "\improper Eggperson"
@@ -35,18 +37,24 @@
 	race = /datum/species/egg
 
 /datum/species/egg/apply_damage(damage, damagetype = BRUTE, def_zone = null, blocked, mob/living/carbon/human/H, forced = FALSE)
-	if(damagetype == BRUTE)
-		// Odporność skorupki zależy od oparzeń: im bardziej usmażone jajko, tym twardsze. https://www.desmos.com/calculator/dwxdxwt0rl
-		var/x = H.getFireLoss()
-		brutemod = EGG_ALPHA * x*x + EGG_BETA * x + EGG_MAXBRUTEMOD
-		if(H.getBruteLoss() >= 200) // cios *po* przekroczeniu 200 obrażeń rozbija jajko
-			H.visible_message("<span class='danger'>[H] pęka z głośnym chrupnięciem!</span>", "<span class='userdanger'>Twoja skorupka się rozpada!</span>")
-			playsound(H, 'aquila/sound/voice/speech/eggcrack4.ogg', 80, TRUE)
-			H.gib(FALSE)
-			return TRUE
-		if(damage >= 5 && !forced)
-			playsound(H, "eggcrack", 50, TRUE)
-	return ..()
+	if(damagetype != BRUTE)
+		return ..()
+	// Odporność skorupki zależy od oparzeń: im bardziej usmażone jajko, tym twardsze. https://www.desmos.com/calculator/dwxdxwt0rl
+	// Parabola ma minimum przy 75 oparzeniach, dalej skorupka już nie mięknie.
+	var/x = min(H.getFireLoss(), EGG_HARDEST_FIRELOSS)
+	brutemod = EGG_ALPHA * x*x + EGG_BETA * x + EGG_MAXBRUTEMOD
+	var/brute_before = H.getBruteLoss()
+	. = ..()
+	var/dealt = H.getBruteLoss() - brute_before
+	if(dealt <= 0)
+		return
+	if(H.getBruteLoss() >= EGG_SHATTER_BRUTE)
+		H.visible_message("<span class='danger'>[H] pęka z głośnym chrupnięciem!</span>", "<span class='userdanger'>Twoja skorupka się rozpada!</span>")
+		playsound(H, 'aquila/sound/voice/speech/eggcrack4.ogg', 80, TRUE)
+		H.gib(FALSE)
+		return
+	if(dealt >= 5)
+		playsound(H, "eggcrack", 50, TRUE)
 
 /obj/item/organ/tongue/egg
 	name = "egg tongue"
@@ -113,3 +121,5 @@
 #undef EGG_MAXBRUTEMOD
 #undef EGG_ALPHA
 #undef EGG_BETA
+#undef EGG_HARDEST_FIRELOSS
+#undef EGG_SHATTER_BRUTE
