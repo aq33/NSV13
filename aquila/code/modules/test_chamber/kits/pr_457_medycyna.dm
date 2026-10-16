@@ -1,6 +1,6 @@
-/datum/test_chamber_kit/pr_422
+/datum/test_chamber_kit/pr_457
 	name = "Medycyna"
-	pr = "aq33/AquilaStation#422"
+	pr = "aq33/AquilaStation#457"
 	description = "Ranny człowiek ma złamaną nogę, przerwaną tętnicę w ręce i oparzenie III stopnia: zbadaj go analizatorem (okno), opatrz gazą, nićmi i siatką, zrób operacje nastawienia kości i usunięcia martwej tkanki. \
 Świeży trup: defibrylator i powody odmowy, autopsja skanerem. Worek ze zwłokami: przeczytaj kartę i ożyw (duch przejmuje ciało). \
 Kroplówka z wiązką, monitor funkcji życiowych (przykręć do ściany, multitool na stół), konsola akt medycznych (TGUI, przyczyna zgonu). \
@@ -32,7 +32,7 @@ Nóż, kij i laser na króliki doświadczalne: krwawienie, kolor krwi, rany. Prz
 		/obj/item/lighter = 1,
 	)
 
-/datum/test_chamber_kit/pr_422/setup(list/spawned, list/turfs, turf/center, mob/user)
+/datum/test_chamber_kit/pr_457/setup(list/spawned, list/turfs, turf/center, mob/user)
 	// Wounded patient with one wound of every kind
 	var/mob/living/carbon/human/wounded = new(center)
 	wounded.real_name = "Ranny pacjent"
