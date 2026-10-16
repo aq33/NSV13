@@ -30,13 +30,47 @@
 	. = ..()
 	.["surgeries"] = get_surgery_catalog()
 
-// Dyski zawodowe: medyczne dostają „Operacje”, chemiczne „Receptury”
+/datum/computer_file/program/slime_extracts
+	filename = "ekstrakty"
+	filedesc = "Ekstrakty"
+	category = PROGRAM_CATEGORY_CREW
+	program_icon_state = "generic"
+	extended_desc = "Spis ekstraktów szlamów: czym je aktywować i co z tego wyjdzie."
+	size = 2
+	tgui_id = "NtosSlimeExtracts"
+	program_icon = "vial"
+	usage_flags = PROGRAM_ALL
+
+/datum/computer_file/program/slime_extracts/ui_static_data(mob/user)
+	. = ..()
+	.["extracts"] = get_slime_extract_catalog()
+
+/datum/computer_file/program/space_law
+	filename = "prawo"
+	filedesc = "Prawo kosmiczne"
+	category = PROGRAM_CATEGORY_CREW
+	program_icon_state = "generic"
+	extended_desc = "Kodeks karny okrętu z wyszukiwarką i kalkulatorem wyroku."
+	size = 2
+	tgui_id = "NtosSpaceLaw"
+	program_icon = "gavel"
+	usage_flags = PROGRAM_ALL
+
+/datum/computer_file/program/space_law/ui_static_data(mob/user)
+	. = ..()
+	.["categories"] = get_space_law_catalog()
+
+// Dyski zawodowe: medyczne dostają „Operacje”, chemiczne „Receptury”, naukowe „Ekstrakty”, ochrony „Prawo kosmiczne”
 /obj/item/computer_hardware/hard_drive/role/Initialize(mapload)
 	. = ..()
 	if(disk_flags & DISK_MED)
 		store_lookup_program(new /datum/computer_file/program/surgery_lookup(src))
 	if(disk_flags & DISK_CHEM)
 		store_lookup_program(new /datum/computer_file/program/recipe_lookup(src))
+	if(disk_flags & DISK_SIGNAL)
+		store_lookup_program(new /datum/computer_file/program/slime_extracts(src))
+	if(disk_flags & DISK_SEC)
+		store_lookup_program(new /datum/computer_file/program/space_law(src))
 
 /obj/item/computer_hardware/hard_drive/role/proc/store_lookup_program(datum/computer_file/program/program)
 	program.usage_flags = PROGRAM_ALL

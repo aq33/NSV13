@@ -64,3 +64,35 @@ GLOBAL_LIST(recipe_catalog)
 /obj/machinery/chem_dispenser/ui_static_data(mob/user)
 	. = ..()
 	.["recipeCatalog"] = get_recipe_catalog()
+
+GLOBAL_LIST(slime_extract_catalog)
+
+/// Zwraca reakcje ekstraktów szlamów pogrupowane po ekstrakcie (program PDA „Ekstrakty”)
+/proc/get_slime_extract_catalog()
+	if(GLOB.slime_extract_catalog)
+		return GLOB.slime_extract_catalog
+	build_chemical_reactions_list()
+
+	var/list/reactions_by_extract = list()
+	var/list/seen = list()
+	for(var/reagent_type in GLOB.chemical_reactions_list)
+		for(var/datum/chemical_reaction/reaction as anything in GLOB.chemical_reactions_list[reagent_type])
+			if(seen[reaction.type] || !ispath(reaction.required_container, /obj/item/slime_extract))
+				continue
+			seen[reaction.type] = TRUE
+			LAZYADD(reactions_by_extract[reaction.required_container], list(list(
+				"id" = "[reaction.type]",
+				"name" = reaction.name,
+				"reagents" = recipe_catalog_reagents(reaction.required_reagents),
+				"results" = recipe_catalog_reagents(reaction.results),
+			)))
+
+	var/list/catalog = list()
+	for(var/obj/item/slime_extract/extract_type as anything in reactions_by_extract)
+		catalog += list(list(
+			"id" = "[extract_type]",
+			"name" = initial(extract_type.name),
+			"reactions" = reactions_by_extract[extract_type],
+		))
+	GLOB.slime_extract_catalog = catalog
+	return catalog
