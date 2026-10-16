@@ -71,12 +71,18 @@
 	pr = "aq33/AquilaStation#460"
 	description = "Zielone naklejki płytek z Bee: pełna, połówka, antynarożnik, narożnik, rampy i przeciwległe rogi. \
 		Sprawdź, czy są półprzezroczyste i czy rampy dają ukośne przejście. Na mapach zakręty kolorowych pasów mają teraz ukosy."
-	items = list(
-		/obj/effect/turf_decal/tile/green/fourcorners = 1,
-		/obj/effect/turf_decal/tile/green/half = 1,
-		/obj/effect/turf_decal/tile/green/anticorner = 1,
-		/obj/effect/turf_decal/tile/green = 1,
-		/obj/effect/turf_decal/tile/green/corner_ramp = 1,
-		/obj/effect/turf_decal/tile/green/anticorner_ramp = 1,
-		/obj/effect/turf_decal/tile/green/opposingcorners = 1
+	/// Naklejki rozkładają się na podłogę i same znikają, więc nie idą przez items (test liczy obiekty)
+	var/list/decals = list(
+		/obj/effect/turf_decal/tile/green/fourcorners,
+		/obj/effect/turf_decal/tile/green/half,
+		/obj/effect/turf_decal/tile/green/anticorner,
+		/obj/effect/turf_decal/tile/green,
+		/obj/effect/turf_decal/tile/green/corner_ramp,
+		/obj/effect/turf_decal/tile/green/anticorner_ramp,
+		/obj/effect/turf_decal/tile/green/opposingcorners
 	)
+
+/datum/test_chamber_kit/pr_460_podlogi/setup(list/spawned, list/turfs, turf/center, mob/user)
+	for(var/i in 1 to min(length(decals), length(turfs)))
+		var/decal_type = decals[i]
+		new decal_type(turfs[i])
