@@ -14,6 +14,7 @@
 #define CYBORG			(1<<10)
 #define BRIG_PHYS		(1<<11)
 #define DEPUTY  		(1<<12)
+#define BITRUNNER		(1<<13) // AQ EDIT - bitrunning
 
 
 #define MEDSCI			(1<<1)
@@ -81,6 +82,7 @@
 #define JOB_DISPLAY_ORDER_QUARTERMASTER 5
 #define JOB_DISPLAY_ORDER_CARGO_TECHNICIAN 6
 #define JOB_DISPLAY_ORDER_SHAFT_MINER 7
+#define JOB_DISPLAY_ORDER_BITRUNNER 7.5 // AQ EDIT - bitrunning
 #define JOB_DISPLAY_ORDER_BARTENDER 8
 #define JOB_DISPLAY_ORDER_COOK 9
 #define JOB_DISPLAY_ORDER_BOTANIST 10
@@ -152,6 +154,7 @@
 #define JOB_NAME_QUARTERMASTER   "Kwatermistrz"
 #define JOB_NAME_CARGOTECHNICIAN "Magazynier"
 #define JOB_NAME_SHAFTMINER      "Górnik"
+#define JOB_NAME_BITRUNNER       "Bitrunner" // AQ EDIT - bitrunning
 
 // Engineering
 #define JOB_NAME_CHIEFENGINEER   "Główny Inżynier"
@@ -253,6 +256,8 @@
 #define JOB_HUD_QUARTERMASTER "quartermaster"
 #define JOB_HUD_CARGOTECHNICIAN "cargotechnician"
 #define JOB_HUD_SHAFTMINER "shaftminer"
+#define JOB_HUD_BITRUNNER "bitrunner" // AQ EDIT - bitrunning
+#define JOB_HUD_BITAVATAR "bitavatar" // AQ EDIT - bitrunning
 
 // Engineering
 #define JOB_HUD_RAWENGINEERING "rawengineering"
@@ -335,6 +340,7 @@
 #define JOB_CHATCOLOR_QUARTERMASTER   "#C79C52"
 #define JOB_CHATCOLOR_CARGOTECHNICIAN "#D3A372"
 #define JOB_CHATCOLOR_SHAFTMINER      "#CE957E"
+#define JOB_CHATCOLOR_BITRUNNER       "#9ECF6B" // AQ EDIT - bitrunning
 
 // Engineering
 #define JOB_CHATCOLOR_RAWENGINEERING        "#E9D1A8" // custom engineering color

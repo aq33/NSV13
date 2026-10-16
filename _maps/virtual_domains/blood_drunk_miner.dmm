@@ -1,0 +1,2100 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/closed/indestructible/binary,
+/area/virtual_domain/fullbright)
+"ab" = (
+/turf/closed/mineral/volcanic/lava_land_surface,
+/area/lavaland/surface/outdoors/virtual_domain)
+"ac" = (
+/obj/structure/stone_tile/cracked{
+	dir = 4
+	},
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors/virtual_domain)
+"ad" = (
+/obj/structure/stone_tile/block,
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors/virtual_domain)
+"ae" = (
+/obj/machinery/light/small{
+	bulb_colour = "#A700FF";
+	brightness = 4;
+	nightshift_allowed = 0;
+	dir = 2
+	},
+/obj/effect/baseturf_helper/virtual_domain,
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/virtual_domain)
+"af" = (
+/turf/closed/wall,
+/area/virtual_domain/safehouse)
+"ag" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/virtual_domain/safehouse)
+"ah" = (
+/obj/structure/stone_tile/cracked{
+	dir = 8
+	},
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors/virtual_domain)
+"ai" = (
+/obj/structure/stone_tile/block/cracked{
+	dir = 1
+	},
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors/virtual_domain)
+"aj" = (
+/obj/structure/stone_tile{
+	dir = 4
+	},
+/obj/structure/stone_tile/cracked,
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors/virtual_domain)
+"ak" = (
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 9
+	},
+/obj/machinery/suit_storage_unit/mining,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain/safehouse)
+"al" = (
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 8
+	},
+/obj/machinery/suit_storage_unit/mining,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 4
+	},
+/area/virtual_domain/safehouse)
+"am" = (
+/obj/effect/baseturf_helper/virtual_domain,
+/turf/closed/mineral/volcanic/lava_land_surface,
+/area/lavaland/surface/outdoors/virtual_domain)
+"an" = (
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 8
+	},
+/obj/machinery/suit_storage_unit/mining,
+/turf/open/floor/plasteel/dark{
+	dir = 4
+	},
+/area/virtual_domain/safehouse)
+"ao" = (
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 10
+	},
+/obj/structure/table,
+/obj/item/flashlight/lantern{
+	pixel_x = 8;
+	pixel_y = null
+	},
+/obj/item/flashlight/lantern{
+	pixel_y = 4
+	},
+/obj/item/flashlight/lantern{
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/obj/item/clothing/glasses/meson/night,
+/obj/item/clothing/glasses/meson/night,
+/obj/item/clothing/glasses/meson/night,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain/safehouse)
+"ap" = (
+/obj/structure/stone_tile/block{
+	dir = 4
+	},
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors/virtual_domain)
+"aq" = (
+/obj/structure/stone_tile,
+/obj/structure/stone_tile{
+	dir = 4
+	},
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors/virtual_domain)
+"ar" = (
+/obj/structure/stone_tile{
+	dir = 8
+	},
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors/virtual_domain)
+"as" = (
+/obj/structure/stone_tile/block,
+/obj/structure/stone_tile/cracked{
+	dir = 4
+	},
+/turf/open/lava/smooth/lava_land_surface,
+/area/lavaland/surface/outdoors/virtual_domain)
+"at" = (
+/obj/structure/stone_tile,
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors/virtual_domain)
+"au" = (
+/obj/structure/marker_beacon{
+	picked_color = "Olive";
+	icon_state = "markerolive"
+	},
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors/virtual_domain)
+"av" = (
+/obj/structure/marker_beacon{
+	picked_color = "Yellow";
+	icon_state = "markeryellow"
+	},
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors/virtual_domain)
+"aw" = (
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 1
+	},
+/obj/structure/extinguisher_cabinet{
+	dir = 1;
+	pixel_y = 29
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain/safehouse)
+"ax" = (
+/turf/open/lava/smooth/lava_land_surface,
+/area/lavaland/surface/outdoors/virtual_domain)
+"ay" = (
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain/safehouse)
+"az" = (
+/obj/effect/turf_decal/trimline/brown/filled/line,
+/obj/effect/landmark/bitrunning/hololadder_spawn,
+/turf/open/floor/plasteel/dark{
+	dir = 1
+	},
+/area/virtual_domain/safehouse)
+"aA" = (
+/obj/structure/stone_tile{
+	dir = 4
+	},
+/obj/structure/stone_tile{
+	dir = 1
+	},
+/turf/open/lava/smooth/lava_land_surface,
+/area/lavaland/surface/outdoors/virtual_domain)
+"aB" = (
+/obj/structure/stone_tile/surrounding/cracked{
+	dir = 6
+	},
+/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner,
+/turf/open/lava/smooth/lava_land_surface,
+/area/lavaland/surface/outdoors/virtual_domain)
+"aC" = (
+/obj/structure/stone_tile,
+/obj/structure/stone_tile/block/cracked{
+	dir = 8
+	},
+/turf/open/lava/smooth/lava_land_surface,
+/area/lavaland/surface/outdoors/virtual_domain)
+"aD" = (
+/obj/structure/stone_tile{
+	dir = 8
+	},
+/obj/structure/stone_tile/block{
+	dir = 1
+	},
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors/virtual_domain)
+"aE" = (
+/obj/structure/stone_tile/cracked,
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors/virtual_domain)
+"aF" = (
+/obj/machinery/door/airlock/external/glass{
+	name = "Mining External Airlock"
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain/safehouse)
+"aG" = (
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain/safehouse)
+"aH" = (
+/obj/item/gun/energy/kinetic_accelerator{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/item/gun/energy/kinetic_accelerator{
+	pixel_x = -1;
+	pixel_y = 1
+	},
+/obj/item/gun/energy/kinetic_accelerator{
+	pixel_x = 4;
+	pixel_y = -4
+	},
+/obj/structure/closet,
+/obj/item/kinetic_crusher,
+/obj/item/kinetic_crusher,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain/safehouse)
+"aI" = (
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors/virtual_domain)
+"aJ" = (
+/obj/structure/table,
+/obj/item/borg/upgrade/modkit/damage{
+	pixel_x = 8;
+	pixel_y = 8
+	},
+/obj/item/borg/upgrade/modkit/damage{
+	pixel_y = 4;
+	pixel_x = 8
+	},
+/obj/item/borg/upgrade/modkit/damage{
+	pixel_x = 8
+	},
+/obj/item/borg/upgrade/modkit/range{
+	pixel_y = 8
+	},
+/obj/item/borg/upgrade/modkit/range{
+	pixel_y = 4
+	},
+/obj/item/borg/upgrade/modkit/range,
+/obj/item/borg/upgrade/modkit/cooldown{
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/obj/item/borg/upgrade/modkit/cooldown{
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/obj/item/borg/upgrade/modkit/cooldown{
+	pixel_x = -8
+	},
+/obj/item/reagent_containers/hypospray/medipen/survival{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/reagent_containers/hypospray/medipen/survival{
+	pixel_x = 6
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain/safehouse)
+"aK" = (
+/obj/structure/stone_tile{
+	dir = 4
+	},
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors/virtual_domain)
+"aL" = (
+/obj/structure/stone_tile/cracked{
+	dir = 8
+	},
+/obj/structure/stone_tile{
+	dir = 1
+	},
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors/virtual_domain)
+"aM" = (
+/obj/structure/stone_tile{
+	dir = 1
+	},
+/obj/structure/stone_tile/block/cracked,
+/turf/open/lava/smooth/lava_land_surface,
+/area/lavaland/surface/outdoors/virtual_domain)
+"aN" = (
+/obj/structure/stone_tile/cracked{
+	dir = 1
+	},
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors/virtual_domain)
+"aO" = (
+/obj/structure/stone_tile/block{
+	dir = 1
+	},
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors/virtual_domain)
+"aP" = (
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 5
+	},
+/obj/structure/tank_dispenser/oxygen,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain/safehouse)
+"aQ" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/structure/railing,
+/obj/effect/landmark/bitrunning/cache_goal_turf,
+/turf/open/indestructible/bitrunning_transport,
+/area/virtual_domain/safehouse)
+"aR" = (
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 4
+	},
+/obj/structure/closet,
+/obj/item/gun/ballistic/rocketlauncher/unrestricted,
+/obj/item/ammo_casing/caseless/rocket,
+/obj/item/ammo_casing/caseless/rocket,
+/obj/item/ammo_casing/caseless/rocket,
+/obj/item/energy_katana,
+/obj/item/ammo_box/magazine/mm712x82,
+/turf/open/floor/plasteel/dark{
+	dir = 8
+	},
+/area/virtual_domain/safehouse)
+"aS" = (
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 6
+	},
+/obj/structure/sign/departments/cargo{
+	dir = 2;
+	pixel_y = -32
+	},
+/obj/structure/closet,
+/obj/item/gun/ballistic/automatic/l6_saw/unrestricted,
+/obj/item/ammo_box/magazine/sniper_rounds,
+/obj/item/gun/ballistic/automatic/sniper_rifle,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain/safehouse)
+"aT" = (
+/obj/structure/marker_beacon{
+	picked_color = "Jade";
+	icon_state = "markerjade"
+	},
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors/virtual_domain)
+"aU" = (
+/obj/effect/baseturf_helper/virtual_domain,
+/turf/closed/wall,
+/area/virtual_domain/safehouse)
+"aV" = (
+/obj/structure/stone_tile/block/cracked{
+	dir = 4
+	},
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors/virtual_domain)
+"aW" = (
+/obj/structure/marker_beacon{
+	picked_color = "Cerulean";
+	icon_state = "markercerulean"
+	},
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors/virtual_domain)
+"aX" = (
+/obj/structure/marker_beacon{
+	picked_color = "Teal";
+	icon_state = "markerteal"
+	},
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors/virtual_domain)
+"aY" = (
+/obj/structure/marker_beacon{
+	picked_color = "Indigo";
+	icon_state = "markerindigo"
+	},
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors/virtual_domain)
+"aZ" = (
+/obj/structure/marker_beacon{
+	picked_color = "Violet";
+	icon_state = "markerviolet"
+	},
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors/virtual_domain)
+"ba" = (
+/obj/effect/mob_spawn/human/miner,
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors/virtual_domain)
+"bb" = (
+/obj/structure/stone_tile/block{
+	dir = 8
+	},
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors/virtual_domain)
+
+(1,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(2,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+am
+aa
+"}
+(3,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ax
+ax
+ab
+ab
+ax
+ax
+ab
+ab
+ax
+ax
+ax
+ax
+ab
+ab
+ab
+ax
+ax
+ax
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ax
+ax
+ab
+ab
+ab
+ax
+ax
+ab
+ab
+ax
+ax
+ab
+aa
+"}
+(4,1,1) = {"
+aa
+ab
+ab
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+aI
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ab
+aa
+"}
+(5,1,1) = {"
+aa
+ab
+ab
+ax
+aI
+ax
+ax
+ax
+ax
+aI
+ax
+ax
+ax
+ax
+aI
+aI
+ax
+ax
+ax
+ax
+ax
+aI
+aI
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ab
+ab
+aa
+"}
+(6,1,1) = {"
+aa
+ab
+ab
+ax
+aI
+ax
+ax
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+ax
+aI
+aI
+aI
+aI
+aI
+ax
+ax
+ax
+aI
+aI
+ax
+ax
+ax
+aI
+aI
+ax
+aI
+ax
+aI
+aI
+ax
+ax
+ax
+ab
+ab
+aa
+"}
+(7,1,1) = {"
+aa
+ab
+ab
+ax
+ax
+ax
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+ax
+ax
+ax
+ab
+aa
+"}
+(8,1,1) = {"
+aa
+ab
+ab
+ax
+ax
+ax
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+ax
+ax
+ab
+ab
+aa
+"}
+(9,1,1) = {"
+aa
+ab
+ax
+ax
+ax
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aT
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+ax
+ax
+ab
+aa
+"}
+(10,1,1) = {"
+aa
+ab
+ax
+ax
+ax
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aY
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+ax
+ax
+ab
+aa
+"}
+(11,1,1) = {"
+aa
+ab
+ab
+ax
+ax
+ax
+aI
+aI
+aI
+aZ
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+ax
+ax
+ab
+aa
+"}
+(12,1,1) = {"
+aa
+ab
+ab
+ax
+ax
+ax
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+ba
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+ax
+ax
+ax
+ab
+aa
+"}
+(13,1,1) = {"
+aa
+ab
+ab
+ax
+ax
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+ax
+ax
+ab
+aa
+"}
+(14,1,1) = {"
+aa
+ab
+ab
+ax
+ax
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+bb
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+ax
+ax
+ab
+aa
+"}
+(15,1,1) = {"
+aa
+ab
+ax
+ax
+ax
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+ac
+ad
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+ae
+af
+af
+af
+ag
+ag
+af
+aI
+aI
+ax
+ax
+ab
+aa
+"}
+(16,1,1) = {"
+aa
+ab
+ax
+ax
+ax
+ax
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+bb
+ah
+aI
+ai
+aI
+aj
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+ag
+ak
+al
+an
+ao
+af
+aI
+aI
+ax
+ax
+ab
+aa
+"}
+(17,1,1) = {"
+aa
+ab
+ab
+ax
+ax
+ax
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+ap
+aq
+ar
+as
+at
+aI
+bb
+ar
+aI
+aI
+aI
+au
+aI
+aI
+aI
+aI
+aI
+av
+aI
+aI
+af
+aw
+ay
+ay
+az
+ag
+aI
+aI
+ax
+ax
+ab
+aa
+"}
+(18,1,1) = {"
+aa
+ab
+ab
+ax
+ax
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aA
+aB
+aC
+aD
+aE
+ai
+ar
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aF
+aG
+aH
+aJ
+az
+ag
+aI
+ax
+ax
+ab
+ab
+aa
+"}
+(19,1,1) = {"
+aa
+ab
+ax
+ax
+ax
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+ar
+aK
+aL
+at
+aM
+ar
+aI
+aN
+bb
+aE
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+af
+aw
+ay
+ay
+az
+ag
+aI
+aI
+ax
+ax
+ab
+aa
+"}
+(20,1,1) = {"
+aa
+ab
+ax
+ax
+ax
+ax
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aN
+at
+aI
+aO
+aI
+ad
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+ag
+aP
+aQ
+aR
+aS
+af
+aI
+aI
+ax
+ax
+ab
+aa
+"}
+(21,1,1) = {"
+aa
+ab
+ab
+ax
+ax
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+ad
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+ae
+af
+af
+af
+ag
+ag
+aU
+aI
+aI
+ax
+ab
+ab
+aa
+"}
+(22,1,1) = {"
+aa
+ab
+ab
+ax
+ax
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aV
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+ax
+ab
+ab
+aa
+"}
+(23,1,1) = {"
+aa
+ab
+ax
+ax
+aI
+aI
+aI
+aI
+aI
+aI
+aW
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+ax
+ab
+ab
+aa
+"}
+(24,1,1) = {"
+aa
+ab
+ax
+ax
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+ba
+aI
+aI
+aI
+aI
+aI
+ax
+ax
+ab
+aa
+"}
+(25,1,1) = {"
+aa
+ab
+ab
+ax
+ax
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+ax
+ax
+ax
+ab
+aa
+"}
+(26,1,1) = {"
+aa
+ab
+ab
+ax
+ax
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aX
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+ax
+ax
+ab
+aa
+"}
+(27,1,1) = {"
+aa
+ab
+ab
+ax
+ax
+ax
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aT
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+ax
+ax
+ab
+aa
+"}
+(28,1,1) = {"
+aa
+ab
+ax
+ax
+ax
+ax
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+ax
+ax
+ax
+ab
+aa
+"}
+(29,1,1) = {"
+aa
+ab
+ax
+ax
+ax
+ax
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+aI
+ax
+ax
+ab
+ab
+aa
+"}
+(30,1,1) = {"
+aa
+ab
+ab
+ax
+ax
+ax
+ax
+aI
+aI
+ax
+ax
+ax
+aI
+aI
+aI
+aI
+ax
+ax
+ax
+aI
+aI
+aI
+ax
+ax
+ax
+aI
+aI
+aI
+ax
+ax
+aI
+aI
+aI
+aI
+aI
+aI
+ax
+ax
+aI
+aI
+aI
+ax
+ax
+ab
+ab
+aa
+"}
+(31,1,1) = {"
+aa
+ab
+ab
+aI
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+aI
+aI
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+aI
+aI
+aI
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ab
+aa
+"}
+(32,1,1) = {"
+aa
+ab
+ab
+aI
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+aI
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ab
+aa
+"}
+(33,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ax
+ax
+ab
+ab
+ab
+ab
+ax
+ax
+ab
+ab
+ab
+ab
+ab
+ab
+ax
+ax
+ab
+ab
+ab
+ab
+ax
+ax
+ab
+ab
+ab
+ab
+ax
+ax
+ax
+ab
+ab
+ab
+ab
+ab
+ab
+ax
+ax
+ax
+ab
+aa
+"}
+(34,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(35,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}

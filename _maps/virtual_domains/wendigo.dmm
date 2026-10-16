@@ -1,0 +1,1835 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/template_noop,
+/area/template_noop)
+"ab" = (
+/turf/closed/indestructible/binary,
+/area/virtual_domain/fullbright)
+"ac" = (
+/turf/closed/indestructible/rock/snow,
+/area/virtual_domain/ice)
+"ad" = (
+/obj/structure/flora/rock/pile/icy,
+/turf/open/floor/plating/asteroid/snow/atmosphere,
+/area/virtual_domain/ice)
+"ae" = (
+/obj/effect/turf_decal/weather/snow/corner,
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "o2=17;n2=63;TEMP=180"
+	},
+/area/virtual_domain/ice)
+"af" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 1
+	},
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "o2=17;n2=63;TEMP=180"
+	},
+/area/virtual_domain/ice)
+"ag" = (
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "o2=17;n2=63;TEMP=180"
+	},
+/area/virtual_domain/ice)
+"ah" = (
+/turf/closed/indestructible/necropolis,
+/area/virtual_domain/ice)
+"ai" = (
+/obj/effect/baseturf_helper/virtual_domain,
+/turf/open/floor/plating/asteroid/snow/atmosphere,
+/area/virtual_domain/ice)
+"aj" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 5
+	},
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 8
+	},
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "o2=17;n2=63;TEMP=180"
+	},
+/area/virtual_domain/ice)
+"ak" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 5
+	},
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "o2=17;n2=63;TEMP=180"
+	},
+/area/virtual_domain/ice)
+"al" = (
+/obj/effect/turf_decal/weather/snow/corner,
+/obj/effect/mob_spawn/human/corpse/bitrunner,
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "o2=17;n2=63;TEMP=180"
+	},
+/area/virtual_domain/ice)
+"am" = (
+/turf/open/floor/plating/asteroid/snow/atmosphere,
+/area/virtual_domain/ice)
+"an" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 6
+	},
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "o2=17;n2=63;TEMP=180"
+	},
+/area/virtual_domain/ice)
+"ao" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 9
+	},
+/obj/effect/turf_decal/weather/snow/corner,
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "o2=17;n2=63;TEMP=180"
+	},
+/area/virtual_domain/ice)
+"ap" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 8
+	},
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "o2=17;n2=63;TEMP=180"
+	},
+/area/virtual_domain/ice)
+"aq" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 6
+	},
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "o2=17;n2=63;TEMP=180"
+	},
+/area/virtual_domain/ice)
+"ar" = (
+/obj/effect/turf_decal/weather/snow/corner,
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 1
+	},
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "o2=17;n2=63;TEMP=180"
+	},
+/area/virtual_domain/ice)
+"as" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/weather/snow/corner,
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "o2=17;n2=63;TEMP=180"
+	},
+/area/virtual_domain/ice)
+"at" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 6
+	},
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 1
+	},
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "o2=17;n2=63;TEMP=180"
+	},
+/area/virtual_domain/ice)
+"au" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 9
+	},
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 4
+	},
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "o2=17;n2=63;TEMP=180"
+	},
+/area/virtual_domain/ice)
+"av" = (
+/turf/closed/wall,
+/area/virtual_domain/safehouse)
+"aw" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/virtual_domain/safehouse)
+"ax" = (
+/obj/structure/flora/stump,
+/turf/open/floor/plating/asteroid/snow/atmosphere,
+/area/virtual_domain/ice)
+"ay" = (
+/obj/effect/mob_spawn/human/corpse/bitrunner,
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "o2=17;n2=63;TEMP=180"
+	},
+/area/virtual_domain/ice)
+"az" = (
+/obj/effect/mob_spawn/human/corpse/cargo_tech,
+/turf/open/floor/plating/asteroid/snow/atmosphere,
+/area/virtual_domain/ice)
+"aA" = (
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 9
+	},
+/obj/machinery/suit_storage_unit/mining,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain/safehouse)
+"aB" = (
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 8
+	},
+/obj/machinery/suit_storage_unit/mining,
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 4
+	},
+/area/virtual_domain/safehouse)
+"aC" = (
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 8
+	},
+/obj/machinery/suit_storage_unit/mining,
+/turf/open/floor/plasteel/dark{
+	dir = 4
+	},
+/area/virtual_domain/safehouse)
+"aD" = (
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 10
+	},
+/obj/structure/table,
+/obj/item/flashlight/lantern{
+	pixel_x = 8;
+	pixel_y = null
+	},
+/obj/item/flashlight/lantern{
+	pixel_y = 4
+	},
+/obj/item/flashlight/lantern{
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/obj/item/clothing/glasses/meson/night,
+/obj/item/clothing/glasses/meson/night,
+/obj/item/clothing/glasses/meson/night,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain/safehouse)
+"aE" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "o2=17;n2=63;TEMP=180"
+	},
+/area/virtual_domain/ice)
+"aF" = (
+/obj/effect/decal/cleanable/blood/gibs/core,
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "o2=17;n2=63;TEMP=180"
+	},
+/area/virtual_domain/ice)
+"aG" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 10
+	},
+/obj/structure/holosign/barrier,
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "o2=17;n2=63;TEMP=180"
+	},
+/area/virtual_domain/ice)
+"aH" = (
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 1
+	},
+/obj/structure/extinguisher_cabinet{
+	dir = 1;
+	pixel_y = 29
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain/safehouse)
+"aI" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 9
+	},
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "o2=17;n2=63;TEMP=180"
+	},
+/area/virtual_domain/ice)
+"aJ" = (
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain/safehouse)
+"aK" = (
+/obj/effect/turf_decal/trimline/brown/filled/line,
+/obj/effect/landmark/bitrunning/hololadder_spawn,
+/turf/open/floor/plasteel/dark{
+	dir = 1
+	},
+/area/virtual_domain/safehouse)
+"aL" = (
+/mob/living/simple_animal/hostile/megafauna/wendigo,
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "o2=17;n2=63;TEMP=180"
+	},
+/area/virtual_domain/ice)
+"aM" = (
+/obj/effect/decal/cleanable/blood/gibs/torso,
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "o2=17;n2=63;TEMP=180"
+	},
+/area/virtual_domain/ice)
+"aN" = (
+/obj/effect/decal/cleanable/blood/drip{
+	pixel_x = 2;
+	pixel_y = 3
+	},
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "o2=17;n2=63;TEMP=180"
+	},
+/area/virtual_domain/ice)
+"aO" = (
+/obj/item/paper/crumpled/bloody{
+	default_raw_text = "for your own sake, do not enter"
+	},
+/turf/open/floor/plating/asteroid/snow/atmosphere,
+/area/virtual_domain/ice)
+"aP" = (
+/obj/machinery/door/airlock/external/glass{
+	name = "Mining External Airlock"
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain/safehouse)
+"aQ" = (
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain/safehouse)
+"aR" = (
+/obj/item/gun/energy/kinetic_accelerator{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/item/gun/energy/kinetic_accelerator{
+	pixel_x = -1;
+	pixel_y = 1
+	},
+/obj/item/gun/energy/kinetic_accelerator{
+	pixel_x = 4;
+	pixel_y = -4
+	},
+/obj/structure/closet,
+/obj/item/kinetic_crusher,
+/obj/item/kinetic_crusher,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain/safehouse)
+"aS" = (
+/obj/structure/table,
+/obj/item/borg/upgrade/modkit/damage{
+	pixel_x = 8;
+	pixel_y = 8
+	},
+/obj/item/borg/upgrade/modkit/damage{
+	pixel_y = 4;
+	pixel_x = 8
+	},
+/obj/item/borg/upgrade/modkit/damage{
+	pixel_x = 8
+	},
+/obj/item/borg/upgrade/modkit/range{
+	pixel_y = 8
+	},
+/obj/item/borg/upgrade/modkit/range{
+	pixel_y = 4
+	},
+/obj/item/borg/upgrade/modkit/range,
+/obj/item/borg/upgrade/modkit/cooldown{
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/obj/item/borg/upgrade/modkit/cooldown{
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/obj/item/borg/upgrade/modkit/cooldown{
+	pixel_x = -8
+	},
+/obj/item/reagent_containers/hypospray/medipen/survival{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/reagent_containers/hypospray/medipen/survival{
+	pixel_x = 6
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain/safehouse)
+"aT" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 10
+	},
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "o2=17;n2=63;TEMP=180"
+	},
+/area/virtual_domain/ice)
+"aU" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "o2=17;n2=63;TEMP=180"
+	},
+/area/virtual_domain/ice)
+"aV" = (
+/obj/effect/mob_spawn/human/corpse{
+	outfit = /datum/outfit/cyber_police;
+	name = "Cyber Police Corpse"
+	},
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "o2=17;n2=63;TEMP=180"
+	},
+/area/virtual_domain/ice)
+"aW" = (
+/obj/structure/flora/grass/brown,
+/obj/structure/holosign/barrier,
+/turf/open/floor/plating/asteroid/snow/atmosphere,
+/area/virtual_domain/ice)
+"aX" = (
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 5
+	},
+/obj/structure/tank_dispenser/oxygen,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain/safehouse)
+"aY" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/structure/railing,
+/obj/effect/landmark/bitrunning/cache_goal_turf,
+/turf/open/indestructible/bitrunning_transport,
+/area/virtual_domain/safehouse)
+"aZ" = (
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 4
+	},
+/obj/structure/closet,
+/obj/item/gun/ballistic/rocketlauncher/unrestricted,
+/obj/item/ammo_casing/caseless/rocket,
+/obj/item/ammo_casing/caseless/rocket,
+/obj/item/ammo_casing/caseless/rocket,
+/obj/item/energy_katana,
+/obj/item/ammo_box/magazine/mm712x82,
+/turf/open/floor/plasteel/dark{
+	dir = 8
+	},
+/area/virtual_domain/safehouse)
+"ba" = (
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 6
+	},
+/obj/structure/sign/departments/cargo{
+	dir = 2;
+	pixel_y = -32
+	},
+/obj/structure/closet,
+/obj/item/gun/ballistic/automatic/l6_saw/unrestricted,
+/obj/item/ammo_box/magazine/sniper_rounds,
+/obj/item/gun/ballistic/automatic/sniper_rifle,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain/safehouse)
+"bb" = (
+/obj/effect/baseturf_helper/virtual_domain,
+/turf/closed/wall,
+/area/virtual_domain/safehouse)
+"bc" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 4
+	},
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "o2=17;n2=63;TEMP=180"
+	},
+/area/virtual_domain/ice)
+"bd" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 1
+	},
+/obj/effect/mob_spawn/human/corpse/bitrunner,
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "o2=17;n2=63;TEMP=180"
+	},
+/area/virtual_domain/ice)
+"be" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 4
+	},
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "o2=17;n2=63;TEMP=180"
+	},
+/area/virtual_domain/ice)
+"bf" = (
+/obj/structure/flora/grass/brown,
+/turf/closed/indestructible/rock/snow,
+/area/virtual_domain/ice)
+"bg" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 6
+	},
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 8
+	},
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "o2=17;n2=63;TEMP=180"
+	},
+/area/virtual_domain/ice)
+"bh" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 10
+	},
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 1
+	},
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "o2=17;n2=63;TEMP=180"
+	},
+/area/virtual_domain/ice)
+"bi" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 5
+	},
+/obj/effect/turf_decal/weather/snow/corner,
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "o2=17;n2=63;TEMP=180"
+	},
+/area/virtual_domain/ice)
+"bj" = (
+/obj/structure/flora/rock/pile/icy,
+/obj/structure/flora/grass/brown,
+/turf/open/floor/plating/asteroid/snow/atmosphere,
+/area/virtual_domain/ice)
+"bk" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 6
+	},
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "o2=17;n2=63;TEMP=180"
+	},
+/area/virtual_domain/ice)
+"bl" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 8
+	},
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "o2=17;n2=63;TEMP=180"
+	},
+/area/virtual_domain/ice)
+"bm" = (
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 10
+	},
+/obj/effect/turf_decal/weather/snow/corner{
+	dir = 4
+	},
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "o2=17;n2=63;TEMP=180"
+	},
+/area/virtual_domain/ice)
+"bn" = (
+/obj/structure/flora/grass/brown,
+/turf/open/floor/plating/asteroid/snow/atmosphere,
+/area/virtual_domain/ice)
+
+(1,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(2,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+am
+am
+am
+am
+am
+ax
+am
+am
+aI
+aT
+am
+am
+am
+ax
+am
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(3,1,1) = {"
+aa
+aa
+aa
+aa
+ab
+ab
+am
+am
+am
+am
+am
+am
+am
+am
+aI
+be
+be
+bl
+bm
+am
+am
+am
+am
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(4,1,1) = {"
+aa
+aa
+aa
+ab
+ab
+am
+am
+bn
+ac
+ac
+ax
+am
+ad
+aI
+ae
+am
+am
+am
+am
+bn
+bn
+am
+am
+am
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(5,1,1) = {"
+aa
+aa
+ab
+ab
+am
+am
+bn
+am
+ac
+ac
+ac
+ac
+ac
+af
+ag
+aT
+ax
+ac
+ac
+ac
+ac
+ac
+am
+ad
+am
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+"}
+(6,1,1) = {"
+aa
+ab
+ab
+am
+am
+am
+bn
+ac
+ac
+ac
+ac
+ac
+ac
+ah
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ax
+ad
+am
+am
+am
+ab
+ab
+am
+am
+am
+am
+am
+am
+am
+ai
+ab
+"}
+(7,1,1) = {"
+ab
+ab
+am
+am
+am
+ad
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ah
+ah
+ac
+ac
+ac
+ac
+ac
+ac
+am
+am
+bn
+am
+am
+am
+ab
+am
+am
+am
+am
+aI
+aT
+am
+am
+ab
+"}
+(8,1,1) = {"
+ab
+am
+am
+am
+ax
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ax
+af
+ag
+ae
+ad
+ac
+ac
+ac
+ac
+ac
+ac
+ax
+am
+am
+am
+am
+am
+am
+am
+aj
+ag
+ag
+aT
+am
+ab
+"}
+(9,1,1) = {"
+ab
+am
+am
+am
+bn
+ac
+ac
+ac
+ac
+ac
+bn
+am
+am
+ak
+ag
+al
+bn
+bn
+am
+ac
+ac
+ac
+ac
+ac
+bn
+bn
+am
+am
+am
+am
+am
+am
+ak
+ag
+an
+am
+ab
+"}
+(10,1,1) = {"
+ab
+am
+am
+ax
+bn
+ac
+ac
+ac
+ac
+ad
+am
+ao
+am
+am
+af
+ag
+ap
+aq
+ad
+am
+ac
+ac
+ac
+ac
+ac
+ad
+am
+am
+aI
+bm
+am
+am
+am
+ar
+am
+am
+ab
+"}
+(11,1,1) = {"
+ab
+am
+am
+am
+ac
+ac
+ac
+bn
+as
+am
+am
+ak
+aT
+am
+af
+ag
+ae
+am
+am
+ad
+as
+am
+ac
+ac
+ac
+am
+am
+aj
+an
+am
+am
+am
+am
+at
+am
+am
+ab
+"}
+(12,1,1) = {"
+ab
+am
+am
+ac
+ac
+ac
+au
+ap
+ag
+aT
+am
+ad
+af
+ap
+ag
+ag
+ae
+ad
+aI
+ap
+ae
+am
+ad
+ac
+ac
+ac
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+ab
+"}
+(13,1,1) = {"
+ab
+am
+am
+ac
+ac
+ac
+am
+am
+af
+ag
+aT
+am
+af
+ag
+ag
+ag
+ag
+ap
+ag
+ag
+ag
+aT
+am
+ac
+ac
+ac
+bn
+am
+am
+am
+am
+am
+am
+am
+am
+am
+ab
+"}
+(14,1,1) = {"
+ab
+am
+am
+ax
+ac
+ac
+ac
+ax
+af
+ag
+ae
+am
+af
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ap
+ac
+ac
+ac
+ad
+ax
+am
+av
+av
+av
+aw
+aw
+av
+am
+ab
+"}
+(15,1,1) = {"
+ab
+am
+am
+ad
+ac
+ac
+ac
+ah
+ag
+ag
+ag
+ap
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ay
+ag
+ah
+ah
+bn
+am
+az
+am
+aw
+aA
+aB
+aC
+aD
+av
+am
+ab
+"}
+(16,1,1) = {"
+ab
+am
+aI
+ap
+ac
+ah
+ah
+ah
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+aE
+aF
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ah
+aG
+am
+am
+bn
+av
+aH
+aJ
+aJ
+aK
+aw
+am
+ab
+"}
+(17,1,1) = {"
+ab
+au
+be
+ag
+ag
+ah
+ah
+ah
+ag
+ag
+ag
+ag
+ag
+ag
+aL
+aM
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+aN
+bm
+aO
+bn
+aP
+aQ
+aR
+aS
+aK
+aw
+am
+ab
+"}
+(18,1,1) = {"
+ab
+am
+am
+ak
+ag
+ah
+ah
+ah
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+aU
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+an
+am
+am
+am
+av
+aH
+aJ
+aJ
+aK
+aw
+am
+ab
+"}
+(19,1,1) = {"
+ab
+am
+am
+bn
+af
+ac
+ah
+be
+be
+be
+ag
+ag
+ag
+ag
+ag
+ag
+aV
+ag
+ag
+ag
+ag
+ag
+ag
+ah
+ah
+aW
+am
+am
+ax
+aw
+aX
+aY
+aZ
+ba
+av
+am
+ab
+"}
+(20,1,1) = {"
+ab
+am
+am
+am
+ac
+ac
+ax
+am
+am
+ad
+af
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ac
+ac
+ac
+bn
+am
+am
+av
+av
+av
+aw
+aw
+bb
+am
+ab
+"}
+(21,1,1) = {"
+ab
+ax
+am
+ad
+ac
+ac
+ad
+am
+aI
+ap
+ag
+ag
+ag
+ag
+ag
+be
+ag
+ag
+ag
+be
+be
+ag
+ag
+ac
+ac
+ac
+bn
+am
+am
+am
+am
+am
+am
+am
+am
+am
+ab
+"}
+(22,1,1) = {"
+ab
+am
+am
+ac
+ac
+ac
+ap
+bc
+be
+ag
+ag
+ae
+ad
+af
+ae
+ad
+ak
+ag
+ae
+am
+ad
+ak
+ac
+ac
+ac
+ac
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+ab
+"}
+(23,1,1) = {"
+ab
+am
+am
+ac
+ac
+ac
+ac
+bn
+am
+bd
+ag
+an
+ad
+af
+ae
+am
+am
+af
+ae
+am
+am
+am
+ac
+ac
+ac
+am
+am
+aj
+aT
+am
+am
+am
+am
+am
+am
+am
+ab
+"}
+(24,1,1) = {"
+ab
+am
+am
+am
+ac
+ac
+ac
+bf
+ax
+af
+an
+ad
+am
+af
+ag
+bg
+am
+ak
+ae
+am
+am
+ac
+ac
+ac
+ac
+am
+am
+am
+ak
+ap
+bg
+am
+am
+bh
+am
+am
+ab
+"}
+(25,1,1) = {"
+ab
+am
+am
+am
+am
+ac
+ac
+ac
+ac
+ae
+am
+am
+aI
+ag
+ae
+ad
+bn
+bn
+af
+ac
+ac
+ac
+ac
+ac
+ad
+am
+am
+am
+am
+bi
+am
+am
+aI
+be
+bg
+am
+ab
+"}
+(26,1,1) = {"
+ab
+am
+am
+am
+am
+am
+ax
+ac
+ac
+ac
+am
+bn
+af
+ah
+ah
+ac
+ax
+bj
+ac
+ac
+ac
+ac
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+at
+am
+am
+am
+ab
+"}
+(27,1,1) = {"
+ab
+ab
+am
+ad
+am
+bn
+bn
+ac
+ac
+ac
+ac
+ac
+ah
+ah
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+am
+am
+am
+ax
+am
+ab
+am
+am
+am
+am
+am
+am
+am
+am
+ab
+"}
+(28,1,1) = {"
+aa
+ab
+ab
+am
+ad
+am
+bn
+am
+ac
+ac
+ac
+ac
+ah
+ah
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ad
+am
+am
+am
+am
+ab
+ab
+am
+am
+am
+am
+am
+am
+am
+am
+ab
+"}
+(29,1,1) = {"
+aa
+aa
+ab
+ab
+am
+am
+am
+am
+am
+ax
+bn
+af
+ah
+ah
+ac
+ac
+ac
+ac
+ac
+ac
+am
+am
+am
+ax
+am
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+"}
+(30,1,1) = {"
+aa
+aa
+aa
+ab
+ab
+am
+am
+am
+am
+ad
+am
+ak
+ag
+ag
+be
+ac
+ac
+ac
+ac
+am
+am
+am
+am
+am
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(31,1,1) = {"
+aa
+aa
+aa
+aa
+ab
+ab
+am
+am
+am
+am
+am
+am
+af
+an
+am
+am
+am
+am
+am
+am
+am
+am
+am
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(32,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+am
+am
+am
+am
+am
+bk
+am
+am
+am
+am
+am
+am
+am
+am
+am
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(33,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}

@@ -15,6 +15,8 @@ GLOBAL_LIST_INIT(last_names_female, world.file2list("strings/names/last_female.t
 GLOBAL_LIST_INIT(lizard_names_male, world.file2list("strings/names/lizard_male.txt"))
 GLOBAL_LIST_INIT(lizard_names_female, world.file2list("strings/names/lizard_female.txt"))
 GLOBAL_LIST_INIT(clown_names, world.file2list("strings/names/clown.txt"))
+GLOBAL_LIST_INIT(hacker_aliases, world.file2list("strings/names/hackers.txt")) // AQ EDIT - bitrunning
+GLOBAL_LIST_INIT(cyberauth_names, world.file2list("strings/names/cyberauth.txt")) // AQ EDIT - bitrunning
 GLOBAL_LIST_INIT(mime_names, world.file2list("strings/names/mime.txt"))
 GLOBAL_LIST_INIT(carp_names, world.file2list("strings/names/carp.txt"))
 GLOBAL_LIST_INIT(golem_names, world.file2list("strings/names/golem.txt"))
@@ -54,5 +56,6 @@ GLOBAL_LIST_INIT(preferences_custom_names, list(
 	"cyborg" = list("pref_name" = "Cyborg", "qdesc" = "cyborg name (Leave empty to use default naming scheme)", "allow_numbers" = TRUE , "group" = "silicons", "allow_null" = TRUE),
 	"ai" = list("pref_name" = "AI", "qdesc" = "ai name", "allow_numbers" = TRUE , "group" = "silicons", "allow_null" = FALSE),
 	"religion" = list("pref_name" = "Chaplain religion", "qdesc" = "religion" , "allow_numbers" = TRUE , "group" = "chaplain", "allow_null" = FALSE),
-	"deity" = list("pref_name" = "Chaplain deity", "qdesc" = "deity", "allow_numbers" = TRUE , "group" = "chaplain", "allow_null" = FALSE)
+	"deity" = list("pref_name" = "Chaplain deity", "qdesc" = "deity", "allow_numbers" = TRUE , "group" = "chaplain", "allow_null" = FALSE),
+	"hacker_alias" = list("pref_name" = "Hacker alias", "qdesc" = "pseudonim hakerski (bitrunning)", "allow_numbers" = TRUE , "group" = "bitrunning", "allow_null" = FALSE) // AQ EDIT - bitrunning
 	))

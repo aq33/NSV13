@@ -1,0 +1,4089 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/template_noop,
+/area/template_noop)
+"ab" = (
+/turf/closed/indestructible/binary,
+/area/virtual_domain/fullbright)
+"ac" = (
+/obj/structure/closet/crate/bin,
+/obj/item/trash/tray,
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/trash/can = 143, /obj/item/shard = 93, /obj/item/broken_bottle = 46, /obj/item/light/tube/broken = 46, /obj/item/light/bulb/broken = 46, /obj/item/paper = 31, /obj/item/assembly/mousetrap = 28, /obj/item/assembly/mousetrap/armed = 28, /obj/item/stack/cable_coil = 28, /obj/item/stack/cable_coil/cut = 28, /obj/item/reagent_containers/syringe = 28, /obj/item/grown/bananapeel = 28, /obj/item/cigbutt = 23, /obj/item/cigbutt/roach = 23, /obj/effect/decal/cleanable/ash = 23, /obj/item/food/breadslice/moldy/bacteria = 23, /obj/item/food/pizzaslice/moldy/bacteria = 23, /obj/item/reagent_containers/food/drinks/drinkingglass = 19, /obj/item/food/deadmouse = 19, /obj/item/c_tube = 19, /obj/item/plate_shard = 19, /obj/item/lighter/greyscale = 19, /obj/item/trash/chips = 17, /obj/item/cigbutt/cigarbutt = 14, /obj/item/grown/corncob = 14, /obj/item/trash/pistachios = 14, /obj/item/trash/boritos = 14, /obj/item/lighter = 9, /obj/item/trash/candle = 9, /obj/item/reagent_containers/glass/rag = 9, /obj/item/shard/plasma = 9, /obj/item/trash/raisins = 7, /obj/item/trash/cheesie = 7, /obj/item/trash/candy = 7, /obj/item/trash/sosjerky = 7, /obj/item/reagent_containers/food/drinks/sillycup = 7, /obj/item/trash/semki = 7, /obj/item/food/grown/bungopit = 5, /obj/item/storage/fancy/cigarettes = 4, /obj/item/storage/fancy/cigarettes/cigpack_uplift = 4, /obj/item/storage/fancy/cigarettes/cigpack_robust = 4, /obj/item/storage/fancy/cigarettes/cigpack_robustgold = 4, /obj/item/storage/fancy/cigarettes/cigpack_carp = 4, /obj/item/storage/fancy/cigarettes/cigpack_midori = 4, /obj/item/trash/popcorn = 3, /obj/item/trash/energybar = 3, /obj/item/trash/syndi_cakes = 3, /obj/item/trash/tray = 3, /obj/item/paper/crumpled = 3, /obj/item/paper/crumpled/bloody = 3, /obj/item/storage/fancy/rollingpapers = 2, /obj/item/storage/fancy/cigarettes/cigars = 2, /obj/item/storage/fancy/cigarettes/cigars/cohiba = 2, /obj/item/storage/fancy/cigarettes/cigars/havana = 2, /obj/item/storage/fancy/cigarettes/dromedaryco = 2, /obj/item/storage/fancy/cigarettes/cigpack_shadyjims = 2, /obj/item/storage/fancy/cigarettes/cigpack_xeno = 2, /obj/item/paper/construction = 2, /obj/item/storage/fancy/cigarettes/cigpack_cannabis = 1, /obj/item/storage/fancy/cigarettes/cigpack_mindbreaker = 1, /obj/item/storage/fancy/cigarettes/cigpack_syndicate = 1);
+	name = "garbage spawner"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ad" = (
+/obj/effect/turf_decal/stripes/end,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"ae" = (
+/obj/machinery/light/small{
+	dir = 2
+	},
+/obj/effect/landmark/bitrunning/cache_goal_turf,
+/obj/effect/turf_decal/loading_area,
+/turf/open/indestructible/bitrunning_transport,
+/area/virtual_domain/safehouse)
+"af" = (
+/turf/closed/wall/mineral/titanium,
+/area/virtual_domain/safehouse)
+"ag" = (
+/obj/machinery/light/small{
+	bulb_colour = "#FF3333";
+	brightness = 3;
+	bulb_power = 0.8;
+	nightshift_allowed = 0;
+	dir = 1
+	},
+/obj/structure/table,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"ah" = (
+/obj/structure/chair/fancy/plastic,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"ai" = (
+/obj/machinery/light/broken{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"aj" = (
+/obj/structure/railing,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"ak" = (
+/obj/structure/lattice/catwalk{
+	name = "industrial lift"
+	},
+/obj/structure/closet/crate,
+/turf/open/chasm,
+/area/virtual_domain)
+"al" = (
+/obj/structure/lattice/catwalk{
+	name = "industrial lift"
+	},
+/turf/open/chasm,
+/area/virtual_domain)
+"am" = (
+/obj/structure/lattice/catwalk{
+	name = "industrial lift"
+	},
+/obj/structure/railing,
+/turf/open/chasm,
+/area/virtual_domain)
+"an" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/sign/poster/ripped{
+	dir = 8;
+	pixel_x = -32
+	},
+/turf/open/floor/carpet/orange,
+/area/virtual_domain)
+"ao" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plasteel{
+	icon_state = "damaged5"
+	},
+/area/virtual_domain)
+"ap" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"aq" = (
+/obj/effect/mob_spawn/human/corpse/assistant,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"ar" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"as" = (
+/obj/machinery/door/poddoor/shutters/indestructible{
+	id = "factorylockdown"
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"at" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"au" = (
+/obj/item/gun/ballistic/revolver,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"av" = (
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 5
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"aw" = (
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 5
+	},
+/obj/effect/turf_decal/trimline/yellow/corner{
+	dir = 4
+	},
+/obj/structure/sign/warning/vacuum/external{
+	dir = 2;
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ax" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#D4D4D4";
+	alpha = 50;
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"ay" = (
+/turf/open/floor/carpet/orange,
+/area/virtual_domain)
+"az" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"aA" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"aB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/bitrunning/cache_goal_turf,
+/obj/effect/turf_decal/loading_area,
+/turf/open/indestructible/bitrunning_transport,
+/area/virtual_domain/safehouse)
+"aC" = (
+/obj/structure/table,
+/obj/item/flashlight/lantern,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"aD" = (
+/obj/machinery/door/airlock/maintenance,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"aE" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"aF" = (
+/obj/structure/lattice/catwalk{
+	name = "industrial lift"
+	},
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/effect/decal/cleanable/generic = 282, /obj/effect/decal/cleanable/vomit/old = 212, /obj/item/trash/can = 54, /obj/item/cigbutt = 44, /obj/item/cigbutt/roach = 44, /obj/effect/decal/cleanable/ash = 44, /obj/item/shard = 35, /obj/item/cigbutt/cigarbutt = 26, /obj/item/broken_bottle = 18, /obj/item/light/tube/broken = 18, /obj/item/light/bulb/broken = 18, /obj/item/paper = 12, /obj/item/assembly/mousetrap = 11, /obj/item/assembly/mousetrap/armed = 11, /obj/item/stack/cable_coil = 11, /obj/item/stack/cable_coil/cut = 11, /obj/item/reagent_containers/syringe = 11, /obj/item/grown/bananapeel = 11, /obj/item/food/breadslice/moldy/bacteria = 9, /obj/item/food/pizzaslice/moldy/bacteria = 9, /obj/item/reagent_containers/food/drinks/drinkingglass = 7, /obj/item/food/deadmouse = 7, /obj/item/c_tube = 7, /obj/item/plate_shard = 7, /obj/item/lighter/greyscale = 7, /obj/item/trash/chips = 6, /obj/item/grown/corncob = 5, /obj/item/trash/pistachios = 5, /obj/item/trash/boritos = 5, /obj/item/lighter = 4, /obj/item/trash/candle = 4, /obj/item/reagent_containers/glass/rag = 4, /obj/item/shard/plasma = 4, /obj/item/trash/raisins = 3, /obj/item/trash/cheesie = 3, /obj/item/trash/candy = 3, /obj/item/trash/sosjerky = 3, /obj/item/reagent_containers/food/drinks/sillycup = 3, /obj/item/trash/semki = 3, /obj/item/food/grown/bungopit = 2, /obj/item/storage/fancy/cigarettes = 2, /obj/item/storage/fancy/cigarettes/cigpack_uplift = 2, /obj/item/storage/fancy/cigarettes/cigpack_robust = 2, /obj/item/storage/fancy/cigarettes/cigpack_robustgold = 2, /obj/item/storage/fancy/cigarettes/cigpack_carp = 2, /obj/item/storage/fancy/cigarettes/cigpack_midori = 2, /obj/item/trash/popcorn = 1, /obj/item/trash/energybar = 1, /obj/item/trash/syndi_cakes = 1, /obj/item/trash/tray = 1, /obj/item/paper/crumpled = 1, /obj/item/paper/crumpled/bloody = 1, /obj/item/storage/fancy/rollingpapers = 1, /obj/item/storage/fancy/cigarettes/cigars = 1, /obj/item/storage/fancy/cigarettes/cigars/cohiba = 1, /obj/item/storage/fancy/cigarettes/cigars/havana = 1, /obj/item/storage/fancy/cigarettes/dromedaryco = 1, /obj/item/storage/fancy/cigarettes/cigpack_shadyjims = 1, /obj/item/storage/fancy/cigarettes/cigpack_xeno = 1, /obj/item/paper/construction = 1, /obj/item/storage/fancy/cigarettes/cigpack_cannabis = 1, /obj/item/storage/fancy/cigarettes/cigpack_mindbreaker = 1, /obj/item/storage/fancy/cigarettes/cigpack_syndicate = 1);
+	lootcount = 5;
+	name = "trash and grime spawner"
+	},
+/turf/open/chasm,
+/area/virtual_domain)
+"aG" = (
+/obj/structure/lattice/catwalk{
+	name = "industrial lift"
+	},
+/obj/structure/closet/crate{
+	opened = 1;
+	density = 0
+	},
+/obj/structure/railing,
+/turf/open/chasm,
+/area/virtual_domain)
+"aH" = (
+/obj/structure/disposalpipe/segment{
+	dir = 10
+	},
+/obj/effect/landmark/bitrunning/mob_segment,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"aI" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"aJ" = (
+/obj/structure/chair/fancy/sofa/corp/left{
+	dir = 1
+	},
+/turf/open/floor/carpet/orange,
+/area/virtual_domain)
+"aK" = (
+/obj/structure/disposalpipe/broken{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"aL" = (
+/obj/structure/disposalpipe/broken,
+/obj/effect/landmark/bitrunning/mob_segment,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"aM" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "flat_side";
+	color = "#0e0f0f"
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"aN" = (
+/obj/effect/turf_decal/caution{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"aO" = (
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"aP" = (
+/obj/machinery/door/airlock/external/glass,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"aQ" = (
+/obj/machinery/door/airlock/external/glass,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"aR" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/door/airlock/shuttle/glass,
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/sand,
+/obj/structure/fans/tiny,
+/turf/open/floor/plasteel/white,
+/area/virtual_domain/safehouse)
+"aS" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"aT" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"aU" = (
+/obj/effect/turf_decal/siding/white{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"aV" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/generic,
+/obj/effect/landmark/bitrunning/hololadder_spawn,
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"aW" = (
+/obj/structure/sign/poster/contraband/random{
+	dir = 4;
+	pixel_x = 32
+	},
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"aX" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/light/small{
+	bulb_colour = "#FF3333";
+	brightness = 3;
+	bulb_power = 0.8;
+	nightshift_allowed = 0;
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"aY" = (
+/obj/effect/turf_decal/stripes{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"aZ" = (
+/obj/machinery/light{
+	bulb_colour = "#FFDDCC";
+	bulb_power = 0.6;
+	nightshift_allowed = 0;
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"ba" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bb" = (
+/obj/structure/railing,
+/obj/effect/decal/cleanable/oil,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"bc" = (
+/obj/structure/disposalpipe/trunk/multiz{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"bd" = (
+/obj/effect/turf_decal/delivery,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"be" = (
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 9
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bf" = (
+/obj/effect/turf_decal/siding/white{
+	dir = 4
+	},
+/obj/effect/mob_spawn/human/corpse/assistant,
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bg" = (
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 9
+	},
+/obj/effect/turf_decal/trimline/yellow/corner{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bh" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#D4D4D4";
+	alpha = 50;
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"bi" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/structure/chair/fancy/shuttle{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"bj" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#D4D4D4";
+	alpha = 50;
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/landmark/bitrunning/hololadder_spawn,
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"bk" = (
+/obj/machinery/door/airlock/maintenance{
+	welded = 1
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"bl" = (
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"bm" = (
+/obj/machinery/light{
+	bulb_colour = "#FFDDCC";
+	bulb_power = 0.6;
+	nightshift_allowed = 0;
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"bn" = (
+/obj/machinery/light/small{
+	bulb_colour = "#FF3333";
+	brightness = 3;
+	bulb_power = 0.8;
+	nightshift_allowed = 0;
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel{
+	icon_state = "damaged2"
+	},
+/area/virtual_domain)
+"bo" = (
+/obj/effect/turf_decal/stripes{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/obj/structure/sign/warning{
+	icon_state = "doors";
+	name = "\improper BLAST DOORS";
+	dir = 4;
+	pixel_x = 32
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bp" = (
+/obj/structure/disposalpipe/sorting/mail/flip{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"bq" = (
+/obj/effect/turf_decal/siding/white{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/light/broken,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"br" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/turf_decal/stripes{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bs" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plasteel{
+	icon_state = "damaged5"
+	},
+/area/virtual_domain)
+"bt" = (
+/obj/structure/disposalpipe/segment{
+	dir = 9
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"bu" = (
+/obj/effect/turf_decal/trimline/yellow/warning,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bv" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bw" = (
+/obj/structure/closet/crate{
+	opened = 1;
+	density = 0
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"bx" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/structure/table/reinforced,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/storage/toolbox/emergency,
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"by" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/computer{
+	dir = 8;
+	name = "shuttle console";
+	icon_screen = "shuttle"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"bz" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/structure/table/reinforced,
+/obj/item/tank/internals/emergency_oxygen{
+	pixel_x = 3
+	},
+/obj/item/clothing/mask/gas,
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"bA" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/machinery/light/small{
+	dir = 2
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/bitrunning/hololadder_spawn,
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"bB" = (
+/obj/machinery/light/small{
+	bulb_colour = "#FF3333";
+	brightness = 3;
+	bulb_power = 0.8;
+	nightshift_allowed = 0;
+	dir = 1
+	},
+/turf/open/floor/carpet/orange,
+/area/virtual_domain)
+"bC" = (
+/obj/machinery/conveyor/auto{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"bD" = (
+/obj/machinery/conveyor/auto{
+	dir = 1
+	},
+/obj/machinery/light/small{
+	bulb_colour = "#FF3333";
+	brightness = 3;
+	bulb_power = 0.8;
+	nightshift_allowed = 0;
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"bE" = (
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/obj/structure/disposaloutlet{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"bF" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/structure/closet/crate = 588, /obj/structure/closet/cardboard = 147, /obj/structure/closet/crate/wooden = 29, /obj/structure/closet/crate/internals = 29, /obj/structure/closet/crate/medical = 29, /obj/structure/closet/crate/freezer = 29, /obj/structure/closet/crate/radiation = 29, /obj/structure/closet/crate/hydroponics = 29, /obj/structure/closet/crate/engineering = 29, /obj/structure/closet/crate/engineering/electrical = 29, /obj/structure/closet/crate/science = 29);
+	name = "crate spawner with maintenance loot"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bG" = (
+/obj/machinery/door/airlock/engineering/glass,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bH" = (
+/turf/open/floor/plating{
+	icon_state = "panelscorched"
+	},
+/area/virtual_domain)
+"bI" = (
+/obj/machinery/light/small{
+	bulb_colour = "#FF3333";
+	brightness = 3;
+	bulb_power = 0.8;
+	nightshift_allowed = 0
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"bJ" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/light{
+	bulb_colour = "#FFDDCC";
+	bulb_power = 0.6;
+	nightshift_allowed = 0;
+	dir = 1
+	},
+/obj/structure/sign/warning{
+	icon_state = "doors";
+	name = "\improper BLAST DOORS";
+	dir = 1;
+	pixel_y = 32
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bK" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plasteel{
+	icon_state = "damaged2"
+	},
+/area/virtual_domain)
+"bL" = (
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 1
+	},
+/obj/machinery/light/small{
+	bulb_colour = "#FF3333";
+	brightness = 3;
+	bulb_power = 0.8;
+	nightshift_allowed = 0
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bM" = (
+/obj/structure/chair/fancy/sofa/corp/right{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/broken,
+/turf/open/floor/carpet/orange,
+/area/virtual_domain)
+"bN" = (
+/obj/effect/baseturf_helper/virtual_domain,
+/turf/closed/wall/mineral/titanium/overspace,
+/area/virtual_domain/safehouse)
+"bO" = (
+/obj/machinery/conveyor/auto{
+	dir = 6
+	},
+/obj/machinery/light/broken{
+	dir = 1
+	},
+/obj/structure/sign/warning/vacuum{
+	dir = 1;
+	pixel_y = 32
+	},
+/obj/structure/window/reinforced/spawner/east,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"bP" = (
+/obj/machinery/conveyor/auto,
+/obj/structure/window/reinforced/spawner/west,
+/obj/structure/window/reinforced/spawner/east,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"bQ" = (
+/obj/machinery/conveyor/auto{
+	dir = 9;
+	verted = -1;
+	icon_state = "conveyor_map_inverted"
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/window/reinforced/spawner/west,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"bR" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"bS" = (
+/obj/machinery/door/poddoor/shutters/indestructible{
+	dir = 4;
+	id = "factorylockdown"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bT" = (
+/mob/living/simple_animal/pet/cat/space,
+/obj/structure/bed/dogbed{
+	name = "cat bed"
+	},
+/obj/item/toy/plush/moth{
+	pixel_x = 3;
+	pixel_y = 4
+	},
+/obj/machinery/light/small{
+	brightness = 3;
+	dir = 2
+	},
+/obj/structure/sign/poster/official/moth1{
+	dir = 8;
+	pixel_x = -32
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"bU" = (
+/obj/machinery/door/poddoor/shutters/indestructible{
+	dir = 8;
+	id = "factorylockdown"
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"bV" = (
+/obj/effect/decal/cleanable/oil,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"bW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"bX" = (
+/turf/closed/wall/r_wall,
+/area/virtual_domain)
+"bY" = (
+/obj/item/shard,
+/turf/open/space/basic,
+/area/space/virtual_domain)
+"bZ" = (
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"ca" = (
+/obj/machinery/mass_driver{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"cb" = (
+/obj/machinery/conveyor/auto{
+	dir = 9
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"cc" = (
+/obj/machinery/conveyor/auto{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"cd" = (
+/obj/effect/turf_decal/trimline/yellow/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ce" = (
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cf" = (
+/obj/machinery/light/broken,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/trimline/yellow/corner,
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cg" = (
+/obj/structure/falsewall,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"ch" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/sign/warning/securearea{
+	dir = 1;
+	pixel_y = 32
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"ci" = (
+/turf/closed/mineral,
+/area/virtual_domain)
+"cj" = (
+/obj/effect/baseturf_helper/virtual_domain,
+/turf/closed/indestructible/binary,
+/area/virtual_domain/fullbright)
+"ck" = (
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cl" = (
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/effect/decal/cleanable/dirt = 286, /obj/effect/decal/cleanable/generic = 238, /obj/effect/decal/cleanable/vomit/old = 143, /obj/effect/decal/cleanable/blood/gibs/old = 143, /obj/effect/decal/cleanable/insectguts = 48, /obj/effect/decal/cleanable/greenglow/ecto = 48, /obj/effect/decal/cleanable/glass = 48, /obj/effect/decal/cleanable/ants = 48);
+	name = "gross decal spawner"
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"cm" = (
+/obj/machinery/conveyor/auto{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"cn" = (
+/obj/machinery/recycler/deathtrap{
+	dir = 8
+	},
+/obj/machinery/conveyor/auto{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"co" = (
+/obj/machinery/door/airlock/maintenance,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cp" = (
+/obj/effect/turf_decal/trimline/yellow/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/yellow/corner{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cq" = (
+/obj/machinery/light/small{
+	bulb_colour = "#FF3333";
+	brightness = 3;
+	bulb_power = 0.8;
+	nightshift_allowed = 0;
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cr" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/structure/closet/crate = 588, /obj/structure/closet/cardboard = 147, /obj/structure/closet/crate/wooden = 29, /obj/structure/closet/crate/internals = 29, /obj/structure/closet/crate/medical = 29, /obj/structure/closet/crate/freezer = 29, /obj/structure/closet/crate/radiation = 29, /obj/structure/closet/crate/hydroponics = 29, /obj/structure/closet/crate/engineering = 29, /obj/structure/closet/crate/engineering/electrical = 29, /obj/structure/closet/crate/science = 29);
+	name = "crate spawner with maintenance loot"
+	},
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cs" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"ct" = (
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cu" = (
+/obj/machinery/light{
+	bulb_colour = "#FFDDCC";
+	bulb_power = 0.6;
+	nightshift_allowed = 0;
+	dir = 1
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"cv" = (
+/obj/effect/turf_decal/trimline/yellow/corner{
+	dir = 1
+	},
+/obj/machinery/light{
+	bulb_colour = "#FFDDCC";
+	bulb_power = 0.6;
+	nightshift_allowed = 0
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cw" = (
+/obj/item/stack/rods{
+	amount = 2
+	},
+/turf/open/space/basic,
+/area/space/virtual_domain)
+"cx" = (
+/obj/machinery/conveyor/auto{
+	dir = 6;
+	icon_state = "conveyor_map_inverted";
+	verted = -1
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"cy" = (
+/obj/machinery/conveyor/auto{
+	dir = 10;
+	verted = -1;
+	icon_state = "conveyor_map_inverted"
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"cz" = (
+/obj/machinery/light{
+	bulb_colour = "#FFDDCC";
+	bulb_power = 0.6;
+	nightshift_allowed = 0
+	},
+/turf/open/floor/plasteel{
+	icon_state = "damaged5"
+	},
+/area/virtual_domain)
+"cA" = (
+/obj/effect/turf_decal/trimline/yellow/arrow_cw{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/light/broken{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cB" = (
+/obj/structure/disposalpipe/sorting{
+	dir = 8
+	},
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"cC" = (
+/obj/effect/turf_decal/trimline/yellow/arrow_ccw,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cD" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/sign/poster/contraband/random{
+	dir = 1;
+	pixel_y = 32
+	},
+/obj/effect/landmark/bitrunning/cache_spawn,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cE" = (
+/obj/structure/disposalpipe/broken{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"cF" = (
+/obj/structure/table/reinforced,
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/food/spacetwinkie = 109, /obj/item/food/cheesiehonkers = 109, /obj/item/food/candy = 109, /obj/item/food/chips = 109, /obj/item/food/sosjerky = 109, /obj/item/food/no_raisin = 109, /obj/item/food/energybar = 109, /obj/item/reagent_containers/food/drinks/dry_ramen = 109, /obj/item/food/cornchips = 109, /obj/item/food/syndicake = 22);
+	name = "snack spawner"
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"cG" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#EFB341";
+	dir = 10
+	},
+/obj/structure/filingcabinet,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cH" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#EFB341";
+	dir = 5
+	},
+/obj/structure/table/reinforced,
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/storage/briefcase = 750, /obj/item/storage/secure/briefcase = 250);
+	name = "briefcase spawner"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cI" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#EFB341"
+	},
+/obj/structure/frame/computer{
+	anchored = 1;
+	dir = 4
+	},
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cJ" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#EFB341";
+	dir = 10
+	},
+/obj/structure/table/reinforced,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/item/folder/yellow,
+/obj/item/folder/blue{
+	pixel_x = 2;
+	pixel_y = -2
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cK" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#EFB341";
+	dir = 5
+	},
+/obj/structure/table/reinforced,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cL" = (
+/obj/structure/chair/fancy/plastic{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cM" = (
+/obj/machinery/light/small{
+	bulb_colour = "#FF3333";
+	brightness = 3;
+	bulb_power = 0.8;
+	nightshift_allowed = 0;
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate{
+	opened = 1;
+	density = 0
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"cN" = (
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 1
+	},
+/obj/machinery/light/small{
+	bulb_colour = "#FF3333";
+	brightness = 3;
+	bulb_power = 0.8;
+	nightshift_allowed = 0;
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cO" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"cP" = (
+/obj/machinery/light{
+	bulb_colour = "#FFDDCC";
+	bulb_power = 0.6;
+	nightshift_allowed = 0
+	},
+/obj/effect/turf_decal/trimline/yellow/line,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cQ" = (
+/obj/structure/table/reinforced,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"cR" = (
+/obj/machinery/light/broken{
+	dir = 4
+	},
+/turf/open/floor/plasteel{
+	icon_state = "damaged5"
+	},
+/area/virtual_domain)
+"cS" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#EFB341";
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cT" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cU" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#EFB341"
+	},
+/obj/structure/chair/office{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cV" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cW" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#EFB341";
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cX" = (
+/obj/machinery/door/airlock/engineering/glass{
+	req_one_access_txt = "200"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cY" = (
+/obj/structure/table,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cZ" = (
+/obj/effect/turf_decal/trimline/yellow/line,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"da" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#EFB341";
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 6
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"db" = (
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"dc" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#EFB341"
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dd" = (
+/obj/structure/disposalpipe/segment{
+	dir = 9
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"de" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#EFB341";
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"df" = (
+/obj/structure/chair/fancy/plastic{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dg" = (
+/obj/effect/mob_spawn/human/corpse/nanotrasensoldier,
+/turf/open/floor/plasteel{
+	icon_state = "damaged4"
+	},
+/area/virtual_domain)
+"dh" = (
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 9
+	},
+/obj/effect/turf_decal/trimline/yellow/corner,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"di" = (
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 6
+	},
+/obj/machinery/light{
+	bulb_colour = "#FFDDCC";
+	bulb_power = 0.6;
+	nightshift_allowed = 0;
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dj" = (
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 8
+	},
+/obj/machinery/light/small{
+	bulb_colour = "#FF3333";
+	brightness = 3;
+	bulb_power = 0.8;
+	nightshift_allowed = 0;
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dk" = (
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 5
+	},
+/obj/structure/sign/poster/official/random{
+	dir = 8;
+	pixel_x = -32
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dl" = (
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 10
+	},
+/obj/effect/turf_decal/trimline/yellow/corner{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dm" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"dn" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#EFB341";
+	dir = 6
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/obj/machinery/disposal/bin,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"do" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#EFB341";
+	dir = 9
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/light/broken{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dp" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#EFB341"
+	},
+/obj/machinery/light/small{
+	bulb_colour = "#FF3333";
+	brightness = 3;
+	bulb_power = 0.8;
+	nightshift_allowed = 0;
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dq" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#EFB341";
+	dir = 6
+	},
+/obj/machinery/light{
+	bulb_colour = "#FFDDCC";
+	bulb_power = 0.6;
+	nightshift_allowed = 0;
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dr" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#EFB341";
+	dir = 9
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ds" = (
+/obj/machinery/light/small{
+	bulb_colour = "#FF3333";
+	brightness = 3;
+	bulb_power = 0.8;
+	nightshift_allowed = 0;
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dt" = (
+/obj/item/gun/ballistic/shotgun/lethal,
+/obj/machinery/light/broken{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"du" = (
+/obj/item/ammo_casing/spent,
+/turf/open/floor/plasteel{
+	icon_state = "damaged2"
+	},
+/area/virtual_domain)
+"dv" = (
+/obj/structure/door_assembly/door_assembly_eng,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dw" = (
+/obj/machinery/light{
+	bulb_colour = "#FFDDCC";
+	bulb_power = 0.6;
+	nightshift_allowed = 0;
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dx" = (
+/turf/open/floor/plasteel/stairs/left{
+	dir = 8
+	},
+/area/virtual_domain)
+"dy" = (
+/obj/effect/turf_decal/trimline/yellow/line,
+/obj/item/shard,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dz" = (
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 6
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dA" = (
+/turf/open/floor/carpet/royalblue,
+/area/virtual_domain)
+"dB" = (
+/obj/effect/turf_decal/trimline/yellow/line,
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 5
+	},
+/obj/machinery/light/broken,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dC" = (
+/obj/structure/closet/secure_closet/tac,
+/obj/item/ammo_casing/shotgun/buckshot,
+/obj/item/ammo_casing/shotgun/buckshot,
+/obj/item/ammo_casing/shotgun/buckshot,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dD" = (
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dE" = (
+/obj/effect/decal/cleanable/oil/streak,
+/obj/effect/turf_decal/trimline/yellow/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/yellow/corner{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dF" = (
+/obj/effect/turf_decal/trimline/yellow/line,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dG" = (
+/obj/effect/spawner/structure/window,
+/obj/item/stack/rods{
+	amount = 2
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"dH" = (
+/obj/structure/table/wood,
+/turf/open/floor/carpet/royalblue,
+/area/virtual_domain)
+"dI" = (
+/obj/structure/railing,
+/turf/open/floor/plasteel/stairs/right{
+	dir = 8
+	},
+/area/virtual_domain)
+"dJ" = (
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dK" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dL" = (
+/obj/effect/decal/cleanable/robot_debris/old,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dM" = (
+/obj/effect/turf_decal/trimline/yellow/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/yellow/corner,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dN" = (
+/obj/machinery/door/airlock/command/glass{
+	name = "Quartermaster's Office";
+	req_one_access_txt = "200"
+	},
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dO" = (
+/obj/effect/turf_decal/trimline/yellow/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/yellow/corner{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dP" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/carpet/royalblue,
+/area/virtual_domain)
+"dQ" = (
+/obj/structure/frame/computer,
+/obj/item/shard,
+/turf/open/floor/carpet/royalblue,
+/area/virtual_domain)
+"dR" = (
+/obj/structure/chair/office{
+	dir = 8
+	},
+/turf/open/floor/carpet/royalblue,
+/area/virtual_domain)
+"dS" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/hostile/hivebot/strong,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dT" = (
+/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/rock/pile,
+/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/window/reinforced/spawner/north,
+/obj/structure/window/reinforced/spawner/west,
+/turf/open/floor/grass,
+/area/virtual_domain)
+"dU" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dV" = (
+/obj/machinery/light/small{
+	bulb_colour = "#FF3333";
+	brightness = 3;
+	bulb_power = 0.8;
+	nightshift_allowed = 0
+	},
+/turf/open/floor/plasteel{
+	icon_state = "damaged5"
+	},
+/area/virtual_domain)
+"dW" = (
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dX" = (
+/obj/structure/table/wood,
+/obj/machinery/button/door{
+	name = "Cargo Bay Lockdown";
+	id = "factorylockdown"
+	},
+/turf/open/floor/carpet/royalblue,
+/area/virtual_domain)
+"dY" = (
+/obj/machinery/light{
+	bulb_colour = "#FFDDCC";
+	bulb_power = 0.6;
+	nightshift_allowed = 0;
+	dir = 4
+	},
+/obj/effect/landmark/bitrunning/cache_spawn,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dZ" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 5
+	},
+/obj/effect/mob_spawn/human/corpse/facboss,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ea" = (
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 10
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"eb" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/carpet/royalblue,
+/area/virtual_domain)
+"ec" = (
+/obj/effect/turf_decal/trimline/yellow/line,
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 9
+	},
+/obj/machinery/light/broken,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ed" = (
+/obj/effect/turf_decal/trimline/yellow/line,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ee" = (
+/turf/open/floor/plating/asteroid/airless,
+/area/virtual_domain)
+"ef" = (
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 5
+	},
+/obj/effect/turf_decal/trimline/yellow/corner{
+	dir = 8
+	},
+/obj/structure/sign/poster/official/random{
+	dir = 4;
+	pixel_x = 32
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"eg" = (
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 10
+	},
+/obj/machinery/light{
+	bulb_colour = "#FFDDCC";
+	bulb_power = 0.6;
+	nightshift_allowed = 0;
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"eh" = (
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/bed/dogbed{
+	name = "cat bed"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ei" = (
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 9
+	},
+/obj/machinery/light/small{
+	bulb_colour = "#FF3333";
+	brightness = 3;
+	bulb_power = 0.8;
+	nightshift_allowed = 0;
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ej" = (
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 6
+	},
+/obj/effect/turf_decal/trimline/yellow/corner{
+	dir = 1
+	},
+/obj/effect/landmark/bitrunning/cache_spawn,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ek" = (
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 1
+	},
+/obj/machinery/light/broken{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"el" = (
+/obj/effect/turf_decal/trimline/yellow/line,
+/obj/machinery/light/small{
+	bulb_colour = "#FF3333";
+	brightness = 3;
+	bulb_power = 0.8;
+	nightshift_allowed = 0
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"em" = (
+/obj/effect/turf_decal/trimline/yellow/line,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"en" = (
+/obj/effect/turf_decal/trimline/yellow/line,
+/obj/machinery/light/broken,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"eo" = (
+/turf/closed/wall,
+/area/virtual_domain)
+"ep" = (
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/structure/closet/crate = 588, /obj/structure/closet/cardboard = 147, /obj/structure/closet/crate/wooden = 29, /obj/structure/closet/crate/internals = 29, /obj/structure/closet/crate/medical = 29, /obj/structure/closet/crate/freezer = 29, /obj/structure/closet/crate/radiation = 29, /obj/structure/closet/crate/hydroponics = 29, /obj/structure/closet/crate/engineering = 29, /obj/structure/closet/crate/engineering/electrical = 29, /obj/structure/closet/crate/science = 29);
+	name = "crate spawner with maintenance loot"
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 9
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"eq" = (
+/obj/structure/disposalpipe/segment{
+	dir = 6
+	},
+/obj/machinery/light{
+	bulb_colour = "#FFDDCC";
+	bulb_power = 0.6;
+	nightshift_allowed = 0;
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"er" = (
+/obj/structure/disposalpipe/broken{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/closet/crate{
+	opened = 1;
+	density = 0
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"es" = (
+/obj/structure/sign/poster/contraband/random{
+	dir = 8;
+	pixel_x = -32
+	},
+/turf/open/floor/plasteel{
+	icon_state = "damaged5"
+	},
+/area/virtual_domain)
+"et" = (
+/obj/structure/disposalpipe/broken,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"eu" = (
+/obj/structure/chair/stool/bar{
+	dir = 8
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"ev" = (
+/obj/machinery/door/airlock/glass,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ew" = (
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ex" = (
+/turf/open/floor/plasteel{
+	icon_state = "floorscorched1"
+	},
+/area/virtual_domain)
+"ey" = (
+/obj/structure/flora/rock,
+/turf/open/floor/plating/asteroid/airless,
+/area/virtual_domain)
+"ez" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/closed/mineral,
+/area/virtual_domain)
+"eA" = (
+/turf/open/space/basic,
+/area/space/virtual_domain)
+"eB" = (
+/obj/structure/flora/rock/pile,
+/turf/open/floor/plating/asteroid/airless,
+/area/virtual_domain)
+"eC" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/light/small{
+	bulb_colour = "#FF3333";
+	brightness = 3;
+	bulb_power = 0.8;
+	nightshift_allowed = 0;
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"eD" = (
+/obj/structure/disposalpipe/sorting{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"eE" = (
+/turf/open/floor/plating,
+/area/virtual_domain)
+"eF" = (
+/turf/open/floor/plasteel{
+	icon_state = "damaged2"
+	},
+/area/virtual_domain)
+"eG" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"eH" = (
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/trash/can = 143, /obj/item/shard = 93, /obj/item/broken_bottle = 46, /obj/item/light/tube/broken = 46, /obj/item/light/bulb/broken = 46, /obj/item/paper = 31, /obj/item/assembly/mousetrap = 28, /obj/item/assembly/mousetrap/armed = 28, /obj/item/stack/cable_coil = 28, /obj/item/stack/cable_coil/cut = 28, /obj/item/reagent_containers/syringe = 28, /obj/item/grown/bananapeel = 28, /obj/item/cigbutt = 23, /obj/item/cigbutt/roach = 23, /obj/effect/decal/cleanable/ash = 23, /obj/item/food/breadslice/moldy/bacteria = 23, /obj/item/food/pizzaslice/moldy/bacteria = 23, /obj/item/reagent_containers/food/drinks/drinkingglass = 19, /obj/item/food/deadmouse = 19, /obj/item/c_tube = 19, /obj/item/plate_shard = 19, /obj/item/lighter/greyscale = 19, /obj/item/trash/chips = 17, /obj/item/cigbutt/cigarbutt = 14, /obj/item/grown/corncob = 14, /obj/item/trash/pistachios = 14, /obj/item/trash/boritos = 14, /obj/item/lighter = 9, /obj/item/trash/candle = 9, /obj/item/reagent_containers/glass/rag = 9, /obj/item/shard/plasma = 9, /obj/item/trash/raisins = 7, /obj/item/trash/cheesie = 7, /obj/item/trash/candy = 7, /obj/item/trash/sosjerky = 7, /obj/item/reagent_containers/food/drinks/sillycup = 7, /obj/item/trash/semki = 7, /obj/item/food/grown/bungopit = 5, /obj/item/storage/fancy/cigarettes = 4, /obj/item/storage/fancy/cigarettes/cigpack_uplift = 4, /obj/item/storage/fancy/cigarettes/cigpack_robust = 4, /obj/item/storage/fancy/cigarettes/cigpack_robustgold = 4, /obj/item/storage/fancy/cigarettes/cigpack_carp = 4, /obj/item/storage/fancy/cigarettes/cigpack_midori = 4, /obj/item/trash/popcorn = 3, /obj/item/trash/energybar = 3, /obj/item/trash/syndi_cakes = 3, /obj/item/trash/tray = 3, /obj/item/paper/crumpled = 3, /obj/item/paper/crumpled/bloody = 3, /obj/item/storage/fancy/rollingpapers = 2, /obj/item/storage/fancy/cigarettes/cigars = 2, /obj/item/storage/fancy/cigarettes/cigars/cohiba = 2, /obj/item/storage/fancy/cigarettes/cigars/havana = 2, /obj/item/storage/fancy/cigarettes/dromedaryco = 2, /obj/item/storage/fancy/cigarettes/cigpack_shadyjims = 2, /obj/item/storage/fancy/cigarettes/cigpack_xeno = 2, /obj/item/paper/construction = 2, /obj/item/storage/fancy/cigarettes/cigpack_cannabis = 1, /obj/item/storage/fancy/cigarettes/cigpack_mindbreaker = 1, /obj/item/storage/fancy/cigarettes/cigpack_syndicate = 1);
+	name = "garbage spawner"
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"eI" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel/cafeteria,
+/area/virtual_domain)
+"eJ" = (
+/obj/structure/disposalpipe/broken{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"eK" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/closed/wall,
+/area/virtual_domain)
+"eL" = (
+/turf/open/floor/plasteel{
+	icon_state = "damaged5"
+	},
+/area/virtual_domain)
+"eM" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"eN" = (
+/obj/effect/landmark/bitrunning/mob_segment,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"eO" = (
+/obj/machinery/light/broken,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"eP" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"eQ" = (
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"eR" = (
+/obj/effect/turf_decal/trimline/yellow/corner{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/light/broken,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"eS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/bitrunning/cache_spawn,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"eT" = (
+/obj/structure/disposalpipe/trunk/multiz,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"eU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment{
+	dir = 5
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"eV" = (
+/obj/structure/table/reinforced,
+/obj/machinery/microwave{
+	broken = 1;
+	desc = "No longer cooks and boils stuff."
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"eW" = (
+/obj/machinery/light{
+	bulb_colour = "#FFDDCC";
+	bulb_power = 0.6;
+	nightshift_allowed = 0;
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"eX" = (
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/sign/poster/official/safety_internals{
+	dir = 2;
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"eY" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/door/poddoor/shutters/indestructible{
+	dir = 4;
+	id = "factorylockdown"
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"eZ" = (
+/obj/machinery/door/poddoor/shutters/indestructible{
+	dir = 4;
+	id = "factorylockdown"
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"fa" = (
+/obj/machinery/door/airlock/maintenance,
+/obj/effect/mapping_helpers/airlock/locked,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"fb" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"fc" = (
+/obj/effect/decal/cleanable/generic,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"fd" = (
+/obj/structure/disposalpipe/sorting{
+	dir = 2
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"fe" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_corner";
+	color = "#0e0f0f"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposalpipe/segment{
+	dir = 5
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"ff" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"fg" = (
+/obj/structure/table/reinforced,
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/reagent_containers/food/drinks/bottle/beer = 397, /obj/item/reagent_containers/food/drinks/bottle/ale = 132, /obj/item/reagent_containers/food/drinks/beer/light = 26, /obj/item/reagent_containers/food/drinks/bottle/whiskey = 26, /obj/item/reagent_containers/food/drinks/bottle/gin = 26, /obj/item/reagent_containers/food/drinks/bottle/vodka = 26, /obj/item/reagent_containers/food/drinks/bottle/tequila = 26, /obj/item/reagent_containers/food/drinks/bottle/rum = 26, /obj/item/reagent_containers/food/drinks/bottle/vermouth = 26, /obj/item/reagent_containers/food/drinks/bottle/cognac = 26, /obj/item/reagent_containers/food/drinks/bottle/wine = 26, /obj/item/reagent_containers/food/drinks/bottle/kahlua = 26, /obj/item/reagent_containers/food/drinks/bottle/hcider = 26, /obj/item/reagent_containers/food/drinks/bottle/absinthe = 26, /obj/item/reagent_containers/food/drinks/bottle/sake = 26, /obj/item/reagent_containers/food/drinks/bottle/grappa = 26, /obj/item/reagent_containers/food/drinks/bottle/applejack = 26, /obj/item/reagent_containers/glass/bottle/ethanol = 11, /obj/item/reagent_containers/food/drinks/bottle/fernet = 11, /obj/item/reagent_containers/food/drinks/bottle/champagne = 11, /obj/item/reagent_containers/food/drinks/bottle/absinthe/premium = 11, /obj/item/reagent_containers/food/drinks/bottle/goldschlager = 11, /obj/item/reagent_containers/food/drinks/bottle/patron = 5, /obj/item/reagent_containers/food/drinks/bottle/lizardwine = 5, /obj/item/reagent_containers/food/drinks/bottle/vodka/badminka = 5, /obj/item/reagent_containers/food/drinks/bottle/trappist = 5);
+	name = "booze spawner"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"fh" = (
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"fi" = (
+/turf/closed/indestructible/fakedoor{
+	name = "maintenance access"
+	},
+/area/virtual_domain)
+"fj" = (
+/obj/machinery/light/small{
+	bulb_colour = "#FF3333";
+	brightness = 3;
+	bulb_power = 0.8;
+	nightshift_allowed = 0;
+	dir = 1
+	},
+/obj/structure/sign/departments/chemistry{
+	dir = 8;
+	pixel_x = -32
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"fk" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"fl" = (
+/obj/structure/sign/warning/securearea{
+	dir = 2;
+	pixel_y = -32
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"fm" = (
+/obj/machinery/light/broken{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"fn" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/closet/crate{
+	opened = 1;
+	density = 0
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"fo" = (
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"fp" = (
+/obj/structure/disposalpipe/segment{
+	dir = 10
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"fq" = (
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"fr" = (
+/obj/structure/table/reinforced,
+/obj/machinery/light/small{
+	bulb_colour = "#FF3333";
+	brightness = 3;
+	bulb_power = 0.8;
+	nightshift_allowed = 0;
+	dir = 8
+	},
+/obj/structure/sign/poster/official/cleanliness{
+	dir = 8;
+	pixel_x = -32
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"fs" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ft" = (
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 9
+	},
+/obj/machinery/light/small{
+	bulb_colour = "#FF3333";
+	brightness = 3;
+	bulb_power = 0.8;
+	nightshift_allowed = 0
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"fu" = (
+/turf/closed/wall/mineral/titanium/overspace,
+/area/virtual_domain/safehouse)
+"fv" = (
+/obj/structure/shuttle/engine/propulsion/burst{
+	dir = 8
+	},
+/obj/structure/window/reinforced/spawner/east,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/plating/airless,
+/area/virtual_domain/safehouse)
+"fw" = (
+/obj/effect/spawner/structure/window/shuttle,
+/turf/open/floor/plating,
+/area/virtual_domain/safehouse)
+"fx" = (
+/turf/closed/indestructible/fakedoor{
+	name = "Stairwell Access"
+	},
+/area/virtual_domain)
+"fy" = (
+/obj/machinery/light/small{
+	bulb_colour = "#FF3333";
+	brightness = 3;
+	bulb_power = 0.8;
+	nightshift_allowed = 0;
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 9
+	},
+/turf/open/floor/plasteel{
+	icon_state = "damaged2"
+	},
+/area/virtual_domain)
+"fz" = (
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"fA" = (
+/obj/structure/railing/corner{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"fB" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/light/broken{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"fC" = (
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/grown/bananapeel = 600, /obj/item/grown/corncob = 300, /obj/item/food/grown/bungopit = 100);
+	name = "botanical waste spawner"
+	},
+/obj/item/trash/chips,
+/obj/structure/closet/secure_closet/freezer{
+	locked = 0;
+	opened = 1;
+	density = 0
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"fD" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/railing/corner{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"fE" = (
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"fF" = (
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/oil,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"fG" = (
+/obj/structure/disposalpipe/segment{
+	dir = 6
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"fH" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/door/poddoor/shutters/indestructible{
+	id = "factorylockdown"
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"fI" = (
+/obj/structure/disposalpipe/segment{
+	dir = 5
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"fJ" = (
+/obj/effect/mob_spawn/human/corpse/nanotrasensoldier,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"fK" = (
+/obj/effect/turf_decal/trimline/yellow/line{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"fL" = (
+/obj/effect/turf_decal/stripes/end{
+	dir = 1
+	},
+/obj/effect/turf_decal/sand,
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"fM" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+
+(1,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(2,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ci
+ci
+eo
+eo
+ez
+eo
+eo
+eo
+eK
+ci
+ci
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(3,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ci
+eV
+fg
+fr
+fC
+ac
+eo
+an
+ay
+aJ
+ci
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+aa
+"}
+(4,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+eo
+aU
+aU
+bf
+aU
+bq
+eo
+bB
+ay
+bM
+bX
+ab
+ab
+ci
+ab
+ab
+ci
+ci
+ab
+ab
+cj
+"}
+(5,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+eo
+eo
+eo
+eo
+eo
+eo
+eo
+ab
+eo
+cu
+cF
+cQ
+cQ
+db
+dm
+dx
+dI
+dT
+bX
+ci
+ci
+ci
+ee
+ee
+ee
+ci
+ci
+ci
+ab
+"}
+(6,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+eo
+ep
+eq
+er
+es
+et
+eo
+ab
+eo
+db
+eu
+eu
+eu
+db
+ev
+ew
+ex
+bX
+bX
+ci
+ey
+ee
+eA
+eA
+ee
+ee
+eB
+ci
+ab
+"}
+(7,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+eo
+eC
+eD
+eE
+eF
+eG
+eo
+ab
+eo
+eH
+eI
+db
+db
+db
+dm
+ew
+eJ
+bX
+ci
+ci
+ee
+ee
+eB
+eA
+eA
+eA
+ee
+ci
+ab
+"}
+(8,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+eo
+eL
+eM
+eN
+eF
+eO
+eo
+ab
+eo
+eo
+eP
+dm
+dm
+eo
+eo
+eQ
+eR
+bX
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+ab
+"}
+(9,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+eo
+eS
+eM
+eE
+eE
+eE
+eo
+ab
+eo
+eE
+eE
+eT
+eU
+eE
+eW
+ex
+eX
+bX
+eA
+eA
+eA
+eA
+eA
+eA
+ee
+eA
+eA
+eA
+ab
+"}
+(10,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+eo
+eo
+eY
+eZ
+eZ
+fa
+eo
+ab
+eo
+fb
+fc
+fb
+fd
+fe
+ff
+ew
+fh
+bX
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+ab
+"}
+(11,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+eo
+eo
+eo
+fi
+eo
+eo
+fj
+eM
+fk
+eE
+fl
+eo
+eo
+eo
+fm
+eE
+fn
+fo
+fp
+fq
+fs
+ft
+bX
+eA
+eA
+eA
+fu
+fv
+fw
+fw
+fv
+fu
+eA
+ab
+"}
+(12,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+eo
+eo
+eo
+eo
+eo
+eo
+fx
+eo
+fy
+fz
+fA
+fp
+fB
+fD
+eD
+fE
+fF
+fG
+fB
+fb
+fH
+fI
+eL
+eE
+eF
+fJ
+eE
+ew
+fK
+bX
+bX
+eA
+eA
+fw
+fL
+fM
+ad
+ae
+af
+eA
+ab
+"}
+(13,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+eo
+ag
+ah
+eo
+eE
+ai
+fz
+eL
+eE
+eL
+aj
+ak
+al
+am
+ao
+ap
+aq
+eM
+ar
+ew
+as
+at
+eE
+ew
+au
+eE
+eE
+eF
+av
+aw
+eo
+dm
+bX
+af
+ax
+az
+aA
+aB
+fw
+eA
+ab
+"}
+(14,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+ab
+eE
+eE
+aC
+eE
+aD
+fG
+fb
+fb
+fb
+aE
+fI
+aj
+al
+aF
+aG
+aH
+aI
+aI
+aK
+aL
+fb
+fH
+eD
+fk
+eE
+eE
+aM
+ff
+ew
+aN
+aO
+aP
+ew
+aQ
+aR
+aS
+az
+aT
+aV
+af
+eA
+ab
+"}
+(15,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+eE
+aW
+eE
+eo
+aX
+aY
+aZ
+eF
+ba
+eM
+bb
+al
+al
+am
+bc
+eG
+bd
+eM
+ap
+eE
+as
+fp
+fb
+fb
+fI
+eE
+eF
+ew
+be
+bg
+bX
+dm
+bX
+af
+bh
+bi
+aT
+bj
+fw
+eA
+ab
+"}
+(16,1,1) = {"
+aa
+ab
+ci
+ci
+ci
+ci
+ab
+eo
+eo
+eo
+eo
+eK
+bk
+eo
+eo
+eE
+fp
+bl
+bm
+bn
+bo
+bp
+br
+bs
+bt
+eE
+aZ
+as
+eE
+bu
+eE
+bv
+bw
+eE
+ex
+fK
+bX
+bX
+eA
+eA
+fw
+bx
+by
+bz
+bA
+af
+eA
+ab
+"}
+(17,1,1) = {"
+aa
+ab
+ci
+eB
+ee
+ci
+ci
+ci
+eo
+bC
+bD
+bE
+eE
+bF
+eo
+dm
+bG
+dm
+eo
+eo
+eo
+eE
+fk
+eE
+bH
+bI
+eo
+eo
+bJ
+eE
+eF
+bK
+eE
+eE
+ex
+bL
+bX
+eA
+eA
+eA
+fu
+af
+fw
+fw
+af
+bN
+eA
+ab
+"}
+(18,1,1) = {"
+aa
+ab
+eA
+ee
+ee
+ee
+eA
+eA
+eo
+bO
+bP
+bQ
+bR
+ar
+eo
+bS
+bS
+bS
+eo
+bT
+eo
+eo
+bU
+bU
+bU
+eo
+eo
+eo
+eE
+bV
+eE
+bW
+eE
+eL
+ew
+fK
+bX
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+ab
+"}
+(19,1,1) = {"
+ab
+ab
+eA
+eA
+eA
+eA
+bY
+eA
+bZ
+ca
+cb
+cc
+ap
+eF
+eo
+cd
+ce
+cf
+eo
+cg
+eo
+ch
+eL
+eE
+eE
+eW
+eF
+eo
+eE
+eE
+eE
+eM
+eE
+eE
+ew
+ck
+bX
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+ab
+"}
+(20,1,1) = {"
+ab
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+dm
+cl
+cm
+cn
+eE
+eE
+co
+cp
+eF
+eL
+eo
+cq
+eF
+eE
+eN
+eE
+cr
+eE
+bI
+eo
+eo
+dm
+dm
+cs
+eo
+eo
+ct
+cv
+bX
+bX
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+ab
+"}
+(21,1,1) = {"
+ab
+eA
+eA
+eA
+eA
+eA
+cw
+eB
+dm
+eE
+cx
+cy
+fk
+cz
+eo
+cA
+cB
+cC
+eo
+cD
+fb
+cE
+et
+fs
+fs
+fb
+fb
+eo
+cG
+cH
+cI
+cJ
+cK
+dm
+ew
+ew
+cL
+bX
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+eA
+ab
+"}
+(22,1,1) = {"
+ab
+eA
+eA
+eA
+eA
+eA
+eA
+ee
+eo
+eo
+cM
+eL
+eG
+cl
+eo
+cN
+cO
+cP
+eo
+ar
+aZ
+eE
+eE
+cR
+fk
+eE
+ci
+eo
+cS
+cT
+cU
+cV
+cW
+cX
+ew
+eG
+cY
+bX
+eA
+eA
+eA
+eA
+eB
+eA
+eA
+eA
+eA
+ab
+"}
+(23,1,1) = {"
+ab
+eA
+eA
+eA
+eA
+eA
+ee
+ee
+ci
+eo
+eo
+ci
+ci
+bX
+bX
+eL
+cO
+cZ
+eo
+eo
+eo
+eo
+eo
+ci
+ci
+ci
+ci
+eo
+da
+fs
+dc
+dd
+de
+dm
+ew
+ew
+df
+bX
+eA
+eB
+ee
+eA
+eA
+eA
+eA
+eA
+eA
+ab
+"}
+(24,1,1) = {"
+ab
+ab
+eA
+eA
+eA
+ee
+ey
+ci
+ci
+ab
+ci
+ci
+dg
+ew
+bX
+fK
+cO
+cZ
+eo
+dh
+di
+dj
+dk
+dl
+ci
+ab
+ab
+eo
+dn
+do
+dp
+dq
+dr
+eo
+ds
+ew
+ci
+bX
+ci
+ci
+ee
+ee
+eA
+eA
+eA
+eA
+ci
+ab
+"}
+(25,1,1) = {"
+aa
+ab
+eA
+ee
+eB
+ee
+ci
+ci
+ab
+ab
+bX
+dt
+du
+dv
+bX
+dw
+ew
+dy
+dm
+dz
+dA
+dA
+dA
+dB
+eo
+ab
+ab
+eo
+ci
+ci
+eo
+eo
+eo
+eo
+eo
+ci
+ci
+ab
+ab
+ci
+ci
+ci
+ab
+ab
+ci
+ci
+ci
+ab
+"}
+(26,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ci
+ci
+ab
+ab
+ab
+bX
+dC
+dD
+ew
+eF
+dE
+ew
+dF
+dG
+fK
+dA
+dH
+dA
+cZ
+eo
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+"}
+(27,1,1) = {"
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+ab
+aa
+ab
+bX
+dJ
+dK
+dL
+bX
+fK
+dK
+dM
+dN
+dO
+dP
+dQ
+dR
+cZ
+eo
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(28,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+bX
+dS
+dU
+dV
+bX
+dW
+cO
+cZ
+eP
+fK
+dA
+dX
+dA
+cZ
+eo
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(29,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+bX
+dY
+dZ
+ar
+bX
+fK
+cO
+cZ
+dm
+ea
+dA
+dA
+eb
+ec
+eo
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(30,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+bX
+bX
+bX
+bX
+bX
+fK
+cO
+ed
+eo
+ef
+eg
+eh
+ei
+ej
+ci
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(31,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+ab
+ab
+eo
+ek
+cO
+el
+eo
+eo
+eo
+eo
+ci
+ci
+ci
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(32,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+eo
+ck
+ao
+em
+eo
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(33,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ci
+fK
+ew
+cZ
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(34,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ci
+fK
+ab
+en
+eo
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(35,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+dW
+ab
+ab
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(36,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}

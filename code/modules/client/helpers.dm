@@ -14,4 +14,6 @@
 			return DEFAULT_RELIGION
 		if("deity")
 			return DEFAULT_DEITY
+		if("hacker_alias") // AQ EDIT - bitrunning
+			return pick(GLOB.hacker_aliases)
 	return random_unique_name()

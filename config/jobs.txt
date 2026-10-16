@@ -20,6 +20,7 @@ Majtek=-1,-1
 Kwatermistrz=1,1
 Magazynier=3,2
 Górnik=3,2
+Bitrunner=3,3
 
 Barman=1,1
 Kucharz=1,1

@@ -990,6 +990,9 @@
 	},
 /turf/open/floor/grass,
 /area/crew_quarters/dorms/nsv/nature_deck)
+"cc" = (
+/turf/closed/wall/r_wall/ship,
+/area/quartermaster/bitrunning/den)
 "cd" = (
 /obj/effect/turf_decal/tile/ship/half/purple,
 /obj/effect/turf_decal/tile/ship/purple{
@@ -1012,6 +1015,9 @@
 	},
 /turf/open/floor/plasteel/tiled/light,
 /area/science/lab)
+"cf" = (
+/turf/closed/wall/ship,
+/area/quartermaster/bitrunning/den)
 "cg" = (
 /obj/machinery/computer/ship/viewscreen,
 /obj/effect/turf_decal/tile/ship/half/purple{
@@ -1060,16 +1066,71 @@
 	},
 /turf/open/floor/plasteel/tiled/light,
 /area/medical/chemistry)
+"cm" = (
+/obj/machinery/netpod,
+/obj/effect/turf_decal/box,
+/turf/open/floor/circuit/green,
+/area/quartermaster/bitrunning/den)
 "cn" = (
 /obj/structure/closet/secure_closet/hydroponics,
 /obj/item/storage/bag/plants,
 /obj/item/plant_analyzer,
 /turf/open/floor/grass,
 /area/hydroponics)
+"co" = (
+/obj/machinery/netpod,
+/obj/effect/turf_decal/box,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/circuit/green,
+/area/quartermaster/bitrunning/den)
 "cp" = (
 /obj/machinery/light/floor,
 /turf/open/floor/circuit,
 /area/ai_monitored/turret_protected/aisat_interior)
+"cq" = (
+/obj/effect/turf_decal/tile/ship/brown{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/ship/brown{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
+"cr" = (
+/obj/machinery/computer/order_console/bitrunning{
+	dir = 2
+	},
+/obj/effect/turf_decal/tile/ship/brown{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/ship/brown{
+	dir = 4
+	},
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
+"cs" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
+"ct" = (
+/obj/effect/landmark/start/bitrunner,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
 "cu" = (
 /obj/item/toy/plush/moth,
 /obj/structure/falsewall/durasteel{
@@ -1093,6 +1154,12 @@
 /obj/structure/disposalpipe/junction/yjunction,
 /turf/open/floor/carpet/ship/red_carpet,
 /area/security/brig)
+"cx" = (
+/obj/effect/landmark/start/bitrunner,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
 "cy" = (
 /obj/machinery/suit_storage_unit/cmo,
 /obj/structure/sign/poster/official/random{
@@ -1100,6 +1167,14 @@
 	},
 /turf/open/floor/carpet/blue,
 /area/crew_quarters/heads/cmo)
+"cz" = (
+/obj/machinery/byteforge,
+/obj/effect/turf_decal/ship/delivery/yellow,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plasteel/tech/grid,
+/area/quartermaster/bitrunning/den)
 "cA" = (
 /obj/item/toy/plush/moth,
 /obj/structure/falsewall/durasteel{
@@ -1171,6 +1246,17 @@
 /obj/machinery/light/floor,
 /turf/open/floor/plasteel/tiled/light,
 /area/science/server)
+"cH" = (
+/obj/machinery/quantum_server,
+/obj/effect/turf_decal/box,
+/turf/open/floor/circuit/green,
+/area/quartermaster/bitrunning/den)
+"cI" = (
+/obj/effect/turf_decal/tile/ship/brown{
+	dir = 8
+	},
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
 "cJ" = (
 /obj/structure/cable/multiz,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
@@ -1200,6 +1286,37 @@
 /obj/machinery/light/floor,
 /turf/open/floor/plasteel/tiled/light,
 /area/medical/virology)
+"cL" = (
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
+"cM" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
+"cN" = (
+/obj/structure/closet/secure_closet/exile,
+/obj/effect/turf_decal/tile/ship/brown{
+	dir = 4
+	},
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
+"cO" = (
+/obj/machinery/computer/quantum_console{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 4
+	},
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
+"cP" = (
+/obj/structure/chair/fancy/comfy{
+	dir = 8
+	},
+/obj/machinery/airalarm/directional/south,
+/turf/open/floor/carpet/ship/beige_carpet,
+/area/quartermaster/bitrunning/den)
 "cQ" = (
 /obj/structure/table,
 /obj/structure/bedsheetbin,
@@ -1234,6 +1351,46 @@
 /obj/item/clothing/gloves/color/purple,
 /turf/open/floor/plasteel/tiled/light,
 /area/science/lab)
+"cT" = (
+/obj/structure/table/wood/fancy/green,
+/obj/item/reagent_containers/food/drinks/soda_cans/space_mountain_wind{
+	pixel_x = -6;
+	pixel_y = 8
+	},
+/obj/item/food/cornchips{
+	pixel_y = 2
+	},
+/obj/item/toy/figure/bitrunner{
+	pixel_x = -8;
+	pixel_y = 14
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 4
+	},
+/obj/machinery/computer/ship/viewscreen{
+	pixel_y = -30
+	},
+/turf/open/floor/carpet/ship/beige_carpet,
+/area/quartermaster/bitrunning/den)
+"cU" = (
+/obj/item/kirbyplants/random,
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/south,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 9
+	},
+/turf/open/floor/carpet/ship/beige_carpet,
+/area/quartermaster/bitrunning/den)
+"cV" = (
+/obj/effect/turf_decal/tile/ship/brown{
+	dir = 2
+	},
+/obj/effect/turf_decal/tile/ship/brown{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
 "cW" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
@@ -1253,6 +1410,19 @@
 /obj/item/flashlight/lamp,
 /turf/open/floor/plating,
 /area/maintenance/department/bridge)
+"cY" = (
+/obj/machinery/door/airlock/ship/cargo/glass{
+	name = "Pracownia Bitrunnerów";
+	req_one_access_txt = "78"
+	},
+/obj/structure/cable,
+/obj/machinery/door/firedoor/border_only/directional/north,
+/obj/machinery/door/firedoor/border_only/directional/south,
+/obj/effect/landmark/zebra_interlock_point,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/turf/open/floor/plasteel/tiled/light,
+/area/quartermaster/bitrunning/den)
 "cZ" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
@@ -1271,6 +1441,17 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /turf/open/floor/plasteel/tiled/light,
 /area/hallway/secondary/exit)
+"db" = (
+/obj/machinery/door/airlock/ship/cargo{
+	name = "Pracownia Bitrunnerów";
+	req_one_access_txt = "78"
+	},
+/obj/machinery/door/firedoor/border_only/directional/south,
+/obj/machinery/door/firedoor/border_only/directional/north,
+/obj/effect/landmark/zebra_interlock_point,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/maintenance/department/crew_quarters/dorms)
 "dc" = (
 /obj/machinery/rnd/production/techfab/department/security,
 /obj/machinery/firealarm/directional/east,
@@ -1492,6 +1673,23 @@
 	},
 /turf/open/floor/plasteel/tiled/light,
 /area/hallway/secondary/exit)
+"dO" = (
+/obj/machinery/stasis{
+	id_tag = "aq_vitals_serendipity1_114_158"
+	},
+/obj/structure/sign/poster/official/moth1{
+	pixel_y = 32
+	},
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/ship/blue,
+/obj/machinery/vitals_reader{
+	id_tag = "aq_vitals_serendipity1_114_158";
+	pixel_y = 32
+	},
+/turf/open/floor/plasteel/tiled/light,
+/area/medical/nsv/trauma)
 "dP" = (
 /obj/structure/cable,
 /obj/machinery/light/floor,
@@ -2032,16 +2230,6 @@
 	},
 /turf/open/floor/engine,
 /area/science/robotics)
-"gb" = (
-/obj/effect/turf_decal/tile/ship/blue{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/ship/blue{
-	dir = 4
-	},
-/obj/machinery/autodoc,
-/turf/open/floor/plasteel/tiled/light,
-/area/medical/nsv/trauma)
 "gc" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 1
@@ -3667,19 +3855,6 @@
 /mob/living/simple_animal/slime,
 /turf/open/floor/engine/light,
 /area/science/xenobiology)
-"lv" = (
-/obj/machinery/computer/operating{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/ship/blue{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/ship/blue{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/ship/blue,
-/turf/open/floor/plasteel/tiled/light,
-/area/medical/nsv/trauma)
 "lw" = (
 /obj/structure/ladder,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
@@ -5258,6 +5433,20 @@
 "qZ" = (
 /turf/open/floor/plasteel/tiled/light,
 /area/medical/genetics)
+"ra" = (
+/obj/machinery/stasis{
+	id_tag = "aq_vitals_serendipity1_114_158"
+	},
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/ship/blue,
+/obj/machinery/vitals_reader{
+	id_tag = "aq_vitals_serendipity1_114_158";
+	pixel_y = 32
+	},
+/turf/open/floor/plasteel/tiled/light,
+/area/medical/nsv/trauma)
 "rb" = (
 /obj/structure/closet/firecloset{
 	anchored = 1
@@ -6169,6 +6358,25 @@
 	},
 /turf/open/floor/plasteel/tiled/light,
 /area/medical/nsv/trauma)
+"ud" = (
+/obj/machinery/stasis{
+	id_tag = "aq_vitals_serendipity1_122_154"
+	},
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 4
+	},
+/obj/machinery/camera/autoname{
+	dir = 1
+	},
+/obj/machinery/vitals_reader{
+	id_tag = "aq_vitals_serendipity1_122_154";
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel/tiled/light,
+/area/medical/nsv/trauma)
 "ue" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
@@ -6729,6 +6937,22 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /turf/template_noop,
 /area/maintenance/department/medical)
+"wd" = (
+/obj/machinery/stasis{
+	id_tag = "aq_vitals_serendipity1_122_154"
+	},
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 4
+	},
+/obj/machinery/vitals_reader{
+	id_tag = "aq_vitals_serendipity1_122_154";
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel/tiled/light,
+/area/medical/nsv/trauma)
 "wg" = (
 /obj/structure/window/plasma/reinforced/spawner/west,
 /turf/open/floor/circuit/green,
@@ -7243,19 +7467,6 @@
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/open/floor/grass,
 /area/crew_quarters/dorms/nsv/nature_deck)
-"xL" = (
-/obj/machinery/stasis,
-/obj/effect/turf_decal/tile/ship/blue{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/ship/blue{
-	dir = 4
-	},
-/obj/machinery/camera/autoname{
-	dir = 1
-	},
-/turf/open/floor/plasteel/tiled/light,
-/area/medical/nsv/trauma)
 "xO" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
@@ -7627,17 +7838,6 @@
 "yP" = (
 /turf/open/floor/carpet/blue,
 /area/crew_quarters/heads/cmo)
-"yU" = (
-/obj/machinery/stasis,
-/obj/structure/sign/poster/official/moth1{
-	pixel_y = 32
-	},
-/obj/effect/turf_decal/tile/ship/blue{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/ship/blue,
-/turf/open/floor/plasteel/tiled/light,
-/area/medical/nsv/trauma)
 "yW" = (
 /obj/effect/turf_decal/tile/ship/blue{
 	dir = 8
@@ -8255,6 +8455,23 @@
 	},
 /turf/open/floor/plasteel/tiled/light,
 /area/medical/genetics/cloning)
+"Bf" = (
+/obj/machinery/stasis{
+	id_tag = "aq_vitals_serendipity1_114_154"
+	},
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 4
+	},
+/obj/machinery/status_display/evac/south,
+/obj/machinery/vitals_reader{
+	id_tag = "aq_vitals_serendipity1_114_154";
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel/tiled/light,
+/area/medical/nsv/trauma)
 "Bg" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
 	dir = 1
@@ -10380,6 +10597,17 @@
 	},
 /turf/open/floor/plasteel/tiled/light,
 /area/science/lab)
+"Ik" = (
+/obj/structure/table/optable,
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 4
+	},
+/obj/machinery/status_display/evac/south,
+/turf/open/floor/plasteel/tiled/light,
+/area/medical/nsv/trauma)
 "Im" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
 /obj/effect/turf_decal/tile/ship/half/purple,
@@ -10545,6 +10773,22 @@
 /obj/effect/turf_decal/tile/yellow,
 /turf/open/floor/plasteel/tiled/light,
 /area/bridge/cic)
+"IP" = (
+/obj/machinery/computer/operating{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/ship/blue,
+/obj/machinery/camera/autoname{
+	dir = 1
+	},
+/turf/open/floor/plasteel/tiled/light,
+/area/medical/nsv/trauma)
 "IQ" = (
 /obj/structure/grille,
 /obj/structure/lattice,
@@ -11559,16 +11803,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/carpet,
 /area/crew_quarters/heads/xo)
-"Mi" = (
-/obj/machinery/stasis,
-/obj/effect/turf_decal/tile/ship/blue{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/ship/blue{
-	dir = 4
-	},
-/turf/open/floor/plasteel/tiled/light,
-/area/medical/nsv/trauma)
 "Mk" = (
 /obj/machinery/computer/ship/dradis/minor{
 	dir = 1
@@ -11794,16 +12028,6 @@
 "MV" = (
 /turf/closed/wall/r_wall/ship,
 /area/ai_monitored/turret_protected/ai_upload)
-"MY" = (
-/obj/structure/table/optable,
-/obj/effect/turf_decal/tile/ship/blue{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/ship/blue{
-	dir = 4
-	},
-/turf/open/floor/plasteel/tiled/light,
-/area/medical/nsv/trauma)
 "MZ" = (
 /obj/machinery/modular_computer/console/preset/research{
 	dir = 4
@@ -12232,17 +12456,6 @@
 	},
 /turf/open/floor/plasteel/tiled/light,
 /area/medical/genetics/cloning)
-"OC" = (
-/obj/machinery/stasis,
-/obj/effect/turf_decal/tile/ship/blue{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/ship/blue{
-	dir = 4
-	},
-/obj/machinery/status_display/evac/south,
-/turf/open/floor/plasteel/tiled/light,
-/area/medical/nsv/trauma)
 "OD" = (
 /obj/machinery/nuclearbomb/selfdestruct,
 /obj/machinery/camera/motion{
@@ -14418,6 +14631,22 @@
 /obj/structure/ladder,
 /turf/open/floor/plasteel/dark,
 /area/nsv/weapons/starboard)
+"Wa" = (
+/obj/machinery/stasis{
+	id_tag = "aq_vitals_serendipity1_120_154"
+	},
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 4
+	},
+/obj/machinery/vitals_reader{
+	id_tag = "aq_vitals_serendipity1_120_154";
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel/tiled/light,
+/area/medical/nsv/trauma)
 "Wc" = (
 /obj/structure/cable,
 /obj/machinery/door/airlock/ship/maintenance,
@@ -14580,6 +14809,19 @@
 /obj/effect/turf_decal/tile/ship/half/purple,
 /turf/open/floor/plasteel/tiled/light,
 /area/science)
+"WC" = (
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 4
+	},
+/obj/machinery/autodoc,
+/obj/structure/sign/poster/official/moth1{
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel/tiled/light,
+/area/medical/nsv/trauma)
 "WD" = (
 /turf/closed/wall/r_wall/ship,
 /area/hallway/secondary/exit)
@@ -15448,6 +15690,22 @@
 /obj/machinery/duct,
 /turf/open/floor/noslip/white,
 /area/crew_quarters/toilet)
+"ZS" = (
+/obj/machinery/stasis{
+	id_tag = "aq_vitals_serendipity1_114_154"
+	},
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 4
+	},
+/obj/machinery/vitals_reader{
+	id_tag = "aq_vitals_serendipity1_114_154";
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel/tiled/light,
+/area/medical/nsv/trauma)
 "ZT" = (
 /obj/structure/window/plasma/reinforced/spawner/east,
 /obj/structure/cable/pink,
@@ -42374,12 +42632,12 @@ VC
 Ax
 Re
 WD
-Jr
-Jr
-Jr
-Jr
-Jr
-Jr
+cc
+cc
+cc
+cc
+cc
+cc
 dm
 qb
 qb
@@ -42631,12 +42889,12 @@ Qw
 WD
 tu
 Bs
-Jr
-hz
-KY
-JE
-gZ
-hd
+cc
+cm
+cs
+cH
+cO
+cf
 vA
 qb
 qb
@@ -42888,12 +43146,12 @@ ZW
 WD
 hH
 WD
-Jr
-xe
-Ei
-Gx
-wO
-hd
+cc
+co
+ct
+cI
+cP
+cf
 vA
 qb
 qb
@@ -43145,12 +43403,12 @@ AU
 FB
 Le
 pE
-Jr
-oS
-IE
-fm
-rr
-hd
+cc
+cm
+ct
+cL
+cT
+cf
 vA
 qb
 qb
@@ -43402,12 +43660,12 @@ KS
 Dd
 vb
 bc
-gu
-gA
-Fm
-GA
-Xo
-hd
+cY
+cq
+cx
+cM
+cU
+cf
 vA
 vA
 aP
@@ -43635,7 +43893,7 @@ yW
 YM
 wi
 uy
-gb
+WC
 FI
 Tx
 Tx
@@ -43659,12 +43917,12 @@ Qw
 qx
 gs
 Oa
-Jr
-dh
-ko
-er
-rd
-oD
+cc
+cr
+cz
+cN
+cV
+db
 fZ
 qb
 qb
@@ -43916,11 +44174,11 @@ SJ
 Gs
 Gs
 Gs
-hd
-hd
-hd
-hd
-hd
+cf
+cf
+cf
+cf
+cf
 vA
 LU
 qb
@@ -44149,7 +44407,7 @@ Bw
 gW
 oa
 Ww
-MY
+Ik
 FI
 iL
 bQ
@@ -44659,11 +44917,11 @@ Te
 DI
 DI
 zU
-yU
+ra
 gW
 oa
 Ww
-OC
+ZS
 nv
 nv
 nv
@@ -46205,7 +46463,7 @@ cj
 gW
 hf
 pA
-Mi
+Wa
 nv
 Aq
 UZ
@@ -46719,7 +46977,7 @@ nT
 gW
 hf
 pA
-xL
+wd
 vd
 fw
 AP
@@ -46976,7 +47234,7 @@ NA
 gW
 ml
 cW
-lv
+IP
 vd
 Uv
 vv

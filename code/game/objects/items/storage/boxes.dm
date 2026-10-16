@@ -440,7 +440,7 @@
 
 /obj/item/storage/box/exileimp
 	name = "boxed exile implant kit"
-	desc = "Box of exile implants. It has a picture of a clown being booted through the Gateway."
+	desc = "Pudełko implantów wygnania. Na obrazku klaun znika w netpodzie, a z drugiej strony macha z Pętli." // AQ EDIT
 	illustration = "implant"
 
 /obj/item/storage/box/exileimp/PopulateContents()
@@ -894,8 +894,8 @@
 
 //////
 /obj/item/storage/box/hug/medical/PopulateContents()
-	new /obj/item/stack/medical/bruise_pack(src)
-	new /obj/item/stack/medical/ointment(src)
+	new /obj/item/stack/medical/suture(src) // AQ EDIT - tgstation sutures and mesh
+	new /obj/item/stack/medical/mesh(src) // AQ EDIT
 	new /obj/item/reagent_containers/hypospray/medipen(src)
 
 // Clown survival box

@@ -1,0 +1,220 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/closed/indestructible/binary,
+/area/virtual_domain/exile_loop)
+"b" = (
+/turf/closed/indestructible/fakeglass,
+/area/virtual_domain/exile_loop)
+"c" = (
+/obj/structure/bed,
+/obj/item/bedsheet/black,
+/turf/open/floor/carpet/black,
+/area/virtual_domain/exile_loop)
+"d" = (
+/obj/structure/table/wood,
+/obj/item/paper/fluff/exile_loop,
+/turf/open/floor/carpet/black,
+/area/virtual_domain/exile_loop)
+"e" = (
+/obj/structure/chair/wood{
+	dir = 8
+	},
+/turf/open/floor/carpet/black,
+/area/virtual_domain/exile_loop)
+"f" = (
+/turf/open/floor/circuit/green,
+/area/virtual_domain/exile_loop)
+"g" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/circuit/green,
+/area/virtual_domain/exile_loop)
+"h" = (
+/obj/item/kirbyplants/random,
+/turf/open/floor/circuit/green,
+/area/virtual_domain/exile_loop)
+"i" = (
+/obj/machinery/byteforge,
+/turf/open/floor/circuit/green,
+/area/virtual_domain/exile_loop)
+"j" = (
+/turf/open/floor/carpet/black,
+/area/virtual_domain/exile_loop)
+"k" = (
+/obj/effect/landmark/bitrunning/exile_spawn,
+/turf/open/floor/circuit/green,
+/area/virtual_domain/exile_loop)
+"l" = (
+/obj/machinery/quantum_server/exile_loop,
+/turf/open/floor/circuit/green,
+/area/virtual_domain/exile_loop)
+"m" = (
+/obj/machinery/computer/quantum_console/exile_loop{
+	dir = 8
+	},
+/turf/open/floor/circuit/green,
+/area/virtual_domain/exile_loop)
+"n" = (
+/turf/open/indestructible/bitrunning_transport,
+/area/virtual_domain/exile_loop)
+"o" = (
+/obj/structure/exile_gate,
+/turf/open/indestructible/bitrunning_transport,
+/area/virtual_domain/exile_loop)
+"p" = (
+/obj/structure/sign/poster/official/random{
+	pixel_x = 32
+	},
+/turf/open/floor/circuit/green,
+/area/virtual_domain/exile_loop)
+"q" = (
+/obj/machinery/light{
+	dir = 2
+	},
+/turf/open/floor/circuit/green,
+/area/virtual_domain/exile_loop)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+c
+j
+f
+f
+f
+f
+h
+a
+"}
+(3,1,1) = {"
+a
+d
+j
+f
+f
+f
+f
+f
+a
+"}
+(4,1,1) = {"
+a
+e
+f
+k
+k
+k
+f
+f
+a
+"}
+(5,1,1) = {"
+b
+f
+f
+f
+f
+f
+f
+f
+a
+"}
+(6,1,1) = {"
+b
+f
+f
+f
+f
+f
+f
+q
+a
+"}
+(7,1,1) = {"
+b
+g
+f
+f
+n
+n
+n
+f
+a
+"}
+(8,1,1) = {"
+b
+f
+f
+f
+n
+o
+n
+f
+a
+"}
+(9,1,1) = {"
+b
+f
+f
+f
+n
+n
+n
+f
+a
+"}
+(10,1,1) = {"
+a
+g
+f
+l
+f
+f
+f
+q
+a
+"}
+(11,1,1) = {"
+a
+h
+f
+m
+f
+f
+f
+f
+a
+"}
+(12,1,1) = {"
+a
+i
+f
+f
+f
+f
+p
+h
+a
+"}
+(13,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
