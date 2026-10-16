@@ -76,6 +76,7 @@ GLOBAL_LIST_INIT(surgery_tool_names, list(
 		"missingLimb" = !surgery.requires_bodypart,
 		"requiresTech" = !!surgery.requires_tech,
 		"replacedBy" = replaced_by,
+		"condition" = surgery.catalog_condition,
 		"lying" = !!surgery.lying_required,
 		"selfOperable" = !!surgery.self_operable,
 		"ignoreClothes" = !!surgery.ignore_clothes,
@@ -85,18 +86,22 @@ GLOBAL_LIST_INIT(surgery_tool_names, list(
 /proc/surgery_catalog_step(datum/surgery_step/step)
 	var/list/tools = list()
 	if(step.accept_hand)
-		tools += list(list("name" = "pusta ręka", "chance" = 100))
+		tools += list(list("name" = "pusta ręka", "speed" = 100))
 	if(step.accept_any_item)
-		tools += list(list("name" = "dowolny przedmiot", "chance" = 100))
+		tools += list(list("name" = "dowolny przedmiot", "speed" = 100))
 	if(!step.accept_any_item)
 		for(var/implement in step.implements)
 			var/tool_name
-			if(ispath(implement))
+			if(implement == /obj/item)
+				tool_name = step.catalog_any_item
+			else if(ispath(implement))
 				var/atom/tool_type = implement
 				tool_name = initial(tool_type.name)
 			else
 				tool_name = GLOB.surgery_tool_names[implement] || "[implement]"
-			tools += list(list("name" = tool_name, "chance" = step.implements[implement]))
+			if(implement == TOOL_WELDER && step.catalog_hot_welder)
+				tool_name += " (zapalona)"
+			tools += list(list("name" = tool_name, "speed" = step.implements[implement]))
 
 	var/list/chems = list()
 	for(var/reagent_type in step.chems_needed)
@@ -123,3 +128,110 @@ GLOBAL_LIST_INIT(surgery_tool_names, list(
 		return "szlamy"
 	var/mob/named_type = mob_type
 	return initial(named_type.name)
+
+// Opisy warunków, których katalog nie wyczyta z kodu (can_start i tool_check potrzebują konkretnego pacjenta i narzędzia)
+
+/datum/surgery
+	/// Opis dodatkowego warunku z can_start(), pokazywany w programie „Operacje”
+	var/catalog_condition
+
+/datum/surgery_step
+	/// Jak w katalogu nazywa się /obj/item z implements (zależy od tool_check() kroku)
+	var/catalog_any_item = "dowolny przedmiot"
+	/// tool_check() przyjmuje spawarkę tylko zapaloną
+	var/catalog_hot_welder = FALSE
+
+/datum/surgery_step/incise
+	catalog_any_item = "dowolny ostry przedmiot"
+
+/datum/surgery_step/mechanic_incise
+	catalog_any_item = "dowolny ostry przedmiot"
+
+/datum/surgery_step/mechanic_close
+	catalog_any_item = "dowolny ostry przedmiot"
+
+/datum/surgery_step/lobotomize
+	catalog_any_item = "dowolny ostry przedmiot"
+
+/datum/surgery_step/close
+	catalog_any_item = "dowolny gorący przedmiot"
+	catalog_hot_welder = TRUE
+
+/datum/surgery_step/viral_bond
+	catalog_any_item = "dowolny gorący przedmiot"
+	catalog_hot_welder = TRUE
+
+/datum/surgery_step/handle_cavity
+	catalog_any_item = "dowolny przedmiot, który nie jest gorący"
+
+/datum/surgery/advanced/bioware
+	catalog_condition = "pacjent nie może mieć już tej modyfikacji"
+
+/datum/surgery/advanced/bioware/cortex_folding
+	catalog_condition = "pacjent musi mieć mózg i nie mieć już tej modyfikacji"
+
+/datum/surgery/advanced/bioware/cortex_imprint
+	catalog_condition = "pacjent musi mieć mózg i nie mieć już tej modyfikacji"
+
+/datum/surgery/advanced/experimental_dissection
+	catalog_condition = "tylko na zwłokach, raz na ciało; cyborg nie może jej wykonać"
+
+/datum/surgery/advanced/brainwashing
+	catalog_condition = "pacjent musi mieć mózg"
+
+/datum/surgery/advanced/lobotomy
+	catalog_condition = "pacjent musi mieć mózg"
+
+/datum/surgery/advanced/pacify
+	catalog_condition = "pacjent musi mieć mózg"
+
+/datum/surgery/brain_recalibration
+	catalog_condition = "pacjent musi mieć mózg"
+
+/datum/surgery/advanced/necrotic_revival
+	catalog_condition = "pacjent nie może mieć już infekcji zombie"
+
+/datum/surgery/advanced/revival
+	catalog_condition = "tylko na zwłokach z mózgiem; nie na samobójcy ani wysuszonym ciele (husk)"
+
+/datum/surgery/advanced/viral_bonding
+	catalog_condition = "pacjent musi być chory (mieć wirusa)"
+
+/datum/surgery/blood_filter
+	catalog_condition = "pacjent musi mieć chemikalia we krwi; nie na wysuszonym ciele (husk)"
+
+/datum/surgery/core_removal
+	catalog_condition = "tylko na martwym szlamie"
+
+/datum/surgery/coronary_bypass
+	catalog_condition = "serce uszkodzone w ponad 60% i jeszcze nieoperowane"
+
+/datum/surgery/lobectomy
+	catalog_condition = "płuca uszkodzone w ponad 60% i jeszcze nieoperowane"
+
+/datum/surgery/gastrectomy
+	catalog_condition = "żołądek uszkodzony w ponad 50%, ale jeszcze działający"
+
+/datum/surgery/hepatectomy
+	catalog_condition = "wątroba uszkodzona w ponad 50%, ale jeszcze działająca"
+
+/datum/surgery/eye_surgery
+	catalog_condition = "pacjent musi mieć oczy"
+
+/datum/surgery/ear_surgery
+	catalog_condition = "pacjent musi mieć uszy"
+
+/datum/surgery/lipoplasty
+	catalog_condition = "pacjent musi być otyły"
+
+/datum/surgery/augmentation
+	catalog_condition = "nie na oozelingach"
+
+/datum/surgery/prosthetic_replacement
+	catalog_condition = "w miejscu brakującej kończyny; nie na oozelingach"
+
+/datum/surgery/autopsy
+	catalog_condition = "tylko na zwłokach, raz na ciało"
+
+/datum/surgery/stomach_pump
+	catalog_condition = "pacjent musi mieć żołądek; nie na wysuszonym ciele (husk)"

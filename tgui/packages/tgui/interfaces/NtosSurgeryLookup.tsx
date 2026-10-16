@@ -15,7 +15,7 @@ import { NtosWindow } from '../layouts';
 
 type SurgeryTool = {
   name: string;
-  chance: number;
+  speed: number;
 };
 
 type SurgeryStep = {
@@ -37,6 +37,7 @@ type Surgery = {
   missingLimb: boolean;
   requiresTech: boolean;
   replacedBy: string | null;
+  condition: string | null;
   lying: boolean;
   selfOperable: boolean;
   ignoreClothes: boolean;
@@ -103,6 +104,11 @@ export const NtosSurgeryLookup = (props) => {
           </Box>
         </Section>
         <Section title={`Operacje (${filtered.length})`}>
+          <Box color="label" mb={1}>
+            Procent przy narzędziu to jego sprawność. Gorsze narzędzie wydłuża
+            krok, a gdy krok trwa ponad dwa razy dłużej niż zwykle, pojawia się
+            szansa porażki.
+          </Box>
           {filtered.length === 0 && (
             <NoticeBox>Nie ma takiej operacji.</NoticeBox>
           )}
@@ -118,6 +124,9 @@ export const NtosSurgeryLookup = (props) => {
 const SurgeryEntry = (props: { surgery: Surgery }) => {
   const { surgery } = props;
   const notes: string[] = [];
+  if (surgery.condition) {
+    notes.push(surgery.condition);
+  }
   if (surgery.requiresTech) {
     notes.push('wymaga zbadania technologii albo dysku z operacją');
   }
@@ -164,7 +173,7 @@ const SurgeryEntry = (props: { surgery: Surgery }) => {
 
 const SurgeryStepRow = (props: { step: SurgeryStep; index: number }) => {
   const { step, index } = props;
-  const tools = [...step.tools].sort((a, b) => b.chance - a.chance);
+  const tools = [...step.tools].sort((a, b) => b.speed - a.speed);
   return (
     <Stack mb={0.5}>
       <Stack.Item width="1.5em" color="label" textAlign="right">
@@ -187,7 +196,7 @@ const SurgeryStepRow = (props: { step: SurgeryStep; index: number }) => {
               mr={1}
             >
               {tool.name}
-              {tool.chance < 100 && ` (${tool.chance}%)`}
+              {tool.speed < 100 && ` (${tool.speed}%)`}
               {toolIndex < tools.length - 1 && ','}
             </Box>
           ))}

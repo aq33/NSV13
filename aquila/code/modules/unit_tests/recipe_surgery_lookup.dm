@@ -19,4 +19,12 @@
 		for(var/list/step as anything in surgery["steps"])
 			TEST_ASSERT(length(step["tools"]), "Krok [step["name"]] operacji [surgery["id"]] nie ma narzędzi")
 
+	// Dyski zawodowe mają programy; dysk ma też drugą definicję Initialize() w logprobe.dm
+	TEST_ASSERT(disk_has_program(/obj/item/computer_hardware/hard_drive/role/medical, /datum/computer_file/program/surgery_lookup), "Dysk medyczny nie ma programu „Operacje”")
+	TEST_ASSERT(disk_has_program(/obj/item/computer_hardware/hard_drive/role/chemistry, /datum/computer_file/program/recipe_lookup), "Dysk chemiczny nie ma programu „Receptury”")
+
+/datum/unit_test/recipe_surgery_lookup/proc/disk_has_program(disk_type, program_type)
+	var/obj/item/computer_hardware/hard_drive/disk = allocate(disk_type)
+	return !!(locate(program_type) in disk.stored_files)
+
 #undef TEST_ASSERT
