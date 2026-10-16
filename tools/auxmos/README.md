@@ -1,6 +1,6 @@
 # Patched auxmos.dll
 
-`auxmos.dll` in the repo root is [covertcorvid/auxmos](https://github.com/covertcorvid/auxmos) `v2.5.2-b` with the patches in this folder. `libauxmos.so` is still the unpatched upstream build.
+`auxmos.dll` in the repo root is [covertcorvid/auxmos](https://github.com/covertcorvid/auxmos) `v2.5.2-b` with the patches in this folder. `libauxmos.so` is still the unpatched upstream build. The patch also pins the library on Linux (`RTLD_NODELETE`), so if `libauxmos.so` is ever rebuilt with it, remove the `system_type == MS_WINDOWS` check in `aquila/code/game/world.dm` at the same time. Otherwise the next world keeps stale string and gas ids.
 
 ## Why
 
