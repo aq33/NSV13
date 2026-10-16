@@ -109,5 +109,10 @@
 		var/obj/machinery/stasis/bed = monitor.connected
 		TEST_ASSERT(bed.id_tag == monitor.id_tag, "Monitor at [monitor.x],[monitor.y],[monitor.z] picked the wrong bed")
 	log_world("aquila_mapped_vitals_monitors: [checked] mapped monitors checked")
+	// One monitor per stasis bed on the maps in rotation (json map_name)
+	var/static/list/expected_per_map = list("NSV Aquilas" = 3, "DLV Trawnik" = 4, "NSV Padalec" = 2)
+	var/expected = expected_per_map[SSmapping.config?.map_name]
+	if(!isnull(expected))
+		TEST_ASSERT(checked == expected, "[SSmapping.config.map_name] has [checked] mapped vitals monitors, expected [expected]")
 
 #undef TEST_ASSERT
