@@ -306,7 +306,7 @@
 	user.visible_message("<span class='notice'>Widzisz, jak [user] kopie w szybę [src]!</span>", \
 		"<span class='notice'>Szarpiesz się w [src], kopiąc stopą w zwalniacz... (zajmie to około [DisplayTimeText(breakout_time)].)</span>", \
 		"<span class='italics'>Słyszysz łomot z [src].</span>")
-	if(do_after(user, breakout_time, target = src))
+	if(do_after(user, breakout_time, target = src, hidden = TRUE))
 		if(!user || user.stat != CONSCIOUS || user.loc != src )
 			return
 		user.visible_message("<span class='warning'>[user] wydostaje się z [src]!</span>", \

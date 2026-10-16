@@ -115,7 +115,7 @@
 			"<span class='notice'>Próbujesz uwolnić się z [src], pogarszając swoje rany! (Nie ruszaj się przez dwie minuty.)</span>",\
 			"<span class='italics'>Słyszysz mokre mlaskanie..</span>")
 			M.adjustBruteLoss(30)
-			if(!do_after(M, 1200, target = src))
+			if(!do_after(M, 1200, target = src, hidden = TRUE))
 				if(M && M.buckled)
 					to_chat(M, "<span class='warning'>Nie udaje ci się uwolnić!</span>")
 				return
