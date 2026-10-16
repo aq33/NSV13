@@ -6323,10 +6323,6 @@
 	},
 /turf/open/floor/carpet/blue,
 /area/crew_quarters/heads/cmo)
-"ua" = (
-/obj/structure/table/glass/plasma,
-/turf/open/floor/engine/light,
-/area/ai_monitored/nuke_storage)
 "ub" = (
 /obj/machinery/vending/sustenance,
 /obj/machinery/camera/autoname{
@@ -15700,6 +15696,12 @@
 	},
 /turf/open/floor/plasteel/tiled/light,
 /area/medical/chemistry)
+"ck" = (
+/obj/structure/table/glass/plasma,
+/obj/item/circuitboard/machine/protolathe,
+/obj/item/circuitboard/machine/circuit_imprinter,
+/turf/open/floor/engine/light,
+/area/ai_monitored/nuke_storage)
 
 (1,1,1) = {"
 zP
@@ -40743,7 +40745,7 @@ jN
 jN
 HP
 dv
-ua
+ck
 Hr
 Jv
 st

@@ -47,7 +47,7 @@
 
 /obj/item/implant/explosive/implant(mob/living/target, mob/user, silent = FALSE, force = FALSE)
 	for(var/X in target.implants)
-		if(istype(X, type))
+		if(istype(X, type) && (istype(src, /obj/item/implant/explosive/engineering) || !istype(X, /obj/item/implant/explosive/engineering))) // AQ EDIT: mikrobomba nie wtapia się w implant karny CE
 			var/obj/item/implant/explosive/imp_e = X
 			imp_e.heavy += heavy
 			imp_e.medium += medium

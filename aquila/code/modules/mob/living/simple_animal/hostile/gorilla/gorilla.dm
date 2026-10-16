@@ -1,4 +1,5 @@
 /mob/living/simple_animal/hostile/gorilla
+	playable = TRUE
 	var/diseased = FALSE
 
 /mob/living/simple_animal/hostile/gorilla/AttackingTarget()

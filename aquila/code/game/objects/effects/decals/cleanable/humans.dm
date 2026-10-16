@@ -83,9 +83,9 @@
 	dry_timer = null
 	name = "dried [name]"
 
-	check_slippery()
 	is_old = TRUE
 	bloodiness = 0
+	check_slippery() // po ustawieniu is_old, żeby zaschnięta krew przestała być śliska
 	var/old_alpha = alpha
 	color = BLOOD_DRY_COLOR
 	alpha = old_alpha
@@ -111,8 +111,8 @@
 	ASSERT(is_old)
 	name = initial(name)
 
-	check_slippery()
 	is_old = FALSE
+	check_slippery()
 	color = initial(color)
 	update_dry_timer()
 

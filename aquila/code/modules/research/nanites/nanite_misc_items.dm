@@ -12,9 +12,9 @@
 	materials = list()
 
 /obj/item/throwing_star/nanite/Initialize(mapload)
-	..()
+	. = ..()
 	addtimer(CALLBACK(src, .proc/crumble), 15 SECONDS)
 
 /obj/item/throwing_star/nanite/proc/crumble()
 	visible_message("<span class='warning'>[src] się rozpada!</span>")
-	Destroy(src)
+	qdel(src)

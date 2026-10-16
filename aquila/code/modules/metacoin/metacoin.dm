@@ -1,4 +1,4 @@
-/// Konto bankowe z karty postaci, jeśli liczy się ono na koniec rundy: żywy człowiek, który się ewakuował (aquilosy i ranking zarobków)
+/// Konto bankowe z karty postaci, jeśli liczy się ono na koniec rundy: żywy człowiek, który się ewakuował albo ukończył patrol (aquilosy i ranking zarobków)
 /client/proc/get_endround_bank_account()
 	if(!mob)
 		return null
@@ -7,10 +7,11 @@
 		return null
 	if(M.stat == DEAD || isbrain(M))
 		return null
-	if(!EMERGENCY_ESCAPED_OR_ENDGAMED)
-		return null
-	if(!M.onCentCom() && !M.onSyndieBase())
-		return null
+	if(!GLOB.crew_transfer_risa) // wygrany patrol NSV liczy się bez ewakuacji
+		if(!EMERGENCY_ESCAPED_OR_ENDGAMED)
+			return null
+		if(!M.onCentCom() && !M.onSyndieBase())
+			return null
 	var/mob/living/carbon/human/H = M
 	return H.get_bank_account()
 

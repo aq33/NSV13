@@ -379,7 +379,7 @@
 /obj/item/storage/firstaid/shifty
 	name = "shifty medkit"
 	desc = "A shady medkit, assembled out of scraps and leftovers."
-	icon_state = "bezerk"
+	icon_state = "firstaid-mystery" // AQ EDIT: "bezerk" nie istnieje w aquila storage.dmi
 
 /obj/item/storage/firstaid/shifty/battle/PopulateContents()
 	var/static/items_inside = list(
