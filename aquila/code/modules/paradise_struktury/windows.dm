@@ -6,6 +6,8 @@
 	/// AQUILA - plik z ramą pełnego okna, stan "[smoothing_junction]"
 	var/edge_overlay_file
 	var/mutable_appearance/edge_overlay
+	/// AQUILA - nieprzezroczyste tło pod szybą
+	var/mutable_appearance/glass_backing
 
 /obj/structure/window/bitmask_connects_to(turf/T)
 	return paradise_structure_connects(T)
@@ -16,10 +18,24 @@
 			A.paradise_face_walls()
 	cut_overlay(edge_overlay)
 	edge_overlay = null
+	update_glass_backing()
 	if(!edge_overlay_file)
 		return
 	edge_overlay = mutable_appearance(edge_overlay_file, "[smoothing_junction]", layer + 0.01, appearance_flags = RESET_COLOR)
 	add_overlay(edge_overlay)
+
+/// Szyba Paradise jest półprzezroczysta, a na naszych mapach pod oknami leżą podłogi, kable i naklejki zamiast samej kraty.
+/// Pod szybę idzie nieprzezroczyste, ciemne tło w kształcie okna, żeby nie było widać, co jest pod nim.
+/obj/structure/window/proc/update_glass_backing()
+	underlays -= glass_backing
+	glass_backing = null
+	if(!bitmask_smooth)
+		return
+	glass_backing = mutable_appearance(icon, icon_state)
+	// Kolor stały, alfa razy 10: każdy piksel okna staje się pełny
+	glass_backing.color = list(0,0,0,0, 0,0,0,0, 0,0,0,0, 0,0,0,10, 0.11,0.15,0.2,0)
+	glass_backing.appearance_flags = RESET_COLOR | RESET_ALPHA
+	underlays += glass_backing
 
 // Odkręcone okno nie łączy się z niczym
 /obj/structure/window/calculate_bitmask_junction()
