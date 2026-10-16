@@ -62,7 +62,6 @@ GLOBAL_LIST_INIT(muffled_speech_sounds, list(
 	'aquila/sound/voice/speech/villager1.ogg' = 'aquila/sound/voice/speech_muffled/villager1.ogg',
 	'aquila/sound/voice/speech/villager2.ogg' = 'aquila/sound/voice/speech_muffled/villager2.ogg',
 	'aquila/sound/voice/speech/villager3.ogg' = 'aquila/sound/voice/speech_muffled/villager3.ogg',
-	'aquila/sound/voice/speech/villager4.ogg' = 'aquila/sound/voice/speech_muffled/villager4.ogg',
 	'aquila/sound/voice/speech/zombie1.ogg' = 'aquila/sound/voice/speech_muffled/zombie1.ogg',
 	'aquila/sound/voice/speech/zombie2.ogg' = 'aquila/sound/voice/speech_muffled/zombie2.ogg',
 	'aquila/sound/voice/speech/zombie3.ogg' = 'aquila/sound/voice/speech_muffled/zombie3.ogg'

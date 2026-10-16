@@ -350,7 +350,7 @@ distance_multiplier - Can be used to multiply the distance at which the sound is
 			if("squid")
 				soundin = pick('aquila/sound/voice/speech/squid1.ogg', 'aquila/sound/voice/speech/squid2.ogg', 'aquila/sound/voice/speech/squid3.ogg')
 			if("villager")
-				soundin = pick('aquila/sound/voice/speech/villager1.ogg', 'aquila/sound/voice/speech/villager2.ogg', 'aquila/sound/voice/speech/villager3.ogg', 'aquila/sound/voice/speech/villager4.ogg')
+				soundin = pick('aquila/sound/voice/speech/villager1.ogg', 'aquila/sound/voice/speech/villager2.ogg', 'aquila/sound/voice/speech/villager3.ogg')
 			if("eggcrack")
 				soundin = pick('aquila/sound/voice/speech/eggcrack1.ogg', 'aquila/sound/voice/speech/eggcrack2.ogg', 'aquila/sound/voice/speech/eggcrack3.ogg', 'aquila/sound/voice/speech/eggcrack4.ogg')
 			if("zombie")
