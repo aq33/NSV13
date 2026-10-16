@@ -224,18 +224,20 @@
 /datum/species/ipc/proc/declare_revival(mob/living/carbon/human/H)
 	H.say("Reactivating [pick("core systems", "central subroutines", "key functions")]...")
 	sleep(3 SECONDS)
-	if(H.stat == DEAD)
+	if(QDELETED(H) || H.stat == DEAD) // AQ EDIT - ciało mogło zniknąć w trakcie
 		return
 	playsound(H, 'sound/voice/dialup.ogg', 25)
 	H.say("Reinitializing [pick("personality matrix", "behavior logic", "morality subsystems")]...")
 	sleep(3 SECONDS)
-	if(H.stat == DEAD)
+	if(QDELETED(H) || H.stat == DEAD) // AQ EDIT - ciało mogło zniknąć w trakcie
 		return
 	H.say("Kończenie konfiguracji...")
 	sleep(3 SECONDS)
-	if(H.stat == DEAD)
+	if(QDELETED(H) || H.stat == DEAD) // AQ EDIT - ciało mogło zniknąć w trakcie
 		return
 	H.say("Jednostka [H.real_name] jest w pełni sprawna. Miłego dnia.")
+	if(QDELETED(H) || !H.dna) // AQ EDIT - the body can be deleted while rebooting
+		return
 	H.dna.features["ipc_screen"] = saved_screen
 
 /datum/species/ipc/get_harm_descriptors()

@@ -3065,6 +3065,9 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/durasteel/eris_techfloor_alt,
 /area/engine/shield_generator)
+"fP" = (
+/turf/closed/wall/steel,
+/area/quartermaster/bitrunning/den)
 "fQ" = (
 /obj/effect/turf_decal/box/white,
 /obj/machinery/atmospherics/pipe/simple/purple/hidden{
@@ -3093,6 +3096,29 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/hydroponics)
+"fT" = (
+/obj/structure/sign/directions/supply{
+	dir = 4;
+	pixel_y = -6
+	},
+/obj/structure/sign/directions/science{
+	dir = 4
+	},
+/turf/closed/wall/steel,
+/area/quartermaster/bitrunning/den)
+"fU" = (
+/obj/machinery/netpod,
+/obj/effect/turf_decal/box,
+/turf/open/floor/circuit/green,
+/area/quartermaster/bitrunning/den)
+"fV" = (
+/obj/machinery/netpod,
+/obj/effect/turf_decal/box,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/circuit/green,
+/area/quartermaster/bitrunning/den)
 "fW" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
@@ -3105,6 +3131,13 @@
 	},
 /turf/open/floor/carpet/royalblack,
 /area/crew_quarters/bar/mess_hall)
+"fY" = (
+/obj/effect/landmark/start/bitrunner,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
 "fZ" = (
 /turf/open/floor/monotile/dark,
 /area/science/explab)
@@ -3177,6 +3210,12 @@
 /obj/machinery/vending/wardrobe/sec_wardrobe,
 /turf/open/floor/monotile/steel,
 /area/security/brig)
+"gh" = (
+/obj/machinery/quantum_server,
+/obj/effect/turf_decal/box,
+/obj/machinery/status_display/ai/west,
+/turf/open/floor/circuit/green,
+/area/quartermaster/bitrunning/den)
 "gi" = (
 /obj/machinery/vending/security,
 /obj/structure/sign/poster/official/random{
@@ -3216,6 +3255,22 @@
 /obj/machinery/atmospherics/pipe/simple/purple/hidden,
 /turf/closed/wall/r_wall,
 /area/engine/atmos)
+"gn" = (
+/obj/effect/turf_decal/tile/ship/brown{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/ship/brown{
+	dir = 8
+	},
+/obj/machinery/airalarm/directional/north,
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
+"go" = (
+/obj/effect/turf_decal/tile/ship/brown{
+	dir = 1
+	},
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
 "gp" = (
 /obj/effect/turf_decal/tile/green/tile_side{
 	dir = 8
@@ -3234,6 +3289,16 @@
 /obj/machinery/advanced_airlock_controller/directional/north,
 /turf/open/floor/monotile/steel,
 /area/nsv/weapons)
+"gr" = (
+/obj/item/kirbyplants/random,
+/obj/effect/turf_decal/tile/ship/brown{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/ship/brown{
+	dir = 4
+	},
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
 "gs" = (
 /obj/structure/railing{
 	dir = 4
@@ -3248,6 +3313,17 @@
 	},
 /turf/open/floor/engine,
 /area/quartermaster/storage)
+"gt" = (
+/obj/machinery/computer/quantum_console{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 4
+	},
+/obj/machinery/power/apc/auto_name/west,
+/obj/structure/cable,
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
 "gu" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/red/line,
@@ -3273,6 +3349,13 @@
 /area/crew_quarters/abandoned_gambling_den{
 	name = "Abandoned Bar"
 	})
+"gy" = (
+/obj/structure/chair/office{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
 "gz" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/power/terminal{
@@ -3341,6 +3424,13 @@
 /obj/effect/landmark/zebra_interlock_point,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck2/port)
+"gG" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
 "gH" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
@@ -3378,6 +3468,44 @@
 /obj/machinery/recharger,
 /turf/open/floor/monotile/steel,
 /area/security/brig)
+"gJ" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
+"gK" = (
+/obj/effect/turf_decal/tile/ship/brown{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
+"gL" = (
+/obj/structure/chair/fancy/comfy{
+	dir = 4
+	},
+/obj/structure/extinguisher_cabinet/west,
+/turf/open/floor/carpet/ship/beige_carpet,
+/area/quartermaster/bitrunning/den)
+"gM" = (
+/obj/machinery/byteforge,
+/obj/effect/turf_decal/ship/delivery/yellow,
+/obj/machinery/light{
+	dir = 2
+	},
+/turf/open/floor/plasteel/tech/grid,
+/area/quartermaster/bitrunning/den)
 "gN" = (
 /obj/machinery/atmospherics/pipe/simple/purple/hidden{
 	dir = 9
@@ -3415,6 +3543,25 @@
 	},
 /turf/closed/wall/r_wall,
 /area/engine/armour_pump)
+"gR" = (
+/obj/structure/table/wood/fancy/green,
+/obj/item/reagent_containers/food/drinks/soda_cans/space_mountain_wind{
+	pixel_x = -6;
+	pixel_y = 8
+	},
+/obj/item/reagent_containers/food/drinks/soda_cans/pwr_game{
+	pixel_x = 6;
+	pixel_y = 10
+	},
+/obj/item/food/cornchips{
+	pixel_y = 2
+	},
+/obj/item/toy/figure/bitrunner{
+	pixel_x = -8;
+	pixel_y = 14
+	},
+/turf/open/floor/carpet/ship/beige_carpet,
+/area/quartermaster/bitrunning/den)
 "gS" = (
 /turf/open/floor/engine/airless,
 /area/space/nearstation)
@@ -3433,6 +3580,15 @@
 /obj/item/kirbyplants/random,
 /turf/open/floor/monotile/steel,
 /area/security/brig)
+"gU" = (
+/obj/machinery/computer/arcade/battle{
+	dir = 1
+	},
+/obj/machinery/camera/autoname{
+	dir = 1
+	},
+/turf/open/floor/carpet/ship/beige_carpet,
+/area/quartermaster/bitrunning/den)
 "gV" = (
 /obj/machinery/atmospherics/pipe/manifold/general/hidden/layer2{
 	dir = 1
@@ -3478,6 +3634,16 @@
 /obj/item/clothing/head/helmet/decktech,
 /turf/open/floor/monotile/steel,
 /area/nsv/weapons/gauss/battery/deck2/port)
+"hb" = (
+/obj/machinery/computer/order_console/bitrunning{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/ship/brown{
+	dir = 4
+	},
+/obj/item/radio/intercom/directional/south,
+/turf/open/floor/monotile/dark,
+/area/quartermaster/bitrunning/den)
 "hc" = (
 /obj/machinery/conveyor{
 	dir = 1;
@@ -3496,6 +3662,28 @@
 	},
 /turf/open/floor/monotile/dark,
 /area/nsv/weapons)
+"hd" = (
+/obj/machinery/door/airlock/ship/cargo/glass{
+	name = "Pracownia Bitrunnerów";
+	req_one_access_txt = "78"
+	},
+/obj/effect/turf_decal/ship/delivery/yellow,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/effect/landmark/zebra_interlock_point,
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plasteel/tech/grid,
+/area/quartermaster/bitrunning/den)
 "he" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
@@ -3648,6 +3836,10 @@
 /obj/effect/turf_decal/tile/orange/half,
 /turf/open/floor/durasteel/alt,
 /area/hallway/nsv/deck2/primary)
+"hu" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/quartermaster/bitrunning/den)
 "hv" = (
 /obj/effect/spawner/structure/window/plasma/reinforced,
 /turf/open/floor/plating,
@@ -50853,9 +51045,9 @@ Qk
 rW
 lG
 ob
-LH
-LH
-LH
+fP
+fP
+fP
 tw
 tw
 tw
@@ -51110,9 +51302,9 @@ XU
 OO
 vC
 ob
-Ff
-cv
-Uo
+gh
+gt
+gL
 tw
 qY
 uM
@@ -51367,9 +51559,9 @@ qT
 qT
 ob
 ob
-og
-ud
-cT
+gn
+gy
+gM
 tw
 CU
 Ih
@@ -51621,12 +51813,12 @@ IW
 cj
 Jt
 uX
-LH
-UA
-ty
-Lo
-uv
-oC
+fP
+fU
+fY
+go
+gG
+gR
 tw
 hx
 In
@@ -51878,12 +52070,12 @@ yQ
 dt
 dn
 RR
-LH
-Tv
-sy
-vS
-Yw
-aw
+fP
+fV
+fY
+go
+gJ
+gU
 tw
 ND
 Vj
@@ -52135,12 +52327,12 @@ IW
 wN
 JW
 Sn
-LH
-VA
-Bi
-RG
-PM
-em
+fP
+fU
+fY
+gr
+gK
+hb
 tw
 Ae
 qn
@@ -52392,12 +52584,12 @@ jR
 IW
 IW
 IW
-RI
-PC
-Rm
-af
-zA
-dd
+fT
+hu
+hu
+fP
+hd
+hu
 tw
 tw
 yl

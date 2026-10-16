@@ -1,0 +1,9636 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/template_noop,
+/area/template_noop)
+"ab" = (
+/turf/closed/indestructible/binary,
+/area/virtual_domain)
+"ac" = (
+/obj/machinery/disposal/bin,
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"ad" = (
+/obj/machinery/button/door{
+	dir = 1;
+	pixel_y = 24;
+	name = "Privacy Shutters Control"
+	},
+/obj/machinery/computer,
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"ae" = (
+/obj/item/flashlight/lamp/green{
+	pixel_x = -6;
+	pixel_y = -5
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"af" = (
+/obj/structure/table/wood,
+/obj/structure/window/reinforced,
+/obj/item/paper_bin{
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/item/pen,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"ag" = (
+/obj/machinery/button/door{
+	dir = 8;
+	pixel_x = -24;
+	name = "Privacy Shutters Control"
+	},
+/obj/structure/chair/office{
+	dir = 4
+	},
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"ah" = (
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"ai" = (
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"aj" = (
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/machinery/vending/cola = 1000);
+	name = "spawn random cola vending machine"
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"ak" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"al" = (
+/obj/structure/extinguisher_cabinet{
+	dir = 8;
+	pixel_x = -29
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/structure/frame/machine{
+	anchored = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"am" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/machinery/suit_storage_unit{
+	state_open = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"an" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"ao" = (
+/obj/item/stack/sheet/rglass{
+	amount = 50
+	},
+/obj/item/stack/sheet/rglass{
+	amount = 50
+	},
+/obj/item/stack/rods/fifty,
+/obj/item/stack/rods/fifty,
+/obj/structure/table,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/item/storage/toolbox/mechanical{
+	pixel_x = -2;
+	pixel_y = -1
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"ap" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/table,
+/obj/item/grenade/chem_grenade/smart_metal_foam{
+	pixel_x = -4;
+	pixel_y = 6
+	},
+/obj/item/grenade/chem_grenade/smart_metal_foam{
+	pixel_x = 4;
+	pixel_y = 2
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/machinery/status_display/evac{
+	dir = 8;
+	pixel_x = -32
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"aq" = (
+/obj/item/stack/sheet/iron/fifty,
+/obj/item/stack/sheet/iron/fifty,
+/obj/structure/table,
+/obj/item/stack/sheet/plasteel{
+	amount = 10
+	},
+/obj/machinery/airalarm/directional/west,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/crowbar,
+/obj/item/wrench,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"ar" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/item/storage/toolbox/electrical{
+	pixel_x = 1;
+	pixel_y = -1
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"as" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/machinery/suit_storage_unit/standard_unit,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"at" = (
+/obj/machinery/firealarm/directional/north,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"au" = (
+/obj/effect/turf_decal/trimline/blue/filled/line,
+/obj/effect/decal/cleanable/vomit,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"av" = (
+/obj/structure/bed/roller,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#52B4E9"
+	},
+/obj/effect/mob_spawn/human/corpse/assistant,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"aw" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ax" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "floor4-old"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ay" = (
+/obj/effect/turf_decal/trimline/brown/filled/corner{
+	dir = 8
+	},
+/obj/effect/landmark/bitrunning/cache_spawn,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"az" = (
+/obj/effect/turf_decal/tile/neutral,
+/mob/living/simple_animal/bot/cleanbot{
+	auto_patrol = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"aA" = (
+/obj/machinery/airalarm/directional/north,
+/obj/structure/closet/secure_closet/personal,
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/storage/briefcase = 750, /obj/item/storage/secure/briefcase = 250);
+	name = "briefcase spawner"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#A46106";
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"aB" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 4
+	},
+/obj/effect/gibspawner/human,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"aC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/chair/stool{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/brown{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"aD" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"aE" = (
+/turf/open/floor/wood{
+	icon_state = "wood-broken3"
+	},
+/area/virtual_domain)
+"aF" = (
+/obj/machinery/door/window/southleft{
+	name = "HoP's Desk"
+	},
+/turf/open/floor/wood{
+	icon_state = "wood-broken3"
+	},
+/area/virtual_domain)
+"aG" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"aH" = (
+/turf/open/floor/plating,
+/area/virtual_domain)
+"aI" = (
+/obj/structure/grille/broken,
+/obj/effect/decal/cleanable/glass,
+/obj/item/stack/rods,
+/obj/effect/mine/explosive,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"aJ" = (
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 8
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/status_display/evac{
+	dir = 8;
+	pixel_x = -32
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"aK" = (
+/obj/machinery/door/poddoor/shutters/preopen{
+	name = "HoP Queue Shutters"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"aL" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/item/shard{
+	icon_state = "medium";
+	pixel_x = 5;
+	pixel_y = 7
+	},
+/obj/effect/landmark/bitrunning/mob_segment,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"aM" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"aN" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/command{
+	name = "E.V.A. Storage"
+	},
+/obj/effect/turf_decal/delivery,
+/obj/structure/barricade/wooden/crude,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"aO" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"aP" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"aQ" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/item/tank/jetpack/carbondioxide{
+	pixel_x = -4;
+	pixel_y = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"aR" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/item/storage/toolbox/mechanical{
+	pixel_x = -2;
+	pixel_y = -1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"aS" = (
+/obj/machinery/holopad,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"aT" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/mob_spawn/human/corpse/assistant,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"aU" = (
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 8
+	},
+/obj/structure/closet/crate,
+/obj/effect/spawner/lootdrop/maintenance/seven,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"aV" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"aW" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/poddoor/shutters{
+	name = "E.V.A. Storage Shutter"
+	},
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"aX" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"aY" = (
+/obj/machinery/light{
+	dir = 2
+	},
+/obj/effect/turf_decal/trimline/blue/filled/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/turf_decal/trimline/blue/filled/warning{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"aZ" = (
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/item/assembly/flash,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ba" = (
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/closet/body_bag,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bb" = (
+/obj/structure/table,
+/obj/machinery/newscaster/directional/north,
+/obj/item/paper_bin{
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/item/pen,
+/obj/effect/turf_decal/tile/brown{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bc" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/holopad,
+/obj/effect/turf_decal/bot,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/bitrunning/mob_segment,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"be" = (
+/obj/machinery/recharger{
+	pixel_x = 2;
+	pixel_y = 3
+	},
+/obj/item/storage/secure/safe{
+	dir = 4;
+	pixel_x = 32
+	},
+/obj/structure/table/wood,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"bf" = (
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/structure/closet/crate,
+/obj/effect/spawner/lootdrop/maintenance/seven,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bg" = (
+/obj/machinery/newscaster/directional/east,
+/obj/machinery/computer{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/virtual_domain)
+"bh" = (
+/obj/structure/window/reinforced,
+/obj/machinery/computer{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/virtual_domain)
+"bi" = (
+/obj/machinery/photocopier,
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"bj" = (
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"bk" = (
+/obj/structure/sign/warning/electricshock{
+	dir = 1;
+	pixel_y = 32
+	},
+/obj/effect/turf_decal/bot,
+/obj/item/shard,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bl" = (
+/obj/structure/grille,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"bm" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/item/trash/can,
+/obj/structure/sign/warning/securearea{
+	dir = 2;
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bn" = (
+/obj/structure/table,
+/obj/item/storage/belt/utility,
+/obj/item/storage/belt/utility,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bo" = (
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/structure/closet/crate/bin = 500, /obj/structure/closet/crate/trashcart = 350, /obj/structure/closet/cardboard = 135, /obj/structure/closet/cardboard/metal = 15);
+	name = "trashbin spawner"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bp" = (
+/obj/structure/tank_dispenser/oxygen{
+	pixel_x = -1;
+	pixel_y = 2
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bq" = (
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/structure/barricade/sandbags,
+/obj/structure/railing,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"br" = (
+/obj/item/clothing/shoes/magboots{
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bs" = (
+/obj/structure/table,
+/obj/machinery/cell_charger,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bt" = (
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bu" = (
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/delivery,
+/obj/machinery/door/poddoor/shutters/preopen{
+	name = "E.V.A. Storage Shutter"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bv" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline{
+	icon_state = "trimline_warn_fill";
+	color = "#52B4E9"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bw" = (
+/obj/effect/decal/cleanable/blood/gibs/down,
+/obj/effect/turf_decal/trimline/blue/filled/warning{
+	dir = 6
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bx" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/indestructible{
+	icon_state = "darkfull";
+	color = "#B44444";
+	name = "meat floor"
+	},
+/area/virtual_domain)
+"by" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/oil{
+	icon_state = "floor6"
+	},
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/item/modular_computer/laptop{
+	icon_state = "laptop";
+	pixel_x = 2;
+	pixel_y = 12
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bz" = (
+/obj/effect/decal/cleanable/shreds,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bA" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/decal/cleanable/blood,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/turf_decal/bot_red,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bB" = (
+/obj/effect/turf_decal/trimline/brown/filled/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/bitrunning/cache_spawn,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"bD" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/glass,
+/obj/item/candle/infinite{
+	icon_state = "candle3_lit";
+	pixel_x = 13;
+	pixel_y = 8
+	},
+/obj/item/trash/candle,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"bE" = (
+/obj/structure/rack,
+/obj/item/wrench,
+/obj/item/screwdriver,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_marquee";
+	color = "#A46106";
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/item/candle/infinite{
+	icon_state = "candle2_lit";
+	pixel_x = 17;
+	pixel_y = 16
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bF" = (
+/obj/structure/bed/maint,
+/obj/item/bedsheet/black,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"bG" = (
+/obj/machinery/holopad,
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"bH" = (
+/obj/structure/table/wood,
+/obj/machinery/light{
+	dir = 2
+	},
+/obj/item/papercutter{
+	pixel_x = -4
+	},
+/turf/open/floor/wood,
+/area/virtual_domain)
+"bI" = (
+/obj/effect/turf_decal/bot,
+/obj/item/light/bulb/broken{
+	pixel_x = 15
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bJ" = (
+/obj/structure/grille,
+/obj/item/shard{
+	icon_state = "medium";
+	pixel_y = -6
+	},
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"bK" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/item/shard,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bL" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/command{
+	name = "E.V.A. Storage"
+	},
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bM" = (
+/turf/open/floor/plasteel{
+	icon_state = "damaged5"
+	},
+/area/virtual_domain)
+"bN" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/item/radio/off,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bO" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bP" = (
+/obj/machinery/camera/motion{
+	dir = 4;
+	c_tag = "E.V.A. Storage"
+	},
+/obj/machinery/requests_console{
+	dir = 4;
+	pixel_x = 30;
+	department = "EVA";
+	name = "EVA Requests Console"
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bQ" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bR" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bS" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/blue/filled/warning,
+/obj/effect/decal/cleanable/vomit,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bT" = (
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/obj/effect/decal/cleanable/blood/gibs/body,
+/turf/open/indestructible{
+	icon_state = "darkfull";
+	color = "#B44444";
+	name = "meat floor"
+	},
+/area/virtual_domain)
+"bU" = (
+/obj/structure/reagent_dispensers/virusfood{
+	dir = 2;
+	pixel_y = -30
+	},
+/obj/item/clothing/mask/surgical,
+/obj/effect/decal/cleanable/blood/gibs/core,
+/turf/open/indestructible{
+	icon_state = "darkfull";
+	color = "#B44444";
+	name = "meat floor"
+	},
+/area/virtual_domain)
+"bV" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/item/bodypart/head/robot,
+/obj/structure/table/reinforced,
+/obj/item/kitchen/knife/combat/cyborg{
+	pixel_x = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bW" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "floor3-old"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bX" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/landmark/bitrunning/mob_segment,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bY" = (
+/obj/machinery/airalarm/directional/south,
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/decal/cleanable/robot_debris/limb,
+/obj/effect/turf_decal/bot_red,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/candle/infinite{
+	icon_state = "candle2_lit";
+	pixel_y = -9
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ca" = (
+/obj/effect/rune,
+/obj/item/kitchen/knife/envy,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"cb" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"cc" = (
+/obj/machinery/vending/assist{
+	req_access_txt = "57"
+	},
+/obj/item/radio/intercom/directional/north,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"cd" = (
+/obj/structure/bed/maint,
+/obj/item/bedsheet/black{
+	dir = 4
+	},
+/obj/item/kitchen/knife/hunting{
+	pixel_y = -4
+	},
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"ce" = (
+/obj/structure/frame/computer{
+	dir = 1
+	},
+/obj/item/shard{
+	icon_state = "medium";
+	pixel_x = 5
+	},
+/obj/item/stack/cable_coil/cut,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"cf" = (
+/obj/item/radio/intercom/directional/north,
+/obj/effect/turf_decal/bot,
+/obj/item/wallframe/light_fixture/small,
+/obj/item/stack/cable_coil/cut,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cg" = (
+/obj/item/flashlight/flare{
+	icon_state = "flare-on";
+	light_on = 1
+	},
+/obj/structure/grille/broken,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"ch" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/light/broken{
+	dir = 2
+	},
+/obj/item/stack/rods,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ci" = (
+/turf/closed/indestructible/rock,
+/area/virtual_domain)
+"cj" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/barricade/sandbags,
+/obj/structure/railing,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ck" = (
+/obj/machinery/light_switch{
+	dir = 1;
+	pixel_y = 26
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/machinery/suit_storage_unit/standard_unit,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"cl" = (
+/obj/machinery/firealarm/directional/east,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/structure/frame/machine{
+	anchored = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"cm" = (
+/obj/structure/rack,
+/obj/item/clothing/shoes/magboots,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/structure/window/spawner/north,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"cn" = (
+/obj/structure/rack,
+/obj/item/tank/jetpack/carbondioxide{
+	pixel_x = 4;
+	pixel_y = -1
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/structure/window,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"co" = (
+/obj/machinery/button/door{
+	dir = 2;
+	pixel_y = -24;
+	name = "E.V.A. Storage Shutter Control"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/machinery/suit_storage_unit/standard_unit,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"cp" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/obj/machinery/button/door{
+	dir = 1;
+	pixel_y = 24;
+	name = "E.V.A. Storage Shutter Control"
+	},
+/obj/effect/decal/cleanable/blood/old,
+/obj/item/clothing/suit/bio_suit/virology{
+	pixel_x = 6;
+	pixel_y = 8
+	},
+/obj/effect/turf_decal/trimline/blue/filled/warning,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cq" = (
+/obj/item/clothing/mask/surgical,
+/obj/effect/mob_spawn/human/doctor,
+/turf/open/indestructible{
+	icon_state = "darkfull";
+	color = "#B44444";
+	name = "meat floor"
+	},
+/area/virtual_domain)
+"cr" = (
+/obj/item/reagent_containers/glass/bottle/random_virus,
+/obj/effect/decal/cleanable/blood/gibs/down,
+/turf/open/indestructible{
+	icon_state = "darkfull";
+	color = "#B44444";
+	name = "meat floor"
+	},
+/area/virtual_domain)
+"cs" = (
+/obj/machinery/door/firedoor{
+	req_access_txt = "16"
+	},
+/obj/machinery/door/airlock/highsecurity{
+	name = "Secure Network Access";
+	req_access_txt = "16"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/structure/barricade/wooden/crude,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"ct" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/robot_debris,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cu" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cv" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cw" = (
+/obj/structure/extinguisher_cabinet{
+	dir = 2;
+	pixel_y = -29
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/decal/cleanable/oil,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cx" = (
+/obj/structure/closet/firecloset,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"cy" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/item/trash/candle,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"cz" = (
+/obj/item/candle/infinite{
+	icon_state = "candle3_lit";
+	pixel_x = -13;
+	pixel_y = 8
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"cA" = (
+/obj/item/storage/box/lights/mixed,
+/obj/item/candle/infinite{
+	icon_state = "candle2_lit";
+	pixel_x = -17;
+	pixel_y = 16
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"cB" = (
+/obj/item/tank/internals/oxygen,
+/obj/effect/decal/cleanable/glass,
+/obj/effect/gibspawner/human,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"cC" = (
+/obj/machinery/portable_atmospherics/canister/air,
+/obj/machinery/atmospherics/components/unary/portables_connector/visible/layer4{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"cD" = (
+/obj/machinery/pdapainter{
+	pixel_y = 2
+	},
+/obj/machinery/requests_console{
+	dir = 1;
+	pixel_y = 30;
+	department = "Head of Personnel's Desk";
+	name = "Head of Personnel's Requests Console"
+	},
+/turf/open/floor/wood,
+/area/virtual_domain)
+"cE" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"cF" = (
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/fluff/paper/stack,
+/obj/item/flashlight/lamp/green,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cG" = (
+/obj/machinery/computer{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/virtual_domain)
+"cH" = (
+/obj/effect/turf_decal/bot,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cI" = (
+/obj/structure/grille,
+/obj/item/shard,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"cJ" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/item/trash/popcorn,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cK" = (
+/obj/structure/extinguisher_cabinet{
+	dir = 2;
+	pixel_y = -29
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cL" = (
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/item/clothing/suit/bio_suit/virology,
+/obj/item/clothing/head/bio_hood/virology{
+	pixel_x = 8;
+	pixel_y = 10
+	},
+/obj/effect/turf_decal/trimline/blue/filled/warning,
+/obj/structure/sign/warning/biohazard{
+	dir = 1;
+	pixel_y = 32
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cM" = (
+/obj/structure/reagent_dispensers/virusfood{
+	dir = 2;
+	pixel_y = -30
+	},
+/obj/effect/decal/cleanable/blood/gibs,
+/turf/open/indestructible{
+	icon_state = "darkfull";
+	color = "#B44444";
+	name = "meat floor"
+	},
+/area/virtual_domain)
+"cN" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/obj/structure/sign/warning/securearea{
+	name = "\improper AI UPLOAD";
+	dir = 1;
+	pixel_y = 32
+	},
+/obj/effect/decal/cleanable/shreds,
+/obj/item/card/emag,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cO" = (
+/obj/effect/decal/cleanable/robot_debris/old,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/fluff/paper/stack{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cP" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/item/assembly/flash,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cQ" = (
+/obj/machinery/firealarm/directional/west,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/bookcase/random,
+/obj/machinery/light/broken{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cR" = (
+/obj/machinery/door/airlock{
+	name = "Central Emergency Storage"
+	},
+/obj/effect/mapping_helpers/airlock/unres,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"cS" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"cT" = (
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/flashlight = 408, /obj/item/flashlight/flare = 204, /obj/item/flashlight/lantern = 102, /obj/item/flashlight/seclite = 82, /obj/item/flashlight/glowstick = 29, /obj/item/flashlight/glowstick/red = 29, /obj/item/flashlight/glowstick/blue = 29, /obj/item/flashlight/glowstick/cyan = 29, /obj/item/flashlight/glowstick/orange = 29, /obj/item/flashlight/glowstick/yellow = 29, /obj/item/flashlight/glowstick/pink = 29);
+	name = "flashlight spawner"
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"cU" = (
+/obj/item/clothing/mask/gas,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"cV" = (
+/obj/item/extinguisher,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"cW" = (
+/obj/item/radio/off,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"cX" = (
+/obj/machinery/status_display/evac{
+	dir = 1;
+	pixel_y = 32
+	},
+/obj/structure/bed/dogbed/ian,
+/obj/effect/landmark/bitrunning/cache_spawn,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"cY" = (
+/obj/structure/bed/maint,
+/obj/item/bedsheet/black,
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"cZ" = (
+/obj/item/kitchen/knife,
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"da" = (
+/obj/machinery/light_switch{
+	pixel_x = 38;
+	pixel_y = -35
+	},
+/obj/machinery/button/flasher{
+	pixel_x = 38;
+	pixel_y = -25
+	},
+/obj/structure/bed/maint,
+/obj/item/bedsheet/black{
+	dir = 4
+	},
+/turf/open/floor/wood{
+	icon_state = "wood-broken3"
+	},
+/area/virtual_domain)
+"db" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/bookcase/random,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dc" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door/window/brigdoor/northright{
+	name = "Head of Personnel's Desk";
+	req_access_txt = "57"
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/poddoor/preopen{
+	id = "hop";
+	name = "Privacy Shutters"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dd" = (
+/obj/effect/turf_decal/delivery,
+/obj/machinery/flasher{
+	dir = 4;
+	pixel_x = 26;
+	pixel_y = -26
+	},
+/obj/effect/landmark/bitrunning/mob_segment,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"de" = (
+/obj/machinery/door/poddoor/shutters/preopen{
+	name = "HoP Queue Shutters"
+	},
+/obj/effect/turf_decal/loading_area,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"df" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/item/shard{
+	icon_state = "medium";
+	pixel_x = 9;
+	pixel_y = 2
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dg" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/glass,
+/obj/machinery/firealarm/directional/south,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dh" = (
+/obj/structure/table,
+/obj/machinery/airalarm/directional/west,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"di" = (
+/obj/structure/table,
+/obj/item/stack/package_wrap,
+/obj/item/stack/package_wrap,
+/obj/item/stack/package_wrap,
+/obj/item/stack/package_wrap,
+/obj/item/hand_labeler,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/structure/window,
+/obj/machinery/light{
+	bulb_colour = "#DDE6FF";
+	nightshift_light_color = "#DDE6FF";
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"dj" = (
+/obj/effect/decal/cleanable/xenoblood/xgibs/up,
+/obj/structure/alien/weeds,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"dk" = (
+/obj/machinery/firealarm/directional/west,
+/obj/structure/alien/weeds,
+/obj/structure/alien/weeds/node,
+/obj/effect/mob_spawn/human/corpse/assistant/brainrot_infection,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"dl" = (
+/obj/effect/decal/cleanable/xenoblood/xgibs/down,
+/obj/structure/alien/weeds,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"dm" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/fluff/paper/stack{
+	dir = 1
+	},
+/obj/item/book,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dn" = (
+/obj/machinery/shieldwallgen,
+/obj/structure/extinguisher_cabinet{
+	dir = 8;
+	pixel_x = -29
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/structure/window/spawner/north,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"do" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/structure/alien/weeds,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"dp" = (
+/obj/machinery/firealarm/directional/north,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/obj/item/clothing/head/bio_hood/virology{
+	pixel_y = 10
+	},
+/obj/effect/turf_decal/trimline{
+	icon_state = "trimline_warn_fill";
+	color = "#52B4E9";
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dq" = (
+/obj/item/reagent_containers/glass/bottle/random_virus,
+/obj/effect/turf_decal/trimline/blue/filled/warning{
+	dir = 10
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dr" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/item/surgicaldrill,
+/turf/open/indestructible{
+	icon_state = "darkfull";
+	color = "#B44444";
+	name = "meat floor"
+	},
+/area/virtual_domain)
+"ds" = (
+/obj/effect/decal/cleanable/blood/gibs/up,
+/turf/open/indestructible{
+	icon_state = "darkfull";
+	color = "#B44444";
+	name = "meat floor"
+	},
+/area/virtual_domain)
+"dt" = (
+/obj/item/radio/intercom/directional/north,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/oil{
+	icon_state = "floor5"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"du" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "floor1-old"
+	},
+/obj/effect/landmark/bitrunning/mob_segment,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dv" = (
+/obj/machinery/firealarm/directional/south,
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/decal/cleanable/shreds,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dw" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/barricade/wooden/crude,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"dx" = (
+/obj/item/radio/intercom/directional/west,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dy" = (
+/obj/structure/plasticflaps/opaque,
+/obj/effect/turf_decal/bot,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dz" = (
+/obj/machinery/airalarm/directional/east,
+/obj/machinery/computer/security/telescreen/entertainment{
+	dir = 1;
+	pixel_y = 32
+	},
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/structure/closet/crate/bin = 500, /obj/structure/closet/crate/trashcart = 350, /obj/structure/closet/cardboard = 135, /obj/structure/closet/cardboard/metal = 15);
+	name = "trashbin spawner"
+	},
+/turf/open/floor/wood{
+	icon_state = "wood-broken3"
+	},
+/area/virtual_domain)
+"dA" = (
+/obj/structure/chair/office{
+	dir = 8
+	},
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"dB" = (
+/obj/structure/filingcabinet/chestdrawer{
+	pixel_x = 7;
+	pixel_y = 2
+	},
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"dC" = (
+/obj/structure/table/wood,
+/obj/machinery/light_switch{
+	dir = 2;
+	pixel_y = -34;
+	pixel_x = 6
+	},
+/obj/machinery/button/door{
+	dir = 2;
+	pixel_y = -24;
+	pixel_x = -6
+	},
+/obj/item/paper_bin{
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/item/stamp/head_of_personnel{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/obj/machinery/button/door{
+	dir = 2;
+	pixel_y = -34;
+	pixel_x = -6
+	},
+/obj/item/pen{
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/turf/open/floor/wood,
+/area/virtual_domain)
+"dD" = (
+/obj/effect/turf_decal/delivery,
+/obj/structure/frame/machine{
+	anchored = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dE" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/structure/chair/fancy/bench/pew/left,
+/obj/item/newspaper,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dF" = (
+/obj/structure/table,
+/obj/machinery/cell_charger,
+/obj/machinery/light_switch{
+	dir = 1;
+	pixel_y = 26
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"dG" = (
+/obj/structure/alien/weeds,
+/obj/structure/alien/egg/burst,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"dH" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/obj/structure/alien/weeds,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"dI" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/spider/stickyweb,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dJ" = (
+/obj/machinery/bluespace_beacon,
+/obj/structure/alien/weeds,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"dK" = (
+/obj/structure/alien/weeds,
+/obj/structure/bed/nest,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"dL" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dM" = (
+/obj/effect/turf_decal/delivery,
+/obj/structure/alien/weeds,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dN" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/item/clothing/suit/caution{
+	pixel_y = -9
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dO" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 9
+	},
+/obj/effect/turf_decal/trimline/blue/filled/warning,
+/obj/effect/turf_decal/caution/red,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dP" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 6
+	},
+/obj/effect/mob_spawn/human/doctor,
+/turf/open/indestructible{
+	icon_state = "darkfull";
+	color = "#B44444";
+	name = "meat floor"
+	},
+/area/virtual_domain)
+"dQ" = (
+/obj/effect/decal/cleanable/blood/gibs/body,
+/turf/open/indestructible{
+	icon_state = "darkfull";
+	color = "#B44444";
+	name = "meat floor"
+	},
+/area/virtual_domain)
+"dR" = (
+/obj/structure/holosign/barrier/medical,
+/turf/closed/indestructible/fakedoor,
+/area/virtual_domain)
+"dS" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/table/reinforced,
+/obj/machinery/computer/secure_data/laptop,
+/obj/structure/sign/poster/official/state_laws{
+	dir = 1;
+	pixel_y = 32
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dT" = (
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/spider/stickyweb,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dU" = (
+/obj/machinery/holopad,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dV" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/frame/machine{
+	anchored = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dW" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"dX" = (
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/virtual_domain)
+"dY" = (
+/obj/machinery/door/poddoor/preopen{
+	name = "Bridge Blast Door"
+	},
+/obj/effect/turf_decal/delivery,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dZ" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/command{
+	name = "Head of Personnel"
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"ea" = (
+/obj/structure/sign/directions/command{
+	dir = 1;
+	pixel_y = -8
+	},
+/turf/closed/wall/r_wall,
+/area/virtual_domain)
+"eb" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/structure/chair/fancy/bench/pew/right,
+/obj/item/reagent_containers/food/drinks/coffee,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ec" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/command{
+	name = "Teleport Access"
+	},
+/obj/effect/turf_decal/delivery,
+/obj/structure/barricade/wooden/crude,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ed" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/item/clothing/mask/facehugger/dead,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"ee" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/effect/decal/cleanable/crayon = 1000);
+	name = "random graffiti spawner"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ef" = (
+/obj/structure/alien/weeds,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"eg" = (
+/obj/structure/alien/weeds,
+/obj/structure/alien/weeds/node,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"eh" = (
+/obj/effect/decal/cleanable/xenoblood,
+/obj/structure/alien/weeds,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"ei" = (
+/obj/structure/alien/weeds,
+/obj/item/clothing/mask/facehugger/dead,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"ej" = (
+/obj/effect/turf_decal/delivery,
+/obj/machinery/button/door{
+	dir = 4;
+	pixel_x = 24;
+	name = "Teleporter Shutter Control";
+	pixel_y = 5
+	},
+/obj/structure/alien/weeds,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ek" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline{
+	icon_state = "trimline_warn_fill";
+	color = "#52B4E9";
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"el" = (
+/obj/effect/decal/cleanable/blood/gibs/up,
+/obj/effect/turf_decal/trimline/blue/filled/warning{
+	dir = 10
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"em" = (
+/obj/item/clothing/mask/surgical,
+/obj/effect/decal/cleanable/blood/gibs,
+/obj/effect/decal/cleanable/vomit,
+/turf/open/indestructible{
+	icon_state = "darkfull";
+	color = "#B44444";
+	name = "meat floor"
+	},
+/area/virtual_domain)
+"en" = (
+/obj/machinery/status_display/ai{
+	dir = 1;
+	pixel_y = 32
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/closet/crate/secure/weapon{
+	req_access_txt = "150";
+	name = "syndicate crate"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"eo" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/table/reinforced,
+/obj/item/aiModule/syndicate,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ep" = (
+/turf/closed/wall,
+/area/virtual_domain)
+"eq" = (
+/obj/structure/extinguisher_cabinet{
+	dir = 8;
+	pixel_x = -29
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/spider/stickyweb,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"er" = (
+/obj/structure/holosign/barrier/atmos,
+/turf/open/floor/plating{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"es" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/preopen{
+	name = "Bridge Blast Door"
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"et" = (
+/obj/machinery/airalarm/directional/west,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#52B4E9";
+	dir = 10
+	},
+/obj/structure/frame/computer,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"eu" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#52B4E9";
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"ev" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#52B4E9";
+	dir = 1
+	},
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"ew" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#52B4E9";
+	dir = 5
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"ex" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/command/glass{
+	name = "Bridge"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#52B4E9";
+	dir = 4
+	},
+/obj/structure/barricade/wooden/crude,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"ey" = (
+/obj/effect/turf_decal/tile/blue,
+/obj/item/stack/ore/glass/basalt{
+	icon_state = "boulder_large";
+	pixel_y = 7
+	},
+/obj/item/stack/ore/glass/basalt{
+	icon_state = "boulder_small";
+	pixel_x = 9;
+	pixel_y = -1
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"ez" = (
+/obj/effect/turf_decal/tile/blue,
+/obj/structure/flora/rock/icy,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"eA" = (
+/obj/item/radio/intercom/directional/west,
+/obj/effect/turf_decal/tile/blue,
+/obj/machinery/light/broken{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"eB" = (
+/obj/machinery/firealarm/directional/west,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/spider/stickyweb,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"eC" = (
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"eD" = (
+/obj/machinery/door/poddoor/preopen{
+	name = "Bridge Blast Door"
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/command/glass{
+	name = "Bridge Access"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"eE" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/item/trash/energybar,
+/obj/structure/sign/warning/securearea{
+	dir = 2;
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"eF" = (
+/obj/structure/closet/crate,
+/obj/item/stack/cable_coil,
+/obj/item/crowbar,
+/obj/item/screwdriver{
+	pixel_y = 16
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"eG" = (
+/obj/structure/closet/crate,
+/obj/item/stack/sheet/rglass{
+	amount = 50
+	},
+/obj/item/stack/sheet/iron/fifty,
+/obj/item/storage/toolbox/emergency,
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/flashlight = 408, /obj/item/flashlight/flare = 204, /obj/item/flashlight/lantern = 102, /obj/item/flashlight/seclite = 82, /obj/item/flashlight/glowstick = 29, /obj/item/flashlight/glowstick/red = 29, /obj/item/flashlight/glowstick/blue = 29, /obj/item/flashlight/glowstick/cyan = 29, /obj/item/flashlight/glowstick/orange = 29, /obj/item/flashlight/glowstick/yellow = 29, /obj/item/flashlight/glowstick/pink = 29);
+	name = "flashlight spawner"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/structure/window,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"eH" = (
+/obj/structure/alien/weeds,
+/obj/structure/alien/gelpod,
+/obj/effect/mob_spawn/human/corpse/assistant,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"eI" = (
+/obj/structure/rack,
+/obj/item/tank/internals/oxygen,
+/obj/item/tank/internals/oxygen,
+/obj/item/radio/off,
+/obj/item/radio/off,
+/obj/item/radio/intercom/directional/east,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"eJ" = (
+/obj/machinery/light{
+	bulb_colour = "#DDE6FF";
+	nightshift_light_color = "#DDE6FF";
+	dir = 4
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/structure/window/spawner/north,
+/obj/structure/frame/machine{
+	anchored = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"eK" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/effect/landmark/bitrunning/cache_spawn,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"eL" = (
+/obj/item/radio/intercom/directional/north,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"eM" = (
+/obj/machinery/newscaster/directional/west,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"eN" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/turf/open/floor/plasteel{
+	icon_state = "damaged2"
+	},
+/area/virtual_domain)
+"eO" = (
+/obj/effect/turf_decal/trimline/blue/filled/warning,
+/obj/effect/turf_decal/caution/red,
+/obj/item/clothing/suit/caution{
+	pixel_y = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"eP" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/item/banner/medical,
+/turf/open/indestructible{
+	icon_state = "darkfull";
+	color = "#B44444";
+	name = "meat floor"
+	},
+/area/virtual_domain)
+"eQ" = (
+/obj/effect/baseturf_helper/virtual_domain,
+/turf/closed/indestructible/binary,
+/area/virtual_domain)
+"eR" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/sign/warning/securearea{
+	dir = 1;
+	pixel_y = 32
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"eS" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"eT" = (
+/obj/structure/marker_beacon{
+	picked_color = "Bronze";
+	icon_state = "markerbronze"
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"eU" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/preopen{
+	name = "Bridge Blast Door"
+	},
+/obj/structure/barricade/wooden/crude,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"eV" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#52B4E9";
+	dir = 4
+	},
+/obj/machinery/computer,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"eW" = (
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"eX" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/disposalpipe/broken{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"eY" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#52B4E9";
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/effect/decal/cleanable/crayon = 1000);
+	name = "random graffiti spawner"
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"eZ" = (
+/obj/item/stack/ore/glass/basalt{
+	pixel_x = 7;
+	pixel_y = 9
+	},
+/obj/item/stack/ore/glass/basalt{
+	icon_state = "rock_medium";
+	pixel_x = -12;
+	pixel_y = 8
+	},
+/obj/item/stack/ore/glass/basalt{
+	icon_state = "boulder_medium";
+	pixel_x = -4;
+	pixel_y = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"fa" = (
+/obj/machinery/firealarm/directional/east,
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"fb" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"fc" = (
+/obj/machinery/button/door{
+	dir = 4;
+	pixel_x = 24;
+	name = "Bridge Access Blast Door Control"
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/structure/flora/rock/icy,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"fd" = (
+/obj/machinery/newscaster/directional/south,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"fe" = (
+/obj/effect/decal/cleanable/xenoblood/xgibs/core,
+/obj/structure/alien/weeds,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"ff" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/status_display/evac{
+	dir = 1;
+	pixel_y = 32
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/barricade/sandbags,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"fg" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 4
+	},
+/obj/structure/barricade/sandbags,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"fh" = (
+/obj/effect/turf_decal/trimline{
+	icon_state = "trimline_warn_fill";
+	color = "#52B4E9";
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"fi" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"fj" = (
+/obj/effect/turf_decal/trimline/blue/filled/warning{
+	dir = 8
+	},
+/obj/effect/turf_decal/caution/red{
+	dir = 8
+	},
+/obj/item/clothing/suit/caution{
+	pixel_y = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"fk" = (
+/obj/machinery/airalarm/directional/north,
+/obj/item/kirbyplants{
+	icon_state = "applebush"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#D4D4D4";
+	alpha = 50;
+	dir = 10
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"fl" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/effect/decal/cleanable/crayon = 1000);
+	name = "random graffiti spawner"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"fm" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"fn" = (
+/obj/structure/grille/broken,
+/obj/structure/cable,
+/turf/open/floor/plating{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"fo" = (
+/obj/item/folder/white{
+	pixel_x = 4;
+	pixel_y = -3
+	},
+/obj/structure/table/glass,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#9FED58";
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"fp" = (
+/obj/item/storage/firstaid/regular{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/structure/table/glass,
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"fq" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"fr" = (
+/obj/effect/turf_decal/tile/blue,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"fs" = (
+/obj/machinery/newscaster/directional/south,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#52B4E9";
+	dir = 9
+	},
+/obj/structure/closet/crate/trashcart,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"ft" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"fu" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/command{
+	name = "Council Chamber"
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"fv" = (
+/obj/item/radio/intercom/directional/north,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"fw" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 1;
+	name = "Showroom Shutters"
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"fx" = (
+/obj/structure/alien/weeds,
+/obj/structure/alien/resin,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"fy" = (
+/obj/structure/alien/weeds,
+/obj/item/flamethrower/full/tank,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"fz" = (
+/obj/structure/alien/weeds,
+/obj/structure/barricade/wooden,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"fA" = (
+/obj/structure/table/wood,
+/obj/structure/extinguisher_cabinet{
+	dir = 8;
+	pixel_x = -29
+	},
+/obj/item/folder/blue,
+/obj/item/clothing/head/collectable/HoP{
+	name = "novelty HoP hat"
+	},
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"fB" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters/preopen{
+	name = "Showroom Shutters"
+	},
+/obj/structure/barricade/wooden/crude,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"fC" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/mob_spawn/human/corpse/assistant,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"fD" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"fE" = (
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"fF" = (
+/obj/effect/spawner/structure/window,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"fG" = (
+/obj/structure/lattice,
+/obj/structure/marker_beacon{
+	picked_color = "Bronze";
+	icon_state = "markerbronze"
+	},
+/turf/open/space/basic,
+/area/virtual_domain)
+"fH" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#D4D4D4";
+	alpha = 50;
+	dir = 4
+	},
+/obj/structure/mecha_wreckage/ripley,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"fI" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 10
+	},
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"fJ" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"fK" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"fL" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"fM" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 5
+	},
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"fN" = (
+/turf/open/floor/plating{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"fO" = (
+/obj/structure/holosign/barrier/wetsign,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"fP" = (
+/obj/machinery/door/firedoor,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"fQ" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#52B4E9";
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"fR" = (
+/obj/machinery/light{
+	dir = 2
+	},
+/obj/machinery/firealarm/directional/south,
+/obj/structure/rack,
+/obj/item/storage/secure/briefcase,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#52B4E9";
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"fS" = (
+/obj/structure/bookcase,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"fT" = (
+/obj/structure/table/wood,
+/obj/item/flashlight/lamp/green{
+	pixel_x = 1;
+	pixel_y = 5
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"fU" = (
+/obj/machinery/button/door{
+	dir = 8;
+	pixel_x = -24;
+	name = "Council Chamber Blast Door Control"
+	},
+/obj/structure/frame/machine{
+	anchored = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"fV" = (
+/obj/machinery/status_display/evac{
+	dir = 1;
+	pixel_y = 32
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/item/trash/chips,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"fW" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"fX" = (
+/obj/structure/sign/plaques/kiddie/perfect_drone{
+	pixel_y = 32
+	},
+/obj/structure/table/wood,
+/obj/item/storage/backpack/duffelbag/drone,
+/obj/structure/window/reinforced,
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"fY" = (
+/obj/effect/decal/cleanable/oil,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"fZ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/ammo_casing/spent,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"ga" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"gb" = (
+/obj/structure/table/wood,
+/obj/item/storage/secure/briefcase{
+	desc = "A large briefcase with a digital locking system, and the Nanotrasen logo emblazoned on the sides.";
+	name = "\improper Nanotrasen-brand secure briefcase exhibit";
+	pixel_y = 2
+	},
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"gc" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/cardboard{
+	pixel_y = 8
+	},
+/obj/structure/sign/warning/securearea{
+	dir = 1;
+	pixel_y = 32
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"gd" = (
+/obj/item/storage/toolbox/drone,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ge" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/structure/fluff/paper/stack{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"gf" = (
+/turf/open/space/basic,
+/area/space/virtual_domain)
+"gg" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/status_display/evac{
+	dir = 1;
+	pixel_y = 32
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#D4D4D4";
+	alpha = 50;
+	dir = 4
+	},
+/obj/item/banner/security,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"gh" = (
+/obj/effect/turf_decal/plaque{
+	icon_state = "L1"
+	},
+/turf/open/floor/plasteel{
+	icon_state = "damaged2"
+	},
+/area/virtual_domain)
+"gi" = (
+/obj/effect/turf_decal/plaque{
+	icon_state = "L2"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"gj" = (
+/obj/item/clothing/head/cone{
+	pixel_x = 7;
+	pixel_y = -5
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"gk" = (
+/obj/item/clothing/head/cone{
+	pixel_x = 7;
+	pixel_y = 3
+	},
+/obj/structure/grille/broken,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"gl" = (
+/obj/structure/closet/crate,
+/obj/effect/spawner/lootdrop/maintenance/seven,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"gm" = (
+/obj/structure/marker_beacon{
+	picked_color = "Bronze";
+	icon_state = "markerbronze"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 10
+	},
+/obj/structure/lattice/catwalk,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"gn" = (
+/obj/structure/chair/office{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"go" = (
+/obj/item/restraints/legcuffs/beartrap{
+	armed = 1;
+	icon_state = "beartrap1"
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"gp" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#52B4E9";
+	dir = 9
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"gq" = (
+/obj/structure/rack,
+/obj/item/aicard,
+/obj/item/radio/off,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#52B4E9";
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"gr" = (
+/obj/structure/table/wood,
+/obj/item/book/manual/wiki/security_space_law{
+	pixel_y = 3
+	},
+/obj/item/radio/intercom/directional/north,
+/obj/item/paper{
+	name = "Engineering Frequencies"
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"gs" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/obj/item/trash/can,
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"gt" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/sign/warning/securearea{
+	dir = 1;
+	pixel_y = 32
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"gu" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/item/stack/sheet/iron,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"gv" = (
+/obj/structure/chair{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/plasteel{
+	icon_state = "damaged2"
+	},
+/area/virtual_domain)
+"gw" = (
+/turf/closed/indestructible/fakedoor{
+	name = "Maintenance"
+	},
+/area/virtual_domain)
+"gx" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"gy" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/item/chair{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"gz" = (
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/structure/showcase = 1000);
+	name = "showcase spawner"
+	},
+/obj/structure/window/reinforced/spawner/east,
+/obj/structure/window/reinforced,
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"gA" = (
+/obj/item/ammo_casing/spent,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"gB" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"gC" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/command{
+	name = "Corporate Showroom"
+	},
+/turf/open/floor/wood,
+/area/virtual_domain)
+"gD" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#D4D4D4";
+	alpha = 50;
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"gE" = (
+/turf/open/floor/plasteel{
+	icon_state = "damaged2"
+	},
+/area/virtual_domain)
+"gF" = (
+/turf/closed/wall/mineral/titanium/overspace,
+/area/virtual_domain/safehouse)
+"gG" = (
+/obj/structure/shuttle/engine/propulsion/burst{
+	dir = 8
+	},
+/obj/structure/window/reinforced/spawner/east,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/plating/airless,
+/area/virtual_domain/safehouse)
+"gH" = (
+/obj/effect/spawner/structure/window/shuttle,
+/turf/open/floor/plating,
+/area/virtual_domain/safehouse)
+"gI" = (
+/obj/structure/barricade/sandbags,
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"gJ" = (
+/obj/structure/sign/directions/security{
+	dir = 1;
+	pixel_y = 8
+	},
+/obj/structure/sign/directions/engineering{
+	dir = 4
+	},
+/obj/structure/sign/directions/command{
+	pixel_y = -8
+	},
+/turf/closed/wall/r_wall,
+/area/virtual_domain)
+"gK" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/structure/barricade/sandbags,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"gL" = (
+/obj/effect/turf_decal/plaque{
+	icon_state = "L3"
+	},
+/obj/structure/barricade/sandbags,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"gM" = (
+/obj/effect/turf_decal/plaque{
+	icon_state = "L4"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"gN" = (
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/plasteel{
+	icon_state = "damaged2"
+	},
+/area/virtual_domain)
+"gO" = (
+/obj/machinery/status_display/evac{
+	dir = 1;
+	pixel_y = 32
+	},
+/obj/item/folder/yellow{
+	pixel_y = 4
+	},
+/obj/structure/table/glass,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#A46106";
+	dir = 4
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"gP" = (
+/obj/structure/janitorialcart{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"gQ" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#52B4E9";
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/item/mop,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"gR" = (
+/obj/structure/mopbucket,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"gS" = (
+/obj/machinery/cell_charger{
+	pixel_y = 4
+	},
+/obj/structure/table/glass,
+/obj/structure/window/reinforced/spawner/west,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"gT" = (
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/effect/decal/cleanable/crayon = 1000);
+	name = "random graffiti spawner"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"gU" = (
+/obj/machinery/light_switch{
+	dir = 2;
+	pixel_y = -26
+	},
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/machinery/vending/cola = 1000);
+	name = "spawn random cola vending machine"
+	},
+/obj/structure/window/reinforced/spawner/west,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"gV" = (
+/obj/machinery/holopad,
+/obj/machinery/status_display/evac{
+	dir = 1;
+	pixel_y = 32
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"gW" = (
+/obj/structure/chair/fancy/comfy{
+	color = "#3D3C38";
+	dir = 4
+	},
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"gX" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/preopen{
+	id = "council blast";
+	name = "Council Blast Doors"
+	},
+/obj/structure/barricade/wooden/crude,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"gY" = (
+/obj/structure/chair{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"gZ" = (
+/obj/structure/chair{
+	dir = 1
+	},
+/obj/machinery/light/floor,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ha" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/item/chair,
+/turf/open/floor/plasteel{
+	icon_state = "damaged2"
+	},
+/area/virtual_domain)
+"hb" = (
+/obj/structure/table/wood,
+/obj/structure/sign/picture_frame{
+	pixel_x = -8;
+	pixel_y = 32
+	},
+/obj/structure/sign/picture_frame{
+	pixel_x = 8;
+	pixel_y = 32
+	},
+/obj/item/ammo_casing/spent,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"hc" = (
+/obj/item/ammo_casing/spent{
+	dir = 9
+	},
+/obj/item/ammo_casing/spent{
+	dir = 10;
+	pixel_x = -13;
+	pixel_y = -8
+	},
+/obj/structure/barricade/sandbags,
+/turf/open/floor/plating{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"hd" = (
+/obj/item/ammo_casing/spent{
+	dir = 1
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"he" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/obj/structure/barricade/sandbags,
+/obj/structure/railing/corner{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"hf" = (
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/structure/showcase/machinery/microwave = 1000);
+	name = "microwave showcase spawner";
+	pixel_y = 2
+	},
+/obj/structure/table/wood,
+/obj/machinery/light/small{
+	dir = 2
+	},
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"hg" = (
+/obj/structure/noticeboard{
+	dir = 2;
+	pixel_y = 32
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#D4D4D4";
+	alpha = 50;
+	dir = 4
+	},
+/obj/structure/fluff/paper/stack{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"hh" = (
+/obj/effect/turf_decal/plaque{
+	icon_state = "L3"
+	},
+/obj/effect/decal/cleanable/crayon{
+	icon_state = "w";
+	pixel_x = -17;
+	pixel_y = -15
+	},
+/obj/effect/decal/cleanable/crayon{
+	icon_state = "e";
+	pixel_x = -2;
+	pixel_y = -16
+	},
+/obj/effect/decal/cleanable/blood{
+	pixel_y = -13
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"hi" = (
+/obj/effect/turf_decal/plaque{
+	icon_state = "L4"
+	},
+/obj/effect/decal/cleanable/crayon{
+	icon_state = "l";
+	pixel_x = 10;
+	pixel_y = 16
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"hj" = (
+/obj/machinery/light/small{
+	dir = 2
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"hk" = (
+/obj/structure/sign/directions/security{
+	dir = 1;
+	pixel_y = 8
+	},
+/obj/structure/sign/directions/engineering{
+	dir = 4
+	},
+/obj/structure/sign/directions/command{
+	dir = 1;
+	pixel_y = -8
+	},
+/turf/closed/wall,
+/area/virtual_domain)
+"hl" = (
+/obj/item/storage/belt/security/full{
+	pixel_x = 8;
+	pixel_y = -6
+	},
+/obj/item/storage/belt/security/full,
+/obj/item/storage/belt/security/full{
+	pixel_x = -8;
+	pixel_y = 6
+	},
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/stripes/end{
+	dir = 1
+	},
+/obj/effect/turf_decal/sand,
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"hm" = (
+/obj/structure/table/reinforced,
+/obj/item/clothing/glasses/night{
+	pixel_x = 5;
+	pixel_y = 7
+	},
+/obj/item/clothing/glasses/night,
+/obj/item/clothing/glasses/night{
+	pixel_x = -5;
+	pixel_y = -3
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"hn" = (
+/obj/effect/turf_decal/stripes/end,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"ho" = (
+/obj/machinery/light/small{
+	dir = 2
+	},
+/obj/effect/landmark/bitrunning/cache_goal_turf,
+/obj/effect/turf_decal/loading_area,
+/turf/open/indestructible/bitrunning_transport,
+/area/virtual_domain/safehouse)
+"hp" = (
+/obj/item/ammo_casing/spent{
+	dir = 1
+	},
+/obj/item/ammo_casing/spent{
+	dir = 10;
+	pixel_x = -13;
+	pixel_y = -8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"hq" = (
+/turf/closed/wall/mineral/titanium,
+/area/virtual_domain/safehouse)
+"hr" = (
+/turf/closed/indestructible/fakedoor,
+/area/virtual_domain)
+"hs" = (
+/obj/structure/barricade/security,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"ht" = (
+/obj/effect/turf_decal/plaque{
+	icon_state = "L5"
+	},
+/obj/structure/barricade/sandbags,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"hu" = (
+/obj/effect/turf_decal/plaque{
+	icon_state = "L6"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"hv" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#A46106";
+	dir = 4
+	},
+/obj/machinery/computer,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"hw" = (
+/obj/effect/landmark/bitrunning/mob_segment,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"hx" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#52B4E9";
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"hy" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/obj/machinery/button/door{
+	dir = 2;
+	pixel_y = -24;
+	name = "Bridge Access Blast Door Control"
+	},
+/obj/machinery/button/door{
+	dir = 2;
+	pixel_y = -34;
+	name = "Council Chamber Blast Door Control"
+	},
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"hz" = (
+/obj/structure/chair/fancy/bench,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"hA" = (
+/obj/structure/barricade/sandbags,
+/obj/machinery/manned_turret,
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"hB" = (
+/obj/structure/chair/fancy/comfy{
+	color = "#F0EEC6"
+	},
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"hC" = (
+/obj/structure/table_frame/wood,
+/obj/item/stack/sheet/mineral/wood{
+	pixel_x = 2
+	},
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"hD" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#D4D4D4";
+	alpha = 50;
+	dir = 4
+	},
+/obj/structure/holosign/barrier,
+/obj/structure/marker_beacon{
+	picked_color = "Burgundy";
+	icon_state = "markerburgundy"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"hE" = (
+/obj/effect/decal/cleanable/glass,
+/obj/effect/mine/explosive,
+/turf/open/floor/plating{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"hF" = (
+/obj/item/trash/candy,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"hG" = (
+/obj/item/stack/sheet/iron,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"hH" = (
+/obj/structure/chair{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"hI" = (
+/obj/structure/table/wood,
+/obj/item/radio/intercom/directional/north,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/machinery/coffeemaker,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"hJ" = (
+/obj/item/ammo_box/magazine/wt550m9,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"hK" = (
+/obj/structure/table_frame/wood,
+/obj/item/stack/sheet/mineral/wood,
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"hL" = (
+/obj/structure/fluff/paper/stack{
+	dir = 9
+	},
+/obj/item/book,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"hM" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters/preopen{
+	name = "Showroom Shutters"
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"hN" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#D4D4D4";
+	alpha = 50;
+	dir = 4
+	},
+/obj/structure/closet/crate/trashcart,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"hO" = (
+/obj/effect/turf_decal/plaque{
+	icon_state = "L6"
+	},
+/obj/effect/decal/cleanable/crayon{
+	icon_state = "c";
+	pixel_x = -11;
+	pixel_y = 16
+	},
+/obj/effect/decal/cleanable/crayon{
+	icon_state = "o";
+	pixel_x = 4;
+	pixel_y = 16
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"hP" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"hQ" = (
+/obj/item/kirbyplants/dead,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"hR" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#D4D4D4";
+	alpha = 50;
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"hS" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"hT" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"hU" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/bitrunning/cache_goal_turf,
+/obj/effect/turf_decal/loading_area,
+/turf/open/indestructible/bitrunning_transport,
+/area/virtual_domain/safehouse)
+"hV" = (
+/obj/structure/barricade/sandbags,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"hW" = (
+/obj/structure/bookcase/random,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"hX" = (
+/obj/effect/turf_decal/plaque{
+	icon_state = "L8"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"hY" = (
+/obj/machinery/holopad,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"hZ" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#A46106";
+	dir = 4
+	},
+/obj/structure/frame/computer,
+/obj/item/shard,
+/obj/item/stack/cable_coil/cut,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"ia" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"ib" = (
+/obj/structure/barricade/sandbags,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"ic" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#52B4E9";
+	dir = 8
+	},
+/obj/structure/window/reinforced,
+/obj/structure/barricade/sandbags,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"id" = (
+/obj/structure/frame/computer,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"ie" = (
+/obj/structure/chair/fancy/comfy{
+	color = "#3D3C38";
+	dir = 1
+	},
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"if" = (
+/obj/machinery/door/airlock/command{
+	name = "Command Desk"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"ig" = (
+/obj/item/trash/boritos,
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"ih" = (
+/obj/structure/fluff/paper/stack{
+	dir = 10
+	},
+/obj/item/flashlight/lamp/green,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ii" = (
+/obj/structure/table_frame/wood,
+/obj/item/stack/sheet/mineral/wood{
+	pixel_x = -4
+	},
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"ij" = (
+/obj/structure/grille/broken,
+/obj/effect/decal/cleanable/glass,
+/obj/item/stack/rods,
+/turf/open/floor/plating{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"ik" = (
+/obj/item/clothing/head/cone{
+	pixel_x = 1;
+	pixel_y = 3
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"il" = (
+/obj/structure/sign/plaques/golden{
+	name = "Commission plaque";
+	desc = "Spinward Sector Station SS-13 'Meta' Class Outpost. Commissioned 2557."
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"im" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#D4D4D4";
+	alpha = 50;
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"in" = (
+/obj/item/screwdriver,
+/turf/open/floor/plating{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"io" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#D4D4D4";
+	alpha = 50;
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ip" = (
+/obj/effect/turf_decal/plaque{
+	icon_state = "L7"
+	},
+/obj/effect/decal/cleanable/crayon{
+	icon_state = "e";
+	pixel_x = 1;
+	pixel_y = -16
+	},
+/obj/effect/decal/cleanable/crayon{
+	icon_state = "guy";
+	pixel_y = -5
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"iq" = (
+/obj/effect/decal/cleanable/crayon{
+	icon_state = "m";
+	pixel_x = -13;
+	pixel_y = 17
+	},
+/turf/open/floor/plasteel{
+	icon_state = "damaged5"
+	},
+/area/virtual_domain)
+"ir" = (
+/obj/structure/fluff/paper/stack{
+	dir = 10
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"is" = (
+/obj/structure/fluff/paper/stack{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"it" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/door/airlock/shuttle/glass,
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/sand,
+/obj/structure/fans/tiny,
+/turf/open/floor/plasteel/white,
+/area/virtual_domain/safehouse)
+"iu" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"iv" = (
+/obj/structure/table/reinforced,
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/gun/energy/laser = 1000);
+	lootcount = 3;
+	name = "laser gun spawner"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"iw" = (
+/obj/structure/table/reinforced,
+/obj/machinery/recharger{
+	pixel_x = -6
+	},
+/obj/machinery/recharger{
+	pixel_x = 6
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"ix" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/obj/effect/decal/cleanable/generic,
+/obj/effect/landmark/bitrunning/hololadder_spawn,
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"iy" = (
+/obj/effect/turf_decal/plaque{
+	icon_state = "L10"
+	},
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/effect/decal/cleanable/crayon = 1000);
+	name = "random graffiti spawner"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"iz" = (
+/obj/structure/chair/office{
+	dir = 1;
+	pixel_x = -11
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"iA" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#52B4E9";
+	dir = 8
+	},
+/obj/structure/window/reinforced,
+/obj/structure/chair/office{
+	dir = 4;
+	pixel_x = -10
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"iB" = (
+/obj/structure/table/glass,
+/obj/structure/safe,
+/obj/item/book/granter/martial/cqc,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"iC" = (
+/obj/effect/landmark/bitrunning/cache_spawn,
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"iD" = (
+/obj/effect/spawner/structure/window/reinforced/tinted,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"iE" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 9
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"iF" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
+/obj/machinery/button/door{
+	dir = 2;
+	pixel_y = -34;
+	name = "Gateway Shutter Control"
+	},
+/obj/machinery/button/door{
+	dir = 2;
+	pixel_y = -24;
+	name = "E.V.A. Storage Shutter Control"
+	},
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"iG" = (
+/obj/structure/spider/spikes,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"iH" = (
+/obj/effect/mine/explosive,
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"iI" = (
+/obj/effect/decal/cleanable/glass,
+/obj/item/stack/rods,
+/turf/open/floor/plating{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"iJ" = (
+/obj/item/grenade/plastic/x4,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"iK" = (
+/obj/structure/holosign/barrier,
+/obj/structure/marker_beacon{
+	picked_color = "Burgundy";
+	icon_state = "markerburgundy"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"iL" = (
+/obj/item/chair,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"iM" = (
+/obj/structure/chair{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"iN" = (
+/obj/machinery/light_switch{
+	dir = 1;
+	pixel_y = 26
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/table/wood,
+/obj/item/clothing/shoes/laceup,
+/obj/item/clothing/under/suit/black_really,
+/obj/item/clothing/glasses/sunglasses,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"iO" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"iP" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"iQ" = (
+/obj/item/ammo_box/magazine/wt550m9,
+/turf/open/floor/plating{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"iR" = (
+/obj/effect/turf_decal/plaque{
+	icon_state = "L9"
+	},
+/obj/effect/decal/cleanable/blood{
+	icon_state = "floor4";
+	pixel_y = -15
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"iS" = (
+/obj/effect/turf_decal/plaque{
+	icon_state = "L10"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"iT" = (
+/obj/effect/turf_decal/tile/purple,
+/turf/open/floor/plasteel{
+	icon_state = "damaged2"
+	},
+/area/virtual_domain)
+"iU" = (
+/obj/item/kirbyplants/random,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"iV" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#D4D4D4";
+	alpha = 50;
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"iW" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/structure/chair/fancy/shuttle{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"iX" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"iY" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#D4D4D4";
+	alpha = 50;
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/landmark/bitrunning/hololadder_spawn,
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"iZ" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/structure/barricade/sandbags,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ja" = (
+/obj/structure/spider/stickyweb,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"jb" = (
+/obj/effect/turf_decal/plaque{
+	icon_state = "L12"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"jc" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/item/crowbar,
+/turf/open/floor/plasteel{
+	icon_state = "damaged2"
+	},
+/area/virtual_domain)
+"jd" = (
+/obj/structure/lattice,
+/obj/item/gun/ballistic/rifle/boltaction,
+/turf/open/space/basic,
+/area/virtual_domain)
+"je" = (
+/obj/machinery/status_display/ai{
+	dir = 1;
+	pixel_y = 32
+	},
+/obj/item/storage/toolbox/mechanical{
+	pixel_x = -1;
+	pixel_y = 4
+	},
+/obj/structure/table/glass,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#A46106";
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"jf" = (
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/effect/decal/cleanable/crayon = 1000);
+	name = "random graffiti spawner"
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"jg" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/item/flashlight/lantern{
+	light_on = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"jh" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#52B4E9";
+	dir = 8
+	},
+/obj/structure/window/reinforced,
+/obj/item/banner/command,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"ji" = (
+/obj/structure/table/glass,
+/obj/structure/window/reinforced/spawner/east,
+/obj/machinery/computer/security/wooden_tv{
+	pixel_x = 1;
+	pixel_y = 6
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"jj" = (
+/obj/item/paper_bin{
+	pixel_x = -2;
+	pixel_y = 8
+	},
+/obj/structure/table/glass,
+/obj/structure/window/reinforced/spawner/east,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"jk" = (
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/machinery/vending/snack = 1000);
+	name = "spawn random snack vending machine"
+	},
+/obj/structure/window/reinforced/spawner/east,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"jl" = (
+/obj/machinery/door/firedoor,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"jm" = (
+/obj/machinery/status_display/ai{
+	dir = 1;
+	pixel_y = 32
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/obj/effect/landmark/bitrunning/cache_spawn,
+/obj/machinery/light/broken{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"jn" = (
+/obj/structure/chair/fancy/comfy{
+	color = "#3D3C38";
+	dir = 8
+	},
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"jo" = (
+/obj/structure/grille/broken,
+/obj/effect/decal/cleanable/glass,
+/obj/effect/mine/explosive,
+/turf/open/floor/plating{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"jp" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#D4D4D4";
+	alpha = 50;
+	dir = 4
+	},
+/obj/item/evidencebag,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"jq" = (
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plating{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"jr" = (
+/obj/machinery/light/floor,
+/obj/item/stack/sheet/iron,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"js" = (
+/obj/structure/chair{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/plasteel{
+	icon_state = "damaged2"
+	},
+/area/virtual_domain)
+"jt" = (
+/obj/structure/sign/picture_frame{
+	pixel_x = -8;
+	pixel_y = 32
+	},
+/obj/structure/sign/picture_frame{
+	pixel_x = 8;
+	pixel_y = 32
+	},
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/structure/closet/crate/bin = 500, /obj/structure/closet/crate/trashcart = 350, /obj/structure/closet/cardboard = 135, /obj/structure/closet/cardboard/metal = 15);
+	name = "trashbin spawner"
+	},
+/turf/open/floor/wood,
+/area/virtual_domain)
+"ju" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/barricade/sandbags,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"jv" = (
+/obj/structure/showcase/machinery/tv{
+	dir = 1;
+	pixel_x = 2;
+	pixel_y = 3
+	},
+/obj/structure/table/wood,
+/obj/machinery/light/small{
+	dir = 2
+	},
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"jw" = (
+/obj/structure/fluff/paper/stack{
+	dir = 8
+	},
+/obj/structure/spider/stickyweb,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"jx" = (
+/obj/machinery/light/small{
+	dir = 2
+	},
+/obj/effect/turf_decal/tile/purple,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"jy" = (
+/obj/structure/sign/directions/medical{
+	dir = 8;
+	pixel_y = 8
+	},
+/obj/structure/sign/directions/evac,
+/obj/structure/sign/directions/science{
+	dir = 4;
+	pixel_y = -8
+	},
+/turf/closed/wall,
+/area/virtual_domain)
+"jz" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/structure/table/reinforced,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/storage/toolbox/emergency,
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"jA" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/computer{
+	dir = 8;
+	name = "shuttle console";
+	icon_screen = "shuttle"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"jB" = (
+/obj/item/gun/ballistic/shotgun/riot{
+	pixel_y = 6
+	},
+/obj/item/gun/ballistic/shotgun/riot,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/structure/table/reinforced,
+/obj/item/tank/internals/emergency_oxygen{
+	pixel_x = 3
+	},
+/obj/item/clothing/mask/gas,
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"jC" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/machinery/light/small{
+	dir = 2
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/bitrunning/hololadder_spawn,
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"jD" = (
+/obj/structure/sign/map/left{
+	desc = "A framed picture of the station. Clockwise from security at the top (red), you see engineering (yellow), science (purple), escape (red and white), medbay (green), arrivals (blue and white), and finally cargo (brown).";
+	icon_state = "map-left-MS";
+	pixel_y = 32
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#D4D4D4";
+	alpha = 50;
+	dir = 4
+	},
+/obj/item/banner/security,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"jE" = (
+/obj/effect/turf_decal/plaque{
+	icon_state = "L13"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"jF" = (
+/obj/effect/turf_decal/plaque{
+	icon_state = "L14"
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"jG" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/chair/fancy/sofa/corp/left{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"jH" = (
+/turf/open/indestructible{
+	icon_state = "darkfull";
+	color = "#B44444";
+	name = "meat floor"
+	},
+/area/virtual_domain)
+"jI" = (
+/obj/structure/lattice,
+/obj/item/ammo_box/a762,
+/turf/open/space/basic,
+/area/virtual_domain)
+"jJ" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#DE3A3A";
+	dir = 4
+	},
+/obj/machinery/computer,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"jK" = (
+/obj/structure/chair/office{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"jL" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"jM" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#52B4E9";
+	dir = 5
+	},
+/obj/item/trash/chips,
+/obj/effect/decal/cleanable/food/egg_smudge,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"jN" = (
+/obj/structure/rack,
+/obj/item/assembly/signaler,
+/obj/item/assembly/signaler,
+/obj/item/assembly/timer,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#52B4E9";
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"jO" = (
+/obj/machinery/firealarm/directional/north,
+/obj/structure/table_frame/wood,
+/obj/item/stack/sheet/mineral/wood,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"jP" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/structure/holosign/barrier,
+/obj/structure/marker_beacon{
+	picked_color = "Burgundy";
+	icon_state = "markerburgundy"
+	},
+/obj/structure/sign/warning/securearea{
+	dir = 1;
+	pixel_y = 32
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"jQ" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/item/trash/semki,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"jR" = (
+/obj/structure/extinguisher_cabinet{
+	dir = 4;
+	pixel_x = 29
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/item/chair{
+	dir = 1
+	},
+/turf/open/floor/plasteel{
+	icon_state = "damaged2"
+	},
+/area/virtual_domain)
+"jS" = (
+/obj/effect/turf_decal/trimline/blue/filled/corner,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/status_display/evac{
+	dir = 2;
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"jT" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/item/chair,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"jU" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 1;
+	name = "Showroom Shutters"
+	},
+/obj/structure/barricade/wooden/crude,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"jV" = (
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/structure/showcase = 1000);
+	name = "showcase spawner"
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced/spawner/west,
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"jW" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"jX" = (
+/obj/effect/turf_decal/plaque{
+	icon_state = "L13"
+	},
+/obj/effect/decal/cleanable/crayon{
+	icon_state = "x";
+	pixel_x = -6;
+	pixel_y = -15
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"jY" = (
+/obj/effect/turf_decal/plaque{
+	icon_state = "L14"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"jZ" = (
+/obj/effect/turf_decal/tile/purple,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ka" = (
+/obj/effect/baseturf_helper/virtual_domain,
+/turf/closed/wall/mineral/titanium/overspace,
+/area/virtual_domain/safehouse)
+"kb" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/structure/sign/map/right{
+	desc = "A framed picture of the station. Clockwise from security at the top (red), you see engineering (yellow), science (purple), escape (red and white), medbay (green), arrivals (blue and white), and finally cargo (brown).";
+	icon_state = "map-right-MS";
+	pixel_y = 32
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#D4D4D4";
+	alpha = 50;
+	dir = 4
+	},
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/structure/closet/crate/bin = 500, /obj/structure/closet/crate/trashcart = 350, /obj/structure/closet/cardboard = 135, /obj/structure/closet/cardboard/metal = 15);
+	name = "trashbin spawner"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"kc" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/chair/fancy/sofa/corp/right{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"kd" = (
+/obj/effect/turf_decal/tile/bar{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ke" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#DE3A3A";
+	dir = 4
+	},
+/obj/structure/frame/computer,
+/obj/item/shard{
+	icon_state = "medium";
+	pixel_x = 5
+	},
+/obj/item/stack/cable_coil/cut,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"kf" = (
+/obj/structure/chair/office{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"kg" = (
+/obj/item/trash/chips,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"kh" = (
+/obj/effect/decal/cleanable/food/flour,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"ki" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#52B4E9";
+	dir = 8
+	},
+/obj/effect/decal/cleanable/food/egg_smudge,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"kj" = (
+/obj/structure/rack,
+/obj/item/storage/toolbox/emergency,
+/obj/item/storage/toolbox/emergency{
+	pixel_x = -2;
+	pixel_y = -3
+	},
+/obj/item/wrench,
+/obj/item/multitool,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#52B4E9";
+	dir = 4
+	},
+/obj/machinery/status_display/evac{
+	dir = 2;
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"kk" = (
+/obj/structure/table/wood,
+/obj/item/paper_bin{
+	pixel_x = -3;
+	pixel_y = 7
+	},
+/obj/item/pen,
+/obj/machinery/light_switch{
+	dir = 4;
+	pixel_x = 26
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"kl" = (
+/obj/item/storage/fancy/cigarettes/cigpack_mindbreaker{
+	pixel_x = 3;
+	pixel_y = -5
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"km" = (
+/obj/machinery/airalarm/directional/east,
+/obj/machinery/vending/cigarette,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"kn" = (
+/obj/machinery/status_display/ai{
+	dir = 1;
+	pixel_y = 32
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ko" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"kp" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/effect/decal/cleanable/crayon = 1000);
+	name = "random graffiti spawner"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"kq" = (
+/obj/structure/sign/plaques/kiddie/perfect_man{
+	pixel_y = 32
+	},
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/structure/showcase = 1000);
+	name = "showcase spawner"
+	},
+/obj/structure/window/reinforced,
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"kr" = (
+/turf/open/floor/wood,
+/area/virtual_domain)
+"ks" = (
+/obj/item/disk/data{
+	pixel_x = 9;
+	pixel_y = -1
+	},
+/obj/item/disk/tech_disk{
+	pixel_x = -2;
+	pixel_y = -3
+	},
+/obj/item/disk/design_disk{
+	name = "component design disk";
+	pixel_y = 6
+	},
+/obj/structure/table/wood,
+/obj/item/toy/talking/AI{
+	name = "\improper Nanotrasen-brand toy AI";
+	pixel_y = 6
+	},
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"kt" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/structure/fluff/paper/stack{
+	dir = 6
+	},
+/obj/structure/sign/warning/securearea{
+	dir = 1;
+	pixel_y = 32
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ku" = (
+/obj/structure/fluff/paper/stack,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"kv" = (
+/obj/effect/turf_decal/tile/purple,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"kw" = (
+/obj/structure/sign/departments/science,
+/turf/closed/wall,
+/area/virtual_domain)
+"kx" = (
+/obj/structure/extinguisher_cabinet{
+	dir = 4;
+	pixel_x = 29
+	},
+/obj/item/kirbyplants{
+	icon_state = "plant-16"
+	},
+/obj/item/radio/intercom/directional/north,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#D4D4D4";
+	alpha = 50;
+	dir = 6
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ky" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/plasteel{
+	icon_state = "damaged2"
+	},
+/area/virtual_domain)
+"kz" = (
+/obj/structure/extinguisher_cabinet{
+	dir = 4;
+	pixel_x = 29
+	},
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"kA" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#DE3A3A";
+	dir = 6
+	},
+/obj/machinery/computer,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"kB" = (
+/obj/structure/table/glass,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#DE3A3A"
+	},
+/obj/item/reagent_containers/food/drinks/beer,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"kC" = (
+/obj/machinery/recharger{
+	pixel_y = 3
+	},
+/obj/item/restraints/handcuffs{
+	pixel_y = 3
+	},
+/obj/structure/table/glass,
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"kD" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 4
+	},
+/obj/item/storage/box/donkpockets{
+	pixel_x = 6;
+	pixel_y = -9
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"kE" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/structure/chair/stool{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"kF" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#52B4E9";
+	dir = 5
+	},
+/obj/item/trash/chips,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"kG" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/item/trash/chips{
+	pixel_y = 10
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"kH" = (
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/structure/showcase = 1000);
+	name = "showcase spawner"
+	},
+/obj/structure/window/reinforced,
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"kI" = (
+/obj/item/cigbutt,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"kJ" = (
+/obj/structure/table/wood,
+/obj/item/poster/random_official,
+/obj/item/poster/random_official,
+/obj/item/poster/random_official,
+/obj/item/poster/random_official,
+/obj/item/poster/random_official,
+/obj/machinery/button/door{
+	dir = 4;
+	pixel_x = 24;
+	name = "corporate showroom shutters control"
+	},
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"kK" = (
+/obj/structure/sign/directions/evac,
+/obj/structure/sign/directions/medical{
+	pixel_y = 8
+	},
+/obj/structure/sign/directions/science{
+	pixel_y = -8
+	},
+/turf/closed/wall,
+/area/virtual_domain)
+"kL" = (
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"kM" = (
+/obj/item/book/manual/wiki/security_space_law{
+	name = "space law";
+	pixel_y = 2
+	},
+/obj/item/toy/gun,
+/obj/item/restraints/handcuffs,
+/obj/structure/table/wood,
+/obj/item/clothing/head/collectable/HoS{
+	name = "novelty HoS hat"
+	},
+/obj/machinery/firealarm/directional/east,
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"kN" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"kO" = (
+/obj/effect/turf_decal/tile/purple,
+/obj/item/restraints/legcuffs/beartrap{
+	armed = 1;
+	icon_state = "beartrap1"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"kP" = (
+/obj/structure/holosign/barrier,
+/turf/open/floor/plasteel{
+	icon_state = "damaged5"
+	},
+/area/virtual_domain)
+"kQ" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/holosign/barrier,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"kR" = (
+/obj/item/radio/intercom/directional/north{
+	pixel_y = 34
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#52B4E9";
+	dir = 4
+	},
+/obj/machinery/computer,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"kS" = (
+/obj/item/storage/box/donkpockets{
+	pixel_y = -7
+	},
+/obj/effect/decal/cleanable/food/tomato_smudge,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"kT" = (
+/obj/structure/railing{
+	dir = 10
+	},
+/obj/structure/bonfire/prelit,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"kU" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#52B4E9";
+	dir = 8
+	},
+/obj/structure/chair/stool{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"kV" = (
+/obj/item/radio/intercom/directional/west,
+/obj/effect/turf_decal/tile/blue,
+/obj/structure/closet/cardboard,
+/obj/effect/spawner/lootdrop/maintenance/seven,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"kW" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"kX" = (
+/obj/machinery/button/door{
+	dir = 8;
+	pixel_x = -24;
+	id = "bridge blast";
+	name = "Bridge Access Blast Door Control"
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"kY" = (
+/obj/machinery/newscaster/directional/south,
+/obj/effect/turf_decal/tile/neutral,
+/obj/item/trash/popcorn,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"kZ" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/status_display/evac{
+	dir = 1;
+	pixel_y = 32
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"la" = (
+/obj/item/restraints/legcuffs/beartrap{
+	armed = 1;
+	icon_state = "beartrap1"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"lb" = (
+/obj/structure/barricade/sandbags,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"lc" = (
+/obj/structure/flora/rock/jungle,
+/obj/structure/barricade/sandbags,
+/turf/open/floor/plating/dirt/jungle/dark,
+/area/virtual_domain)
+"ld" = (
+/obj/structure/spacevine,
+/turf/closed/wall,
+/area/virtual_domain)
+"le" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/item/storage/briefcase/lawyer,
+/obj/structure/noticeboard{
+	dir = 2;
+	pixel_y = 32
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"lf" = (
+/obj/item/photo{
+	pixel_y = 14
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"lg" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/item/book/manual/wiki/detective,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"lh" = (
+/obj/machinery/firealarm/directional/east,
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"li" = (
+/obj/structure/lattice,
+/obj/effect/mob_spawn/human/corpse/assistant,
+/turf/open/space/basic,
+/area/virtual_domain)
+"lj" = (
+/obj/machinery/requests_console{
+	dir = 4;
+	pixel_x = 30;
+	department = "Bridge";
+	name = "Bridge Requests Console"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#52B4E9";
+	dir = 6
+	},
+/obj/machinery/computer,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"lk" = (
+/obj/structure/chair/office{
+	dir = 1
+	},
+/obj/structure/extinguisher_cabinet{
+	dir = 4;
+	pixel_x = 29
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#52B4E9"
+	},
+/obj/effect/decal/cleanable/glass,
+/obj/effect/landmark/bitrunning/cache_spawn,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"ll" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#52B4E9"
+	},
+/obj/item/kitchen/knife/butcher,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"lm" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#52B4E9";
+	dir = 9
+	},
+/obj/effect/mob_spawn/human/corpse/assistant,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"ln" = (
+/obj/structure/closet/cardboard{
+	pixel_y = 8
+	},
+/obj/item/spear/explosive,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"lo" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/firealarm/directional/east,
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"lp" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/item/trash/popcorn,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"lq" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/item/crowbar,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"lr" = (
+/obj/structure/barricade/sandbags,
+/turf/open/floor/plating{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"ls" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/airalarm/directional/east,
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"lt" = (
+/obj/structure/extinguisher_cabinet{
+	dir = 8;
+	pixel_x = -29
+	},
+/obj/structure/table/glass,
+/obj/item/stack/medical/gauze,
+/obj/item/stack/medical/ointment,
+/obj/item/stack/medical/bruise_pack,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"lu" = (
+/obj/structure/table/optable,
+/obj/effect/mob_spawn/human/corpse/assistant,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"lv" = (
+/obj/machinery/airalarm/directional/west,
+/obj/item/storage/backpack/duffelbag/med/surgery,
+/turf/open/floor/plasteel{
+	icon_state = "damaged2"
+	},
+/area/virtual_domain)
+"lw" = (
+/obj/structure/bed/roller,
+/obj/effect/turf_decal/bot{
+	dir = 1
+	},
+/obj/machinery/vending/wallmed{
+	dir = 8;
+	pixel_x = -32
+	},
+/obj/effect/mob_spawn/human/corpse/assistant,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"lx" = (
+/obj/effect/turf_decal/bot{
+	dir = 1
+	},
+/obj/effect/landmark/bitrunning/cache_spawn,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ly" = (
+/obj/effect/turf_decal/bot{
+	dir = 1
+	},
+/obj/structure/bed/roller,
+/obj/effect/mob_spawn/human/corpse/assistant,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"lz" = (
+/obj/machinery/firealarm/directional/south,
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding{
+	color = "#474747";
+	dir = 1
+	},
+/obj/structure/bodycontainer/morgue,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"lA" = (
+/turf/open/floor/plating/dirt/jungle/dark,
+/area/virtual_domain)
+"lB" = (
+/obj/structure/flora/junglebush,
+/obj/item/banner/science,
+/turf/open/floor/plating/grass/jungle,
+/area/virtual_domain)
+"lC" = (
+/obj/structure/spacevine,
+/obj/effect/spawner/structure/window/reinforced/tinted,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"lD" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/structure/barricade/sandbags,
+/obj/structure/railing,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"lE" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/barricade/security,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"lF" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/item/detective_scanner{
+	pixel_x = -7;
+	pixel_y = -6
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"lG" = (
+/obj/structure/lattice,
+/obj/effect/decal/cleanable/blood/gibs,
+/turf/open/space/basic,
+/area/virtual_domain)
+"lH" = (
+/obj/structure/lattice,
+/obj/effect/landmark/bitrunning/cache_spawn,
+/turf/open/space/basic,
+/area/virtual_domain)
+"lI" = (
+/obj/machinery/firealarm/directional/east,
+/obj/structure/table/glass,
+/obj/item/papercutter,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"lJ" = (
+/obj/machinery/light_switch{
+	dir = 4;
+	pixel_x = 26
+	},
+/obj/structure/table/glass,
+/obj/item/clothing/head/chefhat{
+	pixel_x = 6;
+	pixel_y = 11
+	},
+/obj/item/reagent_containers/food/condiment/saltshaker,
+/obj/item/reagent_containers/food/condiment/peppermill{
+	pixel_x = -6;
+	pixel_y = 10
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"lK" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/command{
+	name = "Captain's Quarters"
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"lL" = (
+/obj/structure/table/glass,
+/obj/item/reagent_containers/glass/bottle/epinephrine,
+/obj/item/reagent_containers/glass/bottle/charcoal{
+	pixel_x = 6
+	},
+/obj/item/reagent_containers/syringe,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"lM" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"lN" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/plasteel{
+	icon_state = "damaged2"
+	},
+/area/virtual_domain)
+"lO" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/item/ammo_casing/spent{
+	dir = 4
+	},
+/obj/item/ammo_casing/spent{
+	dir = 9;
+	pixel_x = -13;
+	pixel_y = 9
+	},
+/obj/item/ammo_casing/spent{
+	dir = 8;
+	pixel_x = -19;
+	pixel_y = -5
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"lP" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"lQ" = (
+/obj/effect/turf_decal/siding{
+	icon_state = "siding_corner";
+	color = "#474747";
+	dir = 1
+	},
+/obj/effect/turf_decal/siding{
+	icon_state = "siding_corner";
+	color = "#474747";
+	dir = 4
+	},
+/obj/effect/decal/cleanable/crayon{
+	icon_state = "med"
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"lR" = (
+/obj/structure/sign/map/left{
+	desc = "A framed picture of the station. Clockwise from security at the top (red), you see engineering (yellow), science (purple), escape (red and white), medbay (green), arrivals (blue and white), and finally cargo (brown).";
+	icon_state = "map-left-MS";
+	pixel_y = 32
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"lS" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"lT" = (
+/obj/structure/flora/rock/pile/largejungle,
+/turf/open/floor/plating/dirt/jungle/dark,
+/area/virtual_domain)
+"lU" = (
+/obj/structure/flora/junglebush/b,
+/obj/structure/flora/junglebush/large,
+/obj/structure/spacevine,
+/turf/open/floor/plating/grass/jungle,
+/area/virtual_domain)
+"lV" = (
+/obj/structure/flora/grass/jungle/b,
+/obj/structure/flora/rock/jungle,
+/obj/structure/flora/ausbushes/leafybush,
+/obj/structure/flora/tree/jungle/small,
+/turf/open/floor/plating/grass/jungle,
+/area/virtual_domain)
+"lW" = (
+/obj/item/camera/detective{
+	pixel_x = 9;
+	pixel_y = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"lX" = (
+/obj/machinery/firealarm/directional/south,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/plasteel{
+	icon_state = "damaged2"
+	},
+/area/virtual_domain)
+"lY" = (
+/obj/machinery/shower{
+	dir = 2;
+	pixel_y = 16
+	},
+/obj/structure/curtain,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 4
+	},
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/effect/decal/cleanable/crayon = 1000);
+	name = "random graffiti spawner"
+	},
+/obj/effect/landmark/bitrunning/cache_spawn,
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"lZ" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/item/ammo_casing/spent,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ma" = (
+/obj/machinery/vending/boozeomat,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/virtual_domain)
+"mb" = (
+/obj/machinery/vending/cigarette,
+/obj/item/gun/ballistic/shotgun/lethal{
+	pixel_y = 13
+	},
+/turf/open/floor/wood,
+/area/virtual_domain)
+"mc" = (
+/obj/machinery/firealarm/directional/west,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 4
+	},
+/obj/item/radio/intercom/directional/south,
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"md" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/item/radio/intercom/directional/north,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"me" = (
+/obj/machinery/recharger,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"mf" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"mg" = (
+/obj/structure/chair/stool{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/plasteel{
+	icon_state = "damaged2"
+	},
+/area/virtual_domain)
+"mh" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/item/borg/upgrade/pinpointer,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"mi" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/obj/effect/landmark/bitrunning/mob_segment,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"mj" = (
+/obj/structure/railing{
+	dir = 5
+	},
+/obj/effect/turf_decal/siding{
+	color = "#474747";
+	dir = 5
+	},
+/obj/structure/closet/body_bag,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"mk" = (
+/obj/machinery/door/firedoor,
+/obj/structure/extinguisher_cabinet{
+	dir = 4;
+	pixel_x = 29
+	},
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ml" = (
+/obj/structure/sign/map/right{
+	desc = "A framed picture of the station. Clockwise from security at the top (red), you see engineering (yellow), science (purple), escape (red and white), medbay (green), arrivals (blue and white), and finally cargo (brown).";
+	icon_state = "map-right-MS";
+	pixel_y = 32
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"mm" = (
+/obj/effect/mob_spawn/human/scientist,
+/turf/open/floor/plating/dirt/jungle/dark,
+/area/virtual_domain)
+"mn" = (
+/obj/structure/flora/grass/jungle/b,
+/obj/structure/flora/ausbushes/leafybush,
+/obj/structure/spacevine,
+/obj/structure/flora/junglebush/large,
+/turf/open/floor/plating/grass/jungle,
+/area/virtual_domain)
+"mo" = (
+/obj/structure/flora/grass/jungle/b,
+/obj/structure/flora/ausbushes/lavendergrass,
+/obj/structure/flora/ausbushes/sparsegrass,
+/turf/open/floor/plating/grass/jungle,
+/area/virtual_domain)
+"mp" = (
+/obj/structure/flora/junglebush/b,
+/obj/structure/flora/tree/jungle/small,
+/turf/open/floor/plating/grass/jungle,
+/area/virtual_domain)
+"mq" = (
+/obj/structure/sign/departments/security{
+	name = "\improper COURTROOM";
+	dir = 1;
+	pixel_y = 32
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/barricade/security,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"mr" = (
+/obj/item/book/manual/wiki/security_space_law,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ms" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/item/photo{
+	pixel_x = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"mt" = (
+/obj/machinery/computer/security/telescreen/entertainment{
+	dir = 1;
+	pixel_y = 32
+	},
+/obj/item/radio/intercom/directional/west,
+/obj/structure/table_frame/wood,
+/obj/item/stack/sheet/mineral/wood{
+	pixel_x = 2
+	},
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"mu" = (
+/obj/machinery/newscaster/directional/west,
+/obj/structure/table_frame/wood,
+/obj/item/stack/sheet/mineral/wood{
+	pixel_x = -4
+	},
+/obj/effect/mob_spawn/human/corpse/assistant,
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"mv" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/fluff/paper/stack,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"mw" = (
+/obj/structure/table/wood,
+/obj/item/camera{
+	pixel_y = 4
+	},
+/obj/item/radio/intercom/directional/west,
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"mx" = (
+/obj/structure/mirror{
+	dir = 1;
+	pixel_y = 28
+	},
+/obj/structure/sink{
+	dir = 2;
+	pixel_y = 14
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal{
+	icon_state = "dirt_side";
+	name = "dirt siding"
+	},
+/obj/structure/fluff/paper/stack{
+	dir = 8
+	},
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"my" = (
+/obj/machinery/status_display/evac{
+	dir = 1;
+	pixel_y = 32
+	},
+/obj/item/radio/intercom/directional/west,
+/obj/item/clothing/mask/facehugger/dead,
+/obj/structure/displaycase,
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/wood{
+	icon_state = "wood-broken3"
+	},
+/area/virtual_domain)
+"mz" = (
+/obj/structure/table/wood,
+/obj/item/book/manual/wiki/security_space_law,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/item/paper/fluff/gateway,
+/obj/item/coin/plasma,
+/obj/item/melee/chainofcommand,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"mA" = (
+/obj/structure/table/wood,
+/obj/machinery/light_switch{
+	dir = 8;
+	pixel_x = -26
+	},
+/obj/item/storage/secure/briefcase{
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"mB" = (
+/obj/machinery/holopad/secure,
+/obj/item/storage/box/lethalshot{
+	pixel_y = 7
+	},
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"mC" = (
+/obj/item/ammo_casing/spent,
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"mD" = (
+/turf/open/floor/plasteel{
+	icon_state = "damaged4"
+	},
+/area/virtual_domain)
+"mE" = (
+/obj/structure/extinguisher_cabinet{
+	dir = 2;
+	pixel_y = -29
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/item/trash/chips,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"mF" = (
+/obj/structure/closet/crate{
+	opened = 1;
+	density = 0
+	},
+/obj/item/stack/sheet/rglass{
+	amount = 50
+	},
+/obj/item/stack/sheet/iron/fifty,
+/obj/item/stack/rods/fifty,
+/obj/item/storage/toolbox/emergency,
+/obj/effect/turf_decal/bot{
+	dir = 1
+	},
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/flashlight = 408, /obj/item/flashlight/flare = 204, /obj/item/flashlight/lantern = 102, /obj/item/flashlight/seclite = 82, /obj/item/flashlight/glowstick = 29, /obj/item/flashlight/glowstick/red = 29, /obj/item/flashlight/glowstick/blue = 29, /obj/item/flashlight/glowstick/cyan = 29, /obj/item/flashlight/glowstick/orange = 29, /obj/item/flashlight/glowstick/yellow = 29, /obj/item/flashlight/glowstick/pink = 29);
+	name = "flashlight spawner"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"mG" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"mH" = (
+/obj/structure/table,
+/obj/item/folder/yellow,
+/obj/item/storage/firstaid/regular{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/effect/turf_decal/bot{
+	dir = 1
+	},
+/obj/item/clothing/neck/stethoscope,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"mI" = (
+/obj/effect/turf_decal/bot{
+	dir = 1
+	},
+/obj/machinery/computer{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"mJ" = (
+/obj/structure/rack,
+/obj/item/reagent_containers/glass/bottle/potassium{
+	pixel_x = 7;
+	pixel_y = 3
+	},
+/obj/item/reagent_containers/glass/bottle/phosphorus{
+	pixel_x = -5;
+	pixel_y = 3
+	},
+/obj/item/reagent_containers/glass/bottle/sodium{
+	pixel_x = 1
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/item/radio/intercom/directional/east,
+/turf/open/floor/plasteel/dark{
+	dir = 4
+	},
+/area/virtual_domain)
+"mK" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/structure/closet/body_bag,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"mL" = (
+/obj/item/storage/belt/utility,
+/obj/item/radio/off,
+/obj/item/radio/off,
+/obj/item/radio/off,
+/obj/structure/rack,
+/obj/effect/turf_decal/bot{
+	dir = 1
+	},
+/obj/machinery/button/door{
+	dir = 2;
+	pixel_y = -24;
+	name = "Gateway Shutter Control"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"mM" = (
+/obj/structure/flora/junglebush,
+/obj/structure/flora/ausbushes/sparsegrass,
+/turf/open/floor/plating/grass/jungle,
+/area/virtual_domain)
+"mN" = (
+/obj/structure/flora/rock/jungle,
+/obj/effect/mob_spawn/human/scientist,
+/turf/open/floor/plating/grass/jungle,
+/area/virtual_domain)
+"mO" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/item/toy/figure/detective{
+	pixel_y = 13
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"mP" = (
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"mQ" = (
+/obj/machinery/light{
+	dir = 2
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"mR" = (
+/obj/structure/closet/firecloset,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"mS" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/mob_spawn/human/corpse/assistant,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"mT" = (
+/obj/machinery/status_display/evac{
+	dir = 1;
+	pixel_y = 32
+	},
+/obj/structure/table/wood,
+/obj/item/flashlight/lamp/green{
+	pixel_x = 1;
+	pixel_y = 5
+	},
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"mU" = (
+/obj/structure/chair/fancy/comfy{
+	color = "#462F1C";
+	dir = 8
+	},
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"mV" = (
+/obj/machinery/light_switch{
+	dir = 2;
+	pixel_y = -26
+	},
+/obj/structure/table/wood,
+/obj/item/razor{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/obj/item/reagent_containers/food/drinks/flask/gold,
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"mW" = (
+/obj/structure/toilet{
+	pixel_y = 13
+	},
+/obj/machinery/light{
+	dir = 2
+	},
+/obj/machinery/light_switch{
+	dir = 2;
+	pixel_y = -26
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal{
+	icon_state = "dirt_side";
+	name = "dirt siding";
+	dir = 5
+	},
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"mX" = (
+/obj/structure/sign/map/left{
+	desc = "A framed picture of the station. Clockwise from security at the top (red), you see engineering (yellow), science (purple), escape (red and white), medbay (green), arrivals (blue and white), and finally cargo (brown).";
+	icon_state = "map-left-MS";
+	pixel_y = 32
+	},
+/obj/structure/showcase/machinery/tv,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"mY" = (
+/obj/structure/chair/fancy/comfy{
+	color = "#462F1C";
+	dir = 4
+	},
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"mZ" = (
+/obj/machinery/light/small{
+	dir = 2
+	},
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"na" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"nb" = (
+/obj/machinery/firealarm/directional/south,
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"nc" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"nd" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/machinery/firealarm/directional/east,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ne" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/public/glass{
+	name = "Gateway Chamber"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"nf" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/obj/machinery/button/door{
+	dir = 1;
+	pixel_y = 24;
+	name = "Gateway Shutter Control"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ng" = (
+/obj/structure/flora/junglebush/large,
+/turf/open/floor/plating/grass/jungle,
+/area/virtual_domain)
+"nh" = (
+/obj/structure/flora/ausbushes/lavendergrass,
+/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/spacevine,
+/turf/open/floor/plating/grass/jungle,
+/area/virtual_domain)
+"ni" = (
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/holosign/barrier,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"nj" = (
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/holosign/barrier,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"nk" = (
+/obj/structure/showcase/machinery/tv,
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"nl" = (
+/obj/item/shard,
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"nm" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/obj/effect/landmark/bitrunning/cache_spawn,
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"nn" = (
+/obj/machinery/door/airlock/silver{
+	name = "Bathroom"
+	},
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"no" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/spider/stickyweb,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"np" = (
+/obj/structure/sign/map/right{
+	desc = "A framed picture of the station. Clockwise from security at the top (red), you see engineering (yellow), science (purple), escape (red and white), medbay (green), arrivals (blue and white), and finally cargo (brown).";
+	icon_state = "map-right-MS";
+	pixel_y = 32
+	},
+/turf/open/floor/wood,
+/area/virtual_domain)
+"nq" = (
+/obj/structure/table_frame/wood,
+/obj/item/stack/sheet/mineral/wood{
+	pixel_x = -4
+	},
+/turf/open/floor/wood,
+/area/virtual_domain)
+"nr" = (
+/obj/structure/table/wood,
+/obj/machinery/recharger,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"ns" = (
+/obj/effect/landmark/bitrunning/mob_segment,
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"nt" = (
+/obj/structure/table/wood,
+/obj/item/reagent_containers/syringe/lethal/execution,
+/obj/item/reagent_containers/syringe/lethal/execution{
+	pixel_x = -4;
+	pixel_y = 7
+	},
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"nu" = (
+/obj/structure/bed/dogbed/renault,
+/mob/living/simple_animal/pet/fox,
+/obj/item/stack/spacecash/c1000{
+	pixel_x = 5;
+	pixel_y = 15
+	},
+/obj/item/storage/secure/briefcase/syndie{
+	pixel_x = -6;
+	pixel_y = 13
+	},
+/obj/item/stack/sheet/mineral/diamond{
+	pixel_x = 9;
+	pixel_y = 9
+	},
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"nv" = (
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/machinery/vending/cola = 1000);
+	name = "spawn random cola vending machine"
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"nw" = (
+/obj/effect/turf_decal/bot_white/right,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/item/stock_parts/subspace/filter{
+	pixel_x = 15
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"nx" = (
+/obj/item/stock_parts/micro_laser/high,
+/turf/open/floor/plating{
+	icon_state = "panelscorched"
+	},
+/area/virtual_domain)
+"ny" = (
+/obj/effect/turf_decal/bot_white/left,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/item/clothing/head/cone{
+	pixel_x = 5;
+	pixel_y = -4
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"nz" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"nA" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/item/banner/medical,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"nB" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"nC" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/item/stack/sheet/mineral/wood{
+	pixel_x = -9
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"nD" = (
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/delivery,
+/obj/machinery/door/poddoor/shutters{
+	name = "Gateway Access Shutter"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"nE" = (
+/obj/structure/flora/ausbushes/leafybush,
+/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/spacevine,
+/obj/effect/mob_spawn/human/scientist,
+/turf/open/floor/plating/grass/jungle,
+/area/virtual_domain)
+"nF" = (
+/obj/structure/flora/junglebush/b,
+/obj/structure/flora/ausbushes/lavendergrass,
+/obj/item/flashlight/flare{
+	icon_state = "flare-on";
+	light_on = 1
+	},
+/turf/open/floor/plating/grass/jungle,
+/area/virtual_domain)
+"nG" = (
+/obj/structure/flora/junglebush,
+/turf/open/floor/plating/grass/jungle,
+/area/virtual_domain)
+"nH" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/structure/barricade/sandbags,
+/turf/open/floor/plating{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"nI" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "floor7"
+	},
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"nJ" = (
+/obj/item/disk/nuclear/fake/obvious,
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"nK" = (
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/spider/stickyweb,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"nL" = (
+/obj/structure/table/wood,
+/obj/item/flashlight/lamp/green{
+	pixel_x = 1;
+	pixel_y = 5
+	},
+/obj/item/bikehorn/rubberducky,
+/obj/machinery/light_switch{
+	dir = 8;
+	pixel_x = -26
+	},
+/obj/structure/window/reinforced/spawner/north,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"nM" = (
+/obj/machinery/door/airlock/command{
+	name = "Captain's Quarters"
+	},
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"nN" = (
+/obj/effect/mine/gas/plasma,
+/turf/open/floor/wood{
+	icon_state = "wood-broken3"
+	},
+/area/virtual_domain)
+"nO" = (
+/obj/structure/chair/fancy/comfy{
+	color = "#462F1C"
+	},
+/turf/open/floor/wood,
+/area/virtual_domain)
+"nP" = (
+/obj/structure/table_frame/wood,
+/obj/item/stack/sheet/mineral/wood{
+	pixel_x = 2
+	},
+/turf/open/floor/wood,
+/area/virtual_domain)
+"nQ" = (
+/obj/structure/chair/fancy/comfy{
+	color = "#462F1C";
+	dir = 8
+	},
+/obj/item/restraints/handcuffs/cable/white,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"nR" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"nS" = (
+/obj/machinery/status_display/evac{
+	dir = 1;
+	pixel_y = 32
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/item/trash/cheesie,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"nT" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"nU" = (
+/obj/machinery/vending/cigarette,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"nV" = (
+/obj/machinery/airalarm/directional/east,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"nW" = (
+/obj/effect/turf_decal/bot_white,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/machinery/status_display/ai{
+	dir = 1;
+	pixel_y = 32
+	},
+/obj/item/stock_parts/subspace/amplifier{
+	pixel_y = -6
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"nX" = (
+/obj/structure/frame/machine{
+	anchored = 1
+	},
+/obj/structure/marker_beacon{
+	picked_color = "Teal";
+	icon_state = "markerteal"
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"nY" = (
+/obj/structure/holosign/barrier/engineering,
+/turf/open/floor/plating{
+	icon_state = "panelscorched"
+	},
+/area/virtual_domain)
+"nZ" = (
+/obj/structure/flora/junglebush/b,
+/obj/structure/flora/junglebush/large,
+/turf/open/floor/plating/grass/jungle,
+/area/virtual_domain)
+"oa" = (
+/obj/structure/flora/rock/jungle,
+/turf/open/floor/plating/grass/jungle,
+/area/virtual_domain)
+"ob" = (
+/obj/structure/flora/ausbushes/sparsegrass,
+/turf/open/floor/plating/grass/jungle,
+/area/virtual_domain)
+"oc" = (
+/obj/structure/flora/grass/jungle/b,
+/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/tree/jungle/small,
+/turf/open/floor/plating/grass/jungle,
+/area/virtual_domain)
+"od" = (
+/obj/item/clothing/head/cone{
+	pixel_x = 5;
+	pixel_y = -4
+	},
+/obj/item/crowbar/large{
+	pixel_x = -6;
+	pixel_y = 10
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"oe" = (
+/obj/structure/holosign/barrier/atmos,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"of" = (
+/obj/structure/fluff/paper/stack{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"og" = (
+/obj/item/radio/intercom/directional/east,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/spider/stickyweb,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"oh" = (
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"oi" = (
+/obj/machinery/door/window/northleft{
+	name = "Captain's Bedroom"
+	},
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"oj" = (
+/obj/machinery/status_display/ai{
+	dir = 1;
+	pixel_y = 32
+	},
+/obj/machinery/computer{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"ok" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/machinery/requests_console{
+	dir = 4;
+	pixel_x = 30;
+	department = "Captain's Desk";
+	name = "Captain's Requests Console"
+	},
+/obj/structure/frame/computer{
+	dir = 8
+	},
+/obj/item/shard{
+	icon_state = "medium";
+	pixel_x = 5
+	},
+/obj/item/stack/cable_coil/cut,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"ol" = (
+/obj/item/radio/intercom/directional/east,
+/obj/structure/window/reinforced,
+/obj/structure/table_frame/wood,
+/obj/item/stack/sheet/mineral/wood,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"om" = (
+/obj/effect/mob_spawn/human/virtual_domain/pirate,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"on" = (
+/obj/structure/extinguisher_cabinet{
+	dir = 4;
+	pixel_x = 29
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/carpet,
+/area/virtual_domain)
+"oo" = (
+/obj/machinery/airalarm/directional/north,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"op" = (
+/obj/machinery/vending/coffee,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"oq" = (
+/obj/item/stock_parts/scanning_module/triphasic{
+	pixel_x = 4
+	},
+/turf/open/floor/plating{
+	icon_state = "panelscorched"
+	},
+/area/virtual_domain)
+"or" = (
+/obj/effect/decal/cleanable/blood/gibs,
+/turf/open/indestructible{
+	icon_state = "darkfull";
+	color = "#B44444";
+	name = "meat floor"
+	},
+/area/virtual_domain)
+"os" = (
+/obj/effect/turf_decal/bot_white,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/machinery/status_display/evac{
+	dir = 4;
+	pixel_x = 32
+	},
+/obj/item/stock_parts/subspace/crystal{
+	pixel_x = 6;
+	pixel_y = -12
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"ot" = (
+/obj/effect/turf_decal/bot_white/right,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/item/clothing/head/cone{
+	pixel_x = 1;
+	pixel_y = 3
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"ou" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/effect/mob_spawn/human/corpse/assistant,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"ov" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ow" = (
+/obj/machinery/airalarm/directional/east,
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ox" = (
+/obj/structure/flora/grass/jungle/b,
+/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/spacevine,
+/obj/structure/flora/junglebush/large,
+/turf/open/floor/plating/grass/jungle,
+/area/virtual_domain)
+"oy" = (
+/obj/structure/flora/grass/jungle/b,
+/obj/structure/flora/ausbushes/lavendergrass,
+/obj/structure/flora/ausbushes/leafybush,
+/turf/open/floor/plating/grass/jungle,
+/area/virtual_domain)
+"oz" = (
+/obj/structure/flora/rock/jungle,
+/obj/structure/flora/tree/jungle/small,
+/turf/open/floor/plating/grass/jungle,
+/area/virtual_domain)
+"oA" = (
+/obj/effect/decal/cleanable/blood,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"oB" = (
+/obj/item/clothing/head/cone{
+	pixel_x = 6;
+	pixel_y = 2
+	},
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plating{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"oC" = (
+/obj/item/kirbyplants,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#52B4E9"
+	},
+/obj/item/clothing/neck/stethoscope,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"oD" = (
+/obj/item/stack/rods/ten,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"oE" = (
+/obj/effect/decal/cleanable/glass,
+/obj/structure/safe/floor,
+/obj/item/stack/spacecash/c1000{
+	amount = 10
+	},
+/obj/item/stack/spacecash/c1000{
+	amount = 10
+	},
+/obj/item/stack/spacecash/c1000{
+	amount = 10
+	},
+/obj/item/stack/sheet/mineral/gold,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"oF" = (
+/obj/machinery/fax{
+	pixel_y = 9
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"oG" = (
+/obj/effect/mine/explosive,
+/turf/open/floor/plating{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"oH" = (
+/obj/machinery/newscaster/directional/south,
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"oI" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "Gateway Maintenance"
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"oJ" = (
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/structure/sign/warning/securearea{
+	dir = 1;
+	pixel_y = 32
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"oK" = (
+/turf/open/floor/plating/grass/jungle,
+/area/virtual_domain)
+"oL" = (
+/obj/structure/flora/junglebush,
+/obj/structure/flora/ausbushes/lavendergrass,
+/obj/structure/flora/junglebush/large,
+/turf/open/floor/plating/grass/jungle,
+/area/virtual_domain)
+"oM" = (
+/obj/item/clothing/head/hardhat,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"oN" = (
+/turf/closed/wall/r_wall,
+/area/virtual_domain)
+"oO" = (
+/obj/structure/lattice,
+/obj/effect/decal/cleanable/blood/gibs/torso,
+/turf/open/space/basic,
+/area/virtual_domain)
+"oP" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "floor4"
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"oQ" = (
+/obj/machinery/airalarm/directional/south,
+/obj/structure/rack,
+/obj/item/wrench,
+/obj/item/crowbar,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"oR" = (
+/obj/structure/rack,
+/obj/item/gun/ballistic/revolver/golden,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"oS" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"oT" = (
+/obj/structure/chair{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"oU" = (
+/obj/machinery/light/small{
+	brightness = 3;
+	dir = 4
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"oV" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/closet/crate/trashcart,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"oW" = (
+/obj/machinery/door/airlock/maintenance,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"oX" = (
+/turf/open/floor/plating{
+	icon_state = "panelscorched"
+	},
+/area/virtual_domain)
+"oY" = (
+/obj/structure/closet/emcloset,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/obj/structure/extinguisher_cabinet{
+	dir = 8;
+	pixel_x = -29
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"oZ" = (
+/obj/effect/turf_decal/tile/bar{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/machinery/firealarm/directional/north,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"pa" = (
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/trash/can = 143, /obj/item/shard = 93, /obj/item/broken_bottle = 46, /obj/item/light/tube/broken = 46, /obj/item/light/bulb/broken = 46, /obj/item/paper = 31, /obj/item/assembly/mousetrap = 28, /obj/item/assembly/mousetrap/armed = 28, /obj/item/stack/cable_coil = 28, /obj/item/stack/cable_coil/cut = 28, /obj/item/reagent_containers/syringe = 28, /obj/item/grown/bananapeel = 28, /obj/item/cigbutt = 23, /obj/item/cigbutt/roach = 23, /obj/effect/decal/cleanable/ash = 23, /obj/item/food/breadslice/moldy/bacteria = 23, /obj/item/food/pizzaslice/moldy/bacteria = 23, /obj/item/reagent_containers/food/drinks/drinkingglass = 19, /obj/item/food/deadmouse = 19, /obj/item/c_tube = 19, /obj/item/plate_shard = 19, /obj/item/lighter/greyscale = 19, /obj/item/trash/chips = 17, /obj/item/cigbutt/cigarbutt = 14, /obj/item/grown/corncob = 14, /obj/item/trash/pistachios = 14, /obj/item/trash/boritos = 14, /obj/item/lighter = 9, /obj/item/trash/candle = 9, /obj/item/reagent_containers/glass/rag = 9, /obj/item/shard/plasma = 9, /obj/item/trash/raisins = 7, /obj/item/trash/cheesie = 7, /obj/item/trash/candy = 7, /obj/item/trash/sosjerky = 7, /obj/item/reagent_containers/food/drinks/sillycup = 7, /obj/item/trash/semki = 7, /obj/item/food/grown/bungopit = 5, /obj/item/storage/fancy/cigarettes = 4, /obj/item/storage/fancy/cigarettes/cigpack_uplift = 4, /obj/item/storage/fancy/cigarettes/cigpack_robust = 4, /obj/item/storage/fancy/cigarettes/cigpack_robustgold = 4, /obj/item/storage/fancy/cigarettes/cigpack_carp = 4, /obj/item/storage/fancy/cigarettes/cigpack_midori = 4, /obj/item/trash/popcorn = 3, /obj/item/trash/energybar = 3, /obj/item/trash/syndi_cakes = 3, /obj/item/trash/tray = 3, /obj/item/paper/crumpled = 3, /obj/item/paper/crumpled/bloody = 3, /obj/item/storage/fancy/rollingpapers = 2, /obj/item/storage/fancy/cigarettes/cigars = 2, /obj/item/storage/fancy/cigarettes/cigars/cohiba = 2, /obj/item/storage/fancy/cigarettes/cigars/havana = 2, /obj/item/storage/fancy/cigarettes/dromedaryco = 2, /obj/item/storage/fancy/cigarettes/cigpack_shadyjims = 2, /obj/item/storage/fancy/cigarettes/cigpack_xeno = 2, /obj/item/paper/construction = 2, /obj/item/storage/fancy/cigarettes/cigpack_cannabis = 1, /obj/item/storage/fancy/cigarettes/cigpack_mindbreaker = 1, /obj/item/storage/fancy/cigarettes/cigpack_syndicate = 1);
+	name = "garbage spawner"
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"pb" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"pc" = (
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"pd" = (
+/obj/structure/extinguisher_cabinet{
+	dir = 2;
+	pixel_y = -29
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/mob_spawn/human/scientist,
+/turf/open/floor/plating/dirt/jungle/dark,
+/area/virtual_domain)
+"pe" = (
+/obj/structure/flora/junglebush/b,
+/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/tree/jungle/small,
+/turf/open/floor/plating/grass/jungle,
+/area/virtual_domain)
+"pf" = (
+/obj/structure/sign/warning/pods,
+/turf/closed/wall,
+/area/virtual_domain)
+"pg" = (
+/obj/structure/fluff/paper/stack,
+/obj/structure/marker_beacon{
+	picked_color = "Bronze";
+	icon_state = "markerbronze"
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"ph" = (
+/obj/item/clothing/head/cone{
+	pixel_x = 1;
+	pixel_y = 3
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/item/storage/toolbox/electrical{
+	pixel_x = -2;
+	pixel_y = -5
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"pi" = (
+/obj/structure/fluff/paper/stack{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"pj" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/barricade/sandbags,
+/turf/open/floor/plating{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"pk" = (
+/obj/effect/turf_decal/bot,
+/obj/machinery/vending/cigarette,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"pl" = (
+/obj/effect/decal/cleanable/crayon{
+	icon_state = "x"
+	},
+/turf/closed/wall/rust,
+/area/virtual_domain)
+"pm" = (
+/obj/structure/sign/directions/engineering{
+	dir = 4
+	},
+/obj/structure/sign/directions/security{
+	dir = 1;
+	pixel_y = 8
+	},
+/obj/structure/sign/directions/command{
+	dir = 8;
+	pixel_y = -8
+	},
+/turf/closed/wall,
+/area/virtual_domain)
+"pn" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/public/glass{
+	name = "Command Hallway"
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"po" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/public/glass{
+	name = "Command Hallway"
+	},
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"pp" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal{
+	icon_state = "dirt_side";
+	name = "dirt siding";
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"pq" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/item/banner/science,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"pr" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/glass,
+/obj/machinery/firealarm/directional/north,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ps" = (
+/obj/effect/decal/cleanable/blood/footprints{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"pt" = (
+/obj/item/bodybag{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/spray/cleaner{
+	pixel_x = 9;
+	pixel_y = -5
+	},
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"pu" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"pv" = (
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"pw" = (
+/obj/structure/marker_beacon{
+	picked_color = "Bronze";
+	icon_state = "markerbronze"
+	},
+/turf/open/floor/plasteel{
+	icon_state = "damaged5"
+	},
+/area/virtual_domain)
+"px" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/status_display/evac{
+	dir = 8;
+	pixel_x = -32
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"py" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/extinguisher_cabinet{
+	dir = 8;
+	pixel_x = -29
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"pz" = (
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/item/pickaxe,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"pA" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/item/bikehorn,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"pB" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/glitter,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"pC" = (
+/obj/machinery/airalarm/directional/west,
+/obj/effect/decal/cleanable/glitter,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"pD" = (
+/obj/machinery/firealarm/directional/west,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"pE" = (
+/obj/structure/sign/poster/random{
+	dir = 8;
+	pixel_x = -32
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/glitter,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"pF" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"pG" = (
+/obj/effect/turf_decal/bot,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"pH" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood{
+	icon_state = "floor7"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"pI" = (
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"pJ" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/structure/barricade/sandbags,
+/obj/structure/railing,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"pK" = (
+/obj/machinery/status_display/evac{
+	dir = 8;
+	pixel_x = -32
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"pL" = (
+/obj/item/radio/intercom/directional/west,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"pM" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/machinery/firealarm/directional/west,
+/obj/effect/turf_decal{
+	icon_state = "dirt_side";
+	name = "dirt siding";
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"pN" = (
+/obj/effect/turf_decal{
+	icon_state = "dirt_side";
+	name = "dirt siding";
+	dir = 6
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"pO" = (
+/obj/item/seeds/cocoapod,
+/turf/open/floor/plating/dirt/jungle,
+/area/virtual_domain)
+"pP" = (
+/obj/structure/flora/grass/jungle/b,
+/turf/open/floor/plating/dirt/jungle,
+/area/virtual_domain)
+"pQ" = (
+/obj/effect/turf_decal{
+	icon_state = "dirt_side";
+	name = "dirt siding";
+	dir = 5
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"pR" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/preopen{
+	id = "hop";
+	name = "Privacy Shutters"
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"pS" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/obj/effect/turf_decal{
+	icon_state = "dirt_side";
+	name = "dirt siding";
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"pT" = (
+/obj/effect/turf_decal/trimline/green/filled/corner,
+/obj/effect/turf_decal{
+	icon_state = "dirt_side";
+	name = "dirt siding";
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"pU" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"pV" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/glitter,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"pW" = (
+/obj/effect/decal/cleanable/glass,
+/obj/item/clothing/head/festive,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"pX" = (
+/obj/structure/table/wood,
+/obj/machinery/chem_dispenser/drinks/fullupgrade{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"pY" = (
+/obj/effect/decal/cleanable/glitter,
+/obj/machinery/jukebox/disco{
+	anchored = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"pZ" = (
+/obj/item/clothing/head/festive,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"qa" = (
+/obj/structure/barricade/sandbags,
+/obj/structure/railing/corner{
+	dir = 4
+	},
+/obj/structure/marker_beacon{
+	picked_color = "Bronze";
+	icon_state = "markerbronze"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"qb" = (
+/obj/effect/turf_decal{
+	icon_state = "dirt_side";
+	name = "dirt siding"
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"qc" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/command{
+	name = "Head of Personnel"
+	},
+/obj/structure/barricade/wooden/crude,
+/turf/open/floor/wood,
+/area/virtual_domain)
+"qd" = (
+/obj/item/seeds/eggplant,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating/dirt/jungle,
+/area/virtual_domain)
+"qe" = (
+/obj/structure/sink/puddle,
+/turf/open/floor/plating/dirt/jungle,
+/area/virtual_domain)
+"qf" = (
+/obj/structure/flora/grass/jungle/b,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/landmark/bitrunning/mob_segment,
+/turf/open/floor/plating/dirt/jungle,
+/area/virtual_domain)
+"qg" = (
+/obj/item/seeds/cabbage,
+/turf/open/floor/plating/dirt/jungle,
+/area/virtual_domain)
+"qh" = (
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"qi" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/obj/item/banner/engineering,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"qj" = (
+/obj/structure/holosign/barrier/engineering,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"qk" = (
+/obj/effect/turf_decal/tile/bar,
+/obj/structure/holosign/barrier/engineering,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ql" = (
+/obj/effect/turf_decal/tile/bar,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/item/banner/engineering,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"qm" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/newscaster/directional/east,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/bar,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"qn" = (
+/obj/structure/sign/directions/command{
+	dir = 4;
+	pixel_y = -8
+	},
+/obj/structure/sign/directions/security{
+	dir = 1;
+	pixel_y = 8
+	},
+/obj/structure/sign/directions/engineering{
+	dir = 4
+	},
+/turf/closed/wall,
+/area/virtual_domain)
+"qo" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/bar,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"qp" = (
+/obj/machinery/vending/boozeomat/syndicate_access,
+/obj/effect/turf_decal/tile/bar,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"qq" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/bar,
+/obj/structure/table/wood,
+/obj/machinery/chem_dispenser/drinks/beer/fullupgrade,
+/obj/effect/decal/cleanable/glitter,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"qr" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/bar,
+/obj/effect/decal/cleanable/glass,
+/obj/item/clothing/head/festive,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"qs" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/bar,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"qt" = (
+/obj/effect/turf_decal/tile/bar,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"qu" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/bar,
+/obj/structure/barricade/sandbags,
+/obj/structure/railing,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"qv" = (
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/tile/bar,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood{
+	icon_state = "floor4"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"qw" = (
+/obj/structure/extinguisher_cabinet{
+	dir = 4;
+	pixel_x = 29
+	},
+/obj/effect/turf_decal/tile/bar,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/item/ammo_casing/spent,
+/obj/item/ammo_casing/spent{
+	dir = 10;
+	pixel_x = -13;
+	pixel_y = -8
+	},
+/obj/item/ammo_casing/spent{
+	dir = 9;
+	pixel_x = -13;
+	pixel_y = 9
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"qx" = (
+/obj/effect/turf_decal/tile/bar,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/item/ammo_casing/spent{
+	dir = 10
+	},
+/obj/item/ammo_casing/spent{
+	dir = 9;
+	pixel_x = -19;
+	pixel_y = -5
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"qy" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/public/glass{
+	name = "Command Hallway"
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"qz" = (
+/obj/effect/turf_decal/tile/bar,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/barricade/sandbags,
+/obj/structure/railing,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"qA" = (
+/obj/effect/turf_decal/tile/bar,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal{
+	icon_state = "dirt_side";
+	name = "dirt siding"
+	},
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/structure/closet/crate/bin = 500, /obj/structure/closet/crate/trashcart = 350, /obj/structure/closet/cardboard = 135, /obj/structure/closet/cardboard/metal = 15);
+	name = "trashbin spawner"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"qB" = (
+/obj/machinery/hydroponics/constructable,
+/turf/open/floor/plating/dirt/jungle,
+/area/virtual_domain)
+"qC" = (
+/obj/item/kirbyplants{
+	icon_state = "plant-21"
+	},
+/obj/structure/sign/departments/botany{
+	dir = 4;
+	pixel_x = 32
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/plating/dirt/jungle,
+/area/virtual_domain)
+"qD" = (
+/obj/item/seeds/coffee,
+/turf/open/floor/plating/dirt/jungle,
+/area/virtual_domain)
+"qE" = (
+/obj/structure/flora/grass/jungle/b,
+/obj/structure/frame/machine{
+	anchored = 1
+	},
+/turf/open/floor/plating/dirt/jungle,
+/area/virtual_domain)
+"qF" = (
+/turf/closed/indestructible/fakedoor{
+	name = "Engineering"
+	},
+/area/virtual_domain)
+"qG" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/public/glass{
+	name = "Command Hallway"
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"qH" = (
+/obj/structure/sign/directions/science{
+	pixel_y = -8
+	},
+/obj/structure/sign/directions/medical{
+	pixel_y = 8
+	},
+/obj/structure/sign/directions/evac,
+/turf/closed/wall/r_wall,
+/area/virtual_domain)
+"qI" = (
+/obj/structure/closet/emcloset,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"qJ" = (
+/obj/structure/sign/warning{
+	icon = 'aquila/icons/obj/decals.dmi';
+	icon_state = "gasmask";
+	name = "\improper CONTAMINATED AIR";
+	dir = 1;
+	pixel_y = 32
+	},
+/turf/open/floor/plasteel{
+	icon_state = "damaged5"
+	},
+/area/virtual_domain)
+"qK" = (
+/obj/effect/landmark/bitrunning/mob_segment,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"qL" = (
+/obj/effect/decal/cleanable/blood/gibs,
+/obj/effect/mob_spawn/human/doctor,
+/turf/open/indestructible{
+	icon_state = "darkfull";
+	color = "#B44444";
+	name = "meat floor"
+	},
+/area/virtual_domain)
+"qM" = (
+/obj/effect/decal/cleanable/blood/gibs/core,
+/turf/open/indestructible{
+	icon_state = "darkfull";
+	color = "#B44444";
+	name = "meat floor"
+	},
+/area/virtual_domain)
+"qN" = (
+/turf/closed/indestructible/riveted{
+	name = "dense meat wall";
+	color = "#B44444"
+	},
+/area/virtual_domain)
+"qO" = (
+/obj/structure/closet/firecloset,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"qP" = (
+/obj/machinery/firealarm/directional/north,
+/obj/effect/turf_decal/tile/bar{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"qQ" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/machinery/light{
+	dir = 2
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"qR" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/reinforced,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/poddoor/shutters{
+	dir = 8;
+	name = "Vacant Commissary Shutter"
+	},
+/obj/structure/noticeboard{
+	dir = 2;
+	pixel_y = 32
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"qS" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table/reinforced,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/poddoor/shutters{
+	dir = 8;
+	name = "Vacant Commissary Shutter"
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+
+(1,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(2,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ci
+ci
+ci
+ci
+ci
+ep
+ep
+ep
+ep
+ep
+ab
+ab
+ab
+ep
+ep
+gw
+ep
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(3,1,1) = {"
+aa
+ab
+ci
+ci
+ci
+ci
+iD
+iD
+iD
+ci
+ci
+ci
+ep
+ep
+ep
+ep
+kK
+ep
+ep
+ep
+iD
+ci
+ci
+iD
+ep
+mR
+oY
+qI
+ep
+ep
+ep
+ep
+ep
+ac
+an
+ep
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(4,1,1) = {"
+aa
+ab
+ci
+ci
+ci
+ay
+aJ
+aU
+ci
+ci
+ci
+bf
+bq
+bB
+bM
+bX
+cj
+cu
+cF
+cQ
+ci
+ci
+db
+dm
+dx
+cu
+cu
+dI
+dT
+ee
+eq
+eB
+eM
+eX
+fi
+ep
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(5,1,1) = {"
+aa
+ab
+ep
+ci
+ft
+fE
+fP
+ga
+fE
+gl
+gx
+fE
+gI
+gT
+he
+hp
+hA
+gx
+fP
+hL
+hW
+ih
+is
+gx
+iE
+iP
+fE
+ja
+jl
+jw
+fE
+gT
+fE
+jH
+jS
+ep
+ep
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(6,1,1) = {"
+ab
+ab
+gw
+kd
+ga
+ko
+kz
+kL
+kL
+kL
+kW
+lh
+ls
+ko
+lD
+lO
+lZ
+kL
+mk
+kL
+mv
+mG
+kL
+mG
+mS
+nd
+no
+nz
+nK
+nV
+og
+mG
+mG
+fE
+or
+oC
+iD
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(7,1,1) = {"
+ab
+oN
+oN
+oZ
+fE
+kL
+ep
+pk
+pv
+pv
+pG
+oN
+oN
+pR
+oN
+oN
+qc
+oN
+oN
+ep
+qn
+qy
+qG
+qH
+oN
+oN
+oN
+oN
+oN
+oN
+oN
+oN
+qJ
+qK
+qL
+qM
+qN
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(8,1,1) = {"
+ab
+oN
+qO
+qP
+fE
+qQ
+ep
+ep
+qR
+qS
+ep
+oN
+ad
+ae
+af
+ag
+ah
+ai
+oN
+aj
+ep
+ak
+cu
+oN
+al
+am
+ao
+ap
+aq
+ar
+as
+oN
+at
+or
+au
+av
+iD
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(9,1,1) = {"
+ab
+iD
+qI
+aw
+ax
+az
+ep
+aA
+aB
+aC
+gx
+aD
+ai
+aE
+aF
+aG
+ah
+aH
+aI
+pG
+aK
+aL
+aM
+aN
+aO
+aP
+aQ
+aR
+aS
+aT
+aV
+aW
+aX
+jH
+aY
+ep
+qN
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(10,1,1) = {"
+ab
+oN
+qI
+aZ
+fP
+ba
+ep
+bb
+bc
+bd
+aH
+oN
+be
+bg
+bh
+bi
+bj
+aE
+oN
+bk
+bl
+ak
+bm
+oN
+aX
+bn
+bo
+bp
+br
+bs
+bt
+bu
+bv
+bw
+bx
+qN
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(11,1,1) = {"
+ab
+oN
+oN
+by
+bz
+bA
+ep
+bC
+gx
+bD
+bE
+oN
+oN
+oN
+oN
+bF
+bG
+bH
+oN
+bI
+bJ
+bK
+cu
+bL
+bN
+bO
+bO
+bP
+bO
+bQ
+bR
+aW
+bS
+bT
+bU
+ep
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(12,1,1) = {"
+ab
+ab
+oN
+bV
+bW
+bY
+ep
+ep
+bZ
+ca
+aH
+ep
+cb
+oN
+cc
+ah
+cd
+ce
+oN
+cf
+cg
+bM
+ch
+oN
+ck
+cl
+cm
+ep
+cn
+am
+co
+oN
+cp
+cq
+cr
+qN
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(13,1,1) = {"
+aa
+ab
+cs
+ct
+cv
+cw
+ep
+cx
+cy
+cz
+cA
+cB
+cC
+oN
+cD
+cE
+ah
+cG
+aI
+cH
+cI
+cJ
+cK
+oN
+ep
+ep
+ep
+ep
+ep
+ep
+ep
+oN
+cL
+bx
+cM
+ep
+qN
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(14,1,1) = {"
+aa
+ab
+oN
+cN
+cO
+cP
+cR
+cS
+cT
+aH
+cU
+cV
+cW
+oN
+cX
+cY
+cZ
+da
+dc
+dd
+de
+df
+dg
+oN
+dh
+di
+dj
+dk
+dl
+dn
+do
+oN
+dp
+dq
+dr
+ds
+iD
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(15,1,1) = {"
+aa
+ab
+oN
+dt
+du
+dv
+ep
+oN
+dw
+oN
+oN
+ep
+dy
+oN
+dz
+dA
+dB
+dC
+oN
+dD
+oN
+dE
+cu
+oN
+dF
+dG
+dH
+dJ
+dK
+dL
+aV
+dM
+dN
+dO
+dP
+dQ
+dR
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(16,1,1) = {"
+aa
+ab
+ep
+dS
+dU
+dV
+dW
+dX
+dX
+dX
+oN
+oN
+dY
+oN
+ep
+ep
+dZ
+ep
+oN
+oN
+ea
+eb
+bM
+ec
+ed
+ef
+eg
+eh
+ei
+dG
+bR
+ej
+aX
+ek
+el
+em
+dR
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(17,1,1) = {"
+ab
+ab
+ep
+en
+fE
+eo
+dw
+er
+dX
+dX
+es
+et
+eu
+ev
+ew
+ex
+ey
+ez
+eA
+eC
+eD
+ak
+eE
+oN
+eF
+eG
+eH
+dK
+eI
+eJ
+eK
+oN
+eL
+eN
+eO
+eP
+iD
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+eQ
+"}
+(18,1,1) = {"
+ab
+ep
+ep
+eR
+fE
+eS
+eT
+aH
+eU
+es
+oN
+eV
+eW
+eC
+eY
+ex
+eZ
+fa
+fb
+fc
+eD
+bM
+fd
+oN
+oN
+dW
+fe
+ef
+ef
+ep
+ep
+oN
+ff
+fg
+fh
+fj
+ep
+ep
+ep
+ep
+ep
+ep
+ep
+ep
+ep
+ab
+"}
+(19,1,1) = {"
+ab
+oN
+fk
+fl
+bM
+fm
+aH
+aH
+fn
+aH
+fo
+fp
+fq
+fr
+fs
+ep
+ep
+ep
+fu
+ep
+oN
+fv
+cu
+dW
+dX
+dX
+fw
+fx
+fy
+fz
+fA
+fB
+fC
+fE
+gx
+fD
+fF
+fG
+dX
+fG
+dX
+fG
+dX
+fG
+ep
+ab
+"}
+(20,1,1) = {"
+ab
+iD
+fH
+ga
+fE
+fI
+fJ
+fK
+fL
+fM
+fN
+aH
+fO
+fQ
+fR
+ep
+fS
+fT
+eC
+fU
+oN
+fV
+fW
+oN
+dw
+dw
+oN
+fX
+fY
+fZ
+gb
+oN
+gc
+gd
+fE
+ge
+ep
+gf
+gf
+gf
+gf
+gf
+gf
+gf
+ep
+ab
+"}
+(21,1,1) = {"
+ab
+oN
+gg
+gh
+gi
+kL
+gj
+fN
+gk
+gm
+gn
+go
+fr
+gp
+gq
+ep
+ep
+gr
+ah
+gs
+oN
+gt
+gu
+gv
+gy
+cu
+fw
+gz
+gA
+gB
+aE
+gC
+gD
+gE
+gi
+fD
+ep
+gF
+gG
+gH
+gH
+gG
+gF
+gf
+ep
+ab
+"}
+(22,1,1) = {"
+ab
+gJ
+gK
+gL
+gM
+gN
+dW
+er
+oN
+gO
+fO
+gP
+gQ
+gR
+gS
+gU
+ep
+gV
+ah
+gW
+gX
+gD
+fE
+gY
+gZ
+ha
+oN
+hb
+hc
+hd
+hf
+oN
+hg
+hh
+hi
+hj
+hk
+gH
+hl
+hm
+hn
+ho
+hq
+gf
+ep
+ab
+"}
+(23,1,1) = {"
+ab
+hr
+hs
+ht
+hu
+kL
+dw
+dX
+es
+hv
+eW
+hw
+hx
+eC
+ah
+hy
+ep
+hz
+hB
+hC
+gX
+hD
+hE
+hF
+hG
+hH
+oN
+hI
+gA
+hJ
+hK
+hM
+hN
+bM
+hO
+hP
+hQ
+hq
+hR
+hS
+hT
+hU
+gH
+gf
+ep
+ab
+"}
+(24,1,1) = {"
+ab
+hr
+hs
+hV
+hX
+hY
+dW
+dX
+es
+hZ
+ia
+ib
+ic
+id
+ie
+bG
+if
+eC
+ig
+ii
+ij
+ik
+dU
+il
+ft
+im
+gC
+aE
+fN
+fN
+aH
+in
+io
+ip
+iq
+ir
+fN
+it
+iu
+iv
+iw
+ix
+hq
+gf
+ep
+ab
+"}
+(25,1,1) = {"
+ab
+hr
+hs
+hV
+iy
+cu
+dw
+dX
+es
+hv
+eC
+iz
+iA
+iB
+iC
+iF
+ep
+iG
+iH
+iI
+iJ
+gj
+iK
+fE
+iL
+iM
+oN
+iN
+iO
+aH
+iQ
+fN
+aH
+iR
+iS
+iT
+iU
+hq
+iV
+iW
+iX
+iY
+gH
+gf
+ep
+ab
+"}
+(26,1,1) = {"
+ab
+kK
+iZ
+hV
+jb
+jc
+dW
+jd
+oN
+je
+jf
+jg
+jh
+ji
+jj
+jk
+ep
+jm
+ah
+jn
+jo
+jp
+jq
+gY
+jr
+js
+oN
+jt
+aH
+ju
+jv
+oN
+hV
+hV
+bM
+jx
+jy
+gH
+jz
+jA
+jB
+jC
+hq
+gf
+ep
+ab
+"}
+(27,1,1) = {"
+ab
+ep
+jD
+jE
+jF
+jG
+dw
+jI
+es
+jJ
+jK
+hw
+jL
+jM
+jN
+ep
+ep
+jO
+ah
+ah
+oN
+jP
+jQ
+jR
+hH
+jT
+jU
+jV
+aE
+jW
+iO
+gC
+gD
+jX
+jY
+jZ
+ep
+gF
+hq
+gH
+gH
+hq
+ka
+gf
+ep
+ab
+"}
+(28,1,1) = {"
+ab
+ep
+kb
+fE
+fE
+kc
+dw
+dX
+es
+ke
+kf
+kg
+kh
+ki
+kj
+ep
+fS
+kk
+kl
+km
+oN
+kn
+kp
+oN
+dW
+dW
+oN
+kq
+iO
+kr
+ks
+oN
+kt
+fE
+ku
+kv
+kw
+gf
+gf
+gf
+gf
+gf
+gf
+gf
+ep
+ab
+"}
+(29,1,1) = {"
+ab
+ep
+kx
+ky
+qK
+aM
+dW
+dX
+es
+kA
+kB
+kC
+kD
+kE
+kF
+ep
+ep
+ep
+fu
+ep
+oN
+kG
+kL
+dw
+dX
+dX
+fw
+kH
+kI
+kJ
+kM
+hM
+kN
+qK
+fE
+kO
+fF
+fG
+dX
+fG
+dX
+fG
+dX
+fG
+ep
+ab
+"}
+(30,1,1) = {"
+ab
+ep
+ep
+kP
+fE
+kQ
+dW
+dX
+es
+es
+oN
+kR
+kS
+kT
+kU
+ex
+kV
+fr
+fr
+kX
+eD
+mG
+kY
+oN
+oN
+dW
+oN
+ep
+ep
+ep
+ep
+oN
+kZ
+la
+lb
+lc
+ld
+ep
+ep
+ep
+ep
+ep
+ep
+ep
+ep
+ab
+"}
+(31,1,1) = {"
+ab
+ab
+ep
+le
+lf
+lg
+dw
+dX
+dX
+li
+es
+lj
+lk
+ll
+lm
+ex
+ln
+lo
+fb
+fb
+eD
+lp
+lq
+lr
+lt
+lu
+lv
+lw
+lx
+ly
+lz
+oN
+ak
+fE
+lA
+lB
+lC
+ci
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+"}
+(32,1,1) = {"
+aa
+ab
+iD
+lE
+ft
+lF
+dW
+dX
+lG
+lH
+oN
+oN
+oN
+lI
+lJ
+oN
+oN
+oN
+lK
+oN
+ea
+mG
+bM
+lr
+lL
+bM
+lM
+lN
+lM
+lP
+lQ
+oN
+lR
+lS
+lT
+lU
+lV
+ci
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(33,1,1) = {"
+aa
+ab
+hr
+lE
+lW
+lX
+oN
+oN
+oN
+oN
+oN
+lY
+oN
+oN
+oN
+oN
+ma
+mb
+ah
+mc
+oN
+md
+kL
+hV
+me
+mf
+mg
+mh
+mi
+bt
+mj
+oN
+ml
+mm
+mn
+mo
+mp
+ci
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(34,1,1) = {"
+aa
+ab
+ep
+mq
+mr
+ms
+oN
+mt
+mu
+mw
+ep
+mx
+ep
+my
+mz
+mA
+mB
+mC
+ah
+ah
+lK
+mD
+mE
+oN
+mF
+mH
+mI
+mJ
+mK
+bR
+mL
+oN
+fv
+lA
+mM
+mN
+lC
+ci
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(35,1,1) = {"
+aa
+ab
+ep
+mO
+mP
+mQ
+oN
+mT
+mU
+mV
+ep
+mW
+ep
+mX
+aE
+kr
+mC
+mY
+mY
+mZ
+oN
+na
+nb
+oN
+oN
+nc
+nc
+oN
+dw
+ne
+dw
+oN
+nf
+lT
+ng
+nh
+ld
+ci
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(36,1,1) = {"
+aa
+ab
+ep
+ni
+fP
+nj
+oN
+nk
+nl
+nm
+ep
+nn
+ep
+np
+nq
+nr
+ns
+hK
+nt
+nu
+oN
+mG
+bM
+nv
+oN
+nw
+nx
+ny
+nA
+nB
+nC
+nD
+aX
+nE
+nF
+nG
+ld
+ci
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(37,1,1) = {"
+aa
+ab
+iD
+mG
+fE
+cu
+nH
+nI
+ai
+nJ
+nL
+kr
+nM
+nN
+nO
+nP
+fN
+mU
+nQ
+nR
+oN
+nS
+nT
+nU
+oN
+nW
+nX
+nY
+an
+fE
+bt
+nD
+aX
+nZ
+oa
+ob
+oc
+ci
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(38,1,1) = {"
+aa
+ab
+hr
+mG
+fE
+eT
+od
+oe
+of
+oh
+oi
+kr
+ep
+oj
+ok
+ol
+aH
+aH
+om
+on
+oN
+oo
+kL
+op
+oN
+oq
+os
+ot
+ou
+ov
+ow
+nD
+aX
+lT
+ox
+oy
+oz
+ci
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(39,1,1) = {"
+aa
+ab
+hr
+aH
+ga
+oA
+oe
+dX
+oe
+oB
+oD
+oE
+ep
+ep
+oN
+oN
+oF
+oG
+aH
+oN
+oN
+mG
+oH
+oN
+oN
+oN
+oN
+oN
+oN
+oI
+oN
+oN
+oJ
+lA
+nG
+oK
+oL
+ci
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(40,1,1) = {"
+aa
+ab
+iD
+bM
+fE
+oM
+oe
+lG
+oO
+oe
+oP
+oQ
+ep
+oR
+oN
+oS
+fN
+oT
+oU
+oV
+oW
+mG
+kL
+oW
+cS
+oX
+aH
+pa
+fN
+pb
+pc
+oW
+ak
+fE
+pd
+ld
+pe
+ci
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(41,1,1) = {"
+aa
+ab
+pf
+mG
+fE
+pg
+ph
+oe
+oe
+pi
+pj
+oN
+oN
+pl
+oN
+oW
+ep
+ep
+ep
+ep
+pm
+pn
+po
+kK
+ep
+ep
+ep
+ep
+ep
+ep
+ep
+ep
+pp
+fE
+pq
+ep
+ld
+ci
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(42,1,1) = {"
+aa
+ab
+ep
+pr
+qK
+cu
+eT
+ps
+pt
+pu
+pw
+px
+py
+pz
+dx
+pA
+pB
+pC
+pD
+pE
+pF
+ak
+pH
+ak
+pI
+pJ
+pK
+pL
+ak
+pM
+pN
+pO
+pP
+pQ
+pS
+pT
+ci
+ci
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(43,1,1) = {"
+aa
+ab
+ep
+mG
+pU
+ga
+fE
+fP
+mP
+aH
+fE
+fN
+ga
+fP
+pV
+pW
+pX
+pY
+pZ
+fN
+fE
+fE
+qK
+qa
+fP
+gI
+pU
+qa
+qb
+pP
+pP
+qd
+pP
+qe
+qf
+qg
+ci
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(44,1,1) = {"
+aa
+ab
+ep
+mG
+nz
+nV
+mG
+qh
+qi
+qj
+qj
+qk
+ql
+qm
+qo
+qp
+ci
+ci
+qq
+qr
+qo
+qs
+qt
+qu
+qv
+qw
+qx
+qz
+qA
+ci
+ci
+qB
+qC
+pP
+qD
+qE
+ci
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(45,1,1) = {"
+aa
+ab
+ep
+ep
+ep
+ep
+ep
+ep
+ep
+qF
+qF
+qF
+ep
+ep
+iD
+iD
+ci
+ci
+ci
+iD
+ep
+ep
+ep
+ep
+ep
+ep
+ep
+ep
+ep
+ep
+ci
+ci
+ep
+iD
+ci
+ci
+ci
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(46,1,1) = {"
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}

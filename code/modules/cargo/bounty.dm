@@ -75,7 +75,7 @@ GLOBAL_LIST_EMPTY(bounties_list)
 
 // Returns a new bounty of random type, but does not add it to GLOB.bounties_list.
 /proc/random_bounty()
-	switch(rand(1, 12)) //NSV13 - This is annoying when it appears in the Warning List
+	switch(rand(1, 13)) //NSV13 - This is annoying when it appears in the Warning List // AQ EDIT - 13: bitrunning
 		if(1)
 			var/subtype = pick(subtypesof(/datum/bounty/item/assistant))
 			return new subtype
@@ -117,6 +117,9 @@ GLOBAL_LIST_EMPTY(bounties_list)
 		if(12)
 			var/subtype = pick(subtypesof(/datum/bounty/item/botany))
 			return new subtype
+		if(13) // AQ EDIT - bitrunning
+			var/subtype = pick(subtypesof(/datum/bounty/item/bitrunning))
+			return new subtype
 
 // Called lazily at startup to populate GLOB.bounties_list with random bounties.
 /proc/setup_bounties()
@@ -132,7 +135,8 @@ GLOBAL_LIST_EMPTY(bounties_list)
 											/datum/bounty/item/engineering = 1,
 											///datum/bounty/item/mining = 2, // NSV13
 											/datum/bounty/item/medical = 2,
-											/datum/bounty/item/botany = 2)
+											/datum/bounty/item/botany = 2,
+											/datum/bounty/item/bitrunning = 1) // AQ EDIT - bitrunning
 
 	for(var/the_type in easy_add_list_subtypes)
 		for(var/i in 1 to easy_add_list_subtypes[the_type])

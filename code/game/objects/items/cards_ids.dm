@@ -434,7 +434,7 @@ update_label("John Doe", "Clowny")
 		"----Service----", "Service (Custom)", JOB_NAME_ASSISTANT, JOB_NAME_HEADOFPERSONNEL, JOB_NAME_BARTENDER, JOB_NAME_COOK,
 			JOB_NAME_BOTANIST, JOB_NAME_JANITOR, JOB_NAME_CURATOR,JOB_NAME_CHAPLAIN, JOB_NAME_LAWYER,
 			JOB_NAME_CLOWN, JOB_NAME_MIME, JOB_NAME_BARBER, JOB_NAME_STAGEMAGICIAN,
-		"----Cargo----","Cargo (Custom)",JOB_NAME_QUARTERMASTER, JOB_NAME_CARGOTECHNICIAN,JOB_NAME_SHAFTMINER,
+		"----Cargo----","Cargo (Custom)",JOB_NAME_QUARTERMASTER, JOB_NAME_CARGOTECHNICIAN,JOB_NAME_SHAFTMINER,JOB_NAME_BITRUNNER, /* AQ EDIT */
 		"----Engineering----","Engineering (Custom)",JOB_NAME_CHIEFENGINEER, JOB_NAME_STATIONENGINEER, JOB_NAME_ATMOSPHERICTECHNICIAN,
 		"----Science----","Science (Custom)",JOB_NAME_RESEARCHDIRECTOR, JOB_NAME_SCIENTIST, JOB_NAME_ROBOTICIST, JOB_NAME_EXPLORATIONCREW,
 		"----Medical----","Medical (Custom)",JOB_NAME_CHIEFMEDICALOFFICER, JOB_NAME_MEDICALDOCTOR, JOB_NAME_CHEMIST, JOB_NAME_GENETICIST,
@@ -967,6 +967,13 @@ update_label("John Doe", "Clowny")
 	icon_state = "cargo"
 	assignment = JOB_NAME_CARGOTECHNICIAN
 	hud_state = JOB_HUD_CARGOTECHNICIAN
+
+// AQ EDIT - bitrunning
+/obj/item/card/id/job/bitrunner
+	name = "Job card (Cargo) - Bitrunner"
+	icon_state = "cargo"
+	assignment = JOB_NAME_BITRUNNER
+	hud_state = JOB_HUD_BITRUNNER
 
 /obj/item/card/id/job/rawcargo
 	name = "Job card (Cargo) - Custom"

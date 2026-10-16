@@ -68,6 +68,7 @@
 	reagents.reaction(M, INGEST, fraction)
 	reagents.trans_to(M, gulp_amount, transfered_by = user)
 	playsound(M.loc,'sound/items/drink.ogg', rand(10,50), 1)
+	SEND_SIGNAL(src, COMSIG_DRINK_DRANK, M, user) // AQ EDIT - bitrunning
 	return 1
 
 /obj/item/reagent_containers/food/drinks/afterattack(obj/target, mob/user , proximity)
