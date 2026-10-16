@@ -111,6 +111,13 @@
 			body += list(aq_injury("Wychłodzenie", "Ogrzanie"))
 	if(!target.getorganslot(ORGAN_SLOT_BRAIN))
 		body += list(aq_injury("Brak mózgu", "Przeszczep mózgu"))
+	if(advanced && target.has_horror_inside())
+		body += list(aq_injury("Pasożyt w okolicy czaszki", "Operacja manipulacji organami głowy"))
+	if(advanced && target.hallucinating())
+		body += list(aq_injury("Halucynacje", "Haloperidol, odpoczynek"))
+	var/obj/item/organ/liver/liver = target.getorganslot(ORGAN_SLOT_LIVER)
+	if(istype(liver) && target.cirrhosis_scan_text())
+		body += list(aq_injury("Marskość wątroby", "Abstynencja i przeszczep wątroby", "[round(liver.cirrhosis)]%"))
 	for(var/datum/brain_trauma/trauma as anything in target.get_traumas())
 		var/cure = "Nieznane"
 		switch(trauma.resilience)
@@ -141,6 +148,8 @@
 				part += list(aq_injury(wound.name, wound.treat_text, null, wound.treated ? 1 : 2))
 			for(var/obj/item/embedded as anything in limb.embedded_objects)
 				part += list(aq_injury("Tkwi w ciele: [embedded.name]", "Wyciągnij ręką albo hemostatem"))
+			for(var/obj/item/bullet_fragment/fragment in limb)
+				part += list(aq_injury("Pocisk w ciele", "Operacja usuwania ciał obcych"))
 		for(var/obj/item/organ/organ as anything in target.internal_organs)
 			if(organ.zone != zone || !organ.damage)
 				continue
