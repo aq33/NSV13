@@ -14,7 +14,8 @@
 
 /obj/item/soundsynth/ancient/examine(mob/user)
 	. = ..()
-	. += "<span class='info'>Ctrl+Click, żeby zmienić głośność.</span>"
+	. += "<span class='info'>Ctrl+Click, żeby zmienić głośność. Użyj w ręce, żeby odtworzyć.</span>"
+	. += "<span class='info'>Gra tylko .ogg z kodekiem Vorbis, .wav i .mid. Plik .ogg z kodekiem Opus (np. pobrany z YouTube) wgra się, ale nie zagra.</span>"
 
 /obj/item/soundsynth/ancient/pick_sound(S as sound|null)
 	set category = "Object"
@@ -27,7 +28,7 @@
 	if(!S || !user.canUseTopic(src, BE_CLOSE))
 		return
 	selected_sound = S
-	to_chat(usr, "<span class='notice'>Odtwarzany dźwięk ustawiony na: [S]!</span>")
+	to_chat(usr, "<span class='notice'>Odtwarzany dźwięk ustawiony na: [S]! Jeśli nic nie słychać, plik ma zły kodek: BYOND gra tylko .ogg Vorbis, .wav i .mid (Opus nie działa).</span>")
 	message_admins("[ADMIN_LOOKUPFLW(usr)] wgrał do starożytnego syntezatora dźwięk [S].")
 	log_game("[key_name(usr)] loaded sound [S] into an ancient sound synthesizer")
 
