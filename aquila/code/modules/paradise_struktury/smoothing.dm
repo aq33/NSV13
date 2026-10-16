@@ -55,24 +55,43 @@
 /atom/proc/bitmask_smoothed()
 	return
 
+/// Grupa wygładzania: ściany i okna shuttle'ów (tytan, plastytan, syndykat) nie łączą się ze ścianami stacji, jak w Paradise.
+/proc/paradise_wall_group(atom/A)
+	if(istype(A, /turf/closed/wall/mineral/titanium) || istype(A, /turf/closed/wall/mineral/plastitanium) || istype(A, /turf/closed/wall/r_wall/syndicate))
+		return "shuttle"
+	if(istype(A, /obj/structure/falsewall/titanium) || istype(A, /obj/structure/falsewall/plastitanium))
+		return "shuttle"
+	if(istype(A, /obj/structure/window/shuttle) || istype(A, /obj/structure/window/plastitanium) || istype(A, /obj/structure/window/reinforced/survival_pod))
+		return "shuttle"
+	return "station"
+
 /// Ściany, fałszywe ściany, pełne okna, śluzy, grodzie, rolety i pełne drzwi przeciwpożarowe łączą się ze sobą jak w Paradise.
-/proc/paradise_structure_connects(turf/T)
+/// source - kto pyta: ściany łączą się tylko z własną grupą, a w dół tylko z tym, co ma 32x40 i wypełnia wcięcie
+/// na dole ściany (grodzie i rolety mają 32x32, więc nad nimi ściana dostaje pełne dolne czoło).
+/proc/paradise_structure_connects(turf/T, atom/source)
 	if(!T)
 		return FALSE
+	var/group = source ? paradise_wall_group(source) : null
+	var/turf/here = source ? get_turf(source) : null
+	var/below = here && T.y < here.y
 	if(istype(T, /turf/closed/wall) || istype(T, /turf/closed/indestructible/riveted) || istype(T, /turf/closed/indestructible/fakeglass))
-		return TRUE
+		return !group || paradise_wall_group(T) == group
 	for(var/atom/movable/AM as anything in T)
-		if(istype(AM, /obj/machinery/door/airlock) || istype(AM, /obj/machinery/door/poddoor))
+		if(istype(AM, /obj/machinery/door/airlock))
+			return TRUE
+		if(istype(AM, /obj/machinery/door/poddoor))
+			if(below)
+				continue
 			return TRUE
 		if(istype(AM, /obj/machinery/door/firedoor) && !istype(AM, /obj/machinery/door/firedoor/border_only) && !istype(AM, /obj/machinery/door/firedoor/window))
 			return TRUE
 		if(istype(AM, /obj/structure/falsewall))
 			var/obj/structure/falsewall/FW = AM
-			if(FW.density)
+			if(FW.density && (!group || paradise_wall_group(FW) == group))
 				return TRUE
 			continue
 		if(istype(AM, /obj/structure/window))
 			var/obj/structure/window/W = AM
-			if(W.fulltile && W.anchored)
+			if(W.fulltile && W.anchored && (!group || paradise_wall_group(W) == group))
 				return TRUE
 	return FALSE

@@ -48,11 +48,33 @@
 /obj/machinery/door/airlock/glass_large/paradise_face_walls()
 	return
 
-/// Kierunek jak get_current_direction() w Paradise: najpierw ściana, potem pełne okno, potem inne drzwi.
+/// Czy na turfie stoi coś, w czym mogą siedzieć drzwi: ściana, pełne okno albo inne drzwi.
+/proc/paradise_door_frame_turf(turf/T)
+	if(!T)
+		return FALSE
+	if(isclosedturf(T))
+		return TRUE
+	for(var/obj/structure/window/W in T)
+		if(W.fulltile)
+			return TRUE
+	for(var/obj/machinery/door/D in T)
+		if(!istype(D, /obj/machinery/door/firedoor/border_only) && !istype(D, /obj/machinery/door/window))
+			return TRUE
+	return FALSE
+
+/// Kierunek drzwi. Najpierw oś, na której drzwi są zamknięte z obu stron (N+S = widok z boku, E+W = z przodu),
+/// bo to nie zależy od tego, co do nich przycumuje (shuttle przy stacji). Dopiero potem jak get_current_direction()
+/// w Paradise: najpierw ściana, potem pełne okno, potem inne drzwi.
 /proc/paradise_door_direction(atom/A)
 	var/turf/here = get_turf(A)
 	if(!here)
 		return
+	var/vertical = paradise_door_frame_turf(get_step(here, NORTH)) && paradise_door_frame_turf(get_step(here, SOUTH))
+	var/horizontal = paradise_door_frame_turf(get_step(here, EAST)) && paradise_door_frame_turf(get_step(here, WEST))
+	if(vertical && !horizontal)
+		return NORTH
+	if(horizontal && !vertical)
+		return EAST
 	for(var/direction in GLOB.cardinals)
 		if(isclosedturf(get_step(here, direction)))
 			return direction
@@ -99,3 +121,15 @@
 	paradise_sprites = FALSE
 	LEGACY_OVERLAYS = FALSE
 	anim_parts = "left=-14,0;right=13,0"
+
+// Shuttle obraca zawartość przy dokowaniu (shuttleRotate obraca też dir), więc drzwi z widokiem z przodu
+// zamieniały się w widok z boku. Po obrocie i po przelocie drzwi ustawiają się na nowo do swoich ścian.
+/obj/machinery/door/airlock/shuttleRotate(rotation, params)
+	. = ..()
+	if(paradise_sprites)
+		addtimer(CALLBACK(src, PROC_REF(paradise_face_walls)), 1)
+
+/obj/machinery/door/airlock/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
+	. = ..()
+	if(paradise_sprites)
+		paradise_face_walls()

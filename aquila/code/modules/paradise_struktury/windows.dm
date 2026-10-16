@@ -10,7 +10,7 @@
 	var/mutable_appearance/glass_backing
 
 /obj/structure/window/bitmask_connects_to(turf/T)
-	return paradise_structure_connects(T)
+	return paradise_structure_connects(T, src)
 
 /obj/structure/window/bitmask_smoothed()
 	for(var/obj/machinery/door/airlock/A in get_step(src, SOUTH))
@@ -160,4 +160,4 @@
 	bitmask_smooth = TRUE
 
 /turf/closed/indestructible/fakeglass/bitmask_connects_to(turf/T)
-	return paradise_structure_connects(T)
+	return paradise_structure_connects(T, src)

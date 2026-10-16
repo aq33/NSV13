@@ -12,7 +12,7 @@
 	texture_state = null
 
 /turf/closed/wall/bitmask_connects_to(turf/T)
-	return paradise_structure_connects(T)
+	return paradise_structure_connects(T, src)
 
 /turf/closed/wall/steel
 	color = null
@@ -185,7 +185,7 @@
 	bitmask_smooth = TRUE
 
 /turf/closed/indestructible/riveted/bitmask_connects_to(turf/T)
-	return paradise_structure_connects(T)
+	return paradise_structure_connects(T, src)
 
 /turf/closed/indestructible/riveted/boss
 	icon = 'aquila/icons/paradise/turf/walls/32x40boss_wall.dmi'

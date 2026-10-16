@@ -65,3 +65,11 @@
 
 /obj/machinery/door/morgue
 	icon = 'aquila/icons/paradise/obj/doors/doormorgue.dmi'
+
+/obj/machinery/door/firedoor/shuttleRotate(rotation, params)
+	. = ..()
+	addtimer(CALLBACK(src, PROC_REF(paradise_face_walls)), 1)
+
+/obj/machinery/door/firedoor/afterShuttleMove(turf/oldT, list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, rotation)
+	. = ..()
+	paradise_face_walls()
