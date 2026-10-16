@@ -212,6 +212,7 @@
 #include "code\game\objects\items\devices\powersink.dm"
 #include "code\game\objects\items\devices\radio\radio.dm"
 #include "code\game\objects\items\devices\scanners.dm"
+#include "code\game\objects\items\devices\sound_synth.dm"
 #include "code\game\objects\items\dna_injector.dm"
 #include "code\game\objects\items\equip_sounds.dm"
 #include "code\game\objects\items\flamethrower.dm"
