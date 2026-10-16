@@ -3,7 +3,7 @@
 
 /datum/quirk/alcohol_tolerance
 	name = "Tolerancja Alkoholowa"
-	desc = "Upijasz się wolniej i masz mniej skutków negatywnych z picia alkoholu."
+	desc = "Upijasz się wolniej i masz mniej skutków negatywnych z picia alkoholu. Twoja wątroba jest też odporniejsza na marskość." // AQ EDIT: odporność na marskość
 	value = 1
 	mob_trait = TRAIT_ALCOHOL_TOLERANCE
 	gain_text = "<span class='notice'>Czujesz jakbyś mógł wypić wannę amareny!</span>"

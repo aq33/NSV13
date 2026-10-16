@@ -114,3 +114,19 @@
 					/obj/machinery/jukebox_speaker/unanchored)
 	crate_name = "amp stack crate"
 	crate_type = /obj/structure/closet/crate/large
+
+/datum/supply_pack/service/toilet
+	name = "Toaleta"
+	desc = "Fabrycznie nowa toaleta HT-451 z odzyskiem wody. Przykręć ją kluczem tam, gdzie natura wzywa."
+	cost = 1000
+	contains = list(/obj/structure/toilet/unanchored)
+	crate_name = "skrzynia z toaletą"
+	crate_type = /obj/structure/closet/crate/large
+
+/datum/supply_pack/service/toilets
+	name = "Toalety (3 szt.)"
+	desc = "Trzy toalety HT-451 w hurtowej cenie. Na nowe łazienki, cele albo dla bardzo zajętej załogi."
+	cost = 2500
+	contains = list(/obj/structure/toilet/unanchored, /obj/structure/toilet/unanchored, /obj/structure/toilet/unanchored)
+	crate_name = "skrzynia z toaletami"
+	crate_type = /obj/structure/closet/crate/large
