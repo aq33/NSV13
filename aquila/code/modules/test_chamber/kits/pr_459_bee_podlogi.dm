@@ -1,5 +1,6 @@
-/datum/test_chamber_kit/bee_podlogi
+/datum/test_chamber_kit/pr_459
 	name = "Podłogi i naklejki z Bee"
+	pr = "aq33/AquilaStation#459"
 	description = "Zielone naklejki płytek z Bee: pełna, połówka, antynarożnik, narożnik, rampy i przeciwległe rogi. \
 		Sprawdź, czy są półprzezroczyste i czy rampy dają ukośne przejście. Na mapach zakręty kolorowych pasów mają teraz ukosy."
 	items = list(

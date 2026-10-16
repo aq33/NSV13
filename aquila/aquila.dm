@@ -667,7 +667,7 @@
 #include "code\modules\test_chamber\kits\pr_445_cowiek_maupa.dm"
 #include "code\modules\test_chamber\kits\pr_447_mule_poczta.dm"
 #include "code\modules\test_chamber\kits\pr_451_animacje.dm"
-#include "code\modules\test_chamber\kits\pr_bee_podlogi.dm"
+#include "code\modules\test_chamber\kits\pr_459_bee_podlogi.dm"
 #include "code\modules\weighted\spawn_fallbacks.dm"
 #include "code\modules\weighted\weighted_ghost_midround.dm"
 #include "code\modules\weighted\weighted_pace_vote.dm"
