@@ -35,7 +35,7 @@
 	if(!user.canUseTopic(src, BE_CLOSE))
 		return ..()
 	var/new_volume = input(user, "Jaka głośność (1-100)?", "Starożytny syntezator", volume) as null|num
-	if(isnull(new_volume))
+	if(isnull(new_volume) || !user.canUseTopic(src, BE_CLOSE))
 		return
 	volume = clamp(round(new_volume), 1, 100)
 
