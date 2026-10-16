@@ -98,6 +98,10 @@
 			var/image/old_image = active_images[old_time][atom_ref]
 			active_images[old_time] -= atom_ref
 			current[atom_ref] = old_image
+			// obrazek łapie wygląd przy tworzeniu, więc odświeżamy stan (drzwi, kierunek moba)
+			old_image.icon = seen_atom.icon
+			old_image.icon_state = seen_atom.icon_state
+			old_image.dir = seen_atom.dir
 			animate(old_image, alpha = 255, time = 0)
 			continue
 
@@ -137,4 +141,4 @@
 	icon_state = "blackimageoverlay"
 	plane = ABOVE_LIGHTING_PLANE
 	layer = 1
-	show_when_dead = TRUE
+	show_when_dead = FALSE

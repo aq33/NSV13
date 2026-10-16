@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import {
   Button,
   Divider,
@@ -38,12 +38,12 @@ export const NetpodOutfits = (props) => {
 
   const searchFn = createSearch(search, (outfit: Outfit) => outfit.name);
 
-  const filtered = selectedType?.outfits
-    ?.filter(searchFn)
-    .sort((a, b) => (a.name > b.name ? 1 : 0));
+  const filtered = (selectedType?.outfits ?? [])
+    .filter(searchFn)
+    .sort((a, b) => a.name.localeCompare(b.name));
 
   const selected =
-    selectedType.outfits?.find((outfit) => outfit.path === netsuit)?.name ??
+    selectedType?.outfits?.find((outfit) => outfit.path === netsuit)?.name ??
     'None';
 
   return (
@@ -67,16 +67,15 @@ export const NetpodOutfits = (props) => {
                 <Stack.Item grow>
                   <Tabs vertical>
                     {collections.map((collection, index) => (
-                      <>
+                      <Fragment key={collection.name}>
                         <Tabs.Tab
-                          key={collection.name}
                           onClick={() => setSelectedType(collection)}
                           selected={selectedType === collection}
                         >
                           {collection.name}
                         </Tabs.Tab>
                         {index > 0 && <Divider />}
-                      </>
+                      </Fragment>
                     ))}
                   </Tabs>
                 </Stack.Item>

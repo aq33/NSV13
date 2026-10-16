@@ -153,6 +153,9 @@
 		if(initial(thing.name) == choice)
 			granted_item = thing
 
+	if(isnull(granted_item))
+		return
+
 	balloon_alert(user, "wybrano")
 	playsound(user, 'sound/machines/click.ogg', 50, TRUE)
 	choice_made = choice

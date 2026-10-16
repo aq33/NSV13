@@ -7,6 +7,8 @@
 	var/datum/weakref/old_body_ref
 	/// The mind of the person in the netpod
 	var/datum/weakref/old_mind_ref
+	/// Rola z przydziału przed wejściem; awatar dostaje „Awatar Bitowy”, więc po powrocie ją oddajemy
+	var/old_assigned_role
 	/// The server connected to the netpod
 	var/datum/weakref/server_ref
 	/// The netpod the avatar is in
@@ -31,6 +33,7 @@
 	netpod_ref = WEAKREF(pod)
 	old_body_ref = WEAKREF(old_body)
 	old_mind_ref = WEAKREF(old_mind)
+	old_assigned_role = old_mind.assigned_role
 	pod.avatar_ref = WEAKREF(avatar)
 	server_ref = WEAKREF(server)
 	server.avatar_connection_refs.Add(WEAKREF(src))
@@ -90,7 +93,13 @@
 	var/datum/mind/old_mind = old_mind_ref?.resolve()
 	if(old_mind)
 		UnregisterSignal(old_mind, COMSIG_MIND_TRANSFER_TO)
+		restore_assigned_role(old_mind)
 	return ..()
+
+/// Oddaje umysłowi rolę sprzed wejścia do domeny
+/datum/component/avatar_connection/proc/restore_assigned_role(datum/mind/old_mind)
+	if(old_mind.assigned_role == "Awatar Bitowy")
+		old_mind.assigned_role = old_assigned_role
 
 /datum/component/avatar_connection/PostTransfer()
 	var/obj/machinery/netpod/pod = netpod_ref?.resolve()
@@ -307,4 +316,5 @@
 	action?.Remove(avatar)
 
 	old_mind.transfer_to(old_body, TRUE)
+	restore_assigned_role(old_mind)
 	avatar.ghostize(FALSE)

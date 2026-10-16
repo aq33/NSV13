@@ -4,11 +4,13 @@
 		return TRUE
 
 	shuffle_inplace(possible_turfs)
-	var/turf/chosen_turf = validate_turf(pick(possible_turfs))
+	var/turf/picked = pick(possible_turfs)
+	var/turf/chosen_turf = validate_turf(picked)
 
 	if(isnull(chosen_turf))
-		possible_turfs.Remove(chosen_turf)
-		chosen_turf = validate_turf(pick(possible_turfs))
+		possible_turfs.Remove(picked) // usuwamy odrzucone pole, a nie null
+		if(length(possible_turfs))
+			chosen_turf = validate_turf(pick(possible_turfs))
 		if(isnull(chosen_turf))
 			stack_trace("vdom: after two attempts, could not find a valid turf for cache")
 			return FALSE
@@ -26,11 +28,13 @@
 		return FALSE
 
 	shuffle_inplace(possible_turfs)
-	var/turf/chosen_turf = validate_turf(pick(possible_turfs))
+	var/turf/picked = pick(possible_turfs)
+	var/turf/chosen_turf = validate_turf(picked)
 
 	if(isnull(chosen_turf))
-		possible_turfs.Remove(chosen_turf)
-		chosen_turf = validate_turf(pick(possible_turfs))
+		possible_turfs.Remove(picked) // usuwamy odrzucone pole, a nie null
+		if(length(possible_turfs))
+			chosen_turf = validate_turf(pick(possible_turfs))
 		if(isnull(chosen_turf))
 			stack_trace("vdom: after two attempts, could not find a valid turf for curiosity")
 			return FALSE

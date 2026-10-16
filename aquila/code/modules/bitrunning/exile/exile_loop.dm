@@ -156,7 +156,6 @@
 	if(!length(random_domains))
 		return
 	var/datum/lazy_template/virtual_domain/selected = pick(random_domains)
-	domain_randomized = TRUE
 	return selected.key
 
 /obj/machinery/quantum_server/exile_loop/cold_boot_map(map_key, was_random_selection)
@@ -185,7 +184,7 @@
 
 /obj/machinery/quantum_server/exile_loop/generate_loot(obj/cache, obj/machinery/byteforge/chosen_forge)
 	. = ..()
-	if(is_station_level(chosen_forge.z))
+	if(chosen_forge && is_station_level(chosen_forge.z))
 		bitrunning_announce("Byteforge odbiera przesyłkę z Pętli: wygnańcy ukończyli domenę \"[generated_domain.name]\".")
 	for(var/mob/living/exile in get_exiles_in_domain())
 		exile.playsound_local(exile, 'sound/machines/terminal_success.ogg', 50, TRUE)
