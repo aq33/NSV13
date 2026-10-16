@@ -102,6 +102,8 @@
 	var/obj/item/bodypart/limb = get_bodypart(check_zone(M.zone_selected))
 	var/datum/wound/blunt/dislocation/dislocation = locate() in limb?.wounds
 	if(dislocation && !M.get_active_held_item())
+		if(src in M.do_afters) // one reset attempt at a time
+			return
 		INVOKE_ASYNC(dislocation, TYPE_PROC_REF(/datum/wound/blunt/dislocation, try_reset), M)
 		return
 	return ..()

@@ -39,7 +39,7 @@
 	data["screen"] = screen
 	data["printing"] = !!printing
 	data["temp"] = temp ? aquila_split_topic_links(temp) : null
-	if(!authenticated)
+	if(!authenticated || !can_view_medical_records(user))
 		return data
 	switch(screen)
 		if(1, 2)
@@ -81,6 +81,10 @@
 				))
 			data["medbots"] = medbots
 	return data
+
+/// Same reach as Topic(): in hand, next to the console, a silicon or an admin ghost
+/obj/machinery/computer/med_data/proc/can_view_medical_records(mob/user)
+	return user.contents.Find(src) || (in_range(src, user) && isturf(loc)) || issilicon(user) || IsAdminGhost(user)
 
 /obj/machinery/computer/med_data/proc/medical_general_data()
 	if(!istype(active1, /datum/data/record) || !GLOB.data_core.general.Find(active1))
