@@ -1,11 +1,11 @@
-/datum/test_chamber_kit/pr_448
+/datum/test_chamber_kit/pr_460
 	name = "Struktury z Paradise"
-	pr = "aq33/AquilaStation#448"
+	pr = "aq33/AquilaStation#460"
 	description = "Pokój ze ścian 3/4: śluzy z przodu i z boku (zwykła, otwarta, zaryglowana, zespawana, szklana), okna z kratami, \
 		fałszywa ściana, rozbierana ściana wzmocniona, drzwi przeciwpożarowe, grodzie, roleta, drzwi okienne, cienkie okna i dźwigar. \
 		Sprawdź wygładzanie po rozebraniu ściany i postawieniu nowej, odkręcenie okna i animacje drzwi."
 
-/datum/test_chamber_kit/pr_448/setup(list/spawned, list/turfs, turf/center, mob/user)
+/datum/test_chamber_kit/pr_460/setup(list/spawned, list/turfs, turf/center, mob/user)
 	// '#' ściana, 'R' wzmocniona, 'W' pełne okno z kratą, 'D' śluza, 'F' fałszywa ściana, 'd' rozbierana wzmocniona
 	var/list/layout = list(
 		"RRRWWWRRR",
@@ -65,3 +65,18 @@
 			var/obj/machinery/door/D = new spawn_type(T)
 			if(istype(D, /obj/machinery/door/firedoor) || istype(D, /obj/machinery/door/poddoor))
 				D.close()
+
+/datum/test_chamber_kit/pr_460_podlogi
+	name = "Podłogi i naklejki z Bee"
+	pr = "aq33/AquilaStation#460"
+	description = "Zielone naklejki płytek z Bee: pełna, połówka, antynarożnik, narożnik, rampy i przeciwległe rogi. \
+		Sprawdź, czy są półprzezroczyste i czy rampy dają ukośne przejście. Na mapach zakręty kolorowych pasów mają teraz ukosy."
+	items = list(
+		/obj/effect/turf_decal/tile/green/fourcorners = 1,
+		/obj/effect/turf_decal/tile/green/half = 1,
+		/obj/effect/turf_decal/tile/green/anticorner = 1,
+		/obj/effect/turf_decal/tile/green = 1,
+		/obj/effect/turf_decal/tile/green/corner_ramp = 1,
+		/obj/effect/turf_decal/tile/green/anticorner_ramp = 1,
+		/obj/effect/turf_decal/tile/green/opposingcorners = 1
+	)
