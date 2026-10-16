@@ -50,7 +50,7 @@ GLOBAL_LIST_INIT(maintenance_loot, list(
 	/obj/item/airlock_painter/decal = 1,
 	/obj/item/airlock_painter/decal/tile = 1,
 	/obj/item/stack/cable_coil = 10,
-	/obj/item/stack/medical/bruise_pack = 1,
+	/obj/item/stack/medical/suture = 1, // AQ EDIT - tgstation sutures
 	/obj/item/stack/rods/ten = 9,
 	/obj/item/stack/rods/twentyfive = 1,
 	/obj/item/stack/rods/fifty = 1,

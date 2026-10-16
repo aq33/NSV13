@@ -1,0 +1,2930 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/closed/indestructible/binary,
+/area/virtual_domain)
+"ab" = (
+/obj/effect/baseturf_helper/virtual_domain,
+/turf/closed/indestructible/binary,
+/area/virtual_domain)
+"ac" = (
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/machinery/portable_atmospherics/canister/air = 800, /obj/machinery/portable_atmospherics/canister/oxygen = 200);
+	name = "air canister spawner"
+	},
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/plating{
+	icon_state = "panelscorched"
+	},
+/area/virtual_domain)
+"ad" = (
+/obj/effect/turf_decal/tile/yellow,
+/obj/structure/cable,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ae" = (
+/obj/structure/table,
+/obj/item/reagent_containers/pill/psicodine,
+/obj/item/reagent_containers/pill/stimulant{
+	pixel_y = -2;
+	pixel_x = -3
+	},
+/obj/item/reagent_containers/pill/bicaridine{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"af" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/item/reagent_containers/syringe/epinephrine,
+/obj/item/reagent_containers/syringe/epinephrine{
+	pixel_x = -5;
+	pixel_y = -5
+	},
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/plating/rust,
+/area/virtual_domain)
+"ag" = (
+/mob/living/carbon/human/ai_boarder/fake_crew/assistant,
+/obj/item/restraints/handcuffs/cable/yellow{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/stack/medical/gauze/improvised{
+	pixel_y = -2
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"ah" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"ai" = (
+/obj/structure/reagent_dispensers,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"aj" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"ak" = (
+/obj/machinery/door/airlock/command/glass,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"al" = (
+/obj/structure/table,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"am" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/flashlight = 408, /obj/item/flashlight/flare = 204, /obj/item/flashlight/lantern = 102, /obj/item/flashlight/seclite = 82, /obj/item/flashlight/glowstick = 29, /obj/item/flashlight/glowstick/red = 29, /obj/item/flashlight/glowstick/blue = 29, /obj/item/flashlight/glowstick/cyan = 29, /obj/item/flashlight/glowstick/orange = 29, /obj/item/flashlight/glowstick/yellow = 29, /obj/item/flashlight/glowstick/pink = 29);
+	name = "flashlight spawner"
+	},
+/turf/open/floor/plating/rust{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"an" = (
+/obj/effect/decal/cleanable/ash/large,
+/turf/open/floor/plating/rust,
+/area/virtual_domain)
+"ao" = (
+/obj/structure/grille,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"ap" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating/rust,
+/area/virtual_domain)
+"aq" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/item/reagent_containers/syringe{
+	list_reagents = list(/datum/reagent/drug/bath_salts = 15);
+	name = "syringe (bath salts)"
+	},
+/obj/item/reagent_containers/syringe{
+	list_reagents = list(/datum/reagent/drug/methamphetamine = 15);
+	name = "syringe (methamphetamine)";
+	pixel_y = 4;
+	pixel_x = -3
+	},
+/obj/item/reagent_containers/syringe{
+	list_reagents = list(/datum/reagent/medicine/morphine = 15);
+	name = "syringe (morphine)";
+	pixel_y = -3;
+	pixel_x = -2
+	},
+/turf/open/floor/plating/rust,
+/area/virtual_domain)
+"ar" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/plating/rust{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"as" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/effect/decal/cleanable/dirt = 286, /obj/effect/decal/cleanable/generic = 238, /obj/effect/decal/cleanable/vomit/old = 143, /obj/effect/decal/cleanable/blood/gibs/old = 143, /obj/effect/decal/cleanable/insectguts = 48, /obj/effect/decal/cleanable/greenglow/ecto = 48, /obj/effect/decal/cleanable/glass = 48, /obj/effect/decal/cleanable/ants = 48);
+	name = "gross decal spawner"
+	},
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/trash/can = 143, /obj/item/shard = 93, /obj/item/broken_bottle = 46, /obj/item/light/tube/broken = 46, /obj/item/light/bulb/broken = 46, /obj/item/paper = 31, /obj/item/assembly/mousetrap = 28, /obj/item/assembly/mousetrap/armed = 28, /obj/item/stack/cable_coil = 28, /obj/item/stack/cable_coil/cut = 28, /obj/item/reagent_containers/syringe = 28, /obj/item/grown/bananapeel = 28, /obj/item/cigbutt = 23, /obj/item/cigbutt/roach = 23, /obj/effect/decal/cleanable/ash = 23, /obj/item/food/breadslice/moldy/bacteria = 23, /obj/item/food/pizzaslice/moldy/bacteria = 23, /obj/item/reagent_containers/food/drinks/drinkingglass = 19, /obj/item/food/deadmouse = 19, /obj/item/c_tube = 19, /obj/item/plate_shard = 19, /obj/item/lighter/greyscale = 19, /obj/item/trash/chips = 17, /obj/item/cigbutt/cigarbutt = 14, /obj/item/grown/corncob = 14, /obj/item/trash/pistachios = 14, /obj/item/trash/boritos = 14, /obj/item/lighter = 9, /obj/item/trash/candle = 9, /obj/item/reagent_containers/glass/rag = 9, /obj/item/shard/plasma = 9, /obj/item/trash/raisins = 7, /obj/item/trash/cheesie = 7, /obj/item/trash/candy = 7, /obj/item/trash/sosjerky = 7, /obj/item/reagent_containers/food/drinks/sillycup = 7, /obj/item/trash/semki = 7, /obj/item/food/grown/bungopit = 5, /obj/item/storage/fancy/cigarettes = 4, /obj/item/storage/fancy/cigarettes/cigpack_uplift = 4, /obj/item/storage/fancy/cigarettes/cigpack_robust = 4, /obj/item/storage/fancy/cigarettes/cigpack_robustgold = 4, /obj/item/storage/fancy/cigarettes/cigpack_carp = 4, /obj/item/storage/fancy/cigarettes/cigpack_midori = 4, /obj/item/trash/popcorn = 3, /obj/item/trash/energybar = 3, /obj/item/trash/syndi_cakes = 3, /obj/item/trash/tray = 3, /obj/item/paper/crumpled = 3, /obj/item/paper/crumpled/bloody = 3, /obj/item/storage/fancy/rollingpapers = 2, /obj/item/storage/fancy/cigarettes/cigars = 2, /obj/item/storage/fancy/cigarettes/cigars/cohiba = 2, /obj/item/storage/fancy/cigarettes/cigars/havana = 2, /obj/item/storage/fancy/cigarettes/dromedaryco = 2, /obj/item/storage/fancy/cigarettes/cigpack_shadyjims = 2, /obj/item/storage/fancy/cigarettes/cigpack_xeno = 2, /obj/item/paper/construction = 2, /obj/item/storage/fancy/cigarettes/cigpack_cannabis = 1, /obj/item/storage/fancy/cigarettes/cigpack_mindbreaker = 1, /obj/item/storage/fancy/cigarettes/cigpack_syndicate = 1);
+	name = "garbage spawner"
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"at" = (
+/obj/structure/table,
+/obj/item/storage/toolbox/emergency,
+/obj/item/clothing/mask/gas,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating/rust,
+/area/virtual_domain)
+"au" = (
+/obj/structure/frame/computer{
+	dir = 4;
+	anchored = 1
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#486091";
+	dir = 10
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"av" = (
+/obj/structure/frame/computer{
+	dir = 4;
+	anchored = 1
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#486091";
+	dir = 1
+	},
+/obj/machinery/light{
+	bulb_colour = "#DDE6FF";
+	nightshift_light_color = "#DDE6FF";
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"aw" = (
+/obj/structure/table/glass,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#486091";
+	dir = 5
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"ax" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ay" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"az" = (
+/obj/structure/chair/office/light{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"aA" = (
+/obj/structure/table/glass,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/item/multitool{
+	pixel_x = 5;
+	pixel_y = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"aB" = (
+/mob/living/carbon/human/ai_boarder/fake_crew/assistant,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"aC" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/item/flashlight/flare{
+	icon_state = "flare-on";
+	light_on = 1
+	},
+/turf/open/floor/plating/rust,
+/area/virtual_domain)
+"aD" = (
+/obj/structure/table,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/trash/chips = 167, /obj/item/trash/pistachios = 133, /obj/item/trash/boritos = 133, /obj/item/trash/raisins = 67, /obj/item/trash/cheesie = 67, /obj/item/trash/candy = 67, /obj/item/trash/sosjerky = 67, /obj/item/reagent_containers/food/drinks/sillycup = 67, /obj/item/trash/semki = 67, /obj/item/trash/can = 33, /obj/item/trash/popcorn = 33, /obj/item/trash/energybar = 33, /obj/item/trash/syndi_cakes = 33, /obj/item/trash/tray = 33);
+	name = "empty food packaging spawner"
+	},
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/trash/chips = 167, /obj/item/trash/pistachios = 133, /obj/item/trash/boritos = 133, /obj/item/trash/raisins = 67, /obj/item/trash/cheesie = 67, /obj/item/trash/candy = 67, /obj/item/trash/sosjerky = 67, /obj/item/reagent_containers/food/drinks/sillycup = 67, /obj/item/trash/semki = 67, /obj/item/trash/can = 33, /obj/item/trash/popcorn = 33, /obj/item/trash/energybar = 33, /obj/item/trash/syndi_cakes = 33, /obj/item/trash/tray = 33);
+	name = "empty food packaging spawner"
+	},
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/clothing/gloves/color/orange = 100, /obj/item/clothing/gloves/color/red = 100, /obj/item/clothing/gloves/color/blue = 100, /obj/item/clothing/gloves/color/purple = 100, /obj/item/clothing/gloves/color/green = 100, /obj/item/clothing/gloves/color/grey = 100, /obj/item/clothing/gloves/color/light_brown = 100, /obj/item/clothing/gloves/color/brown = 100, /obj/item/clothing/gloves/color/white = 100, /obj/item/clothing/gloves/color/rainbow = 100);
+	name = "random gloves"
+	},
+/turf/open/floor/plating/rust,
+/area/virtual_domain)
+"aE" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#486091";
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"aF" = (
+/mob/living/carbon/human/ai_boarder/fake_crew/boss/cmo,
+/obj/structure/chair/office/light{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"aG" = (
+/obj/structure/table/glass,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#486091";
+	dir = 8
+	},
+/mob/living/simple_animal/pet/cat/Proc{
+	faction = list("neutral", "vdom_fake_crew")
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"aH" = (
+/obj/effect/turf_decal/tile/blue,
+/obj/machinery/vending/wallmed{
+	dir = 8;
+	pixel_x = -32
+	},
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"aI" = (
+/obj/structure/closet/crate/bin,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#52B4E9"
+	},
+/obj/item/eldritch_potion/crucible_soul,
+/obj/effect/turf_decal/siding/blue{
+	dir = 1
+	},
+/obj/item/eldritch_potion/crucible_soul,
+/obj/item/eldritch_potion/crucible_soul,
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"aJ" = (
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/structure/closet/crate/bin = 500, /obj/structure/closet/crate/trashcart = 350, /obj/structure/closet/cardboard = 135, /obj/structure/closet/cardboard/metal = 15);
+	name = "trashbin spawner"
+	},
+/obj/item/shard/plasma,
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/trash/chips = 167, /obj/item/trash/pistachios = 133, /obj/item/trash/boritos = 133, /obj/item/trash/raisins = 67, /obj/item/trash/cheesie = 67, /obj/item/trash/candy = 67, /obj/item/trash/sosjerky = 67, /obj/item/reagent_containers/food/drinks/sillycup = 67, /obj/item/trash/semki = 67, /obj/item/trash/can = 33, /obj/item/trash/popcorn = 33, /obj/item/trash/energybar = 33, /obj/item/trash/syndi_cakes = 33, /obj/item/trash/tray = 33);
+	name = "empty food packaging spawner"
+	},
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/trash/chips = 167, /obj/item/trash/pistachios = 133, /obj/item/trash/boritos = 133, /obj/item/trash/raisins = 67, /obj/item/trash/cheesie = 67, /obj/item/trash/candy = 67, /obj/item/trash/sosjerky = 67, /obj/item/reagent_containers/food/drinks/sillycup = 67, /obj/item/trash/semki = 67, /obj/item/trash/can = 33, /obj/item/trash/popcorn = 33, /obj/item/trash/energybar = 33, /obj/item/trash/syndi_cakes = 33, /obj/item/trash/tray = 33);
+	name = "empty food packaging spawner"
+	},
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/cigbutt = 278, /obj/item/cigbutt/roach = 278, /obj/effect/decal/cleanable/ash = 278, /obj/item/cigbutt/cigarbutt = 167);
+	name = "cigarette butt spawner"
+	},
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/storage/fancy/cigarettes = 98, /obj/item/storage/fancy/cigarettes/cigpack_uplift = 98, /obj/item/storage/fancy/cigarettes/cigpack_robust = 98, /obj/item/storage/fancy/cigarettes/cigpack_robustgold = 98, /obj/item/storage/fancy/cigarettes/cigpack_carp = 98, /obj/item/storage/fancy/cigarettes/cigpack_midori = 98, /obj/item/storage/fancy/rollingpapers = 59, /obj/item/storage/fancy/cigarettes/cigars = 59, /obj/item/storage/fancy/cigarettes/cigars/cohiba = 59, /obj/item/storage/fancy/cigarettes/cigars/havana = 59, /obj/item/storage/fancy/cigarettes/dromedaryco = 39, /obj/item/storage/fancy/cigarettes/cigpack_shadyjims = 39, /obj/item/storage/fancy/cigarettes/cigpack_xeno = 39, /obj/item/storage/fancy/cigarettes/cigpack_cannabis = 20, /obj/item/storage/fancy/cigarettes/cigpack_mindbreaker = 20, /obj/item/storage/fancy/cigarettes/cigpack_syndicate = 20);
+	name = "empty cigarette pack spawner"
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"aK" = (
+/obj/structure/table/glass,
+/obj/item/folder/yellow,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#EFB341";
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"aL" = (
+/obj/structure/table/glass,
+/obj/item/paper_bin,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#EFB341";
+	dir = 5
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"aM" = (
+/obj/structure/table/glass,
+/obj/item/storage/firstaid/fire{
+	pixel_x = -5;
+	pixel_y = 4
+	},
+/obj/machinery/light{
+	dir = 2
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"aN" = (
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/storage/briefcase = 750, /obj/item/storage/secure/briefcase = 250);
+	name = "briefcase spawner"
+	},
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/structure/closet/cardboard = 900, /obj/structure/closet/cardboard/metal = 100);
+	name = "box spawner"
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"aO" = (
+/obj/structure/reagent_dispensers/fueltank,
+/obj/effect/decal/cleanable/plasma,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"aP" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/plating/rust,
+/area/virtual_domain)
+"aQ" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/insectguts,
+/turf/open/floor/plating{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"aR" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#486091";
+	dir = 6
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"aS" = (
+/obj/structure/table/glass,
+/obj/item/paper_bin,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#486091"
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"aT" = (
+/obj/structure/table/glass,
+/obj/item/folder/blue{
+	pixel_y = 4
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#486091";
+	dir = 9
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"aU" = (
+/turf/closed/wall,
+/area/virtual_domain/safehouse)
+"aV" = (
+/obj/effect/turf_decal/tile/blue,
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"aW" = (
+/obj/structure/table/glass,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#52B4E9"
+	},
+/obj/item/reagent_containers/hypospray{
+	pixel_x = 6;
+	pixel_y = 1
+	},
+/obj/effect/turf_decal/siding/blue{
+	dir = 1
+	},
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"aX" = (
+/obj/structure/frame/computer{
+	anchored = 1
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#EFB341";
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"aY" = (
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"aZ" = (
+/mob/living/carbon/human/ai_boarder/fake_crew/boss/ce,
+/obj/structure/chair/office/light{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#EFB341";
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"ba" = (
+/obj/structure/closet/crate/bin,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/item/shard,
+/obj/item/melee/rune_carver,
+/obj/item/melee/rune_carver{
+	pixel_y = 4;
+	pixel_x = -4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bb" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"bc" = (
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/structure/reagent_dispensers/fueltank = 500, /obj/structure/reagent_dispensers/watertank = 400, /obj/structure/reagent_dispensers/watertank/high = 100);
+	name = "tank spawner"
+	},
+/obj/item/reagent_containers/glass/beaker/eldritch,
+/turf/open/floor/plating{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"bd" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/plating/rust,
+/area/virtual_domain)
+"be" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/visible_heretic_influence,
+/turf/open/floor/plating/rust{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"bf" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/structure/sign/warning/electricshock{
+	dir = 1;
+	pixel_y = 32
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bg" = (
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/clothing/head/cone = 389, /obj/item/clothing/suit/caution = 167, /obj/item/reagent_containers/glass/rag = 111, /obj/item/reagent_containers/glass/bucket = 111, /obj/effect/decal/cleanable/blood/old = 111, /obj/structure/mopbucket = 111);
+	lootcount = 6;
+	lootdoubles = 0;
+	name = "moisture trap spawner"
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"bh" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"bi" = (
+/obj/structure/chair/office/light{
+	dir = 8
+	},
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"bj" = (
+/obj/structure/table/glass,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#52B4E9"
+	},
+/obj/item/reagent_containers/glass/bottle/atropine{
+	pixel_y = 3;
+	pixel_x = -13
+	},
+/obj/item/reagent_containers/pill/patch/synthflesh,
+/obj/item/reagent_containers/pill/patch/synthflesh{
+	pixel_x = 3;
+	pixel_y = 2
+	},
+/obj/effect/turf_decal/siding/blue{
+	dir = 1
+	},
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"bk" = (
+/obj/structure/frame/computer{
+	anchored = 1
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#EFB341";
+	dir = 6
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"bl" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#EFB341"
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"bm" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#EFB341";
+	dir = 9
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"bn" = (
+/obj/structure/filingcabinet/chestdrawer,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bo" = (
+/obj/structure/closet/crate/bin,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#DE3A3A"
+	},
+/obj/item/storage/belt/military,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bp" = (
+/obj/structure/table/glass,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#DE3A3A"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bq" = (
+/mob/living/carbon/human/ai_boarder/fake_crew/engi,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"br" = (
+/obj/structure/sign/warning/electricshock{
+	dir = 4;
+	pixel_x = 32
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"bs" = (
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/machinery/space_heater = 615, /obj/machinery/shieldgen = 231, /obj/machinery/portable_atmospherics/pump = 77, /obj/machinery/portable_atmospherics/scrubber = 77);
+	name = "portable atmospherics machine spawner"
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"bt" = (
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"bu" = (
+/obj/structure/filingcabinet/chestdrawer,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#52B4E9"
+	},
+/obj/effect/turf_decal/siding/blue{
+	dir = 1
+	},
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"bv" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bw" = (
+/obj/structure/table/glass,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#B11111";
+	dir = 10
+	},
+/obj/item/storage/belt/security/webbing{
+	pixel_x = -6;
+	pixel_y = 2
+	},
+/obj/item/pen/fountain{
+	pixel_x = 15;
+	pixel_y = 2
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"bx" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#B11111";
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"by" = (
+/obj/structure/frame/computer{
+	dir = 1;
+	anchored = 1
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#B11111";
+	dir = 5
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"bz" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/grille,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"bA" = (
+/obj/machinery/door/airlock/command/glass,
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"bB" = (
+/obj/structure/cable,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bC" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/structure/closet/crate/bin,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bD" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/structure/closet/secure_closet/contraband/armory,
+/obj/item/gun/ballistic/rifle/boltaction,
+/obj/item/ammo_box/a762,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bE" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/structure/closet/secure_closet/contraband/armory,
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/storage/fancy/cigarettes/cigpack_syndicate = 154, /obj/item/storage/toolbox/syndicate = 154, /obj/item/shield/riot = 154, /obj/item/storage/box/syndie_kit/chameleon = 154, /obj/item/kitchen/knife/combat = 154, /obj/item/grenade/clusterbuster/smoke = 154, /obj/item/implantcase/deathrattle = 77);
+	name = "loot weak"
+	},
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/clothing/under/syndicate = 189, /obj/item/storage/fancy/cigarettes/cigpack_syndicate = 130, /obj/item/clothing/under/syndicate/tacticool = 94, /obj/item/clothing/under/syndicate/sniper = 94, /obj/item/clothing/under/syndicate/camo = 94, /obj/item/clothing/under/syndicate/soviet = 94, /obj/item/clothing/under/syndicate/combat = 94, /obj/item/clothing/under/syndicate/rus_army = 94, /obj/item/storage/fancy/cigarettes = 20, /obj/item/storage/fancy/cigarettes/dromedaryco = 20, /obj/item/storage/fancy/cigarettes/cigpack_uplift = 20, /obj/item/storage/fancy/cigarettes/cigpack_robust = 20, /obj/item/storage/fancy/cigarettes/cigpack_carp = 20, /obj/item/storage/fancy/cigarettes/cigpack_robustgold = 7, /obj/item/storage/fancy/cigarettes/cigpack_midori = 7);
+	lootcount = 2;
+	name = "syndie cosmetic spawner"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bF" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/structure/closet/secure_closet/contraband/armory,
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/storage/backpack = 37, /obj/item/storage/backpack/clown = 37, /obj/item/storage/backpack/explorer = 37, /obj/item/storage/backpack/mime = 37, /obj/item/storage/backpack/medic = 37, /obj/item/storage/backpack/security = 37, /obj/item/storage/backpack/industrial = 37, /obj/item/storage/backpack/botany = 37, /obj/item/storage/backpack/chemistry = 37, /obj/item/storage/backpack/genetics = 37, /obj/item/storage/backpack/science = 37, /obj/item/storage/backpack/virology = 37, /obj/item/storage/backpack/satchel = 37, /obj/item/storage/backpack/satchel/leather = 37, /obj/item/storage/backpack/satchel/eng = 37, /obj/item/storage/backpack/satchel/med = 37, /obj/item/storage/backpack/satchel/vir = 37, /obj/item/storage/backpack/satchel/chem = 37, /obj/item/storage/backpack/satchel/gen = 37, /obj/item/storage/backpack/satchel/hyd = 37, /obj/item/storage/backpack/satchel/sec = 37, /obj/item/storage/backpack/satchel/explorer = 37, /obj/item/storage/backpack/duffelbag = 37, /obj/item/storage/backpack/duffelbag/med = 37, /obj/item/storage/backpack/duffelbag/sec = 37, /obj/item/storage/backpack/duffelbag/engineering = 37, /obj/item/storage/backpack/duffelbag/clown = 37);
+	name = "backpack spawner"
+	},
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/storage/box/stockparts/deluxe = 186, /obj/item/storage/box/survival = 120, /obj/item/card/emag = 80, /obj/item/flashlight/lantern/syndicate = 67, /obj/item/storage/box/syndie_kit/space = 67, /obj/item/gun/ballistic/automatic/pistol/m1911 = 67, /obj/item/dualsaber/toy = 67, /obj/item/storage/box/syndie_kit/imp_storage = 67, /obj/item/storage/box/syndie_kit/imp_radio = 67, /obj/item/storage/box/alchemist_random_chems = 67, /obj/item/mod/module/jetpack/advanced = 53, /obj/item/mod/module/visor/night = 27, /obj/item/mod/module/storage/syndicate = 27, /obj/item/autosurgeon/syndicate/anti_stun = 27, /obj/item/mod/control/pre_equipped/responsory/inquisitory = 13);
+	name = "antag gear"
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bG" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bH" = (
+/obj/structure/chair/office,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bI" = (
+/obj/structure/table/glass,
+/obj/item/paper_bin,
+/obj/item/folder/red,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#B11111";
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"bJ" = (
+/mob/living/carbon/human/ai_boarder/fake_crew/boss/hos,
+/obj/structure/chair/office{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"bK" = (
+/obj/structure/frame/computer{
+	dir = 1;
+	anchored = 1
+	},
+/obj/machinery/light{
+	dir = 2
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#B11111";
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"bL" = (
+/obj/structure/closet/emcloset,
+/obj/item/storage/firstaid/regular,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating/rust,
+/area/virtual_domain)
+"bM" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/structure/extinguisher_cabinet{
+	dir = 2;
+	pixel_y = -29
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"bN" = (
+/obj/machinery/defibrillator_mount{
+	dir = 8;
+	pixel_x = -28
+	},
+/obj/structure/table/glass,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#52B4E9"
+	},
+/obj/item/stack/medical/bruise_pack,
+/obj/item/stack/medical/ointment{
+	pixel_x = 3;
+	pixel_y = 2
+	},
+/obj/machinery/light{
+	bulb_colour = "#DDE6FF";
+	nightshift_light_color = "#DDE6FF";
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/blue{
+	dir = 4
+	},
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"bO" = (
+/obj/machinery/stasis{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#52B4E9"
+	},
+/obj/effect/turf_decal/siding/blue{
+	dir = 6
+	},
+/obj/structure/cable,
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"bP" = (
+/obj/structure/cable,
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"bQ" = (
+/obj/machinery/stasis{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#52B4E9"
+	},
+/obj/effect/turf_decal/siding/blue{
+	dir = 5
+	},
+/obj/structure/cable,
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"bR" = (
+/obj/machinery/defibrillator_mount{
+	dir = 8;
+	pixel_x = -28
+	},
+/obj/structure/table/glass,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#52B4E9"
+	},
+/obj/item/stack/medical/gauze/improvised,
+/obj/effect/turf_decal/siding/blue{
+	dir = 4
+	},
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"bS" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#52B4E9"
+	},
+/obj/structure/table/glass,
+/obj/item/storage/firstaid{
+	pixel_y = -3
+	},
+/obj/effect/turf_decal/siding/blue{
+	dir = 4
+	},
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"bT" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#52B4E9"
+	},
+/obj/structure/table/glass,
+/obj/item/storage/firstaid{
+	pixel_y = 10;
+	pixel_x = 5
+	},
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/storage/box/hug = 125, /obj/item/storage/box/pillbottles = 125, /obj/item/storage/box/bodybags = 125, /obj/item/storage/box/rxglasses = 125, /obj/item/storage/box/beakers = 125, /obj/item/storage/box/gloves = 125, /obj/item/storage/box/masks = 125, /obj/item/storage/box/syringes = 125);
+	name = "medical supplies spawner"
+	},
+/obj/effect/turf_decal/siding/blue{
+	dir = 4
+	},
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"bU" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#52B4E9"
+	},
+/obj/structure/table/glass,
+/obj/item/storage/firstaid/regular{
+	pixel_y = 7
+	},
+/obj/effect/turf_decal/siding/blue{
+	dir = 4
+	},
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"bV" = (
+/mob/living/carbon/human/ai_boarder/fake_crew/sec,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"bW" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"bX" = (
+/obj/effect/spawner/lootdrop/costume,
+/obj/structure/rack,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"bY" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#B11111";
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"bZ" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#B11111";
+	dir = 8
+	},
+/obj/item/ammo_box/c38,
+/obj/item/ammo_box/c38,
+/obj/item/gun/ballistic/revolver/detective,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"ca" = (
+/obj/structure/closet/firecloset,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/plating{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"cb" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/machinery/iv_drip,
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"cc" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"cd" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"ce" = (
+/obj/structure/chair/office,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"cf" = (
+/obj/structure/table,
+/obj/machinery/recharger,
+/obj/item/melee/baton/loaded,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"cg" = (
+/obj/structure/chair/office{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#D4D4D4";
+	alpha = 50
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"ch" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ci" = (
+/turf/closed/indestructible/riveted,
+/area/virtual_domain)
+"cj" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating/rust{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"ck" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#B11111";
+	dir = 6
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"cl" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#B11111"
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"cm" = (
+/obj/structure/filingcabinet/chestdrawer,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_side";
+	color = "#B11111";
+	dir = 9
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"cn" = (
+/obj/structure/grille/broken,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"co" = (
+/mob/living/carbon/human/ai_boarder/fake_crew/md,
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"cp" = (
+/obj/machinery/door/airlock/medical,
+/obj/effect/mapping_helpers/airlock/locked,
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"cq" = (
+/obj/effect/visible_heretic_influence,
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"cr" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cs" = (
+/obj/structure/table,
+/obj/item/storage/firstaid/regular,
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"ct" = (
+/obj/machinery/light{
+	dir = 2
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cu" = (
+/turf/open/floor/plating/rust,
+/area/virtual_domain)
+"cv" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/plating/rust,
+/area/virtual_domain)
+"cw" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"cx" = (
+/obj/structure/table/glass,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#52B4E9"
+	},
+/obj/effect/turf_decal/siding/blue/end{
+	dir = 1
+	},
+/obj/item/stack/medical/gauze/improvised,
+/obj/structure/cable,
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"cy" = (
+/obj/machinery/vending/wallmed,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#52B4E9"
+	},
+/obj/effect/turf_decal/siding/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/blue{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"cz" = (
+/obj/structure/table/glass,
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#52B4E9"
+	},
+/obj/effect/turf_decal/siding/blue/end,
+/obj/item/healthanalyzer,
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"cA" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"cB" = (
+/obj/machinery/light{
+	bulb_colour = "#DDE6FF";
+	nightshift_light_color = "#DDE6FF";
+	dir = 2
+	},
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"cC" = (
+/obj/structure/table,
+/obj/item/restraints/handcuffs,
+/obj/item/restraints/handcuffs{
+	pixel_x = -6;
+	pixel_y = 3
+	},
+/turf/open/floor/plasteel/dark,
+/area/virtual_domain)
+"cD" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cE" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/structure/sign/warning/electricshock{
+	dir = 8;
+	pixel_x = -32
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cF" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/structure/mopbucket = 500, /obj/item/mop = 250, /obj/item/clothing/suit/caution = 150, /obj/item/reagent_containers/glass/bucket = 100);
+	lootcount = 2;
+	name = "mop bucket spawner"
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"cG" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/obj/machinery/vending/cigarette,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cH" = (
+/obj/structure/reagent_dispensers/fueltank,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"cI" = (
+/mob/living/carbon/human/ai_boarder/fake_crew/md,
+/obj/structure/cable,
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"cJ" = (
+/obj/effect/visible_heretic_influence,
+/obj/structure/cable,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cK" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/blood/old,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/plating/rust{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"cL" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/light/small{
+	bulb_colour = "#FF3333";
+	brightness = 3;
+	bulb_power = 0.8;
+	nightshift_allowed = 0;
+	dir = 2
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 9
+	},
+/turf/open/floor/plating/rust,
+/area/virtual_domain)
+"cM" = (
+/obj/effect/turf_decal/tile/blue,
+/obj/machinery/iv_drip,
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"cN" = (
+/obj/effect/turf_decal/tile/blue,
+/obj/structure/cable,
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"cO" = (
+/obj/effect/turf_decal/tile/blue,
+/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"cP" = (
+/obj/effect/turf_decal/tile/red,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cQ" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/cobweb,
+/obj/item/pickaxe,
+/turf/open/floor/plating/rust,
+/area/virtual_domain)
+"cR" = (
+/obj/effect/turf_decal/tile/red,
+/obj/structure/extinguisher_cabinet{
+	dir = 4;
+	pixel_x = 29
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cS" = (
+/obj/effect/turf_decal/tile/red,
+/obj/structure/cable,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"cT" = (
+/obj/item/flashlight/flare{
+	icon_state = "flare-on";
+	light_on = 1
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"cU" = (
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/extinguisher = 1000);
+	name = "tank holder spawner"
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"cV" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#52B4E9"
+	},
+/obj/machinery/light{
+	bulb_colour = "#DDE6FF";
+	nightshift_light_color = "#DDE6FF";
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/blue{
+	dir = 8
+	},
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/structure/bed/roller = 500, /obj/vehicle/ridden/wheelchair = 500);
+	name = "patient stretcher spawner"
+	},
+/obj/structure/cable,
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"cW" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#52B4E9"
+	},
+/obj/effect/turf_decal/siding/blue{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"cX" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#52B4E9"
+	},
+/obj/structure/closet/crate/bin,
+/obj/structure/extinguisher_cabinet{
+	dir = 2;
+	pixel_y = -29
+	},
+/obj/effect/turf_decal/siding/blue{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"cY" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#52B4E9"
+	},
+/obj/structure/table/glass,
+/obj/item/reagent_containers/glass/bottle/salglu_solution,
+/obj/effect/turf_decal/siding/blue{
+	dir = 8
+	},
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"cZ" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#52B4E9"
+	},
+/obj/structure/table/glass,
+/obj/item/storage/firstaid/brute{
+	pixel_y = -8
+	},
+/obj/item/reagent_containers/glass/bottle/salglu_solution{
+	pixel_y = 11;
+	pixel_x = -3
+	},
+/obj/item/reagent_containers/glass/bottle{
+	pixel_y = 13;
+	pixel_x = 3
+	},
+/obj/effect/turf_decal/siding/blue{
+	dir = 8
+	},
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"da" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#52B4E9"
+	},
+/obj/structure/table/glass,
+/obj/item/stack/medical/gauze{
+	pixel_y = 4
+	},
+/obj/effect/turf_decal/siding/blue{
+	dir = 8
+	},
+/turf/open/floor/plasteel/white,
+/area/virtual_domain)
+"db" = (
+/obj/machinery/light/small/broken{
+	dir = 8
+	},
+/mob/living/simple_animal/hostile/heretic_summon/raw_prophet,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"dc" = (
+/turf/closed/indestructible/fakedoor,
+/area/virtual_domain)
+"dd" = (
+/obj/machinery/light/small/broken{
+	dir = 8
+	},
+/turf/open/floor/plating/rust,
+/area/virtual_domain)
+"de" = (
+/turf/open/floor/plating,
+/area/virtual_domain)
+"df" = (
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/plating,
+/area/virtual_domain/safehouse)
+"dg" = (
+/obj/item/flashlight/flare/torch,
+/obj/item/flashlight/flare/torch,
+/obj/item/clothing/suit/hooded/cultrobes/eldritch,
+/obj/item/melee/sickly_blade,
+/obj/structure/rack,
+/obj/machinery/light{
+	bulb_colour = "#FF3333";
+	brightness = 4;
+	bulb_power = 0.7;
+	nightshift_allowed = 0;
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/virtual_domain/safehouse)
+"dh" = (
+/turf/open/floor/plasteel{
+	icon_state = "damaged2"
+	},
+/area/virtual_domain/safehouse)
+"di" = (
+/obj/effect/spawner/structure/window/reinforced/tinted,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"dj" = (
+/obj/effect/landmark/bitrunning/hololadder_spawn,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel,
+/area/virtual_domain/safehouse)
+"dk" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dl" = (
+/obj/structure/table/reinforced,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dm" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/box{
+	pixel_y = 10;
+	pixel_x = 2
+	},
+/obj/structure/cable,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dn" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"do" = (
+/obj/machinery/door/airlock/maintenance_hatch,
+/obj/structure/girder,
+/obj/structure/grille,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"dp" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"dq" = (
+/obj/item/candle/infinite{
+	icon_state = "candle2_lit";
+	pixel_x = -3;
+	pixel_y = 4
+	},
+/turf/open/floor/plating/rust,
+/area/virtual_domain)
+"dr" = (
+/obj/item/candle/infinite{
+	icon_state = "candle2_lit";
+	pixel_x = 2;
+	pixel_y = 4
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"ds" = (
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"dt" = (
+/turf/closed/indestructible/fakedoor{
+	name = "airlock"
+	},
+/area/virtual_domain)
+"du" = (
+/obj/structure/girder,
+/obj/structure/grille,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"dv" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain/safehouse)
+"dw" = (
+/obj/item/flashlight/flare/torch,
+/obj/item/flashlight/flare/torch,
+/obj/item/clothing/suit/hooded/cultrobes/eldritch,
+/obj/item/melee/sickly_blade,
+/obj/structure/rack,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/virtual_domain/safehouse)
+"dx" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plasteel{
+	icon_state = "damaged5"
+	},
+/area/virtual_domain/safehouse)
+"dy" = (
+/obj/effect/landmark/bitrunning/hololadder_spawn,
+/turf/open/floor/plasteel{
+	icon_state = "damaged2"
+	},
+/area/virtual_domain/safehouse)
+"dz" = (
+/turf/closed/indestructible/fakedoor{
+	name = "Engineering"
+	},
+/area/virtual_domain)
+"dA" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/toolbox/electrical{
+	pixel_x = -8;
+	pixel_y = -2
+	},
+/obj/structure/cable,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dB" = (
+/obj/structure/table/reinforced,
+/obj/machinery/cell_charger,
+/obj/structure/cable,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dC" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dD" = (
+/obj/machinery/door/airlock/maintenance_hatch,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"dE" = (
+/turf/closed/wall,
+/area/virtual_domain)
+"dF" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"dG" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"dH" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/plating/rust,
+/area/virtual_domain)
+"dI" = (
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/clothing/suit/caution = 800, /obj/structure/holosign/wetsign = 100, /obj/structure/holosign/barrier = 60, /obj/structure/holosign/barrier/wetsign = 40);
+	name = "caution sign spawner"
+	},
+/obj/structure/grille/broken,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/plating/rust,
+/area/virtual_domain)
+"dJ" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 5
+	},
+/turf/open/floor/plating/rust{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"dK" = (
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/plating/rust,
+/area/virtual_domain)
+"dL" = (
+/obj/effect/heretic_rune/big,
+/obj/effect/landmark/bitrunning/loot_signal,
+/turf/open/floor/plating/rust,
+/area/virtual_domain)
+"dM" = (
+/turf/open/floor/plating{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"dN" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating/rust,
+/area/virtual_domain)
+"dO" = (
+/obj/machinery/door/airlock/maintenance_hatch,
+/turf/open/floor/plating,
+/area/virtual_domain/safehouse)
+"dP" = (
+/turf/closed/wall/rust,
+/area/virtual_domain)
+"dQ" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/virtual_domain/safehouse)
+"dR" = (
+/obj/item/flashlight/flare/torch,
+/obj/item/flashlight/flare/torch,
+/obj/item/clothing/suit/hooded/cultrobes/eldritch,
+/obj/item/melee/sickly_blade,
+/obj/structure/rack,
+/turf/open/floor/plating,
+/area/virtual_domain/safehouse)
+"dS" = (
+/obj/structure/railing/corner,
+/turf/open/floor/plasteel{
+	icon_state = "damaged4"
+	},
+/area/virtual_domain/safehouse)
+"dT" = (
+/obj/effect/landmark/bitrunning/hololadder_spawn,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/open/floor/plasteel{
+	icon_state = "damaged2"
+	},
+/area/virtual_domain/safehouse)
+"dU" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dV" = (
+/obj/structure/table/reinforced,
+/obj/item/clothing/gloves/color/yellow,
+/obj/item/clothing/gloves/color/yellow,
+/obj/structure/cable,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dW" = (
+/obj/effect/turf_decal/tile/yellow,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"dX" = (
+/obj/machinery/door/airlock/maintenance_hatch,
+/obj/structure/barricade/wooden/crude,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"dY" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"dZ" = (
+/obj/item/candle/infinite{
+	icon_state = "candle2_lit";
+	pixel_x = 10;
+	pixel_y = 14
+	},
+/turf/open/floor/plating{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"ea" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"eb" = (
+/turf/open/floor/plating/rust{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"ec" = (
+/obj/item/candle/infinite{
+	icon_state = "candle2_lit";
+	pixel_x = 4;
+	pixel_y = 1
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"ed" = (
+/obj/structure/girder,
+/obj/structure/grille/broken,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"ee" = (
+/turf/open/floor/plating,
+/area/virtual_domain/safehouse)
+"ef" = (
+/obj/effect/landmark/bitrunning/cache_goal_turf,
+/turf/open/indestructible/bitrunning_transport,
+/area/virtual_domain/safehouse)
+"eg" = (
+/obj/structure/cable,
+/turf/closed/indestructible/riveted,
+/area/virtual_domain)
+"eh" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/obj/structure/sign/warning/electricshock{
+	dir = 1;
+	pixel_y = 32
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ei" = (
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ej" = (
+/mob/living/carbon/human/ai_boarder/fake_crew/engi,
+/obj/structure/cable,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ek" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#EFB341"
+	},
+/obj/machinery/suit_storage_unit,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"el" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"em" = (
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/cigbutt = 278, /obj/item/cigbutt/roach = 278, /obj/effect/decal/cleanable/ash = 278, /obj/item/cigbutt/cigarbutt = 167);
+	name = "cigarette butt spawner"
+	},
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/cigbutt = 278, /obj/item/cigbutt/roach = 278, /obj/effect/decal/cleanable/ash = 278, /obj/item/cigbutt/cigarbutt = 167);
+	name = "cigarette butt spawner"
+	},
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"en" = (
+/obj/structure/cable,
+/turf/open/floor/plating{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"eo" = (
+/obj/structure/table,
+/obj/item/reagent_containers/glass/bowl,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"ep" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 10
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"eq" = (
+/obj/machinery/light/small/broken{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/plating/rust,
+/area/virtual_domain)
+"er" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 5
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"es" = (
+/obj/machinery/light/small/broken{
+	dir = 4
+	},
+/mob/living/simple_animal/hostile/heretic_summon/raw_prophet,
+/turf/open/floor/plating/rust,
+/area/virtual_domain)
+"et" = (
+/turf/open/floor/plating{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain/safehouse)
+"eu" = (
+/obj/machinery/light{
+	bulb_colour = "#FF3333";
+	brightness = 4;
+	bulb_power = 0.7;
+	nightshift_allowed = 0;
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/virtual_domain/safehouse)
+"ev" = (
+/obj/machinery/power/rtg,
+/obj/structure/cable,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ew" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ex" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ey" = (
+/obj/effect/visible_heretic_influence,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"ez" = (
+/obj/effect/turf_decal/tile{
+	icon_state = "tile_full";
+	color = "#EFB341"
+	},
+/obj/structure/tank_dispenser,
+/obj/structure/fireaxecabinet{
+	dir = 2;
+	pixel_y = -32
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"eA" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/cigbutt = 278, /obj/item/cigbutt/roach = 278, /obj/effect/decal/cleanable/ash = 278, /obj/item/cigbutt/cigarbutt = 167);
+	name = "cigarette butt spawner"
+	},
+/obj/effect/spawner/lootdrop{
+	loot = list(/obj/item/clothing/gloves/color/orange = 100, /obj/item/clothing/gloves/color/red = 100, /obj/item/clothing/gloves/color/blue = 100, /obj/item/clothing/gloves/color/purple = 100, /obj/item/clothing/gloves/color/green = 100, /obj/item/clothing/gloves/color/grey = 100, /obj/item/clothing/gloves/color/light_brown = 100, /obj/item/clothing/gloves/color/brown = 100, /obj/item/clothing/gloves/color/white = 100, /obj/item/clothing/gloves/color/rainbow = 100);
+	name = "random gloves"
+	},
+/turf/open/floor/plating/rust{
+	icon_state = "platingdmg2"
+	},
+/area/virtual_domain)
+"eB" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/cable,
+/obj/item/flashlight/flare{
+	icon_state = "flare-on";
+	light_on = 1
+	},
+/turf/open/floor/plating/rust,
+/area/virtual_domain)
+"eC" = (
+/obj/machinery/door/airlock/maintenance_hatch,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/virtual_domain)
+"eD" = (
+/obj/effect/spawner/structure/window,
+/turf/open/floor/plating,
+/area/virtual_domain)
+"eE" = (
+/obj/effect/baseturf_helper/virtual_domain,
+/turf/closed/wall,
+/area/virtual_domain/safehouse)
+"eF" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/obj/structure/closet/emcloset,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+"eG" = (
+/obj/structure/closet/firecloset,
+/obj/structure/cable,
+/turf/open/floor/plasteel,
+/area/virtual_domain)
+
+(1,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+"}
+(2,1,1) = {"
+aa
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+aa
+"}
+(3,1,1) = {"
+aa
+ci
+ci
+ci
+di
+dt
+dt
+di
+dE
+dE
+dP
+dP
+dP
+dE
+ci
+ci
+ci
+ci
+ci
+dE
+dE
+dE
+dE
+dE
+dE
+dE
+dE
+ci
+ci
+ci
+aa
+"}
+(4,1,1) = {"
+aa
+ci
+ci
+ci
+ea
+el
+el
+ew
+dE
+ac
+an
+ay
+aJ
+dE
+dE
+dP
+dP
+dE
+dP
+dE
+aU
+aU
+aU
+aU
+aU
+aU
+dE
+ci
+ci
+ci
+aa
+"}
+(5,1,1) = {"
+aa
+ci
+ci
+ci
+bf
+bq
+bB
+bM
+dE
+bX
+cj
+cu
+cF
+dP
+cQ
+db
+ay
+dd
+de
+dE
+aU
+df
+dg
+dh
+dj
+aU
+dE
+ci
+ci
+ci
+aa
+"}
+(6,1,1) = {"
+aa
+ci
+bB
+di
+dk
+dl
+dm
+dn
+dE
+dE
+do
+dP
+dP
+dE
+dp
+dq
+cu
+dr
+ds
+du
+aU
+dv
+dw
+dx
+dy
+aU
+dE
+ci
+ci
+ci
+aa
+"}
+(7,1,1) = {"
+aa
+ci
+bB
+dz
+bB
+dA
+dB
+dC
+dD
+dF
+dG
+dH
+dI
+dD
+dJ
+dK
+dL
+dM
+dN
+de
+dO
+dQ
+dR
+dS
+dT
+aU
+dE
+ci
+ci
+ci
+aa
+"}
+(8,1,1) = {"
+aa
+ci
+bB
+di
+dU
+dl
+dV
+dW
+dE
+dE
+dE
+dX
+dE
+dP
+dY
+dZ
+eb
+ec
+de
+ed
+aU
+ee
+dv
+dQ
+ef
+aU
+dE
+ci
+ci
+ci
+aa
+"}
+(9,1,1) = {"
+aa
+ci
+eg
+ci
+eh
+ei
+ej
+dW
+ek
+dE
+em
+en
+eo
+dP
+ep
+eq
+er
+es
+de
+dP
+aU
+et
+eu
+dQ
+ef
+aU
+dE
+ci
+ci
+ci
+aa
+"}
+(10,1,1) = {"
+aa
+ci
+ev
+ci
+ex
+ey
+bB
+dW
+ez
+dE
+eA
+eB
+dE
+dE
+dP
+dE
+eC
+eD
+dP
+dE
+aU
+aU
+aU
+aU
+aU
+eE
+dE
+ci
+ci
+ci
+aa
+"}
+(11,1,1) = {"
+aa
+ci
+ci
+ci
+eF
+eG
+bB
+ad
+ek
+dE
+ae
+de
+dP
+af
+ag
+dE
+ah
+dM
+ai
+dE
+dE
+dE
+dE
+dE
+dE
+dE
+dE
+ci
+ci
+ci
+aa
+"}
+(12,1,1) = {"
+aa
+ci
+ci
+ci
+dE
+aj
+ak
+aj
+dE
+dE
+al
+am
+ao
+ap
+aq
+dP
+ar
+as
+at
+dE
+au
+av
+aw
+dE
+dE
+dE
+ci
+ci
+ci
+ci
+aa
+"}
+(13,1,1) = {"
+aa
+ci
+ci
+ci
+dE
+ax
+az
+dn
+aA
+dE
+aB
+cu
+dE
+dP
+dE
+dE
+ah
+aC
+aD
+dE
+aE
+aF
+aG
+aH
+aI
+dE
+ci
+ci
+ci
+ci
+aa
+"}
+(14,1,1) = {"
+aa
+ci
+ci
+dE
+dE
+aK
+aL
+ei
+aM
+dE
+aN
+dp
+ao
+cj
+aO
+dE
+aP
+cu
+aQ
+dE
+aR
+aS
+aT
+aV
+aW
+dE
+ci
+ci
+ci
+ci
+aa
+"}
+(15,1,1) = {"
+aa
+ci
+ci
+dE
+aX
+aY
+aZ
+ei
+ba
+dE
+dE
+dE
+dE
+bb
+bc
+dP
+bd
+be
+bg
+dE
+bh
+bi
+bi
+aV
+bj
+dE
+ci
+ci
+ci
+ci
+aa
+"}
+(16,1,1) = {"
+aa
+ci
+ci
+dE
+bk
+bl
+bm
+bn
+dE
+dE
+bo
+bp
+dE
+dE
+dE
+dP
+dY
+br
+bs
+dE
+bh
+bt
+bt
+aV
+bu
+dE
+ci
+ci
+ci
+ci
+aa
+"}
+(17,1,1) = {"
+aa
+ci
+ci
+dE
+dE
+dE
+dE
+dE
+dE
+dE
+bv
+bw
+bx
+by
+dE
+dP
+bz
+dP
+dE
+dE
+aj
+bA
+aj
+dE
+dE
+dE
+dE
+dE
+dE
+ci
+aa
+"}
+(18,1,1) = {"
+aa
+ci
+ci
+dE
+bC
+bD
+bE
+bF
+bG
+aj
+bH
+bI
+bJ
+bK
+dE
+bL
+ah
+dE
+dE
+bN
+bO
+bP
+bQ
+bR
+dE
+bS
+bT
+bU
+dE
+ci
+aa
+"}
+(19,1,1) = {"
+aa
+ci
+ci
+dE
+ei
+bV
+bW
+bW
+bG
+ak
+ei
+bY
+aY
+bZ
+dE
+ca
+bd
+dE
+cb
+cc
+cc
+cd
+cc
+cc
+dE
+cc
+cc
+cc
+dE
+ci
+aa
+"}
+(20,1,1) = {"
+aa
+ci
+ci
+dE
+ei
+ce
+cf
+cg
+bG
+aj
+ch
+ck
+cl
+cm
+dE
+dE
+cn
+dE
+bt
+bt
+co
+bP
+bt
+bt
+cp
+bt
+cq
+bt
+dE
+ci
+aa
+"}
+(21,1,1) = {"
+aa
+ci
+ci
+dE
+cr
+ce
+cs
+cg
+ct
+dE
+dE
+aj
+dE
+dE
+dE
+dE
+cv
+dD
+cw
+cw
+cx
+cy
+cz
+bt
+cA
+bt
+bt
+cB
+dE
+ci
+aa
+"}
+(22,1,1) = {"
+aa
+ci
+ci
+dE
+ei
+ce
+cC
+cg
+bG
+cD
+cE
+bG
+cG
+dE
+cH
+de
+ar
+dE
+bt
+bt
+bt
+cI
+bt
+bt
+cp
+bt
+bt
+bt
+dE
+ci
+aa
+"}
+(23,1,1) = {"
+aa
+ci
+ci
+dE
+ei
+bW
+bW
+bV
+bB
+bB
+bB
+cJ
+dC
+dD
+dF
+cK
+cL
+dE
+cM
+aV
+aV
+cN
+aV
+aV
+dE
+aV
+aV
+cO
+dE
+ci
+aa
+"}
+(24,1,1) = {"
+aa
+ci
+ci
+dE
+cP
+cP
+cR
+cP
+cS
+cP
+cS
+cP
+cS
+dE
+dP
+cT
+cU
+dE
+dE
+cV
+cW
+cW
+cW
+cX
+dE
+cY
+cZ
+da
+dE
+ci
+aa
+"}
+(25,1,1) = {"
+aa
+ci
+ci
+dE
+dE
+dE
+dE
+dE
+di
+dc
+di
+dc
+di
+dE
+dE
+dP
+dP
+dE
+dE
+di
+dc
+di
+dc
+di
+dE
+dE
+dE
+dE
+dE
+ci
+aa
+"}
+(26,1,1) = {"
+aa
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+ci
+aa
+"}
+(27,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}

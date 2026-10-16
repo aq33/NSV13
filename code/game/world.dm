@@ -314,11 +314,12 @@ GLOBAL_VAR(restart_counter)
 	var/debug_server = world.GetConfig("env", "AUXTOOLS_DEBUG_DLL")
 	if (debug_server)
 		LIBCALL(debug_server, "auxtools_shutdown")()
+	auxmos_cleanup() // AQ EDIT - auxmos outlives the world, see aquila/code/game/world.dm
 	..()
 
 /world/Del()
 	shutdown_logging() // makes sure the thread is closed before end, else we terminate
-	//__auxmos_shutdown()
+	auxmos_cleanup() // AQ EDIT - auxmos outlives the world, see aquila/code/game/world.dm
 	var/debug_server = world.GetConfig("env", "AUXTOOLS_DEBUG_DLL")
 	if (debug_server)
 		LIBCALL(debug_server, "auxtools_shutdown")()

@@ -101,6 +101,11 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Górnik"
 	icon_state = "Shaft Miner"
 
+// AQ EDIT - bitrunning
+/obj/effect/landmark/start/bitrunner
+	name = "Bitrunner"
+	icon_state = "Cargo Technician"
+
 /obj/effect/landmark/start/exploration
 	name = "Odkrywca"
 	icon_state = "Exploration Crew"

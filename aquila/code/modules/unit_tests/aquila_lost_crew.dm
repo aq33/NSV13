@@ -33,4 +33,16 @@
 	for(var/atom/movable/thing in bag)
 		qdel(thing)
 
+	// Central Command sends one by pod now and then, with the instruction card inside
+	var/datum/round_event/aquila_stray_cargo/lost_crew/delivery = new(FALSE)
+	delivery.kill()
+	var/obj/structure/closet/body_bag/lost_crew/with_body/delivered = delivery.get_contents()
+	TEST_ASSERT(istype(delivered), "The delivery pod carries no body bag")
+	allocated += delivered
+	TEST_ASSERT(locate(/mob/living/carbon/human) in delivered, "The delivered bag has no body")
+	var/obj/item/paper/card = locate() in delivered
+	TEST_ASSERT(card && findtext(card.get_raw_text(), "defibrylatora"), "The delivered bag has no instruction card")
+	for(var/atom/movable/thing in delivered)
+		qdel(thing)
+
 #undef TEST_ASSERT

@@ -1,0 +1,23 @@
+// AQUILA - port of PowerfulBacon-2/AuriStation#15
+.scrollingChart {
+  display: flex;
+  flex-direction: row;
+
+  background-color: black;
+  border: 1px solid white;
+  width: 100%;
+  height: 100%;
+
+  .label {
+    border-left: 1px solid white;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 2px;
+    text-align: center;
+
+    min-width: 40px;
+  }
+}

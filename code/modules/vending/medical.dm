@@ -14,6 +14,10 @@
 					/obj/item/healthanalyzer = 4,
 				    /obj/item/reagent_containers/spray/cleaner = 1,
 					/obj/item/stack/medical/gauze = 8,
+					/obj/item/stack/medical/suture = 4, // AQ EDIT - tgstation sutures and mesh
+					/obj/item/stack/medical/mesh = 4, // AQ EDIT
+					/obj/item/stack/medical/suture/medicated = 2, // AQ EDIT
+					/obj/item/stack/medical/mesh/advanced = 2, // AQ EDIT
 					/obj/item/reagent_containers/hypospray/medipen = 8,
 					/obj/item/reagent_containers/hypospray/medipen/dexalin = 8,
 					/obj/item/reagent_containers/glass/bottle/epinephrine = 4,
