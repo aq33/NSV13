@@ -139,7 +139,9 @@
 			return pick(GLOB.facial_hair_styles_list)
 
 /proc/random_unique_name(gender, attempts_to_find_unique_name=10)
-	return aquila_random_unique_name(gender, attempts_to_find_unique_name) // AQ EDIT - nazwiska zgodne z płcią, patrz aquila/code/__HELPERS/names.dm
+	// AQ EDIT START - nazwiska zgodne z płcią, patrz aquila/code/__HELPERS/names.dm
+	return aquila_random_unique_name(gender, attempts_to_find_unique_name)
+	/*
 	for(var/i in 1 to attempts_to_find_unique_name)
 		if(gender==FEMALE)
 			. = capitalize(pick(GLOB.first_names_female)) + " " + capitalize(pick(GLOB.last_names_male))
@@ -150,6 +152,8 @@
 
 		if(!findname(.))
 			break
+	*/
+	// AQ EDIT END
 
 /proc/random_lizard_name(gender, attempts)
 	if(gender == MALE)
