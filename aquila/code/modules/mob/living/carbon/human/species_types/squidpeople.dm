@@ -52,8 +52,8 @@
 		if(!findname(.))
 			break
 
-GLOBAL_LIST_INIT(squid_names_male, world.file2list("aquila/strings/names/squid_male.txt"))
-GLOBAL_LIST_INIT(squid_names_female, world.file2list("aquila/strings/names/squid_female.txt"))
+GLOBAL_LIST_INIT(squid_names_male, world.file2list("strings/names/squid_male.txt"))
+GLOBAL_LIST_INIT(squid_names_female, world.file2list("strings/names/squid_female.txt"))
 
 /datum/species/squid/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load)
 	. = ..()
