@@ -1,0 +1,886 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/closed/indestructible/binary,
+/area/virtual_domain/fullbright)
+"b" = (
+/obj/structure/flora/tree/jungle,
+/turf/open/floor/plating/beach/sand,
+/area/virtual_domain/fullbright)
+"c" = (
+/obj/effect/baseturf_helper/virtual_domain,
+/turf/open/floor/plating/beach/water,
+/area/virtual_domain/fullbright)
+"d" = (
+/obj/structure/flora/rock,
+/turf/open/floor/plating/beach/sand,
+/area/virtual_domain/fullbright)
+"e" = (
+/obj/machinery/light/small{
+	dir = 2
+	},
+/turf/open/floor/plating/beach/sand,
+/area/virtual_domain/fullbright)
+"f" = (
+/turf/closed/wall/mineral/wood,
+/area/virtual_domain/safehouse)
+"g" = (
+/obj/effect/spawner/structure/window,
+/turf/open/floor/plating,
+/area/virtual_domain/safehouse)
+"h" = (
+/obj/effect/baseturf_helper/virtual_domain,
+/turf/closed/wall/mineral/wood,
+/area/virtual_domain/safehouse)
+"i" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/plating/beach/sand,
+/area/virtual_domain/fullbright)
+"j" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/open/indestructible/hotelwood,
+/area/virtual_domain/safehouse)
+"k" = (
+/turf/open/indestructible/hotelwood,
+/area/virtual_domain/safehouse)
+"l" = (
+/obj/item/kirbyplants/random,
+/turf/open/indestructible/hotelwood,
+/area/virtual_domain/safehouse)
+"m" = (
+/obj/structure/flora/junglebush,
+/turf/open/floor/plating/beach/sand,
+/area/virtual_domain/fullbright)
+"n" = (
+/turf/open/floor/carpet/green,
+/area/virtual_domain/safehouse)
+"o" = (
+/obj/effect/landmark/bitrunning/hololadder_spawn,
+/turf/open/indestructible/hotelwood,
+/area/virtual_domain/safehouse)
+"p" = (
+/obj/machinery/door/airlock/wood/glass,
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/virtual_domain/safehouse)
+"q" = (
+/obj/structure/railing/corner{
+	dir = 4
+	},
+/turf/open/floor/carpet/green,
+/area/virtual_domain/safehouse)
+"r" = (
+/obj/item/toy/beach_ball,
+/turf/open/floor/plating/beach/sand,
+/area/virtual_domain/fullbright)
+"s" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/effect/landmark/bitrunning/cache_goal_turf,
+/obj/effect/turf_decal/loading_area{
+	dir = 4
+	},
+/turf/open/indestructible/bitrunning_transport,
+/area/virtual_domain/safehouse)
+"t" = (
+/obj/structure/railing,
+/obj/effect/landmark/bitrunning/cache_goal_turf,
+/obj/effect/turf_decal/loading_area{
+	dir = 4
+	},
+/turf/open/indestructible/bitrunning_transport,
+/area/virtual_domain/safehouse)
+"u" = (
+/obj/structure/sign/poster/random{
+	dir = 4;
+	pixel_x = 32
+	},
+/turf/open/indestructible/hotelwood,
+/area/virtual_domain/safehouse)
+"v" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/table/wood,
+/obj/item/newspaper,
+/turf/open/indestructible/hotelwood,
+/area/virtual_domain/safehouse)
+"w" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/plating/beach/sand,
+/area/virtual_domain/fullbright)
+"x" = (
+/obj/structure/flora/ausbushes/sparsegrass,
+/turf/open/floor/plating/beach/sand,
+/area/virtual_domain/fullbright)
+"y" = (
+/obj/structure/flora/tree/palm,
+/turf/open/floor/plating/beach/sand,
+/area/virtual_domain/fullbright)
+"z" = (
+/obj/structure/flora{
+	name = "coconuts";
+	icon = 'icons/misc/beach.dmi';
+	icon_state = "coconuts";
+	layer = 4.1
+	},
+/turf/open/floor/plating/beach/sand,
+/area/virtual_domain/fullbright)
+"A" = (
+/obj/effect/landmark/bitrunning/loot_signal,
+/turf/open/floor/plating/beach/sand,
+/area/virtual_domain/fullbright)
+"B" = (
+/turf/open/floor/carpet/blue,
+/area/virtual_domain/fullbright)
+"C" = (
+/obj/structure/table/wood,
+/turf/open/floor/plating/beach/sand,
+/area/virtual_domain/fullbright)
+"D" = (
+/obj/structure/closet/crate,
+/turf/open/floor/plating/beach/sand,
+/area/virtual_domain/fullbright)
+"E" = (
+/turf/open/floor/carpet/red,
+/area/virtual_domain/fullbright)
+"F" = (
+/turf/open/floor/wood,
+/area/virtual_domain/fullbright)
+"G" = (
+/turf/open/floor/carpet/green,
+/area/virtual_domain/fullbright)
+"H" = (
+/obj/structure/closet/crate/freezer{
+	name = "Cooler"
+	},
+/obj/item/reagent_containers/food/drinks/ice,
+/obj/item/reagent_containers/food/drinks/sillycup,
+/obj/item/reagent_containers/food/drinks/sillycup,
+/obj/item/reagent_containers/food/drinks/bottle/beer{
+	desc = "Beer advertised to be the best in space.";
+	name = "Masterbrand Beer"
+	},
+/obj/item/reagent_containers/food/drinks/bottle/beer{
+	desc = "Beer advertised to be the best in space.";
+	name = "Masterbrand Beer"
+	},
+/obj/item/reagent_containers/food/drinks/bottle/beer{
+	desc = "Beer advertised to be the best in space.";
+	name = "Masterbrand Beer"
+	},
+/obj/item/reagent_containers/food/drinks/beer/light,
+/obj/item/reagent_containers/food/drinks/beer/light,
+/obj/item/reagent_containers/food/drinks/beer/light,
+/obj/item/clothing/head/soft/green,
+/turf/open/floor/plating/beach/sand,
+/area/virtual_domain/fullbright)
+"I" = (
+/turf/open/floor/plating/beach/sand,
+/area/virtual_domain/fullbright)
+"J" = (
+/obj/structure/chair/wood,
+/turf/open/floor/wood,
+/area/virtual_domain/fullbright)
+"K" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/plating/beach/sand,
+/area/virtual_domain/fullbright)
+"L" = (
+/mob/living/simple_animal/crab,
+/turf/open/floor/plating/beach/sand,
+/area/virtual_domain/fullbright)
+"M" = (
+/turf/open/floor/plating/beach/coastline_t,
+/area/virtual_domain/fullbright)
+"N" = (
+/turf/open/floor/plating/beach/water,
+/area/virtual_domain/fullbright)
+"O" = (
+/obj/structure/flora/ausbushes/stalkybush,
+/turf/open/floor/plating/beach/water,
+/area/virtual_domain/fullbright)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+b
+m
+x
+I
+K
+I
+I
+I
+I
+K
+L
+M
+N
+N
+N
+N
+N
+N
+N
+O
+N
+N
+c
+a
+"}
+(3,1,1) = {"
+a
+I
+d
+I
+e
+f
+f
+g
+f
+f
+h
+i
+M
+O
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+a
+"}
+(4,1,1) = {"
+a
+I
+b
+I
+I
+g
+j
+k
+k
+j
+g
+I
+M
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+a
+"}
+(5,1,1) = {"
+a
+I
+x
+I
+I
+f
+l
+n
+n
+o
+f
+I
+M
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+a
+"}
+(6,1,1) = {"
+a
+b
+I
+I
+I
+p
+k
+n
+n
+o
+f
+x
+M
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+a
+"}
+(7,1,1) = {"
+a
+m
+m
+I
+I
+f
+k
+q
+n
+o
+f
+I
+M
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+a
+"}
+(8,1,1) = {"
+a
+I
+b
+r
+I
+g
+s
+t
+u
+v
+g
+I
+M
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+a
+"}
+(9,1,1) = {"
+a
+m
+x
+I
+e
+f
+f
+g
+f
+f
+f
+i
+M
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+a
+"}
+(10,1,1) = {"
+a
+b
+I
+I
+I
+w
+I
+I
+I
+I
+w
+I
+M
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+a
+"}
+(11,1,1) = {"
+a
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+M
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+a
+"}
+(12,1,1) = {"
+a
+I
+b
+x
+I
+I
+I
+y
+z
+I
+I
+I
+M
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+a
+"}
+(13,1,1) = {"
+a
+I
+I
+I
+I
+I
+I
+I
+I
+I
+A
+I
+M
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+a
+"}
+(14,1,1) = {"
+a
+b
+x
+I
+I
+B
+B
+I
+I
+I
+C
+I
+M
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+a
+"}
+(15,1,1) = {"
+a
+I
+I
+I
+I
+I
+I
+I
+I
+I
+D
+I
+M
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+a
+"}
+(16,1,1) = {"
+a
+I
+b
+I
+I
+E
+E
+I
+I
+I
+I
+I
+M
+N
+N
+N
+N
+F
+F
+N
+N
+N
+N
+N
+a
+"}
+(17,1,1) = {"
+a
+m
+I
+I
+I
+I
+I
+I
+I
+I
+I
+I
+M
+N
+N
+N
+N
+F
+F
+N
+N
+N
+N
+N
+a
+"}
+(18,1,1) = {"
+a
+b
+m
+I
+I
+G
+G
+I
+I
+I
+I
+I
+F
+F
+F
+F
+F
+F
+F
+F
+F
+F
+N
+N
+a
+"}
+(19,1,1) = {"
+a
+I
+I
+I
+I
+H
+I
+I
+I
+I
+I
+I
+F
+F
+F
+F
+F
+F
+F
+F
+J
+F
+N
+N
+a
+"}
+(20,1,1) = {"
+a
+I
+b
+I
+I
+I
+I
+I
+I
+I
+I
+I
+M
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+a
+"}
+(21,1,1) = {"
+a
+I
+d
+I
+I
+I
+I
+I
+I
+z
+I
+I
+M
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+a
+"}
+(22,1,1) = {"
+a
+b
+I
+x
+I
+I
+I
+I
+I
+y
+I
+I
+M
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+N
+a
+"}
+(23,1,1) = {"
+a
+I
+m
+I
+I
+I
+I
+I
+I
+x
+I
+I
+M
+N
+N
+N
+N
+N
+N
+N
+N
+N
+O
+N
+a
+"}
+(24,1,1) = {"
+a
+I
+b
+I
+L
+I
+x
+I
+I
+I
+I
+I
+M
+N
+O
+N
+N
+N
+N
+N
+N
+N
+N
+N
+a
+"}
+(25,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
