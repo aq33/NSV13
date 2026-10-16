@@ -235,3 +235,9 @@ GLOBAL_LIST_INIT(surgery_tool_names, list(
 
 /datum/surgery/stomach_pump
 	catalog_condition = "pacjent musi mieć żołądek; nie na wysuszonym ciele (husk)"
+
+/datum/surgery/aq_repair_bone
+	catalog_condition = "na kończynie z co najmniej poważnym złamaniem"
+
+/datum/surgery/aq_debride
+	catalog_condition = "na kończynie z oparzeniem"
