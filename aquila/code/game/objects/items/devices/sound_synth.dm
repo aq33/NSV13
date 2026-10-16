@@ -19,9 +19,12 @@
 /obj/item/soundsynth/ancient/pick_sound(S as sound|null)
 	set category = "Object"
 	set name = "Select Sound Playback"
+	var/mob/user = usr
+	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE))
+		return
 	if(isnull(S))
 		S = input(usr, "Wgraj plik dźwiękowy:", "Starożytny syntezator") as null|sound
-	if(!S)
+	if(!S || !user.canUseTopic(src, BE_CLOSE))
 		return
 	selected_sound = S
 	to_chat(usr, "<span class='notice'>Odtwarzany dźwięk ustawiony na: [S]!</span>")
