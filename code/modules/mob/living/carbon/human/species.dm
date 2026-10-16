@@ -1907,8 +1907,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 					playsound(location, pick('sound/effects/splash.ogg'), 40, TRUE, -1)
 					var/dist = rand(1,5)
 					var/turf/targ = get_ranged_target_turf(H, get_dir(user, H), dist)
-					B.GoTo(targ, dist)
-					message_admins("[B] spawned on [H] with a blood source of [B.blood_source].")
+					INVOKE_ASYNC(B, TYPE_PROC_REF(/obj/effect/decal/cleanable/blood/hitsplatter, GoTo), targ, dist)
 				else //AQ EDIT END
 					if(istype(location))
 						H.add_splatter_floor(location) //hippie end -- blood splattering

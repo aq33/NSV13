@@ -11,10 +11,10 @@
 	result = LASEREYES
 
 /datum/generecipe/mindread
-	required = "/datum/mutation/human/antenna; /datum/mutation/human/paranoia"
+	required = "/datum/mutation/antenna; /datum/mutation/paranoia"
 	result = MINDREAD
 
 /datum/generecipe/x_ray
-	required = "/datum/mutation/human/thermal; /datum/mutation/human/radioactive"
+	required = "/datum/mutation/thermal; /datum/mutation/radioactive"
 	result = XRAY
 

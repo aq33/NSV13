@@ -13,7 +13,12 @@
 				"}
 	return dat
 
-/obj/item/implant/explosive/engineering/proc/stormdrive_went_boom()
+/obj/item/implant/explosive/engineering/proc/stormdrive_went_boom(datum/source, obj/machinery/reactor)
+	SIGNAL_HANDLER
+	if(!imp_in)
+		return
+	if(reactor && !shares_overmap(reactor, imp_in)) // tylko silnik własnego statku
+		return
 	to_chat(imp_in, "<span class='userdanger'>Pozwoliłeś żeby silnik stormdrive wybuchł, przygotuj się na działania dyscyplinarne</span>")
 	addtimer(CALLBACK(src, PROC_REF(activate), "stormdrive"), 5 SECONDS)
 

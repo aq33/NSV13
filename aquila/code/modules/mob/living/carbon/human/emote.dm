@@ -47,6 +47,13 @@
 		miałem do wyboru albo przepisać WSZYSTKIE checki na początku i na końcu zostawić ..(), które by wykonało słyszalną akcję i dźwięk
 		albo sprawić żeby ..() wykonało checki na początku, a skutki wklepać ręcznie na koniec.*/
 
+	// Bee#10000: niezdarny klaun czasem wyciska z siebie coś więcej niż bąka
+	if(HAS_TRAIT(C, TRAIT_CLUMSY) && prob(5))
+		C.spew_organ(0, 1)
+		C.add_splatter_floor(T)
+		playsound(T, 'sound/effects/splat.ogg', 50, TRUE)
+		C.visible_message("<span class='warning'>[C] tryska krwawą breją z tyłka!</span>", "<span class='warning'>Wyciskasz z siebie coś więcej niż bąka!</span>")
+
 	B.fart(C) // AQ EDIT: butt port from Hippie
 
 /datum/emote/living/carbon/human/cry/get_sound(mob/living/user)

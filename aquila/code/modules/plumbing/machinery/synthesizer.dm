@@ -15,11 +15,13 @@
 	///The reagent we are producing. We are a typepath, but are also typecast because there's several occations where we need to use initial.
 	var/datum/reagent/reagent_id = null
 	///The amount of reagent dispensable before requiring a refill from a compressed matter cartridge.
-	var/volume_left = 0
+	var/volume_left = 400 // AQ EDIT: starts with one cartridge worth of precursor
 	///The maximum amount of precursor in a synthesizer.
 	var/max_volume = 2000 //NSV13
 	///Dirty slowdowns for not maintaining this
 	var/slowdown_count = 0	//NSV13
+	///AQ EDIT: precursor regenerated passively per second while powered, so the synthesizer works without cartridges
+	var/regen_rate = 1
 	///straight up copied from chem dispenser. Being a subtype would be extremely tedious and making it global would restrict potential subtypes using different dispensable_reagents
 	var/static/list/default_reagents = list(
 		/datum/reagent/aluminium,
@@ -63,7 +65,10 @@
 	update_appearance()
 
 /obj/machinery/plumbing/synthesizer/process(delta_time)
-	if(machine_stat & NOPOWER || !reagent_id || !amount)
+	if(machine_stat & NOPOWER)
+		return
+	volume_left = min(volume_left + regen_rate * delta_time, max_volume) // AQ EDIT: passive regeneration
+	if(!reagent_id || !amount)
 		return
 	if(reagents.total_volume >= amount*delta_time*0.5) //otherwise we get leftovers, and we need this to be precise
 		return
@@ -99,7 +104,7 @@
 
 /obj/machinery/plumbing/synthesizer/examine(mob/user)
 	. = ..()
-	. += "<span class='notice'>Wyświetlacz pokazuje, że obecnie zawiera [volume_left] j. prekursora, zanim trzeba będzie go uzupełnić.</span>"
+	. += "<span class='notice'>Wyświetlacz pokazuje, że obecnie zawiera [round(volume_left)] j. prekursora. Prekursor odnawia się sam o [regen_rate] j. na sekundę, a wkład RCD uzupełnia go od razu.</span>"
 
 /obj/machinery/plumbing/synthesizer/ui_state(mob/user)
 	return GLOB.default_state

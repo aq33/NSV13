@@ -193,9 +193,13 @@
 /datum/preference/name/custom/hacker_alias
 	db_key = "hacker_alias"
 	custom_name_id = "hacker_alias"
-	relevant_job = /datum/job/bitrunner
+	relevant_job = /datum/job/shaft_miner
 
-/// Rola istnieje tylko na mapach, na których jest pracownia bitrunnerów (zastąpiła gateway)
+/// Bitrunner nie jest osobną rolą: bitrunningiem zajmują się górnicy (dostęp do pracowni i strój w szafce górnika).
+/// Datum zostaje, bo netpod ubiera awatary w strój bitrunnera, a ID i HUD-y nadal znają tę nazwę.
 /datum/job/bitrunner/map_check()
-	var/static/list/den_maps = list("NSV Aquilas", "DLV Trawnik", "NSV Padalec", "Runtime Station")
-	return (SSmapping.config?.map_name in den_maps) && ..()
+	return FALSE
+
+/obj/structure/closet/secure_closet/miner/PopulateContents()
+	..()
+	new /obj/item/clothing/under/rank/cargo/bitrunner(src)

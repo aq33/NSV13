@@ -9413,22 +9413,6 @@
 "Qx" = (
 /turf/closed/wall/steel,
 /area/maintenance/aft)
-"Qy" = (
-/obj/machinery/camera/motion{
-	c_tag = "Vault";
-	dir = 8
-	},
-/obj/item/documents/nanotrasen,
-/obj/item/grenade/clusterbuster/smoke,
-/obj/item/fakeartefact,
-/obj/item/book/random,
-/obj/item/book/random,
-/obj/item/book/random,
-/obj/structure/safe,
-/obj/item/bikehorn/golden,
-/obj/item/radio/intercom/directional/south,
-/turf/open/floor/plasteel/dark,
-/area/security/nuke_storage)
 "Qz" = (
 /obj/machinery/atmospherics/pipe/simple/general/visible{
 	dir = 10
@@ -11088,6 +11072,24 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
+"kB" = (
+/obj/machinery/camera/motion{
+	c_tag = "Vault";
+	dir = 8
+	},
+/obj/item/documents/nanotrasen,
+/obj/item/grenade/clusterbuster/smoke,
+/obj/item/fakeartefact,
+/obj/item/book/random,
+/obj/item/book/random,
+/obj/item/book/random,
+/obj/structure/safe,
+/obj/item/bikehorn/golden,
+/obj/item/radio/intercom/directional/south,
+/obj/item/circuitboard/machine/protolathe,
+/obj/item/circuitboard/machine/circuit_imprinter,
+/turf/open/floor/plasteel/dark,
+/area/security/nuke_storage)
 
 (1,1,1) = {"
 zQ
@@ -55170,7 +55172,7 @@ iJ
 JP
 Nd
 LX
-Qy
+kB
 ZO
 fI
 PI

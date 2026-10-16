@@ -7,9 +7,20 @@
 				"}
 	return dat
 
-/obj/item/implant/security_down/trigger(emote, mob/source)
-	if(emote == "deathgasp")
-		playsound(loc, 'aquila/sound/misc/security_down.ogg', 50, 0)
+// Reaguje na faktyczną śmierć, a nie na emotkę *deathgasp, którą da się wywołać ręcznie
+/obj/item/implant/security_down/implant(mob/living/target, mob/user, silent = FALSE, force = FALSE)
+	. = ..()
+	if(.)
+		RegisterSignal(target, COMSIG_MOB_DEATH, PROC_REF(on_owner_death))
+
+/obj/item/implant/security_down/removed(mob/living/source, silent = FALSE, special = 0)
+	. = ..()
+	if(.)
+		UnregisterSignal(source, COMSIG_MOB_DEATH)
+
+/obj/item/implant/security_down/proc/on_owner_death(mob/living/source, gibbed)
+	SIGNAL_HANDLER
+	playsound(source, 'aquila/sound/misc/security_down.ogg', 50, 0)
 
 /obj/item/implanter/security_down
 	name = "implanter (security officer down)"

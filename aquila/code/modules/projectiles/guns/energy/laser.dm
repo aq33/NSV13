@@ -33,3 +33,7 @@
 
 /obj/item/gun/energy/xray
 	fire_rate = 0.8 // ditto + ignorowanie ściań i 20 strzałów
+
+// Energy gun strzela tym samym hitscanowym laserem, więc tempo jak zwykły laser (HoS ma własne)
+/obj/item/gun/energy/e_gun
+	fire_rate = 1

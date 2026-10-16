@@ -32,6 +32,12 @@
 	for(var/i in 1 to range)
 		step_towards(src,T)
 		sleep(speed)
+		if(QDELETED(src))
+			return
+		if(QDELETED(blood_source)) // GoTo idzie asynchronicznie, źródło krwi mogło już zniknąć
+			skip = TRUE
+			qdel(src)
+			return
 		prev_loc = loc
 		for(var/atom/A in get_turf(src))
 			if(istype(A,/obj/item))
@@ -69,8 +75,9 @@
 	qdel(src)
 
 /obj/effect/decal/cleanable/blood/hitsplatter/Destroy()
-	if(istype(loc, /turf) && !skip)
+	if(istype(loc, /turf) && !skip && !QDELETED(blood_source))
 		loc.add_mob_blood(blood_source)
+	blood_source = null
 	return ..()
 
 /obj/effect/decal/cleanable/blood/examine()
@@ -83,9 +90,9 @@
 	dry_timer = null
 	name = "dried [name]"
 
-	check_slippery()
 	is_old = TRUE
 	bloodiness = 0
+	check_slippery() // po ustawieniu is_old, żeby zaschnięta krew przestała być śliska
 	var/old_alpha = alpha
 	color = BLOOD_DRY_COLOR
 	alpha = old_alpha
@@ -111,8 +118,8 @@
 	ASSERT(is_old)
 	name = initial(name)
 
-	check_slippery()
 	is_old = FALSE
+	check_slippery()
 	color = initial(color)
 	update_dry_timer()
 

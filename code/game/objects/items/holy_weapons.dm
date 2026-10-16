@@ -290,6 +290,7 @@
 	if (!istype(holy_weapon, /obj/item/nullrod)) //AQUILA EDIT
 		qdel(src) //AQUILA EDIT
 		M.put_in_active_hand(holy_weapon) //AQUILA EDIT
+		return //AQUILA EDIT - strzelba nie ma zmiennej reskinned
 
 	if(holy_weapon)
 		holy_weapon.reskinned = TRUE
