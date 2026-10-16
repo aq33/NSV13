@@ -55,8 +55,8 @@
 		/obj/item/reagent_containers/food/drinks/bottle/synthflesh = 1,
 		/obj/item/clothing/glasses/hud/health/sunglasses = 1,
 		/obj/item/surgical_drapes = 1,
-		/obj/item/stack/medical/bruise_pack = 1,
-		/obj/item/stack/medical/ointment = 1,
+		/obj/item/stack/medical/suture = 1, // AQ EDIT - tgstation sutures and mesh
+		/obj/item/stack/medical/mesh = 1, // AQ EDIT
 		/obj/item/stack/medical/gauze = 1,
 		/obj/item/reagent_containers/glass/bottle/epinephrine = 1,
 		/obj/item/reagent_containers/glass/bottle/charcoal = 1,

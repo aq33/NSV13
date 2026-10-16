@@ -149,6 +149,9 @@ GLOBAL_DATUM_INIT(lost_crew_manager, /datum/lost_crew_manager, new)
 	name = "worek na zwłoki długoterminowe"
 	desc = "Plastikowy worek do długotrwałego przechowywania i transportu zwłok."
 
+/// Instructions put in every body bag
+#define LOST_CREW_INSTRUCTIONS {"<center><b>NANOTRASEN - DZIAŁ ODZYSKU ZAŁOGI</b><br><b>Karta przyjęcia zwłok</b></center><hr>W worku znajdują się zwłoki członka załogi odzyskane z wraku. Ciało zabezpieczono formaldehydem, więc nie ulega dalszemu rozkładowi.<br><br><b>Postępowanie:</b><br>1. Przenieś worek do medbayu i połóż ciało na stole operacyjnym.<br>2. Zbadaj je analizatorem zdrowia: sprawdź narządy, brakujące kończyny, poziom krwi i rany.<br>3. Napraw albo wymień uszkodzone narządy (serce, płuca, wątroba), przyszyj brakującą kończynę albo załóż protezę, uzupełnij krew.<br>4. Usuń formaldehyd z krwi (węgiel aktywowany albo filtracja krwi), bo po ożywieniu zatruwa pacjenta.<br>5. Wylecz obrażenia na tyle, żeby pacjent przeżył, i użyj defibrylatora.<br><br>Po udanej reanimacji ciało przejmie ochotnik: pacjent nie pamięta, kim był, zna tylko swoje imię i pracę. Jeśli nikt się nie zgłosi, ciało umrze ponownie.<br><br><b>Premia:</b> jeśli pacjent przeżyje trzy minuty od reanimacji, dział medyczny otrzyma 3000 kredytów."}
+
 /// Filled with one body. Its brain is laced with formaldehyde, so it keeps on the way.
 /obj/structure/closet/body_bag/lost_crew/with_body
 
@@ -157,7 +160,7 @@ GLOBAL_DATUM_INIT(lost_crew_manager, /datum/lost_crew_manager, new)
 	GLOB.lost_crew_manager.create_lost_crew(src)
 	var/obj/item/paper/paper = new(src)
 	paper.name = "karta przyjęcia zwłok"
-	paper.add_raw_text("Zwłoki członka załogi odzyskane przez Nanotrasen. Po skutecznej reanimacji i trzech minutach przeżycia dział medyczny otrzyma premię. Zwłoki zabezpieczono formaldehydem.")
+	paper.add_raw_text(LOST_CREW_INSTRUCTIONS)
 
 /datum/supply_pack/medical/lost_crew
 	name = "Odzyskana załoga"

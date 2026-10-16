@@ -894,8 +894,8 @@
 
 //////
 /obj/item/storage/box/hug/medical/PopulateContents()
-	new /obj/item/stack/medical/bruise_pack(src)
-	new /obj/item/stack/medical/ointment(src)
+	new /obj/item/stack/medical/suture(src) // AQ EDIT - tgstation sutures and mesh
+	new /obj/item/stack/medical/mesh(src) // AQ EDIT
 	new /obj/item/reagent_containers/hypospray/medipen(src)
 
 // Clown survival box
