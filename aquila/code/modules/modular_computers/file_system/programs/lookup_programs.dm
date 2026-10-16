@@ -12,9 +12,8 @@
 	usage_flags = PROGRAM_ALL
 
 /datum/computer_file/program/recipe_lookup/ui_static_data(mob/user)
-	var/list/data = list()
-	data["recipeCatalog"] = get_recipe_catalog()
-	return data
+	. = ..()
+	.["recipeCatalog"] = get_recipe_catalog()
 
 /datum/computer_file/program/surgery_lookup
 	filename = "operacje"
@@ -28,9 +27,8 @@
 	usage_flags = PROGRAM_ALL
 
 /datum/computer_file/program/surgery_lookup/ui_static_data(mob/user)
-	var/list/data = list()
-	data["surgeries"] = get_surgery_catalog()
-	return data
+	. = ..()
+	.["surgeries"] = get_surgery_catalog()
 
 // Dyski zawodowe: medyczne dostają „Operacje”, chemiczne „Receptury”
 /obj/item/computer_hardware/hard_drive/role/Initialize(mapload)

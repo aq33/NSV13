@@ -49,7 +49,12 @@ export const RecipeLookup = (props: Props) => {
   const matches = (text: string) => text.toLowerCase().includes(needle);
   const filtered = recipes
     .filter((recipe) => {
-      if (onlyHere && !recipe.reagents.every((r) => canDispense(r.id))) {
+      if (
+        onlyHere &&
+        ![...recipe.reagents, ...recipe.catalysts].every((r) =>
+          canDispense(r.id),
+        )
+      ) {
         return false;
       }
       if (!needle) {
@@ -104,7 +109,7 @@ export const RecipeLookup = (props: Props) => {
           {!!dispensable && (
             <Button.Checkbox
               checked={onlyHere}
-              tooltip="Tylko receptury, których wszystkie składniki wyda ta maszyna"
+              tooltip="Tylko receptury, których wszystkie składniki i katalizatory wyda ta maszyna"
               onClick={() => setOnlyHere(!onlyHere)}
             >
               Tylko stąd
