@@ -2325,11 +2325,6 @@
 /obj/structure/extinguisher_cabinet/north,
 /turf/open/floor/durasteel/alt,
 /area/hallway/nsv/deck2/primary)
-"eg" = (
-/obj/machinery/iv_drip,
-/obj/structure/closet/crate/freezer/blood,
-/turf/open/floor/monotile/steel,
-/area/security/brig)
 "eh" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -8502,6 +8497,18 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/quartermaster/storage)
+"tS" = (
+/obj/machinery/stasis{
+	id_tag = "aq_vitals_atlas_141_140"
+	},
+/obj/structure/window/reinforced/spawner/east,
+/obj/machinery/firealarm/directional/south,
+/obj/machinery/vitals_reader{
+	id_tag = "aq_vitals_atlas_141_140";
+	pixel_y = -32
+	},
+/turf/open/floor/monotile/steel,
+/area/security/brig)
 "tT" = (
 /obj/machinery/camera/autoname{
 	dir = 8
@@ -14837,6 +14844,17 @@
 	},
 /turf/open/floor/monotile/steel,
 /area/quartermaster/miningoffice)
+"Mr" = (
+/obj/machinery/stasis{
+	id_tag = "aq_vitals_atlas_141_140"
+	},
+/obj/structure/window/reinforced/spawner/east,
+/obj/machinery/vitals_reader{
+	id_tag = "aq_vitals_atlas_141_140";
+	pixel_y = -32
+	},
+/turf/open/floor/monotile/steel,
+/area/security/brig)
 "Ms" = (
 /obj/structure/closet/crate,
 /obj/effect/spawner/lootdrop/maintenance/three,
@@ -15769,6 +15787,12 @@
 	},
 /turf/open/floor/plasteel/freezer,
 /area/crew_quarters/kitchen/coldroom)
+"OZ" = (
+/obj/machinery/iv_drip,
+/obj/structure/closet/crate/freezer/blood,
+/obj/machinery/firealarm/directional/south,
+/turf/open/floor/monotile/steel,
+/area/security/brig)
 "Pb" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
 /turf/open/floor/durasteel/riveted,
@@ -16868,12 +16892,6 @@
 	},
 /turf/open/floor/engine,
 /area/quartermaster/storage)
-"RY" = (
-/obj/machinery/stasis,
-/obj/structure/window/reinforced/spawner/east,
-/obj/machinery/firealarm/directional/south,
-/turf/open/floor/monotile/steel,
-/area/security/brig)
 "RZ" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -55482,7 +55500,7 @@ PO
 tq
 cF
 xH
-eg
+OZ
 WN
 gi
 kk
@@ -55739,7 +55757,7 @@ WN
 WN
 cO
 Rg
-RY
+Mr
 WN
 WN
 WN

@@ -435,7 +435,7 @@
 	uniform = /obj/item/clothing/under/rank/rnd/scientist
 	shoes = /obj/item/clothing/shoes/laceup
 	id = /obj/item/card/id/away/old/sci
-	l_pocket = /obj/item/stack/medical/bruise_pack
+	l_pocket = /obj/item/stack/medical/suture // AQ EDIT - tgstation sutures
 	assignedrole = "Ancient Crew"
 	use_cooldown = TRUE
 	banType = ROLE_ANCIENT_CREW

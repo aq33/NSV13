@@ -53,7 +53,7 @@
 
 /obj/item/robot_module/security
 	borg_skins = list(
-		"Sleek Security" = list(SKIN_ICON_STATE = "sleekecurity"),
+		"Sleek Security" = list(SKIN_ICON_STATE = "sleeksecurity"),
 		"Noble Security" = list(SKIN_ICON_STATE = "noble-sec"),
 		"Ancient Security" = list(SKIN_ICON_STATE = "secbot"),
 		"Servbot" = list(SKIN_ICON_STATE = "servbot-sec"),

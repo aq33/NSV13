@@ -36,3 +36,13 @@
 	. = ..()
 	if(!isnull(filled_before) && O.reagents?.total_volume > filled_before)
 		playsound(src, 'aquila/sound/machines/sink-faucet.ogg', 50)
+
+// Toaletę można odkręcić i przykręcić kluczem, żeby postawić tę zamówioną z cargo
+/obj/structure/toilet/wrench_act(mob/living/user, obj/item/tool)
+	if(default_unfasten_wrench(user, tool) == SUCCESSFUL_UNFASTEN)
+		return TRUE
+	return ..()
+
+/// Toaleta z cargo: przyjeżdża odkręcona
+/obj/structure/toilet/unanchored
+	anchored = FALSE

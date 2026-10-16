@@ -40,8 +40,10 @@
 		abuse_damage += 0.01 * (total_alcohol - CIRRHOSIS_HEAVY_VOLUME)
 	if(abuse_damage <= 0)
 		return
-	if(HAS_TRAIT(drinker, TRAIT_ALCOHOL_TOLERANCE))
-		abuse_damage *= 0.7
+	// Zaprawiony pijak: wątroba przyzwyczajona do alkoholu obrywa słabiej i wolniej się bliznowacieje
+	var/tolerant = HAS_TRAIT(drinker, TRAIT_ALCOHOL_TOLERANCE)
+	if(tolerant)
+		abuse_damage *= 0.5
 	if(HAS_TRAIT(drinker, TRAIT_LIGHT_DRINKER))
 		abuse_damage *= 1.5
 	abuse_damage *= alcohol_tolerance / CIRRHOSIS_BASE_TOLERANCE
@@ -50,7 +52,10 @@
 	applyOrganDamage(abuse_damage)
 	// Scarring builds up faster in a liver that is already damaged
 	var/old_cirrhosis = cirrhosis
-	cirrhosis = min(cirrhosis + abuse_damage * (0.2 + 0.8 * damage / maxHealth), CIRRHOSIS_MAX)
+	var/scarring = abuse_damage * (0.2 + 0.8 * damage / maxHealth)
+	if(tolerant)
+		scarring *= 0.5
+	cirrhosis = min(cirrhosis + scarring, CIRRHOSIS_MAX)
 	if(old_cirrhosis < CIRRHOSIS_COMPENSATED && cirrhosis >= CIRRHOSIS_COMPENSATED)
 		to_chat(drinker, "<span class='warning'>Czujesz ciężar i ucisk pod prawymi żebrami.</span>")
 	else if(old_cirrhosis < CIRRHOSIS_DECOMPENSATED && cirrhosis >= CIRRHOSIS_DECOMPENSATED)

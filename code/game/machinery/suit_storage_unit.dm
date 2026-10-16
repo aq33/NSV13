@@ -119,8 +119,8 @@
 	mod_type = /obj/item/mod/control/pre_equipped/rescue
 
 /obj/machinery/suit_storage_unit/rd
+	suit_type = /obj/item/clothing/suit/space/hardsuit/aquila/hazard_suit //AQUILA EDIT - HEV zamiast research MODsuita
 	mask_type = /obj/item/clothing/mask/breath
-	mod_type = /obj/item/mod/control/pre_equipped/research
 	storage_type = /obj/item/gps
 
 /obj/machinery/suit_storage_unit/syndicate

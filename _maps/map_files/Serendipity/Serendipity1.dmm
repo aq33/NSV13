@@ -1673,6 +1673,23 @@
 	},
 /turf/open/floor/plasteel/tiled/light,
 /area/hallway/secondary/exit)
+"dO" = (
+/obj/machinery/stasis{
+	id_tag = "aq_vitals_serendipity1_114_158"
+	},
+/obj/structure/sign/poster/official/moth1{
+	pixel_y = 32
+	},
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/ship/blue,
+/obj/machinery/vitals_reader{
+	id_tag = "aq_vitals_serendipity1_114_158";
+	pixel_y = 32
+	},
+/turf/open/floor/plasteel/tiled/light,
+/area/medical/nsv/trauma)
 "dP" = (
 /obj/structure/cable,
 /obj/machinery/light/floor,
@@ -2213,16 +2230,6 @@
 	},
 /turf/open/floor/engine,
 /area/science/robotics)
-"gb" = (
-/obj/effect/turf_decal/tile/ship/blue{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/ship/blue{
-	dir = 4
-	},
-/obj/machinery/autodoc,
-/turf/open/floor/plasteel/tiled/light,
-/area/medical/nsv/trauma)
 "gc" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 1
@@ -3848,19 +3855,6 @@
 /mob/living/simple_animal/slime,
 /turf/open/floor/engine/light,
 /area/science/xenobiology)
-"lv" = (
-/obj/machinery/computer/operating{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/ship/blue{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/ship/blue{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/ship/blue,
-/turf/open/floor/plasteel/tiled/light,
-/area/medical/nsv/trauma)
 "lw" = (
 /obj/structure/ladder,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
@@ -5439,6 +5433,20 @@
 "qZ" = (
 /turf/open/floor/plasteel/tiled/light,
 /area/medical/genetics)
+"ra" = (
+/obj/machinery/stasis{
+	id_tag = "aq_vitals_serendipity1_114_158"
+	},
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/ship/blue,
+/obj/machinery/vitals_reader{
+	id_tag = "aq_vitals_serendipity1_114_158";
+	pixel_y = 32
+	},
+/turf/open/floor/plasteel/tiled/light,
+/area/medical/nsv/trauma)
 "rb" = (
 /obj/structure/closet/firecloset{
 	anchored = 1
@@ -6323,10 +6331,6 @@
 	},
 /turf/open/floor/carpet/blue,
 /area/crew_quarters/heads/cmo)
-"ua" = (
-/obj/structure/table/glass/plasma,
-/turf/open/floor/engine/light,
-/area/ai_monitored/nuke_storage)
 "ub" = (
 /obj/machinery/vending/sustenance,
 /obj/machinery/camera/autoname{
@@ -6347,6 +6351,25 @@
 /obj/effect/turf_decal/tile/ship/blue,
 /obj/effect/turf_decal/tile/ship/blue{
 	dir = 4
+	},
+/turf/open/floor/plasteel/tiled/light,
+/area/medical/nsv/trauma)
+"ud" = (
+/obj/machinery/stasis{
+	id_tag = "aq_vitals_serendipity1_122_154"
+	},
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 4
+	},
+/obj/machinery/camera/autoname{
+	dir = 1
+	},
+/obj/machinery/vitals_reader{
+	id_tag = "aq_vitals_serendipity1_122_154";
+	pixel_y = -32
 	},
 /turf/open/floor/plasteel/tiled/light,
 /area/medical/nsv/trauma)
@@ -6910,6 +6933,22 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /turf/template_noop,
 /area/maintenance/department/medical)
+"wd" = (
+/obj/machinery/stasis{
+	id_tag = "aq_vitals_serendipity1_122_154"
+	},
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 4
+	},
+/obj/machinery/vitals_reader{
+	id_tag = "aq_vitals_serendipity1_122_154";
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel/tiled/light,
+/area/medical/nsv/trauma)
 "wg" = (
 /obj/structure/window/plasma/reinforced/spawner/west,
 /turf/open/floor/circuit/green,
@@ -7424,19 +7463,6 @@
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/open/floor/grass,
 /area/crew_quarters/dorms/nsv/nature_deck)
-"xL" = (
-/obj/machinery/stasis,
-/obj/effect/turf_decal/tile/ship/blue{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/ship/blue{
-	dir = 4
-	},
-/obj/machinery/camera/autoname{
-	dir = 1
-	},
-/turf/open/floor/plasteel/tiled/light,
-/area/medical/nsv/trauma)
 "xO" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
@@ -7808,17 +7834,6 @@
 "yP" = (
 /turf/open/floor/carpet/blue,
 /area/crew_quarters/heads/cmo)
-"yU" = (
-/obj/machinery/stasis,
-/obj/structure/sign/poster/official/moth1{
-	pixel_y = 32
-	},
-/obj/effect/turf_decal/tile/ship/blue{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/ship/blue,
-/turf/open/floor/plasteel/tiled/light,
-/area/medical/nsv/trauma)
 "yW" = (
 /obj/effect/turf_decal/tile/ship/blue{
 	dir = 8
@@ -8436,6 +8451,23 @@
 	},
 /turf/open/floor/plasteel/tiled/light,
 /area/medical/genetics/cloning)
+"Bf" = (
+/obj/machinery/stasis{
+	id_tag = "aq_vitals_serendipity1_114_154"
+	},
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 4
+	},
+/obj/machinery/status_display/evac/south,
+/obj/machinery/vitals_reader{
+	id_tag = "aq_vitals_serendipity1_114_154";
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel/tiled/light,
+/area/medical/nsv/trauma)
 "Bg" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
 	dir = 1
@@ -10561,6 +10593,17 @@
 	},
 /turf/open/floor/plasteel/tiled/light,
 /area/science/lab)
+"Ik" = (
+/obj/structure/table/optable,
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 4
+	},
+/obj/machinery/status_display/evac/south,
+/turf/open/floor/plasteel/tiled/light,
+/area/medical/nsv/trauma)
 "Im" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
 /obj/effect/turf_decal/tile/ship/half/purple,
@@ -10726,6 +10769,22 @@
 /obj/effect/turf_decal/tile/yellow,
 /turf/open/floor/plasteel/tiled/light,
 /area/bridge/cic)
+"IP" = (
+/obj/machinery/computer/operating{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/ship/blue,
+/obj/machinery/camera/autoname{
+	dir = 1
+	},
+/turf/open/floor/plasteel/tiled/light,
+/area/medical/nsv/trauma)
 "IQ" = (
 /obj/structure/grille,
 /obj/structure/lattice,
@@ -11740,16 +11799,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/carpet,
 /area/crew_quarters/heads/xo)
-"Mi" = (
-/obj/machinery/stasis,
-/obj/effect/turf_decal/tile/ship/blue{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/ship/blue{
-	dir = 4
-	},
-/turf/open/floor/plasteel/tiled/light,
-/area/medical/nsv/trauma)
 "Mk" = (
 /obj/machinery/computer/ship/dradis/minor{
 	dir = 1
@@ -11975,16 +12024,6 @@
 "MV" = (
 /turf/closed/wall/r_wall/ship,
 /area/ai_monitored/turret_protected/ai_upload)
-"MY" = (
-/obj/structure/table/optable,
-/obj/effect/turf_decal/tile/ship/blue{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/ship/blue{
-	dir = 4
-	},
-/turf/open/floor/plasteel/tiled/light,
-/area/medical/nsv/trauma)
 "MZ" = (
 /obj/machinery/modular_computer/console/preset/research{
 	dir = 4
@@ -12413,17 +12452,6 @@
 	},
 /turf/open/floor/plasteel/tiled/light,
 /area/medical/genetics/cloning)
-"OC" = (
-/obj/machinery/stasis,
-/obj/effect/turf_decal/tile/ship/blue{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/ship/blue{
-	dir = 4
-	},
-/obj/machinery/status_display/evac/south,
-/turf/open/floor/plasteel/tiled/light,
-/area/medical/nsv/trauma)
 "OD" = (
 /obj/machinery/nuclearbomb/selfdestruct,
 /obj/machinery/camera/motion{
@@ -14599,6 +14627,22 @@
 /obj/structure/ladder,
 /turf/open/floor/plasteel/dark,
 /area/nsv/weapons/starboard)
+"Wa" = (
+/obj/machinery/stasis{
+	id_tag = "aq_vitals_serendipity1_120_154"
+	},
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 4
+	},
+/obj/machinery/vitals_reader{
+	id_tag = "aq_vitals_serendipity1_120_154";
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel/tiled/light,
+/area/medical/nsv/trauma)
 "Wc" = (
 /obj/structure/cable,
 /obj/machinery/door/airlock/ship/maintenance,
@@ -14761,6 +14805,19 @@
 /obj/effect/turf_decal/tile/ship/half/purple,
 /turf/open/floor/plasteel/tiled/light,
 /area/science)
+"WC" = (
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 4
+	},
+/obj/machinery/autodoc,
+/obj/structure/sign/poster/official/moth1{
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel/tiled/light,
+/area/medical/nsv/trauma)
 "WD" = (
 /turf/closed/wall/r_wall/ship,
 /area/hallway/secondary/exit)
@@ -15629,6 +15686,22 @@
 /obj/machinery/duct,
 /turf/open/floor/noslip/white,
 /area/crew_quarters/toilet)
+"ZS" = (
+/obj/machinery/stasis{
+	id_tag = "aq_vitals_serendipity1_114_154"
+	},
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 4
+	},
+/obj/machinery/vitals_reader{
+	id_tag = "aq_vitals_serendipity1_114_154";
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel/tiled/light,
+/area/medical/nsv/trauma)
 "ZT" = (
 /obj/structure/window/plasma/reinforced/spawner/east,
 /obj/structure/cable/pink,
@@ -15700,6 +15773,12 @@
 	},
 /turf/open/floor/plasteel/tiled/light,
 /area/medical/chemistry)
+"ck" = (
+/obj/structure/table/glass/plasma,
+/obj/item/circuitboard/machine/protolathe,
+/obj/item/circuitboard/machine/circuit_imprinter,
+/turf/open/floor/engine/light,
+/area/ai_monitored/nuke_storage)
 
 (1,1,1) = {"
 zP
@@ -40743,7 +40822,7 @@ jN
 jN
 HP
 dv
-ua
+ck
 Hr
 Jv
 st
@@ -43816,7 +43895,7 @@ yW
 YM
 wi
 uy
-gb
+WC
 FI
 Tx
 Tx
@@ -44330,7 +44409,7 @@ Bw
 gW
 oa
 Ww
-MY
+Ik
 FI
 iL
 bQ
@@ -44840,11 +44919,11 @@ Te
 DI
 DI
 zU
-yU
+ra
 gW
 oa
 Ww
-OC
+ZS
 nv
 nv
 nv
@@ -46386,7 +46465,7 @@ cj
 gW
 hf
 pA
-Mi
+Wa
 nv
 Aq
 UZ
@@ -46900,7 +46979,7 @@ nT
 gW
 hf
 pA
-xL
+wd
 vd
 fw
 AP
@@ -47157,7 +47236,7 @@ NA
 gW
 ml
 cW
-lv
+IP
 vd
 Uv
 vv

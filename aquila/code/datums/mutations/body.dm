@@ -73,3 +73,18 @@
 	if(..())
 		return
 	REMOVE_TRAIT(owner, TRAIT_MEGAFART, GENETIC_MUTATION)
+
+// Genetyka 2.0: mutacje z changelogu dostępne dla każdego, a składniki receptur do znalezienia w puli
+/datum/mutation/thermal
+	locked = FALSE
+
+/datum/mutation/catclaws
+	name = "Claws"
+	desc = "Subject's hands grow sharpened claws."
+	locked = FALSE
+	species_allowed = list()
+
+/datum/mutation/firebreath
+	desc = "An ancient mutation that lets the subject breathe fire."
+	locked = FALSE
+	species_allowed = list()

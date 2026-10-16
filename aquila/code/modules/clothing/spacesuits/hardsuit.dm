@@ -47,7 +47,7 @@
 	if(!ishuman(user))
 		return
 	if(slot == ITEM_SLOT_OCLOTHING)
-		to_chat("Witamy w systemie ochronnym H.E.V. mark IV, przeznaczonym do pracy w niebezpiecznych warunkach środowiskowych.")
+		to_chat(user, "Witamy w systemie ochronnym H.E.V. mark IV, przeznaczonym do pracy w niebezpiecznych warunkach środowiskowych.")
 		user.client << 'aquila/sound/items/hardsuit/hev_logon.ogg'
 	return
 
