@@ -146,7 +146,7 @@ GLOBAL_LIST_EMPTY(order_console_products)
 			var/datum/orderable_item/wanted_item = locate(params["target"]) in GLOB.order_console_products
 			if(!wanted_item)
 				return
-			grocery_list[wanted_item] = clamp(text2num("[params["amt"]]"), 0, wanted_item.max_per_order)
+			grocery_list[wanted_item] = clamp(round(text2num("[params["amt"]]")), 0, wanted_item.max_per_order)
 			if(!grocery_list[wanted_item])
 				grocery_list -= wanted_item
 		if("purchase")

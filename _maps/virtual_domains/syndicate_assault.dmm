@@ -1410,7 +1410,7 @@
 /obj/machinery/door/password/voice{
 	name = "Voice-activated Vault door";
 	desc = "You'll need special syndicate passcode to open this one.";
-	password = null;
+	password = "Cybersun";
 	req_access_txt = "150"
 	},
 /obj/structure/fans/tiny,

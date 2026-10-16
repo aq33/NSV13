@@ -61,6 +61,8 @@
 		return FALSE
 
 	loaded_atoms = null
+	// bonus za losową domenę dopiero po udanym załadowaniu
+	domain_randomized = !!was_random_selection
 
 	var/selection_type
 	if(was_random_selection)

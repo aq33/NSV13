@@ -7,7 +7,7 @@
 	activated = 0
 
 /obj/item/implant/exile/get_data()
-	var/dat = {"<b>Specyfikacja implantu:</b><BR><b>Nazwa:</b> Implant wygnania pracownika Nanotrasen<BR><b>Szczegóły implantu:</b> netpod, który wykryje ten implant, rozpoczyna procedurę cyfrowego wygnania: świadomość nosiciela zostaje na zawsze przeniesiona do Pętli, cyfrowego więzienia, z którego nie ma powrotu. Bramy też nie wpuszczają osób z tym implantem.<BR>"}
+	var/dat = {"<b>Specyfikacja implantu:</b><BR><b>Nazwa:</b> Implant wygnania pracownika Nanotrasen<BR><b>Szczegóły implantu:</b> netpod, który wykryje ten implant, rozpoczyna procedurę cyfrowego wygnania: świadomość nosiciela zostaje na zawsze przeniesiona do Pętli, cyfrowego więzienia, z którego nie ma powrotu.<BR>"}
 	return dat
 
 /obj/item/implanter/exile

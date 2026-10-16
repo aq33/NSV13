@@ -107,7 +107,6 @@
 		return
 
 	var/datum/lazy_template/virtual_domain/selected = pick(random_domains)
-	domain_randomized = TRUE
 
 	return selected.key
 
