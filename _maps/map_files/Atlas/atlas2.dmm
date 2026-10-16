@@ -1919,11 +1919,6 @@
 /obj/machinery/vending/boozeomat,
 /turf/closed/wall/steel,
 /area/crew_quarters/heads/xo)
-"dZ" = (
-/obj/machinery/stasis,
-/obj/machinery/firealarm/directional/south,
-/turf/open/floor/monotile/light,
-/area/medical/medbay)
 "ea" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/sign/poster/contraband/random{
@@ -5521,6 +5516,16 @@
 /obj/machinery/duct,
 /turf/open/floor/plating,
 /area/maintenance/department/science/xenobiology)
+"pV" = (
+/obj/machinery/stasis{
+	id_tag = "aq_vitals_atlas2_145_105"
+	},
+/obj/machinery/vitals_reader{
+	id_tag = "aq_vitals_atlas2_145_105";
+	pixel_y = -32
+	},
+/turf/open/floor/monotile/light,
+/area/medical/medbay)
 "pW" = (
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
@@ -6682,6 +6687,12 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck1/starboard)
+"tX" = (
+/obj/structure/table/glass,
+/obj/structure/cable,
+/obj/machinery/firealarm/directional/south,
+/turf/open/floor/monotile/light,
+/area/medical/medbay)
 "tY" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
@@ -9242,6 +9253,17 @@
 	},
 /turf/open/floor/durasteel/alt,
 /area/science/xenobiology)
+"CL" = (
+/obj/machinery/stasis{
+	id_tag = "aq_vitals_atlas2_145_105"
+	},
+/obj/machinery/firealarm/directional/south,
+/obj/machinery/vitals_reader{
+	id_tag = "aq_vitals_atlas2_145_105";
+	pixel_y = -32
+	},
+/turf/open/floor/monotile/light,
+/area/medical/medbay)
 "CN" = (
 /obj/structure/cable,
 /obj/structure/table/reinforced,
@@ -9941,6 +9963,27 @@
 	},
 /turf/open/floor/wood,
 /area/library)
+"Fp" = (
+/obj/machinery/stasis{
+	dir = 8;
+	id_tag = "aq_vitals_atlas2_143_105"
+	},
+/obj/structure/cable,
+/obj/machinery/light_switch/west{
+	pixel_y = 11;
+	pixel_x = -28
+	},
+/obj/item/radio/intercom/directional/west{
+	pixel_x = -25;
+	pixel_y = -5
+	},
+/obj/machinery/power/apc/auto_name/south,
+/obj/machinery/vitals_reader{
+	id_tag = "aq_vitals_atlas2_143_105";
+	pixel_x = -32
+	},
+/turf/open/floor/monotile/light,
+/area/medical/medbay)
 "Fq" = (
 /obj/structure/ladder,
 /obj/effect/turf_decal/tile/ship/half/green{
@@ -10985,6 +11028,21 @@
 /obj/machinery/telecomms/processor/preset_one,
 /turf/open/floor/circuit/telecomms/server,
 /area/tcommsat/server)
+"IN" = (
+/obj/item/bedsheet/medical,
+/obj/machinery/iv_drip,
+/obj/structure/curtain,
+/obj/structure/bed,
+/obj/machinery/light_switch/west{
+	pixel_y = 11;
+	pixel_x = -28
+	},
+/obj/item/radio/intercom/directional/west{
+	pixel_x = -25;
+	pixel_y = -5
+	},
+/turf/open/floor/monotile/light,
+/area/medical/medbay)
 "IO" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
@@ -11752,6 +11810,23 @@
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck1/starboard)
+"KJ" = (
+/obj/machinery/stasis{
+	dir = 8;
+	id_tag = "aq_vitals_atlas2_143_105"
+	},
+/obj/structure/cable,
+/obj/item/radio/intercom/directional/west{
+	pixel_x = -25;
+	pixel_y = -5
+	},
+/obj/machinery/power/apc/auto_name/south,
+/obj/machinery/vitals_reader{
+	id_tag = "aq_vitals_atlas2_143_105";
+	pixel_x = -32
+	},
+/turf/open/floor/monotile/light,
+/area/medical/medbay)
 "KK" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment{
@@ -12733,11 +12808,6 @@
 /obj/effect/spawner/lootdrop/aimodule_neutral,
 /turf/open/floor/monotile/dark,
 /area/ai_monitored/turret_protected/ai_upload)
-"NG" = (
-/obj/structure/table/glass,
-/obj/structure/cable,
-/turf/open/floor/monotile/light,
-/area/medical/medbay)
 "NH" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2,
@@ -12837,6 +12907,19 @@
 "NU" = (
 /turf/open/floor/plating,
 /area/medical/morgue)
+"NV" = (
+/obj/machinery/stasis{
+	dir = 8;
+	id_tag = "aq_vitals_atlas2_143_105"
+	},
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/south,
+/obj/machinery/vitals_reader{
+	id_tag = "aq_vitals_atlas2_143_105";
+	pixel_x = -32
+	},
+/turf/open/floor/monotile/light,
+/area/medical/medbay)
 "NX" = (
 /obj/machinery/light,
 /obj/machinery/telecomms/server/presets/command,
@@ -14011,22 +14094,6 @@
 /obj/effect/spawner/lootdrop/xenobiology_fun_spawner,
 /turf/open/floor/engine,
 /area/science/xenobiology)
-"RQ" = (
-/obj/machinery/stasis{
-	dir = 8
-	},
-/obj/structure/cable,
-/obj/machinery/light_switch/west{
-	pixel_y = 11;
-	pixel_x = -28
-	},
-/obj/item/radio/intercom/directional/west{
-	pixel_x = -25;
-	pixel_y = -5
-	},
-/obj/machinery/power/apc/auto_name/south,
-/turf/open/floor/monotile/light,
-/area/medical/medbay)
 "RR" = (
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -14097,6 +14164,17 @@
 	},
 /turf/open/floor/engine/airless,
 /area/space/nearstation)
+"Se" = (
+/obj/item/bedsheet/medical,
+/obj/machinery/iv_drip,
+/obj/structure/curtain,
+/obj/structure/bed,
+/obj/machinery/light_switch/west{
+	pixel_y = 11;
+	pixel_x = -28
+	},
+/turf/open/floor/monotile/light,
+/area/medical/medbay)
 "Sf" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -14198,13 +14276,6 @@
 /obj/effect/mob_spawn/human/clown/corpse,
 /turf/open/floor/plating,
 /area/maintenance/nsv/deck1/port)
-"Sw" = (
-/obj/item/bedsheet/medical,
-/obj/machinery/iv_drip,
-/obj/structure/curtain,
-/obj/structure/bed,
-/turf/open/floor/monotile/light,
-/area/medical/medbay)
 "Sx" = (
 /obj/effect/turf_decal/ship/delivery/yellow,
 /obj/machinery/door/firedoor/border_only,
@@ -52970,10 +53041,10 @@ IX
 QQ
 ib
 Wa
-Sw
+IN
 Mi
 Ep
-RQ
+NV
 cH
 Wa
 ZS
@@ -53230,7 +53301,7 @@ ew
 wR
 OO
 wV
-NG
+tX
 cH
 kH
 Ex
@@ -53487,7 +53558,7 @@ Wa
 xV
 Ox
 Hf
-dZ
+pV
 cH
 dI
 YE

@@ -161,7 +161,7 @@ Difficulty: Medium
 		else if(prob(5))
 			loot = list(/obj/structure/closet/crate/necropolis/tendril)
 		if(!true_spawn)
-			loot = null
+			loot = list() // AQ EDIT - null broke drop_loot()
 		..()
 
 //Loot

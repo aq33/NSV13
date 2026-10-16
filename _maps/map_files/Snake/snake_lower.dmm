@@ -6748,6 +6748,22 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/lawoffice)
+"qY" = (
+/obj/machinery/stasis{
+	id_tag = "aq_vitals_snake_lower_133_117"
+	},
+/obj/machinery/defibrillator_mount{
+	pixel_y = -30
+	},
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 8
+	},
+/obj/machinery/vitals_reader{
+	id_tag = "aq_vitals_snake_lower_133_117";
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel/white,
+/area/medical/sleeper)
 "ra" = (
 /obj/structure/ladder,
 /obj/machinery/duct,
@@ -6780,6 +6796,22 @@
 /obj/effect/landmark/start/security_officer,
 /turf/open/floor/plasteel,
 /area/security/brig)
+"rf" = (
+/obj/structure/frame/computer{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 8
+	},
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -11
+	},
+/obj/machinery/defibrillator_mount{
+	pixel_x = -30
+	},
+/turf/open/floor/plasteel/white,
+/area/medical/sleeper)
 "rg" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
 	dir = 1
@@ -8501,16 +8533,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/hallway/primary/aft)
-"xA" = (
-/obj/machinery/stasis,
-/obj/machinery/defibrillator_mount{
-	pixel_y = -30
-	},
-/obj/effect/turf_decal/tile/ship/blue{
-	dir = 8
-	},
-/turf/open/floor/plasteel/white,
-/area/medical/sleeper)
 "xC" = (
 /obj/machinery/atmospherics/pipe/simple/green/visible{
 	dir = 4
@@ -9051,6 +9073,19 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/engine/gravity_generator)
+"zw" = (
+/obj/machinery/stasis{
+	id_tag = "aq_vitals_snake_lower_133_117"
+	},
+/obj/effect/turf_decal/tile/ship/blue{
+	dir = 8
+	},
+/obj/machinery/vitals_reader{
+	id_tag = "aq_vitals_snake_lower_133_117";
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel/white,
+/area/medical/sleeper)
 "zx" = (
 /obj/item/storage/backpack/duffelbag/med/surgery,
 /obj/structure/table,
@@ -9213,19 +9248,6 @@
 /obj/effect/landmark/start/station_engineer,
 /turf/open/floor/plasteel/dark,
 /area/engine/atmos)
-"zS" = (
-/obj/structure/frame/computer{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/ship/blue{
-	dir = 8
-	},
-/obj/structure/sink{
-	dir = 8;
-	pixel_x = -11
-	},
-/turf/open/floor/plasteel/white,
-/area/medical/sleeper)
 "zT" = (
 /obj/machinery/suit_storage_unit/mining/eva,
 /turf/open/floor/carpet/royalblue,
@@ -12549,12 +12571,6 @@
 	dir = 1
 	},
 /area/security/warden)
-"LE" = (
-/obj/machinery/stasis,
-/obj/effect/turf_decal/tile/ship/blue,
-/obj/machinery/duct,
-/turf/open/floor/plasteel/white,
-/area/medical/sleeper)
 "LF" = (
 /obj/machinery/airalarm/directional/south,
 /obj/machinery/vending/tool,
@@ -14828,6 +14844,18 @@
 /obj/machinery/light_switch/west,
 /turf/open/floor/wood,
 /area/crew_quarters/dorms)
+"TE" = (
+/obj/machinery/stasis{
+	id_tag = "aq_vitals_snake_lower_137_117"
+	},
+/obj/effect/turf_decal/tile/ship/blue,
+/obj/machinery/duct,
+/obj/machinery/vitals_reader{
+	id_tag = "aq_vitals_snake_lower_137_117";
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel/white,
+/area/medical/sleeper)
 "TG" = (
 /obj/machinery/atmospherics/pipe/heat_exchanging/junction/layer4,
 /turf/closed/wall/r_wall,
@@ -50399,7 +50427,7 @@ RQ
 Yc
 Hi
 KA
-zS
+rf
 uA
 aJ
 aJ
@@ -50656,7 +50684,7 @@ mo
 On
 On
 BC
-xA
+zw
 Ky
 aJ
 aJ
@@ -51684,7 +51712,7 @@ mZ
 On
 On
 Yu
-LE
+TE
 Ky
 aJ
 aJ

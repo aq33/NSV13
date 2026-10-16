@@ -411,3 +411,16 @@
   - imageadd: Ikony uplinku czarnego rynku, LTSRBT i promienia skanu z tgstation.
   - config: Wpisy PROBABILITY, CONTINUOUS, MIN_POP, MAX_POP i WEIGHTED_POOL dla trybu
       SPY.
+'2026-10-16':
+  Joker66613:
+  - rscadd: 'Rany: zwichnięcia, złamania, głębokie rozcięcia, przerwane tętnice i
+      oparzenia z zakażeniem; leczy się je gazą, nićmi, siatką albo operacją.'
+  - rscadd: 'Nici i siatka regeneracyjna zamiast pakietu na stłuczenia i maści; nowe
+      operacje: nastawienie kości i usunięcie martwej tkanki.'
+  - rscadd: Analizator zdrowia otwiera okno z sylwetką, obrażeniami każdej kończyny
+      i wykresami; zaawansowany pokazuje następny krok operacji.
+  - rscadd: Konsola akt medycznych ma nowe okno po polsku.
+  - rscadd: Monitory funkcji życiowych nad każdym łóżkiem stazy.
+  - rscadd: Centrala czasem przysyła kapsułą zwłoki do ożywienia, z instrukcją w worku.
+  - rscadd: Przytomny pacjent czuje ból podczas operacji i może krzyczeć.
+  - imageadd: Apteczki, nici i siatka ze sprite'ami z tgstation.

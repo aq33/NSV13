@@ -139,9 +139,14 @@
 			return pick(GLOB.facial_hair_styles_list)
 
 /proc/random_unique_name(gender, attempts_to_find_unique_name=10)
+	return aquila_random_unique_name(gender, attempts_to_find_unique_name) // AQ EDIT - nazwiska zgodne z płcią, patrz aquila/code/__HELPERS/names.dm
 	for(var/i in 1 to attempts_to_find_unique_name)
-		// AQ EDIT: nazwisko zgodne z płcią, a dla pozostałych płci losowo męskie albo żeńskie
-		. = capitalize(human_full_name_random(gender))
+		if(gender==FEMALE)
+			. = capitalize(pick(GLOB.first_names_female)) + " " + capitalize(pick(GLOB.last_names_male))
+		else if(gender==MALE)
+			. = capitalize(pick(GLOB.first_names_male)) + " " + capitalize(pick(GLOB.last_names_female))
+		else if(gender==PLURAL)
+			. = capitalize(human_first_name_random()) + " " + capitalize(human_last_name_random())
 
 		if(!findname(.))
 			break

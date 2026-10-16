@@ -9,6 +9,7 @@
 		/obj/item/dnainjector/lasereyesmut = 1,
 		/obj/item/dnainjector/thermal = 1,
 		/obj/item/dnainjector/glow = 1,
+		/obj/item/dnainjector/radioactive = 1,
 		/obj/item/dnainjector/vore = 1,
 		/obj/item/dnainjector/antivore = 1,
 		/obj/item/dnainjector/catclaws = 1,

@@ -120,6 +120,8 @@
 			autopsy_information += "Ciało obce: [embedded.name]<br>"
 		for(var/line in bodypart.aq_autopsy_lines()) // dziennik ran i pociski w ciele
 			autopsy_information += "[line]<br>"
+		for(var/datum/wound/wound as anything in bodypart.wounds)
+			autopsy_information += "Obecna rana: [wound.name][wound.treated ? " (opatrzona)" : ""]<br>"
 
 	autopsy_information += "<center>Organy</center>"
 	for(var/obj/item/organ/organ as anything in scanned.internal_organs)
