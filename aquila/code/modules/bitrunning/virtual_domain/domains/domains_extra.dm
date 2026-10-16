@@ -3,7 +3,7 @@
 /datum/lazy_template/virtual_domain/legion
 	name = "Komnata Ech"
 	cost = BITRUNNER_COST_MEDIUM
-	desc = "Mroźne królestwo z nekropolią Legiona. Kto mu ulegnie, jest potępiony na wieki."
+	desc = "Przerażające królestwo z nekropolią Legiona. Kto mu ulegnie, jest potępiony na wieki."
 	difficulty = BITRUNNER_DIFFICULTY_MEDIUM
 	forced_outfit = /datum/outfit/job/miner
 	help_text = "Legion przy śmierci dzieli się na mniejsze kopie. Skrzynia pojawi się dopiero, gdy padnie ostatnia z nich."
@@ -50,6 +50,17 @@
 	. = ..() // bazowy Legion bez true_spawn zeruje łup, więc skrzynię kładziemy sami
 	if(last_legion && drop_turf)
 		new /obj/structure/closet/crate/secure/bitrunning/encrypted(drop_turf)
+
+/// Brama nekropolii z domeny: nie zastępuje prawdziwej bramy Lavalandu i znika przy czyszczeniu domeny
+/obj/structure/necropolis_gate/legion_gate/virtual_domain
+
+/obj/structure/necropolis_gate/legion_gate/virtual_domain/Initialize(mapload)
+	var/obj/structure/necropolis_gate/legion_gate/real_gate = GLOB.necropolis_gate
+	. = ..()
+	GLOB.necropolis_gate = real_gate
+
+/obj/structure/necropolis_gate/legion_gate/virtual_domain/Destroy(force)
+	return ..(TRUE)
 
 
 /datum/lazy_template/virtual_domain/cleanlv624

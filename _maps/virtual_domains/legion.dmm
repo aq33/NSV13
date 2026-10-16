@@ -1461,7 +1461,7 @@
 /turf/open/indestructible/boss,
 /area/lavaland/surface/outdoors/virtual_domain)
 "dt" = (
-/obj/structure/necropolis_gate/legion_gate,
+/obj/structure/necropolis_gate/legion_gate/virtual_domain,
 /obj/structure/necropolis_arch,
 /obj/structure/stone_tile/slab,
 /turf/open/indestructible/boss,
