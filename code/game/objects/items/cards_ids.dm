@@ -1140,7 +1140,7 @@ update_label("John Doe", "Clowny")
 
 /obj/item/card/id/job/deck_technician
 	name = "Job card (Mun) - Deck Technician"
-	icon_state = "decktechnician"
+	icon_state = "munitech" // AQ EDIT: brak stanu "decktechnician" w card.dmi
 	assignment = JOB_NAME_DECKTECHNICIAN
 	hud_state = JOB_HUD_DECKTECHNICIAN
 

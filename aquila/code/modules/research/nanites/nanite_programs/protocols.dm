@@ -1,11 +1,11 @@
 //Replication Protocols
 /datum/nanite_program/protocol/kickstart
 	name = "Kickstart Protocol"
-	desc = "Replication Protocol: the nanites focus on early growth, heavily boosting replication rate for a few minutes after the initial implantation."
+	desc = "Replication Protocol: the nanites focus on early growth, heavily boosting replication rate for one minute after the initial implantation."
 	use_rate = 0.5
 	rogue_types = list(/datum/nanite_program/necrotic)
 	protocol_class = NANITE_PROTOCOL_REPLICATION
-	var/boost_duration = 1200
+	var/boost_duration = 60 SECONDS
 
 /datum/nanite_program/protocol/kickstart/check_conditions()
 	if(!(world.time < nanites.start_time + boost_duration))

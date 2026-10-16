@@ -7,5 +7,5 @@
 
 /datum/export/large/battery/get_cost(obj/O)
 	var/obj/machinery/power/battery/B = O
-	var/worth = B.charge
-	return worth
+	// 5 kondensatorów: pełna bateria na T1 to 2000 kredytów, lepsze części podnoszą cenę
+	return round(B.charge / 5)

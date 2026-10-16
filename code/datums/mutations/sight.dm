@@ -85,6 +85,11 @@
 /datum/mutation/laser_eyes/get_visual_indicator()
 	return visual_indicators[type][1]
 
-/datum/mutation/laser_eyes/on_ranged_attack(mob/living/carbon/human/source, atom/target, modifiers)
-	if(owner.combat_mode)
-		owner.LaserEyes(target, modifiers)
+// AQ EDIT START - sygnatura zgodna z RangedAttack (dostawało parametry kliknięcia zamiast celu), strzał rani oczy
+/datum/mutation/laser_eyes/on_ranged_attack(atom/target, modifiers)
+	if(!owner.combat_mode || owner.next_move > world.time)
+		return
+	owner.LaserEyes(target, modifiers)
+	var/obj/item/organ/eyes/eyes = owner.getorganslot(ORGAN_SLOT_EYES)
+	eyes?.applyOrganDamage(1)
+// AQ EDIT END

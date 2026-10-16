@@ -165,10 +165,29 @@
 		return
 	to_chat(user,"<span class='warning'>Niczego nie trzymasz.</span>")
 
+/obj/effect/proc_holder/spell/targeted/vore/proc/spit_out(mob/living/user)
+	if(!eaten_item)
+		return
+	if(eaten_item.loc == src)
+		eaten_item.forceMove(user.drop_location())
+		user.visible_message("<span class='notice'>[user] wypluwa [eaten_item]!</span>", "<span class='notice'>Wypluwasz [eaten_item]!</span>")
+		playsound(user, 'sound/effects/splat.ogg', 50, 1)
+	eaten_item = null
+
 /obj/effect/proc_holder/spell/targeted/vore/Destroy()
-	if(eaten_item)
-		eaten_item.forceMove(usr.loc)
-		usr.visible_message("<span class='notice'>[usr] wypluwa [eaten_item]!</span>", "<span class='notice'>Wypluwasz [eaten_item]!</span>")
-		playsound(usr, 'sound/effects/splat.ogg', 50, 1)
+	if(eaten_item?.loc == src)
+		var/turf/T = get_turf(src)
+		if(T)
+			eaten_item.forceMove(T)
+		else
+			qdel(eaten_item)
+	eaten_item = null
+	return ..()
+
+// Połknięty przedmiot wypada przy utracie mutacji, zanim zaklęcie zostanie usunięte
+/datum/mutation/vore/on_losing(mob/living/carbon/owner)
+	var/obj/effect/proc_holder/spell/targeted/vore/V = power
+	if(owner && istype(V) && (src in owner.dna?.mutations))
+		V.spit_out(owner)
 	return ..()
 

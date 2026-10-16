@@ -88,7 +88,7 @@
 	display_name = "Illegal Nanite Programming"
 	description = "Niezwykle niebezpieczne programy nanitów zdolne do masowego zniszczenia."
 	prereq_ids = list("nanite_harmonic", "syndicate_basic")
-	design_ids = list("explosive_nanites", "pyro_nanites", "meltdown_nanites", "viral_nanites", "nanite_sting_nanites", "kunai_nanites", "nanoswarm_nanites")
+	design_ids = list("explosive_nanites", "pyro_nanites", "meltdown_nanites", "viral_nanites", "nanite_sting_nanites", "kunai_nanites", "nanoswarm_nanites", "haste_nanites")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500, TECHWEB_POINT_TYPE_NANITES = 2500)
 	export_price = 12500
 
@@ -224,4 +224,18 @@
 	prereq_ids = list("bagofholding", "exp_surgery")
 	design_ids = list("bluebutt")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 7500)
+	export_price = 5000
+
+/datum/techweb_node/bluespace_basic/New() // maszyna do plortów obok konsoli xenobio
+	. = ..()
+	design_ids += "plort"
+
+/datum/techweb_node/mech_missile_rack
+	id = "mech_missile_rack"
+	tech_tier = 4
+	display_name = "Broń egzoszkieletu (wyrzutnia rakiet SRM-8)"
+	description = "Wyrzutnia rakiet do mechów, drukowana w techfabie ochrony."
+	prereq_ids = list("mech_grenade_launcher")
+	design_ids = list("mech_missile_rack")
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3500)
 	export_price = 5000

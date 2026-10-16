@@ -1,4 +1,4 @@
-/datum/mutation/human/mindreader
+/datum/mutation/mindreader
 	name = "Mind Reader"
 	desc = "The affected person can look into the recent memories of others."
 	quality = POSITIVE
@@ -58,10 +58,10 @@
 		else
 			to_chat(user, "<span class='boldnotice'>Nie możesz znaleźć umysłu do przeczytania w [M].</span>")
 
-/datum/mutation/human/mindreader/New(class_ = MUT_OTHER, timer, datum/mutation/human/copymut)
+/datum/mutation/mindreader/New(class_ = MUT_OTHER, timer, datum/mutation/copymut)
 	..()
 	if(!(type in visual_indicators))
 		visual_indicators[type] = list(mutable_appearance('icons/effects/genetics.dmi', "antenna", -FRONT_MUTATIONS_LAYER+1))
 
-/datum/mutation/human/mindreader/get_visual_indicator()
+/datum/mutation/mindreader/get_visual_indicator()
 	return visual_indicators[type][1]

@@ -718,6 +718,7 @@
 #include "code\modules\test_chamber\kits\pr_445_cowiek_maupa.dm"
 #include "code\modules\test_chamber\kits\pr_447_mule_poczta.dm"
 #include "code\modules\test_chamber\kits\pr_451_animacje.dm"
+#include "code\modules\test_chamber\kits\pr_461_changelog_fixy.dm"
 #include "code\modules\test_chamber\kits\pr_457_medycyna.dm"
 #include "code\modules\weighted\spawn_fallbacks.dm"
 #include "code\modules\weighted\weighted_ghost_midround.dm"

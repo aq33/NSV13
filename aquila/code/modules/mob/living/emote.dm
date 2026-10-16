@@ -34,6 +34,8 @@
 /datum/emote/living/deathgasp/get_sound(mob/living/user)
 	if(ismoth(user))
 		return pick_emote_sound(user, list('aquila/sound/voice/moth/moth_death.ogg', 'aquila/sound/emotes/moth/moth_deathgasp.ogg'))
+	if(user.deathsound) // rasa ma własny dźwięk śmierci (np. jaszczury), grany w run_emote
+		return
 	if(!has_human_emote_voice(user))
 		return
 	if(user.gender == FEMALE)
