@@ -705,6 +705,7 @@
 #include "code\modules\test_chamber\kits\pr_435_restaurant.dm"
 #include "code\modules\test_chamber\kits\pr_437_revenant_tg.dm"
 #include "code\modules\test_chamber\kits\pr_452_bitrunning.dm"
+#include "code\modules\test_chamber\kits\pr_455_tweaki.dm"
 #include "code\modules\test_chamber\kits\pr_438_spy.dm"
 #include "code\modules\test_chamber\kits\pr_445_cowiek_maupa.dm"
 #include "code\modules\test_chamber\kits\pr_447_mule_poczta.dm"
