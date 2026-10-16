@@ -80,3 +80,34 @@
 			welder.attack_self(user)
 
 	SEND_SIGNAL(src, COMSIG_TRY_STORAGE_INSERT, picked_tool, user, TRUE)
+
+/// Startowa skrzynka klauna: kilka losowych zabawek z puli nagród automatów
+/obj/item/storage/toolbox/clown_toys
+	name = "toolbox of toys"
+	desc = "Zielona skrzynka wypchana zabawkami. Robust i śmieszna zarazem."
+	icon_state = "green"
+	item_state = "artistic_toolbox"
+	material_flags = MATERIAL_NO_COLOR
+	w_class = WEIGHT_CLASS_NORMAL // mieści się w plecaku klauna
+	/// Ile zabawek wkładamy
+	var/toy_count = 5
+
+/obj/item/storage/toolbox/clown_toys/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	STR.max_w_class = WEIGHT_CLASS_NORMAL
+	STR.max_combined_w_class = 20
+	STR.max_items = 8
+
+/obj/item/storage/toolbox/clown_toys/PopulateContents()
+	var/list/toys = list()
+	for(var/prize in GLOB.arcade_prize_pool)
+		if(ispath(prize, /obj/item/toy))
+			toys[prize] = GLOB.arcade_prize_pool[prize]
+	for(var/i in 1 to toy_count)
+		var/toy_type = pickweight(toys)
+		new toy_type(src)
+
+/datum/outfit/job/clown/pre_equip(mob/living/carbon/human/H, visualsOnly)
+	. = ..()
+	backpack_contents[/obj/item/storage/toolbox/clown_toys] = 1
