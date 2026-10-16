@@ -1,0 +1,167 @@
+diff --git a/Cargo.toml b/Cargo.toml
+index 4605674..fcd49e6 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -1,5 +1,6 @@
+ [workspace]
+ members = ["crates/*"]
++exclude = ["vendor"]
+ 
+ [workspace.dependencies]
+ byondapi = "0.4.7"
+@@ -69,3 +70,7 @@ lto = 'fat'
+ debug = true
+ codegen-units = 1
+ panic = 'abort'
++
++# AQUILA PATCH: byond_string! cache that survives a world reboot (see src/lifecycle.rs)
++[patch.crates-io]
++byondapi = { path = "vendor/byondapi" }
+diff --git a/src/gas/types.rs b/src/gas/types.rs
+index 14cdfb9..c2be716 100644
+--- a/src/gas/types.rs
++++ b/src/gas/types.rs
+@@ -230,6 +230,16 @@ pub fn initialize_gas_info_structs() {
+ 	*GAS_SPECIFIC_HEATS.write() = Some(Vec::new());
+ }
+ 
++/// AQUILA PATCH: forgets every registered gas and reaction so a new world can register its own.
++/// Must be called from the main thread (the id caches are thread locals).
++pub fn reset_gas_info() {
++	initialize_gas_info_structs();
++	TOTAL_NUM_GASES.store(0, Ordering::Release);
++	*REACTION_INFO.write() = None;
++	CACHED_GAS_IDS.with_borrow_mut(|gas_ids| gas_ids.clear());
++	CACHED_IDX_TO_STRINGS.with_borrow_mut(|gas_ids| gas_ids.clear());
++}
++
+ pub fn destroy_gas_info_structs() {
+ 	crate::turfs::wait_for_tasks();
+ 	GAS_INFO_BY_STRING.write().as_mut().unwrap().clear();
+diff --git a/src/lib.rs b/src/lib.rs
+index 55a8436..7ad47f5 100644
+--- a/src/lib.rs
++++ b/src/lib.rs
+@@ -7,6 +7,8 @@ mod reaction;
+ 
+ mod parser;
+ 
++mod lifecycle;
++
+ use byondapi::prelude::*;
+ 
+ use gas::{
+diff --git a/src/lifecycle.rs b/src/lifecycle.rs
+new file mode 100644
+index 0000000..c7a5c28
+--- /dev/null
++++ b/src/lifecycle.rs
+@@ -0,0 +1,92 @@
++//! AQUILA PATCH: surviving world reboots.
++//!
++//! BYOND unloads every call_ext library when a world reboots or is stopped, but the process (and the
++//! rayon worker threads auxmos started) keeps running. Those threads are parked inside this DLL's code,
++//! so the next time one of them wakes up it jumps into unmapped memory and DreamDaemon crashes
++//! ("auxmos.dll_unloaded", 0xC0000005).
++//!
++//! Instead the library pins itself in memory the first time it is used: it then stays loaded until the
++//! DreamDaemon process exits, and the next world reuses it (and its thread pool). Because statics now
++//! outlive the world, the world calls `/proc/__auxmos_reset` as it ends (`/world/Reboot()`, `/world/Del()`),
++//! which throws away everything that belonged to it, so the next world finds the library as if freshly loaded.
++//! (Resetting at the start of the next world is too late: gas mixtures already exist during global init.)
++
++use byondapi::prelude::*;
++
++#[cfg(windows)]
++#[byondapi::init]
++pub fn pin_library() {
++	const GET_MODULE_HANDLE_EX_FLAG_PIN: u32 = 0x1;
++	const GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS: u32 = 0x4;
++
++	#[link(name = "kernel32")]
++	extern "system" {
++		fn GetModuleHandleExW(flags: u32, module_name: *const u16, module: *mut *mut core::ffi::c_void) -> i32;
++	}
++
++	let mut module = core::ptr::null_mut();
++	// Any address inside this DLL identifies it; a pinned module ignores every later FreeLibrary.
++	unsafe {
++		GetModuleHandleExW(
++			GET_MODULE_HANDLE_EX_FLAG_PIN | GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS,
++			pin_library as *const u16,
++			&mut module,
++		);
++	}
++}
++
++#[cfg(unix)]
++#[byondapi::init]
++pub fn pin_library() {
++	// RTLD_NODELETE on an already loaded object marks it as never unloaded.
++	const RTLD_NOW: i32 = 0x2;
++	const RTLD_NOLOAD: i32 = 0x4;
++	const RTLD_NODELETE: i32 = 0x1000;
++
++	#[repr(C)]
++	struct DlInfo {
++		dli_fname: *const core::ffi::c_char,
++		dli_fbase: *mut core::ffi::c_void,
++		dli_sname: *const core::ffi::c_char,
++		dli_saddr: *mut core::ffi::c_void,
++	}
++
++	extern "C" {
++		fn dladdr(addr: *const core::ffi::c_void, info: *mut DlInfo) -> i32;
++		fn dlopen(filename: *const core::ffi::c_char, flags: i32) -> *mut core::ffi::c_void;
++	}
++
++	unsafe {
++		let mut info: DlInfo = core::mem::zeroed();
++		if dladdr(pin_library as *const core::ffi::c_void, &mut info) != 0 && !info.dli_fname.is_null() {
++			dlopen(info.dli_fname, RTLD_NOW | RTLD_NOLOAD | RTLD_NODELETE);
++		}
++	}
++}
++
++/// Call when a world ends, after which it must not touch atmos again.
++/// Throws away all of its state so the next world in this process starts clean.
++#[byondapi::bind("/proc/__auxmos_reset")]
++fn reset_hook() {
++	#[cfg(feature = "turf_processing")]
++	crate::turfs::wait_for_tasks();
++
++	// String ids, ByondValues and object refs all belong to the old world. ByondValue has no Drop,
++	// so throwing the old ones away does not touch the new world's refcounts.
++	byondapi::byond_string::invalidate_string_cache();
++	auxcallback::clean_callbacks();
++
++	crate::gas::initialize_gases();
++	crate::gas::types::reset_gas_info();
++	crate::reaction::clear_reaction_values();
++
++	#[cfg(feature = "turf_processing")]
++	{
++		crate::turfs::initialize_turfs();
++		crate::turfs::groups::flush_groups_channel();
++		#[cfg(feature = "katmos")]
++		crate::turfs::katmos::flush_equalize_channel();
++	}
++
++	Ok(ByondValue::null())
++}
+diff --git a/src/reaction.rs b/src/reaction.rs
+index 066dc86..18c7d80 100644
+--- a/src/reaction.rs
++++ b/src/reaction.rs
+@@ -43,6 +43,11 @@ thread_local! {
+ 	static REACTION_VALUES: RefCell<HashMap<ReactionIdentifier, ReactionSide, FxBuildHasher>> = Default::default();
+ }
+ 
++/// AQUILA PATCH: drops the reactions of the previous world. Main thread only.
++pub fn clear_reaction_values() {
++	REACTION_VALUES.with_borrow_mut(|reactions| reactions.clear());
++}
++
+ /// Runs a reaction given a `ReactionIdentifier`. Returns the result of the reaction, error or success.
+ /// # Errors
+ /// If the reaction itself has a runtime.

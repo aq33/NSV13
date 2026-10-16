@@ -1,0 +1,48 @@
+diff --git a/src/byond_string.rs b/src/byond_string.rs
+index 1c4d89b..7b4048b 100644
+--- a/src/byond_string.rs
++++ b/src/byond_string.rs
+@@ -15,3 +15,17 @@ pub fn str_id_of_cstr(string: &CStr) -> Result<u4c, Error> {
+     }
+     Ok(res)
+ }
++
++// AQUILA PATCH: auxmos pins itself so it survives world reboots, but string ids belong to the world.
++// byond_string! caches ids per generation; invalidate_string_cache() starts a new one for a new world.
++static GENERATION: std::sync::atomic::AtomicU32 = std::sync::atomic::AtomicU32::new(1);
++
++#[doc(hidden)]
++pub fn string_cache_generation() -> u32 {
++    GENERATION.load(std::sync::atomic::Ordering::Acquire)
++}
++
++/// Forgets every id cached by `byond_string!`. Call it when a new world starts in the same process.
++pub fn invalidate_string_cache() {
++    GENERATION.fetch_add(1, std::sync::atomic::Ordering::AcqRel);
++}
+diff --git a/src/lib.rs b/src/lib.rs
+index 65d053a..251f382 100644
+--- a/src/lib.rs
++++ b/src/lib.rs
+@@ -64,7 +64,19 @@ pub struct InitFunc(pub fn() -> ());
+ #[macro_export]
+ macro_rules! byond_string {
+     ($s:literal) => {{
+-        static STRING_ID: ::std::sync::OnceLock<u32> = ::std::sync::OnceLock::new();
+-        *STRING_ID.get_or_init(|| $crate::byond_string::str_id_of($s).unwrap())
++        // AQUILA PATCH: (generation << 32) | id, refreshed when the world changes.
++        static STRING_ID: ::std::sync::atomic::AtomicU64 = ::std::sync::atomic::AtomicU64::new(0);
++        let generation = $crate::byond_string::string_cache_generation();
++        let cached = STRING_ID.load(::std::sync::atomic::Ordering::Relaxed);
++        if (cached >> 32) as u32 == generation {
++            cached as u32
++        } else {
++            let id = $crate::byond_string::str_id_of($s).unwrap();
++            STRING_ID.store(
++                ((generation as u64) << 32) | id as u64,
++                ::std::sync::atomic::Ordering::Relaxed,
++            );
++            id
++        }
+     }};
+ }
