@@ -32,6 +32,12 @@
 	for(var/i in 1 to range)
 		step_towards(src,T)
 		sleep(speed)
+		if(QDELETED(src))
+			return
+		if(QDELETED(blood_source)) // GoTo idzie asynchronicznie, źródło krwi mogło już zniknąć
+			skip = TRUE
+			qdel(src)
+			return
 		prev_loc = loc
 		for(var/atom/A in get_turf(src))
 			if(istype(A,/obj/item))
@@ -69,8 +75,9 @@
 	qdel(src)
 
 /obj/effect/decal/cleanable/blood/hitsplatter/Destroy()
-	if(istype(loc, /turf) && !skip)
+	if(istype(loc, /turf) && !skip && !QDELETED(blood_source))
 		loc.add_mob_blood(blood_source)
+	blood_source = null
 	return ..()
 
 /obj/effect/decal/cleanable/blood/examine()
