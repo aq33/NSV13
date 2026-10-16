@@ -70,7 +70,7 @@
 	name = "Podłogi i naklejki z Bee"
 	pr = "aq33/AquilaStation#460"
 	description = "Zielone naklejki płytek z Bee: pełna, połówka, antynarożnik, narożnik, rampy i przeciwległe rogi. \
-		Sprawdź, czy są półprzezroczyste i czy rampy dają ukośne przejście. Na mapach zakręty kolorowych pasów mają teraz ukosy."
+		Sprawdź, czy są półprzezroczyste i czy rampy dają ukośne przejście. Dywany, trawa i szklane podłogi z Bee łączą się bitmaską; sprawdź je na mapach."
 	/// Naklejki rozkładają się na podłogę i same znikają, więc nie idą przez items (test liczy obiekty)
 	var/list/decals = list(
 		/obj/effect/turf_decal/tile/green/fourcorners,

@@ -791,6 +791,7 @@
 #include "code\modules\paradise_struktury\airlock_types.dm"
 #include "code\modules\paradise_struktury\airlocks.dm"
 #include "code\modules\paradise_struktury\doors.dm"
+#include "code\modules\paradise_struktury\podlogi_bee.dm"
 
 #ifdef UNIT_TESTS
 #include "code\modules\unit_tests\antag_huds.dm"
