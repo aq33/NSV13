@@ -9443,7 +9443,7 @@
 "Ey" = (
 /obj/effect/landmark/start/head_of_security,
 /obj/machinery/door/window/brigdoor/security/cell/southleft,
-/turf/open/floor/fakespace,
+/turf/open/floor/carpet/ship/red_carpet,
 /area/security/prison)
 "EA" = (
 /obj/structure/closet/emcloset{

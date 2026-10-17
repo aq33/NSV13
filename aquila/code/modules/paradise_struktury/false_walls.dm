@@ -46,14 +46,15 @@
 	texture = null
 	color = null
 
+// Jak ściany statku (wall/ship, r_wall/ship): biała wersja ścian Paradise
 /obj/structure/falsewall/durasteel
-	icon = 'aquila/icons/paradise/turf/walls/32x40wall.dmi'
+	icon = 'aquila/icons/paradise/turf/walls/32x40white_wall.dmi'
 	icon_state = "wall-0"
 	base_icon_state = "wall"
 	legacy_smooth = FALSE
 
 /obj/structure/falsewall/duranium
-	icon = 'aquila/icons/paradise/turf/walls/32x40reinforced_wall.dmi'
+	icon = 'aquila/icons/paradise/turf/walls/32x40white_reinforced_wall.dmi'
 	icon_state = "reinforced_wall-0"
 	base_icon_state = "reinforced_wall"
 	legacy_smooth = FALSE
