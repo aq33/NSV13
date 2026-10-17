@@ -434,3 +434,15 @@
   - rscadd: Programy PDA „Książka kucharska” (kucharz), „Ekstrakty” (nauka) i „Prawo
       kosmiczne” z kalkulatorem wyroku (ochrona).
   - rscadd: PANDEMIC ma listę wszystkich symptomów z odczynnikami, które je losują.
+  Paradise, BeeStation:
+  - imageadd: ściany, okna, kraty, dźwigary i drzwi z Paradise w perspektywie 3/4
+  - imageadd: śluzy statku mają wygląd śluz działów z Paradise i obracają się do ściany
+  - imageadd: podłogi i naklejki płytek z BeeStation
+  - imageadd: dywany, trawa i szklane podłogi z Bee łączą się z sąsiadami
+  - imageadd: białe ściany na Serendipity
+  - bugfix: przez szyby okien nie widać podłogi, ściany nad roletami nie mają dziur
+  - bugfix: shuttle'e nie zlewają się ze ścianami stacji, a ich drzwi stoją w dobrą
+      stronę
+  - bugfix: przywrócone catwalki wokół kadłuba Serendipity
+  - code_imp: nowy tryb wygładzania bitmaską dla sprite'ów z Paradise
+  - rscdel: polskie wersje sprite'ów śluz i drzwi przeciwpożarowych
