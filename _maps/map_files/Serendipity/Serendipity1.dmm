@@ -1482,6 +1482,10 @@
 	},
 /turf/open/floor/plasteel/tiled/light,
 /area/medical/nsv/trauma)
+"df" = (
+/obj/structure/grille,
+/turf/open/floor/plating/airless,
+/area/space/nearstation)
 "dh" = (
 /obj/structure/table,
 /obj/item/paper/pamphlet/gateway,
@@ -42912,7 +42916,7 @@ oW
 sW
 tq
 Te
-zP
+az
 zP
 zP
 zP
@@ -43169,7 +43173,7 @@ sC
 sC
 tq
 Te
-zP
+az
 zP
 zP
 zP
@@ -43426,7 +43430,7 @@ lu
 sW
 tq
 Te
-zP
+az
 zP
 zP
 zP
@@ -43683,7 +43687,7 @@ Zy
 sC
 tq
 Te
-zP
+az
 zP
 zP
 zP
@@ -43940,7 +43944,7 @@ sW
 sW
 tq
 Te
-zP
+az
 zP
 zP
 zP
@@ -44197,7 +44201,7 @@ tq
 tq
 tq
 Te
-zP
+az
 zP
 zP
 zP
@@ -44454,7 +44458,7 @@ lE
 lE
 Te
 Te
-zP
+az
 zP
 zP
 zP
@@ -44711,7 +44715,7 @@ DI
 Qu
 Te
 Te
-zP
+az
 zP
 zP
 zP
@@ -44968,7 +44972,7 @@ DI
 DI
 Te
 Te
-zP
+az
 zP
 zP
 zP
@@ -45225,7 +45229,7 @@ aA
 aA
 lE
 Te
-zP
+az
 zP
 zP
 zP
@@ -45482,8 +45486,8 @@ RB
 aA
 QJ
 lE
-zP
-zP
+az
+df
 zP
 zP
 zP
@@ -45739,8 +45743,8 @@ xG
 aA
 aA
 QJ
-zP
-zP
+az
+df
 zP
 zP
 zP
@@ -45996,8 +46000,8 @@ Pk
 MZ
 aA
 aA
-zP
-zP
+az
+df
 zP
 zP
 zP
@@ -46253,8 +46257,8 @@ al
 ue
 JR
 VB
-zP
-zP
+az
+df
 zP
 zP
 zP
@@ -46510,8 +46514,8 @@ bJ
 SU
 bo
 VB
-zP
-zP
+az
+df
 zP
 zP
 zP
@@ -46767,8 +46771,8 @@ Ag
 Gd
 ji
 VB
-zP
-zP
+az
+df
 zP
 zP
 zP
@@ -47024,8 +47028,8 @@ uI
 SU
 Gw
 VB
-zP
-zP
+az
+df
 zP
 zP
 zP
@@ -47281,8 +47285,8 @@ Wo
 MD
 Fr
 VB
-zP
-zP
+az
+df
 zP
 zP
 zP
@@ -47538,8 +47542,8 @@ MS
 Iw
 aA
 aA
-zP
-zP
+az
+df
 zP
 zP
 zP
@@ -47795,8 +47799,8 @@ eV
 aA
 aA
 Te
-zP
-zP
+az
+df
 zP
 zP
 zP
@@ -48052,7 +48056,7 @@ aA
 aA
 Te
 Te
-zP
+az
 zP
 zP
 zP
@@ -48309,7 +48313,7 @@ aA
 aA
 Te
 Te
-zP
+az
 zP
 zP
 zP
@@ -48566,7 +48570,7 @@ Pu
 Te
 Te
 Jx
-zP
+az
 zP
 zP
 zP
@@ -48823,7 +48827,7 @@ Pu
 Te
 Te
 Te
-zP
+az
 zP
 zP
 zP
@@ -49080,7 +49084,7 @@ MV
 Te
 Te
 Te
-zP
+az
 zP
 zP
 zP
@@ -49337,7 +49341,7 @@ MV
 Te
 aF
 aM
-zP
+az
 zP
 zP
 zP
@@ -49594,7 +49598,7 @@ MV
 Te
 aK
 aS
-zP
+az
 zP
 zP
 zP
@@ -49851,7 +49855,7 @@ MV
 Te
 Te
 Te
-zP
+az
 zP
 zP
 zP
@@ -50108,7 +50112,7 @@ MV
 Te
 Te
 Te
-zP
+az
 zP
 zP
 zP
@@ -50365,7 +50369,7 @@ MV
 BH
 Te
 Te
-zP
+az
 zP
 zP
 zP
@@ -50622,7 +50626,7 @@ pF
 pF
 Te
 Te
-zP
+az
 zP
 zP
 zP
@@ -50879,7 +50883,7 @@ Ot
 pF
 Te
 Te
-zP
+az
 zP
 zP
 zP
@@ -51136,7 +51140,7 @@ Rh
 pF
 pF
 Te
-zP
+az
 zP
 zP
 zP
@@ -51393,7 +51397,7 @@ Rq
 wq
 pF
 Te
-zP
+az
 zP
 zP
 zP
@@ -51650,7 +51654,7 @@ Rq
 pF
 pF
 Te
-zP
+az
 zP
 zP
 zP
@@ -51907,7 +51911,7 @@ Rq
 pF
 Te
 az
-zP
+az
 zP
 zP
 zP
@@ -52164,7 +52168,7 @@ pF
 pF
 az
 az
-zP
+az
 zP
 zP
 zP
@@ -52421,7 +52425,7 @@ pF
 az
 az
 Ub
-zP
+az
 zP
 zP
 zP
@@ -52678,7 +52682,7 @@ az
 az
 Ub
 Ub
-zP
+az
 zP
 zP
 zP
@@ -52935,7 +52939,7 @@ az
 Ub
 Ub
 Ub
-zP
+az
 zP
 zP
 zP
@@ -53192,7 +53196,7 @@ Ub
 Ub
 Ub
 Ub
-zP
+az
 zP
 zP
 zP
@@ -53449,7 +53453,7 @@ Ub
 Ub
 Ub
 Ub
-zP
+az
 zP
 zP
 zP
@@ -54988,7 +54992,7 @@ zP
 zP
 zP
 zP
-zP
+pC
 zP
 zP
 zP
@@ -58065,7 +58069,7 @@ zP
 zP
 zP
 zP
-zP
+pC
 zP
 zP
 zP
