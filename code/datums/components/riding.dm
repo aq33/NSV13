@@ -35,12 +35,16 @@
 	var/atom/movable/AM = parent
 	restore_position(M)
 	unequip_buckle_inhands(M)
+	M.updating_glide_size = TRUE
 	if(del_on_unbuckle_all && !AM.has_buckled_mobs())
 		qdel(src)
 
 /datum/component/riding/proc/vehicle_mob_buckle(datum/source, mob/living/M, force = FALSE)
 	SIGNAL_HANDLER
 
+	var/atom/movable/movable_parent = parent
+	M.set_glide_size(movable_parent.glide_size)
+	M.updating_glide_size = FALSE
 	handle_vehicle_offsets()
 
 /datum/component/riding/proc/handle_vehicle_layer()
@@ -60,8 +64,11 @@
 	SIGNAL_HANDLER
 
 	var/atom/movable/AM = parent
+	AM.set_glide_size(DELAY_TO_GLIDE_SIZE(vehicle_move_delay))
 	for(var/i in AM.buckled_mobs)
 		ride_check(i)
+		var/mob/buckled_mob = i
+		buckled_mob.set_glide_size(AM.glide_size)
 	handle_vehicle_offsets()
 	handle_vehicle_layer()
 
