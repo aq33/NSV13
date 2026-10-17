@@ -343,11 +343,6 @@
 /obj/structure/cable,
 /turf/open/floor/monotile/steel,
 /area/engine/armour_pump)
-"aQ" = (
-/obj/structure/lattice/catwalk,
-/obj/effect/spawner/structure/window/plasma/reinforced,
-/turf/open/space/basic,
-/area/space/nearstation)
 "aR" = (
 /obj/structure/grille,
 /turf/open/floor/plating/airless,
@@ -33519,15 +33514,15 @@ Ks
 Ks
 Ks
 Ks
-dD
-dD
-dD
-aQ
-aQ
-aQ
-dD
-dD
-dD
+Ks
+Ks
+Ks
+Ks
+Ks
+Ks
+Ks
+Ks
+Ks
 Ks
 Ks
 Ks
@@ -33776,7 +33771,6 @@ Ks
 Ks
 Ks
 Ks
-dD
 Ks
 Ks
 Ks
@@ -33784,7 +33778,8 @@ Ks
 Ks
 Ks
 Ks
-dD
+Ks
+Ks
 Ks
 Ks
 Ks
@@ -34033,7 +34028,6 @@ Ks
 Ks
 Ks
 Ks
-dD
 Ks
 Ks
 Ks
@@ -34041,7 +34035,8 @@ Ks
 Ks
 Ks
 Ks
-dD
+Ks
+Ks
 Ks
 Ks
 Ks
@@ -34290,7 +34285,6 @@ Ks
 Ks
 Ks
 Ks
-aQ
 Ks
 Ks
 Ks
@@ -34298,7 +34292,8 @@ Ks
 Ks
 Ks
 Ks
-aQ
+Ks
+Ks
 Ks
 Ks
 Ks
@@ -34547,7 +34542,7 @@ Ks
 Ks
 Ks
 Ks
-aQ
+Ks
 Ks
 Ks
 Ks
@@ -34804,7 +34799,7 @@ Ks
 Ks
 Ks
 Ks
-aQ
+Ks
 Ks
 Ks
 Ks
@@ -35061,7 +35056,7 @@ dD
 dD
 dD
 Ks
-dD
+Ks
 Ks
 Ks
 Ks
