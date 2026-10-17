@@ -43,6 +43,9 @@ export const Fabricator = (props, context) => {
             </Stack.Item>
           )}
           <Stack.Item>
+            <SyncButton />
+          </Stack.Item>
+          <Stack.Item>
             <Section>
               <MaterialAccessBar
                 availableMaterials={data.materials || []}
@@ -61,6 +64,25 @@ export const Fabricator = (props, context) => {
         )}
       </Window.Content>
     </Window>
+  );
+};
+
+/** Pulls newly researched designs from the techweb, which lathes don't do on their own. */
+const SyncButton = () => {
+  const { act, data } = useBackend<FabricatorData>();
+  const pending = data.pendingResearch || 0;
+  return (
+    <Button
+      fluid
+      icon="sync"
+      color={pending ? 'good' : 'default'}
+      tooltip="Download newly researched designs from the research servers"
+      onClick={() => act('sync_rnd')}
+    >
+      {pending
+        ? `Synchronize research (${pending} new design${pending === 1 ? '' : 's'})`
+        : 'Synchronize research'}
+    </Button>
   );
 };
 
