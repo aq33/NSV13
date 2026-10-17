@@ -1,12 +1,12 @@
-// AQUILA - program PDA „Książka kucharska”
+// AQUILA - program PDA „Książka kucharska”: lista przepisów po miejscu przygotowania i kategorii
 import { useState } from 'react';
 import {
   Box,
-  Button,
+  Collapsible,
   Input,
   NoticeBox,
   Section,
-  Stack,
+  Tabs,
 } from 'tgui-core/components';
 
 import { useBackend } from '../backend';
@@ -21,10 +21,11 @@ type Ingredient = {
 type CookRecipe = {
   id: string;
   name: string;
+  desc: string | null;
   method: string;
   ingredients: Ingredient[];
   tools: string[];
-  category: string;
+  category: string | null;
   learned: boolean;
   amount?: number;
 };
@@ -33,164 +34,176 @@ type Data = {
   recipes: CookRecipe[];
 };
 
-const MAX_SHOWN = 40;
+const METHOD_ORDER = [
+  'Stół',
+  'Procesor',
+  'Mikrofalówka',
+  'Grill',
+  'Piekarnik',
+  'Krojenie',
+  'Mieszanki',
+];
 
-type SearchMode = 'dish' | 'ingredient';
+const METHOD_HINTS: Record<string, string> = {
+  Stół: 'Połóż składniki na stole i wybierz danie w menu craftingu.',
+  Procesor: 'Wrzuć składnik do procesora kuchennego i go włącz.',
+  Mikrofalówka: 'Włóż do mikrofalówki i włącz.',
+  Grill: 'Połóż na rozgrzanym grillu i poczekaj, nie dłużej, bo się spali.',
+  Piekarnik: 'Połóż na blasze w piekarniku i poczekaj.',
+  Krojenie: 'Użyj narzędzia na składniku, najlepiej leżącym na stole.',
+  Mieszanki: 'Wlej składniki do jednego zbiornika (miski, zlewki).',
+};
+
+const byName = (a: CookRecipe, b: CookRecipe) => a.name.localeCompare(b.name);
+
+const listIngredients = (ingredients: Ingredient[]) =>
+  ingredients
+    .map((i) =>
+      i.reagent ? `${i.amount}u ${i.name}` : `${i.amount}× ${i.name}`,
+    )
+    .join(', ');
 
 export const NtosCookbook = (props) => {
   const { data } = useBackend<Data>();
   const recipes = data.recipes || [];
   const [query, setQuery] = useState('');
-  const [mode, setMode] = useState<SearchMode>('dish');
-  const [method, setMethod] = useState<string | null>(null);
+  const [tab, setTab] = useState(METHOD_ORDER[0]);
 
-  const methods = Array.from(new Set(recipes.map((r) => r.method))).sort(
-    (a, b) => a.localeCompare(b),
+  const methods = METHOD_ORDER.filter((m) =>
+    recipes.some((r) => r.method === m),
   );
-  const makeable = new Set(recipes.map((r) => r.name.toLowerCase()));
-
   const needle = query.trim().toLowerCase();
-  const filtered = recipes
-    .filter((r) => !method || r.method === method)
-    .filter((r) => {
-      if (!needle) {
-        return !!method;
-      }
-      if (mode === 'ingredient') {
-        return r.ingredients.some((i) => i.name.toLowerCase().includes(needle));
-      }
-      return r.name.toLowerCase().includes(needle);
-    })
-    .sort((a, b) => a.name.localeCompare(b.name));
-
-  const searchFor = (name: string) => {
-    setMode('dish');
-    setMethod(null);
-    setQuery(name);
-  };
+  const matches = (r: CookRecipe) =>
+    r.name.toLowerCase().includes(needle) ||
+    r.ingredients.some((i) => i.name.toLowerCase().includes(needle));
 
   return (
-    <NtosWindow width={500} height={620}>
+    <NtosWindow width={520} height={640}>
       <NtosWindow.Content scrollable>
         <Section>
-          <Stack>
-            <Stack.Item grow>
-              <Input
-                fluid
-                autoFocus
-                placeholder={
-                  mode === 'dish' ? 'Co chcesz ugotować?' : 'Co masz w lodówce?'
-                }
-                value={query}
-                onInput={(e, value) => setQuery(value)}
-              />
-            </Stack.Item>
-            <Stack.Item>
-              <Button
-                selected={mode === 'dish'}
-                onClick={() => setMode('dish')}
-              >
-                Danie
-              </Button>
-              <Button
-                selected={mode === 'ingredient'}
-                onClick={() => setMode('ingredient')}
-              >
-                Składnik
-              </Button>
-            </Stack.Item>
-          </Stack>
-          <Box mt={1}>
-            <Button
-              compact
-              selected={method === null}
-              onClick={() => setMethod(null)}
-            >
-              Wszystko
-            </Button>
-            {methods.map((m) => (
-              <Button
-                compact
-                key={m}
-                selected={method === m}
-                onClick={() => setMethod(method === m ? null : m)}
-              >
-                {m}
-              </Button>
-            ))}
-          </Box>
+          <Input
+            fluid
+            placeholder="Szukaj dania albo składnika we wszystkich zakładkach…"
+            value={query}
+            onInput={(e, value) => setQuery(value)}
+          />
         </Section>
-        <Section>
-          {!needle && !method && (
-            <Box color="label">
-              Wpisz danie albo składnik, albo wybierz sposób przygotowania.
-              Kliknij składnik, żeby zobaczyć, jak go zrobić.
-            </Box>
-          )}
-          {(!!needle || !!method) && filtered.length === 0 && (
-            <NoticeBox>Nic nie znaleziono.</NoticeBox>
-          )}
-          {filtered.slice(0, MAX_SHOWN).map((recipe) => (
-            <Box
-              key={recipe.id}
-              mb={1}
-              p={1}
-              style={{
-                borderLeft: '3px solid rgba(255, 255, 255, 0.2)',
-                background: 'rgba(0, 0, 0, 0.15)',
-              }}
-            >
-              <Box bold>
-                {recipe.amount ? `${recipe.amount}× ` : ''}
-                {recipe.name}
-                <Box
-                  inline
-                  color="label"
-                  ml={1}
-                  style={{ fontWeight: 'normal' }}
+        {needle ? (
+          <SearchResults recipes={recipes.filter(matches)} methods={methods} />
+        ) : (
+          <>
+            <Tabs fluid>
+              {methods.map((m) => (
+                <Tabs.Tab
+                  key={m}
+                  selected={tab === m}
+                  onClick={() => setTab(m)}
                 >
-                  ({recipe.method})
-                </Box>
-                {recipe.learned && (
-                  <Box inline color="average" ml={1}>
-                    trzeba się nauczyć
-                  </Box>
-                )}
-              </Box>
-              <Box mt={0.5}>
-                {recipe.ingredients.map((ingredient) => {
-                  const craftable = makeable.has(ingredient.name.toLowerCase());
-                  return (
-                    <Button
-                      key={ingredient.name}
-                      compact
-                      color={craftable ? 'default' : 'transparent'}
-                      tooltip={
-                        craftable ? 'Pokaż, jak to zrobić' : 'Trzeba to zdobyć'
-                      }
-                      onClick={() => craftable && searchFor(ingredient.name)}
-                    >
-                      {ingredient.reagent
-                        ? `${ingredient.amount}u ${ingredient.name}`
-                        : `${ingredient.amount}× ${ingredient.name}`}
-                    </Button>
-                  );
-                })}
-              </Box>
-              {recipe.tools.length > 0 && (
-                <Box mt={0.5} color="label">
-                  Potrzebne: {recipe.tools.join(', ')}
-                </Box>
-              )}
-            </Box>
-          ))}
-          {filtered.length > MAX_SHOWN && (
-            <Box color="label">
-              …i jeszcze {filtered.length - MAX_SHOWN}. Zawęź wyszukiwanie.
-            </Box>
-          )}
-        </Section>
+                  {m}
+                </Tabs.Tab>
+              ))}
+            </Tabs>
+            <MethodList
+              method={tab}
+              recipes={recipes.filter((r) => r.method === tab)}
+            />
+          </>
+        )}
       </NtosWindow.Content>
     </NtosWindow>
+  );
+};
+
+const SearchResults = (props: { recipes: CookRecipe[]; methods: string[] }) => {
+  const { recipes, methods } = props;
+  if (recipes.length === 0) {
+    return <NoticeBox>Nic nie znaleziono.</NoticeBox>;
+  }
+  return (
+    <>
+      {methods.map((m) => {
+        const inMethod = recipes.filter((r) => r.method === m).sort(byName);
+        if (inMethod.length === 0) {
+          return null;
+        }
+        return (
+          <Section key={m} title={`${m} (${inMethod.length})`}>
+            {inMethod.map((recipe) => (
+              <RecipeRow key={recipe.id} recipe={recipe} />
+            ))}
+          </Section>
+        );
+      })}
+    </>
+  );
+};
+
+const MethodList = (props: { method: string; recipes: CookRecipe[] }) => {
+  const { method, recipes } = props;
+  const categories = Array.from(
+    new Set(recipes.map((r) => r.category).filter((c): c is string => !!c)),
+  ).sort((a, b) => a.localeCompare(b));
+
+  return (
+    <Section>
+      <Box color="label" mb={1}>
+        {METHOD_HINTS[method]}
+      </Box>
+      {categories.length > 0
+        ? categories.map((category) => {
+            const inCategory = recipes
+              .filter((r) => r.category === category)
+              .sort(byName);
+            return (
+              <Collapsible
+                key={category}
+                title={`${category} (${inCategory.length})`}
+              >
+                <Box ml={1}>
+                  {inCategory.map((recipe) => (
+                    <RecipeRow key={recipe.id} recipe={recipe} />
+                  ))}
+                </Box>
+              </Collapsible>
+            );
+          })
+        : [...recipes]
+            .sort(byName)
+            .map((recipe) => <RecipeRow key={recipe.id} recipe={recipe} />)}
+    </Section>
+  );
+};
+
+const RecipeRow = (props: { recipe: CookRecipe }) => {
+  const { recipe } = props;
+  return (
+    <Box
+      mb={1}
+      p={1}
+      style={{
+        borderLeft: '3px solid rgba(255, 255, 255, 0.2)',
+        background: 'rgba(0, 0, 0, 0.15)',
+      }}
+    >
+      <Box bold>
+        {recipe.amount ? `${recipe.amount}× ` : ''}
+        {recipe.name}
+        {recipe.learned && (
+          <Box inline color="average" ml={1} style={{ fontWeight: 'normal' }}>
+            (trzeba się nauczyć)
+          </Box>
+        )}
+      </Box>
+      {!!recipe.desc && <Box color="label">{recipe.desc}</Box>}
+      <Box mt={0.5}>
+        <Box inline color="good">
+          Z:
+        </Box>{' '}
+        {listIngredients(recipe.ingredients)}
+      </Box>
+      {recipe.tools.length > 0 && (
+        <Box color="label">Potrzebne: {recipe.tools.join(', ')}</Box>
+      )}
+    </Box>
   );
 };

@@ -83,6 +83,7 @@ GLOBAL_LIST(slime_extract_catalog)
 			LAZYADD(reactions_by_extract[reaction.required_container], list(list(
 				"id" = "[reaction.type]",
 				"name" = reaction.name,
+				"desc" = reaction.catalog_desc,
 				"reagents" = recipe_catalog_reagents(reaction.required_reagents),
 				"results" = recipe_catalog_reagents(reaction.results),
 			)))

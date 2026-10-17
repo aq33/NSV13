@@ -657,6 +657,7 @@
 #include "code\modules\reagents\chemistry\recipes\other_reagents.dm"
 #include "code\modules\reagents\chemistry\recipes\randomized.dm"
 #include "code\modules\reagents\recipe_catalog.dm"
+#include "code\modules\reagents\slime_extract_descs.dm"
 #include "code\modules\reagents\symptom_catalog.dm"
 #include "code\modules\reagents\reagent_containers\bottle.dm"
 #include "code\modules\requests\request.dm"

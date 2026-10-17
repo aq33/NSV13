@@ -15,6 +15,7 @@ import { RecipeReagent } from './common/RecipeLookup';
 type ExtractReaction = {
   id: string;
   name: string;
+  desc: string | null;
   reagents: RecipeReagent[];
   results: RecipeReagent[];
 };
@@ -42,6 +43,7 @@ export const NtosSlimeExtracts = (props) => {
 
   const reactionMatches = (reaction: ExtractReaction) =>
     reaction.name.toLowerCase().includes(needle) ||
+    (reaction.desc || '').toLowerCase().includes(needle) ||
     reaction.reagents.some((r) => r.name.toLowerCase().includes(needle)) ||
     reaction.results.some((r) => r.name.toLowerCase().includes(needle));
 
@@ -80,14 +82,19 @@ export const NtosSlimeExtracts = (props) => {
           >
             <Box ml={1} mb={1}>
               {extract.reactions.map((reaction) => (
-                <Box key={reaction.id} mb={0.5}>
-                  <Box inline bold color="good" mr={1}>
-                    {listReagents(reaction.reagents)}
+                <Box key={reaction.id} mb={1}>
+                  <Box>
+                    <Box inline bold color="good" mr={1}>
+                      {listReagents(reaction.reagents)}
+                    </Box>
+                    <Box inline color="label">
+                      ({reaction.name})
+                    </Box>
                   </Box>
-                  → {reaction.name}
+                  <Box>{reaction.desc || '—'}</Box>
                   {reaction.results.length > 0 && (
-                    <Box inline color="label" ml={1}>
-                      ({listReagents(reaction.results)})
+                    <Box color="label">
+                      Powstaje: {listReagents(reaction.results)}
                     </Box>
                   )}
                 </Box>

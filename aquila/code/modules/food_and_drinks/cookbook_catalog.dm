@@ -4,6 +4,25 @@
 // więc każdy typ jedzenia jest raz tworzony przy budowaniu katalogu.
 
 GLOBAL_LIST(cookbook_catalog)
+/// Podkategorie przepisów ze stołu po polsku
+GLOBAL_LIST_INIT(cookbook_categories, list(
+	CAT_BREAD = "Pieczywo",
+	CAT_BURGER = "Burgery",
+	CAT_CAKE = "Ciasta",
+	CAT_EGG = "Dania z jajek",
+	CAT_ICE = "Desery mrożone",
+	CAT_MEAT = "Mięsa",
+	CAT_MEXICAN = "Kuchnia meksykańska",
+	CAT_MISCFOOD = "Różne",
+	CAT_PASTRY = "Wypieki",
+	CAT_PIE = "Placki i tarty",
+	CAT_PIZZA = "Pizze",
+	CAT_SALAD = "Sałatki",
+	CAT_SANDWICH = "Kanapki",
+	CAT_SEAFOOD = "Owoce morza",
+	CAT_SOUP = "Zupy",
+	CAT_SPAGHETTI = "Makarony",
+))
 /// Typ => metoda => list("result", "tool", "amount"), zapisywane przez bakeable/grillable/processable
 GLOBAL_LIST_EMPTY(food_transformations)
 
@@ -47,14 +66,14 @@ GLOBAL_LIST_EMPTY(food_transformations)
 				tools += cookbook_name(tool)
 			for(var/catalyst in recipe.chem_catalysts)
 				tools += "[recipe.chem_catalysts[catalyst]]u [cookbook_name(catalyst)] (nie zużywa się)"
-			catalog += list(cookbook_entry(recipe.result, recipe.name, "stół", ingredients, tools, recipe.subcategory, !recipe.always_available))
+			catalog += list(cookbook_entry(recipe.result, recipe.name, "Stół", ingredients, tools, GLOB.cookbook_categories[recipe.subcategory] || "Różne", !recipe.always_available))
 		qdel(recipe)
 
 	for(var/process_type in subtypesof(/datum/food_processor_process))
 		var/datum/food_processor_process/process = new process_type
-		if(process.input && process.output)
-			var/obj/machinery/machine = process.required_machine
-			catalog += list(cookbook_entry(process.output, null, initial(machine.name), list(cookbook_ingredient(process.input, 1)), list(), "Procesor"))
+		// Tylko zwykły procesor kuchenny; procesor szlamów to ksenobiologia
+		if(process.input && process.output && process.required_machine == /obj/machinery/processor)
+			catalog += list(cookbook_entry(process.output, null, "Procesor", list(cookbook_ingredient(process.input, 1)), list()))
 		qdel(process)
 
 	for(var/reaction_type in subtypesof(/datum/chemical_reaction/food))
@@ -69,23 +88,23 @@ GLOBAL_LIST_EMPTY(food_transformations)
 			if(reaction.required_temp)
 				tools += "temperatura [reaction.is_cold_recipe ? "poniżej" : "co najmniej"] [reaction.required_temp] K"
 			var/result = length(reaction.results) ? reaction.results[1] : null
-			catalog += list(cookbook_entry(result, reaction.name, "mieszanie w zbiorniku", ingredients, tools, "Mieszanki"))
+			catalog += list(cookbook_entry(result, reaction.name, "Mieszanki", ingredients, tools))
 		qdel(reaction)
 
 	probe_food_transformations()
-	var/static/list/method_names = list("bake" = "piekarnik", "grill" = "grill", "process" = "krojenie")
+	var/static/list/method_names = list("bake" = "Piekarnik", "grill" = "Grill", "process" = "Krojenie")
 	var/static/list/tool_names = list(TOOL_KNIFE = "nóż", TOOL_ROLLINGPIN = "wałek", TOOL_SAW = "piła")
 	for(var/obj/item/food/food_type as anything in subtypesof(/obj/item/food))
 		var/microwaved = initial(food_type.microwaved_type)
 		if(microwaved)
-			catalog += list(cookbook_entry(microwaved, null, "mikrofalówka", list(cookbook_ingredient(food_type, 1)), list(), "Obróbka"))
+			catalog += list(cookbook_entry(microwaved, null, "Mikrofalówka", list(cookbook_ingredient(food_type, 1)), list()))
 		var/list/methods = GLOB.food_transformations[food_type]
 		for(var/method in methods)
 			var/list/transformation = methods[method]
 			var/list/tools = list()
 			if(transformation["tool"])
 				tools += tool_names[transformation["tool"]] || "[transformation["tool"]]"
-			var/list/entry = cookbook_entry(transformation["result"], null, method_names[method], list(cookbook_ingredient(food_type, 1)), tools, "Obróbka")
+			var/list/entry = cookbook_entry(transformation["result"], null, method_names[method], list(cookbook_ingredient(food_type, 1)), tools)
 			if(transformation["amount"] > 1)
 				entry["amount"] = transformation["amount"]
 			catalog += list(entry)
@@ -108,9 +127,17 @@ GLOBAL_LIST_EMPTY(food_transformations)
 
 /proc/cookbook_entry(result, name, method, list/ingredients, list/tools, category, learned = FALSE)
 	var/result_name = result ? cookbook_name(result) : null
+	var/desc
+	if(ispath(result, /atom))
+		var/atom/result_type = result
+		desc = initial(result_type.desc)
+	else if(ispath(result, /datum/reagent))
+		var/datum/reagent/reagent = GLOB.chemical_reagents_list[result]
+		desc = reagent?.description
 	return list(
 		"id" = "[method]:[result]:[name]:[length(ingredients) ? ingredients[1]["name"] : ""]",
 		"name" = capitalize(result_name || name),
+		"desc" = desc,
 		"method" = method,
 		"ingredients" = ingredients,
 		"tools" = tools,

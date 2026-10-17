@@ -23,6 +23,8 @@
 	TEST_ASSERT(length(extracts) > 10, "Katalog ekstraktów ma tylko [length(extracts)] pozycji")
 	for(var/list/extract as anything in extracts)
 		TEST_ASSERT(length(extract["reactions"]), "Ekstrakt [extract["id"]] nie ma reakcji")
+		for(var/list/reaction as anything in extract["reactions"])
+			TEST_ASSERT(reaction["desc"], "Reakcja [reaction["id"]] nie ma opisu (catalog_desc w slime_extract_descs.dm)")
 
 	var/list/symptoms = get_symptom_catalog()
 	TEST_ASSERT(length(symptoms) > 20, "Katalog symptomów ma tylko [length(symptoms)] pozycji")
@@ -43,7 +45,7 @@
 	for(var/list/recipe as anything in cookbook)
 		TEST_ASSERT(recipe["name"], "Przepis [recipe["id"]] nie ma nazwy")
 		methods[recipe["method"]] = TRUE
-	for(var/method in list("stół", "mikrofalówka", "grill", "piekarnik", "krojenie"))
+	for(var/method in list("Stół", "Procesor", "Mikrofalówka", "Grill", "Piekarnik", "Krojenie", "Mieszanki"))
 		TEST_ASSERT(methods[method], "W książce kucharskiej nie ma przepisów typu „[method]”")
 
 	// Dyski zawodowe mają programy; dysk ma też drugą definicję Initialize() w logprobe.dm
