@@ -1,11 +1,17 @@
 // Adapted From NSV13
 // AQ EDIT - tłumaczenie, kilka zarzutów naraz (czasy się sumują)
 
-import { clamp, toFixed } from 'common/math';
+import { toFixed } from 'common/math';
 import { Box, Button, ProgressBar, Section } from 'tgui-core/components';
 
 import { useBackend, useSharedState } from '../backend';
 import { Window } from '../layouts';
+import {
+  calculateSentence,
+  formatSentence,
+  MAX_TIMER,
+  PRESET_SHORT,
+} from './common/Sentence';
 
 type Crime = {
   name: string;
@@ -30,14 +36,6 @@ type Data = {
   desired_details: string;
   desired_name: string;
 };
-
-// Te same stałe co w code/modules/security/crimes.dm (decysekundy).
-const PRESET_SHORT = 3000;
-const PRESET_LONG = 9000;
-const MAX_TIMER = 360000;
-
-const formatSentence = (time: number) =>
-  time >= MAX_TIMER ? 'dożywocie' : `${toFixed(time / 600, 1)} min`;
 
 export const GenPop = (props) => {
   const { act, data } = useBackend<Data>();
@@ -85,20 +83,13 @@ export const GenPop = (props) => {
     0,
   );
 
-  // Ta sama reguła co calculate_sentence() w genpop.dm.
-  const getProcessedTime = () => {
-    let time = clamp(baseTime + adjust, 0, MAX_TIMER);
-    if (attemptedMod) {
-      time = time >= MAX_TIMER ? PRESET_LONG : time - PRESET_SHORT;
-    }
-    if (elevatedMod) {
-      time = time >= PRESET_LONG ? MAX_TIMER : time + PRESET_SHORT;
-    }
-    if (resistedMod) {
-      time *= 1.2;
-    }
-    return clamp(Math.round(time / 10) * 10, 0, MAX_TIMER);
-  };
+  const getProcessedTime = () =>
+    calculateSentence(baseTime, {
+      adjust,
+      attempted: attemptedMod,
+      elevated: elevatedMod,
+      resisted: resistedMod,
+    });
 
   const resetLocalState = () => {
     setSelectedCrimes([]);

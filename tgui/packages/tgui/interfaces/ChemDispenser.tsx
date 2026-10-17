@@ -1,5 +1,6 @@
 import { toFixed } from 'common/math';
 import { toTitleCase } from 'common/string';
+import { useState } from 'react';
 import {
   AnimatedNumber,
   Box,
@@ -12,6 +13,7 @@ import {
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
+import { Recipe, RecipeLookup } from './common/RecipeLookup';
 
 type Data = {
   amount: any;
@@ -25,11 +27,13 @@ type Data = {
   maxEnergy: any;
   recipes: any;
   recordingRecipe: any;
+  recipeCatalog: Recipe[];
 };
 
 export const ChemDispenser = (props) => {
   const { act, data } = useBackend<Data>();
   const recording = !!data.recordingRecipe;
+  const [showLookup, setShowLookup] = useState(false);
   // TODO: Change how this piece of shit is built on server side
   // It has to be a list, not a fucking OBJECT!
   const recipes = Object.keys(data.recipes).map((name) => ({
@@ -210,6 +214,25 @@ export const ChemDispenser = (props) => {
               ))}
             </LabeledList.Item>
           </LabeledList>
+        </Section>
+        <Section
+          title="Wyszukiwarka przepisów"
+          buttons={
+            <Button
+              icon={showLookup ? 'chevron-up' : 'search'}
+              onClick={() => setShowLookup(!showLookup)}
+            >
+              {showLookup ? 'Schowaj' : 'Szukaj'}
+            </Button>
+          }
+        >
+          {showLookup && (
+            <RecipeLookup
+              recipes={data.recipeCatalog || []}
+              dispensable={data.chemicals.map((chemical) => chemical.id)}
+              onDispense={(id) => act('dispense', { reagent: id })}
+            />
+          )}
         </Section>
       </Window.Content>
     </Window>

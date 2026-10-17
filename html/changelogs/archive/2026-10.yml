@@ -424,3 +424,13 @@
   - rscadd: Centrala czasem przysyła kapsułą zwłoki do ożywienia, z instrukcją w worku.
   - rscadd: Przytomny pacjent czuje ból podczas operacji i może krzyczeć.
   - imageadd: Apteczki, nici i siatka ze sprite'ami z tgstation.
+'2026-10-17':
+  Joker66613:
+  - rscadd: 'Dispensery chemiczne i barowe mają wyszukiwarkę przepisów: po produkcie
+      albo składniku, z wydawaniem składników jednym kliknięciem.'
+  - rscadd: Program PDA „Receptury” (chemik, barman, kucharz, do pobrania z NTNet).
+  - rscadd: Program PDA „Operacje” z listą wszystkich operacji, ich krokami i narzędziami
+      (dyski medyczne, do pobrania z NTNet).
+  - rscadd: Programy PDA „Książka kucharska” (kucharz), „Ekstrakty” (nauka) i „Prawo
+      kosmiczne” z kalkulatorem wyroku (ochrona).
+  - rscadd: PANDEMIC ma listę wszystkich symptomów z odczynnikami, które je losują.

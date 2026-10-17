@@ -87,6 +87,7 @@
 		if((isnull(allowed_department_flags) || (d.departmental_flags & allowed_department_flags)) && (d.build_type & allowed_buildtypes))
 			pending_research += d.name
 	update_icon()
+	ui_update() // AQ EDIT - the sync button shows how many designs are waiting
 
 /obj/machinery/rnd/production/proc/update_designs()
 	pending_research.Cut()
@@ -140,6 +141,7 @@
 		))
 	data["reagents"] = loaded_reagents
 	data["reagentCapacity"] = reagents?.maximum_volume
+	data["pendingResearch"] = length(pending_research)
 	return data
 
 /// The real material cost multiplier for a design, see user_try_print_id()
