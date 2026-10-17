@@ -28,6 +28,7 @@ These are same-type redefinitions in `aquila/` that do not call `..()`, so they 
 | `/datum/surgery_step/extract_implant/success()` | Left (C) | The Aquila version calls `I.removed()` *before* the success message and branches on `QDELETED(I)` (yogs self-deleting implants). This reorders upstream side effects, so no pre/post hook can express it, and calling `removed()` twice is not idempotent (e.g. mindshield messages). Hardened (`removed()` + `return TRUE`), so do not touch. To modularize later, upstream would need a "remove implant" helper step. |
 | `/datum/nanite_program/nanite_sting` (+ `spreading/active_effect`) | Left (C/F) | Core's copies are commented out (`/* AQUILA EDIT */`) and `aquila/` defines the whole type. The delta (`COMSIG_NANITE_SET_CLOUD` sent *between* `AddComponent` and `COMSIG_NANITE_SYNC`, cloud extra setting, trigger cost 50) is interleaved, so it can't be a post-hook. Part of the larger Aquila nanite rework. |
 | `/obj/item/screwdriver/abductor/get_belt_overlay()` | Left (minimal) | A one-line resource swap; the override *is* the delta. |
+| `/obj/structure/falsewall/update_icon()` | Partial (C) | `aquila/code/modules/paradise_struktury/false_walls.dm`. For false walls with Paradise sprites (`bitmask_smooth`) the NSV13 version is skipped: it adds goon corner overlays that the Paradise icons don't have. Types without bitmask still call `..()`. |
 | `/datum/species/ipc/post_death()` | Left (minimal) | A one-line no-op (keep the BSOD screen after death); the override *is* the delta. |
 | `/obj/machinery/gravity_generator/part/get_status()` | Left (minimal) | A one-line null-safe `main_part?.get_status()`; the override *is* the delta. |
 | `/datum/hud/human/update_locked_slots()` | Left (C) | BeeStation#13707 port (`aquila/code/_onclick/hud/locked_slots.dm`): dims every slot `can_equip()` would refuse (no jumpsuit, no suit, missing limbs or head, `no_glasses`), not just the species `no_equip` list. Upstream only checked `no_equip`, so the override replaces the whole loop. |
@@ -38,6 +39,8 @@ The other ~60 same-type redefinitions in `aquila/` call `..()`, so they are alre
 
 | Hook | Location | Feature |
 |---|---|---|
+| Lower `LATTICE_LAYER` … `CATWALK_LAYER`, new `GRILLE_LAYER` | `code/__DEFINES/layers.dm` | Floor-level objects (lattices, disposals, hidden pipes, cables, catwalks, grilles) go below `CLOSED_TURF_LAYER` like in Paradise, so the 8 px overhang of 3/4 walls covers them |
+| `A.bitmask_smooth_icon()` branch in `smooth_icon()` | `code/__HELPERS/icon_smoothing.dm` | Paradise walls, windows and doors (32x40, 47-state bitmask) skip corner and legacy smoothing; logic in `aquila/code/modules/paradise_struktury/smoothing.dm` |
 | `QDEL_IN(src, 20)` in `/obj/effect/particle_effect/sparks/Initialize()` | `code/game/objects/effects/effect_system/effects_sparks.dm` | Sparks are cleaned up even if their `LateInitialize()` never runs |
 | `late_loaders` swapped for a fresh list before the late init loop | `code/controllers/subsystem/atoms.dm`, `InitializeAtoms()` | Overlapping map loads no longer wipe each other's late loaders (stuck sparks and other lateload atoms) |
 | `exit_push()` pushes along `pushed.dir` | `code/modules/security/genpop.dm` | Turnstiles on our maps have the free direction pointing out of the brig |

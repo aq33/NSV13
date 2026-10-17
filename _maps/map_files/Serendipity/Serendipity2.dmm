@@ -343,6 +343,10 @@
 /obj/structure/cable,
 /turf/open/floor/monotile/steel,
 /area/engine/armour_pump)
+"aR" = (
+/obj/structure/grille,
+/turf/open/floor/plating/airless,
+/area/space/nearstation)
 "aS" = (
 /obj/machinery/firealarm/directional/south,
 /turf/open/floor/carpet/ship/beige_carpet,
@@ -48683,7 +48687,7 @@ Qj
 Bl
 Bl
 dD
-Ks
+aR
 Ks
 Ks
 Ks
@@ -48922,9 +48926,9 @@ Sg
 Sg
 Sg
 Sg
-Ks
-Ks
-Ks
+Sg
+Sg
+Sg
 Sg
 Sg
 Sg
@@ -49179,13 +49183,13 @@ Sg
 Sg
 Sg
 Sg
-Ks
-Ks
-Ks
 Sg
 Sg
 Sg
 Sg
+Sg
+Sg
+Sg
 dD
 dD
 dD
@@ -49193,10 +49197,10 @@ dD
 dD
 dD
 dD
-Ks
-Ks
-Ks
-Ks
+dD
+dD
+dD
+dD
 Ks
 Ks
 Ks
@@ -49436,9 +49440,9 @@ dD
 dD
 dD
 dD
-Ks
-Ks
-Ks
+dD
+dD
+dD
 dD
 dD
 dD
@@ -49701,12 +49705,12 @@ Ks
 Ks
 Ks
 Ks
-Ks
-Ks
-Ks
-Ks
-Ks
-Ks
+aR
+aR
+aR
+aR
+aR
+aR
 Ks
 Ks
 Ks
