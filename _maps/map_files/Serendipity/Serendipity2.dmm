@@ -343,6 +343,15 @@
 /obj/structure/cable,
 /turf/open/floor/monotile/steel,
 /area/engine/armour_pump)
+"aQ" = (
+/obj/structure/lattice/catwalk,
+/obj/effect/spawner/structure/window/plasma/reinforced,
+/turf/open/space/basic,
+/area/space/nearstation)
+"aR" = (
+/obj/structure/grille,
+/turf/open/floor/plating/airless,
+/area/space/nearstation)
 "aS" = (
 /obj/machinery/firealarm/directional/south,
 /turf/open/floor/carpet/ship/beige_carpet,
@@ -33510,15 +33519,15 @@ Ks
 Ks
 Ks
 Ks
-Ks
-Ks
-Ks
-Ks
-Ks
-Ks
-Ks
-Ks
-Ks
+dD
+dD
+dD
+aQ
+aQ
+aQ
+dD
+dD
+dD
 Ks
 Ks
 Ks
@@ -33767,6 +33776,7 @@ Ks
 Ks
 Ks
 Ks
+dD
 Ks
 Ks
 Ks
@@ -33774,8 +33784,7 @@ Ks
 Ks
 Ks
 Ks
-Ks
-Ks
+dD
 Ks
 Ks
 Ks
@@ -34024,6 +34033,7 @@ Ks
 Ks
 Ks
 Ks
+dD
 Ks
 Ks
 Ks
@@ -34031,8 +34041,7 @@ Ks
 Ks
 Ks
 Ks
-Ks
-Ks
+dD
 Ks
 Ks
 Ks
@@ -34281,6 +34290,7 @@ Ks
 Ks
 Ks
 Ks
+aQ
 Ks
 Ks
 Ks
@@ -34288,8 +34298,7 @@ Ks
 Ks
 Ks
 Ks
-Ks
-Ks
+aQ
 Ks
 Ks
 Ks
@@ -34538,7 +34547,7 @@ Ks
 Ks
 Ks
 Ks
-Ks
+aQ
 Ks
 Ks
 Ks
@@ -34795,7 +34804,7 @@ Ks
 Ks
 Ks
 Ks
-Ks
+aQ
 Ks
 Ks
 Ks
@@ -35052,7 +35061,7 @@ dD
 dD
 dD
 Ks
-Ks
+dD
 Ks
 Ks
 Ks
@@ -48683,7 +48692,7 @@ Qj
 Bl
 Bl
 dD
-Ks
+aR
 Ks
 Ks
 Ks
@@ -48922,9 +48931,9 @@ Sg
 Sg
 Sg
 Sg
-Ks
-Ks
-Ks
+Sg
+Sg
+Sg
 Sg
 Sg
 Sg
@@ -49179,13 +49188,13 @@ Sg
 Sg
 Sg
 Sg
-Ks
-Ks
-Ks
 Sg
 Sg
 Sg
 Sg
+Sg
+Sg
+Sg
 dD
 dD
 dD
@@ -49193,10 +49202,10 @@ dD
 dD
 dD
 dD
-Ks
-Ks
-Ks
-Ks
+dD
+dD
+dD
+dD
 Ks
 Ks
 Ks
@@ -49436,9 +49445,9 @@ dD
 dD
 dD
 dD
-Ks
-Ks
-Ks
+dD
+dD
+dD
 dD
 dD
 dD
@@ -49701,12 +49710,12 @@ Ks
 Ks
 Ks
 Ks
-Ks
-Ks
-Ks
-Ks
-Ks
-Ks
+aR
+aR
+aR
+aR
+aR
+aR
 Ks
 Ks
 Ks
