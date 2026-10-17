@@ -47,4 +47,5 @@ export type FabricatorData = {
   onHold: BooleanLike;
   designs: Record<string, Design>;
   busy: BooleanLike;
+  pendingResearch: number;
 };
